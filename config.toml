@@ -1,0 +1,35 @@
+title = "Git"
+languageCode = "en-us"
+uglyURLs = false
+relativeURLs = true
+canonifyURLs = true
+pygmentsCodeFencesGuessSyntax = true
+
+[taxonomies]
+    download = "downloads"
+
+[params]
+    description = "Git"
+    custom_css = ["css/local.css"]
+
+[[params.social]]
+    title = "email"
+    icon = "envelope-o"
+    url = "mailto:bushbama@whitehouse.gov"
+[[params.social]]
+    title = "twitter"
+    icon = "twitter"
+    url = "https://twitter.com/SBootstrap"
+[[params.social]]
+    title = "github"
+    icon = "github"
+    url = "https://github.com/IronSummitMedia/startbootstrap"
+[[params.social]]
+    title = "linkedin"
+    icon = "linkedin"
+    url = "http://linkedin.com/in/yourusername"
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"

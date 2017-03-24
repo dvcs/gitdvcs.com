@@ -1,0 +1,23 @@
+
+# Created by https://www.gitignore.io/api/hugo,compressed
+
+### Compressed ###
+.7z
+.deb
+.gz
+.pkg
+.rar
+.rpm
+.sit
+.sitx
+.tar
+.zip
+.zipx
+
+### Hugo ###
+hugo.exe
+/public/
+# End of https://www.gitignore.io/api/hugo,compressed
+
+### DVCS
+/content/documentation
