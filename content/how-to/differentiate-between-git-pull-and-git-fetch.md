@@ -3,8 +3,6 @@ Title: What is the difference between 'git pull' and 'git fetch'?
 Section: how to
 ---
 
-[http://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch](http://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch)
-
 ## Summary
 
 `git pull` == `git fetch` + `git merge`
@@ -25,6 +23,6 @@ You can do a `git fetch` at any time to update your remote-tracking branches und
 
 ## Documentation
 
-- [git pull]()
-- [git fetch]()
-- [git merge]()
+- [git pull](/documentation/latest/git-pull/)
+- [git fetch](/documentation/latest/git-fetch/)
+- [git merge](/documentation/latest/git-merge/)

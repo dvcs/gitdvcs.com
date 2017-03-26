@@ -3,8 +3,6 @@ Title: How to undo 'git add' before commit?
 Section: how to
 ---
 
-[http://stackoverflow.com/questions/348170/how-to-undo-git-add-before-commit](http://stackoverflow.com/questions/348170/how-to-undo-git-add-before-commit)
-
 ## Summary
 
 ```sh
@@ -32,4 +30,4 @@ git reset         # Remove all files from stage
 
 ## Documentation
 
-- [git reset]()
+- [git branch](/documentation/latest/git-reset/)

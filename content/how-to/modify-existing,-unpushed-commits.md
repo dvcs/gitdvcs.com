@@ -3,8 +3,6 @@ Title: How to modify staged (existing/unpushed) commit(s) in Git?
 Section: how to
 ---
 
-http://stackoverflow.com/questions/179123/how-to-modify-existing-unpushed-commits
-
 ## Summary
 
 Modify previous staged commit
@@ -80,5 +78,5 @@ Most of this sequence will be explained to you by the output of the various comm
 
 ## Documentation
 
-- [git commit]()
-- [git rebase]()
+- [git branch](/documentation/latest/git-commit/)
+- [git push](/documentation/latest/git-rebase/)

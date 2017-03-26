@@ -3,8 +3,6 @@ Title: How do I discard unstaged changes in Git?
 Section: how to
 ---
 
-[http://stackoverflow.com/questions/52704/how-do-i-discard-unstaged-changes-in-git](http://stackoverflow.com/questions/52704/how-do-i-discard-unstaged-changes-in-git)
-
 ## Summary
 
 1. Stashing files (Can recover later)
@@ -43,5 +41,5 @@ git checkout -- .
 
 ## Documentation
 
-- [git stash]()
-- [git clean]()
+- [git stash](/documentation/latest/git-stash/)
+- [git clean](/documentation/latest/git-clean/)

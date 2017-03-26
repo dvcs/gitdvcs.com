@@ -3,8 +3,6 @@ Title: How to delete a Git branch both locally and remotely?
 Section: how to
 ---
 
-[http://stackoverflow.com/questions/2003505/how-to-delete-a-git-branch-both-locally-and-remotely](http://stackoverflow.com/questions/2003505/how-to-delete-a-git-branch-both-locally-and-remotely)
-
 ## Summary
 
 Deleting a local branch:
@@ -61,5 +59,5 @@ git push origin :<branch_name>
 
 ## Documentation
 
-- [git branch]()
-- [git push]()
+- [git branch](/documentation/latest/git-branch/)
+- [git push](/documentation/latest/git-push/)

@@ -18,12 +18,13 @@ export readonly DOCS_FILE="_index.md"
 #   None
 ###############################################################################
 create_documentation_front_matter() {
-  echo "---" > $DOCS_FILE
-  echo "Title: \"Documentation\"" >> $DOCS_FILE
-  echo "Description: \"Documentation\"" >> $DOCS_FILE
-  echo "---" >> $DOCS_FILE
-  echo "" >> $DOCS_FILE
-  echo $DO_NOT_MANUALLY_EDIT_WARN >> $DOCS_FILE
+  echo "---" > "${DOCS_FILE}"
+  echo "Title: \"Documentation\"" >> "${DOCS_FILE}"
+  echo "Description: \"Documentation\"" >> "${DOCS_FILE}"
+  echo "---" >> "${DOCS_FILE}"
+  echo "" >> "${DOCS_FILE}"
+  echo "${DO_NOT_MANUALLY_EDIT_WARN}" >> "${DOCS_FILE}"
+  echo "<ul class=\"list-inline\">" >> ${DOCS_FILE}
 }
 export -f create_documentation_front_matter
 
@@ -37,14 +38,40 @@ export -f create_documentation_front_matter
 create_git_version_front_matter() {
   versionFile="${1}${HTML_DOCS_VERSION_SUFFIX}"
 
-  echo "---" > $versionFile
-  echo "Title: \"$1\"" >> $versionFile
-  echo "Description: \"$1\"" >> $versionFile
-  echo "---" >> $versionFile
-  echo "" >> $versionFile
-  echo $DO_NOT_MANUALLY_EDIT_WARN >> $versionFile
+  echo "---" > "${versionFile}"
+  echo "Title: \"$1\"" >> "${versionFile}"
+  echo "Description: \"$1\"" >> "${versionFile}"
+  echo "---" >> "${versionFile}"
+  echo "" >> "${versionFile}"
+  echo "${DO_NOT_MANUALLY_EDIT_WARN}" >> "${versionFile}"
 }
 export -f create_git_version_front_matter
+
+###############################################################################
+# Create front matter for specific git version documentaiton file
+# Arguments:
+#   ${1} - documentaiton file
+#   ${2} - html file prefix
+#   ${3} - command description
+#   ${4} - boolean to know if the latest documentaiton file
+# Returns:
+#   None
+###############################################################################
+create_documentation_file_front_matter() {
+  echo "---" > "${1}"
+  echo "Title: \"${2}\"" >> "${1}"
+  echo "Description: \"${3}\"" >> "${1}"
+
+  if [ "${4}" = "true" ]; then
+    echo "Aliases:" >> "${1}"
+    echo "  - /documentation/latest/${2}/" >> "${1}"
+  fi
+
+  echo "---" >> "${1}"  
+  echo "" >> "${1}"
+  echo "${DO_NOT_MANUALLY_EDIT_WARN}" >> "${1}"
+}
+export -f create_documentation_file_front_matter
 
 ###############################################################################
 # Fix relaitve paths in each markdown file
@@ -53,7 +80,7 @@ export -f create_git_version_front_matter
 # Returns:
 #   None
 ###############################################################################
-fix_relative_hyper_links () {
+fix_relative_hyper_links() {
   markdownFile="${1}"
   sed -i -e 's/.html)/)/g' $markdownFile          
   sed -i -e 's/)](/)](..\//g' $markdownFile  
@@ -64,10 +91,21 @@ export -f fix_relative_hyper_links
 # Extract and format documentation for site
 # Arguments:
 #   ${1} - documentation zip file name (e.g. `git-htmldocs-2.0.0.tar.gz`)
+#   ${2} - boolean to know if the latest documentaiton file
 # Returns:
 #   None
 ###############################################################################
 extract_documentation() {
+  if [ -z "${1}" ]; then
+    echo "No zip file"
+    exit 0
+  fi
+  
+  if [ -z "${2}" ]; then
+    echo "No latest documentation flag"
+    exit 0
+  fi
+
   docsZipFile="${1}"
 
   directory=`basename ${docsZipFile} .tar.gz`
@@ -75,7 +113,12 @@ extract_documentation() {
 
   mkdir "${versionDirectory}" &>/dev/null
 
-  echo "- [${versionDirectory}](/$DOCS_DIRECTORY/${versionDirectory})" >> "${DOCS_FILE}"
+  if [ "${2}" = "true" ]; then
+    echo "<li><h3><a href=\"/$DOCS_DIRECTORY/latest\">latest</a></h3></li>" >> "${DOCS_FILE}"
+  fi
+  echo "<li><h3><a href=\"/$DOCS_DIRECTORY/${versionDirectory}\">${versionDirectory}</a></h3></li>" >> "${DOCS_FILE}"
+
+
   create_git_version_front_matter "${versionDirectory}"
 
   pushd $versionDirectory &>/dev/null
@@ -108,12 +151,10 @@ extract_documentation() {
       markdownFile="${htmlFilePrefix}.md"
 
       # Insert front mmatter
-      frontMatter="---\ntitle: \"${htmlFilePrefix}\"\ndescription: \"${commandDescription}\"\n---\n${DO_NOT_MANUALLY_EDIT_WARN}"
-      echo $frontMatter > $markdownFile
+      create_documentation_file_front_matter "${markdownFile}" "${htmlFilePrefix}" "${commandDescription}" "${2}"
 
       hxnormalize -x ${htmlFile}  | hxselect -c "div#content" | pandoc -f html -t markdown_github >> $markdownFile
 
-      export -f fix_relative_hyper_links
       fix_relative_hyper_links $markdownFile
       rm $htmlFile
     done
@@ -132,17 +173,28 @@ export -f extract_documentation
 ###############################################################################
 main() {
   pushd content
-  pushd ${DOCS_DIRECTORY}
+  pushd "${DOCS_DIRECTORY}"
 
     create_documentation_front_matter
 
     # Production
-    rsync -a --include="git-htmldocs-[0-9].[0-9].[0-9].tar.gz" --exclude="*" rsync://rsync.kernel.org/pub/software/scm/git/ . &>/dev/null
+    rsync -a --info=progress2 --no-motd --include="git-htmldocs-[0-9].[0-9].[0-9].tar.gz" --exclude="*" rsync://rsync.kernel.org/pub/software/scm/git/ .
 
     # Test
     # rsync -a --include="git-htmldocs-1.8.[0-9].tar.gz" --exclude="*" rsync://rsync.kernel.org/pub/software/scm/git/ . &>/dev/null
-    ls -1r *.tar.gz | parallel -j`sysctl -n hw.ncpu` extract_documentation
+    # | parallel -j+0 --eta extract_documentation
 
+    isLatest=true
+    documentaitonZipFilesOutput=""
+    documentaitonZipFiles=`ls -1r *.tar.gz`
+    for documentationZipFile in ${documentaitonZipFiles}; do
+      documentaitonZipFilesOutput+="${documentationZipFile} ${isLatest}\n"
+      isLatest=false
+    done
+
+    echo ${documentaitonZipFilesOutput} | sed '/^$/d' | parallel -j+0 --eta --colsep '\s' extract_documentation {1} {2}
+
+    echo "</ul>" >> "${DOCS_FILE}"
     # rm *.tar.gz
   popd
   popd

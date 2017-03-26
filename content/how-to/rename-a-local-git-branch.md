@@ -3,8 +3,6 @@ Title: How do I rename a local Git branch?
 Section: how to
 ---
 
-[http://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch](http://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch)
-
 ## Summary
 
 ```sh
@@ -32,4 +30,4 @@ git branch -m <newname>
 
 ## Documentation
 
-- [git branch]()
+- [git branch](/documentation/latest/git-branch/)

@@ -3,8 +3,6 @@ Title: How to undo last commit(s) in Git?
 Section: how to
 ---
 
-[http://stackoverflow.com/questions/927358/how-to-undo-last-commits-in-git](http://stackoverflow.com/questions/927358/how-to-undo-last-commits-in-git)
-
 ## Summary
 
 ```sh
@@ -46,5 +44,5 @@ git commit -c ORIG_HEAD
 
 ## Documentation
 
-- [git commit]()
-- [git reset]()
+- [git branch](/documentation/latest/git-commit/)
+- [git push](/documentation/latest/git-reset/)
