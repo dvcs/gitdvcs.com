@@ -1,5 +1,5 @@
 ---
-Title: What is the difference between 'git pull' and 'git fetch'?
+Title: What is the difference between `git pull` and `git fetch`?
 Section: how to
 ---
 
@@ -9,7 +9,7 @@ Section: how to
 
 ## Details
 
-### How `git pull` And `git fetch` Work
+**How `git pull` and `git fetch` work**
 
 In the simplest terms, `git pull` does a `git fetch` followed by a `git merge`.
 

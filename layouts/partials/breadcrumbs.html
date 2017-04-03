@@ -2,8 +2,8 @@
 	<div class="bread-container shadow">
 		{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
 		{{ $.Scratch.Add "path" .Site.BaseURL }}
-		<ol class="breadcrumb git-background-night">
-			<li><a href="/">home</a></li>
+		<ol class="breadcrumb">
+			<li><a href="/">🏠</a></li>
 			{{ range $index, $element := split $url "/" }}
 			{{ $.Scratch.Add "path" $element }}
 			{{ if ne $element "" }}

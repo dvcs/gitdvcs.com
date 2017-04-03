@@ -7,37 +7,37 @@ Section: how to
 
 1. Stashing files (Can recover later)
 
-```sh
+{{< highlight bash >}}
 git stash save --keep-index
-```
+{{< / highlight >}}
 
 2. Cleaning files (Cannot recover later)
 
-```sh
+{{< highlight bash >}}
 git clean -fd
 git checkout -- .
-```
+{{< / highlight >}}
 
 ## Details
 
-### Stashing Files
+**Stashing Files**
 
 1. `git stash` saves files in a stashed list of temporary repository edits.
 
-```sh
+{{< highlight bash >}}
 git stash save --keep-index
-```
+{{< / highlight >}}
 
 2. After stashing, you can drop that stash with a `git stash drop` command if you like.
 
-### Cleaning Files
+**Cleaning Files**
 
 1. `git clean` removes all untracked files (warning: while it won't delete ignored files mentioned directly in .gitignore, it may delete ignored files residing in folders) and `git checkout` clears all unstaged changes.
 
-```sh
+{{< highlight bash >}}
 git clean -fd
 git checkout -- .
-```
+{{< / highlight >}}
 
 ## Documentation
 

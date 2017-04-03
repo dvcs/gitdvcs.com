@@ -8,16 +8,21 @@ body{
 	padding:0;
     background:#2C3041;
     overflow-x:hidden;
+    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 a:hover{text-decoration: none; cursor:pointer;}
 
-a { color: #42A5E8; }
-.breadcrumb { background-color: #2D3142; }
-
+a { color: #42A5E8!important;}
+.breadcrumb {
+	background-color: #FAFAFA;
+}
 a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safari */
-
+.badge {
+	background-color: #FAFAFA;
+	color: #42A5E8;
+}
 #page-loading-blocs-notifaction{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;}
 
 /* = Blocs
@@ -110,7 +115,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 /* Light theme */
 
 .d-bloc .panel,.l-bloc{
-	color:rgba(0,0,0,.5);
+	color:rgba(45,49,66,.9);
 }
 .d-bloc .panel button:hover,.l-bloc button:hover{
 	color:rgba(0,0,0,.7);
@@ -182,7 +187,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 .nav > li{
 	float:left;
 	margin-top:4px;
-	font-size:16px;
+	font-size:20px;
 }
 .navbar-nav .open .dropdown-menu > li > a{
 	text-align: inherit;
@@ -431,7 +436,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 .git-background-white{
 	color:#2C3041!important;
 }
-.homepage-links{
+.large-links{
 	font-size:24px;
 	text-align:center;
 	color:#41A5E8!important;
@@ -462,6 +467,45 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 .git-background-night{
 	background-color:#2C3041;
 	color:#FFFFFF!important;
+}
+.stat-bloc-text{
+	font-size:24px;
+	text-align:center;
+	font-weight:300;
+	line-height:44px;
+	text-transform:uppercase;
+}
+.stat-bloc-sub-text{
+	font-size:16px;
+	text-align:center;
+	text-transform:uppercase;
+}
+.git-bg-orange{
+	background-color:#E15B38;
+}
+.git-bg-black{
+	background-color:#171219;
+}
+.git-bg-navy{
+	background-color:#2C3041;
+}
+.git-bg-blue{
+	background-color:#41A5E8;
+}
+.git-bg-grey{
+	background-color:#FAFAFA;
+}
+.git-text-light{
+	color:#FFFFFF!important;
+}
+.git-text-dark{
+	color:#171219!important;
+}
+.git-bg-white{
+	background-color:#FFFFFF;
+}
+.git-design-font-colors{
+	font-weight:200;
 }
 
 /* = Colour

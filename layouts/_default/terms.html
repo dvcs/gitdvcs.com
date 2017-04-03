@@ -9,12 +9,12 @@
 			<div class="col-sm-10">
 				<h1 id="title">{{ .Title }}</h1>
 				{{ partial "breadcrumbs.html" . }}
-				<div>
+				<ul class="list-unstyled">
 					{{ $data := .Data }}
-					{{ range $key,$value := .Data.Terms.ByCount }}
-					<h2><a href="{{ $value.Name | urlize }}/"> {{ $value.Name }} </a> {{ $value.Count }} </h2>
+					{{ range $key,$value := .Data.Terms.Alphabetical }}
+					<li><a href="{{ $value.Name | urlize }}/">{{ $value.Name }} <span class="badge">{{ $value.Count }}</span></a></li>
 					{{ end }}
-				</div>
+				</ul>
 			</div>
 			<div class="col-sm-2">
 				{{ partial "carbon-vertical.html" . }}

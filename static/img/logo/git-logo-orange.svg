@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
     <title>git-logo-orange</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="git.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="git-logo-orange" fill="#E15B39">
-            <path d="M112.657435,48.6562354 L139,74.9988 L75.0012,139 L59.0003,122.9991 L59.0003,102.313371 L112.657435,48.6562354 Z M42.9994,42.9994 L42.9994,107.0006 L11,74.9988 L42.9994,42.9994 Z M101.343765,37.3425646 L59.0003,79.6860293 L59.0003,26.9985 L75.0012,11 L101.343765,37.3425646 Z" id="Page-1"></path>
+            <path d="M117.657435,53.6562354 L144,79.9988 L80.0012,144 L64.0003,127.9991 L64.0003,107.313371 L117.657435,53.6562354 Z M47.9994,47.9994 L47.9994,112.0006 L16,79.9988 L47.9994,47.9994 Z M106.343765,42.3425646 L64.0003,84.6860293 L64.0003,31.9985 L80.0012,16 L106.343765,42.3425646 Z" id="Page-1"></path>
         </g>
     </g>
 </svg>

@@ -5,28 +5,28 @@ Section: how to
 
 ## Summary
 
-```sh
+{{< highlight bash >}}
 git branch -m <oldname> <newname>  # From any branch
 git branch -m <newname>            # From current branch
-```
+{{< / highlight >}}
 
 ## Details
 
-### Renaming Any Other Branch
+#### Renaming Any Other Branch
 
 1. If you want to rename a branch while pointed to any branch, do:
 
-```sh
+{{< highlight bash >}}
 git branch -m <oldname> <newname>
-```
+{{< / highlight >}}
 
-### Renaming Current Branch
+#### Renaming Current Branch
 
 1. If you want to rename the current branch, you can do:
 
-```sh
+{{< highlight bash >}}
 git branch -m <newname>
-```
+{{< / highlight >}}
 
 ## Documentation
 

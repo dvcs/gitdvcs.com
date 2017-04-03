@@ -3,7 +3,8 @@ languageCode = "en-us"
 uglyURLs = false
 relativeURLs = true
 canonifyURLs = true
-pygmentsCodeFencesGuessSyntax = true
+pygmentsStyle = "igor"
+enableEmoji = true
 
 [taxonomies]
     download = "downloads"

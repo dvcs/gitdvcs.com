@@ -25,6 +25,8 @@ brew install parallel
 # Pandoc
 brew install pandoc
 
+# Pygments
+pip install Pygments
 
 ```
 
@@ -40,6 +42,9 @@ ulimit -n 65536 65536
 
 # Install HTML XML Utils
 sudo apt-get install html-xml-utils
+
+# Pygments
+sudo apt-get install python3-pygments
 ```
 
 Run Locally

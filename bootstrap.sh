@@ -114,9 +114,9 @@ extract_documentation() {
   mkdir "${versionDirectory}" &>/dev/null
 
   if [ "${2}" = "true" ]; then
-    echo "<li><h3><a href=\"/$DOCS_DIRECTORY/latest\">latest</a></h3></li>" >> "${DOCS_FILE}"
+    echo "<li><a href=\"/$DOCS_DIRECTORY/${versionDirectory}\">latest</a></li>" >> "${DOCS_FILE}"
   fi
-  echo "<li><h3><a href=\"/$DOCS_DIRECTORY/${versionDirectory}\">${versionDirectory}</a></h3></li>" >> "${DOCS_FILE}"
+  echo "<li><a href=\"/$DOCS_DIRECTORY/${versionDirectory}\">${versionDirectory}</a></li>" >> "${DOCS_FILE}"
 
 
   create_git_version_front_matter "${versionDirectory}"

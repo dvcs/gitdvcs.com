@@ -2,45 +2,69 @@
 Title: Linux
 Downloads:
 - Git
+Preview: /img/download/linux.png
+Description: "It is easiest to install Git on Linux using the preferred package manager of your Linux distribution. If you prefer to build from source, you can find the tarballs on kernel.org."
+Site: https://www.kernel.org/pub/software/scm/git/
+Platforms:
+- Title: Linux
+  URL: https://www.kernel.org/pub/software/scm/git/
+Price: "Free"
 ---
 
-# Download `git` for Linux
+- Debian/Ubuntu
 
-It is easiest to install Git on Linux using the preferred package manager of your Linux distribution. If you prefer to build from source, you can find the tarballs on [kernel.org](https://www.kernel.org/pub/software/scm/git/).
+	{{< highlight bash >}}
+$ apt-get install git
+{{< / highlight >}}
 
-### Debian/Ubuntu
-`$ apt-get install git`
+- Fedora
 
-### Fedora
-`$ yum install git` (up to Fedora 21)
-`$ dnf install git` (Fedora 22 and later)
+	{{< highlight bash >}}
+$ yum install git # Up to Fedora 21
+{{< / highlight >}}
 
-### Gentoo
-`$ emerge --ask --verbose dev-vcs/git`
+	{{< highlight bash >}}
+$ dnf install git # Fedora 22 and later
+{{< / highlight >}}
 
-### Arch Linux
-`$ pacman -S git`
+- Gentoo
 
-### openSUSE
-`$ zypper install git`
+	{{< highlight bash >}}
+$ emerge --ask --verbose dev-vcs/git
+{{< / highlight >}}
 
-### Mageia
-`$ urpmi git`
+- Arch Linux
 
-### FreeBSD
-`$ pkg install git`
+	{{< highlight bash >}}
+$ pacman -S git
+{{< / highlight >}}
 
-### Solaris 9/10/11 ([OpenCSW](https://www.opencsw.org))
-`$ pkgutil -i git`
+- openSUSE
 
-### Solaris 11 Express
-`$ pkg install developer/versioning/git`
+	{{< highlight bash >}}
+$ zypper install git
+{{< / highlight >}}
 
-### OpenBSD
-`$ pkg_add git`
+- Mageia
 
-### Alpine
-`$ apk add git`
+	{{< highlight bash >}}
+$ urpmi git
+{{< / highlight >}}
 
-### Red Hat Enterprise Linux, Oracle Linux, CentOS, Scientific Linux, et al.
-RHEL and derivatives typically ship older versions of git. You can download a tarball and build from source, or use a 3rd-party repository such as the IUS Community Project to obtain a more recent version of git.
+- FreeBSD
+
+	{{< highlight bash >}}
+$ pkg install git
+{{< / highlight >}}
+
+- OpenBSD
+
+	{{< highlight bash >}}
+$ pkg_add git
+{{< / highlight >}}
+
+- Alpine
+
+	{{< highlight bash >}}
+$ apk add git
+{{< / highlight >}}

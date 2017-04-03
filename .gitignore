@@ -2,17 +2,17 @@
 # Created by https://www.gitignore.io/api/hugo,compressed
 
 ### Compressed ###
-.7z
-.deb
-.gz
-.pkg
-.rar
-.rpm
-.sit
-.sitx
-.tar
-.zip
-.zipx
+*.7z
+*.deb
+*.gz
+*.pkg
+*.rar
+*.rpm
+*.sit
+*.sitx
+*.tar
+*.zip
+*.zipx
 
 ### Hugo ###
 hugo.exe

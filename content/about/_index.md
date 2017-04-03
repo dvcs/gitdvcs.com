@@ -17,16 +17,10 @@ If you want to support DVCS and this website, there are a few ways to help.
 			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 		</form>
+    
   - Donate to the DVCS Bitcon Wallet
 
         <a class="coinbase-button" data-code="e4258d670793d3616ee8a69e7d403c2c" data-button-style="donation_large" href="https://www.coinbase.com/checkouts/e4258d670793d3616ee8a69e7d403c2c">Donate Bitcoins</a><script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script>
-  - Check
-        <address>
-          <strong>Twitter, Inc.</strong><br>
-          1355 Market Street, Suite 900<br>
-          San Francisco, CA 94103<br>
-          <abbr title="Phone">P:</abbr> (123) 456-7890
-        </address>
 
 ## Infrastructure
 

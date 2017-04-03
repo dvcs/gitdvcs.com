@@ -2,17 +2,11 @@
 Title: Fork
 Downloads:
 - macOS
+Preview: /img/download/git-fork.png
+Description: "A fast and friendly git client for Mac"
+Site: https://git-fork.com
+Platforms:
+- Title: Mac
+  URL: https://git-fork.com
+Price: "Free"
 ---
-
-### Fork
-
-![img](http://placehold.it/200x150)
-![img](http://placehold.it/200x150)
-![img](http://placehold.it/200x150)
-
-| | |
-| --- | --- |
-| Description | A fast and friendly git client for Mac |
-| Site | [https://git-fork.com](https://git-fork.com) |
-| Platforms | [Mac](https://git-fork.com)  |
-| Price | Free |

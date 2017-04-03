@@ -1,18 +1,12 @@
 ---
-Title: Title
+Title: Aurees
 Downloads:
 - Windows
+Preview: /img/download/aurees.png
+Description: "Easy · Fast · Productive"
+Site: https://aurees.com
+Platforms:
+- Title: Windows
+  URL: https://aurees.com
+Price: "Free for non-commercial use"
 ---
-
-### Aurees
-
-![img](http://placehold.it/200x150)
-![img](http://placehold.it/200x150)
-![img](http://placehold.it/200x150)
-
-| | |
-| --- | --- |
-| Description | Easy · Fast · Productive |
-| Site | [https://www.gitkraken.com](https://www.gitkraken.com) |
-| Platforms | [Windows](https://aurees.com)  |
-| Price | Free for non-commercial use |

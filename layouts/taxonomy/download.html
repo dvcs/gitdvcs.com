@@ -10,7 +10,34 @@
 				<h1 id="title">Download {{ .Title }} Clients</h1>
 				{{ partial "breadcrumbs.html" . }}
 				{{ range .Data.Pages.ByTitle }}
-				{{ .Content }}
+
+				<div class="container bloc-lg">
+					<div class="row">
+						<div class="col-sm-6">
+							<img src="{{ .Params.preview }}" class="img-responsive center-block" />
+						</div>
+						<div class="col-sm-6">
+							<h2>{{ .Params.Title }}</h2>
+							<dl>
+								<dt>Description</dt>
+								<dd>{{ .Params.Description }}</dd>
+								<dt>Site</dt>
+								<dd><a href="{{ .Params.site }}">{{ .Params.Site }}</a></dd>
+								<dt>Platforms</dt>
+								<dd> 
+									{{ range $index, $platform := .Params.Platforms }}
+										{{ if $index }}• {{ end }}<a href="{{ $platform.URL }}">{{ $platform.Title }}</a>
+									{{ end }}
+								</dd>
+								<dt>Price</dt>
+								<dd>{{ .Params.Price }}</dd>
+								<dt></dt>
+								<dd>{{ .Content }}</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+
 				{{ end }}
 			</div>
 			<div class="col-sm-2">
