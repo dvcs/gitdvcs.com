@@ -2,164 +2,126 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on Git</title>
-    <link>/downloads/windows/index.xml</link>
+    <link>https://www.gitdvcs.com/downloads/windows/index.xml</link>
     <description>Recent content in Windows on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/downloads/windows/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/downloads/windows/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Aurees</title>
-      <link>/download/desktop/aurees/</link>
+      <link>https://www.gitdvcs.com/download/desktop/aurees/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/aurees/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/aurees/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cycligent</title>
-      <link>/download/desktop/cycligent/</link>
+      <link>https://www.gitdvcs.com/download/desktop/cycligent/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/cycligent/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/cycligent/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git Cola</title>
-      <link>/download/desktop/git-cola/</link>
+      <link>https://www.gitdvcs.com/download/desktop/git-cola/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/git-cola/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/git-cola/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git Extensions</title>
-      <link>/download/desktop/git-extensions/</link>
+      <link>https://www.gitdvcs.com/download/desktop/git-extensions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/git-extensions/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/git-extensions/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git Tower</title>
-      <link>/download/desktop/git-tower/</link>
+      <link>https://www.gitdvcs.com/download/desktop/git-tower/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/git-tower/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/git-tower/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitAhead</title>
-      <link>/download/desktop/gitahead/</link>
+      <link>https://www.gitdvcs.com/download/desktop/gitahead/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/gitahead/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/gitahead/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitEye</title>
-      <link>/download/desktop/giteye/</link>
+      <link>https://www.gitdvcs.com/download/desktop/giteye/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/giteye/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/giteye/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitHub Desktop</title>
-      <link>/download/desktop/github-desktop/</link>
+      <link>https://www.gitdvcs.com/download/desktop/github-desktop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/github-desktop/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/github-desktop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitKraken</title>
-      <link>/download/desktop/gitkraken/</link>
+      <link>https://www.gitdvcs.com/download/desktop/gitkraken/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/gitkraken/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/gitkraken/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Smart Git</title>
-      <link>/download/desktop/smart-git/</link>
+      <link>https://www.gitdvcs.com/download/desktop/smart-git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/smart-git/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/smart-git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SourceTree</title>
-      <link>/download/desktop/sourcetree/</link>
+      <link>https://www.gitdvcs.com/download/desktop/sourcetree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/sourcetree/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/sourcetree/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TortoiseGit</title>
-      <link>/download/desktop/tortoisegit/</link>
+      <link>https://www.gitdvcs.com/download/desktop/tortoisegit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/tortoisegit/</guid>
-      <description>
-
-&lt;h3 id=&#34;tortoisegit&#34;&gt;TortoiseGit&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://placehold.it/200x150&#34; alt=&#34;img&#34; /&gt;
-&lt;img src=&#34;http://placehold.it/200x150&#34; alt=&#34;img&#34; /&gt;
-&lt;img src=&#34;http://placehold.it/200x150&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Description&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Site&lt;/td&gt;
-&lt;td&gt;[](&lt;a href=&#34;https://tortoisegit.org&#34;&gt;https://tortoisegit.org&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Platforms&lt;/td&gt;
-&lt;td&gt;[Windows]()&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;Price&lt;/td&gt;
-&lt;td&gt;Free&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
+      <guid>https://www.gitdvcs.com/download/desktop/tortoisegit/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>gitg</title>
-      <link>/download/desktop/gitg/</link>
+      <link>https://www.gitdvcs.com/download/desktop/gitg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/desktop/gitg/</guid>
+      <guid>https://www.gitdvcs.com/download/desktop/gitg/</guid>
       <description></description>
     </item>
     

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>How-tos on Git</title>
-    <link>/how-to/index.xml</link>
+    <link>https://www.gitdvcs.com/how-to/index.xml</link>
     <description>Recent content in How-tos on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/how-to/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/how-to/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How do I discard unstaged changes in Git?</title>
-      <link>/how-to/discard-unstaged-changes-in-git/</link>
+      <link>https://www.gitdvcs.com/how-to/discard-unstaged-changes-in-git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/discard-unstaged-changes-in-git/</guid>
+      <guid>https://www.gitdvcs.com/how-to/discard-unstaged-changes-in-git/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
@@ -73,10 +73,10 @@ git checkout -- .
     
     <item>
       <title>How do I rename a local Git branch?</title>
-      <link>/how-to/rename-a-local-git-branch/</link>
+      <link>https://www.gitdvcs.com/how-to/rename-a-local-git-branch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/rename-a-local-git-branch/</guid>
+      <guid>https://www.gitdvcs.com/how-to/rename-a-local-git-branch/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
@@ -118,10 +118,10 @@ git branch -m &amp;lt;newname&amp;gt;            &lt;span style=&#34;color: #FF0
     
     <item>
       <title>How to delete a Git branch both locally and remotely?</title>
-      <link>/how-to/delete-a-git-branch-both-locally-and-remotely/</link>
+      <link>https://www.gitdvcs.com/how-to/delete-a-git-branch-both-locally-and-remotely/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/delete-a-git-branch-both-locally-and-remotely/</guid>
+      <guid>https://www.gitdvcs.com/how-to/delete-a-git-branch-both-locally-and-remotely/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
@@ -194,10 +194,10 @@ git fetch &amp;lt;remote&amp;gt; -p      &lt;span style=&#34;color: #FF0000; fon
     
     <item>
       <title>How to modify staged (existing/unpushed) commit(s) in Git?</title>
-      <link>/how-to/modify-existing,-unpushed-commits/</link>
+      <link>https://www.gitdvcs.com/how-to/modify-existing,-unpushed-commits/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/modify-existing,-unpushed-commits/</guid>
+      <guid>https://www.gitdvcs.com/how-to/modify-existing,-unpushed-commits/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
@@ -292,10 +292,10 @@ git rebase --continue
     
     <item>
       <title>How to undo `git add` before commit?</title>
-      <link>/how-to/undo-git-add-before-commit/</link>
+      <link>https://www.gitdvcs.com/how-to/undo-git-add-before-commit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/undo-git-add-before-commit/</guid>
+      <guid>https://www.gitdvcs.com/how-to/undo-git-add-before-commit/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
@@ -337,10 +337,10 @@ git reset         &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt
     
     <item>
       <title>How to undo last commit(s) in Git?</title>
-      <link>/how-to/undo-last-commits-in-git/</link>
+      <link>https://www.gitdvcs.com/how-to/undo-last-commits-in-git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/undo-last-commits-in-git/</guid>
+      <guid>https://www.gitdvcs.com/how-to/undo-last-commits-in-git/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
@@ -401,10 +401,10 @@ git commit -c ORIG_HEAD
     
     <item>
       <title>What is the difference between `git pull` and `git fetch`?</title>
-      <link>/how-to/differentiate-between-git-pull-and-git-fetch/</link>
+      <link>https://www.gitdvcs.com/how-to/differentiate-between-git-pull-and-git-fetch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/how-to/differentiate-between-git-pull-and-git-fetch/</guid>
+      <guid>https://www.gitdvcs.com/how-to/differentiate-between-git-pull-and-git-fetch/</guid>
       <description>
 
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Resources on Git</title>
-    <link>/resources/index.xml</link>
+    <link>https://www.gitdvcs.com/resources/index.xml</link>
     <description>Recent content in Resources on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/resources/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/resources/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Links</title>
-      <link>/resources/links/</link>
+      <link>https://www.gitdvcs.com/resources/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/resources/links/</guid>
+      <guid>https://www.gitdvcs.com/resources/links/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://ndpsoftware.com/git-cheatsheet.html#loc=workspace;&#34;&gt;Visual Git Cheat Sheat&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf&#34;&gt;GitHub Cheat Sheet&lt;/a&gt;&lt;/li&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Logo</title>
-      <link>/resources/logo/</link>
+      <link>https://www.gitdvcs.com/resources/logo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/resources/logo/</guid>
+      <guid>https://www.gitdvcs.com/resources/logo/</guid>
       <description>&lt;!-- bloc-7 --&gt;
 
 &lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-7&#34;&gt;
@@ -341,10 +341,10 @@
     
     <item>
       <title>Videos</title>
-      <link>/resources/vidoes/</link>
+      <link>https://www.gitdvcs.com/resources/vidoes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/resources/vidoes/</guid>
+      <guid>https://www.gitdvcs.com/resources/vidoes/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;Learn Git In 20 Minutes
 

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git</title>
-    <link>/downloads/git/index.xml</link>
+    <link>https://www.gitdvcs.com/downloads/git/index.xml</link>
     <description>Recent content on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/downloads/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/downloads/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Linux</title>
-      <link>/download/git/linux/</link>
+      <link>https://www.gitdvcs.com/download/git/linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/git/linux/</guid>
+      <guid>https://www.gitdvcs.com/download/git/linux/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Debian/Ubuntu&lt;/p&gt;
 
@@ -78,10 +78,10 @@
     
     <item>
       <title>Solaris</title>
-      <link>/download/git/solaris/</link>
+      <link>https://www.gitdvcs.com/download/git/solaris/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/git/solaris/</guid>
+      <guid>https://www.gitdvcs.com/download/git/solaris/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Solaris 9/10/11 (&lt;a href=&#34;https://www.opencsw.org&#34;&gt;OpenCSW&lt;/a&gt;)&lt;/p&gt;
 
@@ -100,19 +100,19 @@
     
     <item>
       <title>Windows</title>
-      <link>/download/git/windows/</link>
+      <link>https://www.gitdvcs.com/download/git/windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/git/windows/</guid>
+      <guid>https://www.gitdvcs.com/download/git/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>macOS</title>
-      <link>/download/git/macos/</link>
+      <link>https://www.gitdvcs.com/download/git/macos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/git/macos/</guid>
+      <guid>https://www.gitdvcs.com/download/git/macos/</guid>
       <description></description>
     </item>
     

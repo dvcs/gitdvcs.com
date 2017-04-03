@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Documentation on Git</title>
-    <link>/documentation/index.xml</link>
+    <link>https://www.gitdvcs.com/documentation/index.xml</link>
     <description>Recent content in Documentation on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/documentation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>1.8.3</title>
-      <link>/documentation/1.8.3/</link>
+      <link>https://www.gitdvcs.com/documentation/1.8.3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.8.3/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.8.3/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -198,10 +198,10 @@
     
     <item>
       <title>1.8.4</title>
-      <link>/documentation/1.8.4/</link>
+      <link>https://www.gitdvcs.com/documentation/1.8.4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.8.4/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.8.4/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -387,10 +387,10 @@
     
     <item>
       <title>1.8.5</title>
-      <link>/documentation/1.8.5/</link>
+      <link>https://www.gitdvcs.com/documentation/1.8.5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.8.5/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.8.5/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -576,10 +576,10 @@
     
     <item>
       <title>1.9.0</title>
-      <link>/documentation/1.9.0/</link>
+      <link>https://www.gitdvcs.com/documentation/1.9.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.9.0/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.9.0/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -761,10 +761,10 @@
     
     <item>
       <title>1.9.1</title>
-      <link>/documentation/1.9.1/</link>
+      <link>https://www.gitdvcs.com/documentation/1.9.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.9.1/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.9.1/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -946,10 +946,10 @@
     
     <item>
       <title>1.9.2</title>
-      <link>/documentation/1.9.2/</link>
+      <link>https://www.gitdvcs.com/documentation/1.9.2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.9.2/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.9.2/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -1131,10 +1131,10 @@
     
     <item>
       <title>1.9.3</title>
-      <link>/documentation/1.9.3/</link>
+      <link>https://www.gitdvcs.com/documentation/1.9.3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.9.3/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.9.3/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -1316,10 +1316,10 @@
     
     <item>
       <title>1.9.4</title>
-      <link>/documentation/1.9.4/</link>
+      <link>https://www.gitdvcs.com/documentation/1.9.4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.9.4/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.9.4/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -1501,10 +1501,10 @@
     
     <item>
       <title>1.9.5</title>
-      <link>/documentation/1.9.5/</link>
+      <link>https://www.gitdvcs.com/documentation/1.9.5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/1.9.5/</guid>
+      <guid>https://www.gitdvcs.com/documentation/1.9.5/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -1686,10 +1686,10 @@
     
     <item>
       <title>2.0.0</title>
-      <link>/documentation/2.0.0/</link>
+      <link>https://www.gitdvcs.com/documentation/2.0.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/2.0.0/</guid>
+      <guid>https://www.gitdvcs.com/documentation/2.0.0/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -1871,10 +1871,10 @@
     
     <item>
       <title>2.0.1</title>
-      <link>/documentation/2.0.1/</link>
+      <link>https://www.gitdvcs.com/documentation/2.0.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/2.0.1/</guid>
+      <guid>https://www.gitdvcs.com/documentation/2.0.1/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -2056,10 +2056,10 @@
     
     <item>
       <title>2.0.2</title>
-      <link>/documentation/2.0.2/</link>
+      <link>https://www.gitdvcs.com/documentation/2.0.2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/2.0.2/</guid>
+      <guid>https://www.gitdvcs.com/documentation/2.0.2/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -2241,10 +2241,10 @@
     
     <item>
       <title>2.0.3</title>
-      <link>/documentation/2.0.3/</link>
+      <link>https://www.gitdvcs.com/documentation/2.0.3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/2.0.3/</guid>
+      <guid>https://www.gitdvcs.com/documentation/2.0.3/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -2426,10 +2426,10 @@
     
     <item>
       <title>2.0.4</title>
-      <link>/documentation/2.0.4/</link>
+      <link>https://www.gitdvcs.com/documentation/2.0.4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/2.0.4/</guid>
+      <guid>https://www.gitdvcs.com/documentation/2.0.4/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;
@@ -2611,10 +2611,10 @@
     
     <item>
       <title>2.0.5</title>
-      <link>/documentation/2.0.5/</link>
+      <link>https://www.gitdvcs.com/documentation/2.0.5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/documentation/2.0.5/</guid>
+      <guid>https://www.gitdvcs.com/documentation/2.0.5/</guid>
       <description>&lt;!-- Do not manually edit - This file is generated with bootstrap.sh --&gt;
 
 &lt;ul&gt;

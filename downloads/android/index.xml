@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Git</title>
-    <link>/downloads/android/index.xml</link>
+    <link>https://www.gitdvcs.com/downloads/android/index.xml</link>
     <description>Recent content in Android on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/downloads/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/downloads/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>MGit</title>
-      <link>/download/mobile/mgit/</link>
+      <link>https://www.gitdvcs.com/download/mobile/mgit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/mobile/mgit/</guid>
+      <guid>https://www.gitdvcs.com/download/mobile/mgit/</guid>
       <description></description>
     </item>
     

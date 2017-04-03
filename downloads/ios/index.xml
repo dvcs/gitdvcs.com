@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ios on Git</title>
-    <link>/downloads/ios/index.xml</link>
+    <link>https://www.gitdvcs.com/downloads/ios/index.xml</link>
     <description>Recent content in Ios on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="/downloads/ios/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.gitdvcs.com/downloads/ios/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>CodeHub</title>
-      <link>/download/mobile/codehub/</link>
+      <link>https://www.gitdvcs.com/download/mobile/codehub/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/mobile/codehub/</guid>
+      <guid>https://www.gitdvcs.com/download/mobile/codehub/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git2Go</title>
-      <link>/download/mobile/git2go/</link>
+      <link>https://www.gitdvcs.com/download/mobile/git2go/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/mobile/git2go/</guid>
+      <guid>https://www.gitdvcs.com/download/mobile/git2go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iOctocat</title>
-      <link>/download/mobile/ioctocat/</link>
+      <link>https://www.gitdvcs.com/download/mobile/ioctocat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/download/mobile/ioctocat/</guid>
+      <guid>https://www.gitdvcs.com/download/mobile/ioctocat/</guid>
       <description></description>
     </item>
     
