@@ -10,16 +10,3 @@ Platforms:
   URL: https://tortoisegit.org/download/
 Price: "Free"
 ---
-
-### TortoiseGit
-
-![img](http://placehold.it/200x150)
-![img](http://placehold.it/200x150)
-![img](http://placehold.it/200x150)
-
-| | |
-| --- | --- |
-| Description |  |
-| Site | [](https://tortoisegit.org) |
-| Platforms | [Windows]() |
-| Price | Free |

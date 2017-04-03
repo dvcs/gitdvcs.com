@@ -32,6 +32,7 @@ replace_spaces_with_hyphen() {
 #	None
 ###############################################################################
 main() {
+  cd ..
   pushd "content"
     pushd "how-do-i"
       lowercase_all_files

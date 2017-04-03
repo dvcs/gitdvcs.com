@@ -1,10 +1,11 @@
 title = "Git"
-languageCode = "en-us"
 uglyURLs = false
+enableEmoji = true
 relativeURLs = true
 canonifyURLs = true
 pygmentsStyle = "igor"
-enableEmoji = true
+languageCode = "en-us"
+baseURL = "https://www.gitdvcs.com/"
 
 [taxonomies]
     download = "downloads"

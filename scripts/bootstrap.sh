@@ -172,6 +172,8 @@ export -f extract_documentation
 #   None
 ###############################################################################
 main() {
+  cd ..
+  
   pushd content
   pushd "${DOCS_DIRECTORY}"
 
