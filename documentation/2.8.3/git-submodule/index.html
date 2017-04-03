@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Initialize, update or inspect submodules">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-submodule </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-submodule</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.8.3'>2.8.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.8.3/git-submodule'>git-submodule</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git submodule [--quiet] add [-b &lt;branch&gt;] [-f|--force] [--name &lt;name&gt;]
+              [--reference &lt;repository&gt;] [--depth &lt;depth&gt;] [--] &lt;repository&gt; [&lt;path&gt;]
+git submodule [--quiet] status [--cached] [--recursive] [--] [&lt;path&gt;…]
+git submodule [--quiet] init [--] [&lt;path&gt;…]
+git submodule [--quiet] deinit [-f|--force] [--] &lt;path&gt;…
+git submodule [--quiet] update [--init] [--remote] [-N|--no-fetch]
+              [-f|--force] [--rebase|--merge] [--reference &lt;repository&gt;]
+              [--depth &lt;depth&gt;] [--recursive] [--] [&lt;path&gt;…]
+git submodule [--quiet] summary [--cached|--files] [(-n|--summary-limit) &lt;n&gt;]
+              [commit] [--] [&lt;path&gt;…]
+git submodule [--quiet] foreach [--recursive] &lt;command&gt;
+git submodule [--quiet] sync [--recursive] [--] [&lt;path&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Inspects, updates and manages submodules.</p>
+
+<p>A submodule allows you to keep another Git repository in a subdirectory of your repository. The other repository has its own history, which does not interfere with the history of the current repository. This can be used to have external dependencies such as third party libraries for example.</p>
+
+<p>When cloning or pulling a repository containing submodules however, these will not be checked out by default; the <em>init</em> and <em>update</em> subcommands will maintain submodules checked out and at appropriate revision in your working tree.</p>
+
+<p>Submodules are composed from a so-called <code>gitlink</code> tree entry in the main repository that refers to a particular commit object within the inner repository that is completely separate. A record in the <code>.gitmodules</code> (see <a href="../gitmodules">gitmodules(5)</a>) file at the root of the source tree assigns a logical name to the submodule and describes the default URL the submodule shall be cloned from. The logical name can be used for overriding this URL within your local repository configuration (see <em>submodule init</em>).</p>
+
+<p>Submodules are not to be confused with remotes, which are other repositories of the same project; submodules are meant for different projects you would like to make part of your source tree, while the history of the two projects still stays completely independent and you cannot modify the contents of the submodule from within the main project. If you want to merge the project histories and want to treat the aggregated whole as a single project from then on, you may want to add a remote for the other project and use the <em>subtree</em> merge strategy, instead of treating the other project as a submodule. Directories that come from both projects can be cloned and checked out as a whole if you choose to go that route.</p>
+
+<h2 id="commands">COMMANDS</h2>
+
+<p>add<br />
+Add the given repository as a submodule at the given path to the changeset to be committed next to the current project: the current project is termed the &ldquo;superproject&rdquo;.</p>
+
+<p>This requires at least one argument: &lt;repository&gt;. The optional argument &lt;path&gt; is the relative location for the cloned submodule to exist in the superproject. If &lt;path&gt; is not given, the &ldquo;humanish&rdquo; part of the source repository is used (&ldquo;repo&rdquo; for &ldquo;/path/to/repo.git&rdquo; and &ldquo;foo&rdquo; for &ldquo;host.xz:foo/.git&rdquo;). The &lt;path&gt; is also used as the submodule’s logical name in its configuration entries unless <code>--name</code> is used to specify a logical name.</p>
+
+<p>&lt;repository&gt; is the URL of the new submodule’s origin repository. This may be either an absolute URL, or (if it begins with ./ or ../), the location relative to the superproject’s origin repository (Please note that to specify a repository <em>foo.git</em> which is located right next to a superproject <em>bar.git</em>, you’ll have to use <em>../foo.git</em> instead of <em>./foo.git</em> - as one might expect when following the rules for relative URLs - because the evaluation of relative URLs in Git is identical to that of relative directories). If the superproject doesn’t have an origin configured the superproject is its own authoritative upstream and the current working directory is used instead.</p>
+
+<p>&lt;path&gt; is the relative location for the cloned submodule to exist in the superproject. If &lt;path&gt; does not exist, then the submodule is created by cloning from the named URL. If &lt;path&gt; does exist and is already a valid Git repository, then this is added to the changeset without cloning. This second form is provided to ease creating a new submodule from scratch, and presumes the user will later push the submodule to the given URL.</p>
+
+<p>In either case, the given URL is recorded into .gitmodules for use by subsequent users cloning the superproject. If the URL is given relative to the superproject’s repository, the presumption is the superproject and submodule repositories will be kept together in the same relative location, and only the superproject’s URL needs to be provided: git-submodule will correctly locate the submodule using the relative URL in .gitmodules.</p>
+
+<p>status<br />
+Show the status of the submodules. This will print the SHA-1 of the currently checked out commit for each submodule, along with the submodule path and the output of <em>git describe</em> for the SHA-1. Each SHA-1 will be prefixed with <code>-</code> if the submodule is not initialized, <code>+</code> if the currently checked out submodule commit does not match the SHA-1 found in the index of the containing repository and <code>U</code> if the submodule has merge conflicts.</p>
+
+<p>If <code>--recursive</code> is specified, this command will recurse into nested submodules, and show their status as well.</p>
+
+<p>If you are only interested in changes of the currently initialized submodules with respect to the commit recorded in the index or the HEAD, <a href="../git-status">git-status(1)</a> and <a href="../git-diff">git-diff(1)</a> will provide that information too (and can also report changes to a submodule’s work tree).</p>
+
+<p>init<br />
+Initialize the submodules recorded in the index (which were added and committed elsewhere) by copying submodule names and urls from .gitmodules to .git/config. Optional &lt;path&gt; arguments limit which submodules will be initialized. It will also copy the value of <code>submodule.$name.update</code> into .git/config. The key used in .git/config is <code>submodule.$name.url</code>. This command does not alter existing information in .git/config. You can then customize the submodule clone URLs in .git/config for your local setup and proceed to <code>git submodule update</code>; you can also just use <code>git submodule update --init</code> without the explicit <em>init</em> step if you do not intend to customize any submodule locations.</p>
+
+<p>deinit<br />
+Unregister the given submodules, i.e. remove the whole <code>submodule.$name</code> section from .git/config together with their work tree. Further calls to <code>git submodule update</code>, <code>git submodule foreach</code> and <code>git                   submodule sync</code> will skip any unregistered submodules until they are initialized again, so use this command if you don’t want to have a local checkout of the submodule in your work tree anymore. If you really want to remove a submodule from the repository and commit that use <a href="../git-rm">git-rm(1)</a> instead.</p>
+
+<p>If <code>--force</code> is specified, the submodule’s work tree will be removed even if it contains local modifications.</p>
+
+<p>update<br />
+Update the registered submodules to match what the superproject expects by cloning missing submodules and updating the working tree of the submodules. The &ldquo;updating&rdquo; can be done in several ways depending on command line options and the value of <code>submodule.&lt;name&gt;.update</code> configuration variable. Supported update procedures are:</p>
+
+<p>checkout<br />
+the commit recorded in the superproject will be checked out in the submodule on a detached HEAD. This is done when <code>--checkout</code> option is given, or no option is given, and <code>submodule.&lt;name&gt;.update</code> is unset, or if it is set to <em>checkout</em>.</p>
+
+<p>If <code>--force</code> is specified, the submodule will be checked out (using <code>git checkout --force</code> if appropriate), even if the commit specified in the index of the containing repository already matches the commit checked out in the submodule.</p>
+
+<p>rebase<br />
+the current branch of the submodule will be rebased onto the commit recorded in the superproject. This is done when <code>--rebase</code> option is given, or no option is given, and <code>submodule.&lt;name&gt;.update</code> is set to <em>rebase</em>.</p>
+
+<p>merge<br />
+the commit recorded in the superproject will be merged into the current branch in the submodule. This is done when <code>--merge</code> option is given, or no option is given, and <code>submodule.&lt;name&gt;.update</code> is set to <em>merge</em>.</p>
+
+<p>custom command<br />
+arbitrary shell command that takes a single argument (the sha1 of the commit recorded in the superproject) is executed. This is done when no option is given, and <code>submodule.&lt;name&gt;.update</code> has the form of <em>!command</em>.</p>
+
+<p>When no option is given and <code>submodule.&lt;name&gt;.update</code> is set to <em>none</em>, the submodule is not updated.</p>
+
+<p>If the submodule is not yet initialized, and you just want to use the setting as stored in .gitmodules, you can automatically initialize the submodule with the <code>--init</code> option.</p>
+
+<p>If <code>--recursive</code> is specified, this command will recurse into the registered submodules, and update any nested submodules within.</p>
+
+<p>summary<br />
+Show commit summary between the given commit (defaults to HEAD) and working tree/index. For a submodule in question, a series of commits in the submodule between the given super project commit and the index or working tree (switched by <code>--cached</code>) are shown. If the option <code>--files</code> is given, show the series of commits in the submodule between the index of the super project and the working tree of the submodule (this option doesn’t allow to use the <code>--cached</code> option or to provide an explicit commit).</p>
+
+<p>Using the <code>--submodule=log</code> option with <a href="../git-diff">git-diff(1)</a> will provide that information too.</p>
+
+<p>foreach<br />
+Evaluates an arbitrary shell command in each checked out submodule. The command has access to the variables $name, $path, $sha1 and $toplevel: $name is the name of the relevant submodule section in .gitmodules, $path is the name of the submodule directory relative to the superproject, $sha1 is the commit as recorded in the superproject, and $toplevel is the absolute path to the top-level of the superproject. Any submodules defined in the superproject but not checked out are ignored by this command. Unless given <code>--quiet</code>, foreach prints the name of each submodule before evaluating the command. If <code>--recursive</code> is given, submodules are traversed recursively (i.e. the given shell command is evaluated in nested submodules as well). A non-zero return from the command in any submodule causes the processing to terminate. This can be overridden by adding <em>|| :</em> to the end of the command.</p>
+
+<p>As an example, <code>git submodule foreach 'echo                     $path `git rev-parse HEAD`'</code> will show the path and currently checked out commit for each submodule.</p>
+
+<p>sync<br />
+Synchronizes submodules&rsquo; remote URL configuration setting to the value specified in .gitmodules. It will only affect those submodules which already have a URL entry in .git/config (that is the case when they are initialized or freshly added). This is useful when submodule URLs change upstream and you need to update your local repositories accordingly.</p>
+
+<p>&ldquo;git submodule sync&rdquo; synchronizes all submodules while &ldquo;git submodule sync &ndash; A&rdquo; synchronizes submodule &ldquo;A&rdquo; only.</p>
+
+<p>If <code>--recursive</code> is specified, this command will recurse into the registered submodules, and sync any nested submodules within.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-q
+&ndash;quiet<br />
+Only print error messages.</p>
+
+<p>-b
+&ndash;branch<br />
+Branch of repository to add as submodule. The name of the branch is recorded as <code>submodule.&lt;name&gt;.branch</code> in <code>.gitmodules</code> for <code>update --remote</code>.</p>
+
+<p>-f
+&ndash;force<br />
+This option is only valid for add, deinit and update commands. When running add, allow adding an otherwise ignored submodule path. When running deinit the submodule work trees will be removed even if they contain local changes. When running update (only effective with the checkout procedure), throw away local changes in submodules when switching to a different commit; and always run a checkout operation in the submodule, even if the commit listed in the index of the containing repository matches the commit checked out in the submodule.</p>
+
+<p>&ndash;cached<br />
+This option is only valid for status and summary commands. These commands typically use the commit found in the submodule HEAD, but with this option, the commit stored in the index is used instead.</p>
+
+<p>&ndash;files<br />
+This option is only valid for the summary command. This command compares the commit in the index with that in the submodule HEAD when this option is used.</p>
+
+<p>-n
+&ndash;summary-limit<br />
+This option is only valid for the summary command. Limit the summary size (number of commits shown in total). Giving 0 will disable the summary; a negative number means unlimited (the default). This limit only applies to modified submodules. The size is always limited to 1 for added/deleted/typechanged submodules.</p>
+
+<p>&ndash;remote<br />
+This option is only valid for the update command. Instead of using the superproject’s recorded SHA-1 to update the submodule, use the status of the submodule’s remote-tracking branch. The remote used is branch’s remote (<code>branch.&lt;name&gt;.remote</code>), defaulting to <code>origin</code>. The remote branch used defaults to <code>master</code>, but the branch name may be overridden by setting the <code>submodule.&lt;name&gt;.branch</code> option in either <code>.gitmodules</code> or <code>.git/config</code> (with <code>.git/config</code> taking precedence).</p>
+
+<p>This works for any of the supported update procedures (<code>--checkout</code>, <code>--rebase</code>, etc.). The only change is the source of the target SHA-1. For example, <code>submodule update --remote --merge</code> will merge upstream submodule changes into the submodules, while <code>submodule update                     --merge</code> will merge superproject gitlink changes into the submodules.</p>
+
+<p>In order to ensure a current tracking branch state, <code>update --remote</code> fetches the submodule’s remote repository before calculating the SHA-1. If you don’t want to fetch, you should use <code>submodule update                     --remote --no-fetch</code>.</p>
+
+<p>Use this option to integrate changes from the upstream subproject with your submodule’s current HEAD. Alternatively, you can run <code>git                     pull</code> from the submodule, which is equivalent except for the remote branch name: <code>update --remote</code> uses the default upstream repository and <code>submodule.&lt;name&gt;.branch</code>, while <code>git pull</code> uses the submodule’s <code>branch.&lt;name&gt;.merge</code>. Prefer <code>submodule.&lt;name&gt;.branch</code> if you want to distribute the default upstream branch with the superproject and <code>branch.&lt;name&gt;.merge</code> if you want a more native feel while working in the submodule itself.</p>
+
+<p>-N
+&ndash;no-fetch<br />
+This option is only valid for the update command. Don’t fetch new objects from the remote site.</p>
+
+<p>&ndash;checkout<br />
+This option is only valid for the update command. Checkout the commit recorded in the superproject on a detached HEAD in the submodule. This is the default behavior, the main use of this option is to override <code>submodule.$name.update</code> when set to a value other than <code>checkout</code>. If the key <code>submodule.$name.update</code> is either not explicitly set or set to <code>checkout</code>, this option is implicit.</p>
+
+<p>&ndash;merge<br />
+This option is only valid for the update command. Merge the commit recorded in the superproject into the current branch of the submodule. If this option is given, the submodule’s HEAD will not be detached. If a merge failure prevents this process, you will have to resolve the resulting conflicts within the submodule with the usual conflict resolution tools. If the key <code>submodule.$name.update</code> is set to <code>merge</code>, this option is implicit.</p>
+
+<p>&ndash;rebase<br />
+This option is only valid for the update command. Rebase the current branch onto the commit recorded in the superproject. If this option is given, the submodule’s HEAD will not be detached. If a merge failure prevents this process, you will have to resolve these failures with <a href="../git-rebase">git-rebase(1)</a>. If the key <code>submodule.$name.update</code> is set to <code>rebase</code>, this option is implicit.</p>
+
+<p>&ndash;init<br />
+This option is only valid for the update command. Initialize all submodules for which &ldquo;git submodule init&rdquo; has not been called so far before updating.</p>
+
+<p>&ndash;name<br />
+This option is only valid for the add command. It sets the submodule’s name to the given string instead of defaulting to its path. The name must be valid as a directory name and may not end with a <em>/</em>.</p>
+
+<p>&ndash;reference &lt;repository&gt;<br />
+This option is only valid for add and update commands. These commands sometimes need to clone a remote repository. In this case, this option will be passed to the <a href="../git-clone">git-clone(1)</a> command.</p>
+
+<p><strong>NOTE</strong>: Do <strong>not</strong> use this option unless you have read the note for <a href="../git-clone">git-clone(1)</a>&rsquo;s <code>--reference</code> and <code>--shared</code> options carefully.</p>
+
+<p>&ndash;recursive<br />
+This option is only valid for foreach, update, status and sync commands. Traverse submodules recursively. The operation is performed not only in the submodules of the current repo, but also in any nested submodules inside those submodules (and so on).</p>
+
+<p>&ndash;depth<br />
+This option is valid for add and update commands. Create a <em>shallow</em> clone with a history truncated to the specified number of revisions. See <a href="../git-clone">git-clone(1)</a></p>
+
+<p>&lt;path&gt;…<br />
+Paths to submodule(s). When specified this will restrict the command to only operate on the submodules found at the specified paths. (This argument is required with add).</p>
+
+<h2 id="files">FILES</h2>
+
+<p>When initializing submodules, a .gitmodules file in the top-level directory of the containing repository is used to find the url of each submodule. This file should be formatted in the same way as <code>$GIT_DIR/config</code>. The key to each submodule url is &ldquo;submodule.$name.url&rdquo;. See <a href="../gitmodules">gitmodules(5)</a> for details.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

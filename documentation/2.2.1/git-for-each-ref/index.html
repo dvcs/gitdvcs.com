@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Output information on each ref">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-for-each-ref </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-for-each-ref</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.1'>2.2.1</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.1/git-for-each-ref'>git-for-each-ref</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git for-each-ref [--count=&lt;count&gt;] [--shell|--perl|--python|--tcl]
+                   [(--sort=&lt;key&gt;)…] [--format=&lt;format&gt;] [&lt;pattern&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Iterate over all refs that match <code>&lt;pattern&gt;</code> and show them according to the given <code>&lt;format&gt;</code>, after sorting them according to the given set of <code>&lt;key&gt;</code>. If <code>&lt;count&gt;</code> is given, stop after showing that many refs. The interpolated values in <code>&lt;format&gt;</code> can optionally be quoted as string literals in the specified host language allowing their direct evaluation in that language.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;count&gt;<br />
+By default the command shows all refs that match <code>&lt;pattern&gt;</code>. This option makes it stop after showing that many refs.</p>
+
+<p>&lt;key&gt;<br />
+A field name to sort on. Prefix <code>-</code> to sort in descending order of the value. When unspecified, <code>refname</code> is used. You may use the &ndash;sort=&lt;key&gt; option multiple times, in which case the last key becomes the primary key.</p>
+
+<p>&lt;format&gt;<br />
+A string that interpolates <code>%(fieldname)</code> from the object pointed at by a ref being shown. If <code>fieldname</code> is prefixed with an asterisk (<code>*</code>) and the ref points at a tag object, the value for the field in the object tag refers is used. When unspecified, defaults to <code>%(objectname) SPC %(objecttype)                   TAB %(refname)</code>. It also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits interpolates to character with hex code <code>xx</code>; for example <code>%00</code> interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
+
+<p>&lt;pattern&gt;…<br />
+If one or more patterns are given, only refs are shown that match against at least one pattern, either using fnmatch(3) or literally, in the latter case matching completely or from the beginning up to a slash.</p>
+
+<p>&ndash;shell
+&ndash;perl
+&ndash;python
+&ndash;tcl<br />
+If given, strings that substitute <code>%(fieldname)</code> placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be `eval`ed.</p>
+
+<h2 id="field-names">FIELD NAMES</h2>
+
+<p>Various values from structured fields in referenced objects can be used to interpolate into the resulting output, or as sort keys.</p>
+
+<p>For all objects, the following names can be used:</p>
+
+<p>refname<br />
+The name of the ref (the part after $GIT_DIR/). For a non-ambiguous short name of the ref append <code>:short</code>. The option core.warnAmbiguousRefs is used to select the strict abbreviation mode.</p>
+
+<p>objecttype<br />
+The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p>
+
+<p>objectsize<br />
+The size of the object (the same as <em>git cat-file -s</em> reports).</p>
+
+<p>objectname<br />
+The object name (aka SHA-1). For a non-ambiguous abbreviation of the object name append <code>:short</code>.</p>
+
+<p>upstream<br />
+The name of a local ref which can be considered “upstream” from the displayed ref. Respects <code>:short</code> in the same way as <code>refname</code> above. Additionally respects <code>:track</code> to show &ldquo;[ahead N, behind M]&rdquo; and <code>:trackshort</code> to show the terse version: &ldquo;&gt;&rdquo; (ahead), &ldquo;&lt;&rdquo; (behind), &ldquo;&lt;&gt;&rdquo; (ahead and behind), or &ldquo;=&rdquo; (in sync). Has no effect if the ref does not have tracking information associated with it.</p>
+
+<p>HEAD<br />
+<em>*</em> if HEAD matches current ref (the checked out branch), &lsquo; &rsquo; otherwise.</p>
+
+<p>color<br />
+Change output color. Followed by <code>:&lt;colorname&gt;</code>, where names are described in <code>color.branch.*</code>.</p>
+
+<p>In addition to the above, for commit and tag objects, the header field names (<code>tree</code>, <code>parent</code>, <code>object</code>, <code>type</code>, and <code>tag</code>) can be used to specify the value in the header field.</p>
+
+<p>Fields that have name-email-date tuple as its value (<code>author</code>, <code>committer</code>, and <code>tagger</code>) can be suffixed with <code>name</code>, <code>email</code>, and <code>date</code> to extract the named component.</p>
+
+<p>The complete message in a commit and tag object is <code>contents</code>. Its first line is <code>contents:subject</code>, where subject is the concatenation of all lines of the commit message up to the first blank line. The next line is <em>contents:body</em>, where body is all of the lines after the first blank line. Finally, the optional GPG signature is <code>contents:signature</code>.</p>
+
+<p>For sorting purposes, fields with numeric values sort in numeric order (<code>objectsize</code>, <code>authordate</code>, <code>committerdate</code>, <code>taggerdate</code>). All other fields are used to sort in their byte-value order.</p>
+
+<p>In any case, a field name that refers to a field inapplicable to the object referred by the ref does not cause an error. It returns an empty string instead.</p>
+
+<p>As a special case for the date-type fields, you may specify a format for the date by adding one of <code>:default</code>, <code>:relative</code>, <code>:short</code>, <code>:local</code>, <code>:iso8601</code>, <code>:rfc2822</code> or <code>:raw</code> to the end of the fieldname; e.g. <code>%(taggerdate:relative)</code>.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>An example directly producing formatted text. Show the most recent 3 tagged commits:</p>
+
+<pre><code>#!/bin/sh
+
+git for-each-ref --count=3 --sort='-*authordate' \
+--format='From: %(*authorname) %(*authoremail)
+Subject: %(*subject)
+Date: %(*authordate)
+Ref: %(*refname)
+
+%(*body)
+' 'refs/tags'
+</code></pre>
+
+<p>A simple example showing the use of shell eval on the output, demonstrating the use of &ndash;shell. List the prefixes of all heads:</p>
+
+<pre><code>#!/bin/sh
+
+git for-each-ref --shell --format=&quot;ref=%(refname)&quot; refs/heads | \
+while read entry
+do
+        eval &quot;$entry&quot;
+        echo `dirname $ref`
+done
+</code></pre>
+
+<p>A bit more elaborate report on tags, demonstrating that the format may be an entire script:</p>
+
+<pre><code>#!/bin/sh
+
+fmt='
+        r=%(refname)
+        t=%(*objecttype)
+        T=${r#refs/tags/}
+
+        o=%(*objectname)
+        n=%(*authorname)
+        e=%(*authoremail)
+        s=%(*subject)
+        d=%(*authordate)
+        b=%(*body)
+
+        kind=Tag
+        if test &quot;z$t&quot; = z
+        then
+                # could be a lightweight tag
+                t=%(objecttype)
+                kind=&quot;Lightweight tag&quot;
+                o=%(objectname)
+                n=%(authorname)
+                e=%(authoremail)
+                s=%(subject)
+                d=%(authordate)
+                b=%(body)
+        fi
+        echo &quot;$kind $T points at a $t object $o&quot;
+        if test &quot;z$t&quot; = zcommit
+        then
+                echo &quot;The commit was authored by $n $e
+at $d, and titled
+
+    $s
+
+Its message reads as:
+&quot;
+                echo &quot;$b&quot; | sed -e &quot;s/^/    /&quot;
+                echo
+        fi
+'
+
+eval=`git for-each-ref --shell --format=&quot;$fmt&quot; \
+        --sort='*objecttype' \
+        --sort=-taggerdate \
+        refs/tags`
+eval &quot;$eval&quot;
+</code></pre>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-show-ref">git-show-ref(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="defining submodule properties">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> gitmodules </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitmodules</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.5.4'>2.5.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.5.4/gitmodules'>gitmodules</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>$GIT_WORK_DIR/.gitmodules</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>The <code>.gitmodules</code> file, located in the top-level directory of a Git working tree, is a text file with a syntax matching the requirements of <a href="../git-config">git-config(1)</a>.</p>
+
+<p>The file contains one subsection per submodule, and the subsection value is the name of the submodule. The name is set to the path where the submodule has been added unless it was customized with the <em>&ndash;name</em> option of <em>git submodule add</em>. Each submodule section also contains the following required keys:</p>
+
+<p>submodule.&lt;name&gt;.path<br />
+Defines the path, relative to the top-level directory of the Git working tree, where the submodule is expected to be checked out. The path name must not end with a <code>/</code>. All submodule paths must be unique within the .gitmodules file.</p>
+
+<p>submodule.&lt;name&gt;.url<br />
+Defines a URL from which the submodule repository can be cloned. This may be either an absolute URL ready to be passed to <a href="../git-clone">git-clone(1)</a> or (if it begins with ./ or ../) a location relative to the superproject’s origin repository.</p>
+
+<p>In addition, there are a number of optional keys:</p>
+
+<p>submodule.&lt;name&gt;.update<br />
+Defines the default update procedure for the named submodule, i.e. how the submodule is updated by &ldquo;git submodule update&rdquo; command in the superproject. This is only used by <code>git submodule init</code> to initialize the configuration variable of the same name. Allowed values here are <em>checkout</em>, <em>rebase</em>, <em>merge</em> or <em>none</em>. See description of <em>update</em> command in <a href="../git-submodule">git-submodule(1)</a> for their meaning. Note that the <em>!command</em> form is intentionally ignored here for security reasons.</p>
+
+<p>submodule.&lt;name&gt;.branch<br />
+A remote branch name for tracking updates in the upstream submodule. If the option is not specified, it defaults to <em>master</em>. See the <code>--remote</code> documentation in <a href="../git-submodule">git-submodule(1)</a> for details.</p>
+
+<p>submodule.&lt;name&gt;.fetchRecurseSubmodules<br />
+This option can be used to control recursive fetching of this submodule. If this option is also present in the submodules entry in .git/config of the superproject, the setting there will override the one found in .gitmodules. Both settings can be overridden on the command line by using the &ldquo;&ndash;[no-]recurse-submodules&rdquo; option to &ldquo;git fetch&rdquo; and &ldquo;git pull&rdquo;.</p>
+
+<p>submodule.&lt;name&gt;.ignore<br />
+Defines under what circumstances &ldquo;git status&rdquo; and the diff family show a submodule as modified. When set to &ldquo;all&rdquo;, it will never be considered modified (but will nonetheless show up in the output of status and commit when it has been staged), &ldquo;dirty&rdquo; will ignore all changes to the submodules work tree and takes only differences between the HEAD of the submodule and the commit recorded in the superproject into account. &ldquo;untracked&rdquo; will additionally let submodules with modified tracked files in their work tree show up. Using &ldquo;none&rdquo; (the default when this option is not set) also shows submodules that have untracked files in their work tree as changed. If this option is also present in the submodules entry in .git/config of the superproject, the setting there will override the one found in .gitmodules. Both settings can be overridden on the command line by using the &ldquo;&ndash;ignore-submodule&rdquo; option. The <em>git submodule</em> commands are not affected by this setting.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>Consider the following .gitmodules file:</p>
+
+<pre><code>[submodule &quot;libfoo&quot;]
+        path = include/foo
+        url = git://foo.com/git/lib.git
+
+[submodule &quot;libbar&quot;]
+        path = include/bar
+        url = git://bar.com/git/lib.git
+</code></pre>
+
+<p>This defines two submodules, <code>libfoo</code> and <code>libbar</code>. These are expected to be checked out in the paths <em>include/foo</em> and <em>include/bar</em>, and for both submodules a URL is specified which can be used for cloning the submodules.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-submodule">git-submodule(1)</a> <a href="../git-config">git-config(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

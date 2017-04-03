@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Create an empty Git repository or reinitialize">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-init </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-init</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.3'>2.2.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.3/git-init'>git-init</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git init [-q | --quiet] [--bare] [--template=&lt;template_directory&gt;]
+          [--separate-git-dir &lt;git dir&gt;]
+          [--shared[=&lt;permissions&gt;]] [directory]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This command creates an empty Git repository - basically a <code>.git</code> directory with subdirectories for <code>objects</code>, <code>refs/heads</code>, <code>refs/tags</code>, and template files. An initial <code>HEAD</code> file that references the HEAD of the master branch is also created.</p>
+
+<p>If the <code>$GIT_DIR</code> environment variable is set then it specifies a path to use instead of <code>./.git</code> for the base of the repository.</p>
+
+<p>If the object storage directory is specified via the <code>$GIT_OBJECT_DIRECTORY</code> environment variable then the sha1 directories are created underneath - otherwise the default <code>$GIT_DIR/objects</code> directory is used.</p>
+
+<p>Running <em>git init</em> in an existing repository is safe. It will not overwrite things that are already there. The primary reason for rerunning <em>git init</em> is to pick up newly added templates (or to move the repository to another place if &ndash;separate-git-dir is given).</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-q
+&ndash;quiet<br />
+Only print error and warning messages; all other output will be suppressed.</p>
+
+<p>&ndash;bare<br />
+Create a bare repository. If GIT_DIR environment is not set, it is set to the current working directory.</p>
+
+<p>&ndash;template=&lt;template_directory&gt;<br />
+Specify the directory from which templates will be used. (See the &ldquo;TEMPLATE DIRECTORY&rdquo; section below.)</p>
+
+<p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
+Instead of initializing the repository as a directory to either <code>$GIT_DIR</code> or <code>./.git/</code>, create a text file there containing the path to the actual repository. This file acts as filesystem-agnostic Git symbolic link to the repository.</p>
+
+<p>If this is reinitialization, the repository will be moved to the specified path.</p>
+
+<p>&ndash;shared[=(false|true|umask|group|all|world|everybody|0xxx)]<br />
+Specify that the Git repository is to be shared amongst several users. This allows users belonging to the same group to push into that repository. When specified, the config variable &ldquo;core.sharedRepository&rdquo; is set so that files and directories under <code>$GIT_DIR</code> are created with the requested permissions. When not specified, Git will use permissions reported by umask(2).</p>
+
+<p>The option can have the following values, defaulting to <em>group</em> if no value is given:</p>
+
+<p><em>umask</em> (or <em>false</em>)<br />
+Use permissions reported by umask(2). The default, when <code>--shared</code> is not specified.</p>
+
+<p><em>group</em> (or <em>true</em>)<br />
+Make the repository group-writable, (and g+sx, since the git group may be not the primary group of all users). This is used to loosen the permissions of an otherwise safe umask(2) value. Note that the umask still applies to the other permission bits (e.g. if umask is <em>0022</em>, using <em>group</em> will not remove read privileges from other (non-group) users). See <em>0xxx</em> for how to exactly specify the repository permissions.</p>
+
+<p><em>all</em> (or <em>world</em> or <em>everybody</em>)<br />
+Same as <em>group</em>, but make the repository readable by all users.</p>
+
+<p><em>0xxx</em><br />
+<em>0xxx</em> is an octal number and each file will have mode <em>0xxx</em>. <em>0xxx</em> will override users&rsquo; umask(2) value (and not only loosen permissions as <em>group</em> and <em>all</em> does). <em>0640</em> will create a repository which is group-readable, but not group-writable or accessible to others. <em>0660</em> will create a repo that is readable and writable to the current user and group, but inaccessible to others.</p>
+
+<p>By default, the configuration flag <code>receive.denyNonFastForwards</code> is enabled in shared repositories, so that you cannot force a non fast-forwarding push into it.</p>
+
+<p>If you provide a <em>directory</em>, the command is run inside it. If this directory does not exist, it will be created.</p>
+
+<h2 id="template-directory">TEMPLATE DIRECTORY</h2>
+
+<p>The template directory contains files and directories that will be copied to the <code>$GIT_DIR</code> after it is created.</p>
+
+<p>The template directory will be one of the following (in order):</p>
+
+<ul>
+<li><p>the argument given with the <code>--template</code> option;</p></li>
+
+<li><p>the contents of the <code>$GIT_TEMPLATE_DIR</code> environment variable;</p></li>
+
+<li><p>the <code>init.templatedir</code> configuration variable; or</p></li>
+
+<li><p>the default template directory: <code>/usr/share/git-core/templates</code>.</p></li>
+</ul>
+
+<p>The default template directory includes some directory structure, suggested &ldquo;exclude patterns&rdquo; (see <a href="../gitignore">gitignore(5)</a>), and sample hook files (see <a href="../githooks">githooks(5)</a>).</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>Start a new Git repository for an existing code base<br />
+    $ cd /path/to/my/codebase
+    $ git init      <1>
+    $ git add .     <2>
+    $ git commit    <3></p>
+
+<ol>
+<li><p>Create a /path/to/my/codebase/.git directory.</p></li>
+
+<li><p>Add all existing files to the index.</p></li>
+
+<li><p>Record the pristine state as the first commit in the history.</p></li>
+</ol>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

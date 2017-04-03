@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Build pack index file for an existing">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-index-pack </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-index-pack</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.9'>2.3.9</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.9/git-index-pack'>git-index-pack</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git index-pack [-v] [-o &lt;index-file&gt;] &lt;pack-file&gt;
+git index-pack --stdin [--fix-thin] [--keep] [-v] [-o &lt;index-file&gt;]
+                 [&lt;pack-file&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Reads a packed archive (.pack) from the specified file, and builds a pack index file (.idx) for it. The packed archive together with the pack index can then be placed in the objects/pack/ directory of a Git repository.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-v<br />
+Be verbose about what is going on, including progress status.</p>
+
+<p>-o &lt;index-file&gt;<br />
+Write the generated pack index into the specified file. Without this option the name of pack index file is constructed from the name of packed archive file by replacing .pack with .idx (and the program fails if the name of packed archive does not end with .pack).</p>
+
+<p>&ndash;stdin<br />
+When this flag is provided, the pack is read from stdin instead and a copy is then written to &lt;pack-file&gt;. If &lt;pack-file&gt; is not specified, the pack is written to objects/pack/ directory of the current Git repository with a default name determined from the pack content. If &lt;pack-file&gt; is not specified consider using &ndash;keep to prevent a race condition between this process and <em>git repack</em>.</p>
+
+<p>&ndash;fix-thin<br />
+Fix a &ldquo;thin&rdquo; pack produced by <code>git                   pack-objects --thin</code> (see <a href="../git-pack-objects">git-pack-objects(1)</a> for details) by adding the excluded objects the deltified objects are based on to the pack. This option only makes sense in conjunction with &ndash;stdin.</p>
+
+<p>&ndash;keep<br />
+Before moving the index into its final destination create an empty .keep file for the associated pack file. This option is usually necessary with &ndash;stdin to prevent a simultaneous <em>git repack</em> process from deleting the newly constructed pack and index before refs can be updated to use objects contained in the pack.</p>
+
+<p>&ndash;keep=&lt;msg&gt;<br />
+Like &ndash;keep create a .keep file before moving the index into its final destination, but rather than creating an empty file place <em>&lt;msg&gt;</em> followed by an LF into the .keep file. The <em>&lt;msg&gt;</em> message can later be searched for within all .keep files to locate any which have outlived their usefulness.</p>
+
+<p>&ndash;index-version=&lt;version&gt;[,&lt;offset&gt;]<br />
+This is intended to be used by the test suite only. It allows to force the version for the generated pack index, and to force 64-bit index entries on objects located above the given offset.</p>
+
+<p>&ndash;strict<br />
+Die, if the pack contains broken objects or links.</p>
+
+<p>&ndash;check-self-contained-and-connected<br />
+Die if the pack contains broken links. For internal use only.</p>
+
+<p>&ndash;threads=&lt;n&gt;<br />
+Specifies the number of threads to spawn when resolving deltas. This requires that index-pack be compiled with pthreads otherwise this option is ignored with a warning. This is meant to reduce packing time on multiprocessor machines. The required amount of memory for the delta search window is however multiplied by the number of threads. Specifying 0 will cause Git to auto-detect the number of CPU’s and use maximum 3 threads.</p>
+
+<h2 id="note">Note</h2>
+
+<p>Once the index has been created, the list of object names is sorted and the SHA-1 hash of that list is printed to stdout. If &ndash;stdin was also used then this is prefixed by either &ldquo;pack\t&rdquo;, or &ldquo;keep\t&rdquo; if a new .keep file was successfully created. This is useful to remove a .keep file used as a lock to prevent the race with <em>git repack</em> mentioned above.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

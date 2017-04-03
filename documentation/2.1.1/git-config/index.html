@@ -1,0 +1,1931 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Get and set repository or global options">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-config </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-config</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.1'>2.1.1</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.1/git-config'>git-config</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git config [&lt;file-option&gt;] [type] [-z|--null] name [value [value_regex]]
+git config [&lt;file-option&gt;] [type] --add name value
+git config [&lt;file-option&gt;] [type] --replace-all name value [value_regex]
+git config [&lt;file-option&gt;] [type] [-z|--null] --get name [value_regex]
+git config [&lt;file-option&gt;] [type] [-z|--null] --get-all name [value_regex]
+git config [&lt;file-option&gt;] [type] [-z|--null] --get-regexp name_regex [value_regex]
+git config [&lt;file-option&gt;] [type] [-z|--null] --get-urlmatch name URL
+git config [&lt;file-option&gt;] --unset name [value_regex]
+git config [&lt;file-option&gt;] --unset-all name [value_regex]
+git config [&lt;file-option&gt;] --rename-section old_name new_name
+git config [&lt;file-option&gt;] --remove-section name
+git config [&lt;file-option&gt;] [-z|--null] -l | --list
+git config [&lt;file-option&gt;] --get-color name [default]
+git config [&lt;file-option&gt;] --get-colorbool name [stdout-is-tty]
+git config [&lt;file-option&gt;] -e | --edit
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>You can query/set/replace/unset options with this command. The name is actually the section and the key separated by a dot, and the value will be escaped.</p>
+
+<p>Multiple lines can be added to an option by using the <em>&ndash;add</em> option. If you want to update or unset an option which can occur on multiple lines, a POSIX regexp <code>value_regex</code> needs to be given. Only the existing values that match the regexp are updated or unset. If you want to handle the lines that do <strong>not</strong> match the regex, just prepend a single exclamation mark in front (see also <a href="#EXAMPLES">[EXAMPLES]</a>).</p>
+
+<p>The type specifier can be either <em>&ndash;int</em> or <em>&ndash;bool</em>, to make <em>git config</em> ensure that the variable(s) are of the given type and convert the value to the canonical form (simple decimal number for int, a &ldquo;true&rdquo; or &ldquo;false&rdquo; string for bool), or <em>&ndash;path</em>, which does some path expansion (see <em>&ndash;path</em> below). If no type specifier is passed, no checks or transformations are performed on the value.</p>
+
+<p>When reading, the values are read from the system, global and repository local configuration files by default, and options <em>&ndash;system</em>, <em>&ndash;global</em>, <em>&ndash;local</em> and <em>&ndash;file &lt;filename&gt;</em> can be used to tell the command to read from only that location (see <a href="#FILES">[FILES]</a>).</p>
+
+<p>When writing, the new value is written to the repository local configuration file by default, and options <em>&ndash;system</em>, <em>&ndash;global</em>, <em>&ndash;file &lt;filename&gt;</em> can be used to tell the command to write to that location (you can say <em>&ndash;local</em> but that is the default).</p>
+
+<p>This command will fail with non-zero status upon error. Some exit codes are:</p>
+
+<ol>
+<li><p>The config file is invalid (ret=3),</p></li>
+
+<li><p>can not write to the config file (ret=4),</p></li>
+
+<li><p>no section or name was provided (ret=2),</p></li>
+
+<li><p>the section or key is invalid (ret=1),</p></li>
+
+<li><p>you try to unset an option which does not exist (ret=5),</p></li>
+
+<li><p>you try to unset/set an option for which multiple lines match (ret=5), or</p></li>
+
+<li><p>you try to use an invalid regexp (ret=6).</p></li>
+</ol>
+
+<p>On success, the command returns the exit code 0.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;replace-all<br />
+Default behavior is to replace at most one line. This replaces all lines matching the key (and optionally the value_regex).</p>
+
+<p>&ndash;add<br />
+Adds a new line to the option without altering any existing values. This is the same as providing <em>^$</em> as the value_regex in <code>--replace-all</code>.</p>
+
+<p>&ndash;get<br />
+Get the value for a given key (optionally filtered by a regex matching the value). Returns error code 1 if the key was not found and the last value if multiple key values were found.</p>
+
+<p>&ndash;get-all<br />
+Like get, but does not fail if the number of values for the key is not exactly one.</p>
+
+<p>&ndash;get-regexp<br />
+Like &ndash;get-all, but interprets the name as a regular expression and writes out the key names. Regular expression matching is currently case-sensitive and done against a canonicalized version of the key in which section and variable names are lowercased, but subsection names are not.</p>
+
+<p>&ndash;get-urlmatch name URL<br />
+When given a two-part name section.key, the value for section.&lt;url&gt;.key whose &lt;url&gt; part matches the best to the given URL is returned (if no such key exists, the value for section.key is used as a fallback). When given just the section as name, do so for all the keys in the section and list them.</p>
+
+<p>&ndash;global<br />
+For writing options: write to global <code>~/.gitconfig</code> file rather than the repository <code>.git/config</code>, write to <code>$XDG_CONFIG_HOME/git/config</code> file if this file exists and the <code>~/.gitconfig</code> file doesn’t.</p>
+
+<p>For reading options: read only from global <code>~/.gitconfig</code> and from <code>$XDG_CONFIG_HOME/git/config</code> rather than from all available files.</p>
+
+<p>See also <a href="#FILES">[FILES]</a>.</p>
+
+<p>&ndash;system<br />
+For writing options: write to system-wide <code>$(prefix)/etc/gitconfig</code> rather than the repository <code>.git/config</code>.</p>
+
+<p>For reading options: read only from system-wide <code>$(prefix)/etc/gitconfig</code> rather than from all available files.</p>
+
+<p>See also <a href="#FILES">[FILES]</a>.</p>
+
+<p>&ndash;local<br />
+For writing options: write to the repository <code>.git/config</code> file. This is the default behavior.</p>
+
+<p>For reading options: read only from the repository <code>.git/config</code> rather than from all available files.</p>
+
+<p>See also <a href="#FILES">[FILES]</a>.</p>
+
+<p>-f config-file
+&ndash;file config-file<br />
+Use the given config file instead of the one specified by GIT_CONFIG.</p>
+
+<p>&ndash;blob blob<br />
+Similar to <em>&ndash;file</em> but use the given blob instead of a file. E.g. you can use <em>master:.gitmodules</em> to read values from the file <em>.gitmodules</em> in the master branch. See &ldquo;SPECIFYING REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a> for a more complete list of ways to spell blob names.</p>
+
+<p>&ndash;remove-section<br />
+Remove the given section from the configuration file.</p>
+
+<p>&ndash;rename-section<br />
+Rename the given section to a new name.</p>
+
+<p>&ndash;unset<br />
+Remove the line matching the key from config file.</p>
+
+<p>&ndash;unset-all<br />
+Remove all lines matching the key from config file.</p>
+
+<p>-l
+&ndash;list<br />
+List all variables set in config file.</p>
+
+<p>&ndash;bool<br />
+<em>git config</em> will ensure that the output is &ldquo;true&rdquo; or &ldquo;false&rdquo;</p>
+
+<p>&ndash;int<br />
+<em>git config</em> will ensure that the output is a simple decimal number. An optional value suffix of <em>k</em>, <em>m</em>, or <em>g</em> in the config file will cause the value to be multiplied by 1024, 1048576, or 1073741824 prior to output.</p>
+
+<p>&ndash;bool-or-int<br />
+<em>git config</em> will ensure that the output matches the format of either &ndash;bool or &ndash;int, as described above.</p>
+
+<p>&ndash;path<br />
+<em>git-config</em> will expand leading <em>~</em> to the value of <em>$HOME</em>, and <em>~user</em> to the home directory for the specified user. This option has no effect when setting the value (but you can use <em>git config bla ~/</em> from the command line to let your shell do the expansion).</p>
+
+<p>-z
+&ndash;null<br />
+For all options that output values and/or keys, always end values with the null character (instead of a newline). Use newline instead as a delimiter between key and value. This allows for secure parsing of the output without getting confused e.g. by values that contain line breaks.</p>
+
+<p>&ndash;get-colorbool name [stdout-is-tty]<br />
+Find the color setting for <code>name</code> (e.g. <code>color.diff</code>) and output &ldquo;true&rdquo; or &ldquo;false&rdquo;. <code>stdout-is-tty</code> should be either &ldquo;true&rdquo; or &ldquo;false&rdquo;, and is taken into account when configuration says &ldquo;auto&rdquo;. If <code>stdout-is-tty</code> is missing, then checks the standard output of the command itself, and exits with status 0 if color is to be used, or exits with status 1 otherwise. When the color setting for <code>name</code> is undefined, the command uses <code>color.ui</code> as fallback.</p>
+
+<p>&ndash;get-color name [default]<br />
+Find the color configured for <code>name</code> (e.g. <code>color.diff.new</code>) and output it as the ANSI color escape sequence to the standard output. The optional <code>default</code> parameter is used instead, if there is no color configured for <code>name</code>.</p>
+
+<p>-e
+&ndash;edit<br />
+Opens an editor to modify the specified config file; either <em>&ndash;system</em>, <em>&ndash;global</em>, or repository (default).</p>
+
+<p>&ndash;[no-]includes<br />
+Respect <code>include.*</code> directives in config files when looking up values. Defaults to on.</p>
+
+<h2 id="files">FILES</h2>
+
+<p>If not set explicitly with <em>&ndash;file</em>, there are four files where <em>git config</em> will search for configuration options:</p>
+
+<p>$(prefix)/etc/gitconfig<br />
+System-wide configuration file.</p>
+
+<p>$XDG_CONFIG_HOME/git/config<br />
+Second user-specific configuration file. If $XDG_CONFIG_HOME is not set or empty, <code>$HOME/.config/git/config</code> will be used. Any single-valued variable set in this file will be overwritten by whatever is in <code>~/.gitconfig</code>. It is a good idea not to create this file if you sometimes use older versions of Git, as support for this file was added fairly recently.</p>
+
+<p>~/.gitconfig<br />
+User-specific configuration file. Also called &ldquo;global&rdquo; configuration file.</p>
+
+<p>$GIT_DIR/config<br />
+Repository specific configuration file.</p>
+
+<p>If no further options are given, all reading options will read all of these files that are available. If the global or the system-wide configuration file are not available they will be ignored. If the repository configuration file is not available or readable, <em>git config</em> will exit with a non-zero error code. However, in neither case will an error message be issued.</p>
+
+<p>The files are read in the order given above, with last value found taking precedence over values read earlier. When multiple values are taken then all values of a key from all files will be used.</p>
+
+<p>All writing options will per default write to the repository specific configuration file. Note that this also affects options like <em>&ndash;replace-all</em> and <em>&ndash;unset</em>. *<strong>git config* will only ever change one file at a time</strong>.</p>
+
+<p>You can override these rules either by command-line options or by environment variables. The <em>&ndash;global</em> and the <em>&ndash;system</em> options will limit the file used to the global or system-wide file respectively. The GIT_CONFIG environment variable has a similar effect, but you can specify any filename you want.</p>
+
+<h2 id="environment">ENVIRONMENT</h2>
+
+<p>GIT_CONFIG<br />
+Take the configuration from the given file instead of .git/config. Using the &ldquo;&ndash;global&rdquo; option forces this to ~/.gitconfig. Using the &ldquo;&ndash;system&rdquo; option forces this to $(prefix)/etc/gitconfig.</p>
+
+<p>GIT_CONFIG_NOSYSTEM<br />
+Whether to skip reading settings from the system-wide $(prefix)/etc/gitconfig file. See <a href="../git">git(1)</a> for details.</p>
+
+<p>See also <a href="#FILES">[FILES]</a>.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>Given a .git/config like this:</p>
+
+<pre><code>#
+# This is the config file, and
+# a '#' or ';' character indicates
+# a comment
+#
+
+; core variables
+[core]
+        ; Don't trust file modes
+        filemode = false
+
+; Our diff algorithm
+[diff]
+        external = /usr/local/bin/diff-wrapper
+        renames = true
+
+; Proxy settings
+[core]
+        gitproxy=proxy-command for kernel.org
+        gitproxy=default-proxy ; for all the rest
+
+; HTTP
+[http]
+        sslVerify
+[http &quot;https://weak.example.com&quot;]
+        sslVerify = false
+        cookieFile = /tmp/cookie.txt
+</code></pre>
+
+<p>you can set the filemode to true with</p>
+
+<pre><code>% git config core.filemode true
+</code></pre>
+
+<p>The hypothetical proxy command entries actually have a postfix to discern what URL they apply to. Here is how to change the entry for kernel.org to &ldquo;ssh&rdquo;.</p>
+
+<pre><code>% git config core.gitproxy '&quot;ssh&quot; for kernel.org' 'for kernel.org$'
+</code></pre>
+
+<p>This makes sure that only the key/value pair for kernel.org is replaced.</p>
+
+<p>To delete the entry for renames, do</p>
+
+<pre><code>% git config --unset diff.renames
+</code></pre>
+
+<p>If you want to delete an entry for a multivar (like core.gitproxy above), you have to provide a regex matching the value of exactly one line.</p>
+
+<p>To query the value for a given key, do</p>
+
+<pre><code>% git config --get core.filemode
+</code></pre>
+
+<p>or</p>
+
+<pre><code>% git config core.filemode
+</code></pre>
+
+<p>or, to query a multivar:</p>
+
+<pre><code>% git config --get core.gitproxy &quot;for kernel.org$&quot;
+</code></pre>
+
+<p>If you want to know all the values for a multivar, do:</p>
+
+<pre><code>% git config --get-all core.gitproxy
+</code></pre>
+
+<p>If you like to live dangerously, you can replace <strong>all</strong> core.gitproxy by a new one with</p>
+
+<pre><code>% git config --replace-all core.gitproxy ssh
+</code></pre>
+
+<p>However, if you really only want to replace the line for the default proxy, i.e. the one without a &ldquo;for …&rdquo; postfix, do something like this:</p>
+
+<pre><code>% git config core.gitproxy ssh '! for '
+</code></pre>
+
+<p>To actually match only values with an exclamation mark, you have to</p>
+
+<pre><code>% git config section.key value '[!]'
+</code></pre>
+
+<p>To add a new proxy, without altering any of the existing ones, use</p>
+
+<pre><code>% git config --add core.gitproxy '&quot;proxy-command&quot; for example.com'
+</code></pre>
+
+<p>An example to use customized color from the configuration in your script:</p>
+
+<pre><code>#!/bin/sh
+WS=$(git config --get-color color.diff.whitespace &quot;blue reverse&quot;)
+RESET=$(git config --get-color &quot;&quot; &quot;reset&quot;)
+echo &quot;${WS}your whitespace color or blue reverse${RESET}&quot;
+</code></pre>
+
+<p>For URLs in <code>https://weak.example.com</code>, <code>http.sslVerify</code> is set to false, while it is set to <code>true</code> for all others:</p>
+
+<pre><code>% git config --bool --get-urlmatch http.sslverify https://good.example.com
+true
+% git config --bool --get-urlmatch http.sslverify https://weak.example.com
+false
+% git config --get-urlmatch http https://weak.example.com
+http.cookiefile /tmp/cookie.txt
+http.sslverify false
+</code></pre>
+
+<h2 id="configuration-file">CONFIGURATION FILE</h2>
+
+<p>The Git configuration file contains a number of variables that affect the Git commands&rsquo; behavior. The <code>.git/config</code> file in each repository is used to store the configuration for that repository, and <code>$HOME/.gitconfig</code> is used to store a per-user configuration as fallback values for the <code>.git/config</code> file. The file <code>/etc/gitconfig</code> can be used to store a system-wide default configuration.</p>
+
+<p>The configuration variables are used by both the Git plumbing and the porcelains. The variables are divided into sections, wherein the fully qualified variable name of the variable itself is the last dot-separated segment and the section name is everything before the last dot. The variable names are case-insensitive, allow only alphanumeric characters and <code>-</code>, and must start with an alphabetic character. Some variables may appear multiple times.</p>
+
+<h3 id="syntax">Syntax</h3>
+
+<p>The syntax is fairly flexible and permissive; whitespaces are mostly ignored. The <em>#</em> and <em>;</em> characters begin comments to the end of line, blank lines are ignored.</p>
+
+<p>The file consists of sections and variables. A section begins with the name of the section in square brackets and continues until the next section begins. Section names are not case sensitive. Only alphanumeric characters, <code>-</code> and <code>.</code> are allowed in section names. Each variable must belong to some section, which means that there must be a section header before the first setting of a variable.</p>
+
+<p>Sections can be further divided into subsections. To begin a subsection put its name in double quotes, separated by space from the section name, in the section header, like in the example below:</p>
+
+<pre><code>        [section &quot;subsection&quot;]
+</code></pre>
+
+<p>Subsection names are case sensitive and can contain any characters except newline (doublequote <code>&quot;</code> and backslash have to be escaped as <code>\&quot;</code> and <code>\\</code>, respectively). Section headers cannot span multiple lines. Variables may belong directly to a section or to a given subsection. You can have <code>[section]</code> if you have <code>[section &quot;subsection&quot;]</code>, but you don’t need to.</p>
+
+<p>There is also a deprecated <code>[section.subsection]</code> syntax. With this syntax, the subsection name is converted to lower-case and is also compared case sensitively. These subsection names follow the same restrictions as section names.</p>
+
+<p>All the other lines (and the remainder of the line after the section header) are recognized as setting variables, in the form <em>name = value</em>. If there is no equal sign on the line, the entire line is taken as <em>name</em> and the variable is recognized as boolean &ldquo;true&rdquo;. The variable names are case-insensitive, allow only alphanumeric characters and <code>-</code>, and must start with an alphabetic character. There can be more than one value for a given variable; we say then that the variable is multivalued.</p>
+
+<p>Leading and trailing whitespace in a variable value is discarded. Internal whitespace within a variable value is retained verbatim.</p>
+
+<p>The values following the equals sign in variable assign are all either a string, an integer, or a boolean. Boolean values may be given as yes/no, <sup>1</sup>&frasl;<sub>0</sub>, true/false or on/off. Case is not significant in boolean values, when converting value to the canonical form using <em>&ndash;bool</em> type specifier; <em>git config</em> will ensure that the output is &ldquo;true&rdquo; or &ldquo;false&rdquo;.</p>
+
+<p>String values may be entirely or partially enclosed in double quotes. You need to enclose variable values in double quotes if you want to preserve leading or trailing whitespace, or if the variable value contains comment characters (i.e. it contains <em>#</em> or <em>;</em>). Double quote <code>&quot;</code> and backslash <code>\</code> characters in variable values must be escaped: use <code>\&quot;</code> for <code>&quot;</code> and <code>\\</code> for <code>\</code>.</p>
+
+<p>The following escape sequences (beside <code>\&quot;</code> and <code>\\</code>) are recognized: <code>\n</code> for newline character (NL), <code>\t</code> for horizontal tabulation (HT, TAB) and <code>\b</code> for backspace (BS). Other char escape sequences (including octal escape sequences) are invalid.</p>
+
+<p>Variable values ending in a <code>\</code> are continued on the next line in the customary UNIX fashion.</p>
+
+<p>Some variables may require a special value format.</p>
+
+<h3 id="includes">Includes</h3>
+
+<p>You can include one config file from another by setting the special <code>include.path</code> variable to the name of the file to be included. The included file is expanded immediately, as if its contents had been found at the location of the include directive. If the value of the <code>include.path</code> variable is a relative path, the path is considered to be relative to the configuration file in which the include directive was found. The value of <code>include.path</code> is subject to tilde expansion: <code>~/</code> is expanded to the value of <code>$HOME</code>, and <code>~user/</code> to the specified user’s home directory. See below for examples.</p>
+
+<h3 id="example">Example</h3>
+
+<pre><code># Core variables
+[core]
+        ; Don't trust file modes
+        filemode = false
+
+# Our diff algorithm
+[diff]
+        external = /usr/local/bin/diff-wrapper
+        renames = true
+
+[branch &quot;devel&quot;]
+        remote = origin
+        merge = refs/heads/devel
+
+# Proxy settings
+[core]
+        gitProxy=&quot;ssh&quot; for &quot;kernel.org&quot;
+        gitProxy=default-proxy ; for the rest
+
+[include]
+        path = /path/to/foo.inc ; include by absolute path
+        path = foo ; expand &quot;foo&quot; relative to the current file
+        path = ~/foo ; expand &quot;foo&quot; in your $HOME directory
+</code></pre>
+
+<h3 id="variables">Variables</h3>
+
+<p>Note that this list is non-comprehensive and not necessarily complete. For command-specific variables, you will find a more detailed description in the appropriate manual page.</p>
+
+<p>Other git-related tools may and do use their own variables. When inventing new variables for use in your own tool, make sure their names do not conflict with those that are used by Git itself and other popular tools, and describe them in your documentation.</p>
+
+<p>advice.*<br />
+These variables control various optional help messages designed to aid new users. All <em>advice.*</em> variables default to <em>true</em>, and you can tell Git that you do not need help by setting these to <em>false</em>:</p>
+
+<p>pushUpdateRejected<br />
+Set this variable to <em>false</em> if you want to disable <em>pushNonFFCurrent</em>, <em>pushNonFFMatching</em>, <em>pushAlreadyExists</em>, <em>pushFetchFirst</em>, and <em>pushNeedsForce</em> simultaneously.</p>
+
+<p>pushNonFFCurrent<br />
+Advice shown when <a href="../git-push">git-push(1)</a> fails due to a non-fast-forward update to the current branch.</p>
+
+<p>pushNonFFMatching<br />
+Advice shown when you ran <a href="../git-push">git-push(1)</a> and pushed <em>matching refs</em> explicitly (i.e. you used <em>:</em>, or specified a refspec that isn’t your current branch) and it resulted in a non-fast-forward error.</p>
+
+<p>pushAlreadyExists<br />
+Shown when <a href="../git-push">git-push(1)</a> rejects an update that does not qualify for fast-forwarding (e.g., a tag.)</p>
+
+<p>pushFetchFirst<br />
+Shown when <a href="../git-push">git-push(1)</a> rejects an update that tries to overwrite a remote ref that points at an object we do not have.</p>
+
+<p>pushNeedsForce<br />
+Shown when <a href="../git-push">git-push(1)</a> rejects an update that tries to overwrite a remote ref that points at an object that is not a commit-ish, or make the remote ref point at an object that is not a commit-ish.</p>
+
+<p>statusHints<br />
+Show directions on how to proceed from the current state in the output of <a href="../git-status">git-status(1)</a>, in the template shown when writing commit messages in <a href="../git-commit">git-commit(1)</a>, and in the help message shown by <a href="../git-checkout">git-checkout(1)</a> when switching branch.</p>
+
+<p>statusUoption<br />
+Advise to consider using the <code>-u</code> option to <a href="../git-status">git-status(1)</a> when the command takes more than 2 seconds to enumerate untracked files.</p>
+
+<p>commitBeforeMerge<br />
+Advice shown when <a href="../git-merge">git-merge(1)</a> refuses to merge to avoid overwriting local changes.</p>
+
+<p>resolveConflict<br />
+Advice shown by various commands when conflicts prevent the operation from being performed.</p>
+
+<p>implicitIdentity<br />
+Advice on how to set your identity configuration when your information is guessed from the system username and domain name.</p>
+
+<p>detachedHead<br />
+Advice shown when you used <a href="../git-checkout">git-checkout(1)</a> to move to the detach HEAD state, to instruct how to create a local branch after the fact.</p>
+
+<p>amWorkDir<br />
+Advice that shows the location of the patch file when <a href="../git-am">git-am(1)</a> fails to apply it.</p>
+
+<p>rmHints<br />
+In case of failure in the output of <a href="../git-rm">git-rm(1)</a>, show directions on how to proceed from the current state.</p>
+
+<p>core.fileMode<br />
+If false, the executable bit differences between the index and the working tree are ignored; useful on broken filesystems like FAT. See <a href="../git-update-index">git-update-index(1)</a>.</p>
+
+<p>The default is true, except <a href="../git-clone">git-clone(1)</a> or <a href="../git-init">git-init(1)</a> will probe and set core.fileMode false if appropriate when the repository is created.</p>
+
+<p>core.ignorecase<br />
+If true, this option enables various workarounds to enable Git to work better on filesystems that are not case sensitive, like FAT. For example, if a directory listing finds &ldquo;makefile&rdquo; when Git expects &ldquo;Makefile&rdquo;, Git will assume it is really the same file, and continue to remember it as &ldquo;Makefile&rdquo;.</p>
+
+<p>The default is false, except <a href="../git-clone">git-clone(1)</a> or <a href="../git-init">git-init(1)</a> will probe and set core.ignorecase true if appropriate when the repository is created.</p>
+
+<p>core.precomposeunicode<br />
+This option is only used by Mac OS implementation of Git. When core.precomposeunicode=true, Git reverts the unicode decomposition of filenames done by Mac OS. This is useful when sharing a repository between Mac OS and Linux or Windows. (Git for Windows 1.7.10 or higher is needed, or Git under cygwin 1.7). When false, file names are handled fully transparent by Git, which is backward compatible with older versions of Git.</p>
+
+<p>core.trustctime<br />
+If false, the ctime differences between the index and the working tree are ignored; useful when the inode change time is regularly modified by something outside Git (file system crawlers and some backup systems). See <a href="../git-update-index">git-update-index(1)</a>. True by default.</p>
+
+<p>core.checkstat<br />
+Determines which stat fields to match between the index and work tree. The user can set this to <em>default</em> or <em>minimal</em>. Default (or explicitly <em>default</em>), is to check all fields, including the sub-second part of mtime and ctime.</p>
+
+<p>core.quotepath<br />
+The commands that output paths (e.g. <em>ls-files</em>, <em>diff</em>), when not given the <code>-z</code> option, will quote &ldquo;unusual&rdquo; characters in the pathname by enclosing the pathname in a double-quote pair and with backslashes the same way strings in C source code are quoted. If this variable is set to false, the bytes higher than 0x80 are not quoted but output as verbatim. Note that double quote, backslash and control characters are always quoted without <code>-z</code> regardless of the setting of this variable.</p>
+
+<p>core.eol<br />
+Sets the line ending type to use in the working directory for files that have the <code>text</code> property set. Alternatives are <em>lf</em>, <em>crlf</em> and <em>native</em>, which uses the platform’s native line ending. The default value is <code>native</code>. See <a href="../gitattributes">gitattributes(5)</a> for more information on end-of-line conversion.</p>
+
+<p>core.safecrlf<br />
+If true, makes Git check if converting <code>CRLF</code> is reversible when end-of-line conversion is active. Git will verify if a command modifies a file in the work tree either directly or indirectly. For example, committing a file followed by checking out the same file should yield the original file in the work tree. If this is not the case for the current setting of <code>core.autocrlf</code>, Git will reject the file. The variable can be set to &ldquo;warn&rdquo;, in which case Git will only warn about an irreversible conversion but continue the operation.</p>
+
+<p>CRLF conversion bears a slight chance of corrupting data. When it is enabled, Git will convert CRLF to LF during commit and LF to CRLF during checkout. A file that contains a mixture of LF and CRLF before the commit cannot be recreated by Git. For text files this is the right thing to do: it corrects line endings such that we have only LF line endings in the repository. But for binary files that are accidentally classified as text the conversion can corrupt data.</p>
+
+<p>If you recognize such corruption early you can easily fix it by setting the conversion type explicitly in .gitattributes. Right after committing you still have the original file in your work tree and this file is not yet corrupted. You can explicitly tell Git that this file is binary and Git will handle the file appropriately.</p>
+
+<p>Unfortunately, the desired effect of cleaning up text files with mixed line endings and the undesired effect of corrupting binary files cannot be distinguished. In both cases CRLFs are removed in an irreversible way. For text files this is the right thing to do because CRLFs are line endings, while for binary files converting CRLFs corrupts data.</p>
+
+<p>Note, this safety check does not mean that a checkout will generate a file identical to the original file for a different setting of <code>core.eol</code> and <code>core.autocrlf</code>, but only for the current one. For example, a text file with <code>LF</code> would be accepted with <code>core.eol=lf</code> and could later be checked out with <code>core.eol=crlf</code>, in which case the resulting file would contain <code>CRLF</code>, although the original file contained <code>LF</code>. However, in both work trees the line endings would be consistent, that is either all <code>LF</code> or all <code>CRLF</code>, but never mixed. A file with mixed line endings would be reported by the <code>core.safecrlf</code> mechanism.</p>
+
+<p>core.autocrlf<br />
+Setting this variable to &ldquo;true&rdquo; is almost the same as setting the <code>text</code> attribute to &ldquo;auto&rdquo; on all files except that text files are not guaranteed to be normalized: files that contain <code>CRLF</code> in the repository will not be touched. Use this setting if you want to have <code>CRLF</code> line endings in your working directory even though the repository does not have normalized line endings. This variable can be set to <em>input</em>, in which case no output conversion is performed.</p>
+
+<p>core.symlinks<br />
+If false, symbolic links are checked out as small plain files that contain the link text. <a href="../git-update-index">git-update-index(1)</a> and <a href="../git-add">git-add(1)</a> will not change the recorded type to regular file. Useful on filesystems like FAT that do not support symbolic links.</p>
+
+<p>The default is true, except <a href="../git-clone">git-clone(1)</a> or <a href="../git-init">git-init(1)</a> will probe and set core.symlinks false if appropriate when the repository is created.</p>
+
+<p>core.gitProxy<br />
+A &ldquo;proxy command&rdquo; to execute (as <em>command host port</em>) instead of establishing direct connection to the remote server when using the Git protocol for fetching. If the variable value is in the &ldquo;COMMAND for DOMAIN&rdquo; format, the command is applied only on hostnames ending with the specified domain string. This variable may be set multiple times and is matched in the given order; the first match wins.</p>
+
+<p>Can be overridden by the <em>GIT_PROXY_COMMAND</em> environment variable (which always applies universally, without the special &ldquo;for&rdquo; handling).</p>
+
+<p>The special string <code>none</code> can be used as the proxy command to specify that no proxy be used for a given domain pattern. This is useful for excluding servers inside a firewall from proxy use, while defaulting to a common proxy for external domains.</p>
+
+<p>core.ignoreStat<br />
+If true, commands which modify both the working tree and the index will mark the updated paths with the &ldquo;assume unchanged&rdquo; bit in the index. These marked files are then assumed to stay unchanged in the working tree, until you mark them otherwise manually - Git will not detect the file changes by lstat() calls. This is useful on systems where those are very slow, such as Microsoft Windows. See <a href="../git-update-index">git-update-index(1)</a>. False by default.</p>
+
+<p>core.preferSymlinkRefs<br />
+Instead of the default &ldquo;symref&rdquo; format for HEAD and other symbolic reference files, use symbolic links. This is sometimes needed to work with old scripts that expect HEAD to be a symbolic link.</p>
+
+<p>core.bare<br />
+If true this repository is assumed to be <em>bare</em> and has no working directory associated with it. If this is the case a number of commands that require a working directory will be disabled, such as <a href="../git-add">git-add(1)</a> or <a href="../git-merge">git-merge(1)</a>.</p>
+
+<p>This setting is automatically guessed by <a href="../git-clone">git-clone(1)</a> or <a href="../git-init">git-init(1)</a> when the repository was created. By default a repository that ends in &ldquo;/.git&rdquo; is assumed to be not bare (bare = false), while all other repositories are assumed to be bare (bare = true).</p>
+
+<p>core.worktree<br />
+Set the path to the root of the working tree. This can be overridden by the GIT_WORK_TREE environment variable and the <em>&ndash;work-tree</em> command-line option. The value can be an absolute path or relative to the path to the .git directory, which is either specified by &ndash;git-dir or GIT_DIR, or automatically discovered. If &ndash;git-dir or GIT_DIR is specified but none of &ndash;work-tree, GIT_WORK_TREE and core.worktree is specified, the current working directory is regarded as the top level of your working tree.</p>
+
+<p>Note that this variable is honored even when set in a configuration file in a &ldquo;.git&rdquo; subdirectory of a directory and its value differs from the latter directory (e.g. &ldquo;/path/to/.git/config&rdquo; has core.worktree set to &ldquo;/different/path&rdquo;), which is most likely a misconfiguration. Running Git commands in the &ldquo;/path/to&rdquo; directory will still use &ldquo;/different/path&rdquo; as the root of the work tree and can cause confusion unless you know what you are doing (e.g. you are creating a read-only snapshot of the same index to a location different from the repository’s usual working tree).</p>
+
+<p>core.logAllRefUpdates<br />
+Enable the reflog. Updates to a ref &lt;ref&gt; is logged to the file &ldquo;$GIT_DIR/logs/&lt;ref&gt;&rdquo;, by appending the new and old SHA-1, the date/time and the reason of the update, but only when the file exists. If this configuration variable is set to true, missing &ldquo;$GIT_DIR/logs/&lt;ref&gt;&rdquo; file is automatically created for branch heads (i.e. under refs/heads/), remote refs (i.e. under refs/remotes/), note refs (i.e. under refs/notes/), and the symbolic ref HEAD.</p>
+
+<p>This information can be used to determine what commit was the tip of a branch &ldquo;2 days ago&rdquo;.</p>
+
+<p>This value is true by default in a repository that has a working directory associated with it, and false by default in a bare repository.</p>
+
+<p>core.repositoryFormatVersion<br />
+Internal variable identifying the repository format and layout version.</p>
+
+<p>core.sharedRepository<br />
+When <em>group</em> (or <em>true</em>), the repository is made shareable between several users in a group (making sure all the files and objects are group-writable). When <em>all</em> (or <em>world</em> or <em>everybody</em>), the repository will be readable by all users, additionally to being group-shareable. When <em>umask</em> (or <em>false</em>), Git will use permissions reported by umask(2). When <em>0xxx</em>, where <em>0xxx</em> is an octal number, files in the repository will have this mode value. <em>0xxx</em> will override user’s umask value (whereas the other options will only override requested parts of the user’s umask value). Examples: <em>0660</em> will make the repo read/write-able for the owner and group, but inaccessible to others (equivalent to <em>group</em> unless umask is e.g. <em>0022</em>). <em>0640</em> is a repository that is group-readable but not group-writable. See <a href="../git-init">git-init(1)</a>. False by default.</p>
+
+<p>core.warnAmbiguousRefs<br />
+If true, Git will warn you if the ref name you passed it is ambiguous and might match multiple refs in the repository. True by default.</p>
+
+<p>core.compression<br />
+An integer -1..9, indicating a default compression level. -1 is the zlib default. 0 means no compression, and 1..9 are various speed/size tradeoffs, 9 being slowest. If set, this provides a default to other compression variables, such as <em>core.loosecompression</em> and <em>pack.compression</em>.</p>
+
+<p>core.loosecompression<br />
+An integer -1..9, indicating the compression level for objects that are not in a pack file. -1 is the zlib default. 0 means no compression, and 1..9 are various speed/size tradeoffs, 9 being slowest. If not set, defaults to core.compression. If that is not set, defaults to 1 (best speed).</p>
+
+<p>core.packedGitWindowSize<br />
+Number of bytes of a pack file to map into memory in a single mapping operation. Larger window sizes may allow your system to process a smaller number of large pack files more quickly. Smaller window sizes will negatively affect performance due to increased calls to the operating system’s memory manager, but may improve performance when accessing a large number of large pack files.</p>
+
+<p>Default is 1 MiB if NO_MMAP was set at compile time, otherwise 32 MiB on 32 bit platforms and 1 GiB on 64 bit platforms. This should be reasonable for all users/operating systems. You probably do not need to adjust this value.</p>
+
+<p>Common unit suffixes of <em>k</em>, <em>m</em>, or <em>g</em> are supported.</p>
+
+<p>core.packedGitLimit<br />
+Maximum number of bytes to map simultaneously into memory from pack files. If Git needs to access more than this many bytes at once to complete an operation it will unmap existing regions to reclaim virtual address space within the process.</p>
+
+<p>Default is 256 MiB on 32 bit platforms and 8 GiB on 64 bit platforms. This should be reasonable for all users/operating systems, except on the largest projects. You probably do not need to adjust this value.</p>
+
+<p>Common unit suffixes of <em>k</em>, <em>m</em>, or <em>g</em> are supported.</p>
+
+<p>core.deltaBaseCacheLimit<br />
+Maximum number of bytes to reserve for caching base objects that may be referenced by multiple deltified objects. By storing the entire decompressed base objects in a cache Git is able to avoid unpacking and decompressing frequently used base objects multiple times.</p>
+
+<p>Default is 96 MiB on all platforms. This should be reasonable for all users/operating systems, except on the largest projects. You probably do not need to adjust this value.</p>
+
+<p>Common unit suffixes of <em>k</em>, <em>m</em>, or <em>g</em> are supported.</p>
+
+<p>core.bigFileThreshold<br />
+Files larger than this size are stored deflated, without attempting delta compression. Storing large files without delta compression avoids excessive memory usage, at the slight expense of increased disk usage.</p>
+
+<p>Default is 512 MiB on all platforms. This should be reasonable for most projects as source code and other text files can still be delta compressed, but larger binary media files won’t be.</p>
+
+<p>Common unit suffixes of <em>k</em>, <em>m</em>, or <em>g</em> are supported.</p>
+
+<p>core.excludesfile<br />
+In addition to <em>.gitignore</em> (per-directory) and <em>.git/info/exclude</em>, Git looks into this file for patterns of files which are not meant to be tracked. &ldquo;<code>~/</code>&rdquo; is expanded to the value of <code>$HOME</code> and &ldquo;<code>~user/</code>&rdquo; to the specified user’s home directory. Its default value is $XDG_CONFIG_HOME/git/ignore. If $XDG_CONFIG_HOME is either not set or empty, $HOME/.config/git/ignore is used instead. See <a href="../gitignore">gitignore(5)</a>.</p>
+
+<p>core.askpass<br />
+Some commands (e.g. svn and http interfaces) that interactively ask for a password can be told to use an external program given via the value of this variable. Can be overridden by the <em>GIT_ASKPASS</em> environment variable. If not set, fall back to the value of the <em>SSH_ASKPASS</em> environment variable or, failing that, a simple password prompt. The external program shall be given a suitable prompt as command-line argument and write the password on its STDOUT.</p>
+
+<p>core.attributesfile<br />
+In addition to <em>.gitattributes</em> (per-directory) and <em>.git/info/attributes</em>, Git looks into this file for attributes (see <a href="../gitattributes">gitattributes(5)</a>). Path expansions are made the same way as for <code>core.excludesfile</code>. Its default value is $XDG_CONFIG_HOME/git/attributes. If $XDG_CONFIG_HOME is either not set or empty, $HOME/.config/git/attributes is used instead.</p>
+
+<p>core.editor<br />
+Commands such as <code>commit</code> and <code>tag</code> that lets you edit messages by launching an editor uses the value of this variable when it is set, and the environment variable <code>GIT_EDITOR</code> is not set. See <a href="../git-var">git-var(1)</a>.</p>
+
+<p>core.commentchar<br />
+Commands such as <code>commit</code> and <code>tag</code> that lets you edit messages consider a line that begins with this character commented, and removes them after the editor returns (default <em>#</em>).</p>
+
+<p>If set to &ldquo;auto&rdquo;, <code>git-commit</code> would select a character that is not the beginning character of any line in existing commit messages.</p>
+
+<p>sequence.editor<br />
+Text editor used by <code>git rebase -i</code> for editing the rebase instruction file. The value is meant to be interpreted by the shell when it is used. It can be overridden by the <code>GIT_SEQUENCE_EDITOR</code> environment variable. When not configured the default commit message editor is used instead.</p>
+
+<p>core.pager<br />
+Text viewer for use by Git commands (e.g., <em>less</em>). The value is meant to be interpreted by the shell. The order of preference is the <code>$GIT_PAGER</code> environment variable, then <code>core.pager</code> configuration, then <code>$PAGER</code>, and then the default chosen at compile time (usually <em>less</em>).</p>
+
+<p>When the <code>LESS</code> environment variable is unset, Git sets it to <code>FRX</code> (if <code>LESS</code> environment variable is set, Git does not change it at all). If you want to selectively override Git’s default setting for <code>LESS</code>, you can set <code>core.pager</code> to e.g. <code>less                       -S</code>. This will be passed to the shell by Git, which will translate the final command to <code>LESS=FRX less -S</code>. The environment does not set the <code>S</code> option but the command line does, instructing less to truncate long lines. Similarly, setting <code>core.pager</code> to <code>less -+F</code> will deactivate the <code>F</code> option specified by the environment from the command-line, deactivating the &ldquo;quit if one screen&rdquo; behavior of <code>less</code>. One can specifically activate some flags for particular commands: for example, setting <code>pager.blame</code> to <code>less -S</code> enables line truncation only for <code>git                       blame</code>.</p>
+
+<p>Likewise, when the <code>LV</code> environment variable is unset, Git sets it to <code>-c</code>. You can override this setting by exporting <code>LV</code> with another value or setting <code>core.pager</code> to <code>lv                       +c</code>.</p>
+
+<p>core.whitespace<br />
+A comma separated list of common whitespace problems to notice. <em>git diff</em> will use <code>color.diff.whitespace</code> to highlight them, and <em>git apply &ndash;whitespace=error</em> will consider them as errors. You can prefix <code>-</code> to disable any of them (e.g. <code>-trailing-space</code>):</p>
+
+<ul>
+<li><p><code>blank-at-eol</code> treats trailing whitespaces at the end of the line as an error (enabled by default).</p></li>
+
+<li><p><code>space-before-tab</code> treats a space character that appears immediately before a tab character in the initial indent part of the line as an error (enabled by default).</p></li>
+
+<li><p><code>indent-with-non-tab</code> treats a line that is indented with space characters instead of the equivalent tabs as an error (not enabled by default).</p></li>
+
+<li><p><code>tab-in-indent</code> treats a tab character in the initial indent part of the line as an error (not enabled by default).</p></li>
+
+<li><p><code>blank-at-eof</code> treats blank lines added at the end of file as an error (enabled by default).</p></li>
+
+<li><p><code>trailing-space</code> is a short-hand to cover both <code>blank-at-eol</code> and <code>blank-at-eof</code>.</p></li>
+
+<li><p><code>cr-at-eol</code> treats a carriage-return at the end of line as part of the line terminator, i.e. with it, <code>trailing-space</code> does not trigger if the character before such a carriage-return is not a whitespace (not enabled by default).</p></li>
+
+<li><p><code>tabwidth=&lt;n&gt;</code> tells how many character positions a tab occupies; this is relevant for <code>indent-with-non-tab</code> and when Git fixes <code>tab-in-indent</code> errors. The default tab width is 8. Allowed values are 1 to 63.</p></li>
+</ul>
+
+<p>core.fsyncobjectfiles<br />
+This boolean will enable <em>fsync()</em> when writing object files.</p>
+
+<p>This is a total waste of time and effort on a filesystem that orders data writes properly, but can be useful for filesystems that do not use journalling (traditional UNIX filesystems) or that only journal metadata and not file contents (OS X’s HFS+, or Linux ext3 with &ldquo;data=writeback&rdquo;).</p>
+
+<p>core.preloadindex<br />
+Enable parallel index preload for operations like <em>git diff</em></p>
+
+<p>This can speed up operations like <em>git diff</em> and <em>git status</em> especially on filesystems like NFS that have weak caching semantics and thus relatively high IO latencies. When enabled, Git will do the index comparison to the filesystem data in parallel, allowing overlapping IO’s. Defaults to true.</p>
+
+<p>core.createObject<br />
+You can set this to <em>link</em>, in which case a hardlink followed by a delete of the source are used to make sure that object creation will not overwrite existing objects.</p>
+
+<p>On some file system/operating system combinations, this is unreliable. Set this config setting to <em>rename</em> there; However, This will remove the check that makes sure that existing object files will not get overwritten.</p>
+
+<p>core.notesRef<br />
+When showing commit messages, also show notes which are stored in the given ref. The ref must be fully qualified. If the given ref does not exist, it is not an error but means that no notes should be printed.</p>
+
+<p>This setting defaults to &ldquo;refs/notes/commits&rdquo;, and it can be overridden by the <em>GIT_NOTES_REF</em> environment variable. See <a href="../git-notes">git-notes(1)</a>.</p>
+
+<p>core.sparseCheckout<br />
+Enable &ldquo;sparse checkout&rdquo; feature. See section &ldquo;Sparse checkout&rdquo; in <a href="../git-read-tree">git-read-tree(1)</a> for more information.</p>
+
+<p>core.abbrev<br />
+Set the length object names are abbreviated to. If unspecified, many commands abbreviate to 7 hexdigits, which may not be enough for abbreviated object names to stay unique for sufficiently long time.</p>
+
+<p>add.ignore-errors
+add.ignoreErrors<br />
+Tells <em>git add</em> to continue adding files when some files cannot be added due to indexing errors. Equivalent to the <em>&ndash;ignore-errors</em> option of <a href="../git-add">git-add(1)</a>. Older versions of Git accept only <code>add.ignore-errors</code>, which does not follow the usual naming convention for configuration variables. Newer versions of Git honor <code>add.ignoreErrors</code> as well.</p>
+
+<p>alias.*<br />
+Command aliases for the <a href="../git">git(1)</a> command wrapper - e.g. after defining &ldquo;alias.last = cat-file commit HEAD&rdquo;, the invocation &ldquo;git last&rdquo; is equivalent to &ldquo;git cat-file commit HEAD&rdquo;. To avoid confusion and troubles with script usage, aliases that hide existing Git commands are ignored. Arguments are split by spaces, the usual shell quoting and escaping is supported. quote pair and a backslash can be used to quote them.</p>
+
+<p>If the alias expansion is prefixed with an exclamation point, it will be treated as a shell command. For example, defining &ldquo;alias.new = !gitk &ndash;all &ndash;not ORIG_HEAD&rdquo;, the invocation &ldquo;git new&rdquo; is equivalent to running the shell command &ldquo;gitk &ndash;all &ndash;not ORIG_HEAD&rdquo;. Note that shell commands will be executed from the top-level directory of a repository, which may not necessarily be the current directory. <em>GIT_PREFIX</em> is set as returned by running <em>git rev-parse &ndash;show-prefix</em> from the original current directory. See <a href="../git-rev-parse">git-rev-parse(1)</a>.</p>
+
+<p>am.keepcr<br />
+If true, git-am will call git-mailsplit for patches in mbox format with parameter <em>&ndash;keep-cr</em>. In this case git-mailsplit will not remove <code>\r</code> from lines ending with <code>\r\n</code>. Can be overridden by giving <em>&ndash;no-keep-cr</em> from the command line. See <a href="../git-am">git-am(1)</a>, <a href="../git-mailsplit">git-mailsplit(1)</a>.</p>
+
+<p>apply.ignorewhitespace<br />
+When set to <em>change</em>, tells <em>git apply</em> to ignore changes in whitespace, in the same way as the <em>&ndash;ignore-space-change</em> option. When set to one of: no, none, never, false tells <em>git apply</em> to respect all whitespace differences. See <a href="../git-apply">git-apply(1)</a>.</p>
+
+<p>apply.whitespace<br />
+Tells <em>git apply</em> how to handle whitespaces, in the same way as the <em>&ndash;whitespace</em> option. See <a href="../git-apply">git-apply(1)</a>.</p>
+
+<p>branch.autosetupmerge<br />
+Tells <em>git branch</em> and <em>git checkout</em> to set up new branches so that <a href="../git-pull">git-pull(1)</a> will appropriately merge from the starting point branch. Note that even if this option is not set, this behavior can be chosen per-branch using the <code>--track</code> and <code>--no-track</code> options. The valid settings are: <code>false</code> — no automatic setup is done; <code>true</code> — automatic setup is done when the starting point is a remote-tracking branch; <code>always</code> —  automatic setup is done when the starting point is either a local branch or remote-tracking branch. This option defaults to true.</p>
+
+<p>branch.autosetuprebase<br />
+When a new branch is created with <em>git branch</em> or <em>git checkout</em> that tracks another branch, this variable tells Git to set up pull to rebase instead of merge (see &ldquo;branch.&lt;name&gt;.rebase&rdquo;). When <code>never</code>, rebase is never automatically set to true. When <code>local</code>, rebase is set to true for tracked branches of other local branches. When <code>remote</code>, rebase is set to true for tracked branches of remote-tracking branches. When <code>always</code>, rebase will be set to true for all tracking branches. See &ldquo;branch.autosetupmerge&rdquo; for details on how to set up a branch to track another branch. This option defaults to never.</p>
+
+<p>branch.&lt;name&gt;.remote<br />
+When on branch &lt;name&gt;, it tells <em>git fetch</em> and <em>git push</em> which remote to fetch from/push to. The remote to push to may be overridden with <code>remote.pushdefault</code> (for all branches). The remote to push to, for the current branch, may be further overridden by <code>branch.&lt;name&gt;.pushremote</code>. If no remote is configured, or if you are not on any branch, it defaults to <code>origin</code> for fetching and <code>remote.pushdefault</code> for pushing. Additionally, <code>.</code> (a period) is the current local repository (a dot-repository), see <code>branch.&lt;name&gt;.merge</code>&rsquo;s final note below.</p>
+
+<p>branch.&lt;name&gt;.pushremote<br />
+When on branch &lt;name&gt;, it overrides <code>branch.&lt;name&gt;.remote</code> for pushing. It also overrides <code>remote.pushdefault</code> for pushing from branch &lt;name&gt;. When you pull from one place (e.g. your upstream) and push to another place (e.g. your own publishing repository), you would want to set <code>remote.pushdefault</code> to specify the remote to push to for all branches, and use this option to override it for a specific branch.</p>
+
+<p>branch.&lt;name&gt;.merge<br />
+Defines, together with branch.&lt;name&gt;.remote, the upstream branch for the given branch. It tells <em>git fetch</em>/<em>git pull</em>/<em>git rebase</em> which branch to merge and can also affect <em>git push</em> (see push.default). When in branch &lt;name&gt;, it tells <em>git fetch</em> the default refspec to be marked for merging in FETCH_HEAD. The value is handled like the remote part of a refspec, and must match a ref which is fetched from the remote given by &ldquo;branch.&lt;name&gt;.remote&rdquo;. The merge information is used by <em>git pull</em> (which at first calls <em>git fetch</em>) to lookup the default branch for merging. Without this option, <em>git pull</em> defaults to merge the first refspec fetched. Specify multiple values to get an octopus merge. If you wish to setup <em>git pull</em> so that it merges into &lt;name&gt; from another branch in the local repository, you can point branch.&lt;name&gt;.merge to the desired branch, and use the relative path setting <code>.</code> (a period) for branch.&lt;name&gt;.remote.</p>
+
+<p>branch.&lt;name&gt;.mergeoptions<br />
+Sets default options for merging into branch &lt;name&gt;. The syntax and supported options are the same as those of <a href="../git-merge">git-merge(1)</a>, but option values containing whitespace characters are currently not supported.</p>
+
+<p>branch.&lt;name&gt;.rebase<br />
+When true, rebase the branch &lt;name&gt; on top of the fetched branch, instead of merging the default branch from the default remote when &ldquo;git pull&rdquo; is run. See &ldquo;pull.rebase&rdquo; for doing this in a non branch-specific manner.</p>
+
+<pre><code>When preserve, also pass `--preserve-merges` along to 'git rebase'
+so that locally committed merge commits will not be flattened
+by running 'git pull'.
+</code></pre>
+
+<p><strong>NOTE</strong>: this is a possibly dangerous operation; do <strong>not</strong> use it unless you understand the implications (see <a href="../git-rebase">git-rebase(1)</a> for details).</p>
+
+<p>branch.&lt;name&gt;.description<br />
+Branch description, can be edited with <code>git branch --edit-description</code>. Branch description is automatically added in the format-patch cover letter or request-pull summary.</p>
+
+<p>browser.&lt;tool&gt;.cmd<br />
+Specify the command to invoke the specified browser. The specified command is evaluated in shell with the URLs passed as arguments. (See <a href="../git-web--browse">git-web&ndash;browse(1)</a>.)</p>
+
+<p>browser.&lt;tool&gt;.path<br />
+Override the path for the given tool that may be used to browse HTML help (see <em>-w</em> option in <a href="../git-help">git-help(1)</a>) or a working repository in gitweb (see <a href="../git-instaweb">git-instaweb(1)</a>).</p>
+
+<p>clean.requireForce<br />
+A boolean to make git-clean do nothing unless given -f, -i or -n. Defaults to true.</p>
+
+<p>color.branch<br />
+A boolean to enable/disable color in the output of <a href="../git-branch">git-branch(1)</a>. May be set to <code>always</code>, <code>false</code> (or <code>never</code>) or <code>auto</code> (or <code>true</code>), in which case colors are used only when the output is to a terminal. Defaults to false.</p>
+
+<p>color.branch.&lt;slot&gt;<br />
+Use customized color for branch coloration. <code>&lt;slot&gt;</code> is one of <code>current</code> (the current branch), <code>local</code> (a local branch), <code>remote</code> (a remote-tracking branch in refs/remotes/), <code>upstream</code> (upstream tracking branch), <code>plain</code> (other refs).</p>
+
+<p>The value for these configuration variables is a list of colors (at most two) and attributes (at most one), separated by spaces. The colors accepted are <code>normal</code>, <code>black</code>, <code>red</code>, <code>green</code>, <code>yellow</code>, <code>blue</code>, <code>magenta</code>, <code>cyan</code> and <code>white</code>; the attributes are <code>bold</code>, <code>dim</code>, <code>ul</code>, <code>blink</code> and <code>reverse</code>. The first color given is the foreground; the second is the background. The position of the attribute, if any, doesn’t matter.</p>
+
+<p>color.diff<br />
+Whether to use ANSI escape sequences to add color to patches. If this is set to <code>always</code>, <a href="../git-diff">git-diff(1)</a>, <a href="../git-log">git-log(1)</a>, and <a href="../git-show">git-show(1)</a> will use color for all patches. If it is set to <code>true</code> or <code>auto</code>, those commands will only use color when output is to the terminal. Defaults to false.</p>
+
+<p>This does not affect <a href="../git-format-patch">git-format-patch(1)</a> or the <em>git-diff-*</em> plumbing commands. Can be overridden on the command line with the <code>--color[=&lt;when&gt;]</code> option.</p>
+
+<p>color.diff.&lt;slot&gt;<br />
+Use customized color for diff colorization. <code>&lt;slot&gt;</code> specifies which part of the patch to use the specified color, and is one of <code>plain</code> (context text), <code>meta</code> (metainformation), <code>frag</code> (hunk header), <em>func</em> (function in hunk header), <code>old</code> (removed lines), <code>new</code> (added lines), <code>commit</code> (commit headers), or <code>whitespace</code> (highlighting whitespace errors). The values of these variables may be specified as in color.branch.&lt;slot&gt;.</p>
+
+<p>color.decorate.&lt;slot&gt;<br />
+Use customized color for <em>git log &ndash;decorate</em> output. <code>&lt;slot&gt;</code> is one of <code>branch</code>, <code>remoteBranch</code>, <code>tag</code>, <code>stash</code> or <code>HEAD</code> for local branches, remote-tracking branches, tags, stash and HEAD, respectively.</p>
+
+<p>color.grep<br />
+When set to <code>always</code>, always highlight matches. When <code>false</code> (or <code>never</code>), never. When set to <code>true</code> or <code>auto</code>, use color only when the output is written to the terminal. Defaults to <code>false</code>.</p>
+
+<p>color.grep.&lt;slot&gt;<br />
+Use customized color for grep colorization. <code>&lt;slot&gt;</code> specifies which part of the line to use the specified color, and is one of</p>
+
+<p><code>context</code><br />
+non-matching text in context lines (when using <code>-A</code>, <code>-B</code>, or <code>-C</code>)</p>
+
+<p><code>filename</code><br />
+filename prefix (when not using <code>-h</code>)</p>
+
+<p><code>function</code><br />
+function name lines (when using <code>-p</code>)</p>
+
+<p><code>linenumber</code><br />
+line number prefix (when using <code>-n</code>)</p>
+
+<p><code>match</code><br />
+matching text</p>
+
+<p><code>selected</code><br />
+non-matching text in selected lines</p>
+
+<p><code>separator</code><br />
+separators between fields on a line (<code>:</code>, <code>-</code>, and <code>=</code>) and between hunks (<code>--</code>)</p>
+
+<p>The values of these variables may be specified as in color.branch.&lt;slot&gt;.</p>
+
+<p>color.interactive<br />
+When set to <code>always</code>, always use colors for interactive prompts and displays (such as those used by &ldquo;git-add &ndash;interactive&rdquo; and &ldquo;git-clean &ndash;interactive&rdquo;). When false (or <code>never</code>), never. When set to <code>true</code> or <code>auto</code>, use colors only when the output is to the terminal. Defaults to false.</p>
+
+<p>color.interactive.&lt;slot&gt;<br />
+Use customized color for <em>git add &ndash;interactive</em> and <em>git clean &ndash;interactive</em> output. <code>&lt;slot&gt;</code> may be <code>prompt</code>, <code>header</code>, <code>help</code> or <code>error</code>, for four distinct types of normal output from interactive commands. The values of these variables may be specified as in color.branch.&lt;slot&gt;.</p>
+
+<p>color.pager<br />
+A boolean to enable/disable colored output when the pager is in use (default is true).</p>
+
+<p>color.showbranch<br />
+A boolean to enable/disable color in the output of <a href="../git-show-branch">git-show-branch(1)</a>. May be set to <code>always</code>, <code>false</code> (or <code>never</code>) or <code>auto</code> (or <code>true</code>), in which case colors are used only when the output is to a terminal. Defaults to false.</p>
+
+<p>color.status<br />
+A boolean to enable/disable color in the output of <a href="../git-status">git-status(1)</a>. May be set to <code>always</code>, <code>false</code> (or <code>never</code>) or <code>auto</code> (or <code>true</code>), in which case colors are used only when the output is to a terminal. Defaults to false.</p>
+
+<p>color.status.&lt;slot&gt;<br />
+Use customized color for status colorization. <code>&lt;slot&gt;</code> is one of <code>header</code> (the header text of the status message), <code>added</code> or <code>updated</code> (files which are added but not committed), <code>changed</code> (files which are changed but not added in the index), <code>untracked</code> (files which are not tracked by Git), <code>branch</code> (the current branch), or <code>nobranch</code> (the color the <em>no branch</em> warning is shown in, defaulting to red). The values of these variables may be specified as in color.branch.&lt;slot&gt;.</p>
+
+<p>color.ui<br />
+This variable determines the default value for variables such as <code>color.diff</code> and <code>color.grep</code> that control the use of color per command family. Its scope will expand as more commands learn configuration to set a default for the <code>--color</code> option. Set it to <code>false</code> or <code>never</code> if you prefer Git commands not to use color unless enabled explicitly with some other configuration or the <code>--color</code> option. Set it to <code>always</code> if you want all output not intended for machine consumption to use color, to <code>true</code> or <code>auto</code> (this is the default since Git 1.8.4) if you want such output to use color when written to the terminal.</p>
+
+<p>column.ui<br />
+Specify whether supported commands should output in columns. This variable consists of a list of tokens separated by spaces or commas:</p>
+
+<p>These options control when the feature should be enabled (defaults to <em>never</em>):</p>
+
+<p><code>always</code><br />
+always show in columns</p>
+
+<p><code>never</code><br />
+never show in columns</p>
+
+<p><code>auto</code><br />
+show in columns if the output is to the terminal</p>
+
+<p>These options control layout (defaults to <em>column</em>). Setting any of these implies <em>always</em> if none of <em>always</em>, <em>never</em>, or <em>auto</em> are specified.</p>
+
+<p><code>column</code><br />
+fill columns before rows</p>
+
+<p><code>row</code><br />
+fill rows before columns</p>
+
+<p><code>plain</code><br />
+show in one column</p>
+
+<p>Finally, these options can be combined with a layout option (defaults to <em>nodense</em>):</p>
+
+<p><code>dense</code><br />
+make unequal size columns to utilize more space</p>
+
+<p><code>nodense</code><br />
+make equal size columns</p>
+
+<p>column.branch<br />
+Specify whether to output branch listing in <code>git branch</code> in columns. See <code>column.ui</code> for details.</p>
+
+<p>column.clean<br />
+Specify the layout when list items in <code>git                     clean -i</code>, which always shows files and directories in columns. See <code>column.ui</code> for details.</p>
+
+<p>column.status<br />
+Specify whether to output untracked files in <code>git status</code> in columns. See <code>column.ui</code> for details.</p>
+
+<p>column.tag<br />
+Specify whether to output tag listing in <code>git tag</code> in columns. See <code>column.ui</code> for details.</p>
+
+<p>commit.cleanup<br />
+This setting overrides the default of the <code>--cleanup</code> option in <code>git                     commit</code>. See <a href="../git-commit">git-commit(1)</a> for details. Changing the default can be useful when you always want to keep lines that begin with comment character <code>#</code> in your log message, in which case you would do <code>git config commit.cleanup                     whitespace</code> (note that you will have to remove the help lines that begin with <code>#</code> in the commit log template yourself, if you do this).</p>
+
+<p>commit.gpgsign<br />
+A boolean to specify whether all commits should be GPG signed. Use of this option when doing operations such as rebase can result in a large number of commits being signed. It may be convenient to use an agent to avoid typing your GPG passphrase several times.</p>
+
+<p>commit.status<br />
+A boolean to enable/disable inclusion of status information in the commit message template when using an editor to prepare the commit message. Defaults to true.</p>
+
+<p>commit.template<br />
+Specify a file to use as the template for new commit messages. &ldquo;<code>~/</code>&rdquo; is expanded to the value of <code>$HOME</code> and &ldquo;<code>~user/</code>&rdquo; to the specified user’s home directory.</p>
+
+<p>credential.helper<br />
+Specify an external helper to be called when a username or password credential is needed; the helper may consult external storage to avoid prompting the user for the credentials. See <a href="../gitcredentials">gitcredentials(7)</a> for details.</p>
+
+<p>credential.useHttpPath<br />
+When acquiring credentials, consider the &ldquo;path&rdquo; component of an http or https URL to be important. Defaults to false. See <a href="../gitcredentials">gitcredentials(7)</a> for more information.</p>
+
+<p>credential.username<br />
+If no username is set for a network authentication, use this username by default. See credential.&lt;context&gt;.* below, and <a href="../gitcredentials">gitcredentials(7)</a>.</p>
+
+<p>credential.&lt;url&gt;.*<br />
+Any of the credential.* options above can be applied selectively to some credentials. For example &ldquo;credential.<a href="https://example.com.username&quot;">https://example.com.username&quot;</a> would set the default username only for https connections to example.com. See <a href="../gitcredentials">gitcredentials(7)</a> for details on how URLs are matched.</p>
+
+<p>diff.autorefreshindex<br />
+When using <em>git diff</em> to compare with work tree files, do not consider stat-only change as changed. Instead, silently run <code>git                     update-index --refresh</code> to update the cached stat information for paths whose contents in the work tree match the contents in the index. This option defaults to true. Note that this affects only <em>git diff</em> Porcelain, and not lower level <em>diff</em> commands such as <em>git diff-files</em>.</p>
+
+<p>diff.dirstat<br />
+A comma separated list of <code>--dirstat</code> parameters specifying the default behavior of the <code>--dirstat</code> option to <a href="../git-diff">git-diff(1)</a>` and friends. The defaults can be overridden on the command line (using <code>--dirstat=&lt;param1,param2,...&gt;</code>). The fallback defaults (when not changed by <code>diff.dirstat</code>) are <code>changes,noncumulative,3</code>. The following parameters are available:</p>
+
+<p><code>changes</code><br />
+Compute the dirstat numbers by counting the lines that have been removed from the source, or added to the destination. This ignores the amount of pure code movements within a file. In other words, rearranging lines in a file is not counted as much as other changes. This is the default behavior when no parameter is given.</p>
+
+<p><code>lines</code><br />
+Compute the dirstat numbers by doing the regular line-based diff analysis, and summing the removed/added line counts. (For binary files, count 64-byte chunks instead, since binary files have no natural concept of lines). This is a more expensive <code>--dirstat</code> behavior than the <code>changes</code> behavior, but it does count rearranged lines within a file as much as other changes. The resulting output is consistent with what you get from the other <code>--*stat</code> options.</p>
+
+<p><code>files</code><br />
+Compute the dirstat numbers by counting the number of files changed. Each changed file counts equally in the dirstat analysis. This is the computationally cheapest <code>--dirstat</code> behavior, since it does not have to look at the file contents at all.</p>
+
+<p><code>cumulative</code><br />
+Count changes in a child directory for the parent directory as well. Note that when using <code>cumulative</code>, the sum of the percentages reported may exceed 100%. The default (non-cumulative) behavior can be specified with the <code>noncumulative</code> parameter.</p>
+
+<p>&lt;limit&gt;<br />
+An integer parameter specifies a cut-off percent (3% by default). Directories contributing less than this percentage of the changes are not shown in the output.</p>
+
+<p>Example: The following will count changed files, while ignoring directories with less than 10% of the total amount of changed files, and accumulating child directory counts in the parent directories: <code>files,10,cumulative</code>.</p>
+
+<p>diff.statGraphWidth<br />
+Limit the width of the graph part in &ndash;stat output. If set, applies to all commands generating &ndash;stat output except format-patch.</p>
+
+<p>diff.context<br />
+Generate diffs with &lt;n&gt; lines of context instead of the default of 3. This value is overridden by the -U option.</p>
+
+<p>diff.external<br />
+If this config variable is set, diff generation is not performed using the internal diff machinery, but using the given command. Can be overridden with the ‘GIT_EXTERNAL_DIFF’ environment variable. The command is called with parameters as described under &ldquo;git Diffs&rdquo; in <a href="../git">git(1)</a>. Note: if you want to use an external diff program only on a subset of your files, you might want to use <a href="../gitattributes">gitattributes(5)</a> instead.</p>
+
+<p>diff.ignoreSubmodules<br />
+Sets the default value of &ndash;ignore-submodules. Note that this affects only <em>git diff</em> Porcelain, and not lower level <em>diff</em> commands such as <em>git diff-files</em>. <em>git checkout</em> also honors this setting when reporting uncommitted changes. Setting it to <em>all</em> disables the submodule summary normally shown by <em>git commit</em> and <em>git status</em> when <em>status.submodulesummary</em> is set unless it is overridden by using the &ndash;ignore-submodules command-line option. The <em>git submodule</em> commands are not affected by this setting.</p>
+
+<p>diff.mnemonicprefix<br />
+If set, <em>git diff</em> uses a prefix pair that is different from the standard &ldquo;a/&rdquo; and &ldquo;b/&rdquo; depending on what is being compared. When this configuration is in effect, reverse diff output also swaps the order of the prefixes:</p>
+
+<p><code>git diff</code><br />
+compares the (i)ndex and the (w)ork tree;</p>
+
+<p><code>git diff HEAD</code><br />
+compares a &copy;ommit and the (w)ork tree;</p>
+
+<p><code>git diff                         --cached</code><br />
+compares a &copy;ommit and the (i)ndex;</p>
+
+<p><code>git diff HEAD:file1                         file2</code><br />
+compares an (o)bject and a (w)ork tree entity;</p>
+
+<p><code>git diff --no-index                         a b</code><br />
+compares two non-git things (1) and (2).</p>
+
+<p>diff.noprefix<br />
+If set, <em>git diff</em> does not show any source or destination prefix.</p>
+
+<p>diff.orderfile<br />
+File indicating how to order files within a diff, using one shell glob pattern per line. Can be overridden by the <em>-O</em> option to <a href="../git-diff">git-diff(1)</a>.</p>
+
+<p>diff.renameLimit<br />
+The number of files to consider when performing the copy/rename detection; equivalent to the <em>git diff</em> option <em>-l</em>.</p>
+
+<p>diff.renames<br />
+Tells Git to detect renames. If set to any boolean value, it will enable basic rename detection. If set to &ldquo;copies&rdquo; or &ldquo;copy&rdquo;, it will detect copies, as well.</p>
+
+<p>diff.suppressBlankEmpty<br />
+A boolean to inhibit the standard behavior of printing a space before each empty output line. Defaults to false.</p>
+
+<p>diff.submodule<br />
+Specify the format in which differences in submodules are shown. The &ldquo;log&rdquo; format lists the commits in the range like <a href="../git-submodule">git-submodule(1)</a> <code>summary</code> does. The &ldquo;short&rdquo; format format just shows the names of the commits at the beginning and end of the range. Defaults to short.</p>
+
+<p>diff.wordRegex<br />
+A POSIX Extended Regular Expression used to determine what is a &ldquo;word&rdquo; when performing word-by-word difference calculations. Character sequences that match the regular expression are &ldquo;words&rdquo;, all other characters are <strong>ignorable</strong> whitespace.</p>
+
+<p>diff.&lt;driver&gt;.command<br />
+The custom diff driver command. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>diff.&lt;driver&gt;.xfuncname<br />
+The regular expression that the diff driver should use to recognize the hunk header. A built-in pattern may also be used. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>diff.&lt;driver&gt;.binary<br />
+Set this option to true to make the diff driver treat files as binary. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>diff.&lt;driver&gt;.textconv<br />
+The command that the diff driver should call to generate the text-converted version of a file. The result of the conversion is used to generate a human-readable diff. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>diff.&lt;driver&gt;.wordregex<br />
+The regular expression that the diff driver should use to split words in a line. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>diff.&lt;driver&gt;.cachetextconv<br />
+Set this option to true to make the diff driver cache the text conversion outputs. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>diff.tool<br />
+Controls which diff tool is used by <a href="../git-difftool">git-difftool(1)</a>. This variable overrides the value configured in <code>merge.tool</code>. The list below shows the valid built-in values. Any other value is treated as a custom diff tool and requires that a corresponding difftool.&lt;tool&gt;.cmd variable is defined.</p>
+
+<ul>
+<li><p>araxis</p></li>
+
+<li><p>bc3</p></li>
+
+<li><p>codecompare</p></li>
+
+<li><p>deltawalker</p></li>
+
+<li><p>diffmerge</p></li>
+
+<li><p>diffuse</p></li>
+
+<li><p>ecmerge</p></li>
+
+<li><p>emerge</p></li>
+
+<li><p>gvimdiff</p></li>
+
+<li><p>gvimdiff2</p></li>
+
+<li><p>gvimdiff3</p></li>
+
+<li><p>kdiff3</p></li>
+
+<li><p>kompare</p></li>
+
+<li><p>meld</p></li>
+
+<li><p>opendiff</p></li>
+
+<li><p>p4merge</p></li>
+
+<li><p>tkdiff</p></li>
+
+<li><p>vimdiff</p></li>
+
+<li><p>vimdiff2</p></li>
+
+<li><p>vimdiff3</p></li>
+
+<li><p>xxdiff</p></li>
+</ul>
+
+<p>diff.algorithm<br />
+Choose a diff algorithm. The variants are as follows:</p>
+
+<p><code>default</code>, <code>myers</code><br />
+The basic greedy diff algorithm. Currently, this is the default.</p>
+
+<p><code>minimal</code><br />
+Spend extra time to make sure the smallest possible diff is produced.</p>
+
+<p><code>patience</code><br />
+Use &ldquo;patience diff&rdquo; algorithm when generating patches.</p>
+
+<p><code>histogram</code><br />
+This algorithm extends the patience algorithm to &ldquo;support low-occurrence common elements&rdquo;.</p>
+
+<p>difftool.&lt;tool&gt;.path<br />
+Override the path for the given tool. This is useful in case your tool is not in the PATH.</p>
+
+<p>difftool.&lt;tool&gt;.cmd<br />
+Specify the command to invoke the specified diff tool. The specified command is evaluated in shell with the following variables available: <em>LOCAL</em> is set to the name of the temporary file containing the contents of the diff pre-image and <em>REMOTE</em> is set to the name of the temporary file containing the contents of the diff post-image.</p>
+
+<p>difftool.prompt<br />
+Prompt before each invocation of the diff tool.</p>
+
+<p>fetch.recurseSubmodules<br />
+This option can be either set to a boolean value or to <em>on-demand</em>. Setting it to a boolean changes the behavior of fetch and pull to unconditionally recurse into submodules when set to true or to not recurse at all when set to false. When set to <em>on-demand</em> (the default value), fetch and pull will only recurse into a populated submodule when its superproject retrieves a commit that updates the submodule’s reference.</p>
+
+<p>fetch.fsckObjects<br />
+If it is set to true, git-fetch-pack will check all fetched objects. It will abort in the case of a malformed object or a broken link. The result of an abort are only dangling objects. Defaults to false. If not set, the value of <code>transfer.fsckObjects</code> is used instead.</p>
+
+<p>fetch.unpackLimit<br />
+If the number of objects fetched over the Git native transfer is below this limit, then the objects will be unpacked into loose object files. However if the number of received objects equals or exceeds this limit then the received pack will be stored as a pack, after adding any missing delta bases. Storing the pack from a push can make the push operation complete faster, especially on slow filesystems. If not set, the value of <code>transfer.unpackLimit</code> is used instead.</p>
+
+<p>fetch.prune<br />
+If true, fetch will automatically behave as if the <code>--prune</code> option was given on the command line. See also <code>remote.&lt;name&gt;.prune</code>.</p>
+
+<p>format.attach<br />
+Enable multipart/mixed attachments as the default for <em>format-patch</em>. The value can also be a double quoted string which will enable attachments as the default and set the value as the boundary. See the &ndash;attach option in <a href="../git-format-patch">git-format-patch(1)</a>.</p>
+
+<p>format.numbered<br />
+A boolean which can enable or disable sequence numbers in patch subjects. It defaults to &ldquo;auto&rdquo; which enables it only if there is more than one patch. It can be enabled or disabled for all messages by setting it to &ldquo;true&rdquo; or &ldquo;false&rdquo;. See &ndash;numbered option in <a href="../git-format-patch">git-format-patch(1)</a>.</p>
+
+<p>format.headers<br />
+Additional email headers to include in a patch to be submitted by mail. See <a href="../git-format-patch">git-format-patch(1)</a>.</p>
+
+<p>format.to
+format.cc<br />
+Additional recipients to include in a patch to be submitted by mail. See the &ndash;to and &ndash;cc options in <a href="../git-format-patch">git-format-patch(1)</a>.</p>
+
+<p>format.subjectprefix<br />
+The default for format-patch is to output files with the <em>[PATCH]</em> subject prefix. Use this variable to change that prefix.</p>
+
+<p>format.signature<br />
+The default for format-patch is to output a signature containing the Git version number. Use this variable to change that default. Set this variable to the empty string (&ldquo;&rdquo;) to suppress signature generation.</p>
+
+<p>format.signaturefile<br />
+Works just like format.signature except the contents of the file specified by this variable will be used as the signature.</p>
+
+<p>format.suffix<br />
+The default for format-patch is to output files with the suffix <code>.patch</code>. Use this variable to change that suffix (make sure to include the dot if you want it).</p>
+
+<p>format.pretty<br />
+The default pretty format for log/show/whatchanged command, See <a href="../git-log">git-log(1)</a>, <a href="../git-show">git-show(1)</a>, <a href="../git-whatchanged">git-whatchanged(1)</a>.</p>
+
+<p>format.thread<br />
+The default threading style for <em>git format-patch</em>. Can be a boolean value, or <code>shallow</code> or <code>deep</code>. <code>shallow</code> threading makes every mail a reply to the head of the series, where the head is chosen from the cover letter, the <code>--in-reply-to</code>, and the first patch mail, in this order. <code>deep</code> threading makes every mail a reply to the previous one. A true boolean value is the same as <code>shallow</code>, and a false value disables threading.</p>
+
+<p>format.signoff<br />
+A boolean value which lets you enable the <code>-s/--signoff</code> option of format-patch by default. <strong>Note:</strong> Adding the Signed-off-by: line to a patch should be a conscious act and means that you certify you have the rights to submit this work under the same open source license. Please see the <em>SubmittingPatches</em> document for further discussion.</p>
+
+<p>format.coverLetter<br />
+A boolean that controls whether to generate a cover-letter when format-patch is invoked, but in addition can be set to &ldquo;auto&rdquo;, to generate a cover-letter only when there’s more than one patch.</p>
+
+<p>filter.&lt;driver&gt;.clean<br />
+The command which is used to convert the content of a worktree file to a blob upon checkin. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>filter.&lt;driver&gt;.smudge<br />
+The command which is used to convert the content of a blob object to a worktree file upon checkout. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>gc.aggressiveDepth<br />
+The depth parameter used in the delta compression algorithm used by <em>git gc &ndash;aggressive</em>. This defaults to 250.</p>
+
+<p>gc.aggressiveWindow<br />
+The window size parameter used in the delta compression algorithm used by <em>git gc &ndash;aggressive</em>. This defaults to 250.</p>
+
+<p>gc.auto<br />
+When there are approximately more than this many loose objects in the repository, <code>git gc                     --auto</code> will pack them. Some Porcelain commands use this command to perform a light-weight garbage collection from time to time. The default value is 6700. Setting this to 0 disables it.</p>
+
+<p>gc.autopacklimit<br />
+When there are more than this many packs that are not marked with <code>*.keep</code> file in the repository, <code>git gc --auto</code> consolidates them into one larger pack. The default value is 50. Setting this to 0 disables it.</p>
+
+<p>gc.autodetach<br />
+Make <code>git gc --auto</code> return immediately andrun in background if the system supports it. Default is true.</p>
+
+<p>gc.packrefs<br />
+Running <code>git pack-refs</code> in a repository renders it unclonable by Git versions prior to 1.5.1.2 over dumb transports such as HTTP. This variable determines whether <em>git gc</em> runs <code>git pack-refs</code>. This can be set to <code>notbare</code> to enable it within all non-bare repos or it can be set to a boolean value. The default is <code>true</code>.</p>
+
+<p>gc.pruneexpire<br />
+When <em>git gc</em> is run, it will call <em>prune &ndash;expire 2.weeks.ago</em>. Override the grace period with this config variable. The value &ldquo;now&rdquo; may be used to disable this grace period and always prune unreachable objects immediately.</p>
+
+<p>gc.reflogexpire
+gc.&lt;pattern&gt;.reflogexpire<br />
+<em>git reflog expire</em> removes reflog entries older than this time; defaults to 90 days. With &ldquo;&lt;pattern&gt;&rdquo; (e.g. &ldquo;refs/stash&rdquo;) in the middle the setting applies only to the refs that match the &lt;pattern&gt;.</p>
+
+<p>gc.reflogexpireunreachable
+gc.&lt;ref&gt;.reflogexpireunreachable<br />
+<em>git reflog expire</em> removes reflog entries older than this time and are not reachable from the current tip; defaults to 30 days. With &ldquo;&lt;pattern&gt;&rdquo; (e.g. &ldquo;refs/stash&rdquo;) in the middle, the setting applies only to the refs that match the &lt;pattern&gt;.</p>
+
+<p>gc.rerereresolved<br />
+Records of conflicted merge you resolved earlier are kept for this many days when <em>git rerere gc</em> is run. The default is 60 days. See <a href="../git-rerere">git-rerere(1)</a>.</p>
+
+<p>gc.rerereunresolved<br />
+Records of conflicted merge you have not resolved are kept for this many days when <em>git rerere gc</em> is run. The default is 15 days. See <a href="../git-rerere">git-rerere(1)</a>.</p>
+
+<p>gitcvs.commitmsgannotation<br />
+Append this string to each commit message. Set to empty string to disable this feature. Defaults to &ldquo;via git-CVS emulator&rdquo;.</p>
+
+<p>gitcvs.enabled<br />
+Whether the CVS server interface is enabled for this repository. See <a href="../git-cvsserver">git-cvsserver(1)</a>.</p>
+
+<p>gitcvs.logfile<br />
+Path to a log file where the CVS server interface well… logs various stuff. See <a href="../git-cvsserver">git-cvsserver(1)</a>.</p>
+
+<p>gitcvs.usecrlfattr<br />
+If true, the server will look up the end-of-line conversion attributes for files to determine the <em>-k</em> modes to use. If the attributes force Git to treat a file as text, the <em>-k</em> mode will be left blank so CVS clients will treat it as text. If they suppress text conversion, the file will be set with <em>-kb</em> mode, which suppresses any newline munging the client might otherwise do. If the attributes do not allow the file type to be determined, then <em>gitcvs.allbinary</em> is used. See <a href="../gitattributes">gitattributes(5)</a>.</p>
+
+<p>gitcvs.allbinary<br />
+This is used if <em>gitcvs.usecrlfattr</em> does not resolve the correct <em>-kb</em> mode to use. If true, all unresolved files are sent to the client in mode <em>-kb</em>. This causes the client to treat them as binary files, which suppresses any newline munging it otherwise might do. Alternatively, if it is set to &ldquo;guess&rdquo;, then the contents of the file are examined to decide if it is binary, similar to <em>core.autocrlf</em>.</p>
+
+<p>gitcvs.dbname<br />
+Database used by git-cvsserver to cache revision information derived from the Git repository. The exact meaning depends on the used database driver, for SQLite (which is the default driver) this is a filename. Supports variable substitution (see <a href="../git-cvsserver">git-cvsserver(1)</a> for details). May not contain semicolons (<code>;</code>). Default: <em>%Ggitcvs.%m.sqlite</em></p>
+
+<p>gitcvs.dbdriver<br />
+Used Perl DBI driver. You can specify any available driver for this here, but it might not work. git-cvsserver is tested with <em>DBD::SQLite</em>, reported to work with <em>DBD::Pg</em>, and reported <strong>not</strong> to work with <em>DBD::mysql</em>. Experimental feature. May not contain double colons (<code>:</code>). Default: <em>SQLite</em>. See <a href="../git-cvsserver">git-cvsserver(1)</a>.</p>
+
+<p>gitcvs.dbuser, gitcvs.dbpass<br />
+Database user and password. Only useful if setting <em>gitcvs.dbdriver</em>, since SQLite has no concept of database users and/or passwords. <em>gitcvs.dbuser</em> supports variable substitution (see <a href="../git-cvsserver">git-cvsserver(1)</a> for details).</p>
+
+<p>gitcvs.dbTableNamePrefix<br />
+Database table name prefix. Prepended to the names of any database tables used, allowing a single database to be used for several repositories. Supports variable substitution (see <a href="../git-cvsserver">git-cvsserver(1)</a> for details). Any non-alphabetic characters will be replaced with underscores.</p>
+
+<p>All gitcvs variables except for <em>gitcvs.usecrlfattr</em> and <em>gitcvs.allbinary</em> can also be specified as <em>gitcvs.&lt;access_method&gt;.&lt;varname&gt;</em> (where <em>access_method</em> is one of &ldquo;ext&rdquo; and &ldquo;pserver&rdquo;) to make them apply only for the given access method.</p>
+
+<p>gitweb.category
+gitweb.description
+gitweb.owner
+gitweb.url<br />
+See <a href="../gitweb">gitweb(1)</a> for description.</p>
+
+<p>gitweb.avatar
+gitweb.blame
+gitweb.grep
+gitweb.highlight
+gitweb.patches
+gitweb.pickaxe
+gitweb.remote_heads
+gitweb.showsizes
+gitweb.snapshot<br />
+See <a href="../gitweb.conf">gitweb.conf(5)</a> for description.</p>
+
+<p>grep.lineNumber<br />
+If set to true, enable <em>-n</em> option by default.</p>
+
+<p>grep.patternType<br />
+Set the default matching behavior. Using a value of <em>basic</em>, <em>extended</em>, <em>fixed</em>, or <em>perl</em> will enable the <em>&ndash;basic-regexp</em>, <em>&ndash;extended-regexp</em>, <em>&ndash;fixed-strings</em>, or <em>&ndash;perl-regexp</em> option accordingly, while the value <em>default</em> will return to the default matching behavior.</p>
+
+<p>grep.extendedRegexp<br />
+If set to true, enable <em>&ndash;extended-regexp</em> option by default. This option is ignored when the <em>grep.patternType</em> option is set to a value other than <em>default</em>.</p>
+
+<p>gpg.program<br />
+Use this custom program instead of &ldquo;gpg&rdquo; found on $PATH when making or verifying a PGP signature. The program must support the same command-line interface as GPG, namely, to verify a detached signature, &ldquo;gpg &ndash;verify $file - &lt;$signature&rdquo; is run, and the program is expected to signal a good signature by exiting with code 0, and to generate an ascii-armored detached signature, the standard input of &ldquo;gpg -bsau $key&rdquo; is fed with the contents to be signed, and the program is expected to send the result to its standard output.</p>
+
+<p>gui.commitmsgwidth<br />
+Defines how wide the commit message window is in the <a href="../git-gui">git-gui(1)</a>. &ldquo;75&rdquo; is the default.</p>
+
+<p>gui.diffcontext<br />
+Specifies how many context lines should be used in calls to diff made by the <a href="../git-gui">git-gui(1)</a>. The default is &ldquo;5&rdquo;.</p>
+
+<p>gui.displayuntracked<br />
+Determines if <a href="../:git-gui">:git-gui(1)</a> shows untracked files in the file list. The default is &ldquo;true&rdquo;.</p>
+
+<p>gui.encoding<br />
+Specifies the default encoding to use for displaying of file contents in <a href="../git-gui">git-gui(1)</a> and <a href="../gitk">gitk(1)</a>. It can be overridden by setting the <em>encoding</em> attribute for relevant files (see <a href="../gitattributes">gitattributes(5)</a>). If this option is not set, the tools default to the locale encoding.</p>
+
+<p>gui.matchtrackingbranch<br />
+Determines if new branches created with <a href="../git-gui">git-gui(1)</a> should default to tracking remote branches with matching names or not. Default: &ldquo;false&rdquo;.</p>
+
+<p>gui.newbranchtemplate<br />
+Is used as suggested name when creating new branches using the <a href="../git-gui">git-gui(1)</a>.</p>
+
+<p>gui.pruneduringfetch<br />
+&ldquo;true&rdquo; if <a href="../git-gui">git-gui(1)</a> should prune remote-tracking branches when performing a fetch. The default value is &ldquo;false&rdquo;.</p>
+
+<p>gui.trustmtime<br />
+Determines if <a href="../git-gui">git-gui(1)</a> should trust the file modification timestamp or not. By default the timestamps are not trusted.</p>
+
+<p>gui.spellingdictionary<br />
+Specifies the dictionary used for spell checking commit messages in the <a href="../git-gui">git-gui(1)</a>. When set to &ldquo;none&rdquo; spell checking is turned off.</p>
+
+<p>gui.fastcopyblame<br />
+If true, <em>git gui blame</em> uses <code>-C</code> instead of <code>-C -C</code> for original location detection. It makes blame significantly faster on huge repositories at the expense of less thorough copy detection.</p>
+
+<p>gui.copyblamethreshold<br />
+Specifies the threshold to use in <em>git gui blame</em> original location detection, measured in alphanumeric characters. See the <a href="../git-blame">git-blame(1)</a> manual for more information on copy detection.</p>
+
+<p>gui.blamehistoryctx<br />
+Specifies the radius of history context in days to show in <a href="../gitk">gitk(1)</a> for the selected commit, when the <code>Show History                     Context</code> menu item is invoked from <em>git gui blame</em>. If this variable is set to zero, the whole history is shown.</p>
+
+<p>guitool.&lt;name&gt;.cmd<br />
+Specifies the shell command line to execute when the corresponding item of the <a href="../git-gui">git-gui(1)</a> <code>Tools</code> menu is invoked. This option is mandatory for every tool. The command is executed from the root of the working directory, and in the environment it receives the name of the tool as <em>GIT_GUITOOL</em>, the name of the currently selected file as <em>FILENAME</em>, and the name of the current branch as <em>CUR_BRANCH</em> (if the head is detached, <em>CUR_BRANCH</em> is empty).</p>
+
+<p>guitool.&lt;name&gt;.needsfile<br />
+Run the tool only if a diff is selected in the GUI. It guarantees that <em>FILENAME</em> is not empty.</p>
+
+<p>guitool.&lt;name&gt;.noconsole<br />
+Run the command silently, without creating a window to display its output.</p>
+
+<p>guitool.&lt;name&gt;.norescan<br />
+Don’t rescan the working directory for changes after the tool finishes execution.</p>
+
+<p>guitool.&lt;name&gt;.confirm<br />
+Show a confirmation dialog before actually running the tool.</p>
+
+<p>guitool.&lt;name&gt;.argprompt<br />
+Request a string argument from the user, and pass it to the tool through the <em>ARGS</em> environment variable. Since requesting an argument implies confirmation, the <em>confirm</em> option has no effect if this is enabled. If the option is set to <em>true</em>, <em>yes</em>, or <em>1</em>, the dialog uses a built-in generic prompt; otherwise the exact value of the variable is used.</p>
+
+<p>guitool.&lt;name&gt;.revprompt<br />
+Request a single valid revision from the user, and set the <em>REVISION</em> environment variable. In other aspects this option is similar to <em>argprompt</em>, and can be used together with it.</p>
+
+<p>guitool.&lt;name&gt;.revunmerged<br />
+Show only unmerged branches in the <em>revprompt</em> subdialog. This is useful for tools similar to merge or rebase, but not for things like checkout or reset.</p>
+
+<p>guitool.&lt;name&gt;.title<br />
+Specifies the title to use for the prompt dialog. The default is the tool name.</p>
+
+<p>guitool.&lt;name&gt;.prompt<br />
+Specifies the general prompt string to display at the top of the dialog, before subsections for <em>argprompt</em> and <em>revprompt</em>. The default value includes the actual command.</p>
+
+<p>help.browser<br />
+Specify the browser that will be used to display help in the <em>web</em> format. See <a href="../git-help">git-help(1)</a>.</p>
+
+<p>help.format<br />
+Override the default help format used by <a href="../git-help">git-help(1)</a>. Values <em>man</em>, <em>info</em>, <em>web</em> and <em>html</em> are supported. <em>man</em> is the default. <em>web</em> and <em>html</em> are the same.</p>
+
+<p>help.autocorrect<br />
+Automatically correct and execute mistyped commands after waiting for the given number of deciseconds (0.1 sec). If more than one command can be deduced from the entered text, nothing will be executed. If the value of this option is negative, the corrected command will be executed immediately. If the value is 0 - the command will be just shown but not executed. This is the default.</p>
+
+<p>help.htmlpath<br />
+Specify the path where the HTML documentation resides. File system paths and URLs are supported. HTML pages will be prefixed with this path when help is displayed in the <em>web</em> format. This defaults to the documentation path of your Git installation.</p>
+
+<p>http.proxy<br />
+Override the HTTP proxy, normally configured using the <em>http_proxy</em>, <em>https_proxy</em>, and <em>all_proxy</em> environment variables (see <code>curl(1)</code>). This can be overridden on a per-remote basis; see remote.&lt;name&gt;.proxy</p>
+
+<p>http.cookiefile<br />
+File containing previously stored cookie lines which should be used in the Git http session, if they match the server. The file format of the file to read cookies from should be plain HTTP headers or the Netscape/Mozilla cookie file format (see <a href="../curl">curl(1)</a>). NOTE that the file specified with http.cookiefile is only used as input unless http.saveCookies is set.</p>
+
+<p>http.savecookies<br />
+If set, store cookies received during requests to the file specified by http.cookiefile. Has no effect if http.cookiefile is unset.</p>
+
+<p>http.sslVerify<br />
+Whether to verify the SSL certificate when fetching or pushing over HTTPS. Can be overridden by the <em>GIT_SSL_NO_VERIFY</em> environment variable.</p>
+
+<p>http.sslCert<br />
+File containing the SSL certificate when fetching or pushing over HTTPS. Can be overridden by the <em>GIT_SSL_CERT</em> environment variable.</p>
+
+<p>http.sslKey<br />
+File containing the SSL private key when fetching or pushing over HTTPS. Can be overridden by the <em>GIT_SSL_KEY</em> environment variable.</p>
+
+<p>http.sslCertPasswordProtected<br />
+Enable Git’s password prompt for the SSL certificate. Otherwise OpenSSL will prompt the user, possibly many times, if the certificate or private key is encrypted. Can be overridden by the <em>GIT_SSL_CERT_PASSWORD_PROTECTED</em> environment variable.</p>
+
+<p>http.sslCAInfo<br />
+File containing the certificates to verify the peer with when fetching or pushing over HTTPS. Can be overridden by the <em>GIT_SSL_CAINFO</em> environment variable.</p>
+
+<p>http.sslCAPath<br />
+Path containing files with the CA certificates to verify the peer with when fetching or pushing over HTTPS. Can be overridden by the <em>GIT_SSL_CAPATH</em> environment variable.</p>
+
+<p>http.sslTry<br />
+Attempt to use AUTH SSL/TLS and encrypted data transfers when connecting via regular FTP protocol. This might be needed if the FTP server requires it for security reasons or you wish to connect securely whenever remote FTP server supports it. Default is false since it might trigger certificate verification errors on misconfigured servers.</p>
+
+<p>http.maxRequests<br />
+How many HTTP requests to launch in parallel. Can be overridden by the <em>GIT_HTTP_MAX_REQUESTS</em> environment variable. Default is 5.</p>
+
+<p>http.minSessions<br />
+The number of curl sessions (counted across slots) to be kept across requests. They will not be ended with curl_easy_cleanup() until http_cleanup() is invoked. If USE_CURL_MULTI is not defined, this value will be capped at 1. Defaults to 1.</p>
+
+<p>http.postBuffer<br />
+Maximum size in bytes of the buffer used by smart HTTP transports when POSTing data to the remote system. For requests larger than this buffer size, HTTP/1.1 and Transfer-Encoding: chunked is used to avoid creating a massive pack file locally. Default is 1 MiB, which is sufficient for most requests.</p>
+
+<p>http.lowSpeedLimit, http.lowSpeedTime<br />
+If the HTTP transfer speed is less than <em>http.lowSpeedLimit</em> for longer than <em>http.lowSpeedTime</em> seconds, the transfer is aborted. Can be overridden by the <em>GIT_HTTP_LOW_SPEED_LIMIT</em> and <em>GIT_HTTP_LOW_SPEED_TIME</em> environment variables.</p>
+
+<p>http.noEPSV<br />
+A boolean which disables using of EPSV ftp command by curl. This can helpful with some &ldquo;poor&rdquo; ftp servers which don’t support EPSV mode. Can be overridden by the <em>GIT_CURL_FTP_NO_EPSV</em> environment variable. Default is false (curl will use EPSV).</p>
+
+<p>http.useragent<br />
+The HTTP USER_AGENT string presented to an HTTP server. The default value represents the version of the client Git such as git/1.7.1. This option allows you to override this value to a more common value such as Mozilla/4.0. This may be necessary, for instance, if connecting through a firewall that restricts HTTP connections to a set of common USER_AGENT strings (but not including those like git/1.7.1). Can be overridden by the <em>GIT_HTTP_USER_AGENT</em> environment variable.</p>
+
+<p>http.&lt;url&gt;.*<br />
+Any of the http.* options above can be applied selectively to some urls. For a config key to match a URL, each element of the config key is compared to that of the URL, in the following order:</p>
+
+<ol>
+<li><p>Scheme (e.g., <code>https</code> in <code>https://example.com/</code>). This field must match exactly between the config key and the URL.</p></li>
+
+<li><p>Host/domain name (e.g., <code>example.com</code> in <code>https://example.com/</code>). This field must match exactly between the config key and the URL.</p></li>
+
+<li><p>Port number (e.g., <code>8080</code> in <code>http://example.com:8080/</code>). This field must match exactly between the config key and the URL. Omitted port numbers are automatically converted to the correct default for the scheme before matching.</p></li>
+
+<li><p>Path (e.g., <code>repo.git</code> in <code>https://example.com/repo.git</code>). The path field of the config key must match the path field of the URL either exactly or as a prefix of slash-delimited path elements. This means a config key with path <code>foo/</code> matches URL path <code>foo/bar</code>. A prefix can only match on a slash (<code>/</code>) boundary. Longer matches take precedence (so a config key with path <code>foo/bar</code> is a better match to URL path <code>foo/bar</code> than a config key with just path <code>foo/</code>).</p></li>
+
+<li><p>User name (e.g., <code>user</code> in <code>https://user@example.com/repo.git</code>). If the config key has a user name it must match the user name in the URL exactly. If the config key does not have a user name, that config key will match a URL with any user name (including none), but at a lower precedence than a config key with a user name.</p></li>
+</ol>
+
+<p>The list above is ordered by decreasing precedence; a URL that matches a config key’s path is preferred to one that matches its user name. For example, if the URL is <code>https://user@example.com/foo/bar</code> a config key match of <code>https://example.com/foo</code> will be preferred over a config key match of <code>https://user@example.com</code>.</p>
+
+<p>All URLs are normalized before attempting any matching (the password part, if embedded in the URL, is always ignored for matching purposes) so that equivalent urls that are simply spelled differently will match properly. Environment variable settings always override any matches. The urls that are matched against are those given directly to Git commands. This means any URLs visited as a result of a redirection do not participate in matching.</p>
+
+<p>i18n.commitEncoding<br />
+Character encoding the commit messages are stored in; Git itself does not care per se, but this information is necessary e.g. when importing commits from emails or in the gitk graphical history browser (and possibly at other places in the future or in other porcelains). See e.g. <a href="../git-mailinfo">git-mailinfo(1)</a>. Defaults to <em>utf-8</em>.</p>
+
+<p>i18n.logOutputEncoding<br />
+Character encoding the commit messages are converted to when running <em>git log</em> and friends.</p>
+
+<p>imap<br />
+The configuration variables in the <em>imap</em> section are described in <a href="../git-imap-send">git-imap-send(1)</a>.</p>
+
+<p>index.version<br />
+Specify the version with which new index files should be initialized. This does not affect existing repositories.</p>
+
+<p>init.templatedir<br />
+Specify the directory from which templates will be copied. (See the &ldquo;TEMPLATE DIRECTORY&rdquo; section of <a href="../git-init">git-init(1)</a>.)</p>
+
+<p>instaweb.browser<br />
+Specify the program that will be used to browse your working repository in gitweb. See <a href="../git-instaweb">git-instaweb(1)</a>.</p>
+
+<p>instaweb.httpd<br />
+The HTTP daemon command-line to start gitweb on your working repository. See <a href="../git-instaweb">git-instaweb(1)</a>.</p>
+
+<p>instaweb.local<br />
+If true the web server started by <a href="../git-instaweb">git-instaweb(1)</a> will be bound to the local IP (127.0.0.1).</p>
+
+<p>instaweb.modulepath<br />
+The default module path for <a href="../git-instaweb">git-instaweb(1)</a> to use instead of /usr/lib/apache2/modules. Only used if httpd is Apache.</p>
+
+<p>instaweb.port<br />
+The port number to bind the gitweb httpd to. See <a href="../git-instaweb">git-instaweb(1)</a>.</p>
+
+<p>interactive.singlekey<br />
+In interactive commands, allow the user to provide one-letter input with a single key (i.e., without hitting enter). Currently this is used by the <code>--patch</code> mode of <a href="../git-add">git-add(1)</a>, <a href="../git-checkout">git-checkout(1)</a>, <a href="../git-commit">git-commit(1)</a>, <a href="../git-reset">git-reset(1)</a>, and <a href="../git-stash">git-stash(1)</a>. Note that this setting is silently ignored if portable keystroke input is not available; requires the Perl module Term::ReadKey.</p>
+
+<p>log.abbrevCommit<br />
+If true, makes <a href="../git-log">git-log(1)</a>, <a href="../git-show">git-show(1)</a>, and <a href="../git-whatchanged">git-whatchanged(1)</a> assume <code>--abbrev-commit</code>. You may override this option with <code>--no-abbrev-commit</code>.</p>
+
+<p>log.date<br />
+Set the default date-time mode for the <em>log</em> command. Setting a value for log.date is similar to using <em>git log</em>&rsquo;s <code>--date</code> option. Possible values are <code>relative</code>, <code>local</code>, <code>default</code>, <code>iso</code>, <code>rfc</code>, and <code>short</code>; see <a href="../git-log">git-log(1)</a> for details.</p>
+
+<p>log.decorate<br />
+Print out the ref names of any commits that are shown by the log command. If <em>short</em> is specified, the ref name prefixes <em>refs/heads/</em>, <em>refs/tags/</em> and <em>refs/remotes/</em> will not be printed. If <em>full</em> is specified, the full ref name (including prefix) will be printed. This is the same as the log commands <em>&ndash;decorate</em> option.</p>
+
+<p>log.showroot<br />
+If true, the initial commit will be shown as a big creation event. This is equivalent to a diff against an empty tree. Tools like <a href="../git-log">git-log(1)</a> or <a href="../git-whatchanged">git-whatchanged(1)</a>, which normally hide the root commit will now show it. True by default.</p>
+
+<p>log.mailmap<br />
+If true, makes <a href="../git-log">git-log(1)</a>, <a href="../git-show">git-show(1)</a>, and <a href="../git-whatchanged">git-whatchanged(1)</a> assume <code>--use-mailmap</code>.</p>
+
+<p>mailmap.file<br />
+The location of an augmenting mailmap file. The default mailmap, located in the root of the repository, is loaded first, then the mailmap file pointed to by this variable. The location of the mailmap file may be in a repository subdirectory, or somewhere outside of the repository itself. See <a href="../git-shortlog">git-shortlog(1)</a> and <a href="../git-blame">git-blame(1)</a>.</p>
+
+<p>mailmap.blob<br />
+Like <code>mailmap.file</code>, but consider the value as a reference to a blob in the repository. If both <code>mailmap.file</code> and <code>mailmap.blob</code> are given, both are parsed, with entries from <code>mailmap.file</code> taking precedence. In a bare repository, this defaults to <code>HEAD:.mailmap</code>. In a non-bare repository, it defaults to empty.</p>
+
+<p>man.viewer<br />
+Specify the programs that may be used to display help in the <em>man</em> format. See <a href="../git-help">git-help(1)</a>.</p>
+
+<p>man.&lt;tool&gt;.cmd<br />
+Specify the command to invoke the specified man viewer. The specified command is evaluated in shell with the man page passed as argument. (See <a href="../git-help">git-help(1)</a>.)</p>
+
+<p>man.&lt;tool&gt;.path<br />
+Override the path for the given tool that may be used to display help in the <em>man</em> format. See <a href="../git-help">git-help(1)</a>.</p>
+
+<p>merge.conflictstyle<br />
+Specify the style in which conflicted hunks are written out to working tree files upon merge. The default is &ldquo;merge&rdquo;, which shows a <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> conflict marker, changes made by one side, a <code>=======</code> marker, changes made by the other side, and then a <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> marker. An alternate style, &ldquo;diff3&rdquo;, adds a <code>|||||||</code> marker and the original text before the <code>=======</code> marker.</p>
+
+<p>merge.defaultToUpstream<br />
+If merge is called without any commit argument, merge the upstream branches configured for the current branch by using their last observed values stored in their remote-tracking branches. The values of the <code>branch.&lt;current                     branch&gt;.merge</code> that name the branches at the remote named by <code>branch.&lt;current                     branch&gt;.remote</code> are consulted, and then they are mapped via <code>remote.&lt;remote&gt;.fetch</code> to their corresponding remote-tracking branches, and the tips of these tracking branches are merged.</p>
+
+<p>merge.ff<br />
+By default, Git does not create an extra merge commit when merging a commit that is a descendant of the current commit. Instead, the tip of the current branch is fast-forwarded. When set to <code>false</code>, this variable tells Git to create an extra merge commit in such a case (equivalent to giving the <code>--no-ff</code> option from the command line). When set to <code>only</code>, only such fast-forward merges are allowed (equivalent to giving the <code>--ff-only</code> option from the command line).</p>
+
+<p>merge.log<br />
+In addition to branch names, populate the log message with at most the specified number of one-line descriptions from the actual commits that are being merged. Defaults to false, and true is a synonym for 20.</p>
+
+<p>merge.renameLimit<br />
+The number of files to consider when performing rename detection during a merge; if not specified, defaults to the value of diff.renameLimit.</p>
+
+<p>merge.renormalize<br />
+Tell Git that canonical representation of files in the repository has changed over time (e.g. earlier commits record text files with CRLF line endings, but recent ones use LF line endings). In such a repository, Git can convert the data recorded in commits to a canonical form before performing a merge to reduce unnecessary conflicts. For more information, see section &ldquo;Merging branches with differing checkin/checkout attributes&rdquo; in <a href="../gitattributes">gitattributes(5)</a>.</p>
+
+<p>merge.stat<br />
+Whether to print the diffstat between ORIG_HEAD and the merge result at the end of the merge. True by default.</p>
+
+<p>merge.tool<br />
+Controls which merge tool is used by <a href="../git-mergetool">git-mergetool(1)</a>. The list below shows the valid built-in values. Any other value is treated as a custom merge tool and requires that a corresponding mergetool.&lt;tool&gt;.cmd variable is defined.</p>
+
+<ul>
+<li><p>araxis</p></li>
+
+<li><p>bc3</p></li>
+
+<li><p>codecompare</p></li>
+
+<li><p>deltawalker</p></li>
+
+<li><p>diffmerge</p></li>
+
+<li><p>diffuse</p></li>
+
+<li><p>ecmerge</p></li>
+
+<li><p>emerge</p></li>
+
+<li><p>gvimdiff</p></li>
+
+<li><p>gvimdiff2</p></li>
+
+<li><p>gvimdiff3</p></li>
+
+<li><p>kdiff3</p></li>
+
+<li><p>meld</p></li>
+
+<li><p>opendiff</p></li>
+
+<li><p>p4merge</p></li>
+
+<li><p>tkdiff</p></li>
+
+<li><p>tortoisemerge</p></li>
+
+<li><p>vimdiff</p></li>
+
+<li><p>vimdiff2</p></li>
+
+<li><p>vimdiff3</p></li>
+
+<li><p>xxdiff</p></li>
+</ul>
+
+<p>merge.verbosity<br />
+Controls the amount of output shown by the recursive merge strategy. Level 0 outputs nothing except a final error message if conflicts were detected. Level 1 outputs only conflicts, 2 outputs conflicts and file changes. Level 5 and above outputs debugging information. The default is level 2. Can be overridden by the <em>GIT_MERGE_VERBOSITY</em> environment variable.</p>
+
+<p>merge.&lt;driver&gt;.name<br />
+Defines a human-readable name for a custom low-level merge driver. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>merge.&lt;driver&gt;.driver<br />
+Defines the command that implements a custom low-level merge driver. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>merge.&lt;driver&gt;.recursive<br />
+Names a low-level merge driver to be used when performing an internal merge between common ancestors. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>mergetool.&lt;tool&gt;.path<br />
+Override the path for the given tool. This is useful in case your tool is not in the PATH.</p>
+
+<p>mergetool.&lt;tool&gt;.cmd<br />
+Specify the command to invoke the specified merge tool. The specified command is evaluated in shell with the following variables available: <em>BASE</em> is the name of a temporary file containing the common base of the files to be merged, if available; <em>LOCAL</em> is the name of a temporary file containing the contents of the file on the current branch; <em>REMOTE</em> is the name of a temporary file containing the contents of the file from the branch being merged; <em>MERGED</em> contains the name of the file to which the merge tool should write the results of a successful merge.</p>
+
+<p>mergetool.&lt;tool&gt;.trustExitCode<br />
+For a custom merge command, specify whether the exit code of the merge command can be used to determine whether the merge was successful. If this is not set to true then the merge target file timestamp is checked and the merge assumed to have been successful if the file has been updated, otherwise the user is prompted to indicate the success of the merge.</p>
+
+<p>mergetool.keepBackup<br />
+After performing a merge, the original file with conflict markers can be saved as a file with a <code>.orig</code> extension. If this variable is set to <code>false</code> then this file is not preserved. Defaults to <code>true</code> (i.e. keep the backup files).</p>
+
+<p>mergetool.keepTemporaries<br />
+When invoking a custom merge tool, Git uses a set of temporary files to pass to the tool. If the tool returns an error and this variable is set to <code>true</code>, then these temporary files will be preserved, otherwise they will be removed after the tool has exited. Defaults to <code>false</code>.</p>
+
+<p>mergetool.prompt<br />
+Prompt before each invocation of the merge resolution program.</p>
+
+<p>notes.displayRef<br />
+The (fully qualified) refname from which to show notes when showing commit messages. The value of this variable can be set to a glob, in which case notes from all matching refs will be shown. You may also specify this configuration variable several times. A warning will be issued for refs that do not exist, but a glob that does not match any refs is silently ignored.</p>
+
+<p>This setting can be overridden with the <code>GIT_NOTES_DISPLAY_REF</code> environment variable, which must be a colon separated list of refs or globs.</p>
+
+<p>The effective value of &ldquo;core.notesRef&rdquo; (possibly overridden by GIT_NOTES_REF) is also implicitly added to the list of refs to be displayed.</p>
+
+<p>notes.rewrite.&lt;command&gt;<br />
+When rewriting commits with &lt;command&gt; (currently <code>amend</code> or <code>rebase</code>) and this variable is set to <code>true</code>, Git automatically copies your notes from the original to the rewritten commit. Defaults to <code>true</code>, but see &ldquo;notes.rewriteRef&rdquo; below.</p>
+
+<p>notes.rewriteMode<br />
+When copying notes during a rewrite (see the &ldquo;notes.rewrite.&lt;command&gt;&rdquo; option), determines what to do if the target commit already has a note. Must be one of <code>overwrite</code>, <code>concatenate</code>, or <code>ignore</code>. Defaults to <code>concatenate</code>.</p>
+
+<p>This setting can be overridden with the <code>GIT_NOTES_REWRITE_MODE</code> environment variable.</p>
+
+<p>notes.rewriteRef<br />
+When copying notes during a rewrite, specifies the (fully qualified) ref whose notes should be copied. The ref may be a glob, in which case notes in all matching refs will be copied. You may also specify this configuration several times.</p>
+
+<p>Does not have a default value; you must configure this variable to enable note rewriting. Set it to <code>refs/notes/commits</code> to enable rewriting for the default commit notes.</p>
+
+<p>This setting can be overridden with the <code>GIT_NOTES_REWRITE_REF</code> environment variable, which must be a colon separated list of refs or globs.</p>
+
+<p>pack.window<br />
+The size of the window used by <a href="../git-pack-objects">git-pack-objects(1)</a> when no window size is given on the command line. Defaults to 10.</p>
+
+<p>pack.depth<br />
+The maximum delta depth used by <a href="../git-pack-objects">git-pack-objects(1)</a> when no maximum depth is given on the command line. Defaults to 50.</p>
+
+<p>pack.windowMemory<br />
+The window memory size limit used by <a href="../git-pack-objects">git-pack-objects(1)</a> when no limit is given on the command line. The value can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. Defaults to 0, meaning no limit.</p>
+
+<p>pack.compression<br />
+An integer -1..9, indicating the compression level for objects in a pack file. -1 is the zlib default. 0 means no compression, and 1..9 are various speed/size tradeoffs, 9 being slowest. If not set, defaults to core.compression. If that is not set, defaults to -1, the zlib default, which is &ldquo;a default compromise between speed and compression (currently equivalent to level 6).&rdquo;</p>
+
+<p>Note that changing the compression level will not automatically recompress all existing objects. You can force recompression by passing the -F option to <a href="../git-repack">git-repack(1)</a>.</p>
+
+<p>pack.deltaCacheSize<br />
+The maximum memory in bytes used for caching deltas in <a href="../git-pack-objects">git-pack-objects(1)</a> before writing them out to a pack. This cache is used to speed up the writing object phase by not having to recompute the final delta result once the best match for all objects is found. Repacking large repositories on machines which are tight with memory might be badly impacted by this though, especially if this cache pushes the system into swapping. A value of 0 means no limit. The smallest size of 1 byte may be used to virtually disable this cache. Defaults to 256 MiB.</p>
+
+<p>pack.deltaCacheLimit<br />
+The maximum size of a delta, that is cached in <a href="../git-pack-objects">git-pack-objects(1)</a>. This cache is used to speed up the writing object phase by not having to recompute the final delta result once the best match for all objects is found. Defaults to 1000.</p>
+
+<p>pack.threads<br />
+Specifies the number of threads to spawn when searching for best delta matches. This requires that <a href="../git-pack-objects">git-pack-objects(1)</a> be compiled with pthreads otherwise this option is ignored with a warning. This is meant to reduce packing time on multiprocessor machines. The required amount of memory for the delta search window is however multiplied by the number of threads. Specifying 0 will cause Git to auto-detect the number of CPU’s and set the number of threads accordingly.</p>
+
+<p>pack.indexVersion<br />
+Specify the default pack index version. Valid values are 1 for legacy pack index used by Git versions prior to 1.5.2, and 2 for the new pack index with capabilities for packs larger than 4 GB as well as proper protection against the repacking of corrupted packs. Version 2 is the default. Note that version 2 is enforced and this config option ignored whenever the corresponding pack is larger than 2 GB.</p>
+
+<p>If you have an old Git that does not understand the version 2 <code>*.idx</code> file, cloning or fetching over a non native protocol (e.g. &ldquo;http&rdquo; and &ldquo;rsync&rdquo;) that will copy both <code>*.pack</code> file and corresponding <code>*.idx</code> file from the other side may give you a repository that cannot be accessed with your older version of Git. If the <code>*.pack</code> file is smaller than 2 GB, however, you can use <a href="../git-index-pack">git-index-pack(1)</a> on the *.pack file to regenerate the <code>*.idx</code> file.</p>
+
+<p>pack.packSizeLimit<br />
+The maximum size of a pack. This setting only affects packing to a file when repacking, i.e. the git:// protocol is unaffected. It can be overridden by the <code>--max-pack-size</code> option of <a href="../git-repack">git-repack(1)</a>. The minimum size allowed is limited to 1 MiB. The default is unlimited. Common unit suffixes of <em>k</em>, <em>m</em>, or <em>g</em> are supported.</p>
+
+<p>pack.useBitmaps<br />
+When true, git will use pack bitmaps (if available) when packing to stdout (e.g., during the server side of a fetch). Defaults to true. You should not generally need to turn this off unless you are debugging pack bitmaps.</p>
+
+<p>pack.writebitmaps<br />
+This is a deprecated synonym for <code>repack.writeBitmaps</code>.</p>
+
+<p>pack.writeBitmapHashCache<br />
+When true, git will include a &ldquo;hash cache&rdquo; section in the bitmap index (if one is written). This cache can be used to feed git’s delta heuristics, potentially leading to better deltas between bitmapped and non-bitmapped objects (e.g., when serving a fetch between an older, bitmapped pack and objects that have been pushed since the last gc). The downside is that it consumes 4 bytes per object of disk space, and that JGit’s bitmap implementation does not understand it, causing it to complain if Git and JGit are used on the same repository. Defaults to false.</p>
+
+<p>pager.&lt;cmd&gt;<br />
+If the value is boolean, turns on or off pagination of the output of a particular Git subcommand when writing to a tty. Otherwise, turns on pagination for the subcommand using the pager specified by the value of <code>pager.&lt;cmd&gt;</code>. If <code>--paginate</code> or <code>--no-pager</code> is specified on the command line, it takes precedence over this option. To disable pagination for all commands, set <code>core.pager</code> or <code>GIT_PAGER</code> to <code>cat</code>.</p>
+
+<p>pretty.&lt;name&gt;<br />
+Alias for a &ndash;pretty= format string, as specified in <a href="../git-log">git-log(1)</a>. Any aliases defined here can be used just as the built-in pretty formats could. For example, running <code>git config pretty.changelog &quot;format:* %H                     %s&quot;</code> would cause the invocation <code>git                     log --pretty=changelog</code> to be equivalent to running <code>git log &quot;--pretty=format:* %H                     %s&quot;</code>. Note that an alias with the same name as a built-in format will be silently ignored.</p>
+
+<p>pull.ff<br />
+By default, Git does not create an extra merge commit when merging a commit that is a descendant of the current commit. Instead, the tip of the current branch is fast-forwarded. When set to <code>false</code>, this variable tells Git to create an extra merge commit in such a case (equivalent to giving the <code>--no-ff</code> option from the command line). When set to <code>only</code>, only such fast-forward merges are allowed (equivalent to giving the <code>--ff-only</code> option from the command line).</p>
+
+<p>pull.rebase<br />
+When true, rebase branches on top of the fetched branch, instead of merging the default branch from the default remote when &ldquo;git pull&rdquo; is run. See &ldquo;branch.&lt;name&gt;.rebase&rdquo; for setting this on a per-branch basis.</p>
+
+<pre><code>When preserve, also pass `--preserve-merges` along to 'git rebase'
+so that locally committed merge commits will not be flattened
+by running 'git pull'.
+</code></pre>
+
+<p><strong>NOTE</strong>: this is a possibly dangerous operation; do <strong>not</strong> use it unless you understand the implications (see <a href="../git-rebase">git-rebase(1)</a> for details).</p>
+
+<p>pull.octopus<br />
+The default merge strategy to use when pulling multiple branches at once.</p>
+
+<p>pull.twohead<br />
+The default merge strategy to use when pulling a single branch.</p>
+
+<p>push.default<br />
+Defines the action <code>git push</code> should take if no refspec is explicitly given. Different values are well-suited for specific workflows; for instance, in a purely central workflow (i.e. the fetch source is equal to the push destination), <code>upstream</code> is probably what you want. Possible values are:</p>
+
+<ul>
+<li><p><code>nothing</code> - do not push anything (error out) unless a refspec is explicitly given. This is primarily meant for people who want to avoid mistakes by always being explicit.</p></li>
+
+<li><p><code>current</code> - push the current branch to update a branch with the same name on the receiving end. Works in both central and non-central workflows.</p></li>
+
+<li><p><code>upstream</code> - push the current branch back to the branch whose changes are usually integrated into the current branch (which is called <code>@{upstream}</code>). This mode only makes sense if you are pushing to the same repository you would normally pull from (i.e. central workflow).</p></li>
+
+<li><p><code>simple</code> - in centralized workflow, work like <code>upstream</code> with an added safety to refuse to push if the upstream branch’s name is different from the local one.</p>
+
+<p>When pushing to a remote that is different from the remote you normally pull from, work as <code>current</code>. This is the safest option and is suited for beginners.</p>
+
+<p>This mode has become the default in Git 2.0.</p></li>
+
+<li><p><code>matching</code> - push all branches having the same name on both ends. This makes the repository you are pushing to remember the set of branches that will be pushed out (e.g. if you always push <em>maint</em> and <em>master</em> there and no other branches, the repository you push to will have these two branches, and your local <em>maint</em> and <em>master</em> will be pushed there).</p>
+
+<p>To use this mode effectively, you have to make sure <em>all</em> the branches you would push out are ready to be pushed out before running <em>git push</em>, as the whole point of this mode is to allow you to push all of the branches in one go. If you usually finish work on only one branch and push out the result, while other branches are unfinished, this mode is not for you. Also this mode is not suitable for pushing into a shared central repository, as other people may add new branches there, or update the tip of existing branches outside your control.</p>
+
+<p>This used to be the default, but not since Git 2.0 (<code>simple</code> is the new default).</p></li>
+</ul>
+
+<p>rebase.stat<br />
+Whether to show a diffstat of what changed upstream since the last rebase. False by default.</p>
+
+<p>rebase.autosquash<br />
+If set to true enable <em>&ndash;autosquash</em> option by default.</p>
+
+<p>rebase.autostash<br />
+When set to true, automatically create a temporary stash before the operation begins, and apply it after the operation ends. This means that you can run rebase on a dirty worktree. However, use with care: the final stash application after a successful rebase might result in non-trivial conflicts. Defaults to false.</p>
+
+<p>receive.autogc<br />
+By default, git-receive-pack will run &ldquo;git-gc &ndash;auto&rdquo; after receiving data from git-push and updating refs. You can stop it by setting this variable to false.</p>
+
+<p>receive.fsckObjects<br />
+If it is set to true, git-receive-pack will check all received objects. It will abort in the case of a malformed object or a broken link. The result of an abort are only dangling objects. Defaults to false. If not set, the value of <code>transfer.fsckObjects</code> is used instead.</p>
+
+<p>receive.unpackLimit<br />
+If the number of objects received in a push is below this limit then the objects will be unpacked into loose object files. However if the number of received objects equals or exceeds this limit then the received pack will be stored as a pack, after adding any missing delta bases. Storing the pack from a push can make the push operation complete faster, especially on slow filesystems. If not set, the value of <code>transfer.unpackLimit</code> is used instead.</p>
+
+<p>receive.denyDeletes<br />
+If set to true, git-receive-pack will deny a ref update that deletes the ref. Use this to prevent such a ref deletion via a push.</p>
+
+<p>receive.denyDeleteCurrent<br />
+If set to true, git-receive-pack will deny a ref update that deletes the currently checked out branch of a non-bare repository.</p>
+
+<p>receive.denyCurrentBranch<br />
+If set to true or &ldquo;refuse&rdquo;, git-receive-pack will deny a ref update to the currently checked out branch of a non-bare repository. Such a push is potentially dangerous because it brings the HEAD out of sync with the index and working tree. If set to &ldquo;warn&rdquo;, print a warning of such a push to stderr, but allow the push to proceed. If set to false or &ldquo;ignore&rdquo;, allow such pushes with no message. Defaults to &ldquo;refuse&rdquo;.</p>
+
+<p>receive.denyNonFastForwards<br />
+If set to true, git-receive-pack will deny a ref update which is not a fast-forward. Use this to prevent such an update via a push, even if that push is forced. This configuration variable is set when initializing a shared repository.</p>
+
+<p>receive.hiderefs<br />
+String(s) <code>receive-pack</code> uses to decide which refs to omit from its initial advertisement. Use more than one definitions to specify multiple prefix strings. A ref that are under the hierarchies listed on the value of this variable is excluded, and is hidden when responding to <code>git push</code>, and an attempt to update or delete a hidden ref by <code>git                     push</code> is rejected.</p>
+
+<p>receive.updateserverinfo<br />
+If set to true, git-receive-pack will run git-update-server-info after receiving data from git-push and updating refs.</p>
+
+<p>receive.shallowupdate<br />
+If set to true, .git/shallow can be updated when new refs require new shallow roots. Otherwise those refs are rejected.</p>
+
+<p>remote.pushdefault<br />
+The remote to push to by default. Overrides <code>branch.&lt;name&gt;.remote</code> for all branches, and is overridden by <code>branch.&lt;name&gt;.pushremote</code> for specific branches.</p>
+
+<p>remote.&lt;name&gt;.url<br />
+The URL of a remote repository. See <a href="../git-fetch">git-fetch(1)</a> or <a href="../git-push">git-push(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.pushurl<br />
+The push URL of a remote repository. See <a href="../git-push">git-push(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.proxy<br />
+For remotes that require curl (http, https and ftp), the URL to the proxy to use for that remote. Set to the empty string to disable proxying for that remote.</p>
+
+<p>remote.&lt;name&gt;.fetch<br />
+The default set of &ldquo;refspec&rdquo; for <a href="../git-fetch">git-fetch(1)</a>. See <a href="../git-fetch">git-fetch(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.push<br />
+The default set of &ldquo;refspec&rdquo; for <a href="../git-push">git-push(1)</a>. See <a href="../git-push">git-push(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.mirror<br />
+If true, pushing to this remote will automatically behave as if the <code>--mirror</code> option was given on the command line.</p>
+
+<p>remote.&lt;name&gt;.skipDefaultUpdate<br />
+If true, this remote will be skipped by default when updating using <a href="../git-fetch">git-fetch(1)</a> or the <code>update</code> subcommand of <a href="../git-remote">git-remote(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.skipFetchAll<br />
+If true, this remote will be skipped by default when updating using <a href="../git-fetch">git-fetch(1)</a> or the <code>update</code> subcommand of <a href="../git-remote">git-remote(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.receivepack<br />
+The default program to execute on the remote side when pushing. See option &ndash;receive-pack of <a href="../git-push">git-push(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.uploadpack<br />
+The default program to execute on the remote side when fetching. See option &ndash;upload-pack of <a href="../git-fetch-pack">git-fetch-pack(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.tagopt<br />
+Setting this value to &ndash;no-tags disables automatic tag following when fetching from remote &lt;name&gt;. Setting it to &ndash;tags will fetch every tag from remote &lt;name&gt;, even if they are not reachable from remote branch heads. Passing these flags directly to <a href="../git-fetch">git-fetch(1)</a> can override this setting. See options &ndash;tags and &ndash;no-tags of <a href="../git-fetch">git-fetch(1)</a>.</p>
+
+<p>remote.&lt;name&gt;.vcs<br />
+Setting this to a value &lt;vcs&gt; will cause Git to interact with the remote with the git-remote-&lt;vcs&gt; helper.</p>
+
+<p>remote.&lt;name&gt;.prune<br />
+When set to true, fetching from this remote by default will also remove any remote-tracking references that no longer exist on the remote (as if the <code>--prune</code> option was given on the command line). Overrides <code>fetch.prune</code> settings, if any.</p>
+
+<p>remotes.&lt;group&gt;<br />
+The list of remotes which are fetched by &ldquo;git remote update &lt;group&gt;&rdquo;. See <a href="../git-remote">git-remote(1)</a>.</p>
+
+<p>repack.usedeltabaseoffset<br />
+By default, <a href="../git-repack">git-repack(1)</a> creates packs that use delta-base offset. If you need to share your repository with Git older than version 1.4.4, either directly or via a dumb protocol such as http, then you need to set this option to &ldquo;false&rdquo; and repack. Access from old Git versions over the native protocol are unaffected by this option.</p>
+
+<p>repack.packKeptObjects<br />
+If set to true, makes <code>git repack</code> act as if <code>--pack-kept-objects</code> was passed. See <a href="../git-repack">git-repack(1)</a> for details. Defaults to <code>false</code> normally, but <code>true</code> if a bitmap index is being written (either via <code>--write-bitmap-index</code> or <code>repack.writeBitmaps</code>).</p>
+
+<p>repack.writeBitmaps<br />
+When true, git will write a bitmap index when packing all objects to disk (e.g., when <code>git                     repack -a</code> is run). This index can speed up the &ldquo;counting objects&rdquo; phase of subsequent packs created for clones and fetches, at the cost of some disk space and extra time spent on the initial repack. Defaults to false.</p>
+
+<p>rerere.autoupdate<br />
+When set to true, <code>git-rerere</code> updates the index with the resulting contents after it cleanly resolves conflicts using previously recorded resolution. Defaults to false.</p>
+
+<p>rerere.enabled<br />
+Activate recording of resolved conflicts, so that identical conflict hunks can be resolved automatically, should they be encountered again. By default, <a href="../git-rerere">git-rerere(1)</a> is enabled if there is an <code>rr-cache</code> directory under the <code>$GIT_DIR</code>, e.g. if &ldquo;rerere&rdquo; was previously used in the repository.</p>
+
+<p>sendemail.identity<br />
+A configuration identity. When given, causes values in the <em>sendemail.&lt;identity&gt;</em> subsection to take precedence over values in the <em>sendemail</em> section. The default identity is the value of <em>sendemail.identity</em>.</p>
+
+<p>sendemail.smtpencryption<br />
+See <a href="../git-send-email">git-send-email(1)</a> for description. Note that this setting is not subject to the <em>identity</em> mechanism.</p>
+
+<p>sendemail.smtpssl<br />
+Deprecated alias for <em>sendemail.smtpencryption = ssl</em>.</p>
+
+<p>sendemail.smtpsslcertpath<br />
+Path to ca-certificates (either a directory or a single file). Set it to an empty string to disable certificate verification.</p>
+
+<p>sendemail.&lt;identity&gt;.*<br />
+Identity-specific versions of the <em>sendemail.*</em> parameters found below, taking precedence over those when the this identity is selected, through command-line or <em>sendemail.identity</em>.</p>
+
+<p>sendemail.aliasesfile
+sendemail.aliasfiletype
+sendemail.annotate
+sendemail.bcc
+sendemail.cc
+sendemail.cccmd
+sendemail.chainreplyto
+sendemail.confirm
+sendemail.envelopesender
+sendemail.from
+sendemail.multiedit
+sendemail.signedoffbycc
+sendemail.smtppass
+sendemail.suppresscc
+sendemail.suppressfrom
+sendemail.to
+sendemail.smtpdomain
+sendemail.smtpserver
+sendemail.smtpserverport
+sendemail.smtpserveroption
+sendemail.smtpuser
+sendemail.thread
+sendemail.validate<br />
+See <a href="../git-send-email">git-send-email(1)</a> for description.</p>
+
+<p>sendemail.signedoffcc<br />
+Deprecated alias for <em>sendemail.signedoffbycc</em>.</p>
+
+<p>showbranch.default<br />
+The default set of branches for <a href="../git-show-branch">git-show-branch(1)</a>. See <a href="../git-show-branch">git-show-branch(1)</a>.</p>
+
+<p>status.relativePaths<br />
+By default, <a href="../git-status">git-status(1)</a> shows paths relative to the current directory. Setting this variable to <code>false</code> shows paths relative to the repository root (this was the default for Git prior to v1.5.4).</p>
+
+<p>status.short<br />
+Set to true to enable &ndash;short by default in <a href="../git-status">git-status(1)</a>. The option &ndash;no-short takes precedence over this variable.</p>
+
+<p>status.branch<br />
+Set to true to enable &ndash;branch by default in <a href="../git-status">git-status(1)</a>. The option &ndash;no-branch takes precedence over this variable.</p>
+
+<p>status.displayCommentPrefix<br />
+If set to true, <a href="../git-status">git-status(1)</a> will insert a comment prefix before each output line (starting with <code>core.commentChar</code>, i.e. <code>#</code> by default). This was the behavior of <a href="../git-status">git-status(1)</a> in Git 1.8.4 and previous. Defaults to false.</p>
+
+<p>status.showUntrackedFiles<br />
+By default, <a href="../git-status">git-status(1)</a> and <a href="../git-commit">git-commit(1)</a> show files which are not currently tracked by Git. Directories which contain only untracked files, are shown with the directory name only. Showing untracked files means that Git needs to lstat() all all the files in the whole repository, which might be slow on some systems. So, this variable controls how the commands displays the untracked files. Possible values are:</p>
+
+<ul>
+<li><p><code>no</code> - Show no untracked files.</p></li>
+
+<li><p><code>normal</code> - Show untracked files and directories.</p></li>
+
+<li><p><code>all</code> - Show also individual files in untracked directories.</p></li>
+</ul>
+
+<p>If this variable is not specified, it defaults to <em>normal</em>. This variable can be overridden with the -u|&ndash;untracked-files option of <a href="../git-status">git-status(1)</a> and <a href="../git-commit">git-commit(1)</a>.</p>
+
+<p>status.submodulesummary<br />
+Defaults to false. If this is set to a non zero number or true (identical to -1 or an unlimited number), the submodule summary will be enabled and a summary of commits for modified submodules will be shown (see &ndash;summary-limit option of <a href="../git-submodule">git-submodule(1)</a>). Please note that the summary output command will be suppressed for all submodules when <code>diff.ignoreSubmodules</code> is set to <em>all</em> or only for those submodules where <code>submodule.&lt;name&gt;.ignore=all</code>. The only exception to that rule is that status and commit will show staged submodule changes. To also view the summary for ignored submodules you can either use the &ndash;ignore-submodules=dirty command-line option or the <em>git submodule summary</em> command, which shows a similar output but does not honor these settings.</p>
+
+<p>submodule.&lt;name&gt;.path
+submodule.&lt;name&gt;.url
+submodule.&lt;name&gt;.update<br />
+The path within this project, URL, and the updating strategy for a submodule. These variables are initially populated by <em>git submodule init</em>; edit them to override the URL and other values found in the <code>.gitmodules</code> file. See <a href="../git-submodule">git-submodule(1)</a> and <a href="../gitmodules">gitmodules(5)</a> for details.</p>
+
+<p>submodule.&lt;name&gt;.branch<br />
+The remote branch name for a submodule, used by <code>git submodule update --remote</code>. Set this option to override the value found in the <code>.gitmodules</code> file. See <a href="../git-submodule">git-submodule(1)</a> and <a href="../gitmodules">gitmodules(5)</a> for details.</p>
+
+<p>submodule.&lt;name&gt;.fetchRecurseSubmodules<br />
+This option can be used to control recursive fetching of this submodule. It can be overridden by using the &ndash;[no-]recurse-submodules command-line option to &ldquo;git fetch&rdquo; and &ldquo;git pull&rdquo;. This setting will override that from in the <a href="../gitmodules">gitmodules(5)</a> file.</p>
+
+<p>submodule.&lt;name&gt;.ignore<br />
+Defines under what circumstances &ldquo;git status&rdquo; and the diff family show a submodule as modified. When set to &ldquo;all&rdquo;, it will never be considered modified (but it will nonetheless show up in the output of status and commit when it has been staged), &ldquo;dirty&rdquo; will ignore all changes to the submodules work tree and takes only differences between the HEAD of the submodule and the commit recorded in the superproject into account. &ldquo;untracked&rdquo; will additionally let submodules with modified tracked files in their work tree show up. Using &ldquo;none&rdquo; (the default when this option is not set) also shows submodules that have untracked files in their work tree as changed. This setting overrides any setting made in .gitmodules for this submodule, both settings can be overridden on the command line by using the &ldquo;&ndash;ignore-submodules&rdquo; option. The <em>git submodule</em> commands are not affected by this setting.</p>
+
+<p>tag.sort<br />
+This variable controls the sort ordering of tags when displayed by <a href="../git-tag">git-tag(1)</a>. Without the &ldquo;&ndash;sort=&lt;value&gt;&rdquo; option provided, the value of this variable will be used as the default.</p>
+
+<p>tar.umask<br />
+This variable can be used to restrict the permission bits of tar archive entries. The default is 0002, which turns off the world write bit. The special value &ldquo;user&rdquo; indicates that the archiving user’s umask will be used instead. See umask(2) and <a href="../git-archive">git-archive(1)</a>.</p>
+
+<p>transfer.fsckObjects<br />
+When <code>fetch.fsckObjects</code> or <code>receive.fsckObjects</code> are not set, the value of this variable is used instead. Defaults to false.</p>
+
+<p>transfer.hiderefs<br />
+This variable can be used to set both <code>receive.hiderefs</code> and <code>uploadpack.hiderefs</code> at the same time to the same values. See entries for these other variables.</p>
+
+<p>transfer.unpackLimit<br />
+When <code>fetch.unpackLimit</code> or <code>receive.unpackLimit</code> are not set, the value of this variable is used instead. The default value is 100.</p>
+
+<p>uploadarchive.allowUnreachable<br />
+If true, allow clients to use <code>git archive                     --remote</code> to request any tree, whether reachable from the ref tips or not. See the discussion in the <code>SECURITY</code> section of <a href="../git-upload-archive">git-upload-archive(1)</a> for more details. Defaults to <code>false</code>.</p>
+
+<p>uploadpack.hiderefs<br />
+String(s) <code>upload-pack</code> uses to decide which refs to omit from its initial advertisement. Use more than one definitions to specify multiple prefix strings. A ref that are under the hierarchies listed on the value of this variable is excluded, and is hidden from <code>git                     ls-remote</code>, <code>git fetch</code>, etc. An attempt to fetch a hidden ref by <code>git                     fetch</code> will fail. See also <code>uploadpack.allowtipsha1inwant</code>.</p>
+
+<p>uploadpack.allowtipsha1inwant<br />
+When <code>uploadpack.hiderefs</code> is in effect, allow <code>upload-pack</code> to accept a fetch request that asks for an object at the tip of a hidden ref (by default, such a request is rejected). see also <code>uploadpack.hiderefs</code>.</p>
+
+<p>uploadpack.keepalive<br />
+When <code>upload-pack</code> has started <code>pack-objects</code>, there may be a quiet period while <code>pack-objects</code> prepares the pack. Normally it would output progress information, but if <code>--quiet</code> was used for the fetch, <code>pack-objects</code> will output nothing at all until the pack data begins. Some clients and networks may consider the server to be hung and give up. Setting this option instructs <code>upload-pack</code> to send an empty keepalive packet every <code>uploadpack.keepalive</code> seconds. Setting this option to 0 disables keepalive packets entirely. The default is 5 seconds.</p>
+
+<p>url.&lt;base&gt;.insteadOf<br />
+Any URL that starts with this value will be rewritten to start, instead, with &lt;base&gt;. In cases where some site serves a large number of repositories, and serves them with multiple access methods, and some users need to use different access methods, this feature allows people to specify any of the equivalent URLs and have Git automatically rewrite the URL to the best alternative for the particular user, even for a never-before-seen repository on the site. When more than one insteadOf strings match a given URL, the longest match is used.</p>
+
+<p>url.&lt;base&gt;.pushInsteadOf<br />
+Any URL that starts with this value will not be pushed to; instead, it will be rewritten to start with &lt;base&gt;, and the resulting URL will be pushed to. In cases where some site serves a large number of repositories, and serves them with multiple access methods, some of which do not allow push, this feature allows people to specify a pull-only URL and have Git automatically use an appropriate URL to push, even for a never-before-seen repository on the site. When more than one pushInsteadOf strings match a given URL, the longest match is used. If a remote has an explicit pushurl, Git will ignore this setting for that remote.</p>
+
+<p>user.email<br />
+Your email address to be recorded in any newly created commits. Can be overridden by the <em>GIT_AUTHOR_EMAIL</em>, <em>GIT_COMMITTER_EMAIL</em>, and <em>EMAIL</em> environment variables. See <a href="../git-commit-tree">git-commit-tree(1)</a>.</p>
+
+<p>user.name<br />
+Your full name to be recorded in any newly created commits. Can be overridden by the <em>GIT_AUTHOR_NAME</em> and <em>GIT_COMMITTER_NAME</em> environment variables. See <a href="../git-commit-tree">git-commit-tree(1)</a>.</p>
+
+<p>user.signingkey<br />
+If <a href="../git-tag">git-tag(1)</a> or <a href="../git-commit">git-commit(1)</a> is not selecting the key you want it to automatically when creating a signed tag or commit, you can override the default selection with this variable. This option is passed unchanged to gpg’s &ndash;local-user parameter, so you may specify a key using any method that gpg supports.</p>
+
+<p>web.browser<br />
+Specify a web browser that may be used by some commands. Currently only <a href="../git-instaweb">git-instaweb(1)</a> and <a href="../git-help">git-help(1)</a> may use it.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

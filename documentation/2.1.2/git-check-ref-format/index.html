@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Ensures that a reference name is">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-check-ref-format </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-check-ref-format</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.2'>2.1.2</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.2/git-check-ref-format'>git-check-ref-format</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git check-ref-format [--normalize]
+       [--[no-]allow-onelevel] [--refspec-pattern]
+       &lt;refname&gt;
+git check-ref-format --branch &lt;branchname-shorthand&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Checks if a given <em>refname</em> is acceptable, and exits with a non-zero status if it is not.</p>
+
+<p>A reference is used in Git to specify branches and tags. A branch head is stored in the <code>refs/heads</code> hierarchy, while a tag is stored in the <code>refs/tags</code> hierarchy of the ref namespace (typically in <code>$GIT_DIR/refs/heads</code> and <code>$GIT_DIR/refs/tags</code> directories or, as entries in file <code>$GIT_DIR/packed-refs</code> if refs are packed by <code>git gc</code>).</p>
+
+<p>Git imposes the following rules on how references are named:</p>
+
+<ol>
+<li><p>They can include slash <code>/</code> for hierarchical (directory) grouping, but no slash-separated component can begin with a dot <code>.</code> or end with the sequence <code>.lock</code>.</p></li>
+
+<li><p>They must contain at least one <code>/</code>. This enforces the presence of a category like <code>heads/</code>, <code>tags/</code> etc. but the actual names are not restricted. If the <code>--allow-onelevel</code> option is used, this rule is waived.</p></li>
+
+<li><p>They cannot have two consecutive dots <code>..</code> anywhere.</p></li>
+
+<li><p>They cannot have ASCII control characters (i.e. bytes whose values are lower than \040, or \177 <code>DEL</code>), space, tilde <code>~</code>, caret <code>^</code>, or colon <code>:</code> anywhere.</p></li>
+
+<li><p>They cannot have question-mark <code>?</code>, asterisk <code>*</code>, or open bracket <code>[</code> anywhere. See the <code>--refspec-pattern</code> option below for an exception to this rule.</p></li>
+
+<li><p>They cannot begin or end with a slash <code>/</code> or contain multiple consecutive slashes (see the <code>--normalize</code> option below for an exception to this rule)</p></li>
+
+<li><p>They cannot end with a dot <code>.</code>.</p></li>
+
+<li><p>They cannot contain a sequence <code>@{</code>.</p></li>
+
+<li><p>They cannot be the single character <code>@</code>.</p></li>
+
+<li><p>They cannot contain a <code>\</code>.</p></li>
+</ol>
+
+<p>These rules make it easy for shell script based tools to parse reference names, pathname expansion by the shell when a reference name is used unquoted (by mistake), and also avoids ambiguities in certain reference name expressions (see <a href="../gitrevisions">gitrevisions(7)</a>):</p>
+
+<ol>
+<li><p>A double-dot <code>..</code> is often used as in <code>ref1..ref2</code>, and in some contexts this notation means <code>^ref1 ref2</code> (i.e. not in <code>ref1</code> and in <code>ref2</code>).</p></li>
+
+<li><p>A tilde <code>~</code> and caret <code>^</code> are used to introduce the postfix <em>nth parent</em> and <em>peel onion</em> operation.</p></li>
+
+<li><p>A colon <code>:</code> is used as in <code>srcref:dstref</code> to mean &ldquo;use srcref’s value and store it in dstref&rdquo; in fetch and push operations. It may also be used to select a specific object such as with <em>git cat-file</em>: &ldquo;git cat-file blob v1.3.3:refs.c&rdquo;.</p></li>
+
+<li><p>at-open-brace <code>@{</code> is used as a notation to access a reflog entry.</p></li>
+</ol>
+
+<p>With the <code>--branch</code> option, it expands the “previous branch syntax” <code>@{-n}</code>. For example, <code>@{-1}</code> is a way to refer the last branch you were on. This option should be used by porcelains to accept this syntax anywhere a branch name is expected, so they can act as if you typed the branch name.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;[no-]allow-onelevel<br />
+Controls whether one-level refnames are accepted (i.e., refnames that do not contain multiple <code>/</code>-separated components). The default is <code>--no-allow-onelevel</code>.</p>
+
+<p>&ndash;refspec-pattern<br />
+Interpret &lt;refname&gt; as a reference name pattern for a refspec (as used with remote repositories). If this option is enabled, &lt;refname&gt; is allowed to contain a single <code>*</code> in place of a one full pathname component (e.g., <code>foo/*/bar</code> but not <code>foo/bar*</code>).</p>
+
+<p>&ndash;normalize<br />
+Normalize <em>refname</em> by removing any leading slash (<code>/</code>) characters and collapsing runs of adjacent slashes between name components into a single slash. Iff the normalized refname is valid then print it to standard output and exit with a status of 0. (<code>--print</code> is a deprecated way to spell <code>--normalize</code>.)</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Print the name of the previous branch:</p>
+
+<pre><code>$ git check-ref-format --branch @{-1}
+</code></pre></li>
+
+<li><p>Determine the reference name to use for a new branch:</p>
+
+<pre><code>$ ref=$(git check-ref-format --normalize &quot;refs/heads/$newbranch&quot;) ||
+die &quot;we do not like '$newbranch' as a branch name.&quot;
+</code></pre></li>
+</ul>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

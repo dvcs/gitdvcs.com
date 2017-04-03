@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Create, list, delete refs to replace objects">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-replace </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-replace</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.5'>2.3.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.5/git-replace'>git-replace</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git replace [-f] &lt;object&gt; &lt;replacement&gt;
+git replace [-f] --edit &lt;object&gt;
+git replace [-f] --graft &lt;commit&gt; [&lt;parent&gt;…]
+git replace -d &lt;object&gt;…
+git replace [--format=&lt;format&gt;] [-l [&lt;pattern&gt;]]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Adds a <em>replace</em> reference in <code>refs/replace/</code> namespace.</p>
+
+<p>The name of the <em>replace</em> reference is the SHA-1 of the object that is replaced. The content of the <em>replace</em> reference is the SHA-1 of the replacement object.</p>
+
+<p>The replaced object and the replacement object must be of the same type. This restriction can be bypassed using <code>-f</code>.</p>
+
+<p>Unless <code>-f</code> is given, the <em>replace</em> reference must not yet exist.</p>
+
+<p>There is no other restriction on the replaced and replacement objects. Merge commits can be replaced by non-merge commits and vice versa.</p>
+
+<p>Replacement references will be used by default by all Git commands except those doing reachability traversal (prune, pack transfer and fsck).</p>
+
+<p>It is possible to disable use of replacement references for any command using the <code>--no-replace-objects</code> option just after <em>git</em>.</p>
+
+<p>For example if commit <em>foo</em> has been replaced by commit <em>bar</em>:</p>
+
+<pre><code>$ git --no-replace-objects cat-file commit foo
+</code></pre>
+
+<p>shows information about commit <em>foo</em>, while:</p>
+
+<pre><code>$ git cat-file commit foo
+</code></pre>
+
+<p>shows information about commit <em>bar</em>.</p>
+
+<p>The <em>GIT_NO_REPLACE_OBJECTS</em> environment variable can be set to achieve the same effect as the <code>--no-replace-objects</code> option.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-f
+&ndash;force<br />
+If an existing replace ref for the same object exists, it will be overwritten (instead of failing).</p>
+
+<p>-d
+&ndash;delete<br />
+Delete existing replace refs for the given objects.</p>
+
+<p>&ndash;edit &lt;object&gt;<br />
+Edit an object’s content interactively. The existing content for &lt;object&gt; is pretty-printed into a temporary file, an editor is launched on the file, and the result is parsed to create a new object of the same type as &lt;object&gt;. A replacement ref is then created to replace &lt;object&gt; with the newly created object. See <a href="../git-var">git-var(1)</a> for details about how the editor will be chosen.</p>
+
+<p>&ndash;raw<br />
+When editing, provide the raw object contents rather than pretty-printed ones. Currently this only affects trees, which will be shown in their binary form. This is harder to work with, but can help when repairing a tree that is so corrupted it cannot be pretty-printed. Note that you may need to configure your editor to cleanly read and write binary data.</p>
+
+<p>&ndash;graft &lt;commit&gt; [&lt;parent&gt;…]<br />
+Create a graft commit. A new commit is created with the same content as &lt;commit&gt; except that its parents will be [&lt;parent&gt;…] instead of &lt;commit&gt;&rsquo;s parents. A replacement ref is then created to replace &lt;commit&gt; with the newly created commit. See contrib/convert-grafts-to-replace-refs.sh for an example script based on this option that can convert grafts to replace refs.</p>
+
+<p>-l &lt;pattern&gt;
+&ndash;list &lt;pattern&gt;<br />
+List replace refs for objects that match the given pattern (or all if no pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists all replace refs.</p>
+
+<p>&ndash;format=&lt;format&gt;<br />
+When listing, use the specified &lt;format&gt;, which can be one of <em>short</em>, <em>medium</em> and <em>long</em>. When omitted, the format defaults to <em>short</em>.</p>
+
+<h2 id="formats">FORMATS</h2>
+
+<p>The following format are available:</p>
+
+<ul>
+<li><p><em>short</em>: &lt;replaced sha1&gt;</p></li>
+
+<li><p><em>medium</em>: &lt;replaced sha1&gt; → &lt;replacement sha1&gt;</p></li>
+
+<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) → &lt;replacement sha1&gt; (&lt;replacement type&gt;)</p></li>
+</ul>
+
+<h2 id="creating-replacement-objects">CREATING REPLACEMENT OBJECTS</h2>
+
+<p><a href="../git-filter-branch">git-filter-branch(1)</a>, <a href="../git-hash-object">git-hash-object(1)</a> and <a href="../git-rebase">git-rebase(1)</a>, among other git commands, can be used to create replacement objects from existing objects. The <code>--edit</code> option can also be used with <em>git replace</em> to create a replacement object by editing an existing object.</p>
+
+<p>If you want to replace many blobs, trees or commits that are part of a string of commits, you may just want to create a replacement string of commits and then only replace the commit at the tip of the target string of commits with the commit at the tip of the replacement string of commits.</p>
+
+<h2 id="bugs">BUGS</h2>
+
+<p>Comparing blobs or trees that have been replaced with those that replace them will not work properly. And using <code>git reset --hard</code> to go back to a replaced commit will move the branch to the replacement commit instead of the replaced commit.</p>
+
+<p>There may be other problems when using <em>git rev-list</em> related to pending objects.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-hash-object">git-hash-object(1)</a> <a href="../git-filter-branch">git-filter-branch(1)</a> <a href="../git-rebase">git-rebase(1)</a> <a href="../git-tag">git-tag(1)</a> <a href="../git-branch">git-branch(1)</a> <a href="../git-commit">git-commit(1)</a> <a href="../git-var">git-var(1)</a> <a href="../git">git(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" href="../../css/animate.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+
+    <script src="../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/blocs.min.js"></script>
+    <title> How to modify staged (existing/unpushed) commit(s) in Git? </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../"><img src="../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">How to modify staged (existing/unpushed) commit(s) in Git?</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../how-to'>how-to</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../how-to/modify-existing,-unpushed-commits'>modify-existing,-unpushed-commits</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<h2 id="summary">Summary</h2>
+
+<p>Modify previous staged commit</p>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend
+</pre></div>
+
+
+<p>Modify previous staged commit with <em>new</em> message</p>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend -m <span style="color: #009C00">&quot;Updated commit message&quot;</span>
+</pre></div>
+
+
+<p>Modify any previous commit message</p>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git rebase --interactive $parent_of_flawed_commit
+</pre></div>
+
+
+<h2 id="details">Details</h2>
+
+<p><strong>Modify Staged Commit And Push To Remote</strong></p>
+
+<ol>
+<li>This command will pen your editor, allowing you to change the commit message of the most recent commit.</li>
+</ol>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend
+</pre></div>
+
+
+<p>This command lets you set the commit message directly in the command line with:</p>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend -m <span style="color: #009C00">&quot;Updated commit message&quot;</span>
+</pre></div>
+
+
+<p>Make sure you don&rsquo;t have any working copy changes staged before doing this or they will get committed too. (Unstaged changes will not get committed.)</p>
+
+<ol>
+<li>If you&rsquo;ve already pushed your commit up to your remote branch, then you&rsquo;ll need to [force push]() the commit with</li>
+</ol>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git push --force &lt;remote&gt; &lt;branch&gt;  <span style="color: #FF0000; font-style: italic"># Force push</span>
+git push -f &lt;remote&gt; &lt;branch&gt;       <span style="color: #FF0000; font-style: italic"># Shorter</span>
+</pre></div>
+
+
+<div class="alert alert-warning" role="alert"><b>Warning: force-pushing will overwrite the remote branch with the state of your local one.</b> If there are commits on the remote branch that you don't have in your local branch, you will lose those commits.</div>
+
+<div class="alert alert-warning" role="alert"><b>Warning: be cautious about amending commits that you have already shared with other people.</b> Amending commits essentially rewrites them to have different SHA IDs, which poses a problem if other people have copies of the old commit that you've rewritten. Anyone who has a copy of the old commit will need to synchronize their work with your newly re-written commit, which can sometimes be difficult, so make sure you coordinate with others when attempting to rewrite shared commit history, or just avoid rewriting shared commits altogether.</div>
+
+<p><strong>Modify Multiple Previous Local Commits</strong></p>
+
+<ol>
+<li>If you want to fix several flawed commits, pass the parent of the oldest one of them.</li>
+</ol>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git rebase --interactive $parent_of_flawed_commit  <span style="color: #FF0000; font-style: italic"># Interactive</span>
+git rebase -i $parent_of_flawed_commit             <span style="color: #FF0000; font-style: italic"># Shorter</span>
+</pre></div>
+
+
+<ol>
+<li>An editor will come up, with a list of all commits since the one you specified in <code>$parent_of_flawed_commit</code>.</li>
+<li>Change <code>pick</code> to <code>reword</code> (or on old versions of Git, to <code>edit</code>) in front of any commits you want to fix.</li>
+
+<li><p>Once you save, Git will replay the listed commits.</p></li>
+
+<li><p>For each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:</p></li>
+</ol>
+
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #FF0000; font-style: italic"># Change the commit in any way you like.</span>
+git commit --amend
+git rebase --continue
+</pre></div>
+
+
+<p>Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorize it – just remember that <code>git rebase --interactive</code> lets you correct commits no matter how long ago they were.</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<ul>
+<li><a href="../../documentation/latest/git-commit/">git branch</a></li>
+<li><a href="../../documentation/latest/git-rebase/">git push</a></li>
+</ul>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../" target="_blank"><img src="../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

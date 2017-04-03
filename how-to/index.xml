@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>How-tos on Git</title>
+    <link>/how-to/index.xml</link>
+    <description>Recent content in How-tos on Git</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/how-to/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How do I discard unstaged changes in Git?</title>
+      <link>/how-to/discard-unstaged-changes-in-git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/discard-unstaged-changes-in-git/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stashing files (Can recover later)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git stash save --keep-index
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Cleaning files (Cannot recover later)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git clean -fd
+git checkout -- .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Stashing Files&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git stash&lt;/code&gt; saves files in a stashed list of temporary repository edits.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git stash save --keep-index
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;After stashing, you can drop that stash with a &lt;code&gt;git stash drop&lt;/code&gt; command if you like.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Cleaning Files&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git clean&lt;/code&gt; removes all untracked files (warning: while it won&amp;rsquo;t delete ignored files mentioned directly in .gitignore, it may delete ignored files residing in folders) and &lt;code&gt;git checkout&lt;/code&gt; clears all unstaged changes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git clean -fd
+git checkout -- .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-stash/&#34;&gt;git stash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-clean/&#34;&gt;git clean&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How do I rename a local Git branch?</title>
+      <link>/how-to/rename-a-local-git-branch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/rename-a-local-git-branch/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt;  &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# From any branch&lt;/span&gt;
+git branch -m &amp;lt;newname&amp;gt;            &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# From current branch&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;h4 id=&#34;renaming-any-other-branch&#34;&gt;Renaming Any Other Branch&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you want to rename a branch while pointed to any branch, do:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id=&#34;renaming-current-branch&#34;&gt;Renaming Current Branch&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you want to rename the current branch, you can do:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git branch -m &amp;lt;newname&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-branch/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to delete a Git branch both locally and remotely?</title>
+      <link>/how-to/delete-a-git-branch-both-locally-and-remotely/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/delete-a-git-branch-both-locally-and-remotely/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Deleting a local branch:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git branch --delete &amp;lt;branch&amp;gt;  
+git branch -d &amp;lt;branch&amp;gt;        &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Shorter version&lt;/span&gt;
+git branch -D &amp;lt;branch&amp;gt;        &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Force delete un-merged branches&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Deleting a remote branch:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git push origin --delete &amp;lt;branch&amp;gt;  &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Git version 1.7.0 or newer&lt;/span&gt;
+git push origin :&amp;lt;branch&amp;gt;          &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Git versions older than 1.7.0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Deleting a local remote-tracking branch:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ git branch --delete --remotes &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;
+$ git branch -dr &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt; &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Shorter&lt;/span&gt;
+
+git fetch &amp;lt;remote&amp;gt; --prune &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Delete multiple obsolete tracking branches&lt;/span&gt;
+git fetch &amp;lt;remote&amp;gt; -p      &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Shorter&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Delete Local And Remote Branch&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To delete the local branch.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;-d&lt;/code&gt; option is an alias for &lt;code&gt;—delete&lt;/code&gt;, which only deletes the branch if it has already been fully merged in its upstream branch. You could also use &lt;code&gt;-D&lt;/code&gt;, which is an alias for &lt;code&gt;—delete --force&lt;/code&gt;, which deletes the branch &amp;ldquo;irrespective of its merged status.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git branch -d branch_name
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;To delete remote branch&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As of &lt;a href=&#34;https://github.com/gitster/git/blob/master/Documentation/RelNotes/1.7.0.txt&#34;&gt;Git v1.7.0&lt;/a&gt;, you delete a remote branch using:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git push origin --delete &amp;lt;branch_name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Before &lt;a href=&#34;https://github.com/gitster/git/blob/master/Documentation/RelNotes/1.5.0.txt&#34;&gt;Git v1.7.0&lt;/a&gt;, you delete remote branches using:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git push origin :&amp;lt;branch_name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-branch/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-push/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to modify staged (existing/unpushed) commit(s) in Git?</title>
+      <link>/how-to/modify-existing,-unpushed-commits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/modify-existing,-unpushed-commits/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Modify previous staged commit&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit --amend
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Modify previous staged commit with &lt;em&gt;new&lt;/em&gt; message&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit --amend -m &lt;span style=&#34;color: #009C00&#34;&gt;&amp;quot;Updated commit message&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Modify any previous commit message&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git rebase --interactive $parent_of_flawed_commit
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Modify Staged Commit And Push To Remote&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;This command will pen your editor, allowing you to change the commit message of the most recent commit.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit --amend
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This command lets you set the commit message directly in the command line with:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit --amend -m &lt;span style=&#34;color: #009C00&#34;&gt;&amp;quot;Updated commit message&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Make sure you don&amp;rsquo;t have any working copy changes staged before doing this or they will get committed too. (Unstaged changes will not get committed.)&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you&amp;rsquo;ve already pushed your commit up to your remote branch, then you&amp;rsquo;ll need to [force push]() the commit with&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git push --force &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;  &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Force push&lt;/span&gt;
+git push -f &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;       &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Shorter&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;&lt;b&gt;Warning: force-pushing will overwrite the remote branch with the state of your local one.&lt;/b&gt; If there are commits on the remote branch that you don&#39;t have in your local branch, you will lose those commits.&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;&lt;b&gt;Warning: be cautious about amending commits that you have already shared with other people.&lt;/b&gt; Amending commits essentially rewrites them to have different SHA IDs, which poses a problem if other people have copies of the old commit that you&#39;ve rewritten. Anyone who has a copy of the old commit will need to synchronize their work with your newly re-written commit, which can sometimes be difficult, so make sure you coordinate with others when attempting to rewrite shared commit history, or just avoid rewriting shared commits altogether.&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Modify Multiple Previous Local Commits&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;If you want to fix several flawed commits, pass the parent of the oldest one of them.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git rebase --interactive $parent_of_flawed_commit  &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Interactive&lt;/span&gt;
+git rebase -i $parent_of_flawed_commit             &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Shorter&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;An editor will come up, with a list of all commits since the one you specified in &lt;code&gt;$parent_of_flawed_commit&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change &lt;code&gt;pick&lt;/code&gt; to &lt;code&gt;reword&lt;/code&gt; (or on old versions of Git, to &lt;code&gt;edit&lt;/code&gt;) in front of any commits you want to fix.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Once you save, Git will replay the listed commits.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Change the commit in any way you like.&lt;/span&gt;
+git commit --amend
+git rebase --continue
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorize it – just remember that &lt;code&gt;git rebase --interactive&lt;/code&gt; lets you correct commits no matter how long ago they were.&lt;/p&gt;
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-commit/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-rebase/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to undo `git add` before commit?</title>
+      <link>/how-to/undo-git-add-before-commit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/undo-git-add-before-commit/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git reset :file:  &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Remove file from stage&lt;/span&gt;
+git reset         &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Remove all files from stage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;h4 id=&#34;undo-file-git-add-before-commit&#34;&gt;Undo File &lt;code&gt;git add&lt;/code&gt; Before Commit&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Reset file which will remove it from the current index (the &amp;ldquo;about to be committed&amp;rdquo; list) without changing anything else.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git reset :file:  &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Remove file from stage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id=&#34;undo-all-files-git-add-before-commit&#34;&gt;Undo All Files &lt;code&gt;git add&lt;/code&gt; Before Commit&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Reset without any file name to unstage all due changes. This can come in handy when there are too many files to be listed one by one in a reasonable amount of time.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git reset         &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Remove all files from stage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-reset/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to undo last commit(s) in Git?</title>
+      <link>/how-to/undo-last-commits-in-git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/undo-last-commits-in-git/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit -m &lt;span style=&#34;color: #009C00&#34;&gt;&amp;quot;Something terribly misguided&amp;quot;&lt;/span&gt;
+git reset HEAD~1
+&lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# edit files as necessary&lt;/span&gt;
+git add ...
+git commit -c ORIG_HEAD
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;h4 id=&#34;undo-last-commit&#34;&gt;Undo Last Commit&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;This is what you want to undo&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit -m &lt;span style=&#34;color: #009C00&#34;&gt;&amp;quot;Something terribly misguided&amp;quot;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you committed unstaged (so they&amp;rsquo;ll appear as &amp;ldquo;Changes not staged for commit&amp;rdquo; in &lt;code&gt;git status&lt;/code&gt; and you&amp;rsquo;ll need to add them again before committing). If you only want to add more changes to the previous commit, or change the commit message1, you could use &lt;code&gt;git reset --soft HEAD~1&lt;/code&gt; instead, which is like &lt;code&gt;git reset HEAD~1&lt;/code&gt; but leaves your existing changes staged.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git reset HEAD~1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Make corrections to working tree files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git add&lt;/code&gt; anything that you want to include in your new commit.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git add ...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Commit the changes, reusing the old commit message. &lt;code&gt;reset&lt;/code&gt; copied the old head to &lt;code&gt;.git/ORIG_HEAD&lt;/code&gt;; &lt;code&gt;commit&lt;/code&gt; with &lt;code&gt;-c ORIG_HEAD&lt;/code&gt; will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the &lt;code&gt;-C&lt;/code&gt; option.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git commit -c ORIG_HEAD
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-commit/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-reset/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What is the difference between `git pull` and `git fetch`?</title>
+      <link>/how-to/differentiate-between-git-pull-and-git-fetch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/how-to/differentiate-between-git-pull-and-git-fetch/</guid>
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;git pull&lt;/code&gt; == &lt;code&gt;git fetch&lt;/code&gt; + &lt;code&gt;git merge&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;How &lt;code&gt;git pull&lt;/code&gt; and &lt;code&gt;git fetch&lt;/code&gt; work&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In the simplest terms, &lt;code&gt;git pull&lt;/code&gt; does a &lt;code&gt;git fetch&lt;/code&gt; followed by a &lt;code&gt;git merge&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git pull&lt;/code&gt;
+When you use &lt;code&gt;git pull&lt;/code&gt;, Git tries to automatically do your work for you. &lt;strong&gt;It is context sensitive&lt;/strong&gt;, so Git will merge any pulled commits into the branch you are currently working in.  &lt;code&gt;git pull&lt;/code&gt; &lt;strong&gt;automatically merges the commits without letting you review them first.&lt;/strong&gt; If you don’t closely manage your branches, you may run into frequent conflicts.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git fetch&lt;/code&gt;
+When you &lt;code&gt;git fetch&lt;/code&gt;, Git gathers any commits from the target branch that do not exist in your current branch and &lt;strong&gt;stores them in your local repository.&lt;/strong&gt; However, &lt;strong&gt;it does not merge them with your current branch.&lt;/strong&gt; This is particularly useful if you need to keep your repository up to date, but are working on something that might break if you update your files. To integrate the commits into your master branch, you use &lt;code&gt;git merge&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can do a &lt;code&gt;git fetch&lt;/code&gt; at any time to update your remote-tracking branches under &lt;code&gt;refs/remotes/&amp;lt;remote&amp;gt;/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-pull/&#34;&gt;git pull&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-fetch/&#34;&gt;git fetch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-merge/&#34;&gt;git merge&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

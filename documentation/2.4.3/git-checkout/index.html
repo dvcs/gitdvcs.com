@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Checkout a branch or paths to the working">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-checkout </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-checkout</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.3'>2.4.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.3/git-checkout'>git-checkout</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git checkout [-q] [-f] [-m] [&lt;branch&gt;]
+git checkout [-q] [-f] [-m] --detach [&lt;branch&gt;]
+git checkout [-q] [-f] [-m] [--detach] &lt;commit&gt;
+git checkout [-q] [-f] [-m] [[-b|-B|--orphan] &lt;new_branch&gt;] [&lt;start_point&gt;]
+git checkout [-f|--ours|--theirs|-m|--conflict=&lt;style&gt;] [&lt;tree-ish&gt;] [--] &lt;paths&gt;…
+git checkout [-p|--patch] [&lt;tree-ish&gt;] [--] [&lt;paths&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Updates files in the working tree to match the version in the index or the specified tree. If no paths are given, <em>git checkout</em> will also update <code>HEAD</code> to set the specified branch as the current branch.</p>
+
+<p><em>git checkout</em> &lt;branch&gt;<br />
+To prepare for working on &lt;branch&gt;, switch to it by updating the index and the files in the working tree, and by pointing HEAD at the branch. Local modifications to the files in the working tree are kept, so that they can be committed to the &lt;branch&gt;.</p>
+
+<p>If &lt;branch&gt; is not found but there does exist a tracking branch in exactly one remote (call it &lt;remote&gt;) with a matching name, treat as equivalent to</p>
+
+<pre><code>$ git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;
+</code></pre>
+
+<p>You could omit &lt;branch&gt;, in which case the command degenerates to &ldquo;check out the current branch&rdquo;, which is a glorified no-op with a rather expensive side-effects to show only the tracking information, if exists, for the current branch.</p>
+
+<p><em>git checkout</em> -b|-B &lt;new_branch&gt; [&lt;start point&gt;]<br />
+Specifying <code>-b</code> causes a new branch to be created as if <a href="../git-branch">git-branch(1)</a> were called and then checked out. In this case you can use the <code>--track</code> or <code>--no-track</code> options, which will be passed to <em>git branch</em>. As a convenience, <code>--track</code> without <code>-b</code> implies branch creation; see the description of <code>--track</code> below.</p>
+
+<p>If <code>-B</code> is given, &lt;new_branch&gt; is created if it doesn’t exist; otherwise, it is reset. This is the transactional equivalent of</p>
+
+<pre><code>$ git branch -f &lt;branch&gt; [&lt;start point&gt;]
+$ git checkout &lt;branch&gt;
+</code></pre>
+
+<p>that is to say, the branch is not reset/created unless &ldquo;git checkout&rdquo; is successful.</p>
+
+<p><em>git checkout</em> &ndash;detach [&lt;branch&gt;]
+<em>git checkout</em> [&ndash;detach] &lt;commit&gt;<br />
+Prepare to work on top of &lt;commit&gt;, by detaching HEAD at it (see &ldquo;DETACHED HEAD&rdquo; section), and updating the index and the files in the working tree. Local modifications to the files in the working tree are kept, so that the resulting working tree will be the state recorded in the commit plus the local modifications.</p>
+
+<p>When the &lt;commit&gt; argument is a branch name, the <code>--detach</code> option can be used to detach HEAD at the tip of the branch (<code>git checkout &lt;branch&gt;</code> would check out that branch without detaching HEAD).</p>
+
+<p>Omitting &lt;branch&gt; detaches HEAD at the tip of the current branch.</p>
+
+<p><em>git checkout</em> [-p|&ndash;patch] [&lt;tree-ish&gt;] [&ndash;] &lt;pathspec&gt;…<br />
+When &lt;paths&gt; or <code>--patch</code> are given, <em>git checkout</em> does <strong>not</strong> switch branches. It updates the named paths in the working tree from the index file or from a named &lt;tree-ish&gt; (most often a commit). In this case, the <code>-b</code> and <code>--track</code> options are meaningless and giving either of them results in an error. The &lt;tree-ish&gt; argument can be used to specify a specific tree-ish (i.e. commit, tag or tree) to update the index for the given paths before updating the working tree.</p>
+
+<p>The index may contain unmerged entries because of a previous failed merge. By default, if you try to check out such an entry from the index, the checkout operation will fail and nothing will be checked out. Using <code>-f</code> will ignore these unmerged entries. The contents from a specific side of the merge can be checked out of the index by using <code>--ours</code> or <code>--theirs</code>. With <code>-m</code>, changes made to the working tree file can be discarded to re-create the original conflicted merge result.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-q
+&ndash;quiet<br />
+Quiet, suppress feedback messages.</p>
+
+<p>-f
+&ndash;force<br />
+When switching branches, proceed even if the index or the working tree differs from HEAD. This is used to throw away local changes.</p>
+
+<p>When checking out paths from the index, do not fail upon unmerged entries; instead, unmerged entries are ignored.</p>
+
+<p>&ndash;ours
+&ndash;theirs<br />
+When checking out paths from the index, check out stage #2 (<em>ours</em>) or #3 (<em>theirs</em>) for unmerged paths.</p>
+
+<p>-b &lt;new_branch&gt;<br />
+Create a new branch named &lt;new_branch&gt; and start it at &lt;start_point&gt;; see <a href="../git-branch">git-branch(1)</a> for details.</p>
+
+<p>-B &lt;new_branch&gt;<br />
+Creates the branch &lt;new_branch&gt; and start it at &lt;start_point&gt;; if it already exists, then reset it to &lt;start_point&gt;. This is equivalent to running &ldquo;git branch&rdquo; with &ldquo;-f&rdquo;; see <a href="../git-branch">git-branch(1)</a> for details.</p>
+
+<p>-t
+&ndash;track<br />
+When creating a new branch, set up &ldquo;upstream&rdquo; configuration. See &ldquo;&ndash;track&rdquo; in <a href="../git-branch">git-branch(1)</a> for details.</p>
+
+<p>If no <em>-b</em> option is given, the name of the new branch will be derived from the remote-tracking branch, by looking at the local part of the refspec configured for the corresponding remote, and then stripping the initial part up to the &ldquo;*&rdquo;. This would tell us to use &ldquo;hack&rdquo; as the local branch when branching off of &ldquo;origin/hack&rdquo; (or &ldquo;remotes/origin/hack&rdquo;, or even &ldquo;refs/remotes/origin/hack&rdquo;). If the given name has no slash, or the above guessing results in an empty name, the guessing is aborted. You can explicitly give a name with <em>-b</em> in such a case.</p>
+
+<p>&ndash;no-track<br />
+Do not set up &ldquo;upstream&rdquo; configuration, even if the branch.autoSetupMerge configuration variable is true.</p>
+
+<p>-l<br />
+Create the new branch’s reflog; see <a href="../git-branch">git-branch(1)</a> for details.</p>
+
+<p>&ndash;detach<br />
+Rather than checking out a branch to work on it, check out a commit for inspection and discardable experiments. This is the default behavior of &ldquo;git checkout &lt;commit&gt;&rdquo; when &lt;commit&gt; is not a branch name. See the &ldquo;DETACHED HEAD&rdquo; section below for details.</p>
+
+<p>&ndash;orphan &lt;new_branch&gt;<br />
+Create a new <em>orphan</em> branch, named &lt;new_branch&gt;, started from &lt;start_point&gt; and switch to it. The first commit made on this new branch will have no parents and it will be the root of a new history totally disconnected from all the other branches and commits.</p>
+
+<p>The index and the working tree are adjusted as if you had previously run &ldquo;git checkout &lt;start_point&gt;&rdquo;. This allows you to start a new history that records a set of paths similar to &lt;start_point&gt; by easily running &ldquo;git commit -a&rdquo; to make the root commit.</p>
+
+<p>This can be useful when you want to publish the tree from a commit without exposing its full history. You might want to do this to publish an open source branch of a project whose current tree is &ldquo;clean&rdquo;, but whose full history contains proprietary or otherwise encumbered bits of code.</p>
+
+<p>If you want to start a disconnected history that records a set of paths that is totally different from the one of &lt;start_point&gt;, then you should clear the index and the working tree right after creating the orphan branch by running &ldquo;git rm -rf .&rdquo; from the top level of the working tree. Afterwards you will be ready to prepare your new files, repopulating the working tree, by copying them from elsewhere, extracting a tarball, etc.</p>
+
+<p>&ndash;ignore-skip-worktree-bits<br />
+In sparse checkout mode, <code>git checkout --                   &lt;paths&gt;</code> would update only entries matched by &lt;paths&gt; and sparse patterns in $GIT_DIR/info/sparse-checkout. This option ignores the sparse patterns and adds back any files in &lt;paths&gt;.</p>
+
+<p>-m
+&ndash;merge<br />
+When switching branches, if you have local modifications to one or more files that are different between the current branch and the branch to which you are switching, the command refuses to switch branches in order to preserve your modifications in context. However, with this option, a three-way merge between the current branch, your working tree contents, and the new branch is done, and you will be on the new branch.</p>
+
+<p>When a merge conflict happens, the index entries for conflicting paths are left unmerged, and you need to resolve the conflicts and mark the resolved paths with <code>git add</code> (or <code>git                     rm</code> if the merge should result in deletion of the path).</p>
+
+<p>When checking out paths from the index, this option lets you recreate the conflicted merge in the specified paths.</p>
+
+<p>&ndash;conflict=&lt;style&gt;<br />
+The same as &ndash;merge option above, but changes the way the conflicting hunks are presented, overriding the merge.conflictStyle configuration variable. Possible values are &ldquo;merge&rdquo; (default) and &ldquo;diff3&rdquo; (in addition to what is shown by &ldquo;merge&rdquo; style, shows the original contents).</p>
+
+<p>-p
+&ndash;patch<br />
+Interactively select hunks in the difference between the &lt;tree-ish&gt; (or the index, if unspecified) and the working tree. The chosen hunks are then applied in reverse to the working tree (and if a &lt;tree-ish&gt; was specified, the index).</p>
+
+<p>This means that you can use <code>git checkout                     -p</code> to selectively discard edits from your current working tree. See the “Interactive Mode” section of <a href="../git-add">git-add(1)</a> to learn how to operate the <code>--patch</code> mode.</p>
+
+<p>&lt;branch&gt;<br />
+Branch to checkout; if it refers to a branch (i.e., a name that, when prepended with &ldquo;refs/heads/&rdquo;, is a valid ref), then that branch is checked out. Otherwise, if it refers to a valid commit, your HEAD becomes &ldquo;detached&rdquo; and you are no longer on any branch (see below for details).</p>
+
+<p>As a special case, the <code>&quot;@{-N}&quot;</code> syntax for the N-th last branch/commit checks out branches (instead of detaching). You may also specify <code>-</code> which is synonymous with <code>&quot;@{-1}&quot;</code>.</p>
+
+<p>As a further special case, you may use <code>&quot;A...B&quot;</code> as a shortcut for the merge base of <code>A</code> and <code>B</code> if there is exactly one merge base. You can leave out at most one of <code>A</code> and <code>B</code>, in which case it defaults to <code>HEAD</code>.</p>
+
+<p>&lt;new_branch&gt;<br />
+Name for the new branch.</p>
+
+<p>&lt;start_point&gt;<br />
+The name of a commit at which to start the new branch; see <a href="../git-branch">git-branch(1)</a> for details. Defaults to HEAD.</p>
+
+<p>&lt;tree-ish&gt;<br />
+Tree to checkout from (when paths are given). If not specified, the index will be used.</p>
+
+<h2 id="detached-head">DETACHED HEAD</h2>
+
+<p>HEAD normally refers to a named branch (e.g. <em>master</em>). Meanwhile, each branch refers to a specific commit. Let’s look at a repo with three commits, one of them tagged, and with branch <em>master</em> checked out:</p>
+
+<pre><code>           HEAD (refers to branch 'master')
+            |
+            v
+a---b---c  branch 'master' (refers to commit 'c')
+    ^
+    |
+  tag 'v2.0' (refers to commit 'b')
+</code></pre>
+
+<p>When a commit is created in this state, the branch is updated to refer to the new commit. Specifically, <em>git commit</em> creates a new commit <em>d</em>, whose parent is commit <em>c</em>, and then updates branch <em>master</em> to refer to new commit <em>d</em>. HEAD still refers to branch <em>master</em> and so indirectly now refers to commit <em>d</em>:</p>
+
+<pre><code>$ edit; git add; git commit
+
+               HEAD (refers to branch 'master')
+                |
+                v
+a---b---c---d  branch 'master' (refers to commit 'd')
+    ^
+    |
+  tag 'v2.0' (refers to commit 'b')
+</code></pre>
+
+<p>It is sometimes useful to be able to checkout a commit that is not at the tip of any named branch, or even to create a new commit that is not referenced by a named branch. Let’s look at what happens when we checkout commit <em>b</em> (here we show two ways this may be done):</p>
+
+<pre><code>$ git checkout v2.0  # or
+$ git checkout master^^
+
+   HEAD (refers to commit 'b')
+    |
+    v
+a---b---c---d  branch 'master' (refers to commit 'd')
+    ^
+    |
+  tag 'v2.0' (refers to commit 'b')
+</code></pre>
+
+<p>Notice that regardless of which checkout command we use, HEAD now refers directly to commit <em>b</em>. This is known as being in detached HEAD state. It means simply that HEAD refers to a specific commit, as opposed to referring to a named branch. Let’s see what happens when we create a commit:</p>
+
+<pre><code>$ edit; git add; git commit
+
+     HEAD (refers to commit 'e')
+      |
+      v
+      e
+     /
+a---b---c---d  branch 'master' (refers to commit 'd')
+    ^
+    |
+  tag 'v2.0' (refers to commit 'b')
+</code></pre>
+
+<p>There is now a new commit <em>e</em>, but it is referenced only by HEAD. We can of course add yet another commit in this state:</p>
+
+<pre><code>$ edit; git add; git commit
+
+         HEAD (refers to commit 'f')
+          |
+          v
+      e---f
+     /
+a---b---c---d  branch 'master' (refers to commit 'd')
+    ^
+    |
+  tag 'v2.0' (refers to commit 'b')
+</code></pre>
+
+<p>In fact, we can perform all the normal Git operations. But, let’s look at what happens when we then checkout master:</p>
+
+<pre><code>$ git checkout master
+
+               HEAD (refers to branch 'master')
+      e---f     |
+     /          v
+a---b---c---d  branch 'master' (refers to commit 'd')
+    ^
+    |
+  tag 'v2.0' (refers to commit 'b')
+</code></pre>
+
+<p>It is important to realize that at this point nothing refers to commit <em>f</em>. Eventually commit <em>f</em> (and by extension commit <em>e</em>) will be deleted by the routine Git garbage collection process, unless we create a reference before that happens. If we have not yet moved away from commit <em>f</em>, any of these will create a reference to it:</p>
+
+<pre><code>$ git checkout -b foo   &lt;1&gt;
+$ git branch foo        &lt;2&gt;
+$ git tag foo           &lt;3&gt;
+</code></pre>
+
+<ol>
+<li><p>creates a new branch <em>foo</em>, which refers to commit <em>f</em>, and then updates HEAD to refer to branch <em>foo</em>. In other words, we’ll no longer be in detached HEAD state after this command.</p></li>
+
+<li><p>similarly creates a new branch <em>foo</em>, which refers to commit <em>f</em>, but leaves HEAD detached.</p></li>
+
+<li><p>creates a new tag <em>foo</em>, which refers to commit <em>f</em>, leaving HEAD detached.</p></li>
+</ol>
+
+<p>If we have moved away from commit <em>f</em>, then we must first recover its object name (typically by using git reflog), and then we can create a reference to it. For example, to see the last two commits to which HEAD referred, we can use either of these commands:</p>
+
+<pre><code>$ git reflog -2 HEAD # or
+$ git log -g -2 HEAD
+</code></pre>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ol>
+<li><p>The following sequence checks out the <code>master</code> branch, reverts the <code>Makefile</code> to two revisions back, deletes hello.c by mistake, and gets it back from the index.</p>
+
+<pre><code>$ git checkout master             &lt;1&gt;
+$ git checkout master~2 Makefile  &lt;2&gt;
+$ rm -f hello.c
+$ git checkout hello.c            &lt;3&gt;
+</code></pre>
+
+<ol>
+<li><p>switch branch</p></li>
+
+<li><p>take a file out of another commit</p></li>
+
+<li><p>restore hello.c from the index</p>
+
+<p>If you want to check out <em>all</em> C source files out of the index, you can say</p>
+
+<pre><code>$ git checkout -- '*.c'
+</code></pre>
+
+<p>Note the quotes around <code>*.c</code>. The file <code>hello.c</code> will also be checked out, even though it is no longer in the working tree, because the file globbing is used to match entries in the index (not in the working tree by the shell).</p>
+
+<p>If you have an unfortunate branch that is named <code>hello.c</code>, this step would be confused as an instruction to switch to that branch. You should instead write:</p>
+
+<pre><code>$ git checkout -- hello.c
+</code></pre></li>
+</ol></li>
+
+<li><p>After working in the wrong branch, switching to the correct branch would be done using:</p>
+
+<pre><code>$ git checkout mytopic
+</code></pre>
+
+<p>However, your &ldquo;wrong&rdquo; branch and correct &ldquo;mytopic&rdquo; branch may differ in files that you have modified locally, in which case the above checkout would fail like this:</p>
+
+<pre><code>$ git checkout mytopic
+error: You have local changes to 'frotz'; not switching branches.
+</code></pre>
+
+<p>You can give the <code>-m</code> flag to the command, which would try a three-way merge:</p>
+
+<pre><code>$ git checkout -m mytopic
+Auto-merging frotz
+</code></pre>
+
+<p>After this three-way merge, the local modifications are <em>not</em> registered in your index file, so <code>git diff</code> would show you what changes you made since the tip of the new branch.</p></li>
+
+<li><p>When a merge conflict happens during switching branches with the <code>-m</code> option, you would see something like this:</p>
+
+<pre><code>$ git checkout -m mytopic
+Auto-merging frotz
+ERROR: Merge conflict in frotz
+fatal: merge program failed
+</code></pre>
+
+<p>At this point, <code>git diff</code> shows the changes cleanly merged as in the previous example, as well as the changes in the conflicted files. Edit and resolve the conflict and mark it resolved with <code>git add</code> as usual:</p>
+
+<pre><code>$ edit frotz
+$ git add frotz
+</code></pre></li>
+</ol>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

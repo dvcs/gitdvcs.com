@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Hooks used by Git">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> githooks </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">githooks</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.7.4'>2.7.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.7.4/githooks'>githooks</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>$GIT_DIR/hooks/*</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Hooks are little scripts you can place in <code>$GIT_DIR/hooks</code> directory to trigger action at certain points. When <em>git init</em> is run, a handful of example hooks are copied into the <code>hooks</code> directory of the new repository, but by default they are all disabled. To enable a hook, rename it by removing its <code>.sample</code> suffix.</p>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>It is also a requirement for a given hook to be executable. However - in a freshly initialized repository - the <code>.sample</code> files are executable by default.</td>
+</tr>
+</tbody>
+</table>
+
+<p>This document describes the currently defined hooks.</p>
+
+<h2 id="hooks">HOOKS</h2>
+
+<h3 id="applypatch-msg">applypatch-msg</h3>
+
+<p>This hook is invoked by <em>git am</em> script. It takes a single parameter, the name of the file that holds the proposed commit log message. Exiting with non-zero status causes <em>git am</em> to abort before applying the patch.</p>
+
+<p>The hook is allowed to edit the message file in place, and can be used to normalize the message into some project standard format (if the project has one). It can also be used to refuse the commit after inspecting the message file.</p>
+
+<p>The default <em>applypatch-msg</em> hook, when enabled, runs the <em>commit-msg</em> hook, if the latter is enabled.</p>
+
+<h3 id="pre-applypatch">pre-applypatch</h3>
+
+<p>This hook is invoked by <em>git am</em>. It takes no parameter, and is invoked after the patch is applied, but before a commit is made.</p>
+
+<p>If it exits with non-zero status, then the working tree will not be committed after applying the patch.</p>
+
+<p>It can be used to inspect the current working tree and refuse to make a commit if it does not pass certain test.</p>
+
+<p>The default <em>pre-applypatch</em> hook, when enabled, runs the <em>pre-commit</em> hook, if the latter is enabled.</p>
+
+<h3 id="post-applypatch">post-applypatch</h3>
+
+<p>This hook is invoked by <em>git am</em>. It takes no parameter, and is invoked after the patch is applied and a commit is made.</p>
+
+<p>This hook is meant primarily for notification, and cannot affect the outcome of <em>git am</em>.</p>
+
+<h3 id="pre-commit">pre-commit</h3>
+
+<p>This hook is invoked by <em>git commit</em>, and can be bypassed with <code>--no-verify</code> option. It takes no parameter, and is invoked before obtaining the proposed commit log message and making a commit. Exiting with non-zero status from this script causes the <em>git commit</em> to abort.</p>
+
+<p>The default <em>pre-commit</em> hook, when enabled, catches introduction of lines with trailing whitespaces and aborts the commit when such a line is found.</p>
+
+<p>All the <em>git commit</em> hooks are invoked with the environment variable <code>GIT_EDITOR=:</code> if the command will not bring up an editor to modify the commit message.</p>
+
+<h3 id="prepare-commit-msg">prepare-commit-msg</h3>
+
+<p>This hook is invoked by <em>git commit</em> right after preparing the default log message, and before the editor is started.</p>
+
+<p>It takes one to three parameters. The first is the name of the file that contains the commit log message. The second is the source of the commit message, and can be: <code>message</code> (if a <code>-m</code> or <code>-F</code> option was given); <code>template</code> (if a <code>-t</code> option was given or the configuration option <code>commit.template</code> is set); <code>merge</code> (if the commit is a merge or a <code>.git/MERGE_MSG</code> file exists); <code>squash</code> (if a <code>.git/SQUASH_MSG</code> file exists); or <code>commit</code>, followed by a commit SHA-1 (if a <code>-c</code>, <code>-C</code> or <code>--amend</code> option was given).</p>
+
+<p>If the exit status is non-zero, <em>git commit</em> will abort.</p>
+
+<p>The purpose of the hook is to edit the message file in place, and it is not suppressed by the <code>--no-verify</code> option. A non-zero exit means a failure of the hook and aborts the commit. It should not be used as replacement for pre-commit hook.</p>
+
+<p>The sample <code>prepare-commit-msg</code> hook that comes with Git comments out the <code>Conflicts:</code> part of a merge’s commit message.</p>
+
+<h3 id="commit-msg">commit-msg</h3>
+
+<p>This hook is invoked by <em>git commit</em>, and can be bypassed with <code>--no-verify</code> option. It takes a single parameter, the name of the file that holds the proposed commit log message. Exiting with non-zero status causes the <em>git commit</em> to abort.</p>
+
+<p>The hook is allowed to edit the message file in place, and can be used to normalize the message into some project standard format (if the project has one). It can also be used to refuse the commit after inspecting the message file.</p>
+
+<p>The default <em>commit-msg</em> hook, when enabled, detects duplicate &ldquo;Signed-off-by&rdquo; lines, and aborts the commit if one is found.</p>
+
+<h3 id="post-commit">post-commit</h3>
+
+<p>This hook is invoked by <em>git commit</em>. It takes no parameter, and is invoked after a commit is made.</p>
+
+<p>This hook is meant primarily for notification, and cannot affect the outcome of <em>git commit</em>.</p>
+
+<h3 id="pre-rebase">pre-rebase</h3>
+
+<p>This hook is called by <em>git rebase</em> and can be used to prevent a branch from getting rebased. The hook may be called with one or two parameters. The first parameter is the upstream from which the series was forked. The second parameter is the branch being rebased, and is not set when rebasing the current branch.</p>
+
+<h3 id="post-checkout">post-checkout</h3>
+
+<p>This hook is invoked when a <em>git checkout</em> is run after having updated the worktree. The hook is given three parameters: the ref of the previous HEAD, the ref of the new HEAD (which may or may not have changed), and a flag indicating whether the checkout was a branch checkout (changing branches, flag=1) or a file checkout (retrieving a file from the index, flag=0). This hook cannot affect the outcome of <em>git checkout</em>.</p>
+
+<p>It is also run after <em>git clone</em>, unless the &ndash;no-checkout (-n) option is used. The first parameter given to the hook is the null-ref, the second the ref of the new HEAD and the flag is always 1.</p>
+
+<p>This hook can be used to perform repository validity checks, auto-display differences from the previous HEAD if different, or set working dir metadata properties.</p>
+
+<h3 id="post-merge">post-merge</h3>
+
+<p>This hook is invoked by <em>git merge</em>, which happens when a <em>git pull</em> is done on a local repository. The hook takes a single parameter, a status flag specifying whether or not the merge being done was a squash merge. This hook cannot affect the outcome of <em>git merge</em> and is not executed, if the merge failed due to conflicts.</p>
+
+<p>This hook can be used in conjunction with a corresponding pre-commit hook to save and restore any form of metadata associated with the working tree (e.g.: permissions/ownership, ACLS, etc). See contrib/hooks/setgitperms.perl for an example of how to do this.</p>
+
+<h3 id="pre-push">pre-push</h3>
+
+<p>This hook is called by <em>git push</em> and can be used to prevent a push from taking place. The hook is called with two parameters which provide the name and location of the destination remote, if a named remote is not being used both values will be the same.</p>
+
+<p>Information about what is to be pushed is provided on the hook’s standard input with lines of the form:</p>
+
+<pre><code>&lt;local ref&gt; SP &lt;local sha1&gt; SP &lt;remote ref&gt; SP &lt;remote sha1&gt; LF
+</code></pre>
+
+<p>For instance, if the command <code>git push origin                 master:foreign</code> were run the hook would receive a line like the following:</p>
+
+<pre><code>refs/heads/master 67890 refs/heads/foreign 12345
+</code></pre>
+
+<p>although the full, 40-character SHA-1s would be supplied. If the foreign ref does not yet exist the <code>&lt;remote SHA-1&gt;</code> will be 40 <code>0</code>. If a ref is to be deleted, the <code>&lt;local ref&gt;</code> will be supplied as <code>(delete)</code> and the <code>&lt;local                 SHA-1&gt;</code> will be 40 <code>0</code>. If the local commit was specified by something other than a name which could be expanded (such as <code>HEAD~</code>, or a SHA-1) it will be supplied as it was originally given.</p>
+
+<p>If this hook exits with a non-zero status, <em>git push</em> will abort without pushing anything. Information about why the push is rejected may be sent to the user by writing to standard error.</p>
+
+<h3 id="pre-receive">pre-receive</h3>
+
+<p>This hook is invoked by <em>git-receive-pack</em> on the remote repository, which happens when a <em>git push</em> is done on a local repository. Just before starting to update refs on the remote repository, the pre-receive hook is invoked. Its exit status determines the success or failure of the update.</p>
+
+<p>This hook executes once for the receive operation. It takes no arguments, but for each ref to be updated it receives on standard input a line of the format:</p>
+
+<pre><code>&lt;old-value&gt; SP &lt;new-value&gt; SP &lt;ref-name&gt; LF
+</code></pre>
+
+<p>where <code>&lt;old-value&gt;</code> is the old object name stored in the ref, <code>&lt;new-value&gt;</code> is the new object name to be stored in the ref and <code>&lt;ref-name&gt;</code> is the full name of the ref. When creating a new ref, <code>&lt;old-value&gt;</code> is 40 <code>0</code>.</p>
+
+<p>If the hook exits with non-zero status, none of the refs will be updated. If the hook exits with zero, updating of individual refs can still be prevented by the <a href="#update"><em>update</em></a> hook.</p>
+
+<p>Both standard output and standard error output are forwarded to <em>git send-pack</em> on the other end, so you can simply <code>echo</code> messages for the user.</p>
+
+<h3 id="update">update</h3>
+
+<p>This hook is invoked by <em>git-receive-pack</em> on the remote repository, which happens when a <em>git push</em> is done on a local repository. Just before updating the ref on the remote repository, the update hook is invoked. Its exit status determines the success or failure of the ref update.</p>
+
+<p>The hook executes once for each ref to be updated, and takes three parameters:</p>
+
+<ul>
+<li><p>the name of the ref being updated,</p></li>
+
+<li><p>the old object name stored in the ref,</p></li>
+
+<li><p>and the new object name to be stored in the ref.</p></li>
+</ul>
+
+<p>A zero exit from the update hook allows the ref to be updated. Exiting with a non-zero status prevents <em>git-receive-pack</em> from updating that ref.</p>
+
+<p>This hook can be used to prevent <em>forced</em> update on certain refs by making sure that the object name is a commit object that is a descendant of the commit object named by the old object name. That is, to enforce a &ldquo;fast-forward only&rdquo; policy.</p>
+
+<p>It could also be used to log the old..new status. However, it does not know the entire set of branches, so it would end up firing one e-mail per ref when used naively, though. The <a href="#post-receive"><em>post-receive</em></a> hook is more suited to that.</p>
+
+<p>Another use suggested on the mailing list is to use this hook to implement access control which is finer grained than the one based on filesystem group.</p>
+
+<p>Both standard output and standard error output are forwarded to <em>git send-pack</em> on the other end, so you can simply <code>echo</code> messages for the user.</p>
+
+<p>The default <em>update</em> hook, when enabled—and with <code>hooks.allowunannotated</code> config option unset or set to false—prevents unannotated tags to be pushed.</p>
+
+<h3 id="post-receive">post-receive</h3>
+
+<p>This hook is invoked by <em>git-receive-pack</em> on the remote repository, which happens when a <em>git push</em> is done on a local repository. It executes on the remote repository once after all the refs have been updated.</p>
+
+<p>This hook executes once for the receive operation. It takes no arguments, but gets the same information as the <a href="#pre-receive"><em>pre-receive</em></a> hook does on its standard input.</p>
+
+<p>This hook does not affect the outcome of <em>git-receive-pack</em>, as it is called after the real work is done.</p>
+
+<p>This supersedes the <a href="#post-update"><em>post-update</em></a> hook in that it gets both old and new values of all the refs in addition to their names.</p>
+
+<p>Both standard output and standard error output are forwarded to <em>git send-pack</em> on the other end, so you can simply <code>echo</code> messages for the user.</p>
+
+<p>The default <em>post-receive</em> hook is empty, but there is a sample script <code>post-receive-email</code> provided in the <code>contrib/hooks</code> directory in Git distribution, which implements sending commit emails.</p>
+
+<h3 id="post-update">post-update</h3>
+
+<p>This hook is invoked by <em>git-receive-pack</em> on the remote repository, which happens when a <em>git push</em> is done on a local repository. It executes on the remote repository once after all the refs have been updated.</p>
+
+<p>It takes a variable number of parameters, each of which is the name of ref that was actually updated.</p>
+
+<p>This hook is meant primarily for notification, and cannot affect the outcome of <em>git-receive-pack</em>.</p>
+
+<p>The <em>post-update</em> hook can tell what are the heads that were pushed, but it does not know what their original and updated values are, so it is a poor place to do log old..new. The <a href="#post-receive"><em>post-receive</em></a> hook does get both original and updated values of the refs. You might consider it instead if you need them.</p>
+
+<p>When enabled, the default <em>post-update</em> hook runs <em>git update-server-info</em> to keep the information used by dumb transports (e.g., HTTP) up-to-date. If you are publishing a Git repository that is accessible via HTTP, you should probably enable this hook.</p>
+
+<p>Both standard output and standard error output are forwarded to <em>git send-pack</em> on the other end, so you can simply <code>echo</code> messages for the user.</p>
+
+<h3 id="push-to-checkout">push-to-checkout</h3>
+
+<p>This hook is invoked by <em>git-receive-pack</em> on the remote repository, which happens when a <em>git push</em> is done on a local repository, when the push tries to update the branch that is currently checked out and the <code>receive.denyCurrentBranch</code> configuration variable is set to <code>updateInstead</code>. Such a push by default is refused if the working tree and the index of the remote repository has any difference from the currently checked out commit; when both the working tree and the index match the current commit, they are updated to match the newly pushed tip of the branch. This hook is to be used to override the default behaviour.</p>
+
+<p>The hook receives the commit with which the tip of the current branch is going to be updated. It can exit with a non-zero status to refuse the push (when it does so, it must not modify the index or the working tree). Or it can make any necessary changes to the working tree and to the index to bring them to the desired state when the tip of the current branch is updated to the new commit, and exit with a zero status.</p>
+
+<p>For example, the hook can simply run <code>git                 read-tree -u -m HEAD &quot;$1&quot;</code> in order to emulate <em>git fetch</em> that is run in the reverse direction with <code>git push</code>, as the two-tree form of <code>read-tree -u -m</code> is essentially the same as <code>git checkout</code> that switches branches while keeping the local changes in the working tree that do not interfere with the difference between the branches.</p>
+
+<h3 id="pre-auto-gc">pre-auto-gc</h3>
+
+<p>This hook is invoked by <em>git gc &ndash;auto</em>. It takes no parameter, and exiting with non-zero status from this script causes the <em>git gc &ndash;auto</em> to abort.</p>
+
+<h3 id="post-rewrite">post-rewrite</h3>
+
+<p>This hook is invoked by commands that rewrite commits (<code>git commit --amend</code>, <em>git-rebase</em>; currently <em>git-filter-branch</em> does <em>not</em> call it!). Its first argument denotes the command it was invoked by: currently one of <code>amend</code> or <code>rebase</code>. Further command-dependent arguments may be passed in the future.</p>
+
+<p>The hook receives a list of the rewritten commits on stdin, in the format</p>
+
+<pre><code>&lt;old-sha1&gt; SP &lt;new-sha1&gt; [ SP &lt;extra-info&gt; ] LF
+</code></pre>
+
+<p>The <em>extra-info</em> is again command-dependent. If it is empty, the preceding SP is also omitted. Currently, no commands pass any <em>extra-info</em>.</p>
+
+<p>The hook always runs after the automatic note copying (see &ldquo;notes.rewrite.&lt;command&gt;&rdquo; in <a href="../git-config.txt">git-config.txt(1)</a>) has happened, and thus has access to these notes.</p>
+
+<p>The following command-specific comments apply:</p>
+
+<p>rebase<br />
+For the <em>squash</em> and <em>fixup</em> operation, all commits that were squashed are listed as being rewritten to the squashed commit. This means that there will be several lines sharing the same <em>new-sha1</em>.</p>
+
+<p>The commits are guaranteed to be listed in the order that they were processed by rebase.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

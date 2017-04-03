@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Remove untracked files from the working tree">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-clean </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-clean</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.5'>2.4.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.5/git-clean'>git-clean</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git clean [-d] [-f] [-i] [-n] [-q] [-e &lt;pattern&gt;] [-x | -X] [--] &lt;path&gt;…
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Cleans the working tree by recursively removing files that are not under version control, starting from the current directory.</p>
+
+<p>Normally, only files unknown to Git are removed, but if the <em>-x</em> option is specified, ignored files are also removed. This can, for example, be useful to remove all build products.</p>
+
+<p>If any optional <code>&lt;path&gt;...</code> arguments are given, only those paths are affected.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-d<br />
+Remove untracked directories in addition to untracked files. If an untracked directory is managed by a different Git repository, it is not removed by default. Use -f option twice if you really want to remove such a directory.</p>
+
+<p>-f
+&ndash;force<br />
+If the Git configuration variable clean.requireForce is not set to false, <em>git clean</em> will refuse to delete files or directories unless given -f, -n or -i. Git will refuse to delete directories with .git sub directory or file unless a second -f is given. This affects also git submodules where the storage area of the removed submodule under .git/modules/ is not removed until -f is given twice.</p>
+
+<p>-i
+&ndash;interactive<br />
+Show what would be done and clean files interactively. See “Interactive mode” for details.</p>
+
+<p>-n
+&ndash;dry-run<br />
+Don’t actually remove anything, just show what would be done.</p>
+
+<p>-q
+&ndash;quiet<br />
+Be quiet, only report errors, but not the files that are successfully removed.</p>
+
+<p>-e &lt;pattern&gt;
+&ndash;exclude=&lt;pattern&gt;<br />
+In addition to those found in .gitignore (per directory) and $GIT_DIR/info/exclude, also consider these patterns to be in the set of the ignore rules in effect.</p>
+
+<p>-x<br />
+Don’t use the standard ignore rules read from .gitignore (per directory) and $GIT_DIR/info/exclude, but do still use the ignore rules given with <code>-e</code> options. This allows removing all untracked files, including build products. This can be used (possibly in conjunction with <em>git reset</em>) to create a pristine working directory to test a clean build.</p>
+
+<p>-X<br />
+Remove only files ignored by Git. This may be useful to rebuild everything from scratch, but keep manually created files.</p>
+
+<h2 id="interactive-mode">Interactive mode</h2>
+
+<p>When the command enters the interactive mode, it shows the files and directories to be cleaned, and goes into its interactive command loop.</p>
+
+<p>The command loop shows the list of subcommands available, and gives a prompt &ldquo;What now&gt; &ldquo;. In general, when the prompt ends with a single <em>&gt;</em>, you can pick only one of the choices given and type return, like this:</p>
+
+<pre><code>    *** Commands ***
+        1: clean                2: filter by pattern    3: select by numbers
+        4: ask each             5: quit                 6: help
+    What now&gt; 1
+</code></pre>
+
+<p>You also could say <code>c</code> or <code>clean</code> above as long as the choice is unique.</p>
+
+<p>The main command loop has 6 subcommands.</p>
+
+<p>clean<br />
+Start cleaning files and directories, and then quit.</p>
+
+<p>filter by pattern<br />
+This shows the files and directories to be deleted and issues an &ldquo;Input ignore patterns&gt;&gt;&rdquo; prompt. You can input space-separated patterns to exclude files and directories from deletion. E.g. &ldquo;*.c *.h&rdquo; will excludes files end with &ldquo;.c&rdquo; and &ldquo;.h&rdquo; from deletion. When you are satisfied with the filtered result, press ENTER (empty) back to the main menu.</p>
+
+<p>select by numbers<br />
+This shows the files and directories to be deleted and issues an &ldquo;Select items to delete&gt;&gt;&rdquo; prompt. When the prompt ends with double <em>&gt;&gt;</em> like this, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. &ldquo;2-5 7,9&rdquo; to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining items are selected. E.g. &ldquo;7-&rdquo; to choose 7,8,9 from the list. You can say <em>*</em> to choose everything. Also when you are satisfied with the filtered result, press ENTER (empty) back to the main menu.</p>
+
+<p>ask each<br />
+This will start to clean, and you must confirm one by one in order to delete items. Please note that this action is not as efficient as the above two actions.</p>
+
+<p>quit<br />
+This lets you quit without do cleaning.</p>
+
+<p>help<br />
+Show brief usage of interactive git-clean.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../gitignore">gitignore(5)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

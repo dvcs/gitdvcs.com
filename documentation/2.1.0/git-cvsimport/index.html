@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Salvage your data out of another SCM people">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-cvsimport </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-cvsimport</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.0'>2.1.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.0/git-cvsimport'>git-cvsimport</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git cvsimport [-o &lt;branch-for-HEAD&gt;] [-h] [-v] [-d &lt;CVSROOT&gt;]
+              [-A &lt;author-conv-file&gt;] [-p &lt;options-for-cvsps&gt;] [-P &lt;file&gt;]
+              [-C &lt;git_repository&gt;] [-z &lt;fuzz&gt;] [-i] [-k] [-u] [-s &lt;subst&gt;]
+              [-a] [-m] [-M &lt;regex&gt;] [-S &lt;regex&gt;] [-L &lt;commitlimit&gt;]
+              [-r &lt;remote&gt;] [-R] [&lt;CVS_module&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p><strong>WARNING:</strong> <code>git cvsimport</code> uses cvsps version 2, which is considered deprecated; it does not work with cvsps version 3 and later. If you are performing a one-shot import of a CVS repository consider using <a href="http://cvs2svn.tigris.org/cvs2git">cvs2git</a> or <a href="https://github.com/BartMassey/parsecvs">parsecvs</a>.</p>
+
+<p>Imports a CVS repository into Git. It will either create a new repository, or incrementally import into an existing one.</p>
+
+<p>Splitting the CVS log into patch sets is done by <em>cvsps</em>. At least version 2.1 is required.</p>
+
+<p><strong>WARNING:</strong> for certain situations the import leads to incorrect results. Please see the section <a href="#issues">ISSUES</a> for further reference.</p>
+
+<p>You should <strong>never</strong> do any work of your own on the branches that are created by <em>git cvsimport</em>. By default initial import will create and populate a &ldquo;master&rdquo; branch from the CVS repository’s main branch which you’re free to work with; after that, you need to <em>git merge</em> incremental imports, or any CVS branches, yourself. It is advisable to specify a named remote via -r to separate and protect the incoming branches.</p>
+
+<p>If you intend to set up a shared public repository that all developers can read/write, or if you want to use <a href="../git-cvsserver">git-cvsserver(1)</a>, then you probably want to make a bare clone of the imported repository, and use the clone as the shared repository. See <a href="../gitcvs-migration">gitcvs-migration(7)</a>.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-v<br />
+Verbosity: let <em>cvsimport</em> report what it is doing.</p>
+
+<p>-d &lt;CVSROOT&gt;<br />
+The root of the CVS archive. May be local (a simple path) or remote; currently, only the :local:, :ext: and :pserver: access methods are supported. If not given, <em>git cvsimport</em> will try to read it from <code>CVS/Root</code>. If no such file exists, it checks for the <code>CVSROOT</code> environment variable.</p>
+
+<p>&lt;CVS_module&gt;<br />
+The CVS module you want to import. Relative to &lt;CVSROOT&gt;. If not given, <em>git cvsimport</em> tries to read it from <code>CVS/Repository</code>.</p>
+
+<p>-C &lt;target-dir&gt;<br />
+The Git repository to import to. If the directory doesn’t exist, it will be created. Default is the current directory.</p>
+
+<p>-r &lt;remote&gt;<br />
+The Git remote to import this CVS repository into. Moves all CVS branches into remotes/&lt;remote&gt;/&lt;branch&gt; akin to the way <em>git clone</em> uses <em>origin</em> by default.</p>
+
+<p>-o &lt;branch-for-HEAD&gt;<br />
+When no remote is specified (via -r) the <em>HEAD</em> branch from CVS is imported to the <em>origin</em> branch within the Git repository, as <em>HEAD</em> already has a special meaning for Git. When a remote is specified the <em>HEAD</em> branch is named remotes/&lt;remote&gt;/master mirroring <em>git clone</em> behaviour. Use this option if you want to import into a different branch.</p>
+
+<p>Use <em>-o master</em> for continuing an import that was initially done by the old cvs2git tool.</p>
+
+<p>-i<br />
+Import-only: don’t perform a checkout after importing. This option ensures the working directory and index remain untouched and will not create them if they do not exist.</p>
+
+<p>-k<br />
+Kill keywords: will extract files with <em>-kk</em> from the CVS archive to avoid noisy changesets. Highly recommended, but off by default to preserve compatibility with early imported trees.</p>
+
+<p>-u<br />
+Convert underscores in tag and branch names to dots.</p>
+
+<p>-s &lt;subst&gt;<br />
+Substitute the character &ldquo;/&rdquo; in branch names with &lt;subst&gt;</p>
+
+<p>-p &lt;options-for-cvsps&gt;<br />
+Additional options for cvsps. The options <em>-u</em> and <em>-A</em> are implicit and should not be used here.</p>
+
+<p>If you need to pass multiple options, separate them with a comma.</p>
+
+<p>-z &lt;fuzz&gt;<br />
+Pass the timestamp fuzz factor to cvsps, in seconds. If unset, cvsps defaults to 300s.</p>
+
+<p>-P &lt;cvsps-output-file&gt;<br />
+Instead of calling cvsps, read the provided cvsps output file. Useful for debugging or when cvsps is being handled outside cvsimport.</p>
+
+<p>-m<br />
+Attempt to detect merges based on the commit message. This option will enable default regexes that try to capture the source branch name from the commit message.</p>
+
+<p>-M &lt;regex&gt;<br />
+Attempt to detect merges based on the commit message with a custom regex. It can be used with <em>-m</em> to enable the default regexes as well. You must escape forward slashes.</p>
+
+<p>The regex must capture the source branch name in $1.</p>
+
+<p>This option can be used several times to provide several detection regexes.</p>
+
+<p>-S &lt;regex&gt;<br />
+Skip paths matching the regex.</p>
+
+<p>-a<br />
+Import all commits, including recent ones. cvsimport by default skips commits that have a timestamp less than 10 minutes ago.</p>
+
+<p>-L &lt;limit&gt;<br />
+Limit the number of commits imported. Workaround for cases where cvsimport leaks memory.</p>
+
+<p>-A &lt;author-conv-file&gt;<br />
+CVS by default uses the Unix username when writing its commit logs. Using this option and an author-conv-file maps the name recorded in CVS to author name, e-mail and optional time zone:</p>
+
+<pre><code>        exon=Andreas Ericsson &lt;ae@op5.se&gt;
+        spawn=Simon Pawn &lt;spawn@frog-pond.org&gt; America/Chicago
+</code></pre>
+
+<p><em>git cvsimport</em> will make it appear as those authors had their GIT_AUTHOR_NAME and GIT_AUTHOR_EMAIL set properly all along. If a time zone is specified, GIT_AUTHOR_DATE will have the corresponding offset applied.</p>
+
+<p>For convenience, this data is saved to <code>$GIT_DIR/cvs-authors</code> each time the <em>-A</em> option is provided and read from that same file each time <em>git cvsimport</em> is run.</p>
+
+<p>It is not recommended to use this feature if you intend to export changes back to CVS again later with <em>git cvsexportcommit</em>.</p>
+
+<p>-R<br />
+Generate a <code>$GIT_DIR/cvs-revisions</code> file containing a mapping from CVS revision numbers to newly-created Git commit IDs. The generated file will contain one line for each (filename, revision) pair imported; each line will look like</p>
+
+<pre><code>src/widget.c 1.1 1d862f173cdc7325b6fa6d2ae1cfd61fd1b512b7
+</code></pre>
+
+<p>The revision data is appended to the file if it already exists, for use when doing incremental imports.</p>
+
+<p>This option may be useful if you have CVS revision numbers stored in commit messages, bug-tracking systems, email archives, and the like.</p>
+
+<p>-h<br />
+Print a short usage message and exit.</p>
+
+<h2 id="output">OUTPUT</h2>
+
+<p>If <em>-v</em> is specified, the script reports what it is doing.</p>
+
+<p>Otherwise, success is indicated the Unix way, i.e. by simply exiting with a zero exit status.</p>
+
+<h2 id="issues">ISSUES</h2>
+
+<p>Problems related to timestamps:</p>
+
+<ul>
+<li><p>If timestamps of commits in the CVS repository are not stable enough to be used for ordering commits changes may show up in the wrong order.</p></li>
+
+<li><p>If any files were ever &ldquo;cvs import&rdquo;ed more than once (e.g., import of more than one vendor release) the HEAD contains the wrong content.</p></li>
+
+<li><p>If the timestamp order of different files cross the revision order within the commit matching time window the order of commits may be wrong.</p></li>
+</ul>
+
+<p>Problems related to branches:</p>
+
+<ul>
+<li><p>Branches on which no commits have been made are not imported.</p></li>
+
+<li><p>All files from the branching point are added to a branch even if never added in CVS.</p></li>
+
+<li><p>This applies to files added to the source branch <strong>after</strong> a daughter branch was created: if previously no commit was made on the daughter branch they will erroneously be added to the daughter branch in git.</p></li>
+</ul>
+
+<p>Problems related to tags:</p>
+
+<ul>
+<li>Multiple tags on the same revision are not imported.</li>
+</ul>
+
+<p>If you suspect that any of these issues may apply to the repository you want to imort, consider using cvs2git:</p>
+
+<ul>
+<li>cvs2git (part of cvs2svn), <code>http://subversion.apache.org/</code></li>
+</ul>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

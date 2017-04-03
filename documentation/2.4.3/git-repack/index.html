@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Pack unpacked objects in a repository">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-repack </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-repack</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.3'>2.4.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.3/git-repack'>git-repack</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git repack [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [--window=&lt;n&gt;] [--depth=&lt;n&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This command is used to combine all objects that do not currently reside in a &ldquo;pack&rdquo;, into a pack. It can also be used to re-organize existing packs into a single, more efficient pack.</p>
+
+<p>A pack is a collection of objects, individually compressed, with delta compression applied, stored in a single file, with an associated index file.</p>
+
+<p>Packs are used to reduce the load on mirror systems, backup engines, disk storage, etc.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-a<br />
+Instead of incrementally packing the unpacked objects, pack everything referenced into a single pack. Especially useful when packing a repository that is used for private development. Use with <em>-d</em>. This will clean up the objects that <code>git prune</code> leaves behind, but <code>git fsck                   --full --dangling</code> shows as dangling.</p>
+
+<p>Note that users fetching over dumb protocols will have to fetch the whole new pack in order to get any contained object, no matter how many other objects in that pack they already have locally.</p>
+
+<p>-A<br />
+Same as <code>-a</code>, unless <em>-d</em> is used. Then any unreachable objects in a previous pack become loose, unpacked objects, instead of being left in the old pack. Unreachable objects are never intentionally added to a pack, even when repacking. This option prevents unreachable objects from being immediately deleted by way of being left in the old pack and then removed. Instead, the loose unreachable objects will be pruned according to normal expiry rules with the next <em>git gc</em> invocation. See <a href="../git-gc">git-gc(1)</a>.</p>
+
+<p>-d<br />
+After packing, if the newly created packs make some existing packs redundant, remove the redundant packs. Also run <em>git prune-packed</em> to remove redundant loose object files.</p>
+
+<p>-l<br />
+Pass the <code>--local</code> option to <em>git pack-objects</em>. See <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+
+<p>-f<br />
+Pass the <code>--no-reuse-delta</code> option to <code>git-pack-objects</code>, see <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+
+<p>-F<br />
+Pass the <code>--no-reuse-object</code> option to <code>git-pack-objects</code>, see <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+
+<p>-q<br />
+Pass the <code>-q</code> option to <em>git pack-objects</em>. See <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+
+<p>-n<br />
+Do not update the server information with <em>git update-server-info</em>. This option skips updating local catalog files needed to publish this repository (or a direct copy of it) over HTTP or FTP. See <a href="../git-update-server-info">git-update-server-info(1)</a>.</p>
+
+<p>&ndash;window=&lt;n&gt;
+&ndash;depth=&lt;n&gt;<br />
+These two options affect how the objects contained in the pack are stored using delta compression. The objects are first internally sorted by type, size and optionally names and compared against the other objects within <code>--window</code> to see if using delta compression saves space. <code>--depth</code> limits the maximum delta depth; making it too deep affects the performance on the unpacker side, because delta data needs to be applied that many times to get to the necessary object. The default value for &ndash;window is 10 and &ndash;depth is 50.</p>
+
+<p>&ndash;window-memory=&lt;n&gt;<br />
+This option provides an additional limit on top of <code>--window</code>; the window size will dynamically scale down so as to not take up more than <em>&lt;n&gt;</em> bytes in memory. This is useful in repositories with a mix of large and small objects to not run out of memory with a large window, but still be able to take advantage of the large window for the smaller objects. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. <code>--window-memory=0</code> makes memory usage unlimited, which is the default.</p>
+
+<p>&ndash;max-pack-size=&lt;n&gt;<br />
+Maximum size of each output pack file. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. The minimum size allowed is limited to 1 MiB. If specified, multiple packfiles may be created. The default is unlimited, unless the config variable <code>pack.packSizeLimit</code> is set.</p>
+
+<p>-b
+&ndash;write-bitmap-index<br />
+Write a reachability bitmap index as part of the repack. This only makes sense when used with <code>-a</code> or <code>-A</code>, as the bitmaps must be able to refer to all reachable objects. This option overrides the setting of <code>pack.writeBitmaps</code>.</p>
+
+<p>&ndash;pack-kept-objects<br />
+Include objects in <code>.keep</code> files when repacking. Note that we still do not delete <code>.keep</code> packs after <code>pack-objects</code> finishes. This means that we may duplicate objects, but this makes the option safe to use when there are concurrent pushes or fetches. This option is generally only useful if you are writing bitmaps with <code>-b</code> or <code>pack.writeBitmaps</code>, as it ensures that the bitmapped packfile has the necessary objects.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>By default, the command passes <code>--delta-base-offset</code> option to <em>git pack-objects</em>; this typically results in slightly smaller packs, but the generated packs are incompatible with versions of Git older than version 1.4.4. If you need to share your repository with such ancient Git versions, either directly or via the dumb http or rsync protocol, then you need to set the configuration variable <code>repack.UseDeltaBaseOffset</code> to &ldquo;false&rdquo; and repack. Access from old Git versions over the native protocol is unaffected by this option as the conversion is performed on the fly as needed in that case.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-pack-objects">git-pack-objects(1)</a> <a href="../git-prune-packed">git-prune-packed(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

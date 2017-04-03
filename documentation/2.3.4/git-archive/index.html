@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Create an archive of files from a named tree">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-archive </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-archive</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.4'>2.3.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.4/git-archive'>git-archive</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git archive [--format=&lt;fmt&gt;] [--list] [--prefix=&lt;prefix&gt;/] [&lt;extra&gt;]
+              [-o &lt;file&gt; | --output=&lt;file&gt;] [--worktree-attributes]
+              [--remote=&lt;repo&gt; [--exec=&lt;git-upload-archive&gt;]] &lt;tree-ish&gt;
+              [&lt;path&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Creates an archive of the specified format containing the tree structure for the named tree, and writes it out to the standard output. If &lt;prefix&gt; is specified it is prepended to the filenames in the archive.</p>
+
+<p><em>git archive</em> behaves differently when given a tree ID versus when given a commit ID or tag ID. In the first case the current time is used as the modification time of each file in the archive. In the latter case the commit time as recorded in the referenced commit object is used instead. Additionally the commit ID is stored in a global extended pax header if the tar format is used; it can be extracted using <em>git get-tar-commit-id</em>. In ZIP files it is stored as a file comment.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;format=&lt;fmt&gt;<br />
+Format of the resulting archive: <em>tar</em> or <em>zip</em>. If this option is not given, and the output file is specified, the format is inferred from the filename if possible (e.g. writing to &ldquo;foo.zip&rdquo; makes the output to be in the zip format). Otherwise the output format is <code>tar</code>.</p>
+
+<p>-l
+&ndash;list<br />
+Show all available formats.</p>
+
+<p>-v
+&ndash;verbose<br />
+Report progress to stderr.</p>
+
+<p>&ndash;prefix=&lt;prefix&gt;/<br />
+Prepend &lt;prefix&gt;/ to each filename in the archive.</p>
+
+<p>-o &lt;file&gt;
+&ndash;output=&lt;file&gt;<br />
+Write the archive to &lt;file&gt; instead of stdout.</p>
+
+<p>&ndash;worktree-attributes<br />
+Look for attributes in .gitattributes files in the working tree as well (see <a href="#ATTRIBUTES">[ATTRIBUTES]</a>).</p>
+
+<p>&lt;extra&gt;<br />
+This can be any options that the archiver backend understands. See next section.</p>
+
+<p>&ndash;remote=&lt;repo&gt;<br />
+Instead of making a tar archive from the local repository, retrieve a tar archive from a remote repository. Note that the remote repository may place restrictions on which sha1 expressions may be allowed in <code>&lt;tree-ish&gt;</code>. See <a href="../git-upload-archive">git-upload-archive(1)</a> for details.</p>
+
+<p>&ndash;exec=&lt;git-upload-archive&gt;<br />
+Used with &ndash;remote to specify the path to the <em>git-upload-archive</em> on the remote side.</p>
+
+<p>&lt;tree-ish&gt;<br />
+The tree or commit to produce an archive for.</p>
+
+<p>&lt;path&gt;<br />
+Without an optional path parameter, all files and subdirectories of the current working directory are included in the archive. If one or more paths are specified, only these are included.</p>
+
+<h2 id="backend-extra-options">BACKEND EXTRA OPTIONS</h2>
+
+<h3 id="zip">zip</h3>
+
+<p>-0<br />
+Store the files instead of deflating them.</p>
+
+<p>-9<br />
+Highest and slowest compression level. You can specify any number from 1 to 9 to adjust compression speed and ratio.</p>
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<p>tar.umask<br />
+This variable can be used to restrict the permission bits of tar archive entries. The default is 0002, which turns off the world write bit. The special value &ldquo;user&rdquo; indicates that the archiving user’s umask will be used instead. See umask(2) for details. If <code>--remote</code> is used then only the configuration of the remote repository takes effect.</p>
+
+<p>tar.&lt;format&gt;.command<br />
+This variable specifies a shell command through which the tar output generated by <code>git                   archive</code> should be piped. The command is executed using the shell with the generated tar file on its standard input, and should produce the final output on its standard output. Any compression-level options will be passed to the command (e.g., &ldquo;-9&rdquo;). An output file with the same extension as <code>&lt;format&gt;</code> will be use this format if no other format is given.</p>
+
+<p>The &ldquo;tar.gz&rdquo; and &ldquo;tgz&rdquo; formats are defined automatically and default to <code>gzip -cn</code>. You may override them with custom commands.</p>
+
+<p>tar.&lt;format&gt;.remote<br />
+If true, enable <code>&lt;format&gt;</code> for use by remote clients via <a href="../git-upload-archive">git-upload-archive(1)</a>. Defaults to false for user-defined formats, but true for the &ldquo;tar.gz&rdquo; and &ldquo;tgz&rdquo; formats.</p>
+
+<h2 id="attributes">ATTRIBUTES</h2>
+
+<p>export-ignore<br />
+Files and directories with the attribute export-ignore won’t be added to archive files. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>export-subst<br />
+If the attribute export-subst is set for a file then Git will expand several placeholders when adding this file to an archive. See <a href="../gitattributes">gitattributes(5)</a> for details.</p>
+
+<p>Note that attributes are by default taken from the <code>.gitattributes</code> files in the tree that is being archived. If you want to tweak the way the output is generated after the fact (e.g. you committed without adding an appropriate export-ignore in its <code>.gitattributes</code>), adjust the checked out <code>.gitattributes</code> file as necessary and use <code>--worktree-attributes</code> option. Alternatively you can keep necessary attributes that should apply while archiving any tree in your <code>$GIT_DIR/info/attributes</code> file.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p><code>git archive --format=tar                 --prefix=junk/ HEAD | (cd /var/tmp/ &amp;&amp; tar xf                 -)</code><br />
+Create a tar archive that contains the contents of the latest commit on the current branch, and extract it in the <code>/var/tmp/junk</code> directory.</p>
+
+<p><code>git archive --format=tar                 --prefix=git-1.4.0/ v1.4.0 | gzip                 &gt;git-1.4.0.tar.gz</code><br />
+Create a compressed tarball for v1.4.0 release.</p>
+
+<p><code>git archive --format=tar.gz                 --prefix=git-1.4.0/ v1.4.0 &gt;git-1.4.0.tar.gz</code><br />
+Same as above, but using the builtin tar.gz handling.</p>
+
+<p><code>git archive                 --prefix=git-1.4.0/ -o git-1.4.0.tar.gz v1.4.0</code><br />
+Same as above, but the format is inferred from the output file.</p>
+
+<p><code>git archive --format=tar                 --prefix=git-1.4.0/ v1.4.0^{tree} | gzip                 &gt;git-1.4.0.tar.gz</code><br />
+Create a compressed tarball for v1.4.0 release, but without a global extended pax header.</p>
+
+<p><code>git archive --format=zip                 --prefix=git-docs/ HEAD:Documentation/ &gt;                 git-1.4.0-docs.zip</code><br />
+Put everything in the current head’s Documentation/ directory into <em>git-1.4.0-docs.zip</em>, with the prefix <em>git-docs/</em>.</p>
+
+<p><code>git archive -o latest.zip                 HEAD</code><br />
+Create a Zip archive that contains the contents of the latest commit on the current branch. Note that the output format is inferred by the extension of the output file.</p>
+
+<p><code>git config                 tar.tar.xz.command &quot;xz -c&quot;</code><br />
+Configure a &ldquo;tar.xz&rdquo; format for making LZMA-compressed tarfiles. You can use it specifying <code>--format=tar.xz</code>, or by creating an output file like <code>-o foo.tar.xz</code>.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../gitattributes">gitattributes(5)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Git command-line interface and conventions">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> gitcli </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitcli</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.1'>2.2.1</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.1/gitcli'>gitcli</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>gitcli</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This manual describes the convention used throughout Git CLI.</p>
+
+<p>Many commands take revisions (most often &ldquo;commits&rdquo;, but sometimes &ldquo;tree-ish&rdquo;, depending on the context and command) and paths as their arguments. Here are the rules:</p>
+
+<ul>
+<li><p>Revisions come first and then paths. E.g. in <code>git diff v1.0 v2.0 arch/x86 include/asm-x86</code>, <code>v1.0</code> and <code>v2.0</code> are revisions and <code>arch/x86</code> and <code>include/asm-x86</code> are paths.</p></li>
+
+<li><p>When an argument can be misunderstood as either a revision or a path, they can be disambiguated by placing <code>--</code> between them. E.g. <code>git diff -- HEAD</code> is, &ldquo;I have a file called HEAD in my work tree. Please show changes between the version I staged in the index and what I have in the work tree for that file&rdquo;, not &ldquo;show difference between the HEAD commit and the work tree as a whole&rdquo;. You can say <code>git diff HEAD --</code> to ask for the latter.</p></li>
+
+<li><p>Without disambiguating <code>--</code>, Git makes a reasonable guess, but errors out and asking you to disambiguate when ambiguous. E.g. if you have a file called HEAD in your work tree, <code>git diff                   HEAD</code> is ambiguous, and you have to say either <code>git diff HEAD --</code> or <code>git diff --                   HEAD</code> to disambiguate.</p>
+
+<p>When writing a script that is expected to handle random user-input, it is a good practice to make it explicit which arguments are which by placing disambiguating <code>--</code> at appropriate places.</p></li>
+
+<li><p>Many commands allow wildcards in paths, but you need to protect them from getting globbed by the shell. These two mean different things:</p>
+
+<pre><code>$ git checkout -- *.c
+$ git checkout -- \*.c
+</code></pre>
+
+<p>The former lets your shell expand the fileglob, and you are asking the dot-C files in your working tree to be overwritten with the version in the index. The latter passes the <code>*.c</code> to Git, and you are asking the paths in the index that match the pattern to be checked out to your working tree. After running <code>git add hello.c; rm                     hello.c</code>, you will <em>not</em> see <code>hello.c</code> in your working tree with the former, but with the latter you will.</p></li>
+
+<li><p>Just as the filesystem <em>.</em> (period) refers to the current directory, using a <em>.</em> as a repository name in Git (a dot-repository) is a relative path and means your current repository.</p></li>
+</ul>
+
+<p>Here are the rules regarding the &ldquo;flags&rdquo; that you should follow when you are scripting Git:</p>
+
+<ul>
+<li><p>it’s preferred to use the non-dashed form of Git commands, which means that you should prefer <code>git foo</code> to <code>git-foo</code>.</p></li>
+
+<li><p>splitting short options to separate words (prefer <code>git foo -a -b</code> to <code>git foo                   -ab</code>, the latter may not even work).</p></li>
+
+<li><p>when a command-line option takes an argument, use the <em>stuck</em> form. In other words, write <code>git foo -oArg</code> instead of <code>git                   foo -o Arg</code> for short options, and <code>git                   foo --long-opt=Arg</code> instead of <code>git foo                   --long-opt Arg</code> for long options. An option that takes optional option-argument must be written in the <em>stuck</em> form.</p></li>
+
+<li><p>when you give a revision parameter to a command, make sure the parameter is not ambiguous with a name of a file in the work tree. E.g. do not write <code>git log -1 HEAD</code> but write <code>git log -1                   HEAD --</code>; the former will not work if you happen to have a file called <code>HEAD</code> in the work tree.</p></li>
+
+<li><p>many commands allow a long option <code>--option</code> to be abbreviated only to their unique prefix (e.g. if there is no other option whose name begins with <code>opt</code>, you may be able to spell <code>--opt</code> to invoke the <code>--option</code> flag), but you should fully spell them out when writing your scripts; later versions of Git may introduce a new option whose name shares the same prefix, e.g. <code>--optimize</code>, to make a short prefix that used to be unique no longer unique.</p></li>
+</ul>
+
+<h2 id="enhanced-option-parser">ENHANCED OPTION PARSER</h2>
+
+<p>From the Git 1.5.4 series and further, many Git commands (not all of them at the time of the writing though) come with an enhanced option parser.</p>
+
+<p>Here is a list of the facilities provided by this option parser.</p>
+
+<h3 id="magic-options">Magic Options</h3>
+
+<p>Commands which have the enhanced option parser activated all understand a couple of magic command-line options:</p>
+
+<p>-h<br />
+gives a pretty printed usage of the command.</p>
+
+<pre><code>$ git describe -h
+usage: git describe [options] &lt;commit-ish&gt;*
+   or: git describe [options] --dirty
+
+    --contains            find the tag that comes after the commit
+    --debug               debug search strategy on stderr
+    --all                 use any ref
+    --tags                use any tag, even unannotated
+    --long                always use long format
+    --abbrev[=&lt;n&gt;]        use &lt;n&gt; digits to display SHA-1s
+</code></pre>
+
+<p>&ndash;help-all<br />
+Some Git commands take options that are only used for plumbing or that are deprecated, and such options are hidden from the default usage. This option gives the full list of options.</p>
+
+<h3 id="negating-options">Negating options</h3>
+
+<p>Options with long option names can be negated by prefixing <code>--no-</code>. For example, <code>git                 branch</code> has the option <code>--track</code> which is <em>on</em> by default. You can use <code>--no-track</code> to override that behaviour. The same goes for <code>--color</code> and <code>--no-color</code>.</p>
+
+<h3 id="aggregating-short-options">Aggregating short options</h3>
+
+<p>Commands that support the enhanced option parser allow you to aggregate short options. This means that you can for example use <code>git rm -rf</code> or <code>git clean -fdx</code>.</p>
+
+<h3 id="abbreviating-long-options">Abbreviating long options</h3>
+
+<p>Commands that support the enhanced option parser accepts unique prefix of a long option as if it is fully spelled out, but use this with a caution. For example, <code>git commit --amen</code> behaves as if you typed <code>git commit --amend</code>, but that is true only until a later version of Git introduces another option that shares the same prefix, e.g. <code>git commit --amenity</code> option.</p>
+
+<h3 id="separating-argument-from-the-option">Separating argument from the option</h3>
+
+<p>You can write the mandatory option parameter to an option as a separate word on the command line. That means that all the following uses work:</p>
+
+<pre><code>$ git foo --long-opt=Arg
+$ git foo --long-opt Arg
+$ git foo -oArg
+$ git foo -o Arg
+</code></pre>
+
+<p>However, this is <strong>NOT</strong> allowed for switches with an optional value, where the <em>stuck</em> form must be used:</p>
+
+<pre><code>$ git describe --abbrev HEAD     # correct
+$ git describe --abbrev=10 HEAD  # correct
+$ git describe --abbrev 10 HEAD  # NOT WHAT YOU MEANT
+</code></pre>
+
+<h2 id="notes-on-frequently-confused-options">NOTES ON FREQUENTLY CONFUSED OPTIONS</h2>
+
+<p>Many commands that can work on files in the working tree and/or in the index can take <code>--cached</code> and/or <code>--index</code> options. Sometimes people incorrectly think that, because the index was originally called cache, these two are synonyms. They are <strong>not</strong> — these two options mean very different things.</p>
+
+<ul>
+<li><p>The <code>--cached</code> option is used to ask a command that usually works on files in the working tree to <strong>only</strong> work with the index. For example, <code>git grep</code>, when used without a commit to specify from which commit to look for strings in, usually works on files in the working tree, but with the <code>--cached</code> option, it looks for strings in the index.</p></li>
+
+<li><p>The <code>--index</code> option is used to ask a command that usually works on files in the working tree to <strong>also</strong> affect the index. For example, <code>git stash apply</code> usually merges changes recorded in a stash to the working tree, but with the <code>--index</code> option, it also merges changes to the index as well.</p></li>
+</ul>
+
+<p><code>git apply</code> command can be used with <code>--cached</code> and <code>--index</code> (but not at the same time). Usually the command only affects the files in the working tree, but with <code>--index</code>, it patches both the files and their index entries, and with <code>--cached</code>, it modifies only the index entries.</p>
+
+<p>See also <a href="http://marc.info/?l=git&amp;m=116563135620359">http://marc.info/?l=git&amp;m=116563135620359</a> and <a href="http://marc.info/?l=git&amp;m=119150393620273">http://marc.info/?l=git&amp;m=119150393620273</a> for further information.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

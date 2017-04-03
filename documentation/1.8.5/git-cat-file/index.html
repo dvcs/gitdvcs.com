@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Provide content or type and size information">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-cat-file </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-cat-file</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.8.5'>1.8.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.8.5/git-cat-file'>git-cat-file</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git cat-file (-t | -s | -e | -p | &lt;type&gt; | --textconv ) &lt;object&gt;
+git cat-file (--batch | --batch-check) &lt; &lt;list-of-objects&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>In its first form, the command provides the content or the type of an object in the repository. The type is required unless <em>-t</em> or <em>-p</em> is used to find the object type, or <em>-s</em> is used to find the object size, or <em>&ndash;textconv</em> is used (which implies type &ldquo;blob&rdquo;).</p>
+
+<p>In the second form, a list of objects (separated by linefeeds) is provided on stdin, and the SHA-1, type, and size of each object is printed on stdout.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;object&gt;<br />
+The name of the object to show. For a more complete list of ways to spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+
+<p>-t<br />
+Instead of the content, show the object type identified by &lt;object&gt;.</p>
+
+<p>-s<br />
+Instead of the content, show the object size identified by &lt;object&gt;.</p>
+
+<p>-e<br />
+Suppress all output; instead exit with zero status if &lt;object&gt; exists and is a valid object.</p>
+
+<p>-p<br />
+Pretty-print the contents of &lt;object&gt; based on its type.</p>
+
+<p>&lt;type&gt;<br />
+Typically this matches the real type of &lt;object&gt; but asking for a type that can trivially be dereferenced from the given &lt;object&gt; is also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt; being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with &lt;object&gt; being a tag object that points at it.</p>
+
+<p>&ndash;textconv<br />
+Show the content as transformed by a textconv filter. In this case, &lt;object&gt; has be of the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt; in order to apply the filter to the content recorded in the index at &lt;path&gt;.</p>
+
+<p>&ndash;batch
+&ndash;batch=&lt;format&gt;<br />
+Print object information and contents for each object provided on stdin. May not be combined with any other options or arguments. See the section <code>BATCH OUTPUT</code> below for details.</p>
+
+<p>&ndash;batch-check
+&ndash;batch-check=&lt;format&gt;<br />
+Print object information for each object provided on stdin. May not be combined with any other options or arguments. See the section <code>BATCH                   OUTPUT</code> below for details.</p>
+
+<h2 id="output">OUTPUT</h2>
+
+<p>If <em>-t</em> is specified, one of the &lt;type&gt;.</p>
+
+<p>If <em>-s</em> is specified, the size of the &lt;object&gt; in bytes.</p>
+
+<p>If <em>-e</em> is specified, no output.</p>
+
+<p>If <em>-p</em> is specified, the contents of &lt;object&gt; are pretty-printed.</p>
+
+<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of the &lt;object&gt; will be returned.</p>
+
+<h2 id="batch-output">BATCH OUTPUT</h2>
+
+<p>If <code>--batch</code> or <code>--batch-check</code> is given, <code>cat-file</code> will read objects from stdin, one per line, and print information about them. By default, the whole line is considered as an object, as if it were fed to <a href="../git-rev-parse">git-rev-parse(1)</a>.</p>
+
+<p>You can specify the information shown for each object by using a custom <code>&lt;format&gt;</code>. The <code>&lt;format&gt;</code> is copied literally to stdout for each object, with placeholders of the form <code>%(atom)</code> expanded, followed by a newline. The available atoms are:</p>
+
+<p><code>objectname</code><br />
+The 40-hex object name of the object.</p>
+
+<p><code>objecttype</code><br />
+The type of of the object (the same as <code>cat-file -t</code> reports).</p>
+
+<p><code>objectsize</code><br />
+The size, in bytes, of the object (the same as <code>cat-file -s</code> reports).</p>
+
+<p><code>objectsize:disk</code><br />
+The size, in bytes, that the object takes up on disk. See the note about on-disk sizes in the <code>CAVEATS</code> section below.</p>
+
+<p><code>rest</code><br />
+If this atom is used in the output string, input lines are split at the first whitespace boundary. All characters before that whitespace are considered to be the object name; characters after that first run of whitespace (i.e., the &ldquo;rest&rdquo; of the line) are output in place of the <code>%(rest)</code> atom.</p>
+
+<p>If no format is specified, the default format is <code>%(objectname) %(objecttype) %(objectsize)</code>.</p>
+
+<p>If <code>--batch</code> is specified, the object information is followed by the object contents (consisting of <code>%(objectsize)</code> bytes), followed by a newline.</p>
+
+<p>For example, <code>--batch</code> without a custom format would produce:</p>
+
+<pre><code>&lt;sha1&gt; SP &lt;type&gt; SP &lt;size&gt; LF
+&lt;contents&gt; LF
+</code></pre>
+
+<p>Whereas <code>--batch-check='%(objectname)               %(objecttype)'</code> would produce:</p>
+
+<pre><code>&lt;sha1&gt; SP &lt;type&gt; LF
+</code></pre>
+
+<p>If a name is specified on stdin that cannot be resolved to an object in the repository, then <code>cat-file</code> will ignore any custom format and print:</p>
+
+<pre><code>&lt;object&gt; SP missing LF
+</code></pre>
+
+<h2 id="caveats">CAVEATS</h2>
+
+<p>Note that the sizes of objects on disk are reported accurately, but care should be taken in drawing conclusions about which refs or objects are responsible for disk usage. The size of a packed non-delta object may be much larger than the size of objects which delta against it, but the choice of which object is the base and which is the delta is arbitrary and is subject to change during a repack. Note also that multiple copies of an object may be present in the object database; in this case, it is undefined which copy’s size will be reported.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Manage set of tracked repositories">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-remote </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-remote</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.8'>2.3.8</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.8/git-remote'>git-remote</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git remote [-v | --verbose]
+git remote add [-t &lt;branch&gt;] [-m &lt;master&gt;] [-f] [--[no-]tags] [--mirror=&lt;fetch|push&gt;] &lt;name&gt; &lt;url&gt;
+git remote rename &lt;old&gt; &lt;new&gt;
+git remote remove &lt;name&gt;
+git remote set-head &lt;name&gt; (-a | --auto | -d | --delete | &lt;branch&gt;)
+git remote set-branches [--add] &lt;name&gt; &lt;branch&gt;…
+git remote set-url [--push] &lt;name&gt; &lt;newurl&gt; [&lt;oldurl&gt;]
+git remote set-url --add [--push] &lt;name&gt; &lt;newurl&gt;
+git remote set-url --delete [--push] &lt;name&gt; &lt;url&gt;
+git remote [-v | --verbose] show [-n] &lt;name&gt;…
+git remote prune [-n | --dry-run] &lt;name&gt;…
+git remote [-v | --verbose] update [-p | --prune] [(&lt;group&gt; | &lt;remote&gt;)…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Manage the set of repositories (&ldquo;remotes&rdquo;) whose branches you track.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-v
+&ndash;verbose<br />
+Be a little more verbose and show remote url after name. NOTE: This must be placed between <code>remote</code> and <code>subcommand</code>.</p>
+
+<h2 id="commands">COMMANDS</h2>
+
+<p>With no arguments, shows a list of existing remotes. Several subcommands are available to perform operations on the remotes.</p>
+
+<p><em>add</em><br />
+Adds a remote named &lt;name&gt; for the repository at &lt;url&gt;. The command <code>git                   fetch &lt;name&gt;</code> can then be used to create and update remote-tracking branches &lt;name&gt;/&lt;branch&gt;.</p>
+
+<p>With <code>-f</code> option, <code>git fetch                     &lt;name&gt;</code> is run immediately after the remote information is set up.</p>
+
+<p>With <code>--tags</code> option, <code>git                     fetch &lt;name&gt;</code> imports every tag from the remote repository.</p>
+
+<p>With <code>--no-tags</code> option, <code>git                     fetch &lt;name&gt;</code> does not import tags from the remote repository.</p>
+
+<p>By default, only tags on fetched branches are imported (see <a href="../git-fetch">git-fetch(1)</a>).</p>
+
+<p>With <code>-t &lt;branch&gt;</code> option, instead of the default glob refspec for the remote to track all branches under the <code>refs/remotes/&lt;name&gt;/</code> namespace, a refspec to track only <code>&lt;branch&gt;</code> is created. You can give more than one <code>-t                     &lt;branch&gt;</code> to track multiple branches without grabbing all branches.</p>
+
+<p>With <code>-m &lt;master&gt;</code> option, a symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is set up to point at remote’s <code>&lt;master&gt;</code> branch. See also the set-head command.</p>
+
+<p>When a fetch mirror is created with <code>--mirror=fetch</code>, the refs will not be stored in the <em>refs/remotes/</em> namespace, but rather everything in <em>refs/</em> on the remote will be directly mirrored into <em>refs/</em> in the local repository. This option only makes sense in bare repositories, because a fetch would overwrite any local commits.</p>
+
+<p>When a push mirror is created with <code>--mirror=push</code>, then <code>git push</code> will always behave as if <code>--mirror</code> was passed.</p>
+
+<p><em>rename</em><br />
+Rename the remote named &lt;old&gt; to &lt;new&gt;. All remote-tracking branches and configuration settings for the remote are updated.</p>
+
+<p>In case &lt;old&gt; and &lt;new&gt; are the same, and &lt;old&gt; is a file under <code>$GIT_DIR/remotes</code> or <code>$GIT_DIR/branches</code>, the remote is converted to the configuration file format.</p>
+
+<p><em>remove</em>
+<em>rm</em><br />
+Remove the remote named &lt;name&gt;. All remote-tracking branches and configuration settings for the remote are removed.</p>
+
+<p><em>set-head</em><br />
+Sets or deletes the default branch (i.e. the target of the symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code>) for the named remote. Having a default branch for a remote is not required, but allows the name of the remote to be specified in lieu of a specific branch. For example, if the default branch for <code>origin</code> is set to <code>master</code>, then <code>origin</code> may be specified wherever you would normally specify <code>origin/master</code>.</p>
+
+<p>With <code>-d</code> or <code>--delete</code>, the symbolic ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is deleted.</p>
+
+<p>With <code>-a</code> or <code>--auto</code>, the remote is queried to determine its <code>HEAD</code>, then the symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is set to the same branch. e.g., if the remote <code>HEAD</code> is pointed at <code>next</code>, &ldquo;<code>git remote set-head origin -a</code>&rdquo; will set the symbolic-ref <code>refs/remotes/origin/HEAD</code> to <code>refs/remotes/origin/next</code>. This will only work if <code>refs/remotes/origin/next</code> already exists; if not it must be fetched first.</p>
+
+<p>Use <code>&lt;branch&gt;</code> to set the symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code> explicitly. e.g., &ldquo;git remote set-head origin master&rdquo; will set the symbolic-ref <code>refs/remotes/origin/HEAD</code> to <code>refs/remotes/origin/master</code>. This will only work if <code>refs/remotes/origin/master</code> already exists; if not it must be fetched first.</p>
+
+<p><em>set-branches</em><br />
+Changes the list of branches tracked by the named remote. This can be used to track a subset of the available remote branches after the initial setup for a remote.</p>
+
+<p>The named branches will be interpreted as if specified with the <code>-t</code> option on the <em>git remote add</em> command line.</p>
+
+<p>With <code>--add</code>, instead of replacing the list of currently tracked branches, adds to that list.</p>
+
+<p><em>set-url</em><br />
+Changes URLs for the remote. Sets first URL for remote &lt;name&gt; that matches regex &lt;oldurl&gt; (first URL if no &lt;oldurl&gt; is given) to &lt;newurl&gt;. If &lt;oldurl&gt; doesn’t match any URL, an error occurs and nothing is changed.</p>
+
+<p>With <em>&ndash;push</em>, push URLs are manipulated instead of fetch URLs.</p>
+
+<p>With <em>&ndash;add</em>, instead of changing existing URLs, new URL is added.</p>
+
+<p>With <em>&ndash;delete</em>, instead of changing existing URLs, all URLs matching regex &lt;url&gt; are deleted for remote &lt;name&gt;. Trying to delete all non-push URLs is an error.</p>
+
+<p>Note that the push URL and the fetch URL, even though they can be set differently, must still refer to the same place. What you pushed to the push URL should be what you would see if you immediately fetched from the fetch URL. If you are trying to fetch from one place (e.g. your upstream) and push to another (e.g. your publishing repository), use two separate remotes.</p>
+
+<p><em>show</em><br />
+Gives some information about the remote &lt;name&gt;.</p>
+
+<p>With <code>-n</code> option, the remote heads are not queried first with <code>git ls-remote                     &lt;name&gt;</code>; cached information is used instead.</p>
+
+<p><em>prune</em><br />
+Deletes all stale remote-tracking branches under &lt;name&gt;. These stale branches have already been removed from the remote repository referenced by &lt;name&gt;, but are still locally available in &ldquo;remotes/&lt;name&gt;&rdquo;.</p>
+
+<p>With <code>--dry-run</code> option, report what branches will be pruned, but do not actually prune them.</p>
+
+<p><em>update</em><br />
+Fetch updates for a named set of remotes in the repository as defined by remotes.&lt;group&gt;. If a named group is not specified on the command line, the configuration parameter remotes.default will be used; if remotes.default is not defined, all remotes which do not have the configuration parameter remote.&lt;name&gt;.skipDefaultUpdate set to true will be updated. (See <a href="../git-config">git-config(1)</a>).</p>
+
+<p>With <code>--prune</code> option, prune all the remotes that are updated.</p>
+
+<h2 id="discussion">DISCUSSION</h2>
+
+<p>The remote configuration is achieved using the <code>remote.origin.url</code> and <code>remote.origin.fetch</code> configuration variables. (See <a href="../git-config">git-config(1)</a>).</p>
+
+<h2 id="examples">Examples</h2>
+
+<ul>
+<li><p>Add a new remote, fetch, and check out a branch from it</p>
+
+<pre><code>$ git remote
+origin
+$ git branch -r
+  origin/HEAD -&gt; origin/master
+  origin/master
+$ git remote add staging git://git.kernel.org/.../gregkh/staging.git
+$ git remote
+origin
+staging
+$ git fetch staging
+...
+From git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging
+ * [new branch]      master     -&gt; staging/master
+ * [new branch]      staging-linus -&gt; staging/staging-linus
+ * [new branch]      staging-next -&gt; staging/staging-next
+$ git branch -r
+  origin/HEAD -&gt; origin/master
+  origin/master
+  staging/master
+  staging/staging-linus
+  staging/staging-next
+$ git checkout -b staging staging/master
+...
+</code></pre></li>
+
+<li><p>Imitate <em>git clone</em> but track only selected branches</p>
+
+<pre><code>$ mkdir project.git
+$ cd project.git
+$ git init
+$ git remote add -f -t master -m master origin git://example.com/git.git/
+$ git merge origin
+</code></pre></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-fetch">git-fetch(1)</a> <a href="../git-branch">git-branch(1)</a> <a href="../git-config">git-config(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

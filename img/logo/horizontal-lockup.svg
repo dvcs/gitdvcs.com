@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="350px" height="350px" viewBox="0 0 350 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>horizontal-lockup</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M106.657435,148.656235 L133,174.9988 L69.0012,239 L53.0003,222.9991 L53.0003,202.313371 L106.657435,148.656235 Z M36.9994,142.9994 L36.9994,207.0006 L5,174.9988 L36.9994,142.9994 Z M95.3437646,137.342565 L53.0003,179.686029 L53.0003,126.9985 L69.0012,111 L95.3437646,137.342565 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="128" height="128" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M158.632,231.784 L156.968,215.528 C183.72,213.224 186.792,212.328 187.176,197.864 C183.336,200.552 178.472,202.472 172.328,202.472 C159.144,202.472 149.032,192.232 149.032,176.104 C149.032,155.88 164.904,142.568 184.744,142.568 C191.4,142.568 198.312,143.72 204.968,145.768 C205.224,154.984 205.352,175.336 205.352,189.032 C205.352,213.864 196.648,229.864 158.632,231.784 Z M179.496,188.52 C182.056,188.52 184.616,188.136 187.176,187.24 L187.176,159.208 C183.976,158.312 181.032,157.8 178.088,157.8 C171.048,157.8 166.952,162.408 166.952,171.88 C166.952,183.4 172.584,188.52 179.496,188.52 Z M261.032,135.272 L262.184,116.712 L243.112,116.712 L241.96,135.272 L261.032,135.272 Z M280.488,209 L282.024,195.432 L261.16,195.432 L261.16,144.232 L222.888,144.232 L221.48,157.16 L242.856,158.184 L242.856,195.432 L221.992,195.432 L221.992,209 L280.488,209 Z M343.848,209.896 L345.768,195.048 C327.976,194.664 321.96,192.872 321.96,183.784 L321.96,157.928 L344.488,157.928 L344.488,144.232 L321.96,144.232 L321.96,125.672 L303.912,127.336 L303.912,144.232 L292.392,144.232 L290.856,157.928 L303.912,157.928 L303.912,186.6 C303.912,203.88 313.512,210.664 343.848,209.896 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="196.736" height="115.072" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="git.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="horizontal-lockup">
+            <use id="Page-1" stroke="#171219" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+            <use id="git" stroke="#171219" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+            <circle id="fork" fill-opacity="0.3" fill="#77C6F5" cx="45" cy="175" r="8"></circle>
+            <circle id="fork-copy" fill-opacity="0.3" fill="#77C6F5" cx="141" cy="175" r="8"></circle>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Downloads on Git</title>
+    <link>/download/index.xml</link>
+    <description>Recent content in Downloads on Git</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/download/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Aurees</title>
+      <link>/download/desktop/aurees/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/aurees/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CodeHub</title>
+      <link>/download/mobile/codehub/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/mobile/codehub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cycligent</title>
+      <link>/download/desktop/cycligent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/cycligent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fork</title>
+      <link>/download/desktop/fork/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/fork/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Giggle</title>
+      <link>/download/desktop/giggle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/giggle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git Cola</title>
+      <link>/download/desktop/git-cola/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/git-cola/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git Extensions</title>
+      <link>/download/desktop/git-extensions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/git-extensions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git Tower</title>
+      <link>/download/desktop/git-tower/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/git-tower/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git2Go</title>
+      <link>/download/mobile/git2go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/mobile/git2go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitAhead</title>
+      <link>/download/desktop/gitahead/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitahead/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitEye</title>
+      <link>/download/desktop/giteye/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/giteye/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub Desktop</title>
+      <link>/download/desktop/github-desktop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/github-desktop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitKraken</title>
+      <link>/download/desktop/gitkraken/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitkraken/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitUp</title>
+      <link>/download/desktop/gitup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitX-dev</title>
+      <link>/download/desktop/gitx-dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitx-dev/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

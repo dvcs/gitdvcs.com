@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Git data exporter">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-fast-export </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-fast-export</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.9'>2.3.9</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.9/git-fast-export'>git-fast-export</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git fast-export [options] | git fast-import
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This program dumps the given revisions in a form suitable to be piped into <em>git fast-import</em>.</p>
+
+<p>You can use it as a human-readable bundle replacement (see <a href="../git-bundle">git-bundle(1)</a>), or as a kind of an interactive <em>git filter-branch</em>.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;progress=&lt;n&gt;<br />
+Insert <em>progress</em> statements every &lt;n&gt; objects, to be shown by <em>git fast-import</em> during import.</p>
+
+<p>&ndash;signed-tags=(verbatim|warn|warn-strip|strip|abort)<br />
+Specify how to handle signed tags. Since any transformation after the export can change the tag names (which can also happen when excluding revisions) the signatures will not match.</p>
+
+<p>When asking to <em>abort</em> (which is the default), this program will die when encountering a signed tag. With <em>strip</em>, the tags will silently be made unsigned, with <em>warn-strip</em> they will be made unsigned but a warning will be displayed, with <em>verbatim</em>, they will be silently exported and with <em>warn</em>, they will be exported, but you will see a warning.</p>
+
+<p>&ndash;tag-of-filtered-object=(abort|drop|rewrite)<br />
+Specify how to handle tags whose tagged object is filtered out. Since revisions and files to export can be limited by path, tagged objects may be filtered completely.</p>
+
+<p>When asking to <em>abort</em> (which is the default), this program will die when encountering such a tag. With <em>drop</em> it will omit such tags from the output. With <em>rewrite</em>, if the tagged object is a commit, it will rewrite the tag to tag an ancestor commit (via parent rewriting; see <a href="../git-rev-list">git-rev-list(1)</a>)</p>
+
+<p>-M
+-C<br />
+Perform move and/or copy detection, as described in the <a href="../git-diff">git-diff(1)</a> manual page, and use it to generate rename and copy commands in the output dump.</p>
+
+<p>Note that earlier versions of this command did not complain and produced incorrect results if you gave these options.</p>
+
+<p>&ndash;export-marks=&lt;file&gt;<br />
+Dumps the internal marks table to &lt;file&gt; when complete. Marks are written one per line as <code>:markid SHA-1</code>. Only marks for revisions are dumped; marks for blobs are ignored. Backends can use this file to validate imports after they have been completed, or to save the marks table across incremental runs. As &lt;file&gt; is only opened and truncated at completion, the same path can also be safely given to &ndash;import-marks. The file will not be written if no new object has been marked/exported.</p>
+
+<p>&ndash;import-marks=&lt;file&gt;<br />
+Before processing any input, load the marks specified in &lt;file&gt;. The input file must exist, must be readable, and must use the same format as produced by &ndash;export-marks.</p>
+
+<p>Any commits that have already been marked will not be exported again. If the backend uses a similar &ndash;import-marks file, this allows for incremental bidirectional exporting of the repository by keeping the marks the same across runs.</p>
+
+<p>&ndash;fake-missing-tagger<br />
+Some old repositories have tags without a tagger. The fast-import protocol was pretty strict about that, and did not allow that. So fake a tagger to be able to fast-import the output.</p>
+
+<p>&ndash;use-done-feature<br />
+Start the stream with a <em>feature done</em> stanza, and terminate it with a <em>done</em> command.</p>
+
+<p>&ndash;no-data<br />
+Skip output of blob objects and instead refer to blobs via their original SHA-1 hash. This is useful when rewriting the directory structure or history of a repository without touching the contents of individual files. Note that the resulting stream can only be used by a repository which already contains the necessary objects.</p>
+
+<p>&ndash;full-tree<br />
+This option will cause fast-export to issue a &ldquo;deleteall&rdquo; directive for each commit followed by a full list of all files in the commit (as opposed to just listing the files which are different from the commit’s first parent).</p>
+
+<p>&ndash;anonymize<br />
+Anonymize the contents of the repository while still retaining the shape of the history and stored tree. See the section on <code>ANONYMIZING</code> below.</p>
+
+<p>&ndash;refspec<br />
+Apply the specified refspec to each ref exported. Multiple of them can be specified.</p>
+
+<p>[&lt;git-rev-list-args&gt;…]<br />
+A list of arguments, acceptable to <em>git rev-parse</em> and <em>git rev-list</em>, that specifies the specific objects and references to export. For example, <code>master~10..master</code> causes the current master reference to be exported along with all objects added since its 10th ancestor commit.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<pre><code>$ git fast-export --all | (cd /empty/repository &amp;&amp; git fast-import)
+</code></pre>
+
+<p>This will export the whole repository and import it into the existing empty repository. Except for reencoding commits that are not in UTF-8, it would be a one-to-one mirror.</p>
+
+<pre><code>$ git fast-export master~5..master |
+        sed &quot;s|refs/heads/master|refs/heads/other|&quot; |
+        git fast-import
+</code></pre>
+
+<p>This makes a new branch called <em>other</em> from <em>master~5..master</em> (i.e. if <em>master</em> has linear history, it will take the last 5 commits).</p>
+
+<p>Note that this assumes that none of the blobs and commit messages referenced by that revision range contains the string <em>refs/heads/master</em>.</p>
+
+<h2 id="anonymizing">ANONYMIZING</h2>
+
+<p>If the <code>--anonymize</code> option is given, git will attempt to remove all identifying information from the repository while still retaining enough of the original tree and history patterns to reproduce some bugs. The goal is that a git bug which is found on a private repository will persist in the anonymized repository, and the latter can be shared with git developers to help solve the bug.</p>
+
+<p>With this option, git will replace all refnames, paths, blob contents, commit and tag messages, names, and email addresses in the output with anonymized data. Two instances of the same string will be replaced equivalently (e.g., two commits with the same author will have the same anonymized author in the output, but bear no resemblance to the original author string). The relationship between commits, branches, and tags is retained, as well as the commit timestamps (but the commit messages and refnames bear no resemblance to the originals). The relative makeup of the tree is retained (e.g., if you have a root tree with 10 files and 3 trees, so will the output), but their names and the contents of the files will be replaced.</p>
+
+<p>If you think you have found a git bug, you can start by exporting an anonymized stream of the whole repository:</p>
+
+<pre><code>$ git fast-export --anonymize --all &gt;anon-stream
+</code></pre>
+
+<p>Then confirm that the bug persists in a repository created from that stream (many bugs will not, as they really do depend on the exact repository contents):</p>
+
+<pre><code>$ git init anon-repo
+$ cd anon-repo
+$ git fast-import &lt;../anon-stream
+$ ... test your bug ...
+</code></pre>
+
+<p>If the anonymized repository shows the bug, it may be worth sharing <code>anon-stream</code> along with a regular bug report. Note that the anonymized stream compresses very well, so gzipping it is encouraged. If you want to examine the stream to see that it does not contain any private data, you can peruse it directly before sending. You may also want to try:</p>
+
+<pre><code>$ perl -pe 's/\d+/X/g' &lt;anon-stream | sort -u | less
+</code></pre>
+
+<p>which shows all of the unique lines (with numbers converted to &ldquo;X&rdquo;, to collapse &ldquo;User 0&rdquo;, &ldquo;User 1&rdquo;, etc into &ldquo;User X&rdquo;). This produces a much smaller output, and it is usually easy to quickly confirm that there is no private data in the stream.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>Since <em>git fast-import</em> cannot tag trees, you will not be able to export the linux.git repository completely, as it contains a tag referencing a tree instead of a commit.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-fast-import">git-fast-import(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

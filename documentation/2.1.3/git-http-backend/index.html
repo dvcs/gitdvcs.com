@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Server side implementation of Git over">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-http-backend </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-http-backend</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.3'>2.1.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.3/git-http-backend'>git-http-backend</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git http-backend
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>A simple CGI program to serve the contents of a Git repository to Git clients accessing the repository over http:// and https:// protocols. The program supports clients fetching using both the smart HTTP protocol and the backwards-compatible dumb HTTP protocol, as well as clients pushing using the smart HTTP protocol.</p>
+
+<p>It verifies that the directory has the magic file &ldquo;git-daemon-export-ok&rdquo;, and it will refuse to export any Git directory that hasn’t explicitly been marked for export this way (unless the GIT_HTTP_EXPORT_ALL environmental variable is set).</p>
+
+<p>By default, only the <code>upload-pack</code> service is enabled, which serves <em>git fetch-pack</em> and <em>git ls-remote</em> clients, which are invoked from <em>git fetch</em>, <em>git pull</em>, and <em>git clone</em>. If the client is authenticated, the <code>receive-pack</code> service is enabled, which serves <em>git send-pack</em> clients, which is invoked from <em>git push</em>.</p>
+
+<h2 id="services">SERVICES</h2>
+
+<p>These services can be enabled/disabled using the per-repository configuration file:</p>
+
+<p>http.getanyfile<br />
+This serves Git clients older than version 1.6.6 that are unable to use the upload pack service. When enabled, clients are able to read any file within the repository, including objects that are no longer reachable from a branch but are still present. It is enabled by default, but a repository can disable it by setting this configuration item to <code>false</code>.</p>
+
+<p>http.uploadpack<br />
+This serves <em>git fetch-pack</em> and <em>git ls-remote</em> clients. It is enabled by default, but a repository can disable it by setting this configuration item to <code>false</code>.</p>
+
+<p>http.receivepack<br />
+This serves <em>git send-pack</em> clients, allowing push. It is disabled by default for anonymous users, and enabled by default for users authenticated by the web server. It can be disabled by setting this item to <code>false</code>, or enabled for all users, including anonymous users, by setting it to <code>true</code>.</p>
+
+<h2 id="url-translation">URL TRANSLATION</h2>
+
+<p>To determine the location of the repository on disk, <em>git http-backend</em> concatenates the environment variables PATH_INFO, which is set automatically by the web server, and GIT_PROJECT_ROOT, which must be set manually in the web server configuration. If GIT_PROJECT_ROOT is not set, <em>git http-backend</em> reads PATH_TRANSLATED, which is also set automatically by the web server.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>All of the following examples map <em>http://$hostname/git/foo/bar.git</em> to <em>/var/www/git/foo/bar.git</em>.</p>
+
+<p>Apache 2.x<br />
+Ensure mod_cgi, mod_alias, and mod_env are enabled, set GIT_PROJECT_ROOT (or DocumentRoot) appropriately, and create a ScriptAlias to the CGI:</p>
+
+<pre><code>SetEnv GIT_PROJECT_ROOT /var/www/git
+SetEnv GIT_HTTP_EXPORT_ALL
+ScriptAlias /git/ /usr/libexec/git-core/git-http-backend/
+</code></pre>
+
+<p>To enable anonymous read access but authenticated write access, require authorization for both the initial ref advertisement (which we detect as a push via the service parameter in the query string), and the receive-pack invocation itself:</p>
+
+<pre><code>RewriteCond %{QUERY_STRING} service=git-receive-pack [OR]
+RewriteCond %{REQUEST_URI} /git-receive-pack$
+RewriteRule ^/git/ - [E=AUTHREQUIRED:yes]
+
+&lt;LocationMatch &quot;^/git/&quot;&gt;
+        Order Deny,Allow
+        Deny from env=AUTHREQUIRED
+
+        AuthType Basic
+        AuthName &quot;Git Access&quot;
+        Require group committers
+        Satisfy Any
+        ...
+&lt;/LocationMatch&gt;
+</code></pre>
+
+<p>If you do not have <code>mod_rewrite</code> available to match against the query string, it is sufficient to just protect <code>git-receive-pack</code> itself, like:</p>
+
+<pre><code>&lt;LocationMatch &quot;^/git/.*/git-receive-pack$&quot;&gt;
+        AuthType Basic
+        AuthName &quot;Git Access&quot;
+        Require group committers
+        ...
+&lt;/LocationMatch&gt;
+</code></pre>
+
+<p>In this mode, the server will not request authentication until the client actually starts the object negotiation phase of the push, rather than during the initial contact. For this reason, you must also enable the <code>http.receivepack</code> config option in any repositories that should accept a push. The default behavior, if <code>http.receivepack</code> is not set, is to reject any pushes by unauthenticated users; the initial request will therefore report <code>403                     Forbidden</code> to the client, without even giving an opportunity for authentication.</p>
+
+<p>To require authentication for both reads and writes, use a Location directive around the repository, or one of its parent directories:</p>
+
+<pre><code>&lt;Location /git/private&gt;
+        AuthType Basic
+        AuthName &quot;Private Git Access&quot;
+        Require group committers
+        ...
+&lt;/Location&gt;
+</code></pre>
+
+<p>To serve gitweb at the same url, use a ScriptAliasMatch to only those URLs that <em>git http-backend</em> can handle, and forward the rest to gitweb:</p>
+
+<pre><code>ScriptAliasMatch \
+        &quot;(?x)^/git/(.*/(HEAD | \
+                        info/refs | \
+                        objects/(info/[^/]+ | \
+                                 [0-9a-f]{2}/[0-9a-f]{38} | \
+                                 pack/pack-[0-9a-f]{40}\.(pack|idx)) | \
+                        git-(upload|receive)-pack))$&quot; \
+        /usr/libexec/git-core/git-http-backend/$1
+
+ScriptAlias /git/ /var/www/cgi-bin/gitweb.cgi/
+</code></pre>
+
+<p>To serve multiple repositories from different <a href="../gitnamespaces">gitnamespaces(7)</a> in a single repository:</p>
+
+<pre><code>SetEnvIf Request_URI &quot;^/git/([^/]*)&quot; GIT_NAMESPACE=$1
+ScriptAliasMatch ^/git/[^/]*(.*) /usr/libexec/git-core/git-http-backend/storage.git$1
+</code></pre>
+
+<p>Accelerated static Apache 2.x<br />
+Similar to the above, but Apache can be used to return static files that are stored on disk. On many systems this may be more efficient as Apache can ask the kernel to copy the file contents from the file system directly to the network:</p>
+
+<pre><code>SetEnv GIT_PROJECT_ROOT /var/www/git
+
+AliasMatch ^/git/(.*/objects/[0-9a-f]{2}/[0-9a-f]{38})$          /var/www/git/$1
+AliasMatch ^/git/(.*/objects/pack/pack-[0-9a-f]{40}.(pack|idx))$ /var/www/git/$1
+ScriptAlias /git/ /usr/libexec/git-core/git-http-backend/
+</code></pre>
+
+<p>This can be combined with the gitweb configuration:</p>
+
+<pre><code>SetEnv GIT_PROJECT_ROOT /var/www/git
+
+AliasMatch ^/git/(.*/objects/[0-9a-f]{2}/[0-9a-f]{38})$          /var/www/git/$1
+AliasMatch ^/git/(.*/objects/pack/pack-[0-9a-f]{40}.(pack|idx))$ /var/www/git/$1
+ScriptAliasMatch \
+        &quot;(?x)^/git/(.*/(HEAD | \
+                        info/refs | \
+                        objects/info/[^/]+ | \
+                        git-(upload|receive)-pack))$&quot; \
+        /usr/libexec/git-core/git-http-backend/$1
+ScriptAlias /git/ /var/www/cgi-bin/gitweb.cgi/
+</code></pre>
+
+<p>Lighttpd<br />
+Ensure that <code>mod_cgi</code>, <code>mod_alias</code>, <code>mod_auth</code>, <code>mod_setenv</code> are loaded, then set <code>GIT_PROJECT_ROOT</code> appropriately and redirect all requests to the CGI:</p>
+
+<pre><code>alias.url += ( &quot;/git&quot; =&gt; &quot;/usr/lib/git-core/git-http-backend&quot; )
+$HTTP[&quot;url&quot;] =~ &quot;^/git&quot; {
+        cgi.assign = (&quot;&quot; =&gt; &quot;&quot;)
+        setenv.add-environment = (
+                &quot;GIT_PROJECT_ROOT&quot; =&gt; &quot;/var/www/git&quot;,
+                &quot;GIT_HTTP_EXPORT_ALL&quot; =&gt; &quot;&quot;
+        )
+}
+</code></pre>
+
+<p>To enable anonymous read access but authenticated write access:</p>
+
+<pre><code>$HTTP[&quot;querystring&quot;] =~ &quot;service=git-receive-pack&quot; {
+        include &quot;git-auth.conf&quot;
+}
+$HTTP[&quot;url&quot;] =~ &quot;^/git/.*/git-receive-pack$&quot; {
+        include &quot;git-auth.conf&quot;
+}
+</code></pre>
+
+<p>where <code>git-auth.conf</code> looks something like:</p>
+
+<pre><code>auth.require = (
+        &quot;/&quot; =&gt; (
+                &quot;method&quot; =&gt; &quot;basic&quot;,
+                &quot;realm&quot; =&gt; &quot;Git Access&quot;,
+                &quot;require&quot; =&gt; &quot;valid-user&quot;
+               )
+)
+# ...and set up auth.backend here
+</code></pre>
+
+<p>To require authentication for both reads and writes:</p>
+
+<pre><code>$HTTP[&quot;url&quot;] =~ &quot;^/git/private&quot; {
+        include &quot;git-auth.conf&quot;
+}
+</code></pre>
+
+<h2 id="environment">ENVIRONMENT</h2>
+
+<p><em>git http-backend</em> relies upon the CGI environment variables set by the invoking web server, including:</p>
+
+<ul>
+<li><p>PATH_INFO (if GIT_PROJECT_ROOT is set, otherwise PATH_TRANSLATED)</p></li>
+
+<li><p>REMOTE_USER</p></li>
+
+<li><p>REMOTE_ADDR</p></li>
+
+<li><p>CONTENT_TYPE</p></li>
+
+<li><p>QUERY_STRING</p></li>
+
+<li><p>REQUEST_METHOD</p></li>
+</ul>
+
+<p>The GIT_HTTP_EXPORT_ALL environmental variable may be passed to <em>git-http-backend</em> to bypass the check for the &ldquo;git-daemon-export-ok&rdquo; file in each repository before allowing export of that repository.</p>
+
+<p>The backend process sets GIT_COMMITTER_NAME to <em>$REMOTE_USER</em> and GIT_COMMITTER_EMAIL to <em>${REMOTE_USER}@http.${REMOTE_ADDR}</em>, ensuring that any reflogs created by <em>git-receive-pack</em> contain some identifying information of the remote user who performed the push.</p>
+
+<p>All CGI environment variables are available to each of the hooks invoked by the <em>git-receive-pack</em>.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

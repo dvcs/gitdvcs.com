@@ -1,0 +1,855 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Compare a tree to the working tree or">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-diff-index </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-diff-index</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.6.1'>2.6.1</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.6.1/git-diff-index'>git-diff-index</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git diff-index [-m] [--cached] [&lt;common diff options&gt;] &lt;tree-ish&gt; [&lt;path&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Compares the content and mode of the blobs found in a tree object with the corresponding tracked files in the working tree, or with the corresponding paths in the index. When &lt;path&gt; arguments are present, compares only paths matching those patterns. Otherwise all tracked files are compared.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-p
+-u
+&ndash;patch<br />
+Generate patch (see section on generating patches).</p>
+
+<p>-s
+&ndash;no-patch<br />
+Suppress diff output. Useful for commands like <code>git show</code> that show the patch by default, or to cancel the effect of <code>--patch</code>.</p>
+
+<p>-U&lt;n&gt;
+&ndash;unified=&lt;n&gt;<br />
+Generate diffs with &lt;n&gt; lines of context instead of the usual three. Implies <code>-p</code>.</p>
+
+<p>&ndash;raw<br />
+Generate the diff in raw format. This is the default.</p>
+
+<p>&ndash;patch-with-raw<br />
+Synonym for <code>-p --raw</code>.</p>
+
+<p>&ndash;minimal<br />
+Spend extra time to make sure the smallest possible diff is produced.</p>
+
+<p>&ndash;patience<br />
+Generate a diff using the &ldquo;patience diff&rdquo; algorithm.</p>
+
+<p>&ndash;histogram<br />
+Generate a diff using the &ldquo;histogram diff&rdquo; algorithm.</p>
+
+<p>&ndash;diff-algorithm={patience|minimal|histogram|myers}<br />
+Choose a diff algorithm. The variants are as follows:</p>
+
+<p><code>default</code>, <code>myers</code><br />
+The basic greedy diff algorithm. Currently, this is the default.</p>
+
+<p><code>minimal</code><br />
+Spend extra time to make sure the smallest possible diff is produced.</p>
+
+<p><code>patience</code><br />
+Use &ldquo;patience diff&rdquo; algorithm when generating patches.</p>
+
+<p><code>histogram</code><br />
+This algorithm extends the patience algorithm to &ldquo;support low-occurrence common elements&rdquo;.</p>
+
+<p>For instance, if you configured diff.algorithm variable to a non-default value and want to use the default one, then you have to use <code>--diff-algorithm=default</code> option.</p>
+
+<p>&ndash;stat[=&lt;width&gt;[,&lt;name-width&gt;[,&lt;count&gt;]]]<br />
+Generate a diffstat. By default, as much space as necessary will be used for the filename part, and the rest for the graph part. Maximum width defaults to terminal width, or 80 columns if not connected to a terminal, and can be overridden by <code>&lt;width&gt;</code>. The width of the filename part can be limited by giving another width <code>&lt;name-width&gt;</code> after a comma. The width of the graph part can be limited by using <code>--stat-graph-width=&lt;width&gt;</code> (affects all commands generating a stat graph) or by setting <code>diff.statGraphWidth=&lt;width&gt;</code> (does not affect <code>git format-patch</code>). By giving a third parameter <code>&lt;count&gt;</code>, you can limit the output to the first <code>&lt;count&gt;</code> lines, followed by <code>...</code> if there are more.</p>
+
+<p>These parameters can also be set individually with <code>--stat-width=&lt;width&gt;</code>, <code>--stat-name-width=&lt;name-width&gt;</code> and <code>--stat-count=&lt;count&gt;</code>.</p>
+
+<p>&ndash;numstat<br />
+Similar to <code>--stat</code>, but shows number of added and deleted lines in decimal notation and pathname without abbreviation, to make it more machine friendly. For binary files, outputs two <code>-</code> instead of saying <code>0 0</code>.</p>
+
+<p>&ndash;shortstat<br />
+Output only the last line of the <code>--stat</code> format containing total number of modified files, as well as number of added and deleted lines.</p>
+
+<p>&ndash;dirstat[=&lt;param1,param2,…&gt;]<br />
+Output the distribution of relative amount of changes for each sub-directory. The behavior of <code>--dirstat</code> can be customized by passing it a comma separated list of parameters. The defaults are controlled by the <code>diff.dirstat</code> configuration variable (see <a href="../git-config">git-config(1)</a>). The following parameters are available:</p>
+
+<p><code>changes</code><br />
+Compute the dirstat numbers by counting the lines that have been removed from the source, or added to the destination. This ignores the amount of pure code movements within a file. In other words, rearranging lines in a file is not counted as much as other changes. This is the default behavior when no parameter is given.</p>
+
+<p><code>lines</code><br />
+Compute the dirstat numbers by doing the regular line-based diff analysis, and summing the removed/added line counts. (For binary files, count 64-byte chunks instead, since binary files have no natural concept of lines). This is a more expensive <code>--dirstat</code> behavior than the <code>changes</code> behavior, but it does count rearranged lines within a file as much as other changes. The resulting output is consistent with what you get from the other <code>--*stat</code> options.</p>
+
+<p><code>files</code><br />
+Compute the dirstat numbers by counting the number of files changed. Each changed file counts equally in the dirstat analysis. This is the computationally cheapest <code>--dirstat</code> behavior, since it does not have to look at the file contents at all.</p>
+
+<p><code>cumulative</code><br />
+Count changes in a child directory for the parent directory as well. Note that when using <code>cumulative</code>, the sum of the percentages reported may exceed 100%. The default (non-cumulative) behavior can be specified with the <code>noncumulative</code> parameter.</p>
+
+<p>&lt;limit&gt;<br />
+An integer parameter specifies a cut-off percent (3% by default). Directories contributing less than this percentage of the changes are not shown in the output.</p>
+
+<p>Example: The following will count changed files, while ignoring directories with less than 10% of the total amount of changed files, and accumulating child directory counts in the parent directories: <code>--dirstat=files,10,cumulative</code>.</p>
+
+<p>&ndash;summary<br />
+Output a condensed summary of extended header information such as creations, renames and mode changes.</p>
+
+<p>&ndash;patch-with-stat<br />
+Synonym for <code>-p --stat</code>.</p>
+
+<p>-z<br />
+When <code>--raw</code>, <code>--numstat</code>, <code>--name-only</code> or <code>--name-status</code> has been given, do not munge pathnames and use NULs as output field terminators.</p>
+
+<p>Without this option, each pathname output will have TAB, LF, double quotes, and backslash characters replaced with <code>\t</code>, <code>\n</code>, <code>\&quot;</code>, and <code>\\</code>, respectively, and the pathname will be enclosed in double quotes if any of those replacements occurred.</p>
+
+<p>&ndash;name-only<br />
+Show only names of changed files.</p>
+
+<p>&ndash;name-status<br />
+Show only names and status of changed files. See the description of the <code>--diff-filter</code> option on what the status letters mean.</p>
+
+<p>&ndash;submodule[=&lt;format&gt;]<br />
+Specify how differences in submodules are shown. When <code>--submodule</code> or <code>--submodule=log</code> is given, the <em>log</em> format is used. This format lists the commits in the range like <a href="../git-submodule">git-submodule(1)</a> <code>summary</code> does. Omitting the <code>--submodule</code> option or specifying <code>--submodule=short</code>, uses the <em>short</em> format. This format just shows the names of the commits at the beginning and end of the range. Can be tweaked via the <code>diff.submodule</code> configuration variable.</p>
+
+<p>&ndash;color[=&lt;when&gt;]<br />
+Show colored diff. <code>--color</code> (i.e. without <em>=&lt;when&gt;</em>) is the same as <code>--color=always</code>. <em>&lt;when&gt;</em> can be one of <code>always</code>, <code>never</code>, or <code>auto</code>.</p>
+
+<p>&ndash;no-color<br />
+Turn off colored diff. It is the same as <code>--color=never</code>.</p>
+
+<p>&ndash;word-diff[=&lt;mode&gt;]<br />
+Show a word diff, using the &lt;mode&gt; to delimit changed words. By default, words are delimited by whitespace; see <code>--word-diff-regex</code> below. The &lt;mode&gt; defaults to <em>plain</em>, and must be one of:</p>
+
+<p>color<br />
+Highlight changed words using only colors. Implies <code>--color</code>.</p>
+
+<p>plain<br />
+Show words as <code>[-removed-]</code> and <code>{+added+}</code>. Makes no attempts to escape the delimiters if they appear in the input, so the output may be ambiguous.</p>
+
+<p>porcelain<br />
+Use a special line-based format intended for script consumption. Added/removed/unchanged runs are printed in the usual unified diff format, starting with a <code>+</code>/<code>-</code>/` ` character at the beginning of the line and extending to the end of the line. Newlines in the input are represented by a tilde <code>~</code> on a line of its own.</p>
+
+<p>none<br />
+Disable word diff again.</p>
+
+<p>Note that despite the name of the first mode, color is used to highlight the changed parts in all modes if enabled.</p>
+
+<p>&ndash;word-diff-regex=&lt;regex&gt;<br />
+Use &lt;regex&gt; to decide what a word is, instead of considering runs of non-whitespace to be a word. Also implies <code>--word-diff</code> unless it was already enabled.</p>
+
+<p>Every non-overlapping match of the &lt;regex&gt; is considered a word. Anything between these matches is considered whitespace and ignored(!) for the purposes of finding differences. You may want to append <code>|[^[:space:]]</code> to your regular expression to make sure that it matches all non-whitespace characters. A match that contains a newline is silently truncated(!) at the newline.</p>
+
+<p>The regex can also be set via a diff driver or configuration option, see <a href="../gitattributes">gitattributes(1)</a> or <a href="../git-config">git-config(1)</a>. Giving it explicitly overrides any diff driver or configuration setting. Diff drivers override configuration settings.</p>
+
+<p>&ndash;color-words[=&lt;regex&gt;]<br />
+Equivalent to <code>--word-diff=color</code> plus (if a regex was specified) <code>--word-diff-regex=&lt;regex&gt;</code>.</p>
+
+<p>&ndash;no-renames<br />
+Turn off rename detection, even when the configuration file gives the default to do so.</p>
+
+<p>&ndash;check<br />
+Warn if changes introduce whitespace errors. What are considered whitespace errors is controlled by <code>core.whitespace</code> configuration. By default, trailing whitespaces (including lines that solely consist of whitespaces) and a space character that is immediately followed by a tab character inside the initial indent of the line are considered whitespace errors. Exits with non-zero status if problems are found. Not compatible with &ndash;exit-code.</p>
+
+<p>&ndash;ws-error-highlight=&lt;kind&gt;<br />
+Highlight whitespace errors on lines specified by &lt;kind&gt; in the color specified by <code>color.diff.whitespace</code>. &lt;kind&gt; is a comma separated list of <code>old</code>, <code>new</code>, <code>context</code>. When this option is not given, only whitespace errors in <code>new</code> lines are highlighted. E.g. <code>--ws-error-highlight=new,old</code> highlights whitespace errors on both deleted and added lines. <code>all</code> can be used as a short-hand for <code>old,new,context</code>.</p>
+
+<p>&ndash;full-index<br />
+Instead of the first handful of characters, show the full pre- and post-image blob object names on the &ldquo;index&rdquo; line when generating patch format output.</p>
+
+<p>&ndash;binary<br />
+In addition to <code>--full-index</code>, output a binary diff that can be applied with <code>git-apply</code>.</p>
+
+<p>&ndash;abbrev[=&lt;n&gt;]<br />
+Instead of showing the full 40-byte hexadecimal object name in diff-raw format output and diff-tree header lines, show only a partial prefix. This is independent of the <code>--full-index</code> option above, which controls the diff-patch output format. Non default number of digits can be specified with <code>--abbrev=&lt;n&gt;</code>.</p>
+
+<p>-B[&lt;n&gt;][/&lt;m&gt;]
+&ndash;break-rewrites[=[&lt;n&gt;][/&lt;m&gt;]]<br />
+Break complete rewrite changes into pairs of delete and create. This serves two purposes:</p>
+
+<p>It affects the way a change that amounts to a total rewrite of a file not as a series of deletion and insertion mixed together with a very few lines that happen to match textually as the context, but as a single deletion of everything old followed by a single insertion of everything new, and the number <code>m</code> controls this aspect of the -B option (defaults to 60%). <code>-B/70%</code> specifies that less than 30% of the original should remain in the result for Git to consider it a total rewrite (i.e. otherwise the resulting patch will be a series of deletion and insertion mixed together with context lines).</p>
+
+<p>When used with -M, a totally-rewritten file is also considered as the source of a rename (usually -M only considers a file that disappeared as the source of a rename), and the number <code>n</code> controls this aspect of the -B option (defaults to 50%). <code>-B20%</code> specifies that a change with addition and deletion compared to 20% or more of the file’s size are eligible for being picked up as a possible source of a rename to another file.</p>
+
+<p>-M[&lt;n&gt;]
+&ndash;find-renames[=&lt;n&gt;]<br />
+Detect renames. If <code>n</code> is specified, it is a threshold on the similarity index (i.e. amount of addition/deletions compared to the file’s size). For example, <code>-M90%</code> means Git should consider a delete/add pair to be a rename if more than 90% of the file hasn’t changed. Without a <code>%</code> sign, the number is to be read as a fraction, with a decimal point before it. I.e., <code>-M5</code> becomes 0.5, and is thus the same as <code>-M50%</code>. Similarly, <code>-M05</code> is the same as <code>-M5%</code>. To limit detection to exact renames, use <code>-M100%</code>. The default similarity index is 50%.</p>
+
+<p>-C[&lt;n&gt;]
+&ndash;find-copies[=&lt;n&gt;]<br />
+Detect copies as well as renames. See also <code>--find-copies-harder</code>. If <code>n</code> is specified, it has the same meaning as for <code>-M&lt;n&gt;</code>.</p>
+
+<p>&ndash;find-copies-harder<br />
+For performance reasons, by default, <code>-C</code> option finds copies only if the original file of the copy was modified in the same changeset. This flag makes the command inspect unmodified files as candidates for the source of copy. This is a very expensive operation for large projects, so use it with caution. Giving more than one <code>-C</code> option has the same effect.</p>
+
+<p>-D
+&ndash;irreversible-delete<br />
+Omit the preimage for deletes, i.e. print only the header but not the diff between the preimage and <code>/dev/null</code>. The resulting patch is not meant to be applied with <code>patch</code> or <code>git apply</code>; this is solely for people who want to just concentrate on reviewing the text after the change. In addition, the output obviously lack enough information to apply such a patch in reverse, even manually, hence the name of the option.</p>
+
+<p>When used together with <code>-B</code>, omit also the preimage in the deletion part of a delete/create pair.</p>
+
+<p>-l&lt;num&gt;<br />
+The <code>-M</code> and <code>-C</code> options require O(n^2) processing time where n is the number of potential rename/copy targets. This option prevents rename/copy detection from running if the number of rename/copy targets exceeds the specified number.</p>
+
+<p>&ndash;diff-filter=[(A|C|D|M|R|T|U|X|B)…[*]]<br />
+Select only files that are Added (<code>A</code>), Copied (<code>C</code>), Deleted (<code>D</code>), Modified (<code>M</code>), Renamed (<code>R</code>), have their type (i.e. regular file, symlink, submodule, …) changed (<code>T</code>), are Unmerged (<code>U</code>), are Unknown (<code>X</code>), or have had their pairing Broken (<code>B</code>). Any combination of the filter characters (including none) can be used. When <code>*</code> (All-or-none) is added to the combination, all paths are selected if there is any file that matches other criteria in the comparison; if there is no file that matches other criteria, nothing is selected.</p>
+
+<p>-S&lt;string&gt;<br />
+Look for differences that change the number of occurrences of the specified string (i.e. addition/deletion) in a file. Intended for the scripter’s use.</p>
+
+<p>It is useful when you’re looking for an exact block of code (like a struct), and want to know the history of that block since it first came into being: use the feature iteratively to feed the interesting block in the preimage back into <code>-S</code>, and keep going until you get the very first version of the block.</p>
+
+<p>-G&lt;regex&gt;<br />
+Look for differences whose patch text contains added/removed lines that match &lt;regex&gt;.</p>
+
+<p>To illustrate the difference between <code>-S&lt;regex&gt; --pickaxe-regex</code> and <code>-G&lt;regex&gt;</code>, consider a commit with the following diff in the same file:</p>
+
+<pre><code>+    return !regexec(regexp, two-&gt;ptr, 1, &amp;regmatch, 0);
+...
+-    hit = !regexec(regexp, mf2.ptr, 1, &amp;regmatch, 0);
+</code></pre>
+
+<p>While <code>git log -G&quot;regexec\(regexp&quot;</code> will show this commit, <code>git log                     -S&quot;regexec\(regexp&quot; --pickaxe-regex</code> will not (because the number of occurrences of that string did not change).</p>
+
+<p>See the <em>pickaxe</em> entry in <a href="../gitdiffcore">gitdiffcore(7)</a> for more information.</p>
+
+<p>&ndash;pickaxe-all<br />
+When <code>-S</code> or <code>-G</code> finds a change, show all the changes in that changeset, not just the files that contain the change in &lt;string&gt;.</p>
+
+<p>&ndash;pickaxe-regex<br />
+Treat the &lt;string&gt; given to <code>-S</code> as an extended POSIX regular expression to match.</p>
+
+<p>-O&lt;orderfile&gt;<br />
+Output the patch in the order specified in the &lt;orderfile&gt;, which has one shell glob pattern per line. This overrides the <code>diff.orderFile</code> configuration variable (see <a href="../git-config">git-config(1)</a>). To cancel <code>diff.orderFile</code>, use <code>-O/dev/null</code>.</p>
+
+<p>-R<br />
+Swap two inputs; that is, show differences from index or on-disk file to tree contents.</p>
+
+<p>&ndash;relative[=&lt;path&gt;]<br />
+When run from a subdirectory of the project, it can be told to exclude changes outside the directory and show pathnames relative to it with this option. When you are not in a subdirectory (e.g. in a bare repository), you can name which subdirectory to make the output relative to by giving a &lt;path&gt; as an argument.</p>
+
+<p>-a
+&ndash;text<br />
+Treat all files as text.</p>
+
+<p>&ndash;ignore-space-at-eol<br />
+Ignore changes in whitespace at EOL.</p>
+
+<p>-b
+&ndash;ignore-space-change<br />
+Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent.</p>
+
+<p>-w
+&ndash;ignore-all-space<br />
+Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none.</p>
+
+<p>&ndash;ignore-blank-lines<br />
+Ignore changes whose lines are all blank.</p>
+
+<p>&ndash;inter-hunk-context=&lt;lines&gt;<br />
+Show the context between diff hunks, up to the specified number of lines, thereby fusing hunks that are close to each other.</p>
+
+<p>-W
+&ndash;function-context<br />
+Show whole surrounding functions of changes.</p>
+
+<p>&ndash;exit-code<br />
+Make the program exit with codes similar to diff(1). That is, it exits with 1 if there were differences and 0 means no differences.</p>
+
+<p>&ndash;quiet<br />
+Disable all output of the program. Implies <code>--exit-code</code>.</p>
+
+<p>&ndash;ext-diff<br />
+Allow an external diff helper to be executed. If you set an external diff driver with <a href="../gitattributes">gitattributes(5)</a>, you need to use this option with <a href="../git-log">git-log(1)</a> and friends.</p>
+
+<p>&ndash;no-ext-diff<br />
+Disallow external diff drivers.</p>
+
+<p>&ndash;textconv
+&ndash;no-textconv<br />
+Allow (or disallow) external text conversion filters to be run when comparing binary files. See <a href="../gitattributes">gitattributes(5)</a> for details. Because textconv filters are typically a one-way conversion, the resulting diff is suitable for human consumption, but cannot be applied. For this reason, textconv filters are enabled by default only for <a href="../git-diff">git-diff(1)</a> and <a href="../git-log">git-log(1)</a>, but not for <a href="../git-format-patch">git-format-patch(1)</a> or diff plumbing commands.</p>
+
+<p>&ndash;ignore-submodules[=&lt;when&gt;]<br />
+Ignore changes to submodules in the diff generation. &lt;when&gt; can be either &ldquo;none&rdquo;, &ldquo;untracked&rdquo;, &ldquo;dirty&rdquo; or &ldquo;all&rdquo;, which is the default. Using &ldquo;none&rdquo; will consider the submodule modified when it either contains untracked or modified files or its HEAD differs from the commit recorded in the superproject and can be used to override any settings of the <em>ignore</em> option in <a href="../git-config">git-config(1)</a> or <a href="../gitmodules">gitmodules(5)</a>. When &ldquo;untracked&rdquo; is used submodules are not considered dirty when they only contain untracked content (but they are still scanned for modified content). Using &ldquo;dirty&rdquo; ignores all changes to the work tree of submodules, only changes to the commits stored in the superproject are shown (this was the behavior until 1.7.0). Using &ldquo;all&rdquo; hides all changes to submodules.</p>
+
+<p>&ndash;src-prefix=&lt;prefix&gt;<br />
+Show the given source prefix instead of &ldquo;a/&rdquo;.</p>
+
+<p>&ndash;dst-prefix=&lt;prefix&gt;<br />
+Show the given destination prefix instead of &ldquo;b/&rdquo;.</p>
+
+<p>&ndash;no-prefix<br />
+Do not show any source or destination prefix.</p>
+
+<p>For more detailed explanation on these common options, see also <a href="../gitdiffcore">gitdiffcore(7)</a>.</p>
+
+<p>&lt;tree-ish&gt;<br />
+The id of a tree object to diff against.</p>
+
+<p>&ndash;cached<br />
+do not consider the on-disk file at all</p>
+
+<p>-m<br />
+By default, files recorded in the index but not checked out are reported as deleted. This flag makes <em>git diff-index</em> say that all non-checked-out files are up to date.</p>
+
+<h2 id="raw-output-format">Raw output format</h2>
+
+<p>The raw output format from &ldquo;git-diff-index&rdquo;, &ldquo;git-diff-tree&rdquo;, &ldquo;git-diff-files&rdquo; and &ldquo;git diff &ndash;raw&rdquo; are very similar.</p>
+
+<p>These commands all compare two sets of things; what is compared differs:</p>
+
+<p>git-diff-index &lt;tree-ish&gt;<br />
+compares the &lt;tree-ish&gt; and the files on the filesystem.</p>
+
+<p>git-diff-index &ndash;cached &lt;tree-ish&gt;<br />
+compares the &lt;tree-ish&gt; and the index.</p>
+
+<p>git-diff-tree [-r] &lt;tree-ish-1&gt; &lt;tree-ish-2&gt; [&lt;pattern&gt;…]<br />
+compares the trees named by the two arguments.</p>
+
+<p>git-diff-files [&lt;pattern&gt;…]<br />
+compares the index and the files on the filesystem.</p>
+
+<p>The &ldquo;git-diff-tree&rdquo; command begins its output by printing the hash of what is being compared. After that, all the commands print one output line per changed file.</p>
+
+<p>An output line is formatted this way:</p>
+
+<pre><code>in-place edit  :100644 100644 bcd1234... 0123456... M file0
+copy-edit      :100644 100644 abcd123... 1234567... C68 file1 file2
+rename-edit    :100644 100644 abcd123... 1234567... R86 file1 file3
+create         :000000 100644 0000000... 1234567... A file4
+delete         :100644 000000 1234567... 0000000... D file5
+unmerged       :000000 000000 0000000... 0000000... U file6
+</code></pre>
+
+<p>That is, from the left to the right:</p>
+
+<ol>
+<li><p>a colon.</p></li>
+
+<li><p>mode for &ldquo;src&rdquo;; 000000 if creation or unmerged.</p></li>
+
+<li><p>a space.</p></li>
+
+<li><p>mode for &ldquo;dst&rdquo;; 000000 if deletion or unmerged.</p></li>
+
+<li><p>a space.</p></li>
+
+<li><p>sha1 for &ldquo;src&rdquo;; 0{40} if creation or unmerged.</p></li>
+
+<li><p>a space.</p></li>
+
+<li><p>sha1 for &ldquo;dst&rdquo;; 0{40} if creation, unmerged or &ldquo;look at work tree&rdquo;.</p></li>
+
+<li><p>a space.</p></li>
+
+<li><p>status, followed by optional &ldquo;score&rdquo; number.</p></li>
+
+<li><p>a tab or a NUL when <em>-z</em> option is used.</p></li>
+
+<li><p>path for &ldquo;src&rdquo;</p></li>
+
+<li><p>a tab or a NUL when <em>-z</em> option is used; only exists for C or R.</p></li>
+
+<li><p>path for &ldquo;dst&rdquo;; only exists for C or R.</p></li>
+
+<li><p>an LF or a NUL when <em>-z</em> option is used, to terminate the record.</p></li>
+</ol>
+
+<p>Possible status letters are:</p>
+
+<ul>
+<li><p>A: addition of a file</p></li>
+
+<li><p>C: copy of a file into a new one</p></li>
+
+<li><p>D: deletion of a file</p></li>
+
+<li><p>M: modification of the contents or mode of a file</p></li>
+
+<li><p>R: renaming of a file</p></li>
+
+<li><p>T: change in the type of the file</p></li>
+
+<li><p>U: file is unmerged (you must complete the merge before it can be committed)</p></li>
+
+<li><p>X: &ldquo;unknown&rdquo; change type (most probably a bug, please report it)</p></li>
+</ul>
+
+<p>Status letters C and R are always followed by a score (denoting the percentage of similarity between the source and target of the move or copy). Status letter M may be followed by a score (denoting the percentage of dissimilarity) for file rewrites.</p>
+
+<p>&lt;sha1&gt; is shown as all 0’s if a file is new on the filesystem and it is out of sync with the index.</p>
+
+<p>Example:</p>
+
+<pre><code>:100644 100644 5be4a4...... 000000...... M file.c
+</code></pre>
+
+<p>When <code>-z</code> option is not used, TAB, LF, and backslash characters in pathnames are represented as <code>\t</code>, <code>\n</code>, and <code>\\</code>, respectively.</p>
+
+<h2 id="diff-format-for-merges">diff format for merges</h2>
+
+<p>&ldquo;git-diff-tree&rdquo;, &ldquo;git-diff-files&rdquo; and &ldquo;git-diff &ndash;raw&rdquo; can take <em>-c</em> or <em>&ndash;cc</em> option to generate diff output also for merge commits. The output differs from the format described above in the following way:</p>
+
+<ol>
+<li><p>there is a colon for each parent</p></li>
+
+<li><p>there are more &ldquo;src&rdquo; modes and &ldquo;src&rdquo; sha1</p></li>
+
+<li><p>status is concatenated status characters for each parent</p></li>
+
+<li><p>no optional &ldquo;score&rdquo; number</p></li>
+
+<li><p>single path, only for &ldquo;dst&rdquo;</p></li>
+</ol>
+
+<p>Example:</p>
+
+<pre><code>::100644 100644 100644 fabadb8... cc95eb0... 4866510... MM      describe.c
+</code></pre>
+
+<p>Note that <em>combined diff</em> lists only files which were modified from all parents.</p>
+
+<h2 id="generating-patches-with-p">Generating patches with -p</h2>
+
+<p>When &ldquo;git-diff-index&rdquo;, &ldquo;git-diff-tree&rdquo;, or &ldquo;git-diff-files&rdquo; are run with a <em>-p</em> option, &ldquo;git diff&rdquo; without the <em>&ndash;raw</em> option, or &ldquo;git log&rdquo; with the &ldquo;-p&rdquo; option, they do not produce the output described above; instead they produce a patch file. You can customize the creation of such patches via the GIT_EXTERNAL_DIFF and the GIT_DIFF_OPTS environment variables.</p>
+
+<p>What the -p option produces is slightly different from the traditional diff format:</p>
+
+<ol>
+<li><p>It is preceded with a &ldquo;git diff&rdquo; header that looks like this:</p>
+
+<pre><code>diff --git a/file1 b/file2
+</code></pre>
+
+<p>The <code>a/</code> and <code>b/</code> filenames are the same unless rename/copy is involved. Especially, even for a creation or a deletion, <code>/dev/null</code> is <em>not</em> used in place of the <code>a/</code> or <code>b/</code> filenames.</p>
+
+<p>When rename/copy is involved, <code>file1</code> and <code>file2</code> show the name of the source file of the rename/copy and the name of the file that rename/copy produces, respectively.</p></li>
+
+<li><p>It is followed by one or more extended header lines:</p>
+
+<pre><code>old mode &lt;mode&gt;
+new mode &lt;mode&gt;
+deleted file mode &lt;mode&gt;
+new file mode &lt;mode&gt;
+copy from &lt;path&gt;
+copy to &lt;path&gt;
+rename from &lt;path&gt;
+rename to &lt;path&gt;
+similarity index &lt;number&gt;
+dissimilarity index &lt;number&gt;
+index &lt;hash&gt;..&lt;hash&gt; &lt;mode&gt;
+</code></pre>
+
+<p>File modes are printed as 6-digit octal numbers including the file type and file permission bits.</p>
+
+<p>Path names in extended headers do not include the <code>a/</code> and <code>b/</code> prefixes.</p>
+
+<p>The similarity index is the percentage of unchanged lines, and the dissimilarity index is the percentage of changed lines. It is a rounded down integer, followed by a percent sign. The similarity index value of 100% is thus reserved for two equal files, while 100% dissimilarity means that no line from the old file made it into the new one.</p>
+
+<p>The index line includes the SHA-1 checksum before and after the change. The &lt;mode&gt; is included if the file mode does not change; otherwise, separate lines indicate the old and the new mode.</p></li>
+
+<li><p>TAB, LF, double quote and backslash characters in pathnames are represented as <code>\t</code>, <code>\n</code>, <code>\&quot;</code> and <code>\\</code>, respectively. If there is need for such substitution then the whole pathname is put in double quotes.</p></li>
+
+<li><p>All the <code>file1</code> files in the output refer to files before the commit, and all the <code>file2</code> files refer to files after the commit. It is incorrect to apply each change to each file sequentially. For example, this patch will swap a and b:</p>
+
+<pre><code>diff --git a/a b/b
+rename from a
+rename to b
+diff --git a/b b/a
+rename from b
+rename to a
+</code></pre></li>
+</ol>
+
+<h2 id="combined-diff-format">combined diff format</h2>
+
+<p>Any diff-generating command can take the <code>-c</code> or <code>--cc</code> option to produce a <em>combined diff</em> when showing a merge. This is the default format when showing merges with <a href="../git-diff">git-diff(1)</a> or <a href="../git-show">git-show(1)</a>. Note also that you can give the <code>-m</code> option to any of these commands to force generation of diffs with individual parents of a merge.</p>
+
+<p>A <em>combined diff</em> format looks like this:</p>
+
+<pre><code>diff --combined describe.c
+index fabadb8,cc95eb0..4866510
+--- a/describe.c
++++ b/describe.c
+@@@ -98,20 -98,12 +98,20 @@@
+        return (a_date &gt; b_date) ? -1 : (a_date == b_date) ? 0 : 1;
+  }
+
+- static void describe(char *arg)
+ -static void describe(struct commit *cmit, int last_one)
+++static void describe(char *arg, int last_one)
+  {
+ +      unsigned char sha1[20];
+ +      struct commit *cmit;
+        struct commit_list *list;
+        static int initialized = 0;
+        struct commit_name *n;
+
+ +      if (get_sha1(arg, sha1) &lt; 0)
+ +              usage(describe_usage);
+ +      cmit = lookup_commit_reference(sha1);
+ +      if (!cmit)
+ +              usage(describe_usage);
+ +
+        if (!initialized) {
+                initialized = 1;
+                for_each_ref(get_name);
+</code></pre>
+
+<ol>
+<li><p>It is preceded with a &ldquo;git diff&rdquo; header, that looks like this (when <em>-c</em> option is used):</p>
+
+<pre><code>diff --combined file
+</code></pre>
+
+<p>or like this (when <em>&ndash;cc</em> option is used):</p>
+
+<pre><code>diff --cc file
+</code></pre></li>
+
+<li><p>It is followed by one or more extended header lines (this example shows a merge with two parents):</p>
+
+<pre><code>index &lt;hash&gt;,&lt;hash&gt;..&lt;hash&gt;
+mode &lt;mode&gt;,&lt;mode&gt;..&lt;mode&gt;
+new file mode &lt;mode&gt;
+deleted file mode &lt;mode&gt;,&lt;mode&gt;
+</code></pre>
+
+<p>The <code>mode                     &lt;mode&gt;,&lt;mode&gt;..&lt;mode&gt;</code> line appears only if at least one of the &lt;mode&gt; is different from the rest. Extended headers with information about detected contents movement (renames and copying detection) are designed to work with diff of two &lt;tree-ish&gt; and are not used by combined diff format.</p></li>
+
+<li><p>It is followed by two-line from-file/to-file header</p>
+
+<pre><code>--- a/file
++++ b/file
+</code></pre>
+
+<p>Similar to two-line header for traditional <em>unified</em> diff format, <code>/dev/null</code> is used to signal created or deleted files.</p></li>
+
+<li><p>Chunk header format is modified to prevent people from accidentally feeding it to <code>patch                   -p1</code>. Combined diff format was created for review of merge commit changes, and was not meant for apply. The change is similar to the change in the extended <em>index</em> header:</p>
+
+<pre><code>@@@ &lt;from-file-range&gt; &lt;from-file-range&gt; &lt;to-file-range&gt; @@@
+</code></pre>
+
+<p>There are (number of parents + 1) <code>@</code> characters in the chunk header for combined diff format.</p></li>
+</ol>
+
+<p>Unlike the traditional <em>unified</em> diff format, which shows two files A and B with a single column that has <code>-</code> (minus — appears in A but removed in B), <code>+</code> (plus — missing in A but added to B), or <code>&quot; &quot;</code> (space — unchanged) prefix, this format compares two or more files file1, file2,… with one file X, and shows how X differs from each of fileN. One column for each of fileN is prepended to the output line to note how X’s line is different from it.</p>
+
+<p>A <code>-</code> character in the column N means that the line appears in fileN but it does not appear in the result. A <code>+</code> character in the column N means that the line appears in the result, and fileN does not have that line (in other words, the line was added, from the point of view of that parent).</p>
+
+<p>In the above example output, the function signature was changed from both files (hence two <code>-</code> removals from both file1 and file2, plus <code>++</code> to mean one line that was added does not appear in either file1 or file2). Also eight other lines are the same from file1 but do not appear in file2 (hence prefixed with <code>+</code>).</p>
+
+<p>When shown by <code>git diff-tree -c</code>, it compares the parents of a merge commit with the merge result (i.e. file1..fileN are the parents). When shown by <code>git diff-files -c</code>, it compares the two unresolved merge parents with the working tree file (i.e. file1 is stage 2 aka &ldquo;our version&rdquo;, file2 is stage 3 aka &ldquo;their version&rdquo;).</p>
+
+<h2 id="other-diff-formats">other diff formats</h2>
+
+<p>The <code>--summary</code> option describes newly added, deleted, renamed and copied files. The <code>--stat</code> option adds diffstat(1) graph to the output. These options can be combined with other options, such as <code>-p</code>, and are meant for human consumption.</p>
+
+<p>When showing a change that involves a rename or a copy, <code>--stat</code> output formats the pathnames compactly by combining common prefix and suffix of the pathnames. For example, a change that moves <code>arch/i386/Makefile</code> to <code>arch/x86/Makefile</code> while modifying 4 lines will be shown like this:</p>
+
+<pre><code>arch/{i386 =&gt; x86}/Makefile    |   4 +--
+</code></pre>
+
+<p>The <code>--numstat</code> option gives the diffstat(1) information but is designed for easier machine consumption. An entry in <code>--numstat</code> output looks like this:</p>
+
+<pre><code>1       2       README
+3       1       arch/{i386 =&gt; x86}/Makefile
+</code></pre>
+
+<p>That is, from left to right:</p>
+
+<ol>
+<li><p>the number of added lines;</p></li>
+
+<li><p>a tab;</p></li>
+
+<li><p>the number of deleted lines;</p></li>
+
+<li><p>a tab;</p></li>
+
+<li><p>pathname (possibly with rename/copy information);</p></li>
+
+<li><p>a newline.</p></li>
+</ol>
+
+<p>When <code>-z</code> output option is in effect, the output is formatted this way:</p>
+
+<pre><code>1       2       README NUL
+3       1       NUL arch/i386/Makefile NUL arch/x86/Makefile NUL
+</code></pre>
+
+<p>That is:</p>
+
+<ol>
+<li><p>the number of added lines;</p></li>
+
+<li><p>a tab;</p></li>
+
+<li><p>the number of deleted lines;</p></li>
+
+<li><p>a tab;</p></li>
+
+<li><p>a NUL (only exists if renamed/copied);</p></li>
+
+<li><p>pathname in preimage;</p></li>
+
+<li><p>a NUL (only exists if renamed/copied);</p></li>
+
+<li><p>pathname in postimage (only exists if renamed/copied);</p></li>
+
+<li><p>a NUL.</p></li>
+</ol>
+
+<p>The extra <code>NUL</code> before the preimage path in renamed case is to allow scripts that read the output to tell if the current record being read is a single-path record or a rename/copy record without reading ahead. After reading added and deleted lines, reading up to <code>NUL</code> would yield the pathname, but if that is <code>NUL</code>, the record will show two paths.</p>
+
+<h2 id="operating-modes">Operating Modes</h2>
+
+<p>You can choose whether you want to trust the index file entirely (using the <em>&ndash;cached</em> flag) or ask the diff logic to show any files that don’t match the stat state as being &ldquo;tentatively changed&rdquo;. Both of these operations are very useful indeed.</p>
+
+<h2 id="cached-mode">Cached Mode</h2>
+
+<p>If <em>&ndash;cached</em> is specified, it allows you to ask:</p>
+
+<pre><code>show me the differences between HEAD and the current index
+contents (the ones I'd write using 'git write-tree')
+</code></pre>
+
+<p>For example, let’s say that you have worked on your working directory, updated some files in the index and are ready to commit. You want to see exactly <strong>what</strong> you are going to commit, without having to write a new tree object and compare it that way, and to do that, you just do</p>
+
+<pre><code>git diff-index --cached HEAD
+</code></pre>
+
+<p>Example: let’s say I had renamed <code>commit.c</code> to <code>git-commit.c</code>, and I had done an <code>update-index</code> to make that effective in the index file. <code>git diff-files</code> wouldn’t show anything at all, since the index file matches my working directory. But doing a <em>git diff-index</em> does:</p>
+
+<pre><code>torvalds@ppc970:~/git&gt; git diff-index --cached HEAD
+-100644 blob    4161aecc6700a2eb579e842af0b7f22b98443f74        commit.c
++100644 blob    4161aecc6700a2eb579e842af0b7f22b98443f74        git-commit.c
+</code></pre>
+
+<p>You can see easily that the above is a rename.</p>
+
+<p>In fact, <code>git diff-index --cached</code> <strong>should</strong> always be entirely equivalent to actually doing a <em>git write-tree</em> and comparing that. Except this one is much nicer for the case where you just want to check where you are.</p>
+
+<p>So doing a <code>git diff-index --cached</code> is basically very useful when you are asking yourself &ldquo;what have I already marked for being committed, and what’s the difference to a previous tree&rdquo;.</p>
+
+<h2 id="non-cached-mode">Non-cached Mode</h2>
+
+<p>The &ldquo;non-cached&rdquo; mode takes a different approach, and is potentially the more useful of the two in that what it does can’t be emulated with a <em>git write-tree</em> + <em>git diff-tree</em>. Thus that’s the default mode. The non-cached version asks the question:</p>
+
+<pre><code>show me the differences between HEAD and the currently checked out
+tree - index contents _and_ files that aren't up-to-date
+</code></pre>
+
+<p>which is obviously a very useful question too, since that tells you what you <strong>could</strong> commit. Again, the output matches the <em>git diff-tree -r</em> output to a tee, but with a twist.</p>
+
+<p>The twist is that if some file doesn’t match the index, we don’t have a backing store thing for it, and we use the magic &ldquo;all-zero&rdquo; sha1 to show that. So let’s say that you have edited <code>kernel/sched.c</code>, but have not actually done a <em>git update-index</em> on it yet - there is no &ldquo;object&rdquo; associated with the new state, and you get:</p>
+
+<pre><code>torvalds@ppc970:~/v2.6/linux&gt; git diff-index --abbrev HEAD
+:100644 100664 7476bb... 000000...      kernel/sched.c
+</code></pre>
+
+<p>i.e., it shows that the tree has changed, and that <code>kernel/sched.c</code> has is not up-to-date and may contain new stuff. The all-zero sha1 means that to get the real diff, you need to look at the object in the working directory directly rather than do an object-to-object diff.</p>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>As with other commands of this type, <em>git diff-index</em> does not actually look at the contents of the file at all. So maybe <code>kernel/sched.c</code> hasn’t actually changed, and it’s just that you touched it. In either case, it’s a note that you need to <em>git update-index</em> it to make the index be in sync.</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>You can have a mixture of files show up as &quot;has been updated&quot; and &quot;is still dirty in the working directory&quot; together. You can always tell which file is in which state, since the &quot;has been updated&quot; ones show a valid sha1, and the &quot;not in sync with the index&quot; ones will always have the special all-zero sha1.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

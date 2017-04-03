@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Send a collection of patches from stdin to">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-imap-send </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-imap-send</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.7'>2.3.7</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.7/git-imap-send'>git-imap-send</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git imap-send [-v] [-q] [--[no-]curl]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This command uploads a mailbox generated with <em>git format-patch</em> into an IMAP drafts folder. This allows patches to be sent as other email is when using mail clients that cannot read mailbox files directly. The command also works with any general mailbox in which emails have the fields &ldquo;From&rdquo;, &ldquo;Date&rdquo;, and &ldquo;Subject&rdquo; in that order.</p>
+
+<p>Typical usage is something like:</p>
+
+<p>git format-patch &ndash;signoff &ndash;stdout &ndash;attach origin | git imap-send</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-v
+&ndash;verbose<br />
+Be verbose.</p>
+
+<p>-q
+&ndash;quiet<br />
+Be quiet.</p>
+
+<p>&ndash;curl<br />
+Use libcurl to communicate with the IMAP server, unless tunneling into it. Ignored if Git was built without the USE_CURL_FOR_IMAP_SEND option set.</p>
+
+<p>&ndash;no-curl<br />
+Talk to the IMAP server using git’s own IMAP routines instead of using libcurl. Ignored if Git was built with the NO_OPENSSL option set.</p>
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<p>To use the tool, imap.folder and either imap.tunnel or imap.host must be set to appropriate values.</p>
+
+<h3 id="variables">Variables</h3>
+
+<p>imap.folder<br />
+The folder to drop the mails into, which is typically the Drafts folder. For example: &ldquo;INBOX.Drafts&rdquo;, &ldquo;INBOX/Drafts&rdquo; or &ldquo;[Gmail]/Drafts&rdquo;. Required.</p>
+
+<p>imap.tunnel<br />
+Command used to setup a tunnel to the IMAP server through which commands will be piped instead of using a direct network connection to the server. Required when imap.host is not set.</p>
+
+<p>imap.host<br />
+A URL identifying the server. Use a <code>imap://</code> prefix for non-secure connections and a <code>imaps://</code> prefix for secure connections. Ignored when imap.tunnel is set, but required otherwise.</p>
+
+<p>imap.user<br />
+The username to use when logging in to the server.</p>
+
+<p>imap.pass<br />
+The password to use when logging in to the server.</p>
+
+<p>imap.port<br />
+An integer port number to connect to on the server. Defaults to 143 for imap:// hosts and 993 for imaps:// hosts. Ignored when imap.tunnel is set.</p>
+
+<p>imap.sslverify<br />
+A boolean to enable/disable verification of the server certificate used by the SSL/TLS connection. Default is <code>true</code>. Ignored when imap.tunnel is set.</p>
+
+<p>imap.preformattedHTML<br />
+A boolean to enable/disable the use of html encoding when sending a patch. An html encoded patch will be bracketed with &lt;pre&gt; and have a content type of text/html. Ironically, enabling this option causes Thunderbird to send the patch as a plain/text, format=fixed email. Default is <code>false</code>.</p>
+
+<p>imap.authMethod<br />
+Specify authenticate method for authentication with IMAP server. If Git was built with the NO_CURL option, or if your curl version is older than 7.34.0, or if you’re running git-imap-send with the <code>--no-curl</code> option, the only supported method is <em>CRAM-MD5</em>. If this is not set then <em>git imap-send</em> uses the basic IMAP plaintext LOGIN command.</p>
+
+<h3 id="examples">Examples</h3>
+
+<p>Using tunnel mode:</p>
+
+<pre><code>[imap]
+    folder = &quot;INBOX.Drafts&quot;
+    tunnel = &quot;ssh -q -C user@example.com /usr/bin/imapd ./Maildir 2&gt; /dev/null&quot;
+</code></pre>
+
+<p>Using direct mode:</p>
+
+<pre><code>[imap]
+    folder = &quot;INBOX.Drafts&quot;
+    host = imap://imap.example.com
+    user = bob
+    pass = p4ssw0rd
+</code></pre>
+
+<p>Using direct mode with SSL:</p>
+
+<pre><code>[imap]
+    folder = &quot;INBOX.Drafts&quot;
+    host = imaps://imap.example.com
+    user = bob
+    pass = p4ssw0rd
+    port = 123
+    sslverify = false
+</code></pre>
+
+<h2 id="example">EXAMPLE</h2>
+
+<p>To submit patches using GMail’s IMAP interface, first, edit your ~/.gitconfig to specify your account settings:</p>
+
+<pre><code>[imap]
+        folder = &quot;[Gmail]/Drafts&quot;
+        host = imaps://imap.gmail.com
+        user = user@gmail.com
+        port = 993
+        sslverify = false
+</code></pre>
+
+<p>You might need to instead use: folder = &ldquo;[Google Mail]/Drafts&rdquo; if you get an error that the &ldquo;Folder doesn’t exist&rdquo;.</p>
+
+<p>Once the commits are ready to be sent, run the following command:</p>
+
+<pre><code>$ git format-patch --cover-letter -M --stdout origin/master | git imap-send
+</code></pre>
+
+<p>Just make sure to disable line wrapping in the email client (GMail’s web interface will wrap lines no matter what, so you need to use a real IMAP client).</p>
+
+<h2 id="caution">CAUTION</h2>
+
+<p>It is still your responsibility to make sure that the email message sent by your email program meets the standards of your project. Many projects do not like patches to be attached. Some mail agents will transform patches (e.g. wrap lines, send them as format=flowed) in ways that make them fail. You will get angry flames ridiculing you if you don’t check this.</p>
+
+<p>Thunderbird in particular is known to be problematic. Thunderbird users may wish to visit this web page for more information: <a href="http://kb.mozillazine.org/Plain_text_e-mail_-_Thunderbird#Completely_plain_email">http://kb.mozillazine.org/Plain_text_e-mail_-_Thunderbird#Completely_plain_email</a></p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-format-patch">git-format-patch(1)</a>, <a href="../git-send-email">git-send-email(1)</a>, mbox(5)</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

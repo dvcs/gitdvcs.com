@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="specifying revisions and ranges for Git">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> gitrevisions </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitrevisions</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.0'>2.2.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.0/gitrevisions'>gitrevisions</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>gitrevisions</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Many Git commands take revision parameters as arguments. Depending on the command, they denote a specific commit or, for commands which walk the revision graph (such as <a href="../git-log">git-log(1)</a>), all commits which can be reached from that commit. In the latter case one can also specify a range of revisions explicitly.</p>
+
+<p>In addition, some Git commands (such as <a href="../git-show">git-show(1)</a>) also take revision parameters which denote other objects than commits, e.g. blobs (&ldquo;files&rdquo;) or trees (&ldquo;directories of files&rdquo;).</p>
+
+<h2 id="specifying-revisions">SPECIFYING REVISIONS</h2>
+
+<p>A revision parameter <em>&lt;rev&gt;</em> typically, but not necessarily, names a commit object. It uses what is called an <em>extended SHA-1</em> syntax. Here are various ways to spell object names. The ones listed near the end of this list name trees and blobs contained in a commit.</p>
+
+<p><em>&lt;sha1&gt;</em>, e.g. <em>dae86e1950b1277e545cee180551750029cfe735</em>, <em>dae86e</em><br />
+The full SHA-1 object name (40-byte hexadecimal string), or a leading substring that is unique within the repository. E.g. dae86e1950b1277e545cee180551750029cfe735 and dae86e both name the same commit object if there is no other object in your repository whose object name starts with dae86e.</p>
+
+<p><em>&lt;describeOutput&gt;</em>, e.g. <em>v1.7.4.2-679-g3bee7fb</em><br />
+Output from <code>git describe</code>; i.e. a closest tag, optionally followed by a dash and a number of commits, followed by a dash, a <em>g</em>, and an abbreviated object name.</p>
+
+<p><em>&lt;refname&gt;</em>, e.g. <em>master</em>, <em>heads/master</em>, <em>refs/heads/master</em><br />
+A symbolic ref name. E.g. <em>master</em> typically means the commit object referenced by <em>refs/heads/master</em>. If you happen to have both <em>heads/master</em> and <em>tags/master</em>, you can explicitly say <em>heads/master</em> to tell Git which one you mean. When ambiguous, a <em>&lt;refname&gt;</em> is disambiguated by taking the first match in the following rules:</p>
+
+<ol>
+<li><p>If <em>$GIT_DIR/&lt;refname&gt;</em> exists, that is what you mean (this is usually useful only for <em>HEAD</em>, <em>FETCH_HEAD</em>, <em>ORIG_HEAD</em>, <em>MERGE_HEAD</em> and <em>CHERRY_PICK_HEAD</em>);</p></li>
+
+<li><p>otherwise, <em>refs/&lt;refname&gt;</em> if it exists;</p></li>
+
+<li><p>otherwise, <em>refs/tags/&lt;refname&gt;</em> if it exists;</p></li>
+
+<li><p>otherwise, <em>refs/heads/&lt;refname&gt;</em> if it exists;</p></li>
+
+<li><p>otherwise, <em>refs/remotes/&lt;refname&gt;</em> if it exists;</p></li>
+
+<li><p>otherwise, <em>refs/remotes/&lt;refname&gt;/HEAD</em> if it exists.</p>
+
+<p><em>HEAD</em> names the commit on which you based the changes in the working tree. <em>FETCH_HEAD</em> records the branch which you fetched from a remote repository with your last <code>git fetch</code> invocation. <em>ORIG_HEAD</em> is created by commands that move your <em>HEAD</em> in a drastic way, to record the position of the <em>HEAD</em> before their operation, so that you can easily change the tip of the branch back to the state before you ran them. <em>MERGE_HEAD</em> records the commit(s) which you are merging into your branch when you run <code>git merge</code>. <em>CHERRY_PICK_HEAD</em> records the commit which you are cherry-picking when you run <code>git cherry-pick</code>.</p>
+
+<p>Note that any of the <em>refs/*</em> cases above may come either from the <em>$GIT_DIR/refs</em> directory or from the <em>$GIT_DIR/packed-refs</em> file. While the ref name encoding is unspecified, UTF-8 is preferred as some output processing may assume ref names in UTF-8.</p></li>
+</ol>
+
+<p><em>@</em><br />
+<em>@</em> alone is a shortcut for <em>HEAD</em>.</p>
+
+<p><em>&lt;refname&gt;@{&lt;date&gt;}</em>, e.g. <em>master@{yesterday}</em>, <em>HEAD@{5 minutes ago}</em><br />
+A ref followed by the suffix <em>@</em> with a date specification enclosed in a brace pair (e.g. <em>{yesterday}</em>, <em>{1 month 2 weeks 3 days 1 hour 1 second ago}</em> or <em>{1979-02-26 18:30:00}</em>) specifies the value of the ref at a prior point in time. This suffix may only be used immediately following a ref name and the ref must have an existing log (<em>$GIT_DIR/logs/&lt;ref&gt;</em>). Note that this looks up the state of your <strong>local</strong> ref at a given time; e.g., what was in your local <em>master</em> branch last week. If you want to look at commits made during certain times, see <em>&ndash;since</em> and <em>&ndash;until</em>.</p>
+
+<p><em>&lt;refname&gt;@{&lt;n&gt;}</em>, e.g. <em>master@{1}</em><br />
+A ref followed by the suffix <em>@</em> with an ordinal specification enclosed in a brace pair (e.g. <em>{1}</em>, <em>{15}</em>) specifies the n-th prior value of that ref. For example <em>master@{1}</em> is the immediate prior value of <em>master</em> while <em>master@{5}</em> is the 5th prior value of <em>master</em>. This suffix may only be used immediately following a ref name and the ref must have an existing log (<em>$GIT_DIR/logs/&lt;refname&gt;</em>).</p>
+
+<p><em>@{&lt;n&gt;}</em>, e.g. <em>@{1}</em><br />
+You can use the <em>@</em> construct with an empty ref part to get at a reflog entry of the current branch. For example, if you are on branch <em>blabla</em> then <em>@{1}</em> means the same as <em>blabla@{1}</em>.</p>
+
+<p><em>@{-&lt;n&gt;}</em>, e.g. <em>@{-1}</em><br />
+The construct <em>@{-&lt;n&gt;}</em> means the &lt;n&gt;th branch/commit checked out before the current one.</p>
+
+<p><em>&lt;branchname&gt;@{upstream}</em>, e.g. <em>master@{upstream}</em>, <em>@{u}</em><br />
+The suffix <em>@{upstream}</em> to a branchname (short form <em>&lt;branchname&gt;@{u}</em>) refers to the branch that the branch specified by branchname is set to build on top of (configured with <code>branch.&lt;name&gt;.remote</code> and <code>branch.&lt;name&gt;.merge</code>). A missing branchname defaults to the current one.</p>
+
+<p><em>&lt;rev&gt;^</em>, e.g. <em>HEAD^, v1.5.1^0</em><br />
+A suffix <em>^</em> to a revision parameter means the first parent of that commit object. <em>^&lt;n&gt;</em> means the &lt;n&gt;th parent (i.e. <em>&lt;rev&gt;^</em> is equivalent to <em>&lt;rev&gt;^1</em>). As a special rule, <em>&lt;rev&gt;^0</em> means the commit itself and is used when <em>&lt;rev&gt;</em> is the object name of a tag object that refers to a commit object.</p>
+
+<p><em>&lt;rev&gt;~&lt;n&gt;</em>, e.g. <em>master~3</em><br />
+A suffix <em>~&lt;n&gt;</em> to a revision parameter means the commit object that is the &lt;n&gt;th generation ancestor of the named commit object, following only the first parents. I.e. <em>&lt;rev&gt;~3</em> is equivalent to <em>&lt;rev&gt;^^^</em> which is equivalent to <em>&lt;rev&gt;^1^1^1</em>. See below for an illustration of the usage of this form.</p>
+
+<p><em>&lt;rev&gt;^{&lt;type&gt;}</em>, e.g. <em>v0.99.8^{commit}</em><br />
+A suffix <em>^</em> followed by an object type name enclosed in brace pair means dereference the object at <em>&lt;rev&gt;</em> recursively until an object of type <em>&lt;type&gt;</em> is found or the object cannot be dereferenced anymore (in which case, barf). For example, if <em>&lt;rev&gt;</em> is a commit-ish, <em>&lt;rev&gt;^{commit}</em> describes the corresponding commit object. Similarly, if <em>&lt;rev&gt;</em> is a tree-ish, <em>&lt;rev&gt;^{tree}</em> describes the corresponding tree object. <em>&lt;rev&gt;^0</em> is a short-hand for <em>&lt;rev&gt;^{commit}</em>.</p>
+
+<p><em>rev^{object}</em> can be used to make sure <em>rev</em> names an object that exists, without requiring <em>rev</em> to be a tag, and without dereferencing <em>rev</em>; because a tag is already an object, it does not have to be dereferenced even once to get to an object.</p>
+
+<p><em>rev^{tag}</em> can be used to ensure that <em>rev</em> identifies an existing tag object.</p>
+
+<p><em>&lt;rev&gt;^{}</em>, e.g. <em>v0.99.8^{}</em><br />
+A suffix <em>^</em> followed by an empty brace pair means the object could be a tag, and dereference the tag recursively until a non-tag object is found.</p>
+
+<p><em>&lt;rev&gt;^{/&lt;text&gt;}</em>, e.g. <em>HEAD^{/fix nasty bug}</em><br />
+A suffix <em>^</em> to a revision parameter, followed by a brace pair that contains a text led by a slash, is the same as the <em>:/fix nasty bug</em> syntax below except that it returns the youngest matching commit which is reachable from the <em>&lt;rev&gt;</em> before <em>^</em>.</p>
+
+<p><em>:/&lt;text&gt;</em>, e.g. <em>:/fix nasty bug</em><br />
+A colon, followed by a slash, followed by a text, names a commit whose commit message matches the specified regular expression. This name returns the youngest matching commit which is reachable from any ref. If the commit message starts with a <em>!</em> you have to repeat that; the special sequence <em>:/!</em>, followed by something else than <em>!</em>, is reserved for now. The regular expression can match any part of the commit message. To match messages starting with a string, one can use e.g. <em>:/^foo</em>.</p>
+
+<p><em>&lt;rev&gt;:&lt;path&gt;</em>, e.g. <em>HEAD:README</em>, <em>:README</em>, <em>master:./README</em><br />
+A suffix <em>:</em> followed by a path names the blob or tree at the given path in the tree-ish object named by the part before the colon. <em>:path</em> (with an empty part before the colon) is a special case of the syntax described next: content recorded in the index at the given path. A path starting with <em>./</em> or <em>../</em> is relative to the current working directory. The given path will be converted to be relative to the working tree’s root directory. This is most useful to address a blob or tree from a commit or tree that has the same tree structure as the working tree.</p>
+
+<p><em>:&lt;n&gt;:&lt;path&gt;</em>, e.g. <em>:0:README</em>, <em>:README</em><br />
+A colon, optionally followed by a stage number (0 to 3) and a colon, followed by a path, names a blob object in the index at the given path. A missing stage number (and the colon that follows it) names a stage 0 entry. During a merge, stage 1 is the common ancestor, stage 2 is the target branch’s version (typically the current branch), and stage 3 is the version from the branch which is being merged.</p>
+
+<p>Here is an illustration, by Jon Loeliger. Both commit nodes B and C are parents of commit node A. Parent commits are ordered left-to-right.</p>
+
+<pre><code>G   H   I   J
+ \ /     \ /
+  D   E   F
+   \  |  / \
+    \ | /   |
+     \|/    |
+      B     C
+       \   /
+        \ /
+         A
+
+A =      = A^0
+B = A^   = A^1     = A~1
+C = A^2  = A^2
+D = A^^  = A^1^1   = A~2
+E = B^2  = A^^2
+F = B^3  = A^^3
+G = A^^^ = A^1^1^1 = A~3
+H = D^2  = B^^2    = A^^^2  = A~2^2
+I = F^   = B^3^    = A^^3^
+J = F^2  = B^3^2   = A^^3^2
+</code></pre>
+
+<h2 id="specifying-ranges">SPECIFYING RANGES</h2>
+
+<p>History traversing commands such as <code>git               log</code> operate on a set of commits, not just a single commit. To these commands, specifying a single revision with the notation described in the previous section means the set of commits reachable from that commit, following the commit ancestry chain.</p>
+
+<p>To exclude commits reachable from a commit, a prefix <em>^</em> notation is used. E.g. <em>^r1 r2</em> means commits reachable from <em>r2</em> but exclude the ones reachable from <em>r1</em>.</p>
+
+<p>This set operation appears so often that there is a shorthand for it. When you have two commits <em>r1</em> and <em>r2</em> (named according to the syntax explained in SPECIFYING REVISIONS above), you can ask for commits that are reachable from r2 excluding those that are reachable from r1 by <em>^r1 r2</em> and it can be written as <em>r1..r2</em>.</p>
+
+<p>A similar notation <em>r1&hellip;r2</em> is called symmetric difference of <em>r1</em> and <em>r2</em> and is defined as <em>r1 r2 &ndash;not $(git merge-base &ndash;all r1 r2)</em>. It is the set of commits that are reachable from either one of <em>r1</em> or <em>r2</em> but not from both.</p>
+
+<p>In these two shorthands, you can omit one end and let it default to HEAD. For example, <em>origin..</em> is a shorthand for <em>origin..HEAD</em> and asks &ldquo;What did I do since I forked from the origin branch?&rdquo; Similarly, <em>..origin</em> is a shorthand for <em>HEAD..origin</em> and asks &ldquo;What did the origin do since I forked from them?&rdquo; Note that <em>..</em> would mean <em>HEAD..HEAD</em> which is an empty range that is both reachable and unreachable from HEAD.</p>
+
+<p>Two other shorthands for naming a set that is formed by a commit and its parent commits exist. The <em>r1^@</em> notation means all parents of <em>r1</em>. <em>r1^!</em> includes commit <em>r1</em> but excludes all of its parents.</p>
+
+<p>To summarize:</p>
+
+<p><em>&lt;rev&gt;</em><br />
+Include commits that are reachable from (i.e. ancestors of) &lt;rev&gt;.</p>
+
+<p><em>^&lt;rev&gt;</em><br />
+Exclude commits that are reachable from (i.e. ancestors of) &lt;rev&gt;.</p>
+
+<p><em>&lt;rev1&gt;..&lt;rev2&gt;</em><br />
+Include commits that are reachable from &lt;rev2&gt; but exclude those that are reachable from &lt;rev1&gt;. When either &lt;rev1&gt; or &lt;rev2&gt; is omitted, it defaults to <em>HEAD</em>.</p>
+
+<p><em>&lt;rev1&gt;&hellip;&lt;rev2&gt;</em><br />
+Include commits that are reachable from either &lt;rev1&gt; or &lt;rev2&gt; but exclude those that are reachable from both. When either &lt;rev1&gt; or &lt;rev2&gt; is omitted, it defaults to <em>HEAD</em>.</p>
+
+<p><em>&lt;rev&gt;^@</em>, e.g. <em>HEAD^@</em><br />
+A suffix <em>^</em> followed by an at sign is the same as listing all parents of <em>&lt;rev&gt;</em> (meaning, include anything reachable from its parents, but not the commit itself).</p>
+
+<p><em>&lt;rev&gt;^!</em>, e.g. <em>HEAD^!</em><br />
+A suffix <em>^</em> followed by an exclamation mark is the same as giving commit <em>&lt;rev&gt;</em> and then all its parents prefixed with <em>^</em> to exclude them (and their ancestors).</p>
+
+<p>Here are a handful of examples:</p>
+
+<pre><code>D                G H D
+D F              G H I J D F
+^G D             H D
+^D B             E I J F B
+B..C             C
+B...C            G H D E B C
+^D B C           E I J F B C
+C                I J F C
+C^@              I J F
+C^!              C
+F^! D            G H D F
+</code></pre>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-rev-parse">git-rev-parse(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

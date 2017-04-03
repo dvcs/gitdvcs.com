@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Git helper script to launch a web browser">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-web--browse </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-web--browse</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.4'>2.3.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.4/git-web--browse'>git-web--browse</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git web--browse [OPTIONS] URL/FILE …
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This script tries, as much as possible, to display the URLs and FILEs that are passed as arguments, as HTML pages in new tabs on an already opened web browser.</p>
+
+<p>The following browsers (or commands) are currently supported:</p>
+
+<ul>
+<li><p>firefox (this is the default under X Window when not using KDE)</p></li>
+
+<li><p>iceweasel</p></li>
+
+<li><p>seamonkey</p></li>
+
+<li><p>iceape</p></li>
+
+<li><p>chromium (also supported as chromium-browser)</p></li>
+
+<li><p>google-chrome (also supported as chrome)</p></li>
+
+<li><p>konqueror (this is the default under KDE, see <em>Note about konqueror</em> below)</p></li>
+
+<li><p>opera</p></li>
+
+<li><p>w3m (this is the default outside graphical environments)</p></li>
+
+<li><p>elinks</p></li>
+
+<li><p>links</p></li>
+
+<li><p>lynx</p></li>
+
+<li><p>dillo</p></li>
+
+<li><p>open (this is the default under Mac OS X GUI)</p></li>
+
+<li><p>start (this is the default under MinGW)</p></li>
+
+<li><p>cygstart (this is the default under Cygwin)</p></li>
+
+<li><p>xdg-open</p></li>
+</ul>
+
+<p>Custom commands may also be specified.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-b &lt;browser&gt;
+&ndash;browser=&lt;browser&gt;<br />
+Use the specified browser. It must be in the list of supported browsers.</p>
+
+<p>-t &lt;browser&gt;
+&ndash;tool=&lt;browser&gt;<br />
+Same as above.</p>
+
+<p>-c &lt;conf.var&gt;
+&ndash;config=&lt;conf.var&gt;<br />
+CONF.VAR is looked up in the Git config files. If it’s set, then its value specifies the browser that should be used.</p>
+
+<h2 id="configuration-variables">CONFIGURATION VARIABLES</h2>
+
+<h3 id="conf-var-from-c-option-and-web-browser">CONF.VAR (from -c option) and web.browser</h3>
+
+<p>The web browser can be specified using a configuration variable passed with the -c (or &ndash;config) command-line option, or the <em>web.browser</em> configuration variable if the former is not used.</p>
+
+<h3 id="browser-lt-tool-gt-path">browser.&lt;tool&gt;.path</h3>
+
+<p>You can explicitly provide a full path to your preferred browser by setting the configuration variable <em>browser.&lt;tool&gt;.path</em>. For example, you can configure the absolute path to firefox by setting <em>browser.firefox.path</em>. Otherwise, <em>git web&ndash;browse</em> assumes the tool is available in PATH.</p>
+
+<h3 id="browser-lt-tool-gt-cmd">browser.&lt;tool&gt;.cmd</h3>
+
+<p>When the browser, specified by options or configuration variables, is not among the supported ones, then the corresponding <em>browser.&lt;tool&gt;.cmd</em> configuration variable will be looked up. If this variable exists then <em>git web&ndash;browse</em> will treat the specified tool as a custom command and will use a shell eval to run the command with the URLs passed as arguments.</p>
+
+<h2 id="note-about-konqueror">Note about konqueror</h2>
+
+<p>When <em>konqueror</em> is specified by a command-line option or a configuration variable, we launch <em>kfmclient</em> to try to open the HTML man page on an already opened konqueror in a new tab if possible.</p>
+
+<p>For consistency, we also try such a trick if <em>browser.konqueror.path</em> is set to something like <em>A_PATH_TO/konqueror</em>. That means we will try to launch <em>A_PATH_TO/kfmclient</em> instead.</p>
+
+<p>If you really want to use <em>konqueror</em>, then you can use something like the following:</p>
+
+<pre><code>        [web]
+                browser = konq
+
+        [browser &quot;konq&quot;]
+                cmd = A_PATH_TO/konqueror
+</code></pre>
+
+<h3 id="note-about-git-config-global">Note about git-config &ndash;global</h3>
+
+<p>Note that these configuration variables should probably be set using the <em>&ndash;global</em> flag, for example like this:</p>
+
+<pre><code>$ git config --global web.browser firefox
+</code></pre>
+
+<p>as they are probably more user specific than repository specific. See <a href="../git-config">git-config(1)</a> for more information about this.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

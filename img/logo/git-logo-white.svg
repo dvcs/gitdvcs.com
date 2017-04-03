@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>git-logo-white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="git.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="git-logo-white">
+            <g id="background">
+                <rect id="Rectangle-path" fill="#222222" fill-rule="nonzero" x="0" y="0" width="160" height="160"></rect>
+                <path d="M0,0 L0,160 L8,160 L8,0 L0,0 Z M16,0 L16,160 L24,160 L24,0 L16,0 Z M32,0 L32,160 L40,160 L40,0 L32,0 Z M48,0 L48,160 L56,160 L56,0 L48,0 Z M64,0 L64,160 L72,160 L72,0 L64,0 Z M80,0 L80,160 L88,160 L88,0 L80,0 Z M96,0 L96,160 L104,160 L104,0 L96,0 Z M112,0 L112,160 L120,160 L120,0 L112,0 Z M128,0 L128,160 L136,160 L136,0 L128,0 Z M144,0 L144,160 L152,160 L152,0 L144,0 Z M0,0 L160,0 L160,8 L0,8 L0,0 Z M0,16 L160,16 L160,24 L0,24 L0,16 Z M0,32 L160,32 L160,40 L0,40 L0,32 Z M0,48 L160,48 L160,56 L0,56 L0,48 Z M0,64 L160,64 L160,72 L0,72 L0,64 Z M0,80 L160,80 L160,88 L0,88 L0,80 Z M0,96 L160,96 L160,104 L0,104 L0,96 Z M0,112 L160,112 L160,120 L0,120 L0,112 Z M0,128 L160,128 L160,136 L0,136 L0,128 Z M0,144 L160,144 L160,152 L0,152 L0,144 Z" id="Shape" fill="#FFFFFF"></path>
+                <rect id="Rectangle" fill-opacity="0.8" fill="#222222" x="0" y="0" width="160" height="160"></rect>
+            </g>
+            <path d="M117.657435,53.6562354 L144,79.9988 L80.0012,144 L64.0003,127.9991 L64.0003,107.313371 L117.657435,53.6562354 Z M47.9994,47.9994 L47.9994,112.0006 L16,79.9988 L47.9994,47.9994 Z M106.343765,42.3425646 L64.0003,84.6860293 L64.0003,31.9985 L80.0012,16 L106.343765,42.3425646 Z" id="Page-1" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Extracts patch and authorship from a single">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-mailinfo </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-mailinfo</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.5.3'>2.5.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.5.3/git-mailinfo'>git-mailinfo</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git mailinfo [-k|-b] [-u | --encoding=&lt;encoding&gt; | -n] [--[no-]scissors] &lt;msg&gt; &lt;patch&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Reads a single e-mail message from the standard input, and writes the commit log message in &lt;msg&gt; file, and the patches in &lt;patch&gt; file. The author name, e-mail and e-mail subject are written out to the standard output to be used by <em>git am</em> to create a commit. It is usually not necessary to use this command directly. See <a href="../git-am">git-am(1)</a> instead.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-k<br />
+Usually the program removes email cruft from the Subject: header line to extract the title line for the commit log message. This option prevents this munging, and is most useful when used to read back <em>git format-patch -k</em> output.</p>
+
+<p>Specifically, the following are removed until none of them remain:</p>
+
+<ul>
+<li><p>Leading and trailing whitespace.</p></li>
+
+<li><p>Leading <code>Re:</code>, <code>re:</code>, and <code>:</code>.</p></li>
+
+<li><p>Leading bracketed strings (between <code>[</code> and <code>]</code>, usually <code>[PATCH]</code>).</p></li>
+</ul>
+
+<p>Finally, runs of whitespace are normalized to a single ASCII space character.</p>
+
+<p>-b<br />
+When -k is not in effect, all leading strings bracketed with <em>[</em> and <em>]</em> pairs are stripped. This option limits the stripping to only the pairs whose bracketed string contains the word &ldquo;PATCH&rdquo;.</p>
+
+<p>-u<br />
+The commit log message, author name and author email are taken from the e-mail, and after minimally decoding MIME transfer encoding, re-coded in the charset specified by i18n.commitencoding (defaulting to UTF-8) by transliterating them. This used to be optional but now it is the default.</p>
+
+<p>Note that the patch is always used as-is without charset conversion, even with this flag.</p>
+
+<p>&ndash;encoding=&lt;encoding&gt;<br />
+Similar to -u. But when re-coding, the charset specified here is used instead of the one specified by i18n.commitencoding or UTF-8.</p>
+
+<p>-n<br />
+Disable all charset re-coding of the metadata.</p>
+
+<p>-m
+&ndash;message-id<br />
+Copy the Message-ID header at the end of the commit message. This is useful in order to associate commits with mailing list discussions.</p>
+
+<p>&ndash;scissors<br />
+Remove everything in body before a scissors line. A line that mainly consists of scissors (either &ldquo;&gt;8&rdquo; or &ldquo;8&lt;&rdquo;) and perforation (dash &ldquo;-&rdquo;) marks is called a scissors line, and is used to request the reader to cut the message at that line. If such a line appears in the body of the message before the patch, everything before it (including the scissors line itself) is ignored when this option is used.</p>
+
+<p>This is useful if you want to begin your message in a discussion thread with comments and suggestions on the message you are responding to, and to conclude it with a patch submission, separating the discussion and the beginning of the proposed commit log message with a scissors line.</p>
+
+<p>This can enabled by default with the configuration option mailinfo.scissors.</p>
+
+<p>&ndash;no-scissors<br />
+Ignore scissors lines. Useful for overriding mailinfo.scissors settings.</p>
+
+<p>&lt;msg&gt;<br />
+The commit log message extracted from e-mail, usually except the title line which comes from e-mail Subject.</p>
+
+<p>&lt;patch&gt;<br />
+The patch extracted from e-mail.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

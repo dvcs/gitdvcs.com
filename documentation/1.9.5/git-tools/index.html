@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="A short Git tools survey">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-tools </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-tools</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.9.5'>1.9.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.9.5/git-tools'>git-tools</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Apart from Git contrib/ area there are some others third-party tools you may want to look.</p>
+
+<p>This document presents a brief summary of each tool and the corresponding link.</p>
+
+<h2 id="alternative-augmentative-porcelains">Alternative/Augmentative Porcelains</h2>
+
+<ul>
+<li><p><strong>Cogito</strong> (<a href="http://www.kernel.org/pub/software/scm/cogito/">http://www.kernel.org/pub/software/scm/cogito/</a>)</p>
+
+<pre><code>Cogito is a version control system layered on top of the Git tree history
+storage system. It aims at seamless user interface and ease of use,
+providing generally smoother user experience than the &quot;raw&quot; Core Git
+itself and indeed many other version control systems.
+
+Cogito is no longer maintained as most of its functionality
+is now in core Git.
+</code></pre></li>
+
+<li><p><strong>pg</strong> (<a href="http://www.spearce.org/category/projects/scm/pg/">http://www.spearce.org/category/projects/scm/pg/</a>)</p>
+
+<pre><code>pg is a shell script wrapper around Git to help the user manage a set of
+patches to files. pg is somewhat like quilt or StGit, but it does have a
+slightly different feature set.
+</code></pre></li>
+
+<li><p><strong>StGit</strong> (<a href="http://www.procode.org/stgit/">http://www.procode.org/stgit/</a>)</p>
+
+<pre><code>Stacked Git provides a quilt-like patch management functionality in the
+Git environment. You can easily manage your patches in the scope of Git
+until they get merged upstream.
+</code></pre></li>
+</ul>
+
+<h2 id="history-viewers">History Viewers</h2>
+
+<ul>
+<li><p><strong>gitk</strong> (shipped with git-core)</p>
+
+<pre><code>gitk is a simple Tk GUI for browsing history of Git repositories easily.
+</code></pre></li>
+
+<li><p><strong>gitview</strong> (contrib/)</p>
+
+<pre><code>gitview is a GTK based repository browser for Git
+</code></pre></li>
+
+<li><p><strong>gitweb</strong> (shipped with git-core)</p>
+
+<pre><code>Gitweb provides full-fledged web interface for Git repositories.
+</code></pre></li>
+
+<li><p><strong>qgit</strong> (<a href="http://digilander.libero.it/mcostalba/">http://digilander.libero.it/mcostalba/</a>)</p>
+
+<pre><code>QGit is a git/StGit GUI viewer built on Qt/C++. QGit could be used
+to browse history and directory tree, view annotated files, commit
+changes cherry picking single files or applying patches.
+Currently it is the fastest and most feature rich among the Git
+viewers and commit tools.
+</code></pre></li>
+
+<li><p><strong>tig</strong> (<a href="http://jonas.nitro.dk/tig/">http://jonas.nitro.dk/tig/</a>)</p>
+
+<pre><code>tig by Jonas Fonseca is a simple Git repository browser
+written using ncurses. Basically, it just acts as a front-end
+for git-log and git-show/git-diff. Additionally, you can also
+use it as a pager for Git commands.
+</code></pre></li>
+</ul>
+
+<h2 id="foreign-scm-interface">Foreign SCM interface</h2>
+
+<ul>
+<li><p><strong>git-svn</strong> (shipped with git-core)</p>
+
+<pre><code>git-svn is a simple conduit for changesets between a single Subversion
+branch and Git.
+</code></pre></li>
+
+<li><p><strong>quilt2git / git2quilt</strong> (<a href="http://home-tj.org/wiki/index.php/Misc">http://home-tj.org/wiki/index.php/Misc</a>)</p>
+
+<pre><code>These utilities convert patch series in a quilt repository and commit
+series in Git back and forth.
+</code></pre></li>
+
+<li><p><strong>hg-to-git</strong> (contrib/)</p>
+
+<pre><code>hg-to-git converts a Mercurial repository into a Git one, and
+preserves the full branch history in the process. hg-to-git can
+also be used in an incremental way to keep the Git repository
+in sync with the master Mercurial repository.
+</code></pre></li>
+</ul>
+
+<h2 id="others">Others</h2>
+
+<ul>
+<li><p><strong>(h)gct</strong> (<a href="http://www.cyd.liu.se/users/~freku045/gct/">http://www.cyd.liu.se/users/~freku045/gct/</a>)</p>
+
+<pre><code>Commit Tool or (h)gct is a GUI enabled commit tool for Git and
+Mercurial (hg). It allows the user to view diffs, select which files
+to committed (or ignored / reverted) write commit messages and
+perform the commit itself.
+</code></pre></li>
+
+<li><p><strong>git.el</strong> (contrib/)</p>
+
+<pre><code>This is an Emacs interface for Git. The user interface is modelled on
+pcl-cvs. It has been developed on Emacs 21 and will probably need some
+tweaking to work on XEmacs.
+</code></pre></li>
+</ul>
+
+<p><a href="http://git.or.cz/gitwiki/InterfacesFrontendsAndTools">http://git.or.cz/gitwiki/InterfacesFrontendsAndTools</a> has more comprehensive list.</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

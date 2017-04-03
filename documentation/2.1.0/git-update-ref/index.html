@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Update the object name stored in a ref">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-update-ref </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-update-ref</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.0'>2.1.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.1.0/git-update-ref'>git-update-ref</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git update-ref [-m &lt;reason&gt;] (-d &lt;ref&gt; [&lt;oldvalue&gt;] | [--no-deref] &lt;ref&gt; &lt;newvalue&gt; [&lt;oldvalue&gt;] | --stdin [-z])
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Given two arguments, stores the &lt;newvalue&gt; in the &lt;ref&gt;, possibly dereferencing the symbolic refs. E.g. <code>git update-ref HEAD &lt;newvalue&gt;</code> updates the current branch head to the new object.</p>
+
+<p>Given three arguments, stores the &lt;newvalue&gt; in the &lt;ref&gt;, possibly dereferencing the symbolic refs, after verifying that the current value of the &lt;ref&gt; matches &lt;oldvalue&gt;. E.g. <code>git               update-ref refs/heads/master &lt;newvalue&gt;               &lt;oldvalue&gt;</code> updates the master branch head to &lt;newvalue&gt; only if its current value is &lt;oldvalue&gt;. You can specify 40 &ldquo;0&rdquo; or an empty string as &lt;oldvalue&gt; to make sure that the ref you are creating does not exist.</p>
+
+<p>It also allows a &ldquo;ref&rdquo; file to be a symbolic pointer to another ref file by starting with the four-byte header sequence of &ldquo;ref:&ldquo;.</p>
+
+<p>More importantly, it allows the update of a ref file to follow these symbolic pointers, whether they are symlinks or these &ldquo;regular file symbolic refs&rdquo;. It follows <strong>real</strong> symlinks only if they start with &ldquo;refs/&rdquo;: otherwise it will just try to read them and update them as a regular file (i.e. it will allow the filesystem to follow them, but will overwrite such a symlink to somewhere else with a regular filename).</p>
+
+<p>If &ndash;no-deref is given, &lt;ref&gt; itself is overwritten, rather than the result of following the symbolic pointers.</p>
+
+<p>In general, using</p>
+
+<pre><code>git update-ref HEAD &quot;$head&quot;
+</code></pre>
+
+<p>should be a <em>lot</em> safer than doing</p>
+
+<pre><code>echo &quot;$head&quot; &gt; &quot;$GIT_DIR/HEAD&quot;
+</code></pre>
+
+<p>both from a symlink following standpoint <strong>and</strong> an error checking standpoint. The &ldquo;refs/&rdquo; rule for symlinks means that symlinks that point to &ldquo;outside&rdquo; the tree are safe: they’ll be followed for reading but not for writing (so we’ll never write through a ref symlink to some other tree, if you have copied a whole archive by creating a symlink tree).</p>
+
+<p>With <code>-d</code> flag, it deletes the named &lt;ref&gt; after verifying it still contains &lt;oldvalue&gt;.</p>
+
+<p>With <code>--stdin</code>, update-ref reads instructions from standard input and performs all modifications together. Specify commands of the form:</p>
+
+<pre><code>update SP &lt;ref&gt; SP &lt;newvalue&gt; [SP &lt;oldvalue&gt;] LF
+create SP &lt;ref&gt; SP &lt;newvalue&gt; LF
+delete SP &lt;ref&gt; [SP &lt;oldvalue&gt;] LF
+verify SP &lt;ref&gt; [SP &lt;oldvalue&gt;] LF
+option SP &lt;opt&gt; LF
+</code></pre>
+
+<p>Quote fields containing whitespace as if they were strings in C source code; i.e., surrounded by double-quotes and with backslash escapes. Use 40 &ldquo;0&rdquo; characters or the empty string to specify a zero value. To specify a missing value, omit the value and its preceding SP entirely.</p>
+
+<p>Alternatively, use <code>-z</code> to specify in NUL-terminated format, without quoting:</p>
+
+<pre><code>update SP &lt;ref&gt; NUL &lt;newvalue&gt; NUL [&lt;oldvalue&gt;] NUL
+create SP &lt;ref&gt; NUL &lt;newvalue&gt; NUL
+delete SP &lt;ref&gt; NUL [&lt;oldvalue&gt;] NUL
+verify SP &lt;ref&gt; NUL [&lt;oldvalue&gt;] NUL
+option SP &lt;opt&gt; NUL
+</code></pre>
+
+<p>In this format, use 40 &ldquo;0&rdquo; to specify a zero value, and use the empty string to specify a missing value.</p>
+
+<p>In either format, values can be specified in any form that Git recognizes as an object name. Commands in any other format or a repeated &lt;ref&gt; produce an error. Command meanings are:</p>
+
+<p>update<br />
+Set &lt;ref&gt; to &lt;newvalue&gt; after verifying &lt;oldvalue&gt;, if given. Specify a zero &lt;newvalue&gt; to ensure the ref does not exist after the update and/or a zero &lt;oldvalue&gt; to make sure the ref does not exist before the update.</p>
+
+<p>create<br />
+Create &lt;ref&gt; with &lt;newvalue&gt; after verifying it does not exist. The given &lt;newvalue&gt; may not be zero.</p>
+
+<p>delete<br />
+Delete &lt;ref&gt; after verifying it exists with &lt;oldvalue&gt;, if given. If given, &lt;oldvalue&gt; may not be zero.</p>
+
+<p>verify<br />
+Verify &lt;ref&gt; against &lt;oldvalue&gt; but do not change it. If &lt;oldvalue&gt; zero or missing, the ref must not exist.</p>
+
+<p>option<br />
+Modify behavior of the next command naming a &lt;ref&gt;. The only valid option is <code>no-deref</code> to avoid dereferencing a symbolic ref.</p>
+
+<p>If all &lt;ref&gt;s can be locked with matching &lt;oldvalue&gt;s simultaneously, all modifications are performed. Otherwise, no modifications are performed. Note that while each individual &lt;ref&gt; is updated or deleted atomically, a concurrent reader may still see a subset of the modifications.</p>
+
+<h2 id="logging-updates">Logging Updates</h2>
+
+<p>If config parameter &ldquo;core.logAllRefUpdates&rdquo; is true and the ref is one under &ldquo;refs/heads/&rdquo;, &ldquo;refs/remotes/&rdquo;, &ldquo;refs/notes/&rdquo;, or the symbolic ref HEAD; or the file &ldquo;$GIT_DIR/logs/&lt;ref&gt;&rdquo; exists then <code>git               update-ref</code> will append a line to the log file &ldquo;$GIT_DIR/logs/&lt;ref&gt;&rdquo; (dereferencing all symbolic refs before creating the log name) describing the change in ref value. Log lines are formatted as:</p>
+
+<ol>
+<li><p>oldsha1 SP newsha1 SP committer LF</p>
+
+<p>Where &ldquo;oldsha1&rdquo; is the 40 character hexadecimal value previously stored in &lt;ref&gt;, &ldquo;newsha1&rdquo; is the 40 character hexadecimal value of &lt;newvalue&gt; and &ldquo;committer&rdquo; is the committer’s name, email address and date in the standard Git committer ident format.</p></li>
+</ol>
+
+<p>Optionally with -m:</p>
+
+<ol>
+<li><p>oldsha1 SP newsha1 SP committer TAB message LF</p>
+
+<p>Where all fields are as described above and &ldquo;message&rdquo; is the value supplied to the -m option.</p></li>
+</ol>
+
+<p>An update will fail (without changing &lt;ref&gt;) if the current user is unable to create a new log file, append to the existing log file or does not have committer information available.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

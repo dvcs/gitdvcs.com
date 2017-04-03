@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="List, create, or delete branches">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-branch </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-branch</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.9.5'>1.9.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.9.5/git-branch'>git-branch</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git branch [--color[=&lt;when&gt;] | --no-color] [-r | -a]
+        [--list] [-v [--abbrev=&lt;length&gt; | --no-abbrev]]
+        [--column[=&lt;options&gt;] | --no-column]
+        [(--merged | --no-merged | --contains) [&lt;commit&gt;]] [&lt;pattern&gt;…]
+git branch [--set-upstream | --track | --no-track] [-l] [-f] &lt;branchname&gt; [&lt;start-point&gt;]
+git branch (--set-upstream-to=&lt;upstream&gt; | -u &lt;upstream&gt;) [&lt;branchname&gt;]
+git branch --unset-upstream [&lt;branchname&gt;]
+git branch (-m | -M) [&lt;oldbranch&gt;] &lt;newbranch&gt;
+git branch (-d | -D) [-r] &lt;branchname&gt;…
+git branch --edit-description [&lt;branchname&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>If <code>--list</code> is given, or if there are no non-option arguments, existing branches are listed; the current branch will be highlighted with an asterisk. Option <code>-r</code> causes the remote-tracking branches to be listed, and option <code>-a</code> shows both local and remote branches. If a <code>&lt;pattern&gt;</code> is given, it is used as a shell wildcard to restrict the output to matching branches. If multiple patterns are given, a branch is shown if it matches any of the patterns. Note that when providing a <code>&lt;pattern&gt;</code>, you must use <code>--list</code>; otherwise the command is interpreted as branch creation.</p>
+
+<p>With <code>--contains</code>, shows only the branches that contain the named commit (in other words, the branches whose tip commits are descendants of the named commit). With <code>--merged</code>, only branches merged into the named commit (i.e. the branches whose tip commits are reachable from the named commit) will be listed. With <code>--no-merged</code> only branches not merged into the named commit will be listed. If the &lt;commit&gt; argument is missing it defaults to <em>HEAD</em> (i.e. the tip of the current branch).</p>
+
+<p>The command’s second form creates a new branch head named &lt;branchname&gt; which points to the current <em>HEAD</em>, or &lt;start-point&gt; if given.</p>
+
+<p>Note that this will create the new branch, but it will not switch the working tree to it; use &ldquo;git checkout &lt;newbranch&gt;&rdquo; to switch to the new branch.</p>
+
+<p>When a local branch is started off a remote-tracking branch, Git sets up the branch (specifically the <code>branch.&lt;name&gt;.remote</code> and <code>branch.&lt;name&gt;.merge</code> configuration entries) so that <em>git pull</em> will appropriately merge from the remote-tracking branch. This behavior may be changed via the global <code>branch.autosetupmerge</code> configuration flag. That setting can be overridden by using the <code>--track</code> and <code>--no-track</code> options, and changed later using <code>git branch --set-upstream-to</code>.</p>
+
+<p>With a <code>-m</code> or <code>-M</code> option, &lt;oldbranch&gt; will be renamed to &lt;newbranch&gt;. If &lt;oldbranch&gt; had a corresponding reflog, it is renamed to match &lt;newbranch&gt;, and a reflog entry is created to remember the branch renaming. If &lt;newbranch&gt; exists, -M must be used to force the rename to happen.</p>
+
+<p>With a <code>-d</code> or <code>-D</code> option, <code>&lt;branchname&gt;</code> will be deleted. You may specify more than one branch for deletion. If the branch currently has a reflog then the reflog will also be deleted.</p>
+
+<p>Use <code>-r</code> together with <code>-d</code> to delete remote-tracking branches. Note, that it only makes sense to delete remote-tracking branches if they no longer exist in the remote repository or if <em>git fetch</em> was configured not to fetch them again. See also the <em>prune</em> subcommand of <a href="../git-remote">git-remote(1)</a> for a way to clean up all obsolete remote-tracking branches.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-d
+&ndash;delete<br />
+Delete a branch. The branch must be fully merged in its upstream branch, or in <code>HEAD</code> if no upstream was set with <code>--track</code> or <code>--set-upstream</code>.</p>
+
+<p>-D<br />
+Delete a branch irrespective of its merged status.</p>
+
+<p>-l
+&ndash;create-reflog<br />
+Create the branch’s reflog. This activates recording of all changes made to the branch ref, enabling use of date based sha1 expressions such as &ldquo;&lt;branchname&gt;@{yesterday}&ldquo;. Note that in non-bare repositories, reflogs are usually enabled by default by the <code>core.logallrefupdates</code> config option.</p>
+
+<p>-f
+&ndash;force<br />
+Reset &lt;branchname&gt; to &lt;startpoint&gt; if &lt;branchname&gt; exists already. Without <code>-f</code> <em>git branch</em> refuses to change an existing branch.</p>
+
+<p>-m
+&ndash;move<br />
+Move/rename a branch and the corresponding reflog.</p>
+
+<p>-M<br />
+Move/rename a branch even if the new branch name already exists.</p>
+
+<p>&ndash;color[=&lt;when&gt;]<br />
+Color branches to highlight current, local, and remote-tracking branches. The value must be always (the default), never, or auto.</p>
+
+<p>&ndash;no-color<br />
+Turn off branch colors, even when the configuration file gives the default to color output. Same as <code>--color=never</code>.</p>
+
+<p>&ndash;column[=&lt;options&gt;]
+&ndash;no-column<br />
+Display branch listing in columns. See configuration variable column.branch for option syntax.<code>--column</code> and <code>--no-column</code> without options are equivalent to <em>always</em> and <em>never</em> respectively.</p>
+
+<p>This option is only applicable in non-verbose mode.</p>
+
+<p>-r
+&ndash;remotes<br />
+List or delete (if used with -d) the remote-tracking branches.</p>
+
+<p>-a
+&ndash;all<br />
+List both remote-tracking branches and local branches.</p>
+
+<p>&ndash;list<br />
+Activate the list mode. <code>git branch                   &lt;pattern&gt;</code> would try to create a branch, use <code>git branch --list &lt;pattern&gt;</code> to list matching branches.</p>
+
+<p>-v
+-vv
+&ndash;verbose<br />
+When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the name of the upstream branch, as well (see also <code>git remote show &lt;remote&gt;</code>).</p>
+
+<p>-q
+&ndash;quiet<br />
+Be more quiet when creating or deleting a branch, suppressing non-error messages.</p>
+
+<p>&ndash;abbrev=&lt;length&gt;<br />
+Alter the sha1’s minimum display length in the output listing. The default value is 7 and can be overridden by the <code>core.abbrev</code> config option.</p>
+
+<p>&ndash;no-abbrev<br />
+Display the full sha1s in the output listing rather than abbreviating them.</p>
+
+<p>-t
+&ndash;track<br />
+When creating a new branch, set up <code>branch.&lt;name&gt;.remote</code> and <code>branch.&lt;name&gt;.merge</code> configuration entries to mark the start-point branch as &ldquo;upstream&rdquo; from the new branch. This configuration will tell git to show the relationship between the two branches in <code>git status</code> and <code>git branch                   -v</code>. Furthermore, it directs <code>git                   pull</code> without arguments to pull from the upstream when the new branch is checked out.</p>
+
+<p>This behavior is the default when the start point is a remote-tracking branch. Set the branch.autosetupmerge configuration variable to <code>false</code> if you want <code>git                     checkout</code> and <code>git branch</code> to always behave as if <em>&ndash;no-track</em> were given. Set it to <code>always</code> if you want this behavior when the start-point is either a local or remote-tracking branch.</p>
+
+<p>&ndash;no-track<br />
+Do not set up &ldquo;upstream&rdquo; configuration, even if the branch.autosetupmerge configuration variable is true.</p>
+
+<p>&ndash;set-upstream<br />
+If specified branch does not exist yet or if <code>--force</code> has been given, acts exactly like <code>--track</code>. Otherwise sets up configuration like <code>--track</code> would when creating the branch, except that where branch points to is not changed.</p>
+
+<p>-u &lt;upstream&gt;
+&ndash;set-upstream-to=&lt;upstream&gt;<br />
+Set up &lt;branchname&gt;&rsquo;s tracking information so &lt;upstream&gt; is considered &lt;branchname&gt;&rsquo;s upstream branch. If no &lt;branchname&gt; is specified, then it defaults to the current branch.</p>
+
+<p>&ndash;unset-upstream<br />
+Remove the upstream information for &lt;branchname&gt;. If no branch is specified it defaults to the current branch.</p>
+
+<p>&ndash;edit-description<br />
+Open an editor and edit the text to explain what the branch is for, to be used by various other commands (e.g. <code>request-pull</code>).</p>
+
+<p>&ndash;contains [&lt;commit&gt;]<br />
+Only list branches which contain the specified commit (HEAD if not specified). Implies <code>--list</code>.</p>
+
+<p>&ndash;merged [&lt;commit&gt;]<br />
+Only list branches whose tips are reachable from the specified commit (HEAD if not specified). Implies <code>--list</code>.</p>
+
+<p>&ndash;no-merged [&lt;commit&gt;]<br />
+Only list branches whose tips are not reachable from the specified commit (HEAD if not specified). Implies <code>--list</code>.</p>
+
+<p>&lt;branchname&gt;<br />
+The name of the branch to create or delete. The new branch name must pass all checks defined by <a href="../git-check-ref-format">git-check-ref-format(1)</a>. Some of these checks may restrict the characters allowed in a branch name.</p>
+
+<p>&lt;start-point&gt;<br />
+The new branch head will point to this commit. It may be given as a branch name, a commit-id, or a tag. If this option is omitted, the current HEAD will be used instead.</p>
+
+<p>&lt;oldbranch&gt;<br />
+The name of an existing branch to rename.</p>
+
+<p>&lt;newbranch&gt;<br />
+The new name for an existing branch. The same restrictions as for &lt;branchname&gt; apply.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>Start development from a known tag<br />
+    $ git clone git://git.kernel.org/pub/scm/&hellip;/linux-2.6 my2.6
+    $ cd my2.6
+    $ git branch my2.6.14 v2.6.14   <1>
+    $ git checkout my2.6.14</p>
+
+<ol>
+<li>This step and the next one could be combined into a single step with &ldquo;checkout -b my2.6.14 v2.6.14&rdquo;.</li>
+</ol>
+
+<p>Delete an unneeded branch<br />
+    $ git clone git://git.kernel.org/&hellip;/git.git my.git
+    $ cd my.git
+    $ git branch -d -r origin/todo origin/html origin/man   <1>
+    $ git branch -D test                                    <2></p>
+
+<ol>
+<li><p>Delete the remote-tracking branches &ldquo;todo&rdquo;, &ldquo;html&rdquo; and &ldquo;man&rdquo;. The next <em>fetch</em> or <em>pull</em> will create them again unless you configure them not to. See <a href="../git-fetch">git-fetch(1)</a>.</p></li>
+
+<li><p>Delete the &ldquo;test&rdquo; branch even if the &ldquo;master&rdquo; branch (or whichever branch is currently checked out) does not have all commits from the test branch.</p></li>
+</ol>
+
+<h2 id="notes">Notes</h2>
+
+<p>If you are creating a branch that you want to checkout immediately, it is easier to use the git checkout command with its <code>-b</code> option to create a branch and check it out with a single command.</p>
+
+<p>The options <code>--contains</code>, <code>--merged</code> and <code>--no-merged</code> serve three related but different purposes:</p>
+
+<ul>
+<li><p><code>--contains &lt;commit&gt;</code> is used to find all branches which will need special attention if &lt;commit&gt; were to be rebased or amended, since those branches contain the specified &lt;commit&gt;.</p></li>
+
+<li><p><code>--merged</code> is used to find all branches which can be safely deleted, since those branches are fully contained by HEAD.</p></li>
+
+<li><p><code>--no-merged</code> is used to find branches which are candidates for merging into HEAD, since those branches are not fully contained by HEAD.</p></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-check-ref-format">git-check-ref-format(1)</a>, <a href="../git-fetch">git-fetch(1)</a>, <a href="../git-remote">git-remote(1)</a>, <a href="user-manual.html#what-is-a-branch">“Understanding history: What is a branch?”</a> in the Git User’s Manual.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Verifies the connectivity and validity of the">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-fsck </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-fsck</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.9'>2.4.9</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.9/git-fsck'>git-fsck</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git fsck [--tags] [--root] [--unreachable] [--cache] [--no-reflogs]
+         [--[no-]full] [--strict] [--verbose] [--lost-found]
+         [--[no-]dangling] [--[no-]progress] [&lt;object&gt;*]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Verifies the connectivity and validity of the objects in the database.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;object&gt;<br />
+An object to treat as the head of an unreachability trace.</p>
+
+<p>If no objects are given, <em>git fsck</em> defaults to using the index file, all SHA-1 references in <code>refs</code> namespace, and all reflogs (unless &ndash;no-reflogs is given) as heads.</p>
+
+<p>&ndash;unreachable<br />
+Print out objects that exist but that aren’t reachable from any of the reference nodes.</p>
+
+<p>&ndash;[no-]dangling<br />
+Print objects that exist but that are never <em>directly</em> used (default). <code>--no-dangling</code> can be used to omit this information from the output.</p>
+
+<p>&ndash;root<br />
+Report root nodes.</p>
+
+<p>&ndash;tags<br />
+Report tags.</p>
+
+<p>&ndash;cache<br />
+Consider any object recorded in the index also as a head node for an unreachability trace.</p>
+
+<p>&ndash;no-reflogs<br />
+Do not consider commits that are referenced only by an entry in a reflog to be reachable. This option is meant only to search for commits that used to be in a ref, but now aren’t, but are still in that corresponding reflog.</p>
+
+<p>&ndash;full<br />
+Check not just objects in GIT_OBJECT_DIRECTORY ($GIT_DIR/objects), but also the ones found in alternate object pools listed in GIT_ALTERNATE_OBJECT_DIRECTORIES or $GIT_DIR/objects/info/alternates, and in packed Git archives found in $GIT_DIR/objects/pack and corresponding pack subdirectories in alternate object pools. This is now default; you can turn it off with &ndash;no-full.</p>
+
+<p>&ndash;strict<br />
+Enable more strict checking, namely to catch a file mode recorded with g+w bit set, which was created by older versions of Git. Existing repositories, including the Linux kernel, Git itself, and sparse repository have old objects that triggers this check, but it is recommended to check new projects with this flag.</p>
+
+<p>&ndash;verbose<br />
+Be chatty.</p>
+
+<p>&ndash;lost-found<br />
+Write dangling objects into .git/lost-found/commit/ or .git/lost-found/other/, depending on type. If the object is a blob, the contents are written into the file, rather than its object name.</p>
+
+<p>&ndash;[no-]progress<br />
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless &ndash;no-progress or &ndash;verbose is specified. &ndash;progress forces progress status even if the standard error stream is not directed to a terminal.</p>
+
+<h2 id="discussion">DISCUSSION</h2>
+
+<p>git-fsck tests SHA-1 and general object sanity, and it does full tracking of the resulting reachability and everything else. It prints out any corruption it finds (missing or bad objects), and if you use the <em>&ndash;unreachable</em> flag it will also print out objects that exist but that aren’t reachable from any of the specified head nodes (or the default set, as mentioned above).</p>
+
+<p>Any corrupt objects you will have to find in backups or other archives (i.e., you can just remove them and do an <em>rsync</em> with some other site in the hopes that somebody else has the object you have corrupted).</p>
+
+<h2 id="extracted-diagnostics">Extracted Diagnostics</h2>
+
+<p>expect dangling commits - potential heads - due to lack of head information<br />
+You haven’t specified any nodes as heads so it won’t be possible to differentiate between un-parented commits and root nodes.</p>
+
+<p>missing sha1 directory <em>&lt;dir&gt;</em><br />
+The directory holding the sha1 objects is missing.</p>
+
+<p>unreachable &lt;type&gt; &lt;object&gt;<br />
+The &lt;type&gt; object &lt;object&gt;, isn’t actually referred to directly or indirectly in any of the trees or commits seen. This can mean that there’s another root node that you’re not specifying or that the tree is corrupt. If you haven’t missed a root node then you might as well delete unreachable nodes since they can’t be used.</p>
+
+<p>missing &lt;type&gt; &lt;object&gt;<br />
+The &lt;type&gt; object &lt;object&gt;, is referred to but isn’t present in the database.</p>
+
+<p>dangling &lt;type&gt; &lt;object&gt;<br />
+The &lt;type&gt; object &lt;object&gt;, is present in the database but never <em>directly</em> used. A dangling commit could be a root node.</p>
+
+<p>sha1 mismatch &lt;object&gt;<br />
+The database has an object who’s sha1 doesn’t match the database value. This indicates a serious data integrity problem.</p>
+
+<h2 id="environment-variables">Environment Variables</h2>
+
+<p>GIT_OBJECT_DIRECTORY<br />
+used to specify the object database root (usually $GIT_DIR/objects)</p>
+
+<p>GIT_INDEX_FILE<br />
+used to specify the index file of the index</p>
+
+<p>GIT_ALTERNATE_OBJECT_DIRECTORIES<br />
+used to specify additional object database roots (usually unset)</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

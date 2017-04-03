@@ -1,0 +1,506 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Download objects and refs from another">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-fetch </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-fetch</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.8.4'>1.8.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.8.4/git-fetch'>git-fetch</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git fetch [&lt;options&gt;] [&lt;repository&gt; [&lt;refspec&gt;…]]
+git fetch [&lt;options&gt;] &lt;group&gt;
+git fetch --multiple [&lt;options&gt;] [(&lt;repository&gt; | &lt;group&gt;)…]
+git fetch --all [&lt;options&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Fetches named heads or tags from one or more other repositories, along with the objects necessary to complete them.</p>
+
+<p>The ref names and their object names of fetched refs are stored in <code>.git/FETCH_HEAD</code>. This information is left for a later merge operation done by <em>git merge</em>.</p>
+
+<p>When &lt;refspec&gt; stores the fetched result in remote-tracking branches, the tags that point at these branches are automatically followed. This is done by first fetching from the remote using the given &lt;refspec&gt;s, and if the repository has objects that are pointed by remote tags that it does not yet have, then fetch those missing tags. If the other end has tags that point at branches you are not interested in, you will not get them.</p>
+
+<p><em>git fetch</em> can fetch from either a single named repository, or from several repositories at once if &lt;group&gt; is given and there is a remotes.&lt;group&gt; entry in the configuration file. (See <a href="../git-config">git-config(1)</a>).</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;all<br />
+Fetch all remotes.</p>
+
+<p>-a
+&ndash;append<br />
+Append ref names and object names of fetched refs to the existing contents of <code>.git/FETCH_HEAD</code>. Without this option old data in <code>.git/FETCH_HEAD</code> will be overwritten.</p>
+
+<p>&ndash;depth=&lt;depth&gt;<br />
+Deepen or shorten the history of a <em>shallow</em> repository created by <code>git                   clone</code> with <code>--depth=&lt;depth&gt;</code> option (see <a href="../git-clone">git-clone(1)</a>) to the specified number of commits from the tip of each remote branch history. Tags for the deepened commits are not fetched.</p>
+
+<p>&ndash;unshallow<br />
+Convert a shallow repository to a complete one, removing all the limitations imposed by shallow repositories.</p>
+
+<p>&ndash;dry-run<br />
+Show what would be done, without making any changes.</p>
+
+<p>-f
+&ndash;force<br />
+When <em>git fetch</em> is used with <code>&lt;rbranch&gt;:&lt;lbranch&gt;</code> refspec, it refuses to update the local branch <code>&lt;lbranch&gt;</code> unless the remote branch <code>&lt;rbranch&gt;</code> it fetches is a descendant of <code>&lt;lbranch&gt;</code>. This option overrides that check.</p>
+
+<p>-k
+&ndash;keep<br />
+Keep downloaded pack.</p>
+
+<p>&ndash;multiple<br />
+Allow several &lt;repository&gt; and &lt;group&gt; arguments to be specified. No &lt;refspec&gt;s may be specified.</p>
+
+<p>-p
+&ndash;prune<br />
+After fetching, remove any remote-tracking branches which no longer exist on the remote.</p>
+
+<p>-n
+&ndash;no-tags<br />
+By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the remote.&lt;name&gt;.tagopt setting. See <a href="../git-config">git-config(1)</a>.</p>
+
+<p>-t
+&ndash;tags<br />
+This is a short-hand for giving <code>refs/tags/*:refs/tags/*</code> refspec from the command line, to ask all tags to be fetched and stored locally. Because this acts as an explicit refspec, the default refspecs (configured with the remote.$name.fetch variable) are overridden and not used.</p>
+
+<p>&ndash;recurse-submodules[=yes|on-demand|no]<br />
+This option controls if and under what conditions new commits of populated submodules should be fetched too. It can be used as a boolean option to completely disable recursion when set to <em>no</em> or to unconditionally recurse into all populated submodules when set to <em>yes</em>, which is the default when this option is used without any value. Use <em>on-demand</em> to only recurse into a populated submodule when the superproject retrieves a commit that updates the submodule’s reference to a commit that isn’t already in the local submodule clone.</p>
+
+<p>&ndash;no-recurse-submodules<br />
+Disable recursive fetching of submodules (this has the same effect as using the <em>&ndash;recurse-submodules=no</em> option).</p>
+
+<p>&ndash;submodule-prefix=&lt;path&gt;<br />
+Prepend &lt;path&gt; to paths printed in informative messages such as &ldquo;Fetching submodule foo&rdquo;. This option is used internally when recursing over submodules.</p>
+
+<p>&ndash;recurse-submodules-default=[yes|on-demand]<br />
+This option is used internally to temporarily provide a non-negative default value for the &ndash;recurse-submodules option. All other methods of configuring fetch’s submodule recursion (such as settings in <a href="../gitmodules">gitmodules(5)</a> and <a href="../git-config">git-config(1)</a>) override this option, as does specifying &ndash;[no-]recurse-submodules directly.</p>
+
+<p>-u
+&ndash;update-head-ok<br />
+By default <em>git fetch</em> refuses to update the head which corresponds to the current branch. This flag disables the check. This is purely for the internal use for <em>git pull</em> to communicate with <em>git fetch</em>, and unless you are implementing your own Porcelain you are not supposed to use it.</p>
+
+<p>&ndash;upload-pack &lt;upload-pack&gt;<br />
+When given, and the repository to fetch from is handled by <em>git fetch-pack</em>, <em>&ndash;exec=&lt;upload-pack&gt;</em> is passed to the command to specify non-default path for the command run on the other end.</p>
+
+<p>-q
+&ndash;quiet<br />
+Pass &ndash;quiet to git-fetch-pack and silence any other internally used git commands. Progress is not reported to the standard error stream.</p>
+
+<p>-v
+&ndash;verbose<br />
+Be verbose.</p>
+
+<p>&ndash;progress<br />
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.</p>
+
+<p>&lt;repository&gt;<br />
+The &ldquo;remote&rdquo; repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section <a href="#URLS">GIT URLS</a> below) or the name of a remote (see the section <a href="#REMOTES">REMOTES</a> below).</p>
+
+<p>&lt;group&gt;<br />
+A name referring to a list of repositories as the value of remotes.&lt;group&gt; in the configuration file. (See <a href="../git-config">git-config(1)</a>).</p>
+
+<p>&lt;refspec&gt;<br />
+The format of a &lt;refspec&gt; parameter is an optional plus <code>+</code>, followed by the source ref &lt;src&gt;, followed by a colon <code>:</code>, followed by the destination ref &lt;dst&gt;.</p>
+
+<p>The remote ref that matches &lt;src&gt; is fetched, and if &lt;dst&gt; is not empty string, the local ref that matches it is fast-forwarded using &lt;src&gt;. If the optional plus <code>+</code> is used, the local ref is updated even if it does not result in a fast-forward update.</p>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>If the remote branch from which you want to pull is modified in non-linear ways such as being rewound and rebased frequently, then a pull will attempt a merge with an older version of itself, likely conflict, and fail. It is under these conditions that you would want to use the <code>+</code> sign to indicate non-fast-forward updates will be needed. There is currently no easy way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>You never do your own development on branches that appear on the right hand side of a &lt;refspec&gt; colon on <code>Pull:</code> lines; they are to be updated by <em>git fetch</em>. If you intend to do development derived from a remote branch <code>B</code>, have a <code>Pull:</code> line to track it (i.e. <code>Pull: B:remote-B</code>), and have a separate branch <code>my-B</code> to do your development on top of it. The latter is created by <code>git branch my-B                           remote-B</code> (or its equivalent <code>git checkout -b my-B remote-B</code>). Run <code>git fetch</code> to keep track of the progress of the remote side, and when you see something new on the remote branch, merge it into your development branch with <code>git                           pull . remote-B</code>, while you are on <code>my-B</code> branch.</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>There is a difference between listing multiple &lt;refspec&gt; directly on <em>git pull</em> command line and having multiple <code>Pull:</code> &lt;refspec&gt; lines for a &lt;repository&gt; and running <em>git pull</em> command without any explicit &lt;refspec&gt; parameters. &lt;refspec&gt; listed explicitly on the command line are always merged into the current branch after fetching. In other words, if you list more than one remote refs, you would be making an Octopus. While <em>git pull</em> run without any explicit &lt;refspec&gt; parameter takes default &lt;refspec&gt;s from <code>Pull:</code> lines, it merges only the first &lt;refspec&gt; found into the current branch, after fetching all the remote refs. This is because making an Octopus from remote refs is rarely done, while keeping track of multiple remote heads in one-go by fetching more than one is often useful.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Some short-cut notations are also supported.</p>
+
+<ul>
+<li><p><code>tag &lt;tag&gt;</code> means the same as <code>refs/tags/&lt;tag&gt;:refs/tags/&lt;tag&gt;</code>; it requests fetching everything up to the given tag.</p></li>
+
+<li><p>A parameter &lt;ref&gt; without a colon fetches that ref into FETCH_HEAD, and updates the remote-tracking branches (if any).</p></li>
+</ul>
+
+<h2 id="git-urls-span-id-urls-span">GIT URLS<span id="URLS"></span></h2>
+
+<p>In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.</p>
+
+<p>Git supports ssh, git, http, and https protocols (in addition, ftp, and ftps can be used for fetching and rsync can be used for fetching and pushing, but these are inefficient and deprecated; do not use them).</p>
+
+<p>The native transport (i.e. git:// URL) does no authentication and should be used with caution on unsecured networks.</p>
+
+<p>The following syntaxes may be used with them:</p>
+
+<ul>
+<li><p>ssh://[user@]host.xz[:port]/path/to/repo.git/</p></li>
+
+<li><p>git://host.xz[:port]/path/to/repo.git/</p></li>
+
+<li><p>http[s]://host.xz[:port]/path/to/repo.git/</p></li>
+
+<li><p>ftp[s]://host.xz[:port]/path/to/repo.git/</p></li>
+
+<li><p>rsync://host.xz/path/to/repo.git/</p></li>
+</ul>
+
+<p>An alternative scp-like syntax may also be used with the ssh protocol:</p>
+
+<ul>
+<li>[user@]host.xz:path/to/repo.git/</li>
+</ul>
+
+<p>This syntax is only recognized if there are no slashes before the first colon. This helps differentiate a local path that contains a colon. For example the local path <code>foo:bar</code> could be specified as an absolute path or <code>./foo:bar</code> to avoid being misinterpreted as an ssh url.</p>
+
+<p>The ssh and git protocols additionally support ~username expansion:</p>
+
+<ul>
+<li><p>ssh://[user@]host.xz[:port]/~[user]/path/to/repo.git/</p></li>
+
+<li><p>git://host.xz[:port]/~[user]/path/to/repo.git/</p></li>
+
+<li><p>[user@]host.xz:/~[user]/path/to/repo.git/</p></li>
+</ul>
+
+<p>For local repositories, also supported by Git natively, the following syntaxes may be used:</p>
+
+<ul>
+<li><p>/path/to/repo.git/</p></li>
+
+<li><p>file:///path/to/repo.git/</p></li>
+</ul>
+
+<p>These two syntaxes are mostly equivalent, except when cloning, when the former implies &ndash;local option. See <a href="../git-clone">git-clone(1)</a> for details.</p>
+
+<p>When Git doesn’t know how to handle a certain transport protocol, it attempts to use the <em>remote-&lt;transport&gt;</em> remote helper, if one exists. To explicitly request a remote helper, the following syntax may be used:</p>
+
+<ul>
+<li>&lt;transport&gt;::&lt;address&gt;</li>
+</ul>
+
+<p>where &lt;address&gt; may be a path, a server and path, or an arbitrary URL-like string recognized by the specific remote helper being invoked. See <a href="../gitremote-helpers">gitremote-helpers(1)</a> for details.</p>
+
+<p>If there are a large number of similarly-named remote repositories and you want to use a different format for them (such that the URLs you use will be rewritten into URLs that work), you can create a configuration section of the form:</p>
+
+<pre><code>        [url &quot;&lt;actual url base&gt;&quot;]
+                insteadOf = &lt;other url base&gt;
+</code></pre>
+
+<p>For example, with this:</p>
+
+<pre><code>        [url &quot;git://git.host.xz/&quot;]
+                insteadOf = host.xz:/path/to/
+                insteadOf = work:
+</code></pre>
+
+<p>a URL like &ldquo;work:repo.git&rdquo; or like &ldquo;host.xz:/path/to/repo.git&rdquo; will be rewritten in any context that takes a URL to be &ldquo;git://git.host.xz/repo.git&rdquo;.</p>
+
+<p>If you want to rewrite URLs for push only, you can create a configuration section of the form:</p>
+
+<pre><code>        [url &quot;&lt;actual url base&gt;&quot;]
+                pushInsteadOf = &lt;other url base&gt;
+</code></pre>
+
+<p>For example, with this:</p>
+
+<pre><code>        [url &quot;ssh://example.org/&quot;]
+                pushInsteadOf = git://example.org/
+</code></pre>
+
+<p>a URL like &ldquo;git://example.org/path/to/repo.git&rdquo; will be rewritten to &ldquo;ssh://example.org/path/to/repo.git&rdquo; for pushes, but pulls will still use the original URL.</p>
+
+<h2 id="remotes-span-id-remotes-span">REMOTES<span id="REMOTES"></span></h2>
+
+<p>The name of one of the following can be used instead of a URL as <code>&lt;repository&gt;</code> argument:</p>
+
+<ul>
+<li><p>a remote in the Git configuration file: <code>$GIT_DIR/config</code>,</p></li>
+
+<li><p>a file in the <code>$GIT_DIR/remotes</code> directory, or</p></li>
+
+<li><p>a file in the <code>$GIT_DIR/branches</code> directory.</p></li>
+</ul>
+
+<p>All of these also allow you to omit the refspec from the command line because they each contain a refspec which git will use by default.</p>
+
+<h3 id="named-remote-in-configuration-file">Named remote in configuration file</h3>
+
+<p>You can choose to provide the name of a remote which you had previously configured using <a href="../git-remote">git-remote(1)</a>, <a href="../git-config">git-config(1)</a> or even by a manual edit to the <code>$GIT_DIR/config</code> file. The URL of this remote will be used to access the repository. The refspec of this remote will be used by default when you do not provide a refspec on the command line. The entry in the config file would appear like this:</p>
+
+<pre><code>        [remote &quot;&lt;name&gt;&quot;]
+                url = &lt;url&gt;
+                pushurl = &lt;pushurl&gt;
+                push = &lt;refspec&gt;
+                fetch = &lt;refspec&gt;
+</code></pre>
+
+<p>The <code>&lt;pushurl&gt;</code> is used for pushes only. It is optional and defaults to <code>&lt;url&gt;</code>.</p>
+
+<h3 id="named-file-in-git-dir-remotes">Named file in <code>$GIT_DIR/remotes</code></h3>
+
+<p>You can choose to provide the name of a file in <code>$GIT_DIR/remotes</code>. The URL in this file will be used to access the repository. The refspec in this file will be used as default when you do not provide a refspec on the command line. This file should have the following format:</p>
+
+<pre><code>        URL: one of the above URL format
+        Push: &lt;refspec&gt;
+        Pull: &lt;refspec&gt;
+</code></pre>
+
+<p><code>Push:</code> lines are used by <em>git push</em> and <code>Pull:</code> lines are used by <em>git pull</em> and <em>git fetch</em>. Multiple <code>Push:</code> and <code>Pull:</code> lines may be specified for additional branch mappings.</p>
+
+<h3 id="named-file-in-git-dir-branches">Named file in <code>$GIT_DIR/branches</code></h3>
+
+<p>You can choose to provide the name of a file in <code>$GIT_DIR/branches</code>. The URL in this file will be used to access the repository. This file should have the following format:</p>
+
+<pre><code>        &lt;url&gt;#&lt;head&gt;
+</code></pre>
+
+<p><code>&lt;url&gt;</code> is required; <code>#&lt;head&gt;</code> is optional.</p>
+
+<p>Depending on the operation, git will use one of the following refspecs, if you don’t provide one on the command line. <code>&lt;branch&gt;</code> is the name of this file in <code>$GIT_DIR/branches</code> and <code>&lt;head&gt;</code> defaults to <code>master</code>.</p>
+
+<p>git fetch uses:</p>
+
+<pre><code>        refs/heads/&lt;head&gt;:refs/heads/&lt;branch&gt;
+</code></pre>
+
+<p>git push uses:</p>
+
+<pre><code>        HEAD:refs/heads/&lt;head&gt;
+</code></pre>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Update the remote-tracking branches:</p>
+
+<pre><code>$ git fetch origin
+</code></pre>
+
+<p>The above command copies all branches from the remote refs/heads/ namespace and stores them to the local refs/remotes/origin/ namespace, unless the branch.&lt;name&gt;.fetch option is used to specify a non-default refspec.</p></li>
+
+<li><p>Using refspecs explicitly:</p>
+
+<pre><code>$ git fetch origin +pu:pu maint:tmp
+</code></pre>
+
+<p>This updates (or creates, as necessary) branches <code>pu</code> and <code>tmp</code> in the local repository by fetching from the branches (respectively) <code>pu</code> and <code>maint</code> from the remote repository.</p>
+
+<p>The <code>pu</code> branch will be updated even if it is does not fast-forward, because it is prefixed with a plus sign; <code>tmp</code> will not be.</p></li>
+</ul>
+
+<h2 id="bugs">BUGS</h2>
+
+<p>Using &ndash;recurse-submodules can only fetch new commits in already checked out submodules right now. When e.g. upstream added a new submodule in the just fetched commits of the superproject the submodule itself can not be fetched, making it impossible to check out that submodule later without having to do a fetch again. This is expected to be fixed in a future Git version.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-pull">git-pull(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

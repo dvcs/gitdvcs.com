@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Cleanup unnecessary files and optimize the local">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-gc </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-gc</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.0'>2.2.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.2.0/git-gc'>git-gc</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git gc [--aggressive] [--auto] [--quiet] [--prune=&lt;date&gt; | --no-prune] [--force]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Runs a number of housekeeping tasks within the current repository, such as compressing file revisions (to reduce disk space and increase performance) and removing unreachable objects which may have been created from prior invocations of <em>git add</em>.</p>
+
+<p>Users are encouraged to run this task on a regular basis within each repository to maintain good disk space utilization and good operating performance.</p>
+
+<p>Some git commands may automatically run <em>git gc</em>; see the <code>--auto</code> flag below for details. If you know what you’re doing and all you want is to disable this behavior permanently without further considerations, just do:</p>
+
+<pre><code>$ git config --global gc.auto 0
+</code></pre>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;aggressive<br />
+Usually <em>git gc</em> runs very quickly while providing good disk space utilization and performance. This option will cause <em>git gc</em> to more aggressively optimize the repository at the expense of taking much more time. The effects of this optimization are persistent, so this option only needs to be used occasionally; every few hundred changesets or so.</p>
+
+<p>&ndash;auto<br />
+With this option, <em>git gc</em> checks whether any housekeeping is required; if not, it exits without performing any work. Some git commands run <code>git gc --auto</code> after performing operations that could create many loose objects.</p>
+
+<p>Housekeeping is required if there are too many loose objects or too many packs in the repository. If the number of loose objects exceeds the value of the <code>gc.auto</code> configuration variable, then all loose objects are combined into a single pack using <code>git repack -d -l</code>. Setting the value of <code>gc.auto</code> to 0 disables automatic packing of loose objects.</p>
+
+<p>If the number of packs exceeds the value of <code>gc.autopacklimit</code>, then existing packs (except those marked with a <code>.keep</code> file) are consolidated into a single pack by using the <code>-A</code> option of <em>git repack</em>. Setting <code>gc.autopacklimit</code> to 0 disables automatic consolidation of packs.</p>
+
+<p>&ndash;prune=&lt;date&gt;<br />
+Prune loose objects older than date (default is 2 weeks ago, overridable by the config variable <code>gc.pruneExpire</code>). &ndash;prune=all prunes loose objects regardless of their age. &ndash;prune is on by default.</p>
+
+<p>&ndash;no-prune<br />
+Do not prune any loose objects.</p>
+
+<p>&ndash;quiet<br />
+Suppress all progress reports.</p>
+
+<p>&ndash;force<br />
+Force <code>git gc</code> to run even if there may be another <code>git gc</code> instance running on this repository.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The optional configuration variable <em>gc.reflogExpire</em> can be set to indicate how long historical entries within each branch’s reflog should remain available in this repository. The setting is expressed as a length of time, for example <em>90 days</em> or <em>3 months</em>. It defaults to <em>90 days</em>.</p>
+
+<p>The optional configuration variable <em>gc.reflogExpireUnreachable</em> can be set to indicate how long historical reflog entries which are not part of the current branch should remain available in this repository. These types of entries are generally created as a result of using <code>git commit --amend</code> or <code>git rebase</code> and are the commits prior to the amend or rebase occurring. Since these changes are not part of the current project most users will want to expire them sooner. This option defaults to <em>30 days</em>.</p>
+
+<p>The above two configuration variables can be given to a pattern. For example, this sets non-default expiry values only to remote-tracking branches:</p>
+
+<pre><code>[gc &quot;refs/remotes/*&quot;]
+        reflogExpire = never
+        reflogexpireUnreachable = 3 days
+</code></pre>
+
+<p>The optional configuration variable <em>gc.rerereresolved</em> indicates how long records of conflicted merge you resolved earlier are kept. This defaults to 60 days.</p>
+
+<p>The optional configuration variable <em>gc.rerereunresolved</em> indicates how long records of conflicted merge you have not resolved are kept. This defaults to 15 days.</p>
+
+<p>The optional configuration variable <em>gc.packrefs</em> determines if <em>git gc</em> runs <em>git pack-refs</em>. This can be set to &ldquo;notbare&rdquo; to enable it within all non-bare repos or it can be set to a boolean value. This defaults to true.</p>
+
+<p>The optional configuration variable <em>gc.aggressiveWindow</em> controls how much time is spent optimizing the delta compression of the objects in the repository when the &ndash;aggressive option is specified. The larger the value, the more time is spent optimizing the delta compression. See the documentation for the &ndash;window&rsquo; option in <a href="../git-repack">git-repack(1)</a> for more details. This defaults to 250.</p>
+
+<p>Similarly, the optional configuration variable <em>gc.aggressiveDepth</em> controls &ndash;depth option in <a href="../git-repack">git-repack(1)</a>. This defaults to 250.</p>
+
+<p>The optional configuration variable <em>gc.pruneExpire</em> controls how old the unreferenced loose objects have to be before they are pruned. The default is &ldquo;2 weeks ago&rdquo;.</p>
+
+<h2 id="notes">Notes</h2>
+
+<p><em>git gc</em> tries very hard to be safe about the garbage it collects. In particular, it will keep not only objects referenced by your current set of branches and tags, but also objects referenced by the index, remote-tracking branches, refs saved by <em>git filter-branch</em> in refs/original/, or reflogs (which may reference commits in branches that were later amended or rewound).</p>
+
+<p>If you are expecting some objects to be collected and they aren’t, check all of those locations and decide whether it makes sense in your case to remove those references.</p>
+
+<h2 id="hooks">HOOKS</h2>
+
+<p>The <em>git gc &ndash;auto</em> command will run the <em>pre-auto-gc</em> hook. See <a href="../githooks">githooks(5)</a> for more information.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-prune">git-prune(1)</a> <a href="../git-reflog">git-reflog(1)</a> <a href="../git-repack">git-repack(1)</a> <a href="../git-rerere">git-rerere(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

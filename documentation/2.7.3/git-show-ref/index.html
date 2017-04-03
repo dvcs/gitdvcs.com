@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="List references in a local repository">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-show-ref </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-show-ref</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.7.3'>2.7.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.7.3/git-show-ref'>git-show-ref</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git show-ref [-q|--quiet] [--verify] [--head] [-d|--dereference]
+             [-s|--hash[=&lt;n&gt;]] [--abbrev[=&lt;n&gt;]] [--tags]
+             [--heads] [--] [&lt;pattern&gt;…]
+git show-ref --exclude-existing[=&lt;pattern&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Displays references available in a local repository along with the associated commit IDs. Results can be filtered using a pattern and tags can be dereferenced into object IDs. Additionally, it can be used to test whether a particular ref exists.</p>
+
+<p>By default, shows the tags, heads, and remote refs.</p>
+
+<p>The &ndash;exclude-existing form is a filter that does the inverse. It reads refs from stdin, one ref per line, and shows those that don’t exist in the local repository.</p>
+
+<p>Use of this utility is encouraged in favor of directly accessing files under the <code>.git</code> directory.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;head<br />
+Show the HEAD reference, even if it would normally be filtered out.</p>
+
+<p>&ndash;tags
+&ndash;heads<br />
+Limit to &ldquo;refs/heads&rdquo; and &ldquo;refs/tags&rdquo;, respectively. These options are not mutually exclusive; when given both, references stored in &ldquo;refs/heads&rdquo; and &ldquo;refs/tags&rdquo; are displayed.</p>
+
+<p>-d
+&ndash;dereference<br />
+Dereference tags into object IDs as well. They will be shown with &ldquo;^{}&rdquo; appended.</p>
+
+<p>-s
+&ndash;hash[=&lt;n&gt;]<br />
+Only show the SHA-1 hash, not the reference name. When combined with &ndash;dereference the dereferenced tag will still be shown after the SHA-1.</p>
+
+<p>&ndash;verify<br />
+Enable stricter reference checking by requiring an exact ref path. Aside from returning an error code of 1, it will also print an error message if <em>&ndash;quiet</em> was not specified.</p>
+
+<p>&ndash;abbrev[=&lt;n&gt;]<br />
+Abbreviate the object name. When using <code>--hash</code>, you do not have to say <code>--hash                   --abbrev</code>; <code>--hash=n</code> would do.</p>
+
+<p>-q
+&ndash;quiet<br />
+Do not print any results to stdout. When combined with <em>&ndash;verify</em> this can be used to silently check if a reference exists.</p>
+
+<p>&ndash;exclude-existing[=&lt;pattern&gt;]<br />
+Make <em>git show-ref</em> act as a filter that reads refs from stdin of the form &ldquo;<code>^(?:&lt;anything&gt;\s)?&lt;refname&gt;(?:\^{})?$</code>&rdquo; and performs the following actions on each: (1) strip &ldquo;^{}&rdquo; at the end of line if any; (2) ignore if pattern is provided and does not head-match refname; (3) warn if refname is not a well-formed refname and skip; (4) ignore if refname is a ref that exists in the local repository; (5) otherwise output the line.</p>
+
+<p>&lt;pattern&gt;…<br />
+Show references matching one or more patterns. Patterns are matched from the end of the full name, and only complete parts are matched, e.g. <em>master</em> matches <em>refs/heads/master</em>, <em>refs/remotes/origin/master</em>, <em>refs/tags/jedi/master</em> but not <em>refs/heads/mymaster</em> or <em>refs/remotes/master/jedi</em>.</p>
+
+<h2 id="output">OUTPUT</h2>
+
+<p>The output is in the format: <em>&lt;SHA-1 ID&gt;</em> <em>&lt;space&gt;</em> <em>&lt;reference name&gt;</em>.</p>
+
+<pre><code>$ git show-ref --head --dereference
+832e76a9899f560a90ffd62ae2ce83bbeff58f54 HEAD
+832e76a9899f560a90ffd62ae2ce83bbeff58f54 refs/heads/master
+832e76a9899f560a90ffd62ae2ce83bbeff58f54 refs/heads/origin
+3521017556c5de4159da4615a39fa4d5d2c279b5 refs/tags/v0.99.9c
+6ddc0964034342519a87fe013781abf31c6db6ad refs/tags/v0.99.9c^{}
+055e4ae3ae6eb344cbabf2a5256a49ea66040131 refs/tags/v1.0rc4
+423325a2d24638ddcc82ce47be5e40be550f4507 refs/tags/v1.0rc4^{}
+...
+</code></pre>
+
+<p>When using &ndash;hash (and not &ndash;dereference) the output format is: <em>&lt;SHA-1 ID&gt;</em></p>
+
+<pre><code>$ git show-ref --heads --hash
+2e3ba0114a1f52b47df29743d6915d056be13278
+185008ae97960c8d551adcd9e23565194651b5d1
+03adf42c988195b50e1a1935ba5fcbc39b2b029b
+...
+</code></pre>
+
+<h2 id="example">EXAMPLE</h2>
+
+<p>To show all references called &ldquo;master&rdquo;, whether tags or heads or anything else, and regardless of how deep in the reference naming hierarchy they are, use:</p>
+
+<pre><code>        git show-ref master
+</code></pre>
+
+<p>This will show &ldquo;refs/heads/master&rdquo; but also &ldquo;refs/remote/other-repo/master&rdquo;, if such references exists.</p>
+
+<p>When using the <em>&ndash;verify</em> flag, the command requires an exact path:</p>
+
+<pre><code>        git show-ref --verify refs/heads/master
+</code></pre>
+
+<p>will only match the exact branch called &ldquo;master&rdquo;.</p>
+
+<p>If nothing matches, <em>git show-ref</em> will return an error code of 1, and in the case of verification, it will show an error message.</p>
+
+<p>For scripting, you can ask it to be quiet with the &ldquo;&ndash;quiet&rdquo; flag, which allows you to do things like</p>
+
+<pre><code>        git show-ref --quiet --verify -- &quot;refs/heads/$headname&quot; ||
+                echo &quot;$headname is not a valid branch&quot;
+</code></pre>
+
+<p>to check whether a particular branch exists or not (notice how we don’t actually want to show any results, and we want to use the full refname for it in order to not trigger the problem with ambiguous partial matches).</p>
+
+<p>To show only tags, or only proper branch heads, use &ldquo;&ndash;tags&rdquo; and/or &ldquo;&ndash;heads&rdquo; respectively (using both means that it shows tags and heads, but not other random references under the refs/ subdirectory).</p>
+
+<p>To do automatic tag object dereferencing, use the &ldquo;-d&rdquo; or &ldquo;&ndash;dereference&rdquo; flag, so you can do</p>
+
+<pre><code>        git show-ref --tags --dereference
+</code></pre>
+
+<p>to get a listing of all tags together with what they dereference.</p>
+
+<h2 id="files">FILES</h2>
+
+<p><code>.git/refs/*</code>, <code>.git/packed-refs</code></p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-for-each-ref">git-for-each-ref(1)</a>, <a href="../git-ls-remote">git-ls-remote(1)</a>, <a href="../git-update-ref">git-update-ref(1)</a>, <a href="../gitrepository-layout">gitrepository-layout(5)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

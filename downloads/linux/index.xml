@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Git</title>
+    <link>/downloads/linux/index.xml</link>
+    <description>Recent content in Linux on Git</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/downloads/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cycligent</title>
+      <link>/download/desktop/cycligent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/cycligent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Giggle</title>
+      <link>/download/desktop/giggle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/giggle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git Cola</title>
+      <link>/download/desktop/git-cola/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/git-cola/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitAhead</title>
+      <link>/download/desktop/gitahead/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitahead/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitEye</title>
+      <link>/download/desktop/giteye/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/giteye/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitKraken</title>
+      <link>/download/desktop/gitkraken/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitkraken/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Smart Git</title>
+      <link>/download/desktop/smart-git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/smart-git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitg</title>
+      <link>/download/desktop/gitg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/desktop/gitg/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git</title>
+    <link>/downloads/git/index.xml</link>
+    <description>Recent content on Git</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="/downloads/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Linux</title>
+      <link>/download/git/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/git/linux/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Debian/Ubuntu&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ apt-get install git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Fedora&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ yum install git &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Up to Fedora 21&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ dnf install git &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt;# Fedora 22 and later&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Gentoo&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ emerge --ask --verbose dev-vcs/git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Arch Linux&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ pacman -S git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;openSUSE&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ zypper install git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mageia&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ urpmi git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;FreeBSD&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ pkg install git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;OpenBSD&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ pkg_add git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Alpine&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ apk add git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Solaris</title>
+      <link>/download/git/solaris/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/git/solaris/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Solaris 9/10/11 (&lt;a href=&#34;https://www.opencsw.org&#34;&gt;OpenCSW&lt;/a&gt;)&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ pkgutil -i git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Solaris 11 Express&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ pkg install developer/versioning/git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>/download/git/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/git/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>macOS</title>
+      <link>/download/git/macos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/download/git/macos/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

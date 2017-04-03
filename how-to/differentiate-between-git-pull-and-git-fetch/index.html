@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" href="../../css/animate.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+
+    <script src="../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/blocs.min.js"></script>
+    <title> What is the difference between `git pull` and `git fetch`? </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../"><img src="../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">What is the difference between `git pull` and `git fetch`?</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../how-to'>how-to</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../how-to/differentiate-between-git-pull-and-git-fetch'>differentiate-between-git-pull-and-git-fetch</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<h2 id="summary">Summary</h2>
+
+<p><code>git pull</code> == <code>git fetch</code> + <code>git merge</code></p>
+
+<h2 id="details">Details</h2>
+
+<p><strong>How <code>git pull</code> and <code>git fetch</code> work</strong></p>
+
+<p>In the simplest terms, <code>git pull</code> does a <code>git fetch</code> followed by a <code>git merge</code>.</p>
+
+<ol>
+<li><p><code>git pull</code>
+When you use <code>git pull</code>, Git tries to automatically do your work for you. <strong>It is context sensitive</strong>, so Git will merge any pulled commits into the branch you are currently working in.  <code>git pull</code> <strong>automatically merges the commits without letting you review them first.</strong> If you don’t closely manage your branches, you may run into frequent conflicts.</p></li>
+
+<li><p><code>git fetch</code>
+When you <code>git fetch</code>, Git gathers any commits from the target branch that do not exist in your current branch and <strong>stores them in your local repository.</strong> However, <strong>it does not merge them with your current branch.</strong> This is particularly useful if you need to keep your repository up to date, but are working on something that might break if you update your files. To integrate the commits into your master branch, you use <code>git merge</code>.</p></li>
+</ol>
+
+<p>You can do a <code>git fetch</code> at any time to update your remote-tracking branches under <code>refs/remotes/&lt;remote&gt;/</code>.</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<ul>
+<li><a href="../../documentation/latest/git-pull/">git pull</a></li>
+<li><a href="../../documentation/latest/git-fetch/">git fetch</a></li>
+<li><a href="../../documentation/latest/git-merge/">git merge</a></li>
+</ul>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../" target="_blank"><img src="../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

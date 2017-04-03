@@ -1,0 +1,696 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Git web interface (web frontend to Git">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> gitweb </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitweb</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.4'>2.4.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.4/gitweb'>gitweb</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>To get started with gitweb, run <a href="../git-instaweb">git-instaweb(1)</a> from a Git repository. This would configure and start your web server, and run web browser pointing to gitweb.</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Gitweb provides a web interface to Git repositories. Its features include:</p>
+
+<ul>
+<li><p>Viewing multiple Git repositories with common root.</p></li>
+
+<li><p>Browsing every revision of the repository.</p></li>
+
+<li><p>Viewing the contents of files in the repository at any revision.</p></li>
+
+<li><p>Viewing the revision log of branches, history of files and directories, see what was changed when, by who.</p></li>
+
+<li><p>Viewing the blame/annotation details of any file (if enabled).</p></li>
+
+<li><p>Generating RSS and Atom feeds of commits, for any branch. The feeds are auto-discoverable in modern web browsers.</p></li>
+
+<li><p>Viewing everything that was changed in a revision, and step through revisions one at a time, viewing the history of the repository.</p></li>
+
+<li><p>Finding commits which commit messages matches given search term.</p></li>
+</ul>
+
+<p>See <a href="http://git.kernel.org/?p=git/git.git;a=tree;f=gitweb">http://git.kernel.org/?p=git/git.git;a=tree;f=gitweb</a> or <a href="http://repo.or.cz/w/git.git/tree/HEAD:/gitweb/">http://repo.or.cz/w/git.git/tree/HEAD:/gitweb/</a> for gitweb source code, browsed using gitweb itself.</p>
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<p>Various aspects of gitweb’s behavior can be controlled through the configuration file <em>gitweb_config.perl</em> or <em>/etc/gitweb.conf</em>. See the <a href="../gitweb.conf">gitweb.conf(5)</a> for details.</p>
+
+<h3 id="repositories">Repositories</h3>
+
+<p>Gitweb can show information from one or more Git repositories. These repositories have to be all on local filesystem, and have to share common repository root, i.e. be all under a single parent repository (but see also &ldquo;Advanced web server setup&rdquo; section, &ldquo;Webserver configuration with multiple projects&rsquo; root&rdquo; subsection).</p>
+
+<pre><code>our $projectroot = '/path/to/parent/directory';
+</code></pre>
+
+<p>The default value for <code>$projectroot</code> is <em>/pub/git</em>. You can change it during building gitweb via <code>GITWEB_PROJECTROOT</code> build configuration variable.</p>
+
+<p>By default all Git repositories under <code>$projectroot</code> are visible and available to gitweb. The list of projects is generated by default by scanning the <code>$projectroot</code> directory for Git repositories (for object databases to be more exact; gitweb is not interested in a working area, and is best suited to showing &ldquo;bare&rdquo; repositories).</p>
+
+<p>The name of the repository in gitweb is the path to its <code>$GIT_DIR</code> (its object database) relative to <code>$projectroot</code>. Therefore the repository $repo can be found at &ldquo;$projectroot/$repo&rdquo;.</p>
+
+<h3 id="projects-list-file-format">Projects list file format</h3>
+
+<p>Instead of having gitweb find repositories by scanning filesystem starting from $projectroot, you can provide a pre-generated list of visible projects by setting <code>$projects_list</code> to point to a plain text file with a list of projects (with some additional info).</p>
+
+<p>This file uses the following format:</p>
+
+<ul>
+<li><p>One record (for project / repository) per line; does not support line continuation (newline escaping).</p></li>
+
+<li><p>Leading and trailing whitespace are ignored.</p></li>
+
+<li><p>Whitespace separated fields; any run of whitespace can be used as field separator (rules for Perl’s &ldquo;<code>split(&quot; &quot;, $line)</code>&rdquo;).</p></li>
+
+<li><p>Fields use modified URI encoding, defined in RFC 3986, section 2.1 (Percent-Encoding), or rather &ldquo;Query string encoding&rdquo; (see <a href="http://en.wikipedia.org/wiki/Query_string#URL_encoding">http://en.wikipedia.org/wiki/Query_string#URL_encoding</a>), the difference being that SP (&rdquo; &ldquo;) can be encoded as &ldquo;+&rdquo; (and therefore &ldquo;+&rdquo; has to be also percent-encoded).</p>
+
+<p>Reserved characters are: &ldquo;%&rdquo; (used for encoding), &ldquo;+&rdquo; (can be used to encode SPACE), all whitespace characters as defined in Perl, including SP, TAB and LF, (used to separate fields in a record).</p></li>
+
+<li><p>Currently recognized fields are:</p>
+
+<p>&lt;repository path&gt;<br />
+path to repository GIT_DIR, relative to <code>$projectroot</code></p>
+
+<p>&lt;repository owner&gt;<br />
+displayed as repository owner, preferably full name, or email, or both</p></li>
+</ul>
+
+<p>You can generate the projects list index file using the project_index action (the <em>TXT</em> link on projects list page) directly from gitweb; see also &ldquo;Generating projects list using gitweb&rdquo; section below.</p>
+
+<p>Example contents:</p>
+
+<pre><code>foo.git       Joe+R+Hacker+&lt;joe@example.com&gt;
+foo/bar.git   O+W+Ner+&lt;owner@example.org&gt;
+</code></pre>
+
+<p>By default this file controls only which projects are <strong>visible</strong> on projects list page (note that entries that do not point to correctly recognized Git repositories won’t be displayed by gitweb). Even if a project is not visible on projects list page, you can view it nevertheless by hand-crafting a gitweb URL. By setting <code>$strict_export</code> configuration variable (see <a href="../gitweb.conf">gitweb.conf(5)</a>) to true value you can allow viewing only of repositories also shown on the overview page (i.e. only projects explicitly listed in projects list file will be accessible).</p>
+
+<h3 id="generating-projects-list-using-gitweb">Generating projects list using gitweb</h3>
+
+<p>We assume that GITWEB_CONFIG has its default Makefile value, namely <em>gitweb_config.perl</em>. Put the following in <em>gitweb_make_index.perl</em> file:</p>
+
+<pre><code>read_config_file(&quot;gitweb_config.perl&quot;);
+$projects_list = $projectroot;
+</code></pre>
+
+<p>Then create the following script to get list of project in the format suitable for GITWEB_LIST build configuration variable (or <code>$projects_list</code> variable in gitweb config):</p>
+
+<pre><code>#!/bin/sh
+
+export GITWEB_CONFIG=&quot;gitweb_make_index.perl&quot;
+export GATEWAY_INTERFACE=&quot;CGI/1.1&quot;
+export HTTP_ACCEPT=&quot;*/*&quot;
+export REQUEST_METHOD=&quot;GET&quot;
+export QUERY_STRING=&quot;a=project_index&quot;
+
+perl -- /var/www/cgi-bin/gitweb.cgi
+</code></pre>
+
+<p>Run this script and save its output to a file. This file could then be used as projects list file, which means that you can set <code>$projects_list</code> to its filename.</p>
+
+<h3 id="controlling-access-to-git-repositories">Controlling access to Git repositories</h3>
+
+<p>By default all Git repositories under <code>$projectroot</code> are visible and available to gitweb. You can however configure how gitweb controls access to repositories.</p>
+
+<ul>
+<li><p>As described in &ldquo;Projects list file format&rdquo; section, you can control which projects are <strong>visible</strong> by selectively including repositories in projects list file, and setting <code>$projects_list</code> gitweb configuration variable to point to it. With <code>$strict_export</code> set, projects list file can be used to control which repositories are <strong>available</strong> as well.</p></li>
+
+<li><p>You can configure gitweb to only list and allow viewing of the explicitly exported repositories, via <code>$export_ok</code> variable in gitweb config file; see <a href="../gitweb.conf">gitweb.conf(5)</a> manpage. If it evaluates to true, gitweb shows repositories only if this file named by <code>$export_ok</code> exists in its object database (if directory has the magic file named <code>$export_ok</code>).</p>
+
+<p>For example <a href="../git-daemon">git-daemon(1)</a> by default (unless <code>--export-all</code> option is used) allows pulling only for those repositories that have <em>git-daemon-export-ok</em> file. Adding</p>
+
+<pre><code>our $export_ok = &quot;git-daemon-export-ok&quot;;
+</code></pre>
+
+<p>makes gitweb show and allow access only to those repositories that can be fetched from via <code>git://</code> protocol.</p></li>
+
+<li><p>Finally, it is possible to specify an arbitrary perl subroutine that will be called for each repository to determine if it can be exported. The subroutine receives an absolute path to the project (repository) as its only parameter (i.e. &ldquo;$projectroot/$project&rdquo;).</p>
+
+<p>For example, if you use mod_perl to run the script, and have dumb HTTP protocol authentication configured for your repositories, you can use the following hook to allow access only if the user is authorized to read the files:</p>
+
+<pre><code>$export_auth_hook = sub {
+        use Apache2::SubRequest ();
+        use Apache2::Const -compile =&gt; qw(HTTP_OK);
+        my $path = &quot;$_[0]/HEAD&quot;;
+        my $r    = Apache2::RequestUtil-&gt;request;
+        my $sub  = $r-&gt;lookup_file($path);
+        return $sub-&gt;filename eq $path
+            &amp;&amp; $sub-&gt;status == Apache2::Const::HTTP_OK;
+};
+</code></pre></li>
+</ul>
+
+<h3 id="per-repository-gitweb-configuration">Per-repository gitweb configuration</h3>
+
+<p>You can configure individual repositories shown in gitweb by creating file in the <em>GIT_DIR</em> of Git repository, or by setting some repo configuration variable (in <em>GIT_DIR/config</em>, see <a href="../git-config">git-config(1)</a>).</p>
+
+<p>You can use the following files in repository:</p>
+
+<p>README.html<br />
+A html file (HTML fragment) which is included on the gitweb project &ldquo;summary&rdquo; page inside <code>&lt;div&gt;</code> block element. You can use it for longer description of a project, to provide links (for example to project’s homepage), etc. This is recognized only if XSS prevention is off (<code>$prevent_xss</code> is false, see <a href="../gitweb.conf">gitweb.conf(5)</a>); a way to include a README safely when XSS prevention is on may be worked out in the future.</p>
+
+<p>description (or <code>gitweb.description</code>)<br />
+Short (shortened to <code>$projects_list_description_width</code> in the projects list page, which is 25 characters by default; see <a href="../gitweb.conf">gitweb.conf(5)</a>) single line description of a project (of a repository). Plain text file; HTML will be escaped. By default set to</p>
+
+<pre><code>Unnamed repository; edit this file to name it for gitweb.
+</code></pre>
+
+<p>from the template during repository creation, usually installed in <em>/usr/share/git-core/templates/</em>. You can use the <code>gitweb.description</code> repo configuration variable, but the file takes precedence.</p>
+
+<p>category (or <code>gitweb.category</code>)<br />
+Singe line category of a project, used to group projects if <code>$projects_list_group_categories</code> is enabled. By default (file and configuration variable absent), uncategorized projects are put in the <code>$project_list_default_category</code> category. You can use the <code>gitweb.category</code> repo configuration variable, but the file takes precedence.</p>
+
+<p>The configuration variables <code>$projects_list_group_categories</code> and <code>$project_list_default_category</code> are described in <a href="../gitweb.conf">gitweb.conf(5)</a></p>
+
+<p>cloneurl (or multiple-valued <code>gitweb.url</code>)<br />
+File with repository URL (used for clone and fetch), one per line. Displayed in the project summary page. You can use multiple-valued <code>gitweb.url</code> repository configuration variable for that, but the file takes precedence.</p>
+
+<p>This is per-repository enhancement / version of global prefix-based <code>@git_base_url_list</code> gitweb configuration variable (see <a href="../gitweb.conf">gitweb.conf(5)</a>).</p>
+
+<p>gitweb.owner<br />
+You can use the <code>gitweb.owner</code> repository configuration variable to set repository’s owner. It is displayed in the project list and summary page.</p>
+
+<p>If it’s not set, filesystem directory’s owner is used (via GECOS field, i.e. real name field from <strong>getpwuid</strong>(3)) if <code>$projects_list</code> is unset (gitweb scans <code>$projectroot</code> for repositories); if <code>$projects_list</code> points to file with list of repositories, then project owner defaults to value from this file for given repository.</p>
+
+<p>various <code>gitweb.*</code> config variables (in config)<br />
+Read description of <code>%feature</code> hash for detailed list, and descriptions. See also &ldquo;Configuring gitweb features&rdquo; section in <a href="../gitweb.conf">gitweb.conf(5)</a></p>
+
+<h2 id="actions-and-urls">ACTIONS, AND URLS</h2>
+
+<p>Gitweb can use path_info (component) based URLs, or it can pass all necessary information via query parameters. The typical gitweb URLs are broken down in to five components:</p>
+
+<pre><code>.../gitweb.cgi/&lt;repo&gt;/&lt;action&gt;/&lt;revision&gt;:/&lt;path&gt;?&lt;arguments&gt;
+</code></pre>
+
+<p>repo<br />
+The repository the action will be performed on.</p>
+
+<p>All actions except for those that list all available projects, in whatever form, require this parameter.</p>
+
+<p>action<br />
+The action that will be run. Defaults to <em>projects_list</em> if repo is not set, and to <em>summary</em> otherwise.</p>
+
+<p>revision<br />
+Revision shown. Defaults to HEAD.</p>
+
+<p>path<br />
+The path within the &lt;repository&gt; that the action is performed on, for those actions that require it.</p>
+
+<p>arguments<br />
+Any arguments that control the behaviour of the action.</p>
+
+<p>Some actions require or allow to specify two revisions, and sometimes even two pathnames. In most general form such path_info (component) based gitweb URL looks like this:</p>
+
+<pre><code>.../gitweb.cgi/&lt;repo&gt;/&lt;action&gt;/&lt;revision_from&gt;:/&lt;path_from&gt;..&lt;revision_to&gt;:/&lt;path_to&gt;?&lt;arguments&gt;
+</code></pre>
+
+<p>Each action is implemented as a subroutine, and must be present in %actions hash. Some actions are disabled by default, and must be turned on via feature mechanism. For example to enable <em>blame</em> view add the following to gitweb configuration file:</p>
+
+<pre><code>$feature{'blame'}{'default'} = [1];
+</code></pre>
+
+<h3 id="actions">Actions:</h3>
+
+<p>The standard actions are:</p>
+
+<p>project_list<br />
+Lists the available Git repositories. This is the default command if no repository is specified in the URL.</p>
+
+<p>summary<br />
+Displays summary about given repository. This is the default command if no action is specified in URL, and only repository is specified.</p>
+
+<p>heads
+remotes<br />
+Lists all local or all remote-tracking branches in given repository.</p>
+
+<p>The latter is not available by default, unless configured.</p>
+
+<p>tags<br />
+List all tags (lightweight and annotated) in given repository.</p>
+
+<p>blob
+tree<br />
+Shows the files and directories in a given repository path, at given revision. This is default command if no action is specified in the URL, and path is given.</p>
+
+<p>blob_plain<br />
+Returns the raw data for the file in given repository, at given path and revision. Links to this action are marked <em>raw</em>.</p>
+
+<p>blobdiff<br />
+Shows the difference between two revisions of the same file.</p>
+
+<p>blame
+blame_incremental<br />
+Shows the blame (also called annotation) information for a file. On a per line basis it shows the revision in which that line was last changed and the user that committed the change. The incremental version (which if configured is used automatically when JavaScript is enabled) uses Ajax to incrementally add blame info to the contents of given file.</p>
+
+<p>This action is disabled by default for performance reasons.</p>
+
+<p>commit
+commitdiff<br />
+Shows information about a specific commit in a repository. The <em>commit</em> view shows information about commit in more detail, the <em>commitdiff</em> action shows changeset for given commit.</p>
+
+<p>patch<br />
+Returns the commit in plain text mail format, suitable for applying with <a href="../git-am">git-am(1)</a>.</p>
+
+<p>tag<br />
+Display specific annotated tag (tag object).</p>
+
+<p>log
+shortlog<br />
+Shows log information (commit message or just commit subject) for a given branch (starting from given revision).</p>
+
+<p>The <em>shortlog</em> view is more compact; it shows one commit per line.</p>
+
+<p>history<br />
+Shows history of the file or directory in a given repository path, starting from given revision (defaults to HEAD, i.e. default branch).</p>
+
+<p>This view is similar to <em>shortlog</em> view.</p>
+
+<p>rss
+atom<br />
+Generates an RSS (or Atom) feed of changes to repository.</p>
+
+<h2 id="webserver-configuration">WEBSERVER CONFIGURATION</h2>
+
+<p>This section explains how to configure some common webservers to run gitweb. In all cases, <code>/path/to/gitweb</code> in the examples is the directory you ran installed gitweb in, and contains <code>gitweb_config.perl</code>.</p>
+
+<p>If you’ve configured a web server that isn’t listed here for gitweb, please send in the instructions so they can be included in a future release.</p>
+
+<h3 id="apache-as-cgi">Apache as CGI</h3>
+
+<p>Apache must be configured to support CGI scripts in the directory in which gitweb is installed. Let’s assume that it is <em>/var/www/cgi-bin</em> directory.</p>
+
+<pre><code>ScriptAlias /cgi-bin/ &quot;/var/www/cgi-bin/&quot;
+
+&lt;Directory &quot;/var/www/cgi-bin&quot;&gt;
+    Options Indexes FollowSymlinks ExecCGI
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+</code></pre>
+
+<p>With that configuration the full path to browse repositories would be:</p>
+
+<pre><code>http://server/cgi-bin/gitweb.cgi
+</code></pre>
+
+<h3 id="apache-with-mod-perl-via-modperl-registry">Apache with mod_perl, via ModPerl::Registry</h3>
+
+<p>You can use mod_perl with gitweb. You must install Apache::Registry (for mod_perl 1.x) or ModPerl::Registry (for mod_perl 2.x) to enable this support.</p>
+
+<p>Assuming that gitweb is installed to <em>/var/www/perl</em>, the following Apache configuration (for mod_perl 2.x) is suitable.</p>
+
+<pre><code>Alias /perl &quot;/var/www/perl&quot;
+
+&lt;Directory &quot;/var/www/perl&quot;&gt;
+    SetHandler perl-script
+    PerlResponseHandler ModPerl::Registry
+    PerlOptions +ParseHeaders
+    Options Indexes FollowSymlinks +ExecCGI
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+</code></pre>
+
+<p>With that configuration the full path to browse repositories would be:</p>
+
+<pre><code>http://server/perl/gitweb.cgi
+</code></pre>
+
+<h3 id="apache-with-fastcgi">Apache with FastCGI</h3>
+
+<p>Gitweb works with Apache and FastCGI. First you need to rename, copy or symlink gitweb.cgi to gitweb.fcgi. Let’s assume that gitweb is installed in <em>/usr/share/gitweb</em> directory. The following Apache configuration is suitable (UNTESTED!)</p>
+
+<pre><code>FastCgiServer /usr/share/gitweb/gitweb.cgi
+ScriptAlias /gitweb /usr/share/gitweb/gitweb.cgi
+
+Alias /gitweb/static /usr/share/gitweb/static
+&lt;Directory /usr/share/gitweb/static&gt;
+    SetHandler default-handler
+&lt;/Directory&gt;
+</code></pre>
+
+<p>With that configuration the full path to browse repositories would be:</p>
+
+<pre><code>http://server/gitweb
+</code></pre>
+
+<h2 id="advanced-web-server-setup">ADVANCED WEB SERVER SETUP</h2>
+
+<p>All of those examples use request rewriting, and need <code>mod_rewrite</code> (or equivalent; examples below are written for Apache).</p>
+
+<h3 id="single-url-for-gitweb-and-for-fetching">Single URL for gitweb and for fetching</h3>
+
+<p>If you want to have one URL for both gitweb and your <code>http://</code> repositories, you can configure Apache like this:</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerName    git.example.org
+    DocumentRoot  /pub/git
+    SetEnv        GITWEB_CONFIG   /etc/gitweb.conf
+
+    # turning on mod rewrite
+    RewriteEngine on
+
+    # make the front page an internal rewrite to the gitweb script
+    RewriteRule ^/$  /cgi-bin/gitweb.cgi
+
+    # make access for &quot;dumb clients&quot; work
+    RewriteRule ^/(.*\.git/(?!/?(HEAD|info|objects|refs)).*)?$ \
+                /cgi-bin/gitweb.cgi%{REQUEST_URI}  [L,PT]
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>The above configuration expects your public repositories to live under <em>/pub/git</em> and will serve them as <code>http://git.domain.org/dir-under-pub-git</code>, both as clonable Git URL and as browseable gitweb interface. If you then start your <a href="../git-daemon">git-daemon(1)</a> with <code>--base-path=/pub/git                 --export-all</code> then you can even use the <code>git://</code> URL with exactly the same path.</p>
+
+<p>Setting the environment variable <code>GITWEB_CONFIG</code> will tell gitweb to use the named file (i.e. in this example <em>/etc/gitweb.conf</em>) as a configuration for gitweb. You don’t really need it in above example; it is required only if your configuration file is in different place than built-in (during compiling gitweb) <em>gitweb_config.perl</em> or <em>/etc/gitweb.conf</em>. See <a href="../gitweb.conf">gitweb.conf(5)</a> for details, especially information about precedence rules.</p>
+
+<p>If you use the rewrite rules from the example you <strong>might</strong> also need something like the following in your gitweb configuration file (<em>/etc/gitweb.conf</em> following example):</p>
+
+<pre><code>@stylesheets = (&quot;/some/absolute/path/gitweb.css&quot;);
+$my_uri    = &quot;/&quot;;
+$home_link = &quot;/&quot;;
+$per_request_config = 1;
+</code></pre>
+
+<p>Nowadays though gitweb should create HTML base tag when needed (to set base URI for relative links), so it should work automatically.</p>
+
+<h3 id="webserver-configuration-with-multiple-projects-root">Webserver configuration with multiple projects&rsquo; root</h3>
+
+<p>If you want to use gitweb with several project roots you can edit your Apache virtual host and gitweb configuration files in the following way.</p>
+
+<p>The virtual host configuration (in Apache configuration file) should look like this:</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerName    git.example.org
+    DocumentRoot  /pub/git
+    SetEnv        GITWEB_CONFIG  /etc/gitweb.conf
+
+    # turning on mod rewrite
+    RewriteEngine on
+
+    # make the front page an internal rewrite to the gitweb script
+    RewriteRule ^/$  /cgi-bin/gitweb.cgi  [QSA,L,PT]
+
+    # look for a public_git folder in unix users' home
+    # http://git.example.org/~&lt;user&gt;/
+    RewriteRule ^/\~([^\/]+)(/|/gitweb.cgi)?$   /cgi-bin/gitweb.cgi \
+                [QSA,E=GITWEB_PROJECTROOT:/home/$1/public_git/,L,PT]
+
+    # http://git.example.org/+&lt;user&gt;/
+    #RewriteRule ^/\+([^\/]+)(/|/gitweb.cgi)?$  /cgi-bin/gitweb.cgi \
+                 [QSA,E=GITWEB_PROJECTROOT:/home/$1/public_git/,L,PT]
+
+    # http://git.example.org/user/&lt;user&gt;/
+    #RewriteRule ^/user/([^\/]+)/(gitweb.cgi)?$ /cgi-bin/gitweb.cgi \
+                 [QSA,E=GITWEB_PROJECTROOT:/home/$1/public_git/,L,PT]
+
+    # defined list of project roots
+    RewriteRule ^/scm(/|/gitweb.cgi)?$ /cgi-bin/gitweb.cgi \
+                [QSA,E=GITWEB_PROJECTROOT:/pub/scm/,L,PT]
+    RewriteRule ^/var(/|/gitweb.cgi)?$ /cgi-bin/gitweb.cgi \
+                [QSA,E=GITWEB_PROJECTROOT:/var/git/,L,PT]
+
+    # make access for &quot;dumb clients&quot; work
+    RewriteRule ^/(.*\.git/(?!/?(HEAD|info|objects|refs)).*)?$ \
+                /cgi-bin/gitweb.cgi%{REQUEST_URI}  [L,PT]
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Here actual project root is passed to gitweb via <code>GITWEB_PROJECT_ROOT</code> environment variable from a web server, so you need to put the following line in gitweb configuration file (<em>/etc/gitweb.conf</em> in above example):</p>
+
+<pre><code>$projectroot = $ENV{'GITWEB_PROJECTROOT'} || &quot;/pub/git&quot;;
+</code></pre>
+
+<p><strong>Note</strong> that this requires to be set for each request, so either <code>$per_request_config</code> must be false, or the above must be put in code referenced by <code>$per_request_config</code>;</p>
+
+<p>These configurations enable two things. First, each unix user (<code>&lt;user&gt;</code>) of the server will be able to browse through gitweb Git repositories found in <em>~/public_git/</em> with the following url:</p>
+
+<pre><code>http://git.example.org/~&lt;user&gt;/
+</code></pre>
+
+<p>If you do not want this feature on your server just remove the second rewrite rule.</p>
+
+<p>If you already use ‘mod_userdir` in your virtual host or you don’t want to use the &lsquo;~’ as first character, just comment or remove the second rewrite rule, and uncomment one of the following according to what you want.</p>
+
+<p>Second, repositories found in <em>/pub/scm/</em> and <em>/var/git/</em> will be accessible through <code>http://git.example.org/scm/</code> and <code>http://git.example.org/var/</code>. You can add as many project roots as you want by adding rewrite rules like the third and the fourth.</p>
+
+<h3 id="path-info-usage">PATH_INFO usage</h3>
+
+<p>If you enable PATH_INFO usage in gitweb by putting</p>
+
+<pre><code>$feature{'pathinfo'}{'default'} = [1];
+</code></pre>
+
+<p>in your gitweb configuration file, it is possible to set up your server so that it consumes and produces URLs in the form</p>
+
+<pre><code>http://git.example.com/project.git/shortlog/sometag
+</code></pre>
+
+<p>i.e. without <em>gitweb.cgi</em> part, by using a configuration such as the following. This configuration assumes that <em>/var/www/gitweb</em> is the DocumentRoot of your webserver, contains the gitweb.cgi script and complementary static files (stylesheet, favicon, JavaScript):</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+        ServerAlias git.example.com
+
+        DocumentRoot /var/www/gitweb
+
+        &lt;Directory /var/www/gitweb&gt;
+                Options ExecCGI
+                AddHandler cgi-script cgi
+
+                DirectoryIndex gitweb.cgi
+
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteCond %{REQUEST_FILENAME} !-d
+                RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
+        &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>The rewrite rule guarantees that existing static files will be properly served, whereas any other URL will be passed to gitweb as PATH_INFO parameter.</p>
+
+<p><strong>Notice</strong> that in this case you don’t need special settings for <code>@stylesheets</code>, <code>$my_uri</code> and <code>$home_link</code>, but you lose &ldquo;dumb client&rdquo; access to your project .git dirs (described in &ldquo;Single URL for gitweb and for fetching&rdquo; section). A possible workaround for the latter is the following: in your project root dir (e.g. <em>/pub/git</em>) have the projects named <strong>without</strong> a .git extension (e.g. <em>/pub/git/project</em> instead of <em>/pub/git/project.git</em>) and configure Apache as follows:</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+        ServerAlias git.example.com
+
+        DocumentRoot /var/www/gitweb
+
+        AliasMatch ^(/.*?)(\.git)(/.*)?$ /pub/git$1$3
+        &lt;Directory /var/www/gitweb&gt;
+                Options ExecCGI
+                AddHandler cgi-script cgi
+
+                DirectoryIndex gitweb.cgi
+
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteCond %{REQUEST_FILENAME} !-d
+                RewriteRule ^.* /gitweb.cgi/$0 [L,PT]
+        &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>The additional AliasMatch makes it so that</p>
+
+<pre><code>http://git.example.com/project.git
+</code></pre>
+
+<p>will give raw access to the project’s Git dir (so that the project can be cloned), while</p>
+
+<pre><code>http://git.example.com/project
+</code></pre>
+
+<p>will provide human-friendly gitweb access.</p>
+
+<p>This solution is not 100% bulletproof, in the sense that if some project has a named ref (branch, tag) starting with <em>git/</em>, then paths such as</p>
+
+<pre><code>http://git.example.com/project/command/abranch..git/abranch
+</code></pre>
+
+<p>will fail with a 404 error.</p>
+
+<h2 id="bugs">BUGS</h2>
+
+<p>Please report any bugs or feature requests to <a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>, putting &ldquo;gitweb&rdquo; in the subject of email.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../gitweb.conf">gitweb.conf(5)</a>, <a href="../git-instaweb">git-instaweb(1)</a></p>
+
+<p><em>gitweb/README</em>, <em>gitweb/INSTALL</em></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

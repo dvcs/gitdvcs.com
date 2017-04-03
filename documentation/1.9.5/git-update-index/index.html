@@ -1,0 +1,415 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Register file contents in the working">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-update-index </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-update-index</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.9.5'>1.9.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/1.9.5/git-update-index'>git-update-index</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git update-index
+             [--add] [--remove | --force-remove] [--replace]
+             [--refresh] [-q] [--unmerged] [--ignore-missing]
+             [(--cacheinfo &lt;mode&gt; &lt;object&gt; &lt;file&gt;)…]
+             [--chmod=(+|-)x]
+             [--[no-]assume-unchanged]
+             [--[no-]skip-worktree]
+             [--ignore-submodules]
+             [--really-refresh] [--unresolve] [--again | -g]
+             [--info-only] [--index-info]
+             [-z] [--stdin] [--index-version &lt;n&gt;]
+             [--verbose]
+             [--] [&lt;file&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Modifies the index or directory cache. Each file mentioned is updated into the index and any <em>unmerged</em> or <em>needs updating</em> state is cleared.</p>
+
+<p>See also <a href="../git-add">git-add(1)</a> for a more user-friendly way to do some of the most common operations on the index.</p>
+
+<p>The way <em>git update-index</em> handles files it is told about can be modified using the various options:</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&ndash;add<br />
+If a specified file isn’t in the index already then it’s added. Default behaviour is to ignore new files.</p>
+
+<p>&ndash;remove<br />
+If a specified file is in the index but is missing then it’s removed. Default behavior is to ignore removed file.</p>
+
+<p>&ndash;refresh<br />
+Looks at the current index and checks to see if merges or updates are needed by checking stat() information.</p>
+
+<p>-q<br />
+Quiet. If &ndash;refresh finds that the index needs an update, the default behavior is to error out. This option makes <em>git update-index</em> continue anyway.</p>
+
+<p>&ndash;ignore-submodules<br />
+Do not try to update submodules. This option is only respected when passed before &ndash;refresh.</p>
+
+<p>&ndash;unmerged<br />
+If &ndash;refresh finds unmerged changes in the index, the default behavior is to error out. This option makes <em>git update-index</em> continue anyway.</p>
+
+<p>&ndash;ignore-missing<br />
+Ignores missing files during a &ndash;refresh</p>
+
+<p>&ndash;cacheinfo &lt;mode&gt; &lt;object&gt; &lt;path&gt;<br />
+Directly insert the specified info into the index.</p>
+
+<p>&ndash;index-info<br />
+Read index information from stdin.</p>
+
+<p>&ndash;chmod=(+|-)x<br />
+Set the execute permissions on the updated files.</p>
+
+<p>&ndash;[no-]assume-unchanged<br />
+When these flags are specified, the object names recorded for the paths are not updated. Instead, these options set and unset the &ldquo;assume unchanged&rdquo; bit for the paths. When the &ldquo;assume unchanged&rdquo; bit is on, Git stops checking the working tree files for possible modifications, so you need to manually unset the bit to tell Git when you change the working tree file. This is sometimes helpful when working with a big project on a filesystem that has very slow lstat(2) system call (e.g. cifs).</p>
+
+<p>This option can be also used as a coarse file-level mechanism to ignore uncommitted changes in tracked files (akin to what <code>.gitignore</code> does for untracked files). Git will fail (gracefully) in case it needs to modify this file in the index e.g. when merging in a commit; thus, in case the assumed-untracked file is changed upstream, you will need to handle the situation manually.</p>
+
+<p>&ndash;really-refresh<br />
+Like <em>&ndash;refresh</em>, but checks stat information unconditionally, without regard to the &ldquo;assume unchanged&rdquo; setting.</p>
+
+<p>&ndash;[no-]skip-worktree<br />
+When one of these flags is specified, the object name recorded for the paths are not updated. Instead, these options set and unset the &ldquo;skip-worktree&rdquo; bit for the paths. See section &ldquo;Skip-worktree bit&rdquo; below for more information.</p>
+
+<p>-g
+&ndash;again<br />
+Runs <em>git update-index</em> itself on the paths whose index entries are different from those from the <code>HEAD</code> commit.</p>
+
+<p>&ndash;unresolve<br />
+Restores the <em>unmerged</em> or <em>needs updating</em> state of a file during a merge if it was cleared by accident.</p>
+
+<p>&ndash;info-only<br />
+Do not create objects in the object database for all &lt;file&gt; arguments that follow this flag; just insert their object IDs into the index.</p>
+
+<p>&ndash;force-remove<br />
+Remove the file from the index even when the working directory still has such a file. (Implies &ndash;remove.)</p>
+
+<p>&ndash;replace<br />
+By default, when a file <code>path</code> exists in the index, <em>git update-index</em> refuses an attempt to add <code>path/file</code>. Similarly if a file <code>path/file</code> exists, a file <code>path</code> cannot be added. With &ndash;replace flag, existing entries that conflict with the entry being added are automatically removed with warning messages.</p>
+
+<p>&ndash;stdin<br />
+Instead of taking list of paths from the command line, read list of paths from the standard input. Paths are separated by LF (i.e. one path per line) by default.</p>
+
+<p>&ndash;verbose<br />
+Report what is being added and removed from index.</p>
+
+<p>&ndash;index-version &lt;n&gt;<br />
+Write the resulting index out in the named on-disk format version. Supported versions are 2, 3 and 4. The current default version is 2 or 3, depending on whether extra features are used, such as <code>git                   add -N</code>.</p>
+
+<p>Version 4 performs a simple pathname compression that reduces index size by 30%-50% on large repositories, which results in faster load time. Version 4 is relatively young (first released in in 1.8.0 in October 2012). Other Git implementations such as JGit and libgit2 may not support it yet.</p>
+
+<p>-z<br />
+Only meaningful with <code>--stdin</code> or <code>--index-info</code>; paths are separated with NUL character instead of LF.</p>
+
+<p>&ndash;<br />
+Do not interpret any more arguments as options.</p>
+
+<p>&lt;file&gt;<br />
+Files to act on. Note that files beginning with <em>.</em> are discarded. This includes <code>./file</code> and <code>dir/./file</code>. If you don’t want this, then use cleaner names. The same applies to directories ending <em>/</em> and paths with <em>//</em></p>
+
+<h2 id="using-refresh">Using &ndash;refresh</h2>
+
+<p><em>&ndash;refresh</em> does not calculate a new sha1 file or bring the index up-to-date for mode/content changes. But what it <strong>does</strong> do is to &ldquo;re-match&rdquo; the stat information of a file with the index, so that you can refresh the index for a file that hasn’t been changed but where the stat entry is out of date.</p>
+
+<p>For example, you’d want to do this after doing a <em>git read-tree</em>, to link up the stat index details with the proper files.</p>
+
+<h2 id="using-cacheinfo-or-info-only">Using &ndash;cacheinfo or &ndash;info-only</h2>
+
+<p><em>&ndash;cacheinfo</em> is used to register a file that is not in the current working directory. This is useful for minimum-checkout merging.</p>
+
+<p>To pretend you have a file with mode and sha1 at path, say:</p>
+
+<pre><code>$ git update-index --cacheinfo mode sha1 path
+</code></pre>
+
+<p><em>&ndash;info-only</em> is used to register files without placing them in the object database. This is useful for status-only repositories.</p>
+
+<p>Both <em>&ndash;cacheinfo</em> and <em>&ndash;info-only</em> behave similarly: the index is updated but the object database isn’t. <em>&ndash;cacheinfo</em> is useful when the object is in the database but the file isn’t available locally. <em>&ndash;info-only</em> is useful when the file is available, but you do not wish to update the object database.</p>
+
+<h2 id="using-index-info">Using &ndash;index-info</h2>
+
+<p><code>--index-info</code> is a more powerful mechanism that lets you feed multiple entry definitions from the standard input, and designed specifically for scripts. It can take inputs of three formats:</p>
+
+<ol>
+<li><p>mode SP sha1 TAB path</p>
+
+<p>The first format is what &ldquo;git-apply &ndash;index-info&rdquo; reports, and used to reconstruct a partial tree that is used for phony merge base tree when falling back on 3-way merge.</p></li>
+
+<li><p>mode SP type SP sha1 TAB path</p>
+
+<p>The second format is to stuff <em>git ls-tree</em> output into the index file.</p></li>
+
+<li><p>mode SP sha1 SP stage TAB path</p>
+
+<p>This format is to put higher order stages into the index file and matches <em>git ls-files &ndash;stage</em> output.</p></li>
+</ol>
+
+<p>To place a higher stage entry to the index, the path should first be removed by feeding a mode=0 entry for the path, and then feeding necessary input lines in the third format.</p>
+
+<p>For example, starting with this index:</p>
+
+<pre><code>$ git ls-files -s
+100644 8a1218a1024a212bb3db30becd860315f9f3ac52 0       frotz
+</code></pre>
+
+<p>you can feed the following input to <code>--index-info</code>:</p>
+
+<pre><code>$ git update-index --index-info
+0 0000000000000000000000000000000000000000      frotz
+100644 8a1218a1024a212bb3db30becd860315f9f3ac52 1       frotz
+100755 8a1218a1024a212bb3db30becd860315f9f3ac52 2       frotz
+</code></pre>
+
+<p>The first line of the input feeds 0 as the mode to remove the path; the SHA-1 does not matter as long as it is well formatted. Then the second and third line feeds stage 1 and stage 2 entries for that path. After the above, we would end up with this:</p>
+
+<pre><code>$ git ls-files -s
+100644 8a1218a1024a212bb3db30becd860315f9f3ac52 1       frotz
+100755 8a1218a1024a212bb3db30becd860315f9f3ac52 2       frotz
+</code></pre>
+
+<h2 id="using-assume-unchanged-bit">Using “assume unchanged” bit</h2>
+
+<p>Many operations in Git depend on your filesystem to have an efficient <code>lstat(2)</code> implementation, so that <code>st_mtime</code> information for working tree files can be cheaply checked to see if the file contents have changed from the version recorded in the index file. Unfortunately, some filesystems have inefficient <code>lstat(2)</code>. If your filesystem is one of them, you can set &ldquo;assume unchanged&rdquo; bit to paths you have not changed to cause Git not to do this check. Note that setting this bit on a path does not mean Git will check the contents of the file to see if it has changed — it makes Git to omit any checking and assume it has <strong>not</strong> changed. When you make changes to working tree files, you have to explicitly tell Git about it by dropping &ldquo;assume unchanged&rdquo; bit, either before or after you modify them.</p>
+
+<p>In order to set &ldquo;assume unchanged&rdquo; bit, use <code>--assume-unchanged</code> option. To unset, use <code>--no-assume-unchanged</code>. To see which files have the &ldquo;assume unchanged&rdquo; bit set, use <code>git ls-files               -v</code> (see <a href="../git-ls-files">git-ls-files(1)</a>).</p>
+
+<p>The command looks at <code>core.ignorestat</code> configuration variable. When this is true, paths updated with <code>git update-index paths...</code> and paths updated with other Git commands that update both index and working tree (e.g. <em>git apply &ndash;index</em>, <em>git checkout-index -u</em>, and <em>git read-tree -u</em>) are automatically marked as &ldquo;assume unchanged&rdquo;. Note that &ldquo;assume unchanged&rdquo; bit is <strong>not</strong> set if <code>git update-index --refresh</code> finds the working tree file matches the index (use <code>git               update-index --really-refresh</code> if you want to mark them as &ldquo;assume unchanged&rdquo;).</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>To update and refresh only the files already checked out:</p>
+
+<pre><code>$ git checkout-index -n -f -a &amp;&amp; git update-index --ignore-missing --refresh
+</code></pre>
+
+<p>On an inefficient filesystem with <code>core.ignorestat</code> set<br />
+    $ git update-index &ndash;really-refresh              <1>
+    $ git update-index &ndash;no-assume-unchanged foo.c   <2>
+    $ git diff &ndash;name-only                           <3>
+    $ edit foo.c
+    $ git diff &ndash;name-only                           <4>
+    M foo.c
+    $ git update-index foo.c                         <5>
+    $ git diff &ndash;name-only                           <6>
+    $ edit foo.c
+    $ git diff &ndash;name-only                           <7>
+    $ git update-index &ndash;no-assume-unchanged foo.c   <8>
+    $ git diff &ndash;name-only                           <9>
+    M foo.c</p>
+
+<ol>
+<li><p>forces lstat(2) to set &ldquo;assume unchanged&rdquo; bits for paths that match index.</p></li>
+
+<li><p>mark the path to be edited.</p></li>
+
+<li><p>this does lstat(2) and finds index matches the path.</p></li>
+
+<li><p>this does lstat(2) and finds index does <strong>not</strong> match the path.</p></li>
+
+<li><p>registering the new version to index sets &ldquo;assume unchanged&rdquo; bit.</p></li>
+
+<li><p>and it is assumed unchanged.</p></li>
+
+<li><p>even after you edit it.</p></li>
+
+<li><p>you can tell about the change after the fact.</p></li>
+
+<li><p>now it checks with lstat(2) and finds it has been changed.</p></li>
+</ol>
+
+<h2 id="skip-worktree-bit">Skip-worktree bit</h2>
+
+<p>Skip-worktree bit can be defined in one (long) sentence: When reading an entry, if it is marked as skip-worktree, then Git pretends its working directory version is up to date and read the index version instead.</p>
+
+<p>To elaborate, &ldquo;reading&rdquo; means checking for file existence, reading file attributes or file content. The working directory version may be present or absent. If present, its content may match against the index version or not. Writing is not affected by this bit, content safety is still first priority. Note that Git <em>can</em> update working directory file, that is marked skip-worktree, if it is safe to do so (i.e. working directory version matches index version)</p>
+
+<p>Although this bit looks similar to assume-unchanged bit, its goal is different from assume-unchanged bit’s. Skip-worktree also takes precedence over assume-unchanged bit when both are set.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The command honors <code>core.filemode</code> configuration variable. If your repository is on a filesystem whose executable bits are unreliable, this should be set to <em>false</em> (see <a href="../git-config">git-config(1)</a>). This causes the command to ignore differences in file modes recorded in the index and the file mode on the filesystem if they differ only on executable bit. On such an unfortunate filesystem, you may need to use <em>git update-index &ndash;chmod=</em>.</p>
+
+<p>Quite similarly, if <code>core.symlinks</code> configuration variable is set to <em>false</em> (see <a href="../git-config">git-config(1)</a>), symbolic links are checked out as plain files, and this command does not modify a recorded file mode from symbolic link to regular file.</p>
+
+<p>The command looks at <code>core.ignorestat</code> configuration variable. See <em>Using &ldquo;assume unchanged&rdquo; bit</em> section above.</p>
+
+<p>The command also looks at <code>core.trustctime</code> configuration variable. It can be useful when the inode change time is regularly modified by something outside Git (file system crawlers and backup systems use ctime for marking files processed) (see <a href="../git-config">git-config(1)</a>).</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-config">git-config(1)</a>, <a href="../git-add">git-add(1)</a>, <a href="../git-ls-files">git-ls-files(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

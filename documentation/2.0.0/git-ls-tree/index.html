@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="List the contents of a tree object">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-ls-tree </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-ls-tree</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.0.0'>2.0.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.0.0/git-ls-tree'>git-ls-tree</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git ls-tree [-d] [-r] [-t] [-l] [-z]
+            [--name-only] [--name-status] [--full-name] [--full-tree] [--abbrev[=&lt;n&gt;]]
+            &lt;tree-ish&gt; [&lt;path&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Lists the contents of a given tree object, like what &ldquo;/bin/ls -a&rdquo; does in the current working directory. Note that:</p>
+
+<ul>
+<li><p>the behaviour is slightly different from that of &ldquo;/bin/ls&rdquo; in that the <em>&lt;path&gt;</em> denotes just a list of patterns to match, e.g. so specifying directory name (without <em>-r</em>) will behave differently, and order of the arguments does not matter.</p></li>
+
+<li><p>the behaviour is similar to that of &ldquo;/bin/ls&rdquo; in that the <em>&lt;path&gt;</em> is taken as relative to the current working directory. E.g. when you are in a directory <em>sub</em> that has a directory <em>dir</em>, you can run <em>git ls-tree -r HEAD dir</em> to list the contents of the tree (that is <em>sub/dir</em> in <em>HEAD</em>). You don’t want to give a tree that is not at the root level (e.g. <code>git ls-tree -r HEAD:sub dir</code>) in this case, as that would result in asking for <em>sub/sub/dir</em> in the <em>HEAD</em> commit. However, the current working directory can be ignored by passing &ndash;full-tree option.</p></li>
+</ul>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;tree-ish&gt;<br />
+Id of a tree-ish.</p>
+
+<p>-d<br />
+Show only the named tree entry itself, not its children.</p>
+
+<p>-r<br />
+Recurse into sub-trees.</p>
+
+<p>-t<br />
+Show tree entries even when going to recurse them. Has no effect if <em>-r</em> was not passed. <em>-d</em> implies <em>-t</em>.</p>
+
+<p>-l
+&ndash;long<br />
+Show object size of blob (file) entries.</p>
+
+<p>-z<br />
+\0 line termination on output.</p>
+
+<p>&ndash;name-only
+&ndash;name-status<br />
+List only filenames (instead of the &ldquo;long&rdquo; output), one per line.</p>
+
+<p>&ndash;abbrev[=&lt;n&gt;]<br />
+Instead of showing the full 40-byte hexadecimal object lines, show only a partial prefix. Non default number of digits can be specified with &ndash;abbrev=&lt;n&gt;.</p>
+
+<p>&ndash;full-name<br />
+Instead of showing the path names relative to the current working directory, show the full path names.</p>
+
+<p>&ndash;full-tree<br />
+Do not limit the listing to the current working directory. Implies &ndash;full-name.</p>
+
+<p>[&lt;path&gt;…]<br />
+When paths are given, show them (note that this isn’t really raw pathnames, but rather a list of patterns to match). Otherwise implicitly uses the root level of the tree as the sole path argument.</p>
+
+<h2 id="output-format">Output Format</h2>
+
+<pre><code>&lt;mode&gt; SP &lt;type&gt; SP &lt;object&gt; TAB &lt;file&gt;
+</code></pre>
+
+<p>Unless the <code>-z</code> option is used, TAB, LF, and backslash characters in pathnames are represented as <code>\t</code>, <code>\n</code>, and <code>\\</code>, respectively. This output format is compatible with what <code>--index-info --stdin</code> of <em>git update-index</em> expects.</p>
+
+<p>When the <code>-l</code> option is used, format changes to</p>
+
+<pre><code>&lt;mode&gt; SP &lt;type&gt; SP &lt;object&gt; SP &lt;object size&gt; TAB &lt;file&gt;
+</code></pre>
+
+<p>Object size identified by &lt;object&gt; is given in bytes, and right-justified with minimum width of 7 characters. Object size is given only for blobs (file) entries; for other entries <code>-</code> character is used in place of size.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

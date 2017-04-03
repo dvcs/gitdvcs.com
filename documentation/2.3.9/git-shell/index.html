@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Restricted login shell for Git-only SSH access">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-shell </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-shell</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.9'>2.3.9</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.3.9/git-shell'>git-shell</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">chsh -s $(command -v git-shell) &lt;user&gt;
+git clone &lt;user&gt;@localhost:/path/to/repo.git
+ssh &lt;user&gt;@localhost
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This is a login shell for SSH accounts to provide restricted Git access. It permits execution only of server-side Git commands implementing the pull/push functionality, plus custom commands present in a subdirectory named <code>git-shell-commands</code> in the user’s home directory.</p>
+
+<h2 id="commands">COMMANDS</h2>
+
+<p><em>git shell</em> accepts the following commands after the <em>-c</em> option:</p>
+
+<p><em>git receive-pack &lt;argument&gt;</em>
+<em>git upload-pack &lt;argument&gt;</em>
+<em>git upload-archive &lt;argument&gt;</em><br />
+Call the corresponding server-side command to support the client’s <em>git push</em>, <em>git fetch</em>, or <em>git archive &ndash;remote</em> request.</p>
+
+<p><em>cvs server</em><br />
+Imitate a CVS server. See <a href="../git-cvsserver">git-cvsserver(1)</a>.</p>
+
+<p>If a <code>~/git-shell-commands</code> directory is present, <em>git shell</em> will also handle other, custom commands by running &ldquo;<code>git-shell-commands/&lt;command&gt;               &lt;arguments&gt;</code>&rdquo; from the user’s home directory.</p>
+
+<h2 id="interactive-use">INTERACTIVE USE</h2>
+
+<p>By default, the commands above can be executed only with the <em>-c</em> option; the shell is not interactive.</p>
+
+<p>If a <code>~/git-shell-commands</code> directory is present, <em>git shell</em> can also be run interactively (with no arguments). If a <code>help</code> command is present in the <code>git-shell-commands</code> directory, it is run to provide the user with an overview of allowed actions. Then a &ldquo;git&gt; &ldquo; prompt is presented at which one can enter any of the commands from the <code>git-shell-commands</code> directory, or <code>exit</code> to close the connection.</p>
+
+<p>Generally this mode is used as an administrative interface to allow users to list repositories they have access to, create, delete, or rename repositories, or change repository descriptions and permissions.</p>
+
+<p>If a <code>no-interactive-login</code> command exists, then it is run and the interactive shell is aborted.</p>
+
+<h2 id="example">EXAMPLE</h2>
+
+<p>To disable interactive logins, displaying a greeting instead:</p>
+
+<pre><code>$ chsh -s /usr/bin/git-shell
+$ mkdir $HOME/git-shell-commands
+$ cat &gt;$HOME/git-shell-commands/no-interactive-login &lt;&lt;\EOF
+#!/bin/sh
+printf '%s\n' &quot;Hi $USER! You've successfully authenticated, but I do not&quot;
+printf '%s\n' &quot;provide interactive shell access.&quot;
+exit 128
+EOF
+$ chmod +x $HOME/git-shell-commands/no-interactive-login
+</code></pre>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p>ssh(1), <a href="../git-daemon">git-daemon(1)</a>, contrib/git-shell-commands/README</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

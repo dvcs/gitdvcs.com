@@ -1,0 +1,485 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Show what revision and author last modified">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-blame </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-blame</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.5.3'>2.5.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.5.3/git-blame'>git-blame</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-e] [-p] [-w] [--incremental]
+            [-L &lt;range&gt;] [-S &lt;revs-file&gt;] [-M] [-C] [-C] [-C] [--since=&lt;date&gt;]
+            [--abbrev=&lt;n&gt;] [&lt;rev&gt; | --contents &lt;file&gt; | --reverse &lt;rev&gt;] [--] &lt;file&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Annotates each line in the given file with information from the revision which last modified the line. Optionally, start annotating from the given revision.</p>
+
+<p>When specified one or more times, <code>-L</code> restricts annotation to the requested lines.</p>
+
+<p>The origin of lines is automatically followed across whole-file renames (currently there is no option to turn the rename-following off). To follow lines moved from one file to another, or to follow lines that were copied and pasted from another file, etc., see the <code>-C</code> and <code>-M</code> options.</p>
+
+<p>The report does not tell you anything about lines which have been deleted or replaced; you need to use a tool such as <em>git diff</em> or the &ldquo;pickaxe&rdquo; interface briefly mentioned in the following paragraph.</p>
+
+<p>Apart from supporting file annotation, Git also supports searching the development history for when a code snippet occurred in a change. This makes it possible to track when a code snippet was added to a file, moved or copied between files, and eventually deleted or replaced. It works by searching for a text string in the diff. A small example of the pickaxe interface that searches for <code>blame_usage</code>:</p>
+
+<pre><code>$ git log --pretty=oneline -S'blame_usage'
+5040f17eba15504bad66b14a645bddd9b015ebb7 blame -S &lt;ancestry-file&gt;
+ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
+</code></pre>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-b<br />
+Show blank SHA-1 for boundary commits. This can also be controlled via the <code>blame.blankboundary</code> config option.</p>
+
+<p>&ndash;root<br />
+Do not treat root commits as boundaries. This can also be controlled via the <code>blame.showRoot</code> config option.</p>
+
+<p>&ndash;show-stats<br />
+Include additional statistics at the end of blame output.</p>
+
+<p>-L &lt;start&gt;,&lt;end&gt;
+-L :&lt;funcname&gt;<br />
+Annotate only the given line range. May be specified multiple times. Overlapping ranges are allowed.</p>
+
+<p>&lt;start&gt; and &lt;end&gt; are optional. “-L &lt;start&gt;” or “-L &lt;start&gt;,” spans from &lt;start&gt; to end of file. “-L ,&lt;end&gt;” spans from start of file to &lt;end&gt;.</p>
+
+<p>&lt;start&gt; and &lt;end&gt; can take one of these forms:</p>
+
+<ul>
+<li><p>number</p>
+
+<p>If &lt;start&gt; or &lt;end&gt; is a number, it specifies an absolute line number (lines count from 1).</p></li>
+
+<li><p>/regex/</p>
+
+<p>This form will use the first line matching the given POSIX regex. If &lt;start&gt; is a regex, it will search from the end of the previous <code>-L</code> range, if any, otherwise from the start of file. If &lt;start&gt; is “^/regex/”, it will search from the start of file. If &lt;end&gt; is a regex, it will search starting at the line given by &lt;start&gt;.</p></li>
+
+<li><p>+offset or -offset</p>
+
+<p>This is only valid for &lt;end&gt; and will specify a number of lines before or after the line given by &lt;start&gt;.</p></li>
+</ul>
+
+<p>If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and &lt;end&gt;, it is a regular expression that denotes the range from the first funcname line that matches &lt;funcname&gt;, up to the next funcname line. “:&lt;funcname&gt;” searches from the end of the previous <code>-L</code> range, if any, otherwise from the start of file. “^:&lt;funcname&gt;” searches from the start of file.</p>
+
+<p>-l<br />
+Show long rev (Default: off).</p>
+
+<p>-t<br />
+Show raw timestamp (Default: off).</p>
+
+<p>-S &lt;revs-file&gt;<br />
+Use revisions from revs-file instead of calling <a href="../git-rev-list">git-rev-list(1)</a>.</p>
+
+<p>&ndash;reverse<br />
+Walk history forward instead of backward. Instead of showing the revision in which a line appeared, this shows the last revision in which a line has existed. This requires a range of revision like START..END where the path to blame exists in START.</p>
+
+<p>-p
+&ndash;porcelain<br />
+Show in a format designed for machine consumption.</p>
+
+<p>&ndash;line-porcelain<br />
+Show the porcelain format, but output commit information for each line, not just the first time a commit is referenced. Implies &ndash;porcelain.</p>
+
+<p>&ndash;incremental<br />
+Show the result incrementally in a format designed for machine consumption.</p>
+
+<p>&ndash;encoding=&lt;encoding&gt;<br />
+Specifies the encoding used to output author names and commit summaries. Setting it to <code>none</code> makes blame output unconverted data. For more information see the discussion about encoding in the <a href="../git-log">git-log(1)</a> manual page.</p>
+
+<p>&ndash;contents &lt;file&gt;<br />
+When &lt;rev&gt; is not specified, the command annotates the changes starting backwards from the working tree copy. This flag makes the command pretend as if the working tree copy has the contents of the named file (specify <code>-</code> to make the command read from the standard input).</p>
+
+<p>&ndash;date &lt;format&gt;<br />
+The value is one of the following alternatives: {relative,local,default,iso,rfc,short}. If &ndash;date is not provided, the value of the blame.date config variable is used. If the blame.date config variable is also not set, the iso format is used. For more information, See the discussion of the &ndash;date option at <a href="../git-log">git-log(1)</a>.</p>
+
+<p>-M|&lt;num&gt;|<br />
+Detect moved or copied lines within a file. When a commit moves or copies a block of lines (e.g. the original file has A and then B, and the commit changes it to B and then A), the traditional <em>blame</em> algorithm notices only half of the movement and typically blames the lines that were moved up (i.e. B) to the parent and assigns blame to the lines that were moved down (i.e. A) to the child commit. With this option, both groups of lines are blamed on the parent by running extra passes of inspection.</p>
+
+<p>&lt;num&gt; is optional but it is the lower bound on the number of alphanumeric characters that Git must detect as moving/copying within a file for it to associate those lines with the parent commit. The default value is 20.</p>
+
+<p>-C|&lt;num&gt;|<br />
+In addition to <code>-M</code>, detect lines moved or copied from other files that were modified in the same commit. This is useful when you reorganize your program and move code around across files. When this option is given twice, the command additionally looks for copies from other files in the commit that creates the file. When this option is given three times, the command additionally looks for copies from other files in any commit.</p>
+
+<p>&lt;num&gt; is optional but it is the lower bound on the number of alphanumeric characters that Git must detect as moving/copying between files for it to associate those lines with the parent commit. And the default value is 40. If there are more than one <code>-C</code> options given, the &lt;num&gt; argument of the last <code>-C</code> will take effect.</p>
+
+<p>-h<br />
+Show help message.</p>
+
+<p>-c<br />
+Use the same output mode as <a href="../git-annotate">git-annotate(1)</a> (Default: off).</p>
+
+<p>&ndash;score-debug<br />
+Include debugging information related to the movement of lines between files (see <code>-C</code>) and lines moved within a file (see <code>-M</code>). The first number listed is the score. This is the number of alphanumeric characters detected as having been moved between or within files. This must be above a certain threshold for <em>git blame</em> to consider those lines of code to have been moved.</p>
+
+<p>-f
+&ndash;show-name<br />
+Show the filename in the original commit. By default the filename is shown if there is any line that came from a file with a different name, due to rename detection.</p>
+
+<p>-n
+&ndash;show-number<br />
+Show the line number in the original commit (Default: off).</p>
+
+<p>-s<br />
+Suppress the author name and timestamp from the output.</p>
+
+<p>-e
+&ndash;show-email<br />
+Show the author email instead of author name (Default: off). This can also be controlled via the <code>blame.showEmail</code> config option.</p>
+
+<p>-w<br />
+Ignore whitespace when comparing the parent’s version and the child’s to find where the lines came from.</p>
+
+<p>&ndash;abbrev=&lt;n&gt;<br />
+Instead of using the default 7+1 hexadecimal digits as the abbreviated object name, use &lt;n&gt;+1 digits. Note that 1 column is used for a caret to mark the boundary commit.</p>
+
+<h2 id="the-porcelain-format">THE PORCELAIN FORMAT</h2>
+
+<p>In this format, each line is output after a header; the header at the minimum has the first line which has:</p>
+
+<ul>
+<li><p>40-byte SHA-1 of the commit the line is attributed to;</p></li>
+
+<li><p>the line number of the line in the original file;</p></li>
+
+<li><p>the line number of the line in the final file;</p></li>
+
+<li><p>on a line that starts a group of lines from a different commit than the previous one, the number of lines in this group. On subsequent lines this field is absent.</p></li>
+</ul>
+
+<p>This header line is followed by the following information at least once for each commit:</p>
+
+<ul>
+<li><p>the author name (&ldquo;author&rdquo;), email (&ldquo;author-mail&rdquo;), time (&ldquo;author-time&rdquo;), and time zone (&ldquo;author-tz&rdquo;); similarly for committer.</p></li>
+
+<li><p>the filename in the commit that the line is attributed to.</p></li>
+
+<li><p>the first line of the commit log message (&ldquo;summary&rdquo;).</p></li>
+</ul>
+
+<p>The contents of the actual line is output after the above header, prefixed by a TAB. This is to allow adding more header elements later.</p>
+
+<p>The porcelain format generally suppresses commit information that has already been seen. For example, two lines that are blamed to the same commit will both be shown, but the details for that commit will be shown only once. This is more efficient, but may require more state be kept by the reader. The <code>--line-porcelain</code> option can be used to output full commit information for each line, allowing simpler (but less efficient) usage like:</p>
+
+<pre><code># count the number of lines attributed to each author
+git blame --line-porcelain file |
+sed -n 's/^author //p' |
+sort | uniq -c | sort -rn
+</code></pre>
+
+<h2 id="specifying-ranges">SPECIFYING RANGES</h2>
+
+<p>Unlike <em>git blame</em> and <em>git annotate</em> in older versions of git, the extent of the annotation can be limited to both line ranges and revision ranges. The <code>-L</code> option, which limits annotation to a range of lines, may be specified multiple times.</p>
+
+<p>When you are interested in finding the origin for lines 40-60 for file <code>foo</code>, you can use the <code>-L</code> option like so (they mean the same thing — both ask for 21 lines starting at line 40):</p>
+
+<pre><code>git blame -L 40,60 foo
+git blame -L 40,+21 foo
+</code></pre>
+
+<p>Also you can use a regular expression to specify the line range:</p>
+
+<pre><code>git blame -L '/^sub hello {/,/^}$/' foo
+</code></pre>
+
+<p>which limits the annotation to the body of the <code>hello</code> subroutine.</p>
+
+<p>When you are not interested in changes older than version v2.6.18, or changes older than 3 weeks, you can use revision range specifiers similar to <em>git rev-list</em>:</p>
+
+<pre><code>git blame v2.6.18.. -- foo
+git blame --since=3.weeks -- foo
+</code></pre>
+
+<p>When revision range specifiers are used to limit the annotation, lines that have not changed since the range boundary (either the commit v2.6.18 or the most recent commit that is more than 3 weeks old in the above example) are blamed for that range boundary commit.</p>
+
+<p>A particularly useful way is to see if an added file has lines created by copy-and-paste from existing files. Sometimes this indicates that the developer was being sloppy and did not refactor the code properly. You can first find the commit that introduced the file with:</p>
+
+<pre><code>git log --diff-filter=A --pretty=short -- foo
+</code></pre>
+
+<p>and then annotate the change between the commit and its parents, using <code>commit^!</code> notation:</p>
+
+<pre><code>git blame -C -C -f $commit^! -- foo
+</code></pre>
+
+<h2 id="incremental-output">INCREMENTAL OUTPUT</h2>
+
+<p>When called with <code>--incremental</code> option, the command outputs the result as it is built. The output generally will talk about lines touched by more recent commits first (i.e. the lines will be annotated out of order) and is meant to be used by interactive viewers.</p>
+
+<p>The output format is similar to the Porcelain format, but it does not contain the actual lines from the file that is being annotated.</p>
+
+<ol>
+<li><p>Each blame entry always starts with a line of:</p>
+
+<pre><code>&lt;40-byte hex sha1&gt; &lt;sourceline&gt; &lt;resultline&gt; &lt;num_lines&gt;
+</code></pre>
+
+<p>Line numbers count from 1.</p></li>
+
+<li><p>The first time that a commit shows up in the stream, it has various other information about it printed out with a one-word tag at the beginning of each line describing the extra commit information (author, email, committer, dates, summary, etc.).</p></li>
+
+<li><p>Unlike the Porcelain format, the filename information is always given and terminates the entry:</p>
+
+<pre><code>&quot;filename&quot; &lt;whitespace-quoted-filename-goes-here&gt;
+</code></pre>
+
+<p>and thus it is really quite easy to parse for some line- and word-oriented parser (which should be quite natural for most scripting languages).</p>
+
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>For people who do parsing: to make it more robust, just ignore any lines between the first and last one (&quot;&lt;sha1&gt;&quot; and &quot;filename&quot; lines) where you do not recognize the tag words (or care about that particular one) at the beginning of the &quot;extended information&quot; lines. That way, if there is ever added information (like the commit encoding or extended commit commentary), a blame viewer will not care.</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+
+<h2 id="mapping-authors">MAPPING AUTHORS</h2>
+
+<p>If the file <code>.mailmap</code> exists at the toplevel of the repository, or at the location pointed to by the mailmap.file or mailmap.blob configuration options, it is used to map author and committer names and email addresses to canonical real names and email addresses.</p>
+
+<p>In the simple form, each line in the file consists of the canonical real name of an author, whitespace, and an email address used in the commit (enclosed by <em>&lt;</em> and <em>&gt;</em>) to map to the name. For example:</p>
+
+<pre><code>Proper Name &lt;commit@email.xx&gt;
+</code></pre>
+
+<p>The more complex forms are:</p>
+
+<pre><code>&lt;proper@email.xx&gt; &lt;commit@email.xx&gt;
+</code></pre>
+
+<p>which allows mailmap to replace only the email part of a commit, and:</p>
+
+<pre><code>Proper Name &lt;proper@email.xx&gt; &lt;commit@email.xx&gt;
+</code></pre>
+
+<p>which allows mailmap to replace both the name and the email of a commit matching the specified commit email address, and:</p>
+
+<pre><code>Proper Name &lt;proper@email.xx&gt; Commit Name &lt;commit@email.xx&gt;
+</code></pre>
+
+<p>which allows mailmap to replace both the name and the email of a commit matching both the specified commit name and email address.</p>
+
+<p>Example 1: Your history contains commits by two authors, Jane and Joe, whose names appear in the repository under several forms:</p>
+
+<pre><code>Joe Developer &lt;joe@example.com&gt;
+Joe R. Developer &lt;joe@example.com&gt;
+Jane Doe &lt;jane@example.com&gt;
+Jane Doe &lt;jane@laptop.(none)&gt;
+Jane D. &lt;jane@desktop.(none)&gt;
+</code></pre>
+
+<p>Now suppose that Joe wants his middle name initial used, and Jane prefers her family name fully spelled out. A proper <code>.mailmap</code> file would look like:</p>
+
+<pre><code>Jane Doe         &lt;jane@desktop.(none)&gt;
+Joe R. Developer &lt;joe@example.com&gt;
+</code></pre>
+
+<p>Note how there is no need for an entry for <code>&lt;jane@laptop.(none)&gt;</code>, because the real name of that author is already correct.</p>
+
+<p>Example 2: Your repository contains commits from the following authors:</p>
+
+<pre><code>nick1 &lt;bugs@company.xx&gt;
+nick2 &lt;bugs@company.xx&gt;
+nick2 &lt;nick2@company.xx&gt;
+santa &lt;me@company.xx&gt;
+claus &lt;me@company.xx&gt;
+CTO &lt;cto@coompany.xx&gt;
+</code></pre>
+
+<p>Then you might want a <code>.mailmap</code> file that looks like:</p>
+
+<pre><code>&lt;cto@company.xx&gt;                       &lt;cto@coompany.xx&gt;
+Some Dude &lt;some@dude.xx&gt;         nick1 &lt;bugs@company.xx&gt;
+Other Author &lt;other@author.xx&gt;   nick2 &lt;bugs@company.xx&gt;
+Other Author &lt;other@author.xx&gt;         &lt;nick2@company.xx&gt;
+Santa Claus &lt;santa.claus@northpole.xx&gt; &lt;me@company.xx&gt;
+</code></pre>
+
+<p>Use hash <em>#</em> for comments that are either on their own line, or after the email address.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-annotate">git-annotate(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

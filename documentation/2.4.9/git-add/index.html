@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="[]">
+    <meta name="description" content="Add file contents to the index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" href="../../../css/animate.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+
+    <script src="../../../js/jquery-2.1.0.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/blocs.min.js"></script>
+    <title> git-add </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+	
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="../../../"><img src="../../../img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="../../../documentation/" class="ltc-celestial-blue">Documentation</a>
+						</li>
+						<li>
+							<a href="../../../how-to/" class="ltc-celestial-blue">How To</a>
+						</li>
+						<li>
+							<a href="../../../downloads/" class="ltc-celestial-blue">Downloads</a>
+						</li>
+						<li>
+							<a href="../../../resources/" class="ltc-celestial-blue">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+	
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-add</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="../../../">🏠</a></li>
+			
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.9'>2.4.9</a></li>
+			
+			
+			
+			
+			
+			<li><a href='../../../documentation/2.4.9/git-add'>git-add</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
+          [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
+          [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing]
+          [--] [&lt;pathspec&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This command updates the index using the current content found in the working tree, to prepare the content staged for the next commit. It typically adds the current content of existing paths as a whole, but with some options it can also be used to add content with only part of the changes made to the working tree files applied, or remove paths that do not exist in the working tree anymore.</p>
+
+<p>The &ldquo;index&rdquo; holds a snapshot of the content of the working tree, and it is this snapshot that is taken as the contents of the next commit. Thus after making any changes to the working directory, and before running the commit command, you must use the <code>add</code> command to add any new or modified files to the index.</p>
+
+<p>This command can be performed multiple times before a commit. It only adds the content of the specified file(s) at the time the add command is run; if you want subsequent changes included in the next commit, then you must run <code>git add</code> again to add the new content to the index.</p>
+
+<p>The <code>git status</code> command can be used to obtain a summary of which files have changes that are staged for the next commit.</p>
+
+<p>The <code>git add</code> command will not add ignored files by default. If any ignored files were explicitly specified on the command line, <code>git add</code> will fail with a list of ignored files. Ignored files reached by directory recursion or filename globbing performed by Git (quote your globs before the shell) will be silently ignored. The <em>git add</em> command can be used to add ignored files with the <code>-f</code> (force) option.</p>
+
+<p>Please see <a href="../git-commit">git-commit(1)</a> for alternative ways to add content to a commit.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;pathspec&gt;…<br />
+Files to add content from. Fileglobs (e.g. <code>*.c</code>) can be given to add all matching files. Also a leading directory name (e.g. <code>dir</code> to add <code>dir/file1</code> and <code>dir/file2</code>) can be given to update the index to match the current state of the directory as a whole (e.g. specifying <code>dir</code> will record not just a file <code>dir/file1</code> modified in the working tree, a file <code>dir/file2</code> added to the working tree, but also a file <code>dir/file3</code> removed from the working tree. Note that older versions of Git used to ignore removed files; use <code>--no-all</code> option if you want to add modified or new files but ignore removed ones.</p>
+
+<p>-n
+&ndash;dry-run<br />
+Don’t actually add the file(s), just show if they exist and/or will be ignored.</p>
+
+<p>-v
+&ndash;verbose<br />
+Be verbose.</p>
+
+<p>-f
+&ndash;force<br />
+Allow adding otherwise ignored files.</p>
+
+<p>-i
+&ndash;interactive<br />
+Add modified contents in the working tree interactively to the index. Optional path arguments may be supplied to limit operation to a subset of the working tree. See “Interactive mode” for details.</p>
+
+<p>-p
+&ndash;patch<br />
+Interactively choose hunks of patch between the index and the work tree and add them to the index. This gives the user a chance to review the difference before adding modified contents to the index.</p>
+
+<p>This effectively runs <code>add                     --interactive</code>, but bypasses the initial command menu and directly jumps to the <code>patch</code> subcommand. See “Interactive mode” for details.</p>
+
+<p>-e
+&ndash;edit<br />
+Open the diff vs. the index in an editor and let the user edit it. After the editor was closed, adjust the hunk headers and apply the patch to the index.</p>
+
+<p>The intent of this option is to pick and choose lines of the patch to apply, or even to modify the contents of lines to be staged. This can be quicker and more flexible than using the interactive hunk selector. However, it is easy to confuse oneself and create a patch that does not apply to the index. See EDITING PATCHES below.</p>
+
+<p>-u
+&ndash;update<br />
+Update the index just where it already has an entry matching &lt;pathspec&gt;. This removes as well as modifies index entries to match the working tree, but adds no new files.</p>
+
+<p>If no &lt;pathspec&gt; is given when <code>-u</code> option is used, all tracked files in the entire working tree are updated (old versions of Git used to limit the update to the current directory and its subdirectories).</p>
+
+<p>-A
+&ndash;all
+&ndash;no-ignore-removal<br />
+Update the index not only where the working tree has a file matching &lt;pathspec&gt; but also where the index already has an entry. This adds, modifies, and removes index entries to match the working tree.</p>
+
+<p>If no &lt;pathspec&gt; is given when <code>-A</code> option is used, all files in the entire working tree are updated (old versions of Git used to limit the update to the current directory and its subdirectories).</p>
+
+<p>&ndash;no-all
+&ndash;ignore-removal<br />
+Update the index by adding new files that are unknown to the index and files modified in the working tree, but ignore files that have been removed from the working tree. This option is a no-op when no &lt;pathspec&gt; is used.</p>
+
+<p>This option is primarily to help users who are used to older versions of Git, whose &ldquo;git add &lt;pathspec&gt;…&rdquo; was a synonym for &ldquo;git add &ndash;no-all &lt;pathspec&gt;…&rdquo;, i.e. ignored removed files.</p>
+
+<p>-N
+&ndash;intent-to-add<br />
+Record only the fact that the path will be added later. An entry for the path is placed in the index with no content. This is useful for, among other things, showing the unstaged content of such files with <code>git diff</code> and committing them with <code>git commit -a</code>.</p>
+
+<p>&ndash;refresh<br />
+Don’t add the file(s), but only refresh their stat() information in the index.</p>
+
+<p>&ndash;ignore-errors<br />
+If some files could not be added because of errors indexing them, do not abort the operation, but continue adding the others. The command shall still exit with non-zero status. The configuration variable <code>add.ignoreErrors</code> can be set to true to make this the default behaviour.</p>
+
+<p>&ndash;ignore-missing<br />
+This option can only be used together with &ndash;dry-run. By using this option the user can check if any of the given files would be ignored, no matter if they are already present in the work tree or not.</p>
+
+<p>&ndash;<br />
+This option can be used to separate command-line options from the list of files, (useful when filenames might be mistaken for command-line options).</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The optional configuration variable <code>core.excludesFile</code> indicates a path to a file containing patterns of file names to exclude from git-add, similar to $GIT_DIR/info/exclude. Patterns in the exclude file are used in addition to those in info/exclude. See <a href="../gitignore">gitignore(5)</a>.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Adds content from all <code>*.txt</code> files under <code>Documentation</code> directory and its subdirectories:</p>
+
+<pre><code>$ git add Documentation/\*.txt
+</code></pre>
+
+<p>Note that the asterisk <code>*</code> is quoted from the shell in this example; this lets the command include the files from subdirectories of <code>Documentation/</code> directory.</p></li>
+
+<li><p>Considers adding content from all git-*.sh scripts:</p>
+
+<pre><code>$ git add git-*.sh
+</code></pre>
+
+<p>Because this example lets the shell expand the asterisk (i.e. you are listing the files explicitly), it does not consider <code>subdir/git-foo.sh</code>.</p></li>
+</ul>
+
+<h2 id="interactive-mode">Interactive mode</h2>
+
+<p>When the command enters the interactive mode, it shows the output of the <em>status</em> subcommand, and then goes into its interactive command loop.</p>
+
+<p>The command loop shows the list of subcommands available, and gives a prompt &ldquo;What now&gt; &ldquo;. In general, when the prompt ends with a single <em>&gt;</em>, you can pick only one of the choices given and type return, like this:</p>
+
+<pre><code>    *** Commands ***
+      1: status       2: update       3: revert       4: add untracked
+      5: patch        6: diff         7: quit         8: help
+    What now&gt; 1
+</code></pre>
+
+<p>You also could say <code>s</code> or <code>sta</code> or <code>status</code> above as long as the choice is unique.</p>
+
+<p>The main command loop has 6 subcommands (plus help and quit).</p>
+
+<p>status<br />
+This shows the change between HEAD and index (i.e. what will be committed if you say <code>git                   commit</code>), and between index and working tree files (i.e. what you could stage further before <code>git commit</code> using <code>git add</code>) for each path. A sample output looks like this:</p>
+
+<pre><code>              staged     unstaged path
+     1:       binary      nothing foo.png
+     2:     +403/-35        +1/-1 git-add--interactive.perl
+</code></pre>
+
+<p>It shows that foo.png has differences from HEAD (but that is binary so line count cannot be shown) and there is no difference between indexed copy and the working tree version (if the working tree version were also different, <em>binary</em> would have been shown in place of <em>nothing</em>). The other file, git-add&ndash;interactive.perl, has 403 lines added and 35 lines deleted if you commit what is in the index, but working tree file has further modifications (one addition and one deletion).</p>
+
+<p>update<br />
+This shows the status information and issues an &ldquo;Update&gt;&gt;&rdquo; prompt. When the prompt ends with double <em>&gt;&gt;</em>, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. &ldquo;2-5 7,9&rdquo; to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining patches are taken. E.g. &ldquo;7-&rdquo; to choose 7,8,9 from the list. You can say <em>*</em> to choose everything.</p>
+
+<p>What you chose are then highlighted with <em>*</em>, like this:</p>
+
+<pre><code>           staged     unstaged path
+  1:       binary      nothing foo.png
+* 2:     +403/-35        +1/-1 git-add--interactive.perl
+</code></pre>
+
+<p>To remove selection, prefix the input with <code>-</code> like this:</p>
+
+<pre><code>Update&gt;&gt; -2
+</code></pre>
+
+<p>After making the selection, answer with an empty line to stage the contents of working tree files for selected paths in the index.</p>
+
+<p>revert<br />
+This has a very similar UI to <em>update</em>, and the staged information for selected paths are reverted to that of the HEAD version. Reverting new paths makes them untracked.</p>
+
+<p>add untracked<br />
+This has a very similar UI to <em>update</em> and <em>revert</em>, and lets you add untracked paths to the index.</p>
+
+<p>patch<br />
+This lets you choose one path out of a <em>status</em> like selection. After choosing the path, it presents the diff between the index and the working tree file and asks you if you want to stage the change of each hunk. You can select one of the following options and type return:</p>
+
+<pre><code>y - stage this hunk
+n - do not stage this hunk
+q - quit; do not stage this hunk or any of the remaining ones
+a - stage this hunk and all later hunks in the file
+d - do not stage this hunk or any of the later hunks in the file
+g - select a hunk to go to
+/ - search for a hunk matching the given regex
+j - leave this hunk undecided, see next undecided hunk
+J - leave this hunk undecided, see next hunk
+k - leave this hunk undecided, see previous undecided hunk
+K - leave this hunk undecided, see previous hunk
+s - split the current hunk into smaller hunks
+e - manually edit the current hunk
+? - print help
+</code></pre>
+
+<p>After deciding the fate for all hunks, if there is any hunk that was chosen, the index is updated with the selected hunks.</p>
+
+<p>You can omit having to type return here, by setting the configuration variable <code>interactive.singleKey</code> to <code>true</code>.</p>
+
+<p>diff<br />
+This lets you review what will be committed (i.e. between HEAD and index).</p>
+
+<h2 id="editing-patches">EDITING PATCHES</h2>
+
+<p>Invoking <code>git add -e</code> or selecting <code>e</code> from the interactive hunk selector will open a patch in your editor; after the editor exits, the result is applied to the index. You are free to make arbitrary changes to the patch, but note that some changes may have confusing results, or even result in a patch that cannot be applied. If you want to abort the operation entirely (i.e., stage nothing new in the index), simply delete all lines of the patch. The list below describes some common things you may see in a patch, and which editing operations make sense on them.</p>
+
+<p>added content<br />
+Added content is represented by lines beginning with &ldquo;+&rdquo;. You can prevent staging any addition lines by deleting them.</p>
+
+<p>removed content<br />
+Removed content is represented by lines beginning with &ldquo;-&rdquo;. You can prevent staging their removal by converting the &ldquo;-&rdquo; to a &ldquo; &rdquo; (space).</p>
+
+<p>modified content<br />
+Modified content is represented by &ldquo;-&rdquo; lines (removing the old content) followed by &ldquo;+&rdquo; lines (adding the replacement content). You can prevent staging the modification by converting &ldquo;-&rdquo; lines to &ldquo; &ldquo;, and removing &ldquo;+&rdquo; lines. Beware that modifying only half of the pair is likely to introduce confusing changes to the index.</p>
+
+<p>There are also more complex operations that can be performed. But beware that because the patch is applied only to the index and not the working tree, the working tree will appear to &ldquo;undo&rdquo; the change in the index. For example, introducing a new line into the index that is in neither the HEAD nor the working tree will stage the new line for commit, but the line will appear to be reverted in the working tree.</p>
+
+<p>Avoid using these constructs, or do so with extreme caution.</p>
+
+<p>removing untouched content<br />
+Content which does not differ between the index and working tree may be shown on context lines, beginning with a &ldquo; &rdquo; (space). You can stage context lines for removal by converting the space to a &ldquo;-&rdquo;. The resulting working tree file will appear to re-add the content.</p>
+
+<p>modifying existing content<br />
+One can also modify context lines by staging them for removal (by converting &ldquo; &rdquo; to &ldquo;-&rdquo;) and adding a &ldquo;+&rdquo; line with the new content. Similarly, one can modify &ldquo;+&rdquo; lines for existing additions or modifications. In all cases, the new modification will appear reverted in the working tree.</p>
+
+<p>new content<br />
+You may also add new content that does not exist in the patch; simply add new lines, each starting with &ldquo;+&rdquo;. The addition will appear reverted in the working tree.</p>
+
+<p>There are also several operations which should be avoided entirely, as they will make the patch impossible to apply:</p>
+
+<ul>
+<li><p>adding context (&rdquo; &ldquo;) or removal (&rdquo;-&ldquo;) lines</p></li>
+
+<li><p>deleting context or removal lines</p></li>
+
+<li><p>modifying the contents of context or removal lines</p></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-status">git-status(1)</a> <a href="../git-rm">git-rm(1)</a> <a href="../git-reset">git-reset(1)</a> <a href="../git-mv">git-mv(1)</a> <a href="../git-commit">git-commit(1)</a> <a href="../git-update-index">git-update-index(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Git
+				</h3>
+				<a href="../../../documentation" class="a-btn a-block bloc-mob-center-text">Documentation</a>
+				<a href="../../../how-to" class="a-btn a-block bloc-mob-center-text">How To</a>
+				<a href="../../../downloads" class="a-btn a-block bloc-mob-center-text">Downloads</a>
+				<a href="../../../resources" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					Resources <br>
+				</h3>
+				<a href="../../../resources/links" class="a-btn a-block bloc-mob-center-text">Links</a>
+				<a href="../../../resources/logo" class="a-btn a-block bloc-mob-center-text">Logos</a>
+				<a href="../../../resources/videos" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					DVCS<br>
+				</h3>
+				<a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h3 class="mg-md">
+					About<br>
+				</h3>
+				<a href="../../../about/#support" class="a-btn a-block bloc-mob-center-text">Support DVCS</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="../../../" target="_blank"><img src="../../../img/git-logo-white.svg" class="img-responsive center-block mg-sm" height="38" width="38" /></a>
+				<p class="text-center">
+					<a href="https://www.github.com/dvcs">2017 DVCS</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
