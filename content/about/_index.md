@@ -3,25 +3,6 @@ Title: About
 Description: About
 ---
 
-## Support
-
-If you want to support DVCS and this website, there are a few ways to help.
-
-1. Contributing to the open source project is the first and best way to help.  We need help with everything from optimizing biuld times to adding content to fixing gramatical and spelling mistakes.
-2. Creating content to promote the use of Git.  Vidoes, blog posts, merch, or anyting else to promote git.
-3. Donating to DVCS
-  - Donate with a Credit Card or PayPal account via PayPal
-	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="JNN9ARF8YJGUE">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
-    
-  - Donate to the DVCS Bitcon Wallet
-
-        <a class="coinbase-button" data-code="e4258d670793d3616ee8a69e7d403c2c" data-button-style="donation_large" href="https://www.coinbase.com/checkouts/e4258d670793d3616ee8a69e7d403c2c">Donate Bitcoins</a><script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script>
-
 ## Infrastructure
 
 ### Development
