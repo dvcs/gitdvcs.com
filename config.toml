@@ -1,7 +1,7 @@
 title = "Git"
 uglyURLs = false
 enableEmoji = true
-relativeURLs = true
+relativeURLs = false
 canonifyURLs = true
 pygmentsStyle = "igor"
 languageCode = "en-us"
