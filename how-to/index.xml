@@ -65,8 +65,8 @@ git checkout -- .
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-stash/&#34;&gt;git stash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-clean/&#34;&gt;git clean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-stash/&#34;&gt;git stash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-clean/&#34;&gt;git clean&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -111,7 +111,7 @@ git branch -m &amp;lt;newname&amp;gt;            &lt;span style=&#34;color: #FF0
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-branch/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-branch/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -186,8 +186,8 @@ git fetch &amp;lt;remote&amp;gt; -p      &lt;span style=&#34;color: #FF0000; fon
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-branch/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-push/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-branch/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-push/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -284,8 +284,8 @@ git rebase --continue
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-commit/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-rebase/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-commit/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-rebase/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -330,7 +330,7 @@ git reset         &lt;span style=&#34;color: #FF0000; font-style: italic&#34;&gt
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-reset/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-reset/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -393,8 +393,8 @@ git commit -c ORIG_HEAD
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-commit/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-reset/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-commit/&#34;&gt;git branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-reset/&#34;&gt;git push&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -430,9 +430,9 @@ When you &lt;code&gt;git fetch&lt;/code&gt;, Git gathers any commits from the ta
 &lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-pull/&#34;&gt;git pull&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-fetch/&#34;&gt;git fetch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../documentation/latest/git-merge/&#34;&gt;git merge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-pull/&#34;&gt;git pull&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-fetch/&#34;&gt;git fetch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gitdvcs.com/documentation/latest/git-merge/&#34;&gt;git merge&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

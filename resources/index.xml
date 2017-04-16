@@ -50,7 +50,7 @@
     &lt;div class=&#34;container bloc-md&#34;&gt;
         &lt;div class=&#34;row&#34;&gt;
             &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;img src=&#34;../img/logo/design-logo.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/design-logo.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p&gt;
                     The git logomark is comprised of a diamond and the word git. &amp;nbsp;The diamod symbolizes how a distributed version control system works with the orange color being associated with git, a specific; a specific type of version control system. &amp;nbsp;The text associated with the logomark is the name of the version control system.
                 &lt;/p&gt;
@@ -81,7 +81,7 @@
     &lt;div class=&#34;container bloc-md&#34;&gt;
         &lt;div class=&#34;row&#34;&gt;
             &lt;div class=&#34;col-sm-6&#34;&gt;
-                &lt;img src=&#34;../img/logo/design-rationale.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/design-rationale.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-6&#34;&gt;
                 &lt;h3 class=&#34;mg-sm&#34;&gt;
@@ -117,19 +117,19 @@
     &lt;div class=&#34;container bloc-md&#34;&gt;
         &lt;div class=&#34;row&#34;&gt;
             &lt;div class=&#34;col-sm-4&#34;&gt;
-                &lt;img src=&#34;../img/logo/logo-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/logo-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
                 &lt;h3 class=&#34;mg-md text-center&#34;&gt;
                     Logo&lt;br&gt;
                 &lt;/h3&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-4&#34;&gt;
-                &lt;img src=&#34;../img/logo/horizontal-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/horizontal-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
                 &lt;h3 class=&#34;mg-md text-center&#34;&gt;
                     Horizontal Lockup
                 &lt;/h3&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-4&#34;&gt;
-                &lt;img src=&#34;../img/logo/stacked-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/stacked-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
                 &lt;h3 class=&#34;mg-md text-center&#34;&gt;
                     Stacked Lockup
                 &lt;/h3&gt;
@@ -233,25 +233,25 @@
     &lt;div class=&#34;container bloc-md&#34;&gt;
         &lt;div class=&#34;row&#34;&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-full-color-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-full-color-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Horizontal lockup full color logomark used best used on light backgrounds
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-dark-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-dark-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Horizontal lockup lack logomark best used with light backgrounds.
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-white-dark-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-white-dark-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Horizontal lockup white logomark best used with dark backgrounds
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-orange-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-orange-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Horizontal lockup orange logomark best used with white backgrounds
                 &lt;/p&gt;
@@ -259,25 +259,25 @@
         &lt;/div&gt;
         &lt;div class=&#34;row voffset&#34;&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-full-color-light-background-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-full-color-light-background-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Stacked lockup full color logomark used best used on light backgrounds
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-dark-light-background-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-dark-light-background-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Stacked lockup black logomark best used with light backgrounds.
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-white-dark-backgroun-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-white-dark-backgroun-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Stacked lockup white logomark best used with dark backgrounds
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-orange-light-backgroun-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-orange-light-backgroun-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Stacked lockup orange logomark best used with white backgrounds
                 &lt;/p&gt;
@@ -285,19 +285,19 @@
         &lt;/div&gt;
         &lt;div class=&#34;row voffset&#34;&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-logo-orange.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-logo-orange.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Orange logo best used on light backgrounds
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-logo-dark.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-logo-dark.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-md&#34;&gt;
                     Black logo best used on light backgrounds
                 &lt;/p&gt;
             &lt;/div&gt;
             &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;../img/logo/git-logo-white.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
+                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-logo-white.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
                 &lt;p class=&#34;mg-sm&#34;&gt;
                     White logo best used with dark backgrounds
                 &lt;/p&gt;
