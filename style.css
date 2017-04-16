@@ -6,23 +6,18 @@
 body{
 	margin:0;
 	padding:0;
-    background:#2C3041;
+    background:#2D3142;
     overflow-x:hidden;
-    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size:17px;
+	font-family:"Open Sans";
+	font-weight:400;
 }
 a:hover{text-decoration: none; cursor:pointer;}
 
-a { color: #42A5E8!important;}
-.breadcrumb {
-	background-color: #FAFAFA;
-}
 a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safari */
-.badge {
-	background-color: #FAFAFA;
-	color: #42A5E8;
-}
+
 #page-loading-blocs-notifaction{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;}
 
 /* = Blocs
@@ -115,7 +110,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 /* Light theme */
 
 .d-bloc .panel,.l-bloc{
-	color:rgba(45,49,66,.9);
+	color:rgba(0,0,0,.5);
 }
 .d-bloc .panel button:hover,.l-bloc button:hover{
 	color:rgba(0,0,0,.7);
@@ -187,7 +182,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 .nav > li{
 	float:left;
 	margin-top:4px;
-	font-size:20px;
+	font-size:16px;
 }
 .navbar-nav .open .dropdown-menu > li > a{
 	text-align: inherit;
@@ -409,7 +404,9 @@ iframe{
 -------------------------------------------------------------- */
 
 h1,h2,h3,h4,h5,h6,p,label,.btn,a{
-	font-family:"Helvetica";
+	font-family:"Open Sans";
+	font-weight:400;
+	font-size:17px;
 }
 .container{
 	max-width:1170px;
@@ -437,9 +434,9 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	color:#2C3041!important;
 }
 .large-links{
-	font-size:24px;
 	text-align:center;
 	color:#41A5E8!important;
+	font-size:20px;
 }
 .what-is-on-icons{
 	padding:16px 16px 16px 16px;
@@ -460,9 +457,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 }
 .bloc-mob-center-text{
 	color:#41A5E8!important;
-}
-.navigation-links{
-	color:#41A5E8!important;
+	font-size:17px;
 }
 .git-background-night{
 	background-color:#2C3041;
@@ -506,6 +501,65 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 }
 .git-design-font-colors{
 	font-weight:200;
+}
+.device-bloc-text-vc{
+	font-size:50px;
+	margin-top:50%;
+}
+p{
+	font-size:17px;
+	font-family:"Open Sans";
+	font-weight:400;
+}
+a{
+	font-size:17px;
+	color:#41A5E8!important;
+}
+h1{
+	font-family:"Varela Round";
+	font-weight:400;
+	font-size:40px;
+}
+.upper{
+}
+.uppercase{
+	text-transform:uppercase;
+}
+h3{
+	font-family:"Varela Round";
+	font-weight:400;
+	font-size:28px;
+}
+h2{
+	font-family:"Varela Round";
+	font-weight:400;
+	font-size:34px;
+}
+h4{
+	font-family:"Varela Round";
+	font-weight:400;
+	font-size:24px;
+}
+.navbar-nav li a{
+	font-family:"Open Sans";
+	font-weight:400;
+	font-size:17px;
+	color:#41A5E8!important;
+}
+h6{
+	font-family:"Varela Round";
+	font-size:16px;
+}
+h5{
+	font-family:"Varela Round";
+	font-size:18px;
+}
+.badge{
+	background-color:#FAFAFA;
+	color:#41A5E8!important;
+}
+.breadcrumb{
+	background-color:#FAFAFA;
 }
 
 /* = Colour
