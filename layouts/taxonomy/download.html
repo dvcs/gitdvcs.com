@@ -2,50 +2,87 @@
 {{ partial "navigation.html" . }}
 {{ $baseURL := .Site.BaseURL }}
 
-<!-- bloc-1 -->
-<div class="bloc l-bloc bgc-white " id="bloc-1">
+
+
+
+
+
+<!-- content -->
+<div class="bloc bgc-white l-bloc" id="content">
 	<div class="container bloc-lg">
-		<div class="row">
+		<div class="row" id="content-row">
 			<div class="col-sm-10">
 				<h1 id="title">Download {{ .Title }} Clients</h1>
 				{{ partial "breadcrumbs.html" . }}
 				{{ range .Data.Pages.ByTitle }}
 
-				<div class="container bloc-lg">
-					<div class="row">
-						<div class="col-sm-6">
-							<img src="{{ .Params.preview }}" class="img-responsive center-block" />
-						</div>
-						<div class="col-sm-6">
-							<h2>{{ .Params.Title }}</h2>
-							<dl>
-								<dt>Description</dt>
-								<dd>{{ .Params.Description }}</dd>
-								<dt>Site</dt>
-								<dd><a href="{{ .Params.site }}">{{ .Params.Site }}</a></dd>
-								<dt>Platforms</dt>
-								<dd> 
+<!-- download -->
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-6">
+				<img src="{{ .Params.preview }}" class="img-responsive center-block" />
+			</div>
+			<div class="col-sm-6">
+				<ul class="list-unstyled">
+					<li>
+						<h2 class="mg-md">
+							{{ .Params.Title }}
+						</h2>
+					</li>
+					<li>
+						<h4 class="mg-sm">
+							Description
+						</h4>
+						<p class="mg-md">
+							{{ .Params.Description }}
+						</p>
+					</li>
+					<li>
+						<h4 class="mg-sm">
+							Site
+						</h4>
+						<p class="mg-md">
+							<a href="{{ .Params.site }}">{{ .Params.Site }}</a>
+						</p>
+					</li>
+					<li>
+						<h4 class="mg-sm">
+							Platforms
+						</h4>
+						<p class="mg-md">
 									{{ range $index, $platform := .Params.Platforms }}
 										{{ if $index }}• {{ end }}<a href="{{ $platform.URL }}">{{ $platform.Title }}</a>
 									{{ end }}
-								</dd>
-								<dt>Price</dt>
-								<dd>{{ .Params.Price }}</dd>
-								<dt></dt>
-								<dd>{{ .Content }}</dd>
-							</dl>
-						</div>
-					</div>
-				</div>
+						</p>
+					</li>
+					<li>
+						<h4 class="mg-sm">
+							Price
+						</h4>
+						<p class="mg-md">
+							{{ .Params.Price }}
+						</p>
+					</li>
+					<li>
+						<p>
+							{{ .Content }}
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- download END -->
 
 				{{ end }}
 			</div>
 			<div class="col-sm-2">
-				{{ partial "carbon-vertical.html" . }}
+							{{ partial "carbon-vertical.html" . }}
 			</div>
 		</div>
 	</div>
 </div>
-<!-- bloc-1 END -->
+<!-- content END -->
+
 
 {{ partial "footer.html" . }}
