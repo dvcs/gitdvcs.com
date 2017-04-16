@@ -9,8 +9,16 @@
     
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" href="/css/animate.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/ionicons.min.css"><link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    {{ if .IsHome }}
+        <link rel="stylesheet" type="text/css" href="/carbonh.css">
+    {{ else }}
+        <link rel="stylesheet" type="text/css" href="/carbonv.css">
+    {{ end }}
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     
     <script src="/js/jquery-2.1.0.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
