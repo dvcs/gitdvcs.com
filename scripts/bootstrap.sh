@@ -189,7 +189,7 @@ main() {
 
     isLatest=true
     documentaitonZipFilesOutput=""
-    documentaitonZipFiles=`ls -1r *.tar.gz`
+    documentaitonZipFiles=`ls -1r *.tar.gz | sort -rV`
     for documentationZipFile in ${documentaitonZipFiles}; do
       documentaitonZipFilesOutput+="${documentationZipFile} ${isLatest}\n"
       isLatest=false
