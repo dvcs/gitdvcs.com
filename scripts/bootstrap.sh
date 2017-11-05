@@ -153,7 +153,7 @@ extract_documentation() {
       # Insert front mmatter
       create_documentation_file_front_matter "${markdownFile}" "${htmlFilePrefix}" "${commandDescription}" "${2}"
 
-      hxnormalize -x ${htmlFile}  | hxselect -c "div#content" | pandoc -f html -t markdown_github >> $markdownFile
+      hxnormalize -x ${htmlFile}  | hxselect -c "div#content" | pandoc -f html -t gfm >> $markdownFile
 
       fix_relative_hyper_links $markdownFile
       rm $htmlFile
