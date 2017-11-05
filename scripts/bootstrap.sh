@@ -175,6 +175,7 @@ main() {
   cd ..
   
   pushd content
+  mkdir -p "${DOCS_DIRECTORY}"
   pushd "${DOCS_DIRECTORY}"
 
     create_documentation_front_matter
