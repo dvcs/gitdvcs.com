@@ -181,7 +181,7 @@ main() {
     create_documentation_front_matter
 
     # Production
-    rsync -a --info=progress2 --no-motd --include="git-htmldocs-[0-9].[0-9].[0-9].tar.gz" --exclude="*" rsync://rsync.kernel.org/pub/software/scm/git/ .
+    rsync -a --info=progress2 --no-motd --include="git-htmldocs-**.tar.gz" --exclude="*" rsync://rsync.kernel.org/pub/software/scm/git/ .
 
     # Test
     # rsync -a --include="git-htmldocs-1.8.[0-9].tar.gz" --exclude="*" rsync://rsync.kernel.org/pub/software/scm/git/ . &>/dev/null
