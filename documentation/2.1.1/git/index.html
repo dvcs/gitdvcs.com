@@ -116,13 +116,21 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.</p>
+<p>Git is a fast, scalable, distributed revision control system with an
+unusually rich command set that provides both high-level operations and
+full access to internals.</p>
 
-<p>See <a href="../gittutorial">gittutorial(7)</a> to get started, then see <a href="everyday">Everyday Git</a> for a useful minimum set of commands. The <a href="user-manual">Git User’s Manual</a> has a more in-depth introduction.</p>
+<p>See <a href="../gittutorial">gittutorial(7)</a> to get started, then see
+<a href="everyday">Everyday Git</a> for a useful minimum set of commands. The
+<a href="user-manual">Git User’s Manual</a> has a more in-depth introduction.</p>
 
-<p>After you mastered the basic concepts, you can come back to this page to learn what commands Git offers. You can learn more about individual Git commands with &ldquo;git help command&rdquo;. <a href="../gitcli">gitcli(7)</a> manual page gives you an overview of the command-line command syntax.</p>
+<p>After you mastered the basic concepts, you can come back to this page to
+learn what commands Git offers. You can learn more about individual Git
+commands with &ldquo;git help command&rdquo;. <a href="../gitcli">gitcli(7)</a> manual page
+gives you an overview of the command-line command syntax.</p>
 
-<p>Formatted and hyperlinked version of the latest Git documentation can be viewed at <code>http://git-htmldocs.googlecode.com/git/git.html</code>.</p>
+<p>Formatted and hyperlinked version of the latest Git documentation can be
+viewed at <code>http://git-htmldocs.googlecode.com/git/git.html</code>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -130,77 +138,121 @@
 Prints the Git suite version that the <em>git</em> program came from.</p>
 
 <p>&ndash;help<br />
-Prints the synopsis and a list of the most commonly used commands. If the option <em>&ndash;all</em> or <em>-a</em> is given then all available commands are printed. If a Git command is named this option will bring up the manual page for that command.</p>
+Prints the synopsis and a list of the most commonly used commands. If
+the option <em>&ndash;all</em> or <em>-a</em> is given then all available commands are
+printed. If a Git command is named this option will bring up the manual
+page for that command.</p>
 
-<p>Other options are available to control how the manual page is displayed. See <a href="../git-help">git-help(1)</a> for more information, because <code>git --help ...</code> is converted internally into <code>git help                     ...</code>.</p>
+<p>Other options are available to control how the manual page is displayed.
+See <a href="../git-help">git-help(1)</a> for more information, because
+<code>git --help ...</code> is converted internally into
+<code>git help                     ...</code>.</p>
 
 <p>-C &lt;path&gt;<br />
-Run as if git was started in <em>&lt;path&gt;</em> instead of the current working directory. When multiple <code>-C</code> options are given, each subsequent non-absolute <code>-C &lt;path&gt;</code> is interpreted relative to the preceding <code>-C                   &lt;path&gt;</code>.</p>
+Run as if git was started in <em>&lt;path&gt;</em> instead of the current
+working directory. When multiple <code>-C</code> options are given, each subsequent
+non-absolute <code>-C &lt;path&gt;</code> is interpreted relative to the preceding
+<code>-C                   &lt;path&gt;</code>.</p>
 
-<p>This option affects options that expect path name like <code>--git-dir</code> and <code>--work-tree</code> in that their interpretations of the path names would be made relative to the working directory caused by the <code>-C</code> option. For example the following invocations are equivalent:</p>
+<p>This option affects options that expect path name like <code>--git-dir</code> and
+<code>--work-tree</code> in that their interpretations of the path names would be
+made relative to the working directory caused by the <code>-C</code> option. For
+example the following invocations are equivalent:</p>
 
 <pre><code>git --git-dir=a.git --work-tree=b -C c status
 git --git-dir=c/a.git --work-tree=c/b status
 </code></pre>
 
 <p>-c &lt;name&gt;=&lt;value&gt;<br />
-Pass a configuration parameter to the command. The value given will override values from configuration files. The &lt;name&gt; is expected in the same format as listed by <em>git config</em> (subkeys separated by dots).</p>
+Pass a configuration parameter to the command. The value given will
+override values from configuration files. The &lt;name&gt; is expected
+in the same format as listed by <em>git config</em> (subkeys separated by
+dots).</p>
 
-<p>Note that omitting the <code>=</code> in <code>git -c foo.bar ...</code> is allowed and sets <code>foo.bar</code> to the boolean true value (just like <code>[foo]bar</code> would in a config file). Including the equals but with an empty value (like <code>git -c foo.bar= ...</code>) sets <code>foo.bar</code> to the empty string.</p>
+<p>Note that omitting the <code>=</code> in <code>git -c foo.bar ...</code> is allowed and sets
+<code>foo.bar</code> to the boolean true value (just like <code>[foo]bar</code> would in a
+config file). Including the equals but with an empty value (like
+<code>git -c foo.bar= ...</code>) sets <code>foo.bar</code> to the empty string.</p>
 
 <p>&ndash;exec-path[=&lt;path&gt;]<br />
-Path to wherever your core Git programs are installed. This can also be controlled by setting the GIT_EXEC_PATH environment variable. If no path is given, <em>git</em> will print the current setting and then exit.</p>
+Path to wherever your core Git programs are installed. This can also be
+controlled by setting the GIT_EXEC_PATH environment variable. If no
+path is given, <em>git</em> will print the current setting and then exit.</p>
 
 <p>&ndash;html-path<br />
-Print the path, without trailing slash, where Git’s HTML documentation is installed and exit.</p>
+Print the path, without trailing slash, where Git’s HTML documentation
+is installed and exit.</p>
 
 <p>&ndash;man-path<br />
-Print the manpath (see <code>man(1)</code>) for the man pages for this version of Git and exit.</p>
+Print the manpath (see <code>man(1)</code>) for the man pages for this version of
+Git and exit.</p>
 
 <p>&ndash;info-path<br />
-Print the path where the Info files documenting this version of Git are installed and exit.</p>
+Print the path where the Info files documenting this version of Git are
+installed and exit.</p>
 
-<p>-p
+<p>-p<br />
 &ndash;paginate<br />
-Pipe all output into <em>less</em> (or if set, $PAGER) if standard output is a terminal. This overrides the <code>pager.&lt;cmd&gt;</code> configuration options (see the &ldquo;Configuration Mechanism&rdquo; section below).</p>
+Pipe all output into <em>less</em> (or if set, $PAGER) if standard output is a
+terminal. This overrides the <code>pager.&lt;cmd&gt;</code> configuration options (see
+the &ldquo;Configuration Mechanism&rdquo; section below).</p>
 
 <p>&ndash;no-pager<br />
 Do not pipe Git output into a pager.</p>
 
 <p>&ndash;git-dir=&lt;path&gt;<br />
-Set the path to the repository. This can also be controlled by setting the GIT_DIR environment variable. It can be an absolute path or relative path to current working directory.</p>
+Set the path to the repository. This can also be controlled by setting
+the GIT_DIR environment variable. It can be an absolute path or
+relative path to current working directory.</p>
 
 <p>&ndash;work-tree=&lt;path&gt;<br />
-Set the path to the working tree. It can be an absolute path or a path relative to the current working directory. This can also be controlled by setting the GIT_WORK_TREE environment variable and the core.worktree configuration variable (see core.worktree in <a href="../git-config">git-config(1)</a> for a more detailed discussion).</p>
+Set the path to the working tree. It can be an absolute path or a path
+relative to the current working directory. This can also be controlled
+by setting the GIT_WORK_TREE environment variable and the
+core.worktree configuration variable (see core.worktree in
+<a href="../git-config">git-config(1)</a> for a more detailed discussion).</p>
 
 <p>&ndash;namespace=&lt;path&gt;<br />
-Set the Git namespace. See <a href="../gitnamespaces">gitnamespaces(7)</a> for more details. Equivalent to setting the <code>GIT_NAMESPACE</code> environment variable.</p>
+Set the Git namespace. See <a href="../gitnamespaces">gitnamespaces(7)</a> for
+more details. Equivalent to setting the <code>GIT_NAMESPACE</code> environment
+variable.</p>
 
 <p>&ndash;bare<br />
-Treat the repository as a bare repository. If GIT_DIR environment is not set, it is set to the current working directory.</p>
+Treat the repository as a bare repository. If GIT_DIR environment is
+not set, it is set to the current working directory.</p>
 
 <p>&ndash;no-replace-objects<br />
-Do not use replacement refs to replace Git objects. See <a href="../git-replace">git-replace(1)</a> for more information.</p>
+Do not use replacement refs to replace Git objects. See
+<a href="../git-replace">git-replace(1)</a> for more information.</p>
 
 <p>&ndash;literal-pathspecs<br />
-Treat pathspecs literally (i.e. no globbing, no pathspec magic). This is equivalent to setting the <code>GIT_LITERAL_PATHSPECS</code> environment variable to <code>1</code>.</p>
+Treat pathspecs literally (i.e. no globbing, no pathspec magic). This is
+equivalent to setting the <code>GIT_LITERAL_PATHSPECS</code> environment variable
+to <code>1</code>.</p>
 
 <p>&ndash;glob-pathspecs<br />
-Add &ldquo;glob&rdquo; magic to all pathspec. This is equivalent to setting the <code>GIT_GLOB_PATHSPECS</code> environment variable to <code>1</code>. Disabling globbing on individual pathspecs can be done using pathspec magic &ldquo;:(literal)&rdquo;</p>
+Add &ldquo;glob&rdquo; magic to all pathspec. This is equivalent to setting the
+<code>GIT_GLOB_PATHSPECS</code> environment variable to <code>1</code>. Disabling globbing on
+individual pathspecs can be done using pathspec magic &ldquo;:(literal)&rdquo;</p>
 
 <p>&ndash;noglob-pathspecs<br />
-Add &ldquo;literal&rdquo; magic to all pathspec. This is equivalent to setting the <code>GIT_NOGLOB_PATHSPECS</code> environment variable to <code>1</code>. Enabling globbing on individual pathspecs can be done using pathspec magic &ldquo;:(glob)&rdquo;</p>
+Add &ldquo;literal&rdquo; magic to all pathspec. This is equivalent to setting the
+<code>GIT_NOGLOB_PATHSPECS</code> environment variable to <code>1</code>. Enabling globbing on
+individual pathspecs can be done using pathspec magic &ldquo;:(glob)&rdquo;</p>
 
 <p>&ndash;icase-pathspecs<br />
-Add &ldquo;icase&rdquo; magic to all pathspec. This is equivalent to setting the <code>GIT_ICASE_PATHSPECS</code> environment variable to <code>1</code>.</p>
+Add &ldquo;icase&rdquo; magic to all pathspec. This is equivalent to setting the
+<code>GIT_ICASE_PATHSPECS</code> environment variable to <code>1</code>.</p>
 
 <h2 id="git-commands">GIT COMMANDS</h2>
 
-<p>We divide Git into high level (&ldquo;porcelain&rdquo;) commands and low level (&ldquo;plumbing&rdquo;) commands.</p>
+<p>We divide Git into high level (&ldquo;porcelain&rdquo;) commands and low level
+(&ldquo;plumbing&rdquo;) commands.</p>
 
 <h2 id="high-level-commands-porcelain">High-level commands (porcelain)</h2>
 
-<p>We separate the porcelain commands into the main commands and some ancillary user utilities.</p>
+<p>We separate the porcelain commands into the main commands and some
+ancillary user utilities.</p>
 
 <h3 id="main-porcelain-commands">Main porcelain commands</h3>
 
@@ -410,7 +462,8 @@ Git web interface (web frontend to Git repositories).</p>
 
 <h3 id="interacting-with-others">Interacting with Others</h3>
 
-<p>These commands are to interact with foreign SCM and with other people via patch over e-mail.</p>
+<p>These commands are to interact with foreign SCM and with other people
+via patch over e-mail.</p>
 
 <p><a href="../git-archimport">git-archimport(1)</a><br />
 Import an Arch repository into Git.</p>
@@ -444,11 +497,22 @@ Bidirectional operation between a Subversion repository and Git.</p>
 
 <h2 id="low-level-commands-plumbing">Low-level commands (plumbing)</h2>
 
-<p>Although Git includes its own porcelain layer, its low-level commands are sufficient to support development of alternative porcelains. Developers of such porcelains might start by reading about <a href="../git-update-index">git-update-index(1)</a> and <a href="../git-read-tree">git-read-tree(1)</a>.</p>
+<p>Although Git includes its own porcelain layer, its low-level commands
+are sufficient to support development of alternative porcelains.
+Developers of such porcelains might start by reading about
+<a href="../git-update-index">git-update-index(1)</a> and
+<a href="../git-read-tree">git-read-tree(1)</a>.</p>
 
-<p>The interface (input, output, set of options and the semantics) to these low-level commands are meant to be a lot more stable than Porcelain level commands, because these commands are primarily for scripted use. The interface to Porcelain commands on the other hand are subject to change in order to improve the end user experience.</p>
+<p>The interface (input, output, set of options and the semantics) to these
+low-level commands are meant to be a lot more stable than Porcelain
+level commands, because these commands are primarily for scripted use.
+The interface to Porcelain commands on the other hand are subject to
+change in order to improve the end user experience.</p>
 
-<p>The following description divides the low-level commands into commands that manipulate objects (in the repository, index, and working tree), commands that interrogate and compare objects, and commands that move objects and references between repositories.</p>
+<p>The following description divides the low-level commands into commands
+that manipulate objects (in the repository, index, and working tree),
+commands that interrogate and compare objects, and commands that move
+objects and references between repositories.</p>
 
 <h3 id="manipulation-commands">Manipulation commands</h3>
 
@@ -556,7 +620,8 @@ Show a Git logical variable.</p>
 <p><a href="../git-verify-pack">git-verify-pack(1)</a><br />
 Validate packed Git archive files.</p>
 
-<p>In general, the interrogate commands do not touch the files in the working tree.</p>
+<p>In general, the interrogate commands do not touch the files in the
+working tree.</p>
 
 <h3 id="synching-repositories">Synching repositories</h3>
 
@@ -575,7 +640,8 @@ Push objects over Git protocol to another repository.</p>
 <p><a href="../git-update-server-info">git-update-server-info(1)</a><br />
 Update auxiliary info file to help dumb servers.</p>
 
-<p>The following are helper commands used by the above; end users typically do not use them directly.</p>
+<p>The following are helper commands used by the above; end users typically
+do not use them directly.</p>
 
 <p><a href="../git-http-fetch">git-http-fetch(1)</a><br />
 Download from a remote Git repository via HTTP.</p>
@@ -600,7 +666,8 @@ Send objects packed back to git-fetch-pack.</p>
 
 <h3 id="internal-helper-commands">Internal helper commands</h3>
 
-<p>These are internal helper commands used by other commands; end users typically do not use them directly.</p>
+<p>These are internal helper commands used by other commands; end users
+typically do not use them directly.</p>
 
 <p><a href="../git-check-attr">git-check-attr(1)</a><br />
 Display gitattributes information.</p>
@@ -652,7 +719,9 @@ Remove unnecessary whitespace.</p>
 
 <h2 id="configuration-mechanism">Configuration Mechanism</h2>
 
-<p>Git uses a simple text format to store customizations that are per repository and are per user. Such a configuration file may look like this:</p>
+<p>Git uses a simple text format to store customizations that are per
+repository and are per user. Such a configuration file may look like
+this:</p>
 
 <pre><code>#
 # A '#' or ';' character indicates a comment.
@@ -669,7 +738,9 @@ Remove unnecessary whitespace.</p>
         email = &quot;gitster@pobox.com&quot;
 </code></pre>
 
-<p>Various commands read from the configuration file and adjust their operation accordingly. See <a href="../git-config">git-config(1)</a> for a list and more details about the configuration mechanism.</p>
+<p>Various commands read from the configuration file and adjust their
+operation accordingly. See <a href="../git-config">git-config(1)</a> for a list
+and more details about the configuration mechanism.</p>
 
 <h2 id="identifier-terminology">Identifier Terminology</h2>
 
@@ -686,20 +757,29 @@ Indicates a tree object name.</p>
 Indicates a commit object name.</p>
 
 <p>&lt;tree-ish&gt;<br />
-Indicates a tree, commit or tag object name. A command that takes a &lt;tree-ish&gt; argument ultimately wants to operate on a &lt;tree&gt; object but automatically dereferences &lt;commit&gt; and &lt;tag&gt; objects that point at a &lt;tree&gt;.</p>
+Indicates a tree, commit or tag object name. A command that takes a
+&lt;tree-ish&gt; argument ultimately wants to operate on a &lt;tree&gt;
+object but automatically dereferences &lt;commit&gt; and &lt;tag&gt;
+objects that point at a &lt;tree&gt;.</p>
 
 <p>&lt;commit-ish&gt;<br />
-Indicates a commit or tag object name. A command that takes a &lt;commit-ish&gt; argument ultimately wants to operate on a &lt;commit&gt; object but automatically dereferences &lt;tag&gt; objects that point at a &lt;commit&gt;.</p>
+Indicates a commit or tag object name. A command that takes a
+&lt;commit-ish&gt; argument ultimately wants to operate on a
+&lt;commit&gt; object but automatically dereferences &lt;tag&gt; objects
+that point at a &lt;commit&gt;.</p>
 
 <p>&lt;type&gt;<br />
-Indicates that an object type is required. Currently one of: <code>blob</code>, <code>tree</code>, <code>commit</code>, or <code>tag</code>.</p>
+Indicates that an object type is required. Currently one of: <code>blob</code>,
+<code>tree</code>, <code>commit</code>, or <code>tag</code>.</p>
 
 <p>&lt;file&gt;<br />
-Indicates a filename - almost always relative to the root of the tree structure <code>GIT_INDEX_FILE</code> describes.</p>
+Indicates a filename - almost always relative to the root of the tree
+structure <code>GIT_INDEX_FILE</code> describes.</p>
 
 <h2 id="symbolic-identifiers">Symbolic Identifiers</h2>
 
-<p>Any Git command accepting any &lt;object&gt; can also use the following symbolic notation:</p>
+<p>Any Git command accepting any &lt;object&gt; can also use the following
+symbolic notation:</p>
 
 <p>HEAD<br />
 indicates the head of the current branch.</p>
@@ -710,15 +790,18 @@ a valid tag <em>name</em> (i.e. a <code>refs/tags/&lt;tag&gt;</code> reference).
 <p>&lt;head&gt;<br />
 a valid head <em>name</em> (i.e. a <code>refs/heads/&lt;head&gt;</code> reference).</p>
 
-<p>For a more complete list of ways to spell object names, see &ldquo;SPECIFYING REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+<p>For a more complete list of ways to spell object names, see &ldquo;SPECIFYING
+REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>.</p>
 
 <h2 id="file-directory-structure">File/Directory Structure</h2>
 
-<p>Please see the <a href="../gitrepository-layout">gitrepository-layout(5)</a> document.</p>
+<p>Please see the <a href="../gitrepository-layout">gitrepository-layout(5)</a>
+document.</p>
 
 <p>Read <a href="../githooks">githooks(5)</a> for more details about each hook.</p>
 
-<p>Higher level SCMs may provide and manage additional information in the <code>$GIT_DIR</code>.</p>
+<p>Higher level SCMs may provide and manage additional information in the
+<code>$GIT_DIR</code>.</p>
 
 <h2 id="terminology">Terminology</h2>
 
@@ -730,53 +813,91 @@ a valid head <em>name</em> (i.e. a <code>refs/heads/&lt;head&gt;</code> referenc
 
 <h3 id="the-git-repository">The Git Repository</h3>
 
-<p>These environment variables apply to <em>all</em> core Git commands. Nb: it is worth noting that they may be used/overridden by SCMS sitting above Git so take care if using Cogito etc.</p>
+<p>These environment variables apply to <em>all</em> core Git commands. Nb: it is
+worth noting that they may be used/overridden by SCMS sitting above Git
+so take care if using Cogito etc.</p>
 
 <p><em>GIT_INDEX_FILE</em><br />
-This environment allows the specification of an alternate index file. If not specified, the default of <code>$GIT_DIR/index</code> is used.</p>
+This environment allows the specification of an alternate index file. If
+not specified, the default of <code>$GIT_DIR/index</code> is used.</p>
 
 <p><em>GIT_INDEX_VERSION</em><br />
-This environment variable allows the specification of an index version for new repositories. It won’t affect existing index files. By default index file version [23] is used.</p>
+This environment variable allows the specification of an index version
+for new repositories. It won’t affect existing index files. By default
+index file version [23] is used.</p>
 
 <p><em>GIT_OBJECT_DIRECTORY</em><br />
-If the object storage directory is specified via this environment variable then the sha1 directories are created underneath - otherwise the default <code>$GIT_DIR/objects</code> directory is used.</p>
+If the object storage directory is specified via this environment
+variable then the sha1 directories are created underneath - otherwise
+the default <code>$GIT_DIR/objects</code> directory is used.</p>
 
 <p><em>GIT_ALTERNATE_OBJECT_DIRECTORIES</em><br />
-Due to the immutable nature of Git objects, old objects can be archived into shared, read-only directories. This variable specifies a &ldquo;:&rdquo; separated (on Windows &ldquo;;&rdquo; separated) list of Git object directories which can be used to search for Git objects. New objects will not be written to these directories.</p>
+Due to the immutable nature of Git objects, old objects can be archived
+into shared, read-only directories. This variable specifies a &ldquo;:&rdquo;
+separated (on Windows &ldquo;;&rdquo; separated) list of Git object directories
+which can be used to search for Git objects. New objects will not be
+written to these directories.</p>
 
 <p><em>GIT_DIR</em><br />
-If the <em>GIT_DIR</em> environment variable is set then it specifies a path to use instead of the default <code>.git</code> for the base of the repository. The <em>&ndash;git-dir</em> command-line option also sets this value.</p>
+If the <em>GIT_DIR</em> environment variable is set then it specifies a path
+to use instead of the default <code>.git</code> for the base of the repository. The
+<em>&ndash;git-dir</em> command-line option also sets this value.</p>
 
 <p><em>GIT_WORK_TREE</em><br />
-Set the path to the root of the working tree. This can also be controlled by the <em>&ndash;work-tree</em> command-line option and the core.worktree configuration variable.</p>
+Set the path to the root of the working tree. This can also be
+controlled by the <em>&ndash;work-tree</em> command-line option and the
+core.worktree configuration variable.</p>
 
 <p><em>GIT_NAMESPACE</em><br />
-Set the Git namespace; see <a href="../gitnamespaces">gitnamespaces(7)</a> for details. The <em>&ndash;namespace</em> command-line option also sets this value.</p>
+Set the Git namespace; see <a href="../gitnamespaces">gitnamespaces(7)</a> for
+details. The <em>&ndash;namespace</em> command-line option also sets this value.</p>
 
 <p><em>GIT_CEILING_DIRECTORIES</em><br />
-This should be a colon-separated list of absolute paths. If set, it is a list of directories that Git should not chdir up into while looking for a repository directory (useful for excluding slow-loading network directories). It will not exclude the current working directory or a GIT_DIR set on the command line or in the environment. Normally, Git has to read the entries in this list and resolve any symlink that might be present in order to compare them with the current directory. However, if even this access is slow, you can add an empty entry to the list to tell Git that the subsequent entries are not symlinks and needn’t be resolved; e.g., <em>GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink</em>.</p>
+This should be a colon-separated list of absolute paths. If set, it is a
+list of directories that Git should not chdir up into while looking for
+a repository directory (useful for excluding slow-loading network
+directories). It will not exclude the current working directory or a
+GIT_DIR set on the command line or in the environment. Normally, Git
+has to read the entries in this list and resolve any symlink that might
+be present in order to compare them with the current directory. However,
+if even this access is slow, you can add an empty entry to the list to
+tell Git that the subsequent entries are not symlinks and needn’t be
+resolved; e.g.,
+<em>GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink</em>.</p>
 
 <p><em>GIT_DISCOVERY_ACROSS_FILESYSTEM</em><br />
-When run in a directory that does not have &ldquo;.git&rdquo; repository directory, Git tries to find such a directory in the parent directories to find the top of the working tree, but by default it does not cross filesystem boundaries. This environment variable can be set to true to tell Git not to stop at filesystem boundaries. Like <em>GIT_CEILING_DIRECTORIES</em>, this will not affect an explicit repository directory set via <em>GIT_DIR</em> or on the command line.</p>
+When run in a directory that does not have &ldquo;.git&rdquo; repository directory,
+Git tries to find such a directory in the parent directories to find the
+top of the working tree, but by default it does not cross filesystem
+boundaries. This environment variable can be set to true to tell Git not
+to stop at filesystem boundaries. Like <em>GIT_CEILING_DIRECTORIES</em>, this
+will not affect an explicit repository directory set via <em>GIT_DIR</em> or
+on the command line.</p>
 
 <h3 id="git-commits">Git Commits</h3>
 
-<p><em>GIT_AUTHOR_NAME</em>
-<em>GIT_AUTHOR_EMAIL</em>
-<em>GIT_AUTHOR_DATE</em>
-<em>GIT_COMMITTER_NAME</em>
-<em>GIT_COMMITTER_EMAIL</em>
-<em>GIT_COMMITTER_DATE</em>
+<p><em>GIT_AUTHOR_NAME</em><br />
+<em>GIT_AUTHOR_EMAIL</em><br />
+<em>GIT_AUTHOR_DATE</em><br />
+<em>GIT_COMMITTER_NAME</em><br />
+<em>GIT_COMMITTER_EMAIL</em><br />
+<em>GIT_COMMITTER_DATE</em><br />
 <em>EMAIL</em><br />
 see <a href="../git-commit-tree">git-commit-tree(1)</a></p>
 
 <h3 id="git-diffs">Git Diffs</h3>
 
 <p><em>GIT_DIFF_OPTS</em><br />
-Only valid setting is &ldquo;&ndash;unified=??&rdquo; or &ldquo;-u??&rdquo; to set the number of context lines shown when a unified diff is created. This takes precedence over any &ldquo;-U&rdquo; or &ldquo;&ndash;unified&rdquo; option value passed on the Git diff command line.</p>
+Only valid setting is &ldquo;&ndash;unified=??&rdquo; or &ldquo;-u??&rdquo; to set the number of
+context lines shown when a unified diff is created. This takes
+precedence over any &ldquo;-U&rdquo; or &ldquo;&ndash;unified&rdquo; option value passed on the Git
+diff command line.</p>
 
 <p><em>GIT_EXTERNAL_DIFF</em><br />
-When the environment variable <em>GIT_EXTERNAL_DIFF</em> is set, the program named by it is called, instead of the diff invocation described above. For a path that is added, removed, or modified, <em>GIT_EXTERNAL_DIFF</em> is called with 7 parameters:</p>
+When the environment variable <em>GIT_EXTERNAL_DIFF</em> is set, the program
+named by it is called, instead of the diff invocation described above.
+For a path that is added, removed, or modified, <em>GIT_EXTERNAL_DIFF</em> is
+called with 7 parameters:</p>
 
 <pre><code>path old-file old-hex old-mode new-file new-hex new-mode
 </code></pre>
@@ -784,7 +905,8 @@ When the environment variable <em>GIT_EXTERNAL_DIFF</em> is set, the program nam
 <p>where:</p>
 
 <p>&lt;old|new&gt;-file<br />
-are files GIT_EXTERNAL_DIFF can use to read the contents of &lt;old|new&gt;,</p>
+are files GIT_EXTERNAL_DIFF can use to read the contents of
+&lt;old|new&gt;,</p>
 
 <p>&lt;old|new&gt;-hex<br />
 are the 40-hexdigit SHA-1 hashes,</p>
@@ -792,11 +914,18 @@ are the 40-hexdigit SHA-1 hashes,</p>
 <p>&lt;old|new&gt;-mode<br />
 are the octal representation of the file modes.</p>
 
-<p>The file parameters can point at the user’s working file (e.g. <code>new-file</code> in &ldquo;git-diff-files&rdquo;), <code>/dev/null</code> (e.g. <code>old-file</code> when a new file is added), or a temporary file (e.g. <code>old-file</code> in the index). <em>GIT_EXTERNAL_DIFF</em> should not worry about unlinking the temporary file &mdash; it is removed when <em>GIT_EXTERNAL_DIFF</em> exits.</p>
+<p>The file parameters can point at the user’s working file (e.g.
+<code>new-file</code> in &ldquo;git-diff-files&rdquo;), <code>/dev/null</code> (e.g. <code>old-file</code> when a new
+file is added), or a temporary file (e.g. <code>old-file</code> in the index).
+<em>GIT_EXTERNAL_DIFF</em> should not worry about unlinking the temporary
+file &mdash; it is removed when <em>GIT_EXTERNAL_DIFF</em> exits.</p>
 
-<p>For a path that is unmerged, <em>GIT_EXTERNAL_DIFF</em> is called with 1 parameter, &lt;path&gt;.</p>
+<p>For a path that is unmerged, <em>GIT_EXTERNAL_DIFF</em> is called with 1
+parameter, &lt;path&gt;.</p>
 
-<p>For each path <em>GIT_EXTERNAL_DIFF</em> is called, two environment variables, <em>GIT_DIFF_PATH_COUNTER</em> and <em>GIT_DIFF_PATH_TOTAL</em> are set.</p>
+<p>For each path <em>GIT_EXTERNAL_DIFF</em> is called, two environment
+variables, <em>GIT_DIFF_PATH_COUNTER</em> and <em>GIT_DIFF_PATH_TOTAL</em> are
+set.</p>
 
 <p><em>GIT_DIFF_PATH_COUNTER</em><br />
 A 1-based counter incremented by one for every path.</p>
@@ -807,118 +936,238 @@ The total number of paths.</p>
 <h3 id="other">other</h3>
 
 <p><em>GIT_MERGE_VERBOSITY</em><br />
-A number controlling the amount of output shown by the recursive merge strategy. Overrides merge.verbosity. See <a href="../git-merge">git-merge(1)</a></p>
+A number controlling the amount of output shown by the recursive merge
+strategy. Overrides merge.verbosity. See <a href="../git-merge">git-merge(1)</a></p>
 
 <p><em>GIT_PAGER</em><br />
-This environment variable overrides <code>$PAGER</code>. If it is set to an empty string or to the value &ldquo;cat&rdquo;, Git will not launch a pager. See also the <code>core.pager</code> option in <a href="../git-config">git-config(1)</a>.</p>
+This environment variable overrides <code>$PAGER</code>. If it is set to an empty
+string or to the value &ldquo;cat&rdquo;, Git will not launch a pager. See also the
+<code>core.pager</code> option in <a href="../git-config">git-config(1)</a>.</p>
 
 <p><em>GIT_EDITOR</em><br />
-This environment variable overrides <code>$EDITOR</code> and <code>$VISUAL</code>. It is used by several Git commands when, on interactive mode, an editor is to be launched. See also <a href="../git-var">git-var(1)</a> and the <code>core.editor</code> option in <a href="../git-config">git-config(1)</a>.</p>
+This environment variable overrides <code>$EDITOR</code> and <code>$VISUAL</code>. It is used
+by several Git commands when, on interactive mode, an editor is to be
+launched. See also <a href="../git-var">git-var(1)</a> and the <code>core.editor</code>
+option in <a href="../git-config">git-config(1)</a>.</p>
 
 <p><em>GIT_SSH</em><br />
-If this environment variable is set then <em>git fetch</em> and <em>git push</em> will use this command instead of <em>ssh</em> when they need to connect to a remote system. The <em>$GIT_SSH</em> command will be given exactly two or four arguments: the <em>username@host</em> (or just <em>host</em>) from the URL and the shell command to execute on that remote system, optionally preceded by <em>-p</em> (literally) and the <em>port</em> from the URL when it specifies something other than the default SSH port.</p>
+If this environment variable is set then <em>git fetch</em> and <em>git push</em> will
+use this command instead of <em>ssh</em> when they need to connect to a remote
+system. The <em>$GIT_SSH</em> command will be given exactly two or four
+arguments: the <em>username@host</em> (or just <em>host</em>) from the URL and the
+shell command to execute on that remote system, optionally preceded by
+<em>-p</em> (literally) and the <em>port</em> from the URL when it specifies something
+other than the default SSH port.</p>
 
-<p>To pass options to the program that you want to list in GIT_SSH you will need to wrap the program and options into a shell script, then set GIT_SSH to refer to the shell script.</p>
+<p>To pass options to the program that you want to list in GIT_SSH you
+will need to wrap the program and options into a shell script, then set
+GIT_SSH to refer to the shell script.</p>
 
-<p>Usually it is easier to configure any desired options through your personal <code>.ssh/config</code> file. Please consult your ssh documentation for further details.</p>
+<p>Usually it is easier to configure any desired options through your
+personal <code>.ssh/config</code> file. Please consult your ssh documentation for
+further details.</p>
 
 <p><em>GIT_ASKPASS</em><br />
-If this environment variable is set, then Git commands which need to acquire passwords or passphrases (e.g. for HTTP or IMAP authentication) will call this program with a suitable prompt as command-line argument and read the password from its STDOUT. See also the <em>core.askpass</em> option in <a href="../git-config">git-config(1)</a>.</p>
+If this environment variable is set, then Git commands which need to
+acquire passwords or passphrases (e.g. for HTTP or IMAP authentication)
+will call this program with a suitable prompt as command-line argument
+and read the password from its STDOUT. See also the <em>core.askpass</em>
+option in <a href="../git-config">git-config(1)</a>.</p>
 
 <p><em>GIT_CONFIG_NOSYSTEM</em><br />
-Whether to skip reading settings from the system-wide <code>$(prefix)/etc/gitconfig</code> file. This environment variable can be used along with <code>$HOME</code> and <code>$XDG_CONFIG_HOME</code> to create a predictable environment for a picky script, or you can set it temporarily to avoid using a buggy <code>/etc/gitconfig</code> file while waiting for someone with sufficient permissions to fix it.</p>
+Whether to skip reading settings from the system-wide
+<code>$(prefix)/etc/gitconfig</code> file. This environment variable can be used
+along with <code>$HOME</code> and <code>$XDG_CONFIG_HOME</code> to create a predictable
+environment for a picky script, or you can set it temporarily to avoid
+using a buggy <code>/etc/gitconfig</code> file while waiting for someone with
+sufficient permissions to fix it.</p>
 
 <p><em>GIT_FLUSH</em><br />
-If this environment variable is set to &ldquo;1&rdquo;, then commands such as <em>git blame</em> (in incremental mode), <em>git rev-list</em>, <em>git log</em>, <em>git check-attr</em> and <em>git check-ignore</em> will force a flush of the output stream after each record have been flushed. If this variable is set to &ldquo;0&rdquo;, the output of these commands will be done using completely buffered I/O. If this environment variable is not set, Git will choose buffered or record-oriented flushing based on whether stdout appears to be redirected to a file or not.</p>
+If this environment variable is set to &ldquo;1&rdquo;, then commands such as <em>git
+blame</em> (in incremental mode), <em>git rev-list</em>, <em>git log</em>, <em>git
+check-attr</em> and <em>git check-ignore</em> will force a flush of the output
+stream after each record have been flushed. If this variable is set to
+&ldquo;0&rdquo;, the output of these commands will be done using completely buffered
+I/O. If this environment variable is not set, Git will choose buffered
+or record-oriented flushing based on whether stdout appears to be
+redirected to a file or not.</p>
 
 <p><em>GIT_TRACE</em><br />
-Enables general trace messages, e.g. alias expansion, built-in command execution and external command execution.</p>
+Enables general trace messages, e.g. alias expansion, built-in command
+execution and external command execution.</p>
 
-<p>If this variable is set to &ldquo;1&rdquo;, &ldquo;2&rdquo; or &ldquo;true&rdquo; (comparison is case insensitive), trace messages will be printed to stderr.</p>
+<p>If this variable is set to &ldquo;1&rdquo;, &ldquo;2&rdquo; or &ldquo;true&rdquo; (comparison is case
+insensitive), trace messages will be printed to stderr.</p>
 
-<p>If the variable is set to an integer value greater than 2 and lower than 10 (strictly) then Git will interpret this value as an open file descriptor and will try to write the trace messages into this file descriptor.</p>
+<p>If the variable is set to an integer value greater than 2 and lower than
+10 (strictly) then Git will interpret this value as an open file
+descriptor and will try to write the trace messages into this file
+descriptor.</p>
 
-<p>Alternatively, if the variable is set to an absolute path (starting with a <em>/</em> character), Git will interpret this as a file path and will try to write the trace messages into it.</p>
+<p>Alternatively, if the variable is set to an absolute path (starting with
+a <em>/</em> character), Git will interpret this as a file path and will try to
+write the trace messages into it.</p>
 
-<p>Unsetting the variable, or setting it to empty, &ldquo;0&rdquo; or &ldquo;false&rdquo; (case insensitive) disables trace messages.</p>
+<p>Unsetting the variable, or setting it to empty, &ldquo;0&rdquo; or &ldquo;false&rdquo; (case
+insensitive) disables trace messages.</p>
 
 <p><em>GIT_TRACE_PACK_ACCESS</em><br />
-Enables trace messages for all accesses to any packs. For each access, the pack file name and an offset in the pack is recorded. This may be helpful for troubleshooting some pack-related performance problems. See <em>GIT_TRACE</em> for available trace output options.</p>
+Enables trace messages for all accesses to any packs. For each access,
+the pack file name and an offset in the pack is recorded. This may be
+helpful for troubleshooting some pack-related performance problems. See
+<em>GIT_TRACE</em> for available trace output options.</p>
 
 <p><em>GIT_TRACE_PACKET</em><br />
-Enables trace messages for all packets coming in or out of a given program. This can help with debugging object negotiation or other protocol issues. Tracing is turned off at a packet starting with &ldquo;PACK&rdquo;. See <em>GIT_TRACE</em> for available trace output options.</p>
+Enables trace messages for all packets coming in or out of a given
+program. This can help with debugging object negotiation or other
+protocol issues. Tracing is turned off at a packet starting with &ldquo;PACK&rdquo;.
+See <em>GIT_TRACE</em> for available trace output options.</p>
 
 <p><em>GIT_TRACE_PERFORMANCE</em><br />
-Enables performance related trace messages, e.g. total execution time of each Git command. See <em>GIT_TRACE</em> for available trace output options.</p>
+Enables performance related trace messages, e.g. total execution time of
+each Git command. See <em>GIT_TRACE</em> for available trace output options.</p>
 
 <p><em>GIT_TRACE_SETUP</em><br />
-Enables trace messages printing the .git, working tree and current working directory after Git has completed its setup phase. See <em>GIT_TRACE</em> for available trace output options.</p>
+Enables trace messages printing the .git, working tree and current
+working directory after Git has completed its setup phase. See
+<em>GIT_TRACE</em> for available trace output options.</p>
 
 <p><em>GIT_TRACE_SHALLOW</em><br />
-Enables trace messages that can help debugging fetching / cloning of shallow repositories. See <em>GIT_TRACE</em> for available trace output options.</p>
+Enables trace messages that can help debugging fetching / cloning of
+shallow repositories. See <em>GIT_TRACE</em> for available trace output
+options.</p>
 
 <p>GIT_LITERAL_PATHSPECS<br />
-Setting this variable to <code>1</code> will cause Git to treat all pathspecs literally, rather than as glob patterns. For example, running <code>GIT_LITERAL_PATHSPECS=1 git log -- '*.c'</code> will search for commits that touch the path <code>*.c</code>, not any paths that the glob <code>*.c</code> matches. You might want this if you are feeding literal paths to Git (e.g., paths previously given to you by <code>git ls-tree</code>, <code>--raw</code> diff output, etc).</p>
+Setting this variable to <code>1</code> will cause Git to treat all pathspecs
+literally, rather than as glob patterns. For example, running
+<code>GIT_LITERAL_PATHSPECS=1 git log -- '*.c'</code> will search for commits that
+touch the path <code>*.c</code>, not any paths that the glob <code>*.c</code> matches. You
+might want this if you are feeding literal paths to Git (e.g., paths
+previously given to you by <code>git ls-tree</code>, <code>--raw</code> diff output, etc).</p>
 
 <p>GIT_GLOB_PATHSPECS<br />
-Setting this variable to <code>1</code> will cause Git to treat all pathspecs as glob patterns (aka &ldquo;glob&rdquo; magic).</p>
+Setting this variable to <code>1</code> will cause Git to treat all pathspecs as
+glob patterns (aka &ldquo;glob&rdquo; magic).</p>
 
 <p>GIT_NOGLOB_PATHSPECS<br />
-Setting this variable to <code>1</code> will cause Git to treat all pathspecs as literal (aka &ldquo;literal&rdquo; magic).</p>
+Setting this variable to <code>1</code> will cause Git to treat all pathspecs as
+literal (aka &ldquo;literal&rdquo; magic).</p>
 
 <p>GIT_ICASE_PATHSPECS<br />
-Setting this variable to <code>1</code> will cause Git to treat all pathspecs as case-insensitive.</p>
+Setting this variable to <code>1</code> will cause Git to treat all pathspecs as
+case-insensitive.</p>
 
 <p><em>GIT_REFLOG_ACTION</em><br />
-When a ref is updated, reflog entries are created to keep track of the reason why the ref was updated (which is typically the name of the high-level command that updated the ref), in addition to the old and new values of the ref. A scripted Porcelain command can use set_reflog_action helper function in <code>git-sh-setup</code> to set its name to this variable when it is invoked as the top level command by the end user, to be recorded in the body of the reflog.</p>
+When a ref is updated, reflog entries are created to keep track of the
+reason why the ref was updated (which is typically the name of the
+high-level command that updated the ref), in addition to the old and new
+values of the ref. A scripted Porcelain command can use
+set_reflog_action helper function in <code>git-sh-setup</code> to set its name to
+this variable when it is invoked as the top level command by the end
+user, to be recorded in the body of the reflog.</p>
 
 <h2 id="discussion-span-id-discussion-span">Discussion<span id="Discussion"></span></h2>
 
-<p>More detail on the following is available from the <a href="user-manual.html#git-concepts">Git concepts chapter of the user-manual</a> and <a href="../gitcore-tutorial">gitcore-tutorial(7)</a>.</p>
+<p>More detail on the following is available from the <a href="user-manual.html#git-concepts">Git concepts chapter
+of the user-manual</a> and
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a>.</p>
 
-<p>A Git project normally consists of a working directory with a &ldquo;.git&rdquo; subdirectory at the top level. The .git directory contains, among other things, a compressed object database representing the complete history of the project, an &ldquo;index&rdquo; file which links that history to the current contents of the working tree, and named pointers into that history such as tags and branch heads.</p>
+<p>A Git project normally consists of a working directory with a &ldquo;.git&rdquo;
+subdirectory at the top level. The .git directory contains, among other
+things, a compressed object database representing the complete history
+of the project, an &ldquo;index&rdquo; file which links that history to the current
+contents of the working tree, and named pointers into that history such
+as tags and branch heads.</p>
 
-<p>The object database contains objects of three main types: blobs, which hold file data; trees, which point to blobs and other trees to build up directory hierarchies; and commits, which each reference a single tree and some number of parent commits.</p>
+<p>The object database contains objects of three main types: blobs, which
+hold file data; trees, which point to blobs and other trees to build up
+directory hierarchies; and commits, which each reference a single tree
+and some number of parent commits.</p>
 
-<p>The commit, equivalent to what other systems call a &ldquo;changeset&rdquo; or &ldquo;version&rdquo;, represents a step in the project’s history, and each parent represents an immediately preceding step. Commits with more than one parent represent merges of independent lines of development.</p>
+<p>The commit, equivalent to what other systems call a &ldquo;changeset&rdquo; or
+&ldquo;version&rdquo;, represents a step in the project’s history, and each parent
+represents an immediately preceding step. Commits with more than one
+parent represent merges of independent lines of development.</p>
 
-<p>All objects are named by the SHA-1 hash of their contents, normally written as a string of 40 hex digits. Such names are globally unique. The entire history leading up to a commit can be vouched for by signing just that commit. A fourth object type, the tag, is provided for this purpose.</p>
+<p>All objects are named by the SHA-1 hash of their contents, normally
+written as a string of 40 hex digits. Such names are globally unique.
+The entire history leading up to a commit can be vouched for by signing
+just that commit. A fourth object type, the tag, is provided for this
+purpose.</p>
 
-<p>When first created, objects are stored in individual files, but for efficiency may later be compressed together into &ldquo;pack files&rdquo;.</p>
+<p>When first created, objects are stored in individual files, but for
+efficiency may later be compressed together into &ldquo;pack files&rdquo;.</p>
 
-<p>Named pointers called refs mark interesting points in history. A ref may contain the SHA-1 name of an object or the name of another ref. Refs with names beginning <code>ref/head/</code> contain the SHA-1 name of the most recent commit (or &ldquo;head&rdquo;) of a branch under development. SHA-1 names of tags of interest are stored under <code>ref/tags/</code>. A special ref named <code>HEAD</code> contains the name of the currently checked-out branch.</p>
+<p>Named pointers called refs mark interesting points in history. A ref may
+contain the SHA-1 name of an object or the name of another ref. Refs
+with names beginning <code>ref/head/</code> contain the SHA-1 name of the most
+recent commit (or &ldquo;head&rdquo;) of a branch under development. SHA-1 names of
+tags of interest are stored under <code>ref/tags/</code>. A special ref named
+<code>HEAD</code> contains the name of the currently checked-out branch.</p>
 
-<p>The index file is initialized with a list of all paths and, for each path, a blob object and a set of attributes. The blob object represents the contents of the file as of the head of the current branch. The attributes (last modified time, size, etc.) are taken from the corresponding file in the working tree. Subsequent changes to the working tree can be found by comparing these attributes. The index may be updated with new content, and new commits may be created from the content stored in the index.</p>
+<p>The index file is initialized with a list of all paths and, for each
+path, a blob object and a set of attributes. The blob object represents
+the contents of the file as of the head of the current branch. The
+attributes (last modified time, size, etc.) are taken from the
+corresponding file in the working tree. Subsequent changes to the
+working tree can be found by comparing these attributes. The index may
+be updated with new content, and new commits may be created from the
+content stored in the index.</p>
 
-<p>The index is also capable of storing multiple entries (called &ldquo;stages&rdquo;) for a given pathname. These stages are used to hold the various unmerged version of a file when a merge is in progress.</p>
+<p>The index is also capable of storing multiple entries (called &ldquo;stages&rdquo;)
+for a given pathname. These stages are used to hold the various unmerged
+version of a file when a merge is in progress.</p>
 
 <h2 id="further-documentation">FURTHER DOCUMENTATION</h2>
 
-<p>See the references in the &ldquo;description&rdquo; section to get started using Git. The following is probably more detail than necessary for a first-time user.</p>
+<p>See the references in the &ldquo;description&rdquo; section to get started using
+Git. The following is probably more detail than necessary for a
+first-time user.</p>
 
-<p>The <a href="user-manual.html#git-concepts">Git concepts chapter of the user-manual</a> and <a href="../gitcore-tutorial">gitcore-tutorial(7)</a> both provide introductions to the underlying Git architecture.</p>
+<p>The <a href="user-manual.html#git-concepts">Git concepts chapter of the
+user-manual</a> and
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a> both provide introductions
+to the underlying Git architecture.</p>
 
-<p>See <a href="../gitworkflows">gitworkflows(7)</a> for an overview of recommended workflows.</p>
+<p>See <a href="../gitworkflows">gitworkflows(7)</a> for an overview of recommended
+workflows.</p>
 
-<p>See also the <a href="howto-index">howto</a> documents for some useful examples.</p>
+<p>See also the <a href="howto-index">howto</a> documents for some useful
+examples.</p>
 
-<p>The internals are documented in the <a href="technical/api-index">Git API documentation</a>.</p>
+<p>The internals are documented in the <a href="technical/api-index">Git API
+documentation</a>.</p>
 
-<p>Users migrating from CVS may also want to read <a href="../gitcvs-migration">gitcvs-migration(7)</a>.</p>
+<p>Users migrating from CVS may also want to read
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>.</p>
 
 <h2 id="authors">Authors</h2>
 
-<p>Git was started by Linus Torvalds, and is currently maintained by Junio C Hamano. Numerous contributions have come from the Git mailing list &lt;<a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>&gt;. <a href="http://www.openhub.net/p/git/contributors/summary">http://www.openhub.net/p/git/contributors/summary</a> gives you a more complete list of contributors.</p>
+<p>Git was started by Linus Torvalds, and is currently maintained by Junio
+C Hamano. Numerous contributions have come from the Git mailing list
+&lt;<a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>&gt;.
+<a href="http://www.openhub.net/p/git/contributors/summary">http://www.openhub.net/p/git/contributors/summary</a> gives you a more
+complete list of contributors.</p>
 
-<p>If you have a clone of git.git itself, the output of <a href="../git-shortlog">git-shortlog(1)</a> and <a href="../git-blame">git-blame(1)</a> can show you the authors for specific parts of the project.</p>
+<p>If you have a clone of git.git itself, the output of
+<a href="../git-shortlog">git-shortlog(1)</a> and <a href="../git-blame">git-blame(1)</a>
+can show you the authors for specific parts of the project.</p>
 
 <h2 id="reporting-bugs">Reporting Bugs</h2>
 
-<p>Report bugs to the Git mailing list &lt;<a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>&gt; where the development and maintenance is primarily done. You do not have to be subscribed to the list to send a message there.</p>
+<p>Report bugs to the Git mailing list &lt;<a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>&gt; where
+the development and maintenance is primarily done. You do not have to be
+subscribed to the list to send a message there.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../gittutorial">gittutorial(7)</a>, <a href="../gittutorial-2">gittutorial-2(7)</a>, <a href="everyday">Everyday Git</a>, <a href="../gitcvs-migration">gitcvs-migration(7)</a>, <a href="../gitglossary">gitglossary(7)</a>, <a href="../gitcore-tutorial">gitcore-tutorial(7)</a>, <a href="../gitcli">gitcli(7)</a>, <a href="user-manual">The Git User’s Manual</a>, <a href="../gitworkflows">gitworkflows(7)</a></p>
+<p><a href="../gittutorial">gittutorial(7)</a>,
+<a href="../gittutorial-2">gittutorial-2(7)</a>, <a href="everyday">Everyday Git</a>,
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>,
+<a href="../gitglossary">gitglossary(7)</a>,
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a>, <a href="../gitcli">gitcli(7)</a>,
+<a href="user-manual">The Git User’s Manual</a>,
+<a href="../gitworkflows">gitworkflows(7)</a></p>
 
 <h2 id="git">GIT</h2>
 

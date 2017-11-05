@@ -112,7 +112,8 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Clean the input in the manner used by Git for text such as commit messages, notes, tags and branch descriptions.</p>
+<p>Clean the input in the manner used by Git for text such as commit
+messages, notes, tags and branch descriptions.</p>
 
 <p>With no arguments, this will:</p>
 
@@ -126,19 +127,25 @@
 <li><p>add a missing <em>\n</em> to the last line if necessary.</p></li>
 </ul>
 
-<p>In the case where the input consists entirely of whitespace characters, no output will be produced.</p>
+<p>In the case where the input consists entirely of whitespace characters,
+no output will be produced.</p>
 
-<p><strong>NOTE</strong>: This is intended for cleaning metadata, prefer the <code>--whitespace=fix</code> mode of <a href="../git-apply">git-apply(1)</a> for correcting whitespace of patches or files in the repository.</p>
+<p><strong>NOTE</strong>: This is intended for cleaning metadata, prefer the
+<code>--whitespace=fix</code> mode of <a href="../git-apply">git-apply(1)</a> for correcting
+whitespace of patches or files in the repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-s
+<p>-s<br />
 &ndash;strip-comments<br />
-Skip and remove all lines starting with comment character (default <em>#</em>).</p>
+Skip and remove all lines starting with comment character (default
+<em>#</em>).</p>
 
-<p>-c
+<p>-c<br />
 &ndash;comment-lines<br />
-Prepend comment character and blank to each line. Lines will automatically be terminated with a newline. On empty lines, only the comment character will be prepended.</p>
+Prepend comment character and blank to each line. Lines will
+automatically be terminated with a newline. On empty lines, only the
+comment character will be prepended.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 

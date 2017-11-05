@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-describe </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-describe</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.8.5'>2.8.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.8.5/git-describe'>git-describe</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git describe [--all] [--tags] [--contains] [--abbrev=&lt;n&gt;] [&lt;commit-ish&gt;…]
+git describe [--all] [--tags] [--contains] [--abbrev=&lt;n&gt;] --dirty[=&lt;mark&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>The command finds the most recent tag that is reachable from a commit.
+If the tag points to the commit, then only the tag is shown. Otherwise,
+it suffixes the tag name with the number of additional commits on top of
+the tagged object and the abbreviated object name of the most recent
+commit.</p>
+
+<p>By default (without &ndash;all or &ndash;tags) <code>git               describe</code> only
+shows annotated tags. For more information about creating annotated tags
+see the -a and -s options to <a href="../git-tag">git-tag(1)</a>.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;commit-ish&gt;…<br />
+Commit-ish object names to describe. Defaults to HEAD if omitted.</p>
+
+<p>&ndash;dirty[=&lt;mark&gt;]<br />
+Describe the working tree. It means describe HEAD and appends
+&lt;mark&gt; (<code>-dirty</code> by default) if the working tree is dirty.</p>
+
+<p>&ndash;all<br />
+Instead of using only the annotated tags, use any ref found in <code>refs/</code>
+namespace. This option enables matching any known branch,
+remote-tracking branch, or lightweight tag.</p>
+
+<p>&ndash;tags<br />
+Instead of using only the annotated tags, use any tag found in
+<code>refs/tags</code> namespace. This option enables matching a lightweight
+(non-annotated) tag.</p>
+
+<p>&ndash;contains<br />
+Instead of finding the tag that predates the commit, find the tag that
+comes after the commit, and thus contains it. Automatically implies
+&ndash;tags.</p>
+
+<p>&ndash;abbrev=&lt;n&gt;<br />
+Instead of using the default 7 hexadecimal digits as the abbreviated
+object name, use &lt;n&gt; digits, or as many digits as needed to form a
+unique object name. An &lt;n&gt; of 0 will suppress long format, only
+showing the closest tag.</p>
+
+<p>&ndash;candidates=&lt;n&gt;<br />
+Instead of considering only the 10 most recent tags as candidates to
+describe the input commit-ish consider up to &lt;n&gt; candidates.
+Increasing &lt;n&gt; above 10 will take slightly longer but may produce
+a more accurate result. An &lt;n&gt; of 0 will cause only exact matches
+to be output.</p>
+
+<p>&ndash;exact-match<br />
+Only output exact matches (a tag directly references the supplied
+commit). This is a synonym for &ndash;candidates=0.</p>
+
+<p>&ndash;debug<br />
+Verbosely display information about the searching strategy being
+employed to standard error. The tag name will still be printed to
+standard out.</p>
+
+<p>&ndash;long<br />
+Always output the long format (the tag, the number of commits and the
+abbreviated commit name) even when it matches a tag. This is useful when
+you want to see parts of the commit object name in &ldquo;describe&rdquo; output,
+even when the commit in question happens to be a tagged version. Instead
+of just emitting the tag name, it will describe such a commit as
+v1.2-0-gdeadbee (0th commit since tag v1.2 that points at object
+deadbee….).</p>
+
+<p>&ndash;match &lt;pattern&gt;<br />
+Only consider tags matching the given <code>glob(7)</code> pattern, excluding the
+&ldquo;refs/tags/&rdquo; prefix. This can be used to avoid leaking private tags from
+the repository.</p>
+
+<p>&ndash;always<br />
+Show uniquely abbreviated commit object as fallback.</p>
+
+<p>&ndash;first-parent<br />
+Follow only the first parent commit upon seeing a merge commit. This is
+useful when you wish to not match tags on branches merged in the history
+of the target commit.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>With something like git.git current tree, I get:</p>
+
+<pre><code>[torvalds@g5 git]$ git describe parent
+v1.0.4-14-g2414721
+</code></pre>
+
+<p>i.e. the current head of my &ldquo;parent&rdquo; branch is based on v1.0.4, but
+since it has a few commits on top of that, describe has added the number
+of additional commits (&ldquo;14&rdquo;) and an abbreviated object name for the
+commit itself (&ldquo;2414721&rdquo;) at the end.</p>
+
+<p>The number of additional commits is the number of commits which would be
+displayed by &ldquo;git log v1.0.4..parent&rdquo;. The hash suffix is &ldquo;-g&rdquo; + 7-char
+abbreviation for the tip commit of parent (which was
+<code>2414721b194453f058079d897d13c4e377f92dc6</code>). The &ldquo;g&rdquo; prefix stands for
+&ldquo;git&rdquo; and is used to allow describing the version of a software
+depending on the SCM the software is managed with. This is useful in an
+environment where people may use different SCMs.</p>
+
+<p>Doing a <em>git describe</em> on a tag-name will just show the tag name:</p>
+
+<pre><code>[torvalds@g5 git]$ git describe v1.0.4
+v1.0.4
+</code></pre>
+
+<p>With &ndash;all, the command can use branch heads as references, so the
+output shows the reference path as well:</p>
+
+<pre><code>[torvalds@g5 git]$ git describe --all --abbrev=4 v1.0.5^2
+tags/v1.0.0-21-g975b
+
+[torvalds@g5 git]$ git describe --all --abbrev=4 HEAD^
+heads/lt/describe-7-g975b
+</code></pre>
+
+<p>With &ndash;abbrev set to 0, the command can be used to find the closest
+tagname without any suffix:</p>
+
+<pre><code>[torvalds@g5 git]$ git describe --abbrev=0 v1.0.5^2
+tags/v1.0.0
+</code></pre>
+
+<p>Note that the suffix you get if you type these commands today may be
+longer than what Linus saw above when he ran these commands, as your Git
+repository may have new commits whose object names begin with 975b that
+did not exist back then, and &ldquo;-g975b&rdquo; suffix alone may not be sufficient
+to disambiguate these commits.</p>
+
+<h2 id="search-strategy">SEARCH STRATEGY</h2>
+
+<p>For each commit-ish supplied, <em>git describe</em> will first look for a tag
+which tags exactly that commit. Annotated tags will always be preferred
+over lightweight tags, and tags with newer dates will always be
+preferred over tags with older dates. If an exact match is found, its
+name will be output and searching will stop.</p>
+
+<p>If an exact match was not found, <em>git describe</em> will walk back through
+the commit history to locate an ancestor commit which has been tagged.
+The ancestor’s tag will be output along with an abbreviation of the
+input commit-ish’s SHA-1. If <em>&ndash;first-parent</em> was specified then the
+walk will only consider the first parent of each commit.</p>
+
+<p>If multiple tags were found during the walk then the tag which has the
+fewest commits different from the input commit-ish will be selected and
+output. Here fewest commits different is defined as the number of
+commits which would be shown by <code>git log tag..input</code> will be the
+smallest number of commits possible.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

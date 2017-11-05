@@ -112,9 +112,13 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>You should work through <a href="../gittutorial">gittutorial(7)</a> before reading this tutorial.</p>
+<p>You should work through <a href="../gittutorial">gittutorial(7)</a> before
+reading this tutorial.</p>
 
-<p>The goal of this tutorial is to introduce two fundamental pieces of Git’s architecture—the object database and the index file—and to provide the reader with everything necessary to understand the rest of the Git documentation.</p>
+<p>The goal of this tutorial is to introduce two fundamental pieces of
+Git’s architecture—the object database and the index file—and to provide
+the reader with everything necessary to understand the rest of the Git
+documentation.</p>
 
 <h2 id="the-git-object-database">The Git object database</h2>
 
@@ -138,11 +142,26 @@ $ git commit -a -m &quot;add emphasis&quot;
 
 <p>What are the 7 digits of hex that Git responded to the commit with?</p>
 
-<p>We saw in part one of the tutorial that commits have names like this. It turns out that every object in the Git history is stored under a 40-digit hex name. That name is the SHA-1 hash of the object’s contents; among other things, this ensures that Git will never store the same data twice (since identical data is given an identical SHA-1 name), and that the contents of a Git object will never change (since that would change the object’s name as well). The 7 char hex strings here are simply the abbreviation of such 40 character long strings. Abbreviations can be used everywhere where the 40 character strings can be used, so long as they are unambiguous.</p>
+<p>We saw in part one of the tutorial that commits have names like this. It
+turns out that every object in the Git history is stored under a
+40-digit hex name. That name is the SHA-1 hash of the object’s contents;
+among other things, this ensures that Git will never store the same data
+twice (since identical data is given an identical SHA-1 name), and that
+the contents of a Git object will never change (since that would change
+the object’s name as well). The 7 char hex strings here are simply the
+abbreviation of such 40 character long strings. Abbreviations can be
+used everywhere where the 40 character strings can be used, so long as
+they are unambiguous.</p>
 
-<p>It is expected that the content of the commit object you created while following the example above generates a different SHA-1 hash than the one shown above because the commit object records the time when it was created and the name of the person performing the commit.</p>
+<p>It is expected that the content of the commit object you created while
+following the example above generates a different SHA-1 hash than the
+one shown above because the commit object records the time when it was
+created and the name of the person performing the commit.</p>
 
-<p>We can ask Git about this particular object with the <code>cat-file</code> command. Don’t copy the 40 hex digits from this example but use those from your own version. Note that you can shorten it to only a few characters to save yourself typing all 40 hex digits:</p>
+<p>We can ask Git about this particular object with the <code>cat-file</code> command.
+Don’t copy the 40 hex digits from this example but use those from your
+own version. Note that you can shorten it to only a few characters to
+save yourself typing all 40 hex digits:</p>
 
 <pre><code>$ git cat-file -t 54196cc2
 commit
@@ -154,13 +173,18 @@ committer J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143414668 -0500
 initial commit
 </code></pre>
 
-<p>A tree can refer to one or more &ldquo;blob&rdquo; objects, each corresponding to a file. In addition, a tree can also refer to other tree objects, thus creating a directory hierarchy. You can examine the contents of any tree using ls-tree (remember that a long enough initial portion of the SHA-1 will also work):</p>
+<p>A tree can refer to one or more &ldquo;blob&rdquo; objects, each corresponding to a
+file. In addition, a tree can also refer to other tree objects, thus
+creating a directory hierarchy. You can examine the contents of any tree
+using ls-tree (remember that a long enough initial portion of the SHA-1
+will also work):</p>
 
 <pre><code>$ git ls-tree 92b8b694
 100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    file.txt
 </code></pre>
 
-<p>Thus we see that this tree has one file in it. The SHA-1 hash is a reference to that file’s data:</p>
+<p>Thus we see that this tree has one file in it. The SHA-1 hash is a
+reference to that file’s data:</p>
 
 <pre><code>$ git cat-file -t 3b18e512
 blob
@@ -172,9 +196,12 @@ blob
 hello world
 </code></pre>
 
-<p>Note that this is the old file data; so the object that Git named in its response to the initial tree was a tree with a snapshot of the directory state that was recorded by the first commit.</p>
+<p>Note that this is the old file data; so the object that Git named in its
+response to the initial tree was a tree with a snapshot of the directory
+state that was recorded by the first commit.</p>
 
-<p>All of these objects are stored under their SHA-1 names inside the Git directory:</p>
+<p>All of these objects are stored under their SHA-1 names inside the Git
+directory:</p>
 
 <pre><code>$ find .git/objects/
 .git/objects/
@@ -194,15 +221,21 @@ hello world
 .git/objects/c4/d59f390b9cfd4318117afde11d601c1085f241
 </code></pre>
 
-<p>and the contents of these files is just the compressed data plus a header identifying their length and their type. The type is either a blob, a tree, a commit, or a tag.</p>
+<p>and the contents of these files is just the compressed data plus a
+header identifying their length and their type. The type is either a
+blob, a tree, a commit, or a tag.</p>
 
-<p>The simplest commit to find is the HEAD commit, which we can find from .git/HEAD:</p>
+<p>The simplest commit to find is the HEAD commit, which we can find from
+.git/HEAD:</p>
 
 <pre><code>$ cat .git/HEAD
 ref: refs/heads/master
 </code></pre>
 
-<p>As you can see, this tells us which branch we’re currently on, and it tells us this by naming a file under the .git directory, which itself contains a SHA-1 name referring to a commit object, which we can examine with cat-file:</p>
+<p>As you can see, this tells us which branch we’re currently on, and it
+tells us this by naming a file under the .git directory, which itself
+contains a SHA-1 name referring to a commit object, which we can examine
+with cat-file:</p>
 
 <pre><code>$ cat .git/refs/heads/master
 c4d59f390b9cfd4318117afde11d601c1085f241
@@ -235,42 +268,65 @@ committer J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143414668 -0500
 initial commit
 </code></pre>
 
-<p>The tree object is the tree we examined first, and this commit is unusual in that it lacks any parent.</p>
+<p>The tree object is the tree we examined first, and this commit is
+unusual in that it lacks any parent.</p>
 
-<p>Most commits have only one parent, but it is also common for a commit to have multiple parents. In that case the commit represents a merge, with the parent references pointing to the heads of the merged branches.</p>
+<p>Most commits have only one parent, but it is also common for a commit to
+have multiple parents. In that case the commit represents a merge, with
+the parent references pointing to the heads of the merged branches.</p>
 
-<p>Besides blobs, trees, and commits, the only remaining type of object is a &ldquo;tag&rdquo;, which we won’t discuss here; refer to <a href="../git-tag">git-tag(1)</a> for details.</p>
+<p>Besides blobs, trees, and commits, the only remaining type of object is
+a &ldquo;tag&rdquo;, which we won’t discuss here; refer to
+<a href="../git-tag">git-tag(1)</a> for details.</p>
 
-<p>So now we know how Git uses the object database to represent a project’s history:</p>
+<p>So now we know how Git uses the object database to represent a project’s
+history:</p>
 
 <ul>
-<li><p>&ldquo;commit&rdquo; objects refer to &ldquo;tree&rdquo; objects representing the snapshot of a directory tree at a particular point in the history, and refer to &ldquo;parent&rdquo; commits to show how they’re connected into the project history.</p></li>
+<li><p>&ldquo;commit&rdquo; objects refer to &ldquo;tree&rdquo; objects representing the snapshot
+of a directory tree at a particular point in the history, and refer
+to &ldquo;parent&rdquo; commits to show how they’re connected into the project
+history.</p></li>
 
-<li><p>&ldquo;tree&rdquo; objects represent the state of a single directory, associating directory names to &ldquo;blob&rdquo; objects containing file data and &ldquo;tree&rdquo; objects containing subdirectory information.</p></li>
+<li><p>&ldquo;tree&rdquo; objects represent the state of a single directory,
+associating directory names to &ldquo;blob&rdquo; objects containing file data
+and &ldquo;tree&rdquo; objects containing subdirectory information.</p></li>
 
 <li><p>&ldquo;blob&rdquo; objects contain file data without any other structure.</p></li>
 
-<li><p>References to commit objects at the head of each branch are stored in files under .git/refs/heads/.</p></li>
+<li><p>References to commit objects at the head of each branch are stored
+in files under .git/refs/heads/.</p></li>
 
 <li><p>The name of the current branch is stored in .git/HEAD.</p></li>
 </ul>
 
-<p>Note, by the way, that lots of commands take a tree as an argument. But as we can see above, a tree can be referred to in many different ways—by the SHA-1 name for that tree, by the name of a commit that refers to the tree, by the name of a branch whose head refers to that tree, etc.&ndash;and most such commands can accept any of these names.</p>
+<p>Note, by the way, that lots of commands take a tree as an argument. But
+as we can see above, a tree can be referred to in many different ways—by
+the SHA-1 name for that tree, by the name of a commit that refers to the
+tree, by the name of a branch whose head refers to that tree, etc.&ndash;and
+most such commands can accept any of these names.</p>
 
-<p>In command synopses, the word &ldquo;tree-ish&rdquo; is sometimes used to designate such an argument.</p>
+<p>In command synopses, the word &ldquo;tree-ish&rdquo; is sometimes used to designate
+such an argument.</p>
 
 <h2 id="the-index-file">The index file</h2>
 
-<p>The primary tool we’ve been using to create commits is <code>git-commit -a</code>, which creates a commit including every change you’ve made to your working tree. But what if you want to commit changes only to certain files? Or only certain changes to certain files?</p>
+<p>The primary tool we’ve been using to create commits is <code>git-commit -a</code>,
+which creates a commit including every change you’ve made to your
+working tree. But what if you want to commit changes only to certain
+files? Or only certain changes to certain files?</p>
 
-<p>If we look at the way commits are created under the cover, we’ll see that there are more flexible ways creating commits.</p>
+<p>If we look at the way commits are created under the cover, we’ll see
+that there are more flexible ways creating commits.</p>
 
 <p>Continuing with our test-project, let’s modify file.txt again:</p>
 
 <pre><code>$ echo &quot;hello world, again&quot; &gt;&gt;file.txt
 </code></pre>
 
-<p>but this time instead of immediately making the commit, let’s take an intermediate step, and ask for diffs along the way to keep track of what’s happening:</p>
+<p>but this time instead of immediately making the commit, let’s take an
+intermediate step, and ask for diffs along the way to keep track of
+what’s happening:</p>
 
 <pre><code>$ git diff
 --- a/file.txt
@@ -282,7 +338,8 @@ $ git add file.txt
 $ git diff
 </code></pre>
 
-<p>The last diff is empty, but no new commits have been made, and the head still doesn’t contain the new line:</p>
+<p>The last diff is empty, but no new commits have been made, and the head
+still doesn’t contain the new line:</p>
 
 <pre><code>$ git diff HEAD
 diff --git a/file.txt b/file.txt
@@ -294,7 +351,10 @@ index a042389..513feba 100644
 +hello world, again
 </code></pre>
 
-<p>So <em>git diff</em> is comparing against something other than the head. The thing that it’s comparing against is actually the index file, which is stored in .git/index in a binary format, but whose contents we can examine with ls-files:</p>
+<p>So <em>git diff</em> is comparing against something other than the head. The
+thing that it’s comparing against is actually the index file, which is
+stored in .git/index in a binary format, but whose contents we can
+examine with ls-files:</p>
 
 <pre><code>$ git ls-files --stage
 100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
@@ -305,7 +365,9 @@ hello world!
 hello world, again
 </code></pre>
 
-<p>So what our <em>git add</em> did was store a new blob and then put a reference to it in the index file. If we modify the file again, we’ll see that the new modifications are reflected in the <em>git diff</em> output:</p>
+<p>So what our <em>git add</em> did was store a new blob and then put a reference
+to it in the index file. If we modify the file again, we’ll see that the
+new modifications are reflected in the <em>git diff</em> output:</p>
 
 <pre><code>$ echo 'again?' &gt;&gt;file.txt
 $ git diff
@@ -318,7 +380,9 @@ index 513feba..ba3da7b 100644
 +again?
 </code></pre>
 
-<p>With the right arguments, <em>git diff</em> can also show us the difference between the working directory and the last commit, or between the index and the last commit:</p>
+<p>With the right arguments, <em>git diff</em> can also show us the difference
+between the working directory and the last commit, or between the index
+and the last commit:</p>
 
 <pre><code>$ git diff HEAD
 diff --git a/file.txt b/file.txt
@@ -339,7 +403,10 @@ index a042389..513feba 100644
 +hello world, again
 </code></pre>
 
-<p>At any time, we can create a new commit using <em>git commit</em> (without the &ldquo;-a&rdquo; option), and verify that the state committed only includes the changes stored in the index file, not the additional change that is still only in our working tree:</p>
+<p>At any time, we can create a new commit using <em>git commit</em> (without the
+&ldquo;-a&rdquo; option), and verify that the state committed only includes the
+changes stored in the index file, not the additional change that is
+still only in our working tree:</p>
 
 <pre><code>$ git commit -m &quot;repeat&quot;
 $ git diff HEAD
@@ -353,9 +420,12 @@ index 513feba..ba3da7b 100644
 +again?
 </code></pre>
 
-<p>So by default <em>git commit</em> uses the index to create the commit, not the working tree; the &ldquo;-a&rdquo; option to commit tells it to first update the index with all changes in the working tree.</p>
+<p>So by default <em>git commit</em> uses the index to create the commit, not the
+working tree; the &ldquo;-a&rdquo; option to commit tells it to first update the
+index with all changes in the working tree.</p>
 
-<p>Finally, it’s worth looking at the effect of <em>git add</em> on the index file:</p>
+<p>Finally, it’s worth looking at the effect of <em>git add</em> on the index
+file:</p>
 
 <pre><code>$ echo &quot;goodbye, world&quot; &gt;closing.txt
 $ git add closing.txt
@@ -368,13 +438,15 @@ $ git add closing.txt
 100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
 </code></pre>
 
-<p>And, as you can see with cat-file, this new entry refers to the current contents of the file:</p>
+<p>And, as you can see with cat-file, this new entry refers to the current
+contents of the file:</p>
 
 <pre><code>$ git cat-file blob 8b9743b2
 goodbye, world
 </code></pre>
 
-<p>The &ldquo;status&rdquo; command is a useful way to get a quick summary of the situation:</p>
+<p>The &ldquo;status&rdquo; command is a useful way to get a quick summary of the
+situation:</p>
 
 <pre><code>$ git status
 # On branch master
@@ -390,27 +462,50 @@ goodbye, world
 #
 </code></pre>
 
-<p>Since the current state of closing.txt is cached in the index file, it is listed as &ldquo;Changes to be committed&rdquo;. Since file.txt has changes in the working directory that aren’t reflected in the index, it is marked &ldquo;changed but not updated&rdquo;. At this point, running &ldquo;git commit&rdquo; would create a commit that added closing.txt (with its new contents), but that didn’t modify file.txt.</p>
+<p>Since the current state of closing.txt is cached in the index file, it
+is listed as &ldquo;Changes to be committed&rdquo;. Since file.txt has changes in
+the working directory that aren’t reflected in the index, it is marked
+&ldquo;changed but not updated&rdquo;. At this point, running &ldquo;git commit&rdquo; would
+create a commit that added closing.txt (with its new contents), but that
+didn’t modify file.txt.</p>
 
-<p>Also, note that a bare <code>git diff</code> shows the changes to file.txt, but not the addition of closing.txt, because the version of closing.txt in the index file is identical to the one in the working directory.</p>
+<p>Also, note that a bare <code>git diff</code> shows the changes to file.txt, but not
+the addition of closing.txt, because the version of closing.txt in the
+index file is identical to the one in the working directory.</p>
 
-<p>In addition to being the staging area for new commits, the index file is also populated from the object database when checking out a branch, and is used to hold the trees involved in a merge operation. See <a href="../gitcore-tutorial">gitcore-tutorial(7)</a> and the relevant man pages for details.</p>
+<p>In addition to being the staging area for new commits, the index file is
+also populated from the object database when checking out a branch, and
+is used to hold the trees involved in a merge operation. See
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a> and the relevant man pages
+for details.</p>
 
 <h2 id="what-next">What next?</h2>
 
-<p>At this point you should know everything necessary to read the man pages for any of the git commands; one good place to start would be with the commands mentioned in <a href="everyday">Everyday Git</a>. You should be able to find any unknown jargon in <a href="../gitglossary">gitglossary(7)</a>.</p>
+<p>At this point you should know everything necessary to read the man pages
+for any of the git commands; one good place to start would be with the
+commands mentioned in <a href="everyday">Everyday Git</a>. You should be able
+to find any unknown jargon in <a href="../gitglossary">gitglossary(7)</a>.</p>
 
-<p>The <a href="user-manual">Git User’s Manual</a> provides a more comprehensive introduction to Git.</p>
+<p>The <a href="user-manual">Git User’s Manual</a> provides a more comprehensive
+introduction to Git.</p>
 
-<p><a href="../gitcvs-migration">gitcvs-migration(7)</a> explains how to import a CVS repository into Git, and shows how to use Git in a CVS-like way.</p>
+<p><a href="../gitcvs-migration">gitcvs-migration(7)</a> explains how to import a
+CVS repository into Git, and shows how to use Git in a CVS-like way.</p>
 
-<p>For some interesting examples of Git use, see the <a href="howto-index">howtos</a>.</p>
+<p>For some interesting examples of Git use, see the
+<a href="howto-index">howtos</a>.</p>
 
-<p>For Git developers, <a href="../gitcore-tutorial">gitcore-tutorial(7)</a> goes into detail on the lower-level Git mechanisms involved in, for example, creating a new commit.</p>
+<p>For Git developers, <a href="../gitcore-tutorial">gitcore-tutorial(7)</a> goes
+into detail on the lower-level Git mechanisms involved in, for example,
+creating a new commit.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../gittutorial">gittutorial(7)</a>, <a href="../gitcvs-migration">gitcvs-migration(7)</a>, <a href="../gitcore-tutorial">gitcore-tutorial(7)</a>, <a href="../gitglossary">gitglossary(7)</a>, <a href="../git-help">git-help(1)</a>, <a href="everyday">Everyday Git</a>, <a href="user-manual">The Git User’s Manual</a></p>
+<p><a href="../gittutorial">gittutorial(7)</a>,
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>,
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a>,
+<a href="../gitglossary">gitglossary(7)</a>, <a href="../git-help">git-help(1)</a>,
+<a href="everyday">Everyday Git</a>, <a href="user-manual">The Git User’s Manual</a></p>
 
 <h2 id="git">GIT</h2>
 

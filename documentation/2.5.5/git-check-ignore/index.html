@@ -113,47 +113,86 @@ git check-ignore [options] --stdin &lt; &lt;list-of-paths&gt;
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>For each pathname given via the command-line or from a file via <code>--stdin</code>, show the pattern from .gitignore (or other input files to the exclude mechanism) that decides if the pathname is excluded or included. Later patterns within a file take precedence over earlier ones.</p>
+<p>For each pathname given via the command-line or from a file via
+<code>--stdin</code>, show the pattern from .gitignore (or other input files to the
+exclude mechanism) that decides if the pathname is excluded or included.
+Later patterns within a file take precedence over earlier ones.</p>
 
-<p>By default, tracked files are not shown at all since they are not subject to exclude rules; but see ‘&ndash;no-index’.</p>
+<p>By default, tracked files are not shown at all since they are not
+subject to exclude rules; but see ‘&ndash;no-index’.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>-q, &ndash;quiet<br />
-Don’t output anything, just set exit status. This is only valid with a single pathname.</p>
+Don’t output anything, just set exit status. This is only valid with a
+single pathname.</p>
 
 <p>-v, &ndash;verbose<br />
-Also output details about the matching pattern (if any) for each given pathname.</p>
+Also output details about the matching pattern (if any) for each given
+pathname.</p>
 
 <p>&ndash;stdin<br />
 Read file names from stdin instead of from the command-line.</p>
 
 <p>-z<br />
-The output format is modified to be machine-parseable (see below). If <code>--stdin</code> is also given, input paths are separated with a NUL character instead of a linefeed character.</p>
+The output format is modified to be machine-parseable (see below). If
+<code>--stdin</code> is also given, input paths are separated with a NUL character
+instead of a linefeed character.</p>
 
 <p>-n, &ndash;non-matching<br />
-Show given paths which don’t match any pattern. This only makes sense when <code>--verbose</code> is enabled, otherwise it would not be possible to distinguish between paths which match a pattern and those which don’t.</p>
+Show given paths which don’t match any pattern. This only makes sense
+when <code>--verbose</code> is enabled, otherwise it would not be possible to
+distinguish between paths which match a pattern and those which don’t.</p>
 
 <p>&ndash;no-index<br />
-Don’t look in the index when undertaking the checks. This can be used to debug why a path became tracked by e.g. <code>git add .</code> and was not ignored by the rules as expected by the user or when developing patterns including negation to match a path previously added with <code>git add -f</code>.</p>
+Don’t look in the index when undertaking the checks. This can be used to
+debug why a path became tracked by e.g. <code>git add .</code> and was not ignored
+by the rules as expected by the user or when developing patterns
+including negation to match a path previously added with <code>git add -f</code>.</p>
 
 <h2 id="output">OUTPUT</h2>
 
-<p>By default, any of the given pathnames which match an ignore pattern will be output, one per line. If no pattern matches a given path, nothing will be output for that path; this means that path will not be ignored.</p>
+<p>By default, any of the given pathnames which match an ignore pattern
+will be output, one per line. If no pattern matches a given path,
+nothing will be output for that path; this means that path will not be
+ignored.</p>
 
-<p>If <code>--verbose</code> is specified, the output is a series of lines of the form:</p>
+<p>If <code>--verbose</code> is specified, the output is a series of lines of the
+form:</p>
 
-<p>&lt;source&gt; &lt;COLON&gt; &lt;linenum&gt; &lt;COLON&gt; &lt;pattern&gt; &lt;HT&gt; &lt;pathname&gt;</p>
+<p>&lt;source&gt; &lt;COLON&gt; &lt;linenum&gt; &lt;COLON&gt;
+&lt;pattern&gt; &lt;HT&gt; &lt;pathname&gt;</p>
 
-<p>&lt;pathname&gt; is the path of a file being queried, &lt;pattern&gt; is the matching pattern, &lt;source&gt; is the pattern’s source file, and &lt;linenum&gt; is the line number of the pattern within that source. If the pattern contained a <code>!</code> prefix or <code>/</code> suffix, it will be preserved in the output. &lt;source&gt; will be an absolute path when referring to the file configured by <code>core.excludesFile</code>, or relative to the repository root when referring to <code>.git/info/exclude</code> or a per-directory exclude file.</p>
+<p>&lt;pathname&gt; is the path of a file being queried, &lt;pattern&gt; is
+the matching pattern, &lt;source&gt; is the pattern’s source file, and
+&lt;linenum&gt; is the line number of the pattern within that source. If
+the pattern contained a <code>!</code> prefix or <code>/</code> suffix, it will be preserved
+in the output. &lt;source&gt; will be an absolute path when referring to
+the file configured by <code>core.excludesFile</code>, or relative to the
+repository root when referring to <code>.git/info/exclude</code> or a per-directory
+exclude file.</p>
 
-<p>If <code>-z</code> is specified, the pathnames in the output are delimited by the null character; if <code>--verbose</code> is also specified then null characters are also used instead of colons and hard tabs:</p>
+<p>If <code>-z</code> is specified, the pathnames in the output are delimited by the
+null character; if <code>--verbose</code> is also specified then null characters
+are also used instead of colons and hard tabs:</p>
 
-<p>&lt;source&gt; &lt;NULL&gt; &lt;linenum&gt; &lt;NULL&gt; &lt;pattern&gt; &lt;NULL&gt; &lt;pathname&gt; &lt;NULL&gt;</p>
+<p>&lt;source&gt; &lt;NULL&gt; &lt;linenum&gt; &lt;NULL&gt; &lt;pattern&gt;
+&lt;NULL&gt; &lt;pathname&gt; &lt;NULL&gt;</p>
 
-<p>If <code>-n</code> or <code>--non-matching</code> are specified, non-matching pathnames will also be output, in which case all fields in each output record except for &lt;pathname&gt; will be empty. This can be useful when running non-interactively, so that files can be incrementally streamed to STDIN of a long-running check-ignore process, and for each of these files, STDOUT will indicate whether that file matched a pattern or not. (Without this option, it would be impossible to tell whether the absence of output for a given file meant that it didn’t match any pattern, or that the output hadn’t been generated yet.)</p>
+<p>If <code>-n</code> or <code>--non-matching</code> are specified, non-matching pathnames will
+also be output, in which case all fields in each output record except
+for &lt;pathname&gt; will be empty. This can be useful when running
+non-interactively, so that files can be incrementally streamed to STDIN
+of a long-running check-ignore process, and for each of these files,
+STDOUT will indicate whether that file matched a pattern or not.
+(Without this option, it would be impossible to tell whether the absence
+of output for a given file meant that it didn’t match any pattern, or
+that the output hadn’t been generated yet.)</p>
 
-<p>Buffering happens as documented under the <code>GIT_FLUSH</code> option in <a href="../git">git(1)</a>. The caller is responsible for avoiding deadlocks caused by overfilling an input buffer or reading from an empty output buffer.</p>
+<p>Buffering happens as documented under the <code>GIT_FLUSH</code> option in
+<a href="../git">git(1)</a>. The caller is responsible for avoiding deadlocks
+caused by overfilling an input buffer or reading from an empty output
+buffer.</p>
 
 <h2 id="exit-status">EXIT STATUS</h2>
 
@@ -168,7 +207,8 @@ A fatal error was encountered.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../gitignore">gitignore(5)</a> <a href="../gitconfig">gitconfig(5)</a> <a href="../git-ls-files">git-ls-files(1)</a></p>
+<p><a href="../gitignore">gitignore(5)</a> <a href="../gitconfig">gitconfig(5)</a>
+<a href="../git-ls-files">git-ls-files(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

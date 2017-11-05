@@ -117,78 +117,121 @@ git show-branch (-g|--reflog)[=&lt;n&gt;[,&lt;base&gt;]] [--list] [&lt;ref&gt;]
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Shows the commit ancestry graph starting from the commits named with &lt;rev&gt;s or &lt;globs&gt;s (or all refs under refs/heads and/or refs/tags) semi-visually.</p>
+<p>Shows the commit ancestry graph starting from the commits named with
+&lt;rev&gt;s or &lt;globs&gt;s (or all refs under refs/heads and/or
+refs/tags) semi-visually.</p>
 
 <p>It cannot show more than 29 branches and commits at a time.</p>
 
-<p>It uses <code>showbranch.default</code> multi-valued configuration items if no &lt;rev&gt; or &lt;glob&gt; is given on the command line.</p>
+<p>It uses <code>showbranch.default</code> multi-valued configuration items if no
+&lt;rev&gt; or &lt;glob&gt; is given on the command line.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&lt;rev&gt;<br />
-Arbitrary extended SHA-1 expression (see <a href="../gitrevisions">gitrevisions(7)</a>) that typically names a branch head or a tag.</p>
+Arbitrary extended SHA-1 expression (see
+<a href="../gitrevisions">gitrevisions(7)</a>) that typically names a branch head
+or a tag.</p>
 
 <p>&lt;glob&gt;<br />
-A glob pattern that matches branch or tag names under refs/. For example, if you have many topic branches under refs/heads/topic, giving <code>topic/*</code> would show all of them.</p>
+A glob pattern that matches branch or tag names under refs/. For
+example, if you have many topic branches under refs/heads/topic, giving
+<code>topic/*</code> would show all of them.</p>
 
-<p>-r
+<p>-r<br />
 &ndash;remotes<br />
 Show the remote-tracking branches.</p>
 
-<p>-a
+<p>-a<br />
 &ndash;all<br />
 Show both remote-tracking branches and local branches.</p>
 
 <p>&ndash;current<br />
-With this option, the command includes the current branch to the list of revs to be shown when it is not given on the command line.</p>
+With this option, the command includes the current branch to the list of
+revs to be shown when it is not given on the command line.</p>
 
 <p>&ndash;topo-order<br />
-By default, the branches and their commits are shown in reverse chronological order. This option makes them appear in topological order (i.e., descendant commits are shown before their parents).</p>
+By default, the branches and their commits are shown in reverse
+chronological order. This option makes them appear in topological order
+(i.e., descendant commits are shown before their parents).</p>
 
 <p>&ndash;date-order<br />
-This option is similar to <em>&ndash;topo-order</em> in the sense that no parent comes before all of its children, but otherwise commits are ordered according to their commit date.</p>
+This option is similar to <em>&ndash;topo-order</em> in the sense that no parent
+comes before all of its children, but otherwise commits are ordered
+according to their commit date.</p>
 
 <p>&ndash;sparse<br />
-By default, the output omits merges that are reachable from only one tip being shown. This option makes them visible.</p>
+By default, the output omits merges that are reachable from only one tip
+being shown. This option makes them visible.</p>
 
 <p>&ndash;more=&lt;n&gt;<br />
-Usually the command stops output upon showing the commit that is the common ancestor of all the branches. This flag tells the command to go &lt;n&gt; more common commits beyond that. When &lt;n&gt; is negative, display only the &lt;reference&gt;s given, without showing the commit ancestry tree.</p>
+Usually the command stops output upon showing the commit that is the
+common ancestor of all the branches. This flag tells the command to go
+&lt;n&gt; more common commits beyond that. When &lt;n&gt; is negative,
+display only the &lt;reference&gt;s given, without showing the commit
+ancestry tree.</p>
 
 <p>&ndash;list<br />
 Synonym to <code>--more=-1</code></p>
 
 <p>&ndash;merge-base<br />
-Instead of showing the commit list, determine possible merge bases for the specified commits. All merge bases will be contained in all specified commits. This is different from how <a href="../git-merge-base">git-merge-base(1)</a> handles the case of three or more commits.</p>
+Instead of showing the commit list, determine possible merge bases for
+the specified commits. All merge bases will be contained in all
+specified commits. This is different from how
+<a href="../git-merge-base">git-merge-base(1)</a> handles the case of three or
+more commits.</p>
 
 <p>&ndash;independent<br />
-Among the &lt;reference&gt;s given, display only the ones that cannot be reached from any other &lt;reference&gt;.</p>
+Among the &lt;reference&gt;s given, display only the ones that cannot be
+reached from any other &lt;reference&gt;.</p>
 
 <p>&ndash;no-name<br />
 Do not show naming strings for each commit.</p>
 
 <p>&ndash;sha1-name<br />
-Instead of naming the commits using the path to reach them from heads (e.g. &ldquo;master~2&rdquo; to mean the grandparent of &ldquo;master&rdquo;), name them with the unique prefix of their object names.</p>
+Instead of naming the commits using the path to reach them from heads
+(e.g. &ldquo;master~2&rdquo; to mean the grandparent of &ldquo;master&rdquo;), name them with
+the unique prefix of their object names.</p>
 
 <p>&ndash;topics<br />
-Shows only commits that are NOT on the first branch given. This helps track topic branches by hiding any commit that is already in the main line of development. When given &ldquo;git show-branch &ndash;topics master topic1 topic2&rdquo;, this will show the revisions given by &ldquo;git rev-list ^master topic1 topic2&rdquo;</p>
+Shows only commits that are NOT on the first branch given. This helps
+track topic branches by hiding any commit that is already in the main
+line of development. When given &ldquo;git show-branch &ndash;topics master topic1
+topic2&rdquo;, this will show the revisions given by &ldquo;git rev-list ^master
+topic1 topic2&rdquo;</p>
 
-<p>-g
+<p>-g<br />
 &ndash;reflog[=&lt;n&gt;[,&lt;base&gt;]] [&lt;ref&gt;]<br />
-Shows &lt;n&gt; most recent ref-log entries for the given ref. If &lt;base&gt; is given, &lt;n&gt; entries going back from that entry. &lt;base&gt; can be specified as count or date. When no explicit &lt;ref&gt; parameter is given, it defaults to the current branch (or <code>HEAD</code> if it is detached).</p>
+Shows &lt;n&gt; most recent ref-log entries for the given ref. If
+&lt;base&gt; is given, &lt;n&gt; entries going back from that entry.
+&lt;base&gt; can be specified as count or date. When no explicit
+&lt;ref&gt; parameter is given, it defaults to the current branch (or
+<code>HEAD</code> if it is detached).</p>
 
 <p>&ndash;color[=&lt;when&gt;]<br />
-Color the status sign (one of these: <code>*</code> <code>!</code> <code>+</code> <code>-</code>) of each commit corresponding to the branch it’s in. The value must be always (the default), never, or auto.</p>
+Color the status sign (one of these: <code>*</code> <code>!</code> <code>+</code> <code>-</code>) of each commit
+corresponding to the branch it’s in. The value must be always (the
+default), never, or auto.</p>
 
 <p>&ndash;no-color<br />
-Turn off colored output, even when the configuration file gives the default to color output. Same as <code>--color=never</code>.</p>
+Turn off colored output, even when the configuration file gives the
+default to color output. Same as <code>--color=never</code>.</p>
 
-<p>Note that &ndash;more, &ndash;list, &ndash;independent and &ndash;merge-base options are mutually exclusive.</p>
+<p>Note that &ndash;more, &ndash;list, &ndash;independent and &ndash;merge-base options are
+mutually exclusive.</p>
 
 <h2 id="output">OUTPUT</h2>
 
-<p>Given N &lt;references&gt;, the first N lines are the one-line description from their commit message. The branch head that is pointed at by $GIT_DIR/HEAD is prefixed with an asterisk <code>*</code> character while other heads are prefixed with a <code>!</code> character.</p>
+<p>Given N &lt;references&gt;, the first N lines are the one-line
+description from their commit message. The branch head that is pointed
+at by $GIT_DIR/HEAD is prefixed with an asterisk <code>*</code> character while
+other heads are prefixed with a <code>!</code> character.</p>
 
-<p>Following these N lines, one-line log for each commit is displayed, indented N places. If a commit is on the I-th branch, the I-th indentation character shows a <code>+</code> sign; otherwise it shows a space. Merge commits are denoted by a <code>-</code> sign. Each commit shows a short name that can be used as an extended SHA-1 to name that commit.</p>
+<p>Following these N lines, one-line log for each commit is displayed,
+indented N places. If a commit is on the I-th branch, the I-th
+indentation character shows a <code>+</code> sign; otherwise it shows a space.
+Merge commits are denoted by a <code>-</code> sign. Each commit shows a short name
+that can be used as an extended SHA-1 to name that commit.</p>
 
 <p>The following example shows three branches, &ldquo;master&rdquo;, &ldquo;fixes&rdquo; and &ldquo;mhf&rdquo;:</p>
 
@@ -210,23 +253,32 @@ Turn off colored output, even when the configuration file gives the default to c
 *++ [master] Add 'git show-branch'.
 </code></pre>
 
-<p>These three branches all forked from a common commit, [master], whose commit message is &ldquo;Add &lsquo;git show-branch&rsquo;&rdquo;. The &ldquo;fixes&rdquo; branch adds one commit &ldquo;Introduce &ldquo;reset type&rdquo; flag to &ldquo;git reset&rdquo;&ldquo;. The &ldquo;mhf&rdquo; branch adds many other commits. The current branch is &ldquo;master&rdquo;.</p>
+<p>These three branches all forked from a common commit, [master], whose
+commit message is &ldquo;Add &lsquo;git show-branch&rsquo;&rdquo;. The &ldquo;fixes&rdquo; branch adds one
+commit &ldquo;Introduce &ldquo;reset type&rdquo; flag to &ldquo;git reset&rdquo;&ldquo;. The &ldquo;mhf&rdquo; branch
+adds many other commits. The current branch is &ldquo;master&rdquo;.</p>
 
 <h2 id="example">EXAMPLE</h2>
 
-<p>If you keep your primary branches immediately under <code>refs/heads</code>, and topic branches in subdirectories of it, having the following in the configuration file may help:</p>
+<p>If you keep your primary branches immediately under <code>refs/heads</code>, and
+topic branches in subdirectories of it, having the following in the
+configuration file may help:</p>
 
 <pre><code>[showbranch]
         default = --topo-order
         default = heads/*
 </code></pre>
 
-<p>With this, <code>git show-branch</code> without extra parameters would show only the primary branches. In addition, if you happen to be on your topic branch, it is shown as well.</p>
+<p>With this, <code>git show-branch</code> without extra parameters would show only
+the primary branches. In addition, if you happen to be on your topic
+branch, it is shown as well.</p>
 
 <pre><code>$ git show-branch --reflog=&quot;10,1 hour ago&quot; --list master
 </code></pre>
 
-<p>shows 10 reflog entries going back from the tip as of 1 hour ago. Without <code>--list</code>, the output also shows how these tips are topologically related with each other.</p>
+<p>shows 10 reflog entries going back from the tip as of 1 hour ago.
+Without <code>--list</code>, the output also shows how these tips are topologically
+related with each other.</p>
 
 <h2 id="git">GIT</h2>
 

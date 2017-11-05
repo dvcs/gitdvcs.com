@@ -112,7 +112,8 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>The command takes various subcommands, and different options depending on the subcommand:</p>
+<p>The command takes various subcommands, and different options depending
+on the subcommand:</p>
 
 <pre><code class="language-content">git reflog [show] [log-options] [&lt;ref&gt;]
 git reflog expire [--expire=&lt;time&gt;] [--expire-unreachable=&lt;time&gt;]
@@ -123,17 +124,37 @@ git reflog delete [--rewrite] [--updateref]
 git reflog exists &lt;ref&gt;
 </code></pre>
 
-<p>Reference logs, or &ldquo;reflogs&rdquo;, record when the tips of branches and other references were updated in the local repository. Reflogs are useful in various Git commands, to specify the old value of a reference. For example, <code>HEAD@{2}</code> means &ldquo;where HEAD used to be two moves ago&rdquo;, <code>master@{one.week.ago}</code> means &ldquo;where master used to point to one week ago in this local repository&rdquo;, and so on. See <a href="../gitrevisions">gitrevisions(7)</a> for more details.</p>
+<p>Reference logs, or &ldquo;reflogs&rdquo;, record when the tips of branches and other
+references were updated in the local repository. Reflogs are useful in
+various Git commands, to specify the old value of a reference. For
+example, <code>HEAD@{2}</code> means &ldquo;where HEAD used to be two moves ago&rdquo;,
+<code>master@{one.week.ago}</code> means &ldquo;where master used to point to one week
+ago in this local repository&rdquo;, and so on. See
+<a href="../gitrevisions">gitrevisions(7)</a> for more details.</p>
 
 <p>This command manages the information recorded in the reflogs.</p>
 
-<p>The &ldquo;show&rdquo; subcommand (which is also the default, in the absence of any subcommands) shows the log of the reference provided in the command-line (or <code>HEAD</code>, by default). The reflog covers all recent actions, and in addition the <code>HEAD</code> reflog records branch switching. <code>git reflog show</code> is an alias for <code>git log -g --abbrev-commit               --pretty=oneline</code>; see <a href="../git-log">git-log(1)</a> for more information.</p>
+<p>The &ldquo;show&rdquo; subcommand (which is also the default, in the absence of any
+subcommands) shows the log of the reference provided in the command-line
+(or <code>HEAD</code>, by default). The reflog covers all recent actions, and in
+addition the <code>HEAD</code> reflog records branch switching. <code>git reflog show</code>
+is an alias for
+<code>git log -g --abbrev-commit               --pretty=oneline</code>; see
+<a href="../git-log">git-log(1)</a> for more information.</p>
 
-<p>The &ldquo;expire&rdquo; subcommand prunes older reflog entries. Entries older than <code>expire</code> time, or entries older than <code>expire-unreachable</code> time and not reachable from the current tip, are removed from the reflog. This is typically not used directly by end users — instead, see <a href="../git-gc">git-gc(1)</a>.</p>
+<p>The &ldquo;expire&rdquo; subcommand prunes older reflog entries. Entries older than
+<code>expire</code> time, or entries older than <code>expire-unreachable</code> time and not
+reachable from the current tip, are removed from the reflog. This is
+typically not used directly by end users — instead, see
+<a href="../git-gc">git-gc(1)</a>.</p>
 
-<p>The &ldquo;delete&rdquo; subcommand deletes single entries from the reflog. Its argument must be an <em>exact</em> entry (e.g. &ldquo;<code>git reflog delete master@{2}</code>&rdquo;). This subcommand is also typically not used directly by end users.</p>
+<p>The &ldquo;delete&rdquo; subcommand deletes single entries from the reflog. Its
+argument must be an <em>exact</em> entry (e.g.
+&ldquo;<code>git reflog delete master@{2}</code>&rdquo;). This subcommand is also typically not
+used directly by end users.</p>
 
-<p>The &ldquo;exists&rdquo; subcommand checks whether a ref has a reflog. It exits with zero status if the reflog exists, and non-zero status if it does not.</p>
+<p>The &ldquo;exists&rdquo; subcommand checks whether a ref has a reflog. It exits with
+zero status if the reflog exists, and non-zero status if it does not.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -147,32 +168,54 @@ git reflog exists &lt;ref&gt;
 Process the reflogs of all references.</p>
 
 <p>&ndash;expire=&lt;time&gt;<br />
-Prune entries older than the specified time. If this option is not specified, the expiration time is taken from the configuration setting <code>gc.reflogExpire</code>, which in turn defaults to 90 days. <code>--expire=all</code> prunes entries regardless of their age; <code>--expire=never</code> turns off pruning of reachable entries (but see <code>--expire-unreachable</code>).</p>
+Prune entries older than the specified time. If this option is not
+specified, the expiration time is taken from the configuration setting
+<code>gc.reflogExpire</code>, which in turn defaults to 90 days. <code>--expire=all</code>
+prunes entries regardless of their age; <code>--expire=never</code> turns off
+pruning of reachable entries (but see <code>--expire-unreachable</code>).</p>
 
 <p>&ndash;expire-unreachable=&lt;time&gt;<br />
-Prune entries older than <code>&lt;time&gt;</code> that are not reachable from the current tip of the branch. If this option is not specified, the expiration time is taken from the configuration setting <code>gc.reflogExpireUnreachable</code>, which in turn defaults to 30 days. <code>--expire-unreachable=all</code> prunes unreachable entries regardless of their age; <code>--expire-unreachable=never</code> turns off early pruning of unreachable entries (but see <code>--expire</code>).</p>
+Prune entries older than <code>&lt;time&gt;</code> that are not reachable from the
+current tip of the branch. If this option is not specified, the
+expiration time is taken from the configuration setting
+<code>gc.reflogExpireUnreachable</code>, which in turn defaults to 30 days.
+<code>--expire-unreachable=all</code> prunes unreachable entries regardless of
+their age; <code>--expire-unreachable=never</code> turns off early pruning of
+unreachable entries (but see <code>--expire</code>).</p>
 
 <p>&ndash;updateref<br />
-Update the reference to the value of the top reflog entry (i.e. &lt;ref&gt;@{0}) if the previous top entry was pruned. (This option is ignored for symbolic references.)</p>
+Update the reference to the value of the top reflog entry (i.e.
+&lt;ref&gt;@{0}) if the previous top entry was pruned. (This option is
+ignored for symbolic references.)</p>
 
 <p>&ndash;rewrite<br />
-If a reflog entry’s predecessor is pruned, adjust its &ldquo;old&rdquo; SHA-1 to be equal to the &ldquo;new&rdquo; SHA-1 field of the entry that now precedes it.</p>
+If a reflog entry’s predecessor is pruned, adjust its &ldquo;old&rdquo; SHA-1 to be
+equal to the &ldquo;new&rdquo; SHA-1 field of the entry that now precedes it.</p>
 
 <p>&ndash;stale-fix<br />
-Prune any reflog entries that point to &ldquo;broken commits&rdquo;. A broken commit is a commit that is not reachable from any of the reference tips and that refers, directly or indirectly, to a missing commit, tree, or blob object.</p>
+Prune any reflog entries that point to &ldquo;broken commits&rdquo;. A broken commit
+is a commit that is not reachable from any of the reference tips and
+that refers, directly or indirectly, to a missing commit, tree, or blob
+object.</p>
 
-<p>This computation involves traversing all the reachable objects, i.e. it has the same cost as <em>git prune</em>. It is primarily intended to fix corruption caused by garbage collecting using older versions of Git, which didn’t protect objects referred to by reflogs.</p>
+<p>This computation involves traversing all the reachable objects, i.e. it
+has the same cost as <em>git prune</em>. It is primarily intended to fix
+corruption caused by garbage collecting using older versions of Git,
+which didn’t protect objects referred to by reflogs.</p>
 
-<p>-n
+<p>-n<br />
 &ndash;dry-run<br />
-Do not actually prune any entries; just show what would have been pruned.</p>
+Do not actually prune any entries; just show what would have been
+pruned.</p>
 
 <p>&ndash;verbose<br />
 Print extra information on screen.</p>
 
 <h3 id="options-for-delete">Options for <code>delete</code></h3>
 
-<p><code>git reflog delete</code> accepts options <code>--updateref</code>, <code>--rewrite</code>, <code>-n</code>, <code>--dry-run</code>, and <code>--verbose</code>, with the same meanings as when they are used with <code>expire</code>.</p>
+<p><code>git reflog delete</code> accepts options <code>--updateref</code>, <code>--rewrite</code>, <code>-n</code>,
+<code>--dry-run</code>, and <code>--verbose</code>, with the same meanings as when they are
+used with <code>expire</code>.</p>
 
 <h2 id="git">GIT</h2>
 

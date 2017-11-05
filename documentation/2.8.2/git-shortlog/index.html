@@ -113,52 +113,78 @@ git shortlog [&lt;options&gt;] [&lt;revision range&gt;] [[--] &lt;path&gt;…]
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Summarizes <em>git log</em> output in a format suitable for inclusion in release announcements. Each commit will be grouped by author and title.</p>
+<p>Summarizes <em>git log</em> output in a format suitable for inclusion in
+release announcements. Each commit will be grouped by author and title.</p>
 
 <p>Additionally, &ldquo;[PATCH]&rdquo; will be stripped from the commit description.</p>
 
-<p>If no revisions are passed on the command line and either standard input is not a terminal or there is no current branch, <em>git shortlog</em> will output a summary of the log read from standard input, without reference to the current repository.</p>
+<p>If no revisions are passed on the command line and either standard input
+is not a terminal or there is no current branch, <em>git shortlog</em> will
+output a summary of the log read from standard input, without reference
+to the current repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-n
+<p>-n<br />
 &ndash;numbered<br />
-Sort output according to the number of commits per author instead of author alphabetic order.</p>
+Sort output according to the number of commits per author instead of
+author alphabetic order.</p>
 
-<p>-s
+<p>-s<br />
 &ndash;summary<br />
 Suppress commit description and provide a commit count summary only.</p>
 
-<p>-e
+<p>-e<br />
 &ndash;email<br />
 Show the email address of each author.</p>
 
 <p>&ndash;format[=&lt;format&gt;]<br />
-Instead of the commit subject, use some other information to describe each commit. <em>&lt;format&gt;</em> can be any string accepted by the <code>--format</code> option of <em>git log</em>, such as <em>* [%h] %s</em>. (See the &ldquo;PRETTY FORMATS&rdquo; section of <a href="../git-log">git-log(1)</a>.)</p>
+Instead of the commit subject, use some other information to describe
+each commit. <em>&lt;format&gt;</em> can be any string accepted by the
+<code>--format</code> option of <em>git log</em>, such as <em>* [%h] %s</em>. (See the &ldquo;PRETTY
+FORMATS&rdquo; section of <a href="../git-log">git-log(1)</a>.)</p>
 
 <pre><code>Each pretty-printed commit will be rewrapped before it is shown.
 </code></pre>
 
 <p>-w[&lt;width&gt;[,&lt;indent1&gt;[,&lt;indent2&gt;]]]<br />
-Linewrap the output by wrapping each line at <code>width</code>. The first line of each entry is indented by <code>indent1</code> spaces, and the second and subsequent lines are indented by <code>indent2</code> spaces. <code>width</code>, <code>indent1</code>, and <code>indent2</code> default to 76, 6 and 9 respectively.</p>
+Linewrap the output by wrapping each line at <code>width</code>. The first line of
+each entry is indented by <code>indent1</code> spaces, and the second and
+subsequent lines are indented by <code>indent2</code> spaces. <code>width</code>, <code>indent1</code>,
+and <code>indent2</code> default to 76, 6 and 9 respectively.</p>
 
-<p>If width is <code>0</code> (zero) then indent the lines of the output without wrapping them.</p>
+<p>If width is <code>0</code> (zero) then indent the lines of the output without
+wrapping them.</p>
 
 <p>&lt;revision range&gt;<br />
-Show only commits in the specified revision range. When no &lt;revision range&gt; is specified, it defaults to <code>HEAD</code> (i.e. the whole history leading to the current commit). <code>origin..HEAD</code> specifies all the commits reachable from the current commit (i.e. <code>HEAD</code>), but not from <code>origin</code>. For a complete list of ways to spell &lt;revision range&gt;, see the &ldquo;Specifying Ranges&rdquo; section of <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+Show only commits in the specified revision range. When no &lt;revision
+range&gt; is specified, it defaults to <code>HEAD</code> (i.e. the whole history
+leading to the current commit). <code>origin..HEAD</code> specifies all the commits
+reachable from the current commit (i.e. <code>HEAD</code>), but not from <code>origin</code>.
+For a complete list of ways to spell &lt;revision range&gt;, see the
+&ldquo;Specifying Ranges&rdquo; section of <a href="../gitrevisions">gitrevisions(7)</a>.</p>
 
 <p>[&ndash;] &lt;path&gt;…<br />
-Consider only commits that are enough to explain how the files that match the specified paths came to be.</p>
+Consider only commits that are enough to explain how the files that
+match the specified paths came to be.</p>
 
-<p>Paths may need to be prefixed with &ldquo;&ndash; &rdquo; to separate them from options or the revision range, when confusion arises.</p>
+<p>Paths may need to be prefixed with &ldquo;&ndash; &rdquo; to separate them from options
+or the revision range, when confusion arises.</p>
 
 <h2 id="mapping-authors">MAPPING AUTHORS</h2>
 
-<p>The <code>.mailmap</code> feature is used to coalesce together commits by the same person in the shortlog, where their name and/or email address was spelled differently.</p>
+<p>The <code>.mailmap</code> feature is used to coalesce together commits by the same
+person in the shortlog, where their name and/or email address was
+spelled differently.</p>
 
-<p>If the file <code>.mailmap</code> exists at the toplevel of the repository, or at the location pointed to by the mailmap.file or mailmap.blob configuration options, it is used to map author and committer names and email addresses to canonical real names and email addresses.</p>
+<p>If the file <code>.mailmap</code> exists at the toplevel of the repository, or at
+the location pointed to by the mailmap.file or mailmap.blob
+configuration options, it is used to map author and committer names and
+email addresses to canonical real names and email addresses.</p>
 
-<p>In the simple form, each line in the file consists of the canonical real name of an author, whitespace, and an email address used in the commit (enclosed by <em>&lt;</em> and <em>&gt;</em>) to map to the name. For example:</p>
+<p>In the simple form, each line in the file consists of the canonical real
+name of an author, whitespace, and an email address used in the commit
+(enclosed by <em>&lt;</em> and <em>&gt;</em>) to map to the name. For example:</p>
 
 <pre><code>Proper Name &lt;commit@email.xx&gt;
 </code></pre>
@@ -173,14 +199,17 @@ Consider only commits that are enough to explain how the files that match the sp
 <pre><code>Proper Name &lt;proper@email.xx&gt; &lt;commit@email.xx&gt;
 </code></pre>
 
-<p>which allows mailmap to replace both the name and the email of a commit matching the specified commit email address, and:</p>
+<p>which allows mailmap to replace both the name and the email of a commit
+matching the specified commit email address, and:</p>
 
 <pre><code>Proper Name &lt;proper@email.xx&gt; Commit Name &lt;commit@email.xx&gt;
 </code></pre>
 
-<p>which allows mailmap to replace both the name and the email of a commit matching both the specified commit name and email address.</p>
+<p>which allows mailmap to replace both the name and the email of a commit
+matching both the specified commit name and email address.</p>
 
-<p>Example 1: Your history contains commits by two authors, Jane and Joe, whose names appear in the repository under several forms:</p>
+<p>Example 1: Your history contains commits by two authors, Jane and Joe,
+whose names appear in the repository under several forms:</p>
 
 <pre><code>Joe Developer &lt;joe@example.com&gt;
 Joe R. Developer &lt;joe@example.com&gt;
@@ -189,13 +218,16 @@ Jane Doe &lt;jane@laptop.(none)&gt;
 Jane D. &lt;jane@desktop.(none)&gt;
 </code></pre>
 
-<p>Now suppose that Joe wants his middle name initial used, and Jane prefers her family name fully spelled out. A proper <code>.mailmap</code> file would look like:</p>
+<p>Now suppose that Joe wants his middle name initial used, and Jane
+prefers her family name fully spelled out. A proper <code>.mailmap</code> file
+would look like:</p>
 
 <pre><code>Jane Doe         &lt;jane@desktop.(none)&gt;
 Joe R. Developer &lt;joe@example.com&gt;
 </code></pre>
 
-<p>Note how there is no need for an entry for <code>&lt;jane@laptop.(none)&gt;</code>, because the real name of that author is already correct.</p>
+<p>Note how there is no need for an entry for <code>&lt;jane@laptop.(none)&gt;</code>,
+because the real name of that author is already correct.</p>
 
 <p>Example 2: Your repository contains commits from the following authors:</p>
 
@@ -216,7 +248,8 @@ Other Author &lt;other@author.xx&gt;         &lt;nick2@company.xx&gt;
 Santa Claus &lt;santa.claus@northpole.xx&gt; &lt;me@company.xx&gt;
 </code></pre>
 
-<p>Use hash <em>#</em> for comments that are either on their own line, or after the email address.</p>
+<p>Use hash <em>#</em> for comments that are either on their own line, or after
+the email address.</p>
 
 <h2 id="git">GIT</h2>
 

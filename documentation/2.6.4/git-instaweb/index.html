@@ -114,41 +114,54 @@ git instaweb [--start] [--stop] [--restart]
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>A simple script to set up <code>gitweb</code> and a web server for browsing the local repository.</p>
+<p>A simple script to set up <code>gitweb</code> and a web server for browsing the
+local repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-l
+<p>-l<br />
 &ndash;local<br />
 Only bind the web server to the local IP (127.0.0.1).</p>
 
-<p>-d
+<p>-d<br />
 &ndash;httpd<br />
-The HTTP daemon command-line that will be executed. Command-line options may be specified here, and the configuration file will be added at the end of the command-line. Currently apache2, lighttpd, mongoose, plackup and webrick are supported. (Default: lighttpd)</p>
+The HTTP daemon command-line that will be executed. Command-line options
+may be specified here, and the configuration file will be added at the
+end of the command-line. Currently apache2, lighttpd, mongoose, plackup
+and webrick are supported. (Default: lighttpd)</p>
 
-<p>-m
+<p>-m<br />
 &ndash;module-path<br />
-The module path (only needed if httpd is Apache). (Default: /usr/lib/apache2/modules)</p>
+The module path (only needed if httpd is Apache). (Default:
+/usr/lib/apache2/modules)</p>
 
-<p>-p
+<p>-p<br />
 &ndash;port<br />
 The port number to bind the httpd to. (Default: 1234)</p>
 
-<p>-b
+<p>-b<br />
 &ndash;browser<br />
-The web browser that should be used to view the gitweb page. This will be passed to the <em>git web&ndash;browse</em> helper script along with the URL of the gitweb instance. See <a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information about this. If the script fails, the URL will be printed to stdout.</p>
+The web browser that should be used to view the gitweb page. This will
+be passed to the <em>git web&ndash;browse</em> helper script along with the URL of
+the gitweb instance. See <a href="../git-web--browse">git-web&ndash;browse(1)</a> for
+more information about this. If the script fails, the URL will be
+printed to stdout.</p>
 
-<p>start
+<p>start<br />
 &ndash;start<br />
-Start the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance.</p>
+Start the httpd instance and exit. Regenerate configuration files as
+necessary for spawning a new instance.</p>
 
-<p>stop
+<p>stop<br />
 &ndash;stop<br />
-Stop the httpd instance and exit. This does not generate any of the configuration files for spawning a new instance, nor does it close the browser.</p>
+Stop the httpd instance and exit. This does not generate any of the
+configuration files for spawning a new instance, nor does it close the
+browser.</p>
 
-<p>restart
+<p>restart<br />
 &ndash;restart<br />
-Restart the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance.</p>
+Restart the httpd instance and exit. Regenerate configuration files as
+necessary for spawning a new instance.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
@@ -162,7 +175,10 @@ Restart the httpd instance and exit. Regenerate configuration files as necessary
         modulePath = /usr/lib/apache2/modules
 </code></pre>
 
-<p>If the configuration variable <em>instaweb.browser</em> is not set, <em>web.browser</em> will be used instead if it is defined. See <a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information about this.</p>
+<p>If the configuration variable <em>instaweb.browser</em> is not set,
+<em>web.browser</em> will be used instead if it is defined. See
+<a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information about
+this.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 

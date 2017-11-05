@@ -113,7 +113,8 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Finds symbolic names suitable for human digestion for revisions given in any format parsable by <em>git rev-parse</em>.</p>
+<p>Finds symbolic names suitable for human digestion for revisions given in
+any format parsable by <em>git rev-parse</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -127,20 +128,27 @@ Only use refs whose names match a given shell pattern.</p>
 List all commits reachable from all refs</p>
 
 <p>&ndash;stdin<br />
-Read from stdin, append &ldquo;(&lt;rev_name&gt;)&rdquo; to all sha1’s of nameable commits, and pass to stdout</p>
+Read from stdin, append &ldquo;(&lt;rev_name&gt;)&rdquo; to all sha1’s of nameable
+commits, and pass to stdout</p>
 
 <p>&ndash;name-only<br />
-Instead of printing both the SHA-1 and the name, print only the name. If given with &ndash;tags the usual tag prefix of &ldquo;tags/&rdquo; is also omitted from the name, matching the output of <code>git-describe</code> more closely.</p>
+Instead of printing both the SHA-1 and the name, print only the name. If
+given with &ndash;tags the usual tag prefix of &ldquo;tags/&rdquo; is also omitted from
+the name, matching the output of <code>git-describe</code> more closely.</p>
 
 <p>&ndash;no-undefined<br />
-Die with error code != 0 when a reference is undefined, instead of printing <code>undefined</code>.</p>
+Die with error code != 0 when a reference is undefined, instead of
+printing <code>undefined</code>.</p>
 
 <p>&ndash;always<br />
 Show uniquely abbreviated commit object as fallback.</p>
 
 <h2 id="example">EXAMPLE</h2>
 
-<p>Given a commit, find out where it is relative to the local refs. Say somebody wrote you about that fantastic commit 33db5f4d9027a10e477ccf054b2c1ab94f74c85a. Of course, you look into the commit, but that only tells you what happened, but not the context.</p>
+<p>Given a commit, find out where it is relative to the local refs. Say
+somebody wrote you about that fantastic commit
+33db5f4d9027a10e477ccf054b2c1ab94f74c85a. Of course, you look into the
+commit, but that only tells you what happened, but not the context.</p>
 
 <p>Enter <em>git name-rev</em>:</p>
 
@@ -148,7 +156,8 @@ Show uniquely abbreviated commit object as fallback.</p>
 33db5f4d9027a10e477ccf054b2c1ab94f74c85a tags/v0.99~940
 </code></pre>
 
-<p>Now you are wiser, because you know that it happened 940 revisions before v0.99.</p>
+<p>Now you are wiser, because you know that it happened 940 revisions
+before v0.99.</p>
 
 <p>Another nice thing you can do is:</p>
 

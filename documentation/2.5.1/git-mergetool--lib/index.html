@@ -112,11 +112,17 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This is not a command the end user would want to run. Ever. This documentation is meant for people who are studying the Porcelain-ish scripts and/or are writing new ones.</p>
+<p>This is not a command the end user would want to run. Ever. This
+documentation is meant for people who are studying the Porcelain-ish
+scripts and/or are writing new ones.</p>
 
-<p>The <em>git-mergetool&ndash;lib</em> scriptlet is designed to be sourced (using <code>.</code>) by other shell scripts to set up functions for working with Git merge tools.</p>
+<p>The <em>git-mergetool&ndash;lib</em> scriptlet is designed to be sourced (using <code>.</code>)
+by other shell scripts to set up functions for working with Git merge
+tools.</p>
 
-<p>Before sourcing <em>git-mergetool&ndash;lib</em>, your script must set <code>TOOL_MODE</code> to define the operation mode for the functions listed below. <em>diff</em> and <em>merge</em> are valid values.</p>
+<p>Before sourcing <em>git-mergetool&ndash;lib</em>, your script must set <code>TOOL_MODE</code>
+to define the operation mode for the functions listed below. <em>diff</em> and
+<em>merge</em> are valid values.</p>
 
 <h2 id="functions">FUNCTIONS</h2>
 
@@ -130,7 +136,9 @@ returns the custom command for a merge tool.</p>
 returns the custom path for a merge tool.</p>
 
 <p>run_merge_tool<br />
-launches a merge tool given the tool name and a true/false flag to indicate whether a merge base is present. <em>$MERGED</em>, <em>$LOCAL</em>, <em>$REMOTE</em>, and <em>$BASE</em> must be defined for use by the merge tool.</p>
+launches a merge tool given the tool name and a true/false flag to
+indicate whether a merge base is present. <em>$MERGED</em>, <em>$LOCAL</em>,
+<em>$REMOTE</em>, and <em>$BASE</em> must be defined for use by the merge tool.</p>
 
 <h2 id="git">GIT</h2>
 

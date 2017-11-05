@@ -113,38 +113,57 @@ git cat-file (--batch | --batch-check) &lt; &lt;list-of-objects&gt;
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>In its first form, the command provides the content or the type of an object in the repository. The type is required unless <em>-t</em> or <em>-p</em> is used to find the object type, or <em>-s</em> is used to find the object size, or <em>&ndash;textconv</em> is used (which implies type &ldquo;blob&rdquo;).</p>
+<p>In its first form, the command provides the content or the type of an
+object in the repository. The type is required unless <em>-t</em> or <em>-p</em> is
+used to find the object type, or <em>-s</em> is used to find the object size,
+or <em>&ndash;textconv</em> is used (which implies type &ldquo;blob&rdquo;).</p>
 
-<p>In the second form, a list of objects (separated by linefeeds) is provided on stdin, and the SHA-1, type, and size of each object is printed on stdout.</p>
+<p>In the second form, a list of objects (separated by linefeeds) is
+provided on stdin, and the SHA-1, type, and size of each object is
+printed on stdout.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&lt;object&gt;<br />
-The name of the object to show. For a more complete list of ways to spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+The name of the object to show. For a more complete list of ways to
+spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in
+<a href="../gitrevisions">gitrevisions(7)</a>.</p>
 
 <p>-t<br />
-Instead of the content, show the object type identified by &lt;object&gt;.</p>
+Instead of the content, show the object type identified by
+&lt;object&gt;.</p>
 
 <p>-s<br />
-Instead of the content, show the object size identified by &lt;object&gt;.</p>
+Instead of the content, show the object size identified by
+&lt;object&gt;.</p>
 
 <p>-e<br />
-Suppress all output; instead exit with zero status if &lt;object&gt; exists and is a valid object.</p>
+Suppress all output; instead exit with zero status if &lt;object&gt;
+exists and is a valid object.</p>
 
 <p>-p<br />
 Pretty-print the contents of &lt;object&gt; based on its type.</p>
 
 <p>&lt;type&gt;<br />
-Typically this matches the real type of &lt;object&gt; but asking for a type that can trivially be dereferenced from the given &lt;object&gt; is also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt; being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with &lt;object&gt; being a tag object that points at it.</p>
+Typically this matches the real type of &lt;object&gt; but asking for a
+type that can trivially be dereferenced from the given &lt;object&gt; is
+also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt;
+being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with
+&lt;object&gt; being a tag object that points at it.</p>
 
 <p>&ndash;textconv<br />
-Show the content as transformed by a textconv filter. In this case, &lt;object&gt; has be of the form &lt;treeish&gt;:&lt;path&gt;, or :&lt;path&gt; in order to apply the filter to the content recorded in the index at &lt;path&gt;.</p>
+Show the content as transformed by a textconv filter. In this case,
+&lt;object&gt; has be of the form &lt;treeish&gt;:&lt;path&gt;, or
+:&lt;path&gt; in order to apply the filter to the content recorded in
+the index at &lt;path&gt;.</p>
 
 <p>&ndash;batch<br />
-Print the SHA-1, type, size, and contents of each object provided on stdin. May not be combined with any other options or arguments.</p>
+Print the SHA-1, type, size, and contents of each object provided on
+stdin. May not be combined with any other options or arguments.</p>
 
 <p>&ndash;batch-check<br />
-Print the SHA-1, type, and size of each object provided on stdin. May not be combined with any other options or arguments.</p>
+Print the SHA-1, type, and size of each object provided on stdin. May
+not be combined with any other options or arguments.</p>
 
 <h2 id="output">OUTPUT</h2>
 
@@ -156,20 +175,25 @@ Print the SHA-1, type, and size of each object provided on stdin. May not be com
 
 <p>If <em>-p</em> is specified, the contents of &lt;object&gt; are pretty-printed.</p>
 
-<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of the &lt;object&gt; will be returned.</p>
+<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of
+the &lt;object&gt; will be returned.</p>
 
-<p>If <em>&ndash;batch</em> is specified, output of the following form is printed for each object specified on stdin:</p>
+<p>If <em>&ndash;batch</em> is specified, output of the following form is printed for
+each object specified on stdin:</p>
 
 <pre><code>&lt;sha1&gt; SP &lt;type&gt; SP &lt;size&gt; LF
 &lt;contents&gt; LF
 </code></pre>
 
-<p>If <em>&ndash;batch-check</em> is specified, output of the following form is printed for each object specified on stdin:</p>
+<p>If <em>&ndash;batch-check</em> is specified, output of the following form is printed
+for each object specified on stdin:</p>
 
 <pre><code>&lt;sha1&gt; SP &lt;type&gt; SP &lt;size&gt; LF
 </code></pre>
 
-<p>For both <em>&ndash;batch</em> and <em>&ndash;batch-check</em>, output of the following form is printed for each object specified on stdin that does not exist in the repository:</p>
+<p>For both <em>&ndash;batch</em> and <em>&ndash;batch-check</em>, output of the following form is
+printed for each object specified on stdin that does not exist in the
+repository:</p>
 
 <pre><code>&lt;object&gt; SP missing LF
 </code></pre>

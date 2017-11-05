@@ -118,17 +118,24 @@ git replace [--format=&lt;format&gt;] [-l [&lt;pattern&gt;]]
 
 <p>Adds a <em>replace</em> reference in <code>refs/replace/</code> namespace.</p>
 
-<p>The name of the <em>replace</em> reference is the SHA-1 of the object that is replaced. The content of the <em>replace</em> reference is the SHA-1 of the replacement object.</p>
+<p>The name of the <em>replace</em> reference is the SHA-1 of the object that is
+replaced. The content of the <em>replace</em> reference is the SHA-1 of the
+replacement object.</p>
 
-<p>The replaced object and the replacement object must be of the same type. This restriction can be bypassed using <code>-f</code>.</p>
+<p>The replaced object and the replacement object must be of the same type.
+This restriction can be bypassed using <code>-f</code>.</p>
 
 <p>Unless <code>-f</code> is given, the <em>replace</em> reference must not yet exist.</p>
 
-<p>There is no other restriction on the replaced and replacement objects. Merge commits can be replaced by non-merge commits and vice versa.</p>
+<p>There is no other restriction on the replaced and replacement objects.
+Merge commits can be replaced by non-merge commits and vice versa.</p>
 
-<p>Replacement references will be used by default by all Git commands except those doing reachability traversal (prune, pack transfer and fsck).</p>
+<p>Replacement references will be used by default by all Git commands
+except those doing reachability traversal (prune, pack transfer and
+fsck).</p>
 
-<p>It is possible to disable use of replacement references for any command using the <code>--no-replace-objects</code> option just after <em>git</em>.</p>
+<p>It is possible to disable use of replacement references for any command
+using the <code>--no-replace-objects</code> option just after <em>git</em>.</p>
 
 <p>For example if commit <em>foo</em> has been replaced by commit <em>bar</em>:</p>
 
@@ -142,33 +149,54 @@ git replace [--format=&lt;format&gt;] [-l [&lt;pattern&gt;]]
 
 <p>shows information about commit <em>bar</em>.</p>
 
-<p>The <code>GIT_NO_REPLACE_OBJECTS</code> environment variable can be set to achieve the same effect as the <code>--no-replace-objects</code> option.</p>
+<p>The <code>GIT_NO_REPLACE_OBJECTS</code> environment variable can be set to achieve
+the same effect as the <code>--no-replace-objects</code> option.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-f
+<p>-f<br />
 &ndash;force<br />
-If an existing replace ref for the same object exists, it will be overwritten (instead of failing).</p>
+If an existing replace ref for the same object exists, it will be
+overwritten (instead of failing).</p>
 
-<p>-d
+<p>-d<br />
 &ndash;delete<br />
 Delete existing replace refs for the given objects.</p>
 
 <p>&ndash;edit &lt;object&gt;<br />
-Edit an object’s content interactively. The existing content for &lt;object&gt; is pretty-printed into a temporary file, an editor is launched on the file, and the result is parsed to create a new object of the same type as &lt;object&gt;. A replacement ref is then created to replace &lt;object&gt; with the newly created object. See <a href="../git-var">git-var(1)</a> for details about how the editor will be chosen.</p>
+Edit an object’s content interactively. The existing content for
+&lt;object&gt; is pretty-printed into a temporary file, an editor is
+launched on the file, and the result is parsed to create a new object of
+the same type as &lt;object&gt;. A replacement ref is then created to
+replace &lt;object&gt; with the newly created object. See
+<a href="../git-var">git-var(1)</a> for details about how the editor will be
+chosen.</p>
 
 <p>&ndash;raw<br />
-When editing, provide the raw object contents rather than pretty-printed ones. Currently this only affects trees, which will be shown in their binary form. This is harder to work with, but can help when repairing a tree that is so corrupted it cannot be pretty-printed. Note that you may need to configure your editor to cleanly read and write binary data.</p>
+When editing, provide the raw object contents rather than pretty-printed
+ones. Currently this only affects trees, which will be shown in their
+binary form. This is harder to work with, but can help when repairing a
+tree that is so corrupted it cannot be pretty-printed. Note that you may
+need to configure your editor to cleanly read and write binary data.</p>
 
 <p>&ndash;graft &lt;commit&gt; [&lt;parent&gt;…]<br />
-Create a graft commit. A new commit is created with the same content as &lt;commit&gt; except that its parents will be [&lt;parent&gt;…] instead of &lt;commit&gt;&rsquo;s parents. A replacement ref is then created to replace &lt;commit&gt; with the newly created commit. See contrib/convert-grafts-to-replace-refs.sh for an example script based on this option that can convert grafts to replace refs.</p>
+Create a graft commit. A new commit is created with the same content as
+&lt;commit&gt; except that its parents will be [&lt;parent&gt;…]
+instead of &lt;commit&gt;&rsquo;s parents. A replacement ref is then created
+to replace &lt;commit&gt; with the newly created commit. See
+contrib/convert-grafts-to-replace-refs.sh for an example script based on
+this option that can convert grafts to replace refs.</p>
 
-<p>-l &lt;pattern&gt;
+<p>-l &lt;pattern&gt;<br />
 &ndash;list &lt;pattern&gt;<br />
-List replace refs for objects that match the given pattern (or all if no pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists all replace refs.</p>
+List replace refs for objects that match the given pattern (or all if no
+pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists
+all replace refs.</p>
 
 <p>&ndash;format=&lt;format&gt;<br />
-When listing, use the specified &lt;format&gt;, which can be one of <em>short</em>, <em>medium</em> and <em>long</em>. When omitted, the format defaults to <em>short</em>.</p>
+When listing, use the specified &lt;format&gt;, which can be one of
+<em>short</em>, <em>medium</em> and <em>long</em>. When omitted, the format defaults to
+<em>short</em>.</p>
 
 <h2 id="formats">FORMATS</h2>
 
@@ -179,24 +207,42 @@ When listing, use the specified &lt;format&gt;, which can be one of <em>short</e
 
 <li><p><em>medium</em>: &lt;replaced sha1&gt; → &lt;replacement sha1&gt;</p></li>
 
-<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) → &lt;replacement sha1&gt; (&lt;replacement type&gt;)</p></li>
+<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) →
+&lt;replacement sha1&gt; (&lt;replacement type&gt;)</p></li>
 </ul>
 
 <h2 id="creating-replacement-objects">CREATING REPLACEMENT OBJECTS</h2>
 
-<p><a href="../git-filter-branch">git-filter-branch(1)</a>, <a href="../git-hash-object">git-hash-object(1)</a> and <a href="../git-rebase">git-rebase(1)</a>, among other git commands, can be used to create replacement objects from existing objects. The <code>--edit</code> option can also be used with <em>git replace</em> to create a replacement object by editing an existing object.</p>
+<p><a href="../git-filter-branch">git-filter-branch(1)</a>,
+<a href="../git-hash-object">git-hash-object(1)</a> and
+<a href="../git-rebase">git-rebase(1)</a>, among other git commands, can be used
+to create replacement objects from existing objects. The <code>--edit</code> option
+can also be used with <em>git replace</em> to create a replacement object by
+editing an existing object.</p>
 
-<p>If you want to replace many blobs, trees or commits that are part of a string of commits, you may just want to create a replacement string of commits and then only replace the commit at the tip of the target string of commits with the commit at the tip of the replacement string of commits.</p>
+<p>If you want to replace many blobs, trees or commits that are part of a
+string of commits, you may just want to create a replacement string of
+commits and then only replace the commit at the tip of the target string
+of commits with the commit at the tip of the replacement string of
+commits.</p>
 
 <h2 id="bugs">BUGS</h2>
 
-<p>Comparing blobs or trees that have been replaced with those that replace them will not work properly. And using <code>git reset --hard</code> to go back to a replaced commit will move the branch to the replacement commit instead of the replaced commit.</p>
+<p>Comparing blobs or trees that have been replaced with those that replace
+them will not work properly. And using <code>git reset --hard</code> to go back to
+a replaced commit will move the branch to the replacement commit instead
+of the replaced commit.</p>
 
-<p>There may be other problems when using <em>git rev-list</em> related to pending objects.</p>
+<p>There may be other problems when using <em>git rev-list</em> related to pending
+objects.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../git-hash-object">git-hash-object(1)</a> <a href="../git-filter-branch">git-filter-branch(1)</a> <a href="../git-rebase">git-rebase(1)</a> <a href="../git-tag">git-tag(1)</a> <a href="../git-branch">git-branch(1)</a> <a href="../git-commit">git-commit(1)</a> <a href="../git-var">git-var(1)</a> <a href="../git">git(1)</a></p>
+<p><a href="../git-hash-object">git-hash-object(1)</a>
+<a href="../git-filter-branch">git-filter-branch(1)</a>
+<a href="../git-rebase">git-rebase(1)</a> <a href="../git-tag">git-tag(1)</a>
+<a href="../git-branch">git-branch(1)</a> <a href="../git-commit">git-commit(1)</a>
+<a href="../git-var">git-var(1)</a> <a href="../git">git(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

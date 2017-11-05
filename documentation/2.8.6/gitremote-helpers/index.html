@@ -1,0 +1,606 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> gitremote-helpers </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitremote-helpers</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.8.6'>2.8.6</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.8.6/gitremote-helpers'>gitremote-helpers</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git remote-&lt;transport&gt; &lt;repository&gt; [&lt;URL&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Remote helper programs are normally not used directly by end users, but
+they are invoked by Git when it needs to interact with remote
+repositories Git does not support natively. A given helper will
+implement a subset of the capabilities documented here. When Git needs
+to interact with a repository using a remote helper, it spawns the
+helper as an independent process, sends commands to the helper’s
+standard input, and expects results from the helper’s standard output.
+Because a remote helper runs as an independent process from Git, there
+is no need to re-link Git to add a new helper, nor any need to link the
+helper with the implementation of Git.</p>
+
+<p>Every helper must support the &ldquo;capabilities&rdquo; command, which Git uses to
+determine what other commands the helper will accept. Those other
+commands can be used to discover and update remote refs, transport
+objects between the object database and the remote repository, and
+update the local object store.</p>
+
+<p>Git comes with a &ldquo;curl&rdquo; family of remote helpers, that handle various
+transport protocols, such as <em>git-remote-http</em>, <em>git-remote-https</em>,
+<em>git-remote-ftp</em> and <em>git-remote-ftps</em>. They implement the capabilities
+<em>fetch</em>, <em>option</em>, and <em>push</em>.</p>
+
+<h2 id="invocation">INVOCATION</h2>
+
+<p>Remote helper programs are invoked with one or (optionally) two
+arguments. The first argument specifies a remote repository as in Git;
+it is either the name of a configured remote or a URL. The second
+argument specifies a URL; it is usually of the form
+<em>&lt;transport&gt;://&lt;address&gt;</em>, but any arbitrary string is
+possible. The <em>GIT_DIR</em> environment variable is set up for the remote
+helper and can be used to determine where to store additional data or
+from which directory to invoke auxiliary Git commands.</p>
+
+<p>When Git encounters a URL of the form
+<em>&lt;transport&gt;://&lt;address&gt;</em>, where <em>&lt;transport&gt;</em> is a
+protocol that it cannot handle natively, it automatically invokes <em>git
+remote-&lt;transport&gt;</em> with the full URL as the second argument. If
+such a URL is encountered directly on the command line, the first
+argument is the same as the second, and if it is encountered in a
+configured remote, the first argument is the name of that remote.</p>
+
+<p>A URL of the form <em>&lt;transport&gt;::&lt;address&gt;</em> explicitly
+instructs Git to invoke <em>git remote-&lt;transport&gt;</em> with
+<em>&lt;address&gt;</em> as the second argument. If such a URL is encountered
+directly on the command line, the first argument is <em>&lt;address&gt;</em>,
+and if it is encountered in a configured remote, the first argument is
+the name of that remote.</p>
+
+<p>Additionally, when a configured remote has <em>remote.&lt;name&gt;.vcs</em> set
+to <em>&lt;transport&gt;</em>, Git explicitly invokes <em>git
+remote-&lt;transport&gt;</em> with <em>&lt;name&gt;</em> as the first argument. If
+set, the second argument is <em>remote.&lt;name&gt;.url</em>; otherwise, the
+second argument is omitted.</p>
+
+<h2 id="input-format">INPUT FORMAT</h2>
+
+<p>Git sends the remote helper a list of commands on standard input, one
+per line. The first command is always the <em>capabilities</em> command, in
+response to which the remote helper must print a list of the
+capabilities it supports (see below) followed by a blank line. The
+response to the capabilities command determines what commands Git uses
+in the remainder of the command stream.</p>
+
+<p>The command stream is terminated by a blank line. In some cases
+(indicated in the documentation of the relevant commands), this blank
+line is followed by a payload in some other protocol (e.g., the pack
+protocol), while in others it indicates the end of input.</p>
+
+<h3 id="capabilities">Capabilities</h3>
+
+<p>Each remote helper is expected to support only a subset of commands. The
+operations a helper supports are declared to Git in the response to the
+<code>capabilities</code> command (see COMMANDS, below).</p>
+
+<p>In the following, we list all defined capabilities and for each we list
+which commands a helper with that capability must provide.</p>
+
+<h4 id="capabilities-for-pushing">Capabilities for Pushing</h4>
+
+<p><em>connect</em><br />
+Can attempt to connect to <em>git receive-pack</em> (for pushing), <em>git
+upload-pack</em>, etc for communication using git’s native packfile
+protocol. This requires a bidirectional, full-duplex connection.</p>
+
+<p>Supported commands: <em>connect</em>.</p>
+
+<p><em>push</em><br />
+Can discover remote refs and push local commits and the history leading
+up to them to new or existing remote refs.</p>
+
+<p>Supported commands: <em>list for-push</em>, <em>push</em>.</p>
+
+<p><em>export</em><br />
+Can discover remote refs and push specified objects from a fast-import
+stream to remote refs.</p>
+
+<p>Supported commands: <em>list for-push</em>, <em>export</em>.</p>
+
+<p>If a helper advertises <em>connect</em>, Git will use it if possible and fall
+back to another capability if the helper requests so when connecting
+(see the <em>connect</em> command under COMMANDS). When choosing between <em>push</em>
+and <em>export</em>, Git prefers <em>push</em>. Other frontends may have some other
+order of preference.</p>
+
+<p><em>no-private-update</em><br />
+When using the <em>refspec</em> capability, git normally updates the private
+ref on successful push. This update is disabled when the remote-helper
+declares the capability <em>no-private-update</em>.</p>
+
+<h4 id="capabilities-for-fetching">Capabilities for Fetching</h4>
+
+<p><em>connect</em><br />
+Can try to connect to <em>git upload-pack</em> (for fetching), <em>git
+receive-pack</em>, etc for communication using the Git’s native packfile
+protocol. This requires a bidirectional, full-duplex connection.</p>
+
+<p>Supported commands: <em>connect</em>.</p>
+
+<p><em>fetch</em><br />
+Can discover remote refs and transfer objects reachable from them to the
+local object store.</p>
+
+<p>Supported commands: <em>list</em>, <em>fetch</em>.</p>
+
+<p><em>import</em><br />
+Can discover remote refs and output objects reachable from them as a
+stream in fast-import format.</p>
+
+<p>Supported commands: <em>list</em>, <em>import</em>.</p>
+
+<p><em>check-connectivity</em><br />
+Can guarantee that when a clone is requested, the received pack is self
+contained and is connected.</p>
+
+<p>If a helper advertises <em>connect</em>, Git will use it if possible and fall
+back to another capability if the helper requests so when connecting
+(see the <em>connect</em> command under COMMANDS). When choosing between
+<em>fetch</em> and <em>import</em>, Git prefers <em>fetch</em>. Other frontends may have some
+other order of preference.</p>
+
+<h4 id="miscellaneous-capabilities">Miscellaneous capabilities</h4>
+
+<p><em>option</em><br />
+For specifying settings like <code>verbosity</code> (how much output to write to
+stderr) and <code>depth</code> (how much history is wanted in the case of a shallow
+clone) that affect how other commands are carried out.</p>
+
+<p><em>refspec</em> &lt;refspec&gt;<br />
+For remote helpers that implement <em>import</em> or <em>export</em>, this capability
+allows the refs to be constrained to a private namespace, instead of
+writing to refs/heads or refs/remotes directly. It is recommended that
+all importers providing the <em>import</em> capability use this. It’s mandatory
+for <em>export</em>.</p>
+
+<p>A helper advertising the capability
+<code>refspec                         refs/heads/*:refs/svn/origin/branches/*</code>
+is saying that, when it is asked to <code>import refs/heads/topic</code>, the
+stream it outputs will update the <code>refs/svn/origin/branches/topic</code> ref.</p>
+
+<p>This capability can be advertised multiple times. The first applicable
+refspec takes precedence. The left-hand of refspecs advertised with this
+capability must cover all refs reported by the list command. If no
+<em>refspec</em> capability is advertised, there is an implied <code>refspec *:*</code>.</p>
+
+<p>When writing remote-helpers for decentralized version control systems,
+it is advised to keep a local copy of the repository to interact with,
+and to let the private namespace refs point to this local repository,
+while the refs/remotes namespace is used to track the remote repository.</p>
+
+<p><em>bidi-import</em><br />
+This modifies the <em>import</em> capability. The fast-import commands
+<em>cat-blob</em> and <em>ls</em> can be used by remote-helpers to retrieve
+information about blobs and trees that already exist in fast-import’s
+memory. This requires a channel from fast-import to the remote-helper.
+If it is advertised in addition to &ldquo;import&rdquo;, Git establishes a pipe from
+fast-import to the remote-helper’s stdin. It follows that Git and
+fast-import are both connected to the remote-helper’s stdin. Because Git
+can send multiple commands to the remote-helper it is required that
+helpers that use <em>bidi-import</em> buffer all <em>import</em> commands of a batch
+before sending data to fast-import. This is to prevent mixing commands
+and fast-import responses on the helper’s stdin.</p>
+
+<p><em>export-marks</em> &lt;file&gt;<br />
+This modifies the <em>export</em> capability, instructing Git to dump the
+internal marks table to &lt;file&gt; when complete. For details, read up
+on <em>&ndash;export-marks=&lt;file&gt;</em> in
+<a href="../git-fast-export">git-fast-export(1)</a>.</p>
+
+<p><em>import-marks</em> &lt;file&gt;<br />
+This modifies the <em>export</em> capability, instructing Git to load the marks
+specified in &lt;file&gt; before processing any input. For details, read
+up on <em>&ndash;import-marks=&lt;file&gt;</em> in
+<a href="../git-fast-export">git-fast-export(1)</a>.</p>
+
+<p><em>signed-tags</em><br />
+This modifies the <em>export</em> capability, instructing Git to pass
+<em>&ndash;signed-tags=verbatim</em> to <a href="../git-fast-export">git-fast-export(1)</a>.
+In the absence of this capability, Git will use
+<em>&ndash;signed-tags=warn-strip</em>.</p>
+
+<h2 id="commands">COMMANDS</h2>
+
+<p>Commands are given by the caller on the helper’s standard input, one per
+line.</p>
+
+<p><em>capabilities</em><br />
+Lists the capabilities of the helper, one per line, ending with a blank
+line. Each capability may be preceded with <em>*</em>, which marks them
+mandatory for Git versions using the remote helper to understand. Any
+unknown mandatory capability is a fatal error.</p>
+
+<p>Support for this command is mandatory.</p>
+
+<p><em>list</em><br />
+Lists the refs, one per line, in the format &ldquo;&lt;value&gt; &lt;name&gt;
+[&lt;attr&gt; …]&rdquo;. The value may be a hex sha1 hash, &ldquo;@&lt;dest&gt;&ldquo;
+for a symref, or &ldquo;?&rdquo; to indicate that the helper could not get the value
+of the ref. A space-separated list of attributes follows the name;
+unrecognized attributes are ignored. The list ends with a blank line.</p>
+
+<p>See REF LIST ATTRIBUTES for a list of currently defined attributes.</p>
+
+<p>Supported if the helper has the &ldquo;fetch&rdquo; or &ldquo;import&rdquo; capability.</p>
+
+<p><em>list for-push</em><br />
+Similar to <em>list</em>, except that it is used if and only if the caller
+wants to the resulting ref list to prepare push commands. A helper
+supporting both push and fetch can use this to distinguish for which
+operation the output of <em>list</em> is going to be used, possibly reducing
+the amount of work that needs to be performed.</p>
+
+<p>Supported if the helper has the &ldquo;push&rdquo; or &ldquo;export&rdquo; capability.</p>
+
+<p><em>option</em> &lt;name&gt; &lt;value&gt;<br />
+Sets the transport helper option &lt;name&gt; to &lt;value&gt;. Outputs
+a single line containing one of <em>ok</em> (option successfully set),
+<em>unsupported</em> (option not recognized) or <em>error &lt;msg&gt;</em> (option
+&lt;name&gt; is supported but &lt;value&gt; is not valid for it).
+Options should be set before other commands, and may influence the
+behavior of those commands.</p>
+
+<p>See OPTIONS for a list of currently defined options.</p>
+
+<p>Supported if the helper has the &ldquo;option&rdquo; capability.</p>
+
+<p><em>fetch</em> &lt;sha1&gt; &lt;name&gt;<br />
+Fetches the given object, writing the necessary objects to the database.
+Fetch commands are sent in a batch, one per line, terminated with a
+blank line. Outputs a single blank line when all fetch commands in the
+same batch are complete. Only objects which were reported in the output
+of <em>list</em> with a sha1 may be fetched this way.</p>
+
+<p>Optionally may output a <em>lock &lt;file&gt;</em> line indicating a file under
+GIT_DIR/objects/pack which is keeping a pack until refs can be suitably
+updated.</p>
+
+<p>If option <em>check-connectivity</em> is requested, the helper must output
+<em>connectivity-ok</em> if the clone is self-contained and connected.</p>
+
+<p>Supported if the helper has the &ldquo;fetch&rdquo; capability.</p>
+
+<p><em>push</em> +&lt;src&gt;:&lt;dst&gt;<br />
+Pushes the given local &lt;src&gt; commit or branch to the remote branch
+described by &lt;dst&gt;. A batch sequence of one or more <em>push</em>
+commands is terminated with a blank line (if there is only one reference
+to push, a single <em>push</em> command is followed by a blank line). For
+example, the following would be two batches of <em>push</em>, the first asking
+the remote-helper to push the local ref <em>master</em> to the remote ref
+<em>master</em> and the local <em>HEAD</em> to the remote <em>branch</em>, and the second
+asking to push ref <em>foo</em> to ref <em>bar</em> (forced update requested by the
+<em>+</em>).</p>
+
+<pre><code>push refs/heads/master:refs/heads/master
+push HEAD:refs/heads/branch
+\n
+push +refs/heads/foo:refs/heads/bar
+\n
+</code></pre>
+
+<p>Zero or more protocol options may be entered after the last <em>push</em>
+command, before the batch’s terminating blank line.</p>
+
+<p>When the push is complete, outputs one or more <em>ok &lt;dst&gt;</em> or
+<em>error &lt;dst&gt; &lt;why&gt;?</em> lines to indicate success or failure of
+each pushed ref. The status report output is terminated by a blank line.
+The option field &lt;why&gt; may be quoted in a C style string if it
+contains an LF.</p>
+
+<p>Supported if the helper has the &ldquo;push&rdquo; capability.</p>
+
+<p><em>import</em> &lt;name&gt;<br />
+Produces a fast-import stream which imports the current value of the
+named ref. It may additionally import other refs as needed to construct
+the history efficiently. The script writes to a helper-specific private
+namespace. The value of the named ref should be written to a location in
+this namespace derived by applying the refspecs from the &ldquo;refspec&rdquo;
+capability to the name of the ref.</p>
+
+<p>Especially useful for interoperability with a foreign versioning system.</p>
+
+<p>Just like <em>push</em>, a batch sequence of one or more <em>import</em> is terminated
+with a blank line. For each batch of <em>import</em>, the remote helper should
+produce a fast-import stream terminated by a <em>done</em> command.</p>
+
+<p>Note that if the <em>bidi-import</em> capability is used the complete batch
+sequence has to be buffered before starting to send data to fast-import
+to prevent mixing of commands and fast-import responses on the helper’s
+stdin.</p>
+
+<p>Supported if the helper has the &ldquo;import&rdquo; capability.</p>
+
+<p><em>export</em><br />
+Instructs the remote helper that any subsequent input is part of a
+fast-import stream (generated by <em>git fast-export</em>) containing objects
+which should be pushed to the remote.</p>
+
+<p>Especially useful for interoperability with a foreign versioning system.</p>
+
+<p>The <em>export-marks</em> and <em>import-marks</em> capabilities, if specified, affect
+this command in so far as they are passed on to <em>git fast-export</em>, which
+then will load/store a table of marks for local objects. This can be
+used to implement for incremental operations.</p>
+
+<p>Supported if the helper has the &ldquo;export&rdquo; capability.</p>
+
+<p><em>connect</em> &lt;service&gt;<br />
+Connects to given service. Standard input and standard output of helper
+are connected to specified service (git prefix is included in service
+name so e.g. fetching uses <em>git-upload-pack</em> as service) on remote side.
+Valid replies to this command are empty line (connection established),
+<em>fallback</em> (no smart transport support, fall back to dumb transports)
+and just exiting with error message printed (can’t connect, don’t bother
+trying to fall back). After line feed terminating the positive (empty)
+response, the output of service starts. After the connection ends, the
+remote helper exits.</p>
+
+<p>Supported if the helper has the &ldquo;connect&rdquo; capability.</p>
+
+<p>If a fatal error occurs, the program writes the error message to stderr
+and exits. The caller should expect that a suitable error message has
+been printed if the child closes the connection without completing a
+valid response for the current command.</p>
+
+<p>Additional commands may be supported, as may be determined from
+capabilities reported by the helper.</p>
+
+<h2 id="ref-list-attributes">REF LIST ATTRIBUTES</h2>
+
+<p>The <em>list</em> command produces a list of refs in which each ref may be
+followed by a list of attributes. The following ref list attributes are
+defined.</p>
+
+<p><em>unchanged</em><br />
+This ref is unchanged since the last import or fetch, although the
+helper cannot necessarily determine what value that produced.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>The following options are defined and (under suitable circumstances) set
+by Git if the remote helper has the <em>option</em> capability.</p>
+
+<p><em>option verbosity</em> &lt;n&gt;<br />
+Changes the verbosity of messages displayed by the helper. A value of 0
+for &lt;n&gt; means that processes operate quietly, and the helper
+produces only error output. 1 is the default level of verbosity, and
+higher values of &lt;n&gt; correspond to the number of -v flags passed
+on the command line.</p>
+
+<p><em>option progress</em> {<em>true</em>|<em>false</em>}<br />
+Enables (or disables) progress messages displayed by the transport
+helper during a command.</p>
+
+<p><em>option depth</em> &lt;depth&gt;<br />
+Deepens the history of a shallow repository.</p>
+
+<p><em>option followtags</em> {<em>true</em>|<em>false</em>}<br />
+If enabled the helper should automatically fetch annotated tag objects
+if the object the tag points at was transferred during the fetch
+command. If the tag is not fetched by the helper a second fetch command
+will usually be sent to ask for the tag specifically. Some helpers may
+be able to use this option to avoid a second network connection.</p>
+
+<p><em>option dry-run</em> {<em>true</em>|<em>false</em>}: If true, pretend the operation
+completed successfully, but don’t actually change any repository data.
+For most helpers this only applies to the <em>push</em>, if supported.</p>
+
+<p><em>option servpath &lt;c-style-quoted-path&gt;</em><br />
+Sets service path (&ndash;upload-pack, &ndash;receive-pack etc.) for next connect.
+Remote helper may support this option, but must not rely on this option
+being set before connect request occurs.</p>
+
+<p><em>option check-connectivity</em> {<em>true</em>|<em>false</em>}<br />
+Request the helper to check connectivity of a clone.</p>
+
+<p><em>option force</em> {<em>true</em>|<em>false</em>}<br />
+Request the helper to perform a force update. Defaults to <em>false</em>.</p>
+
+<p><em>option cloning {&lsquo;true</em>|<em>false</em>}<br />
+Notify the helper this is a clone request (i.e. the current repository
+is guaranteed empty).</p>
+
+<p><em>option update-shallow {&lsquo;true</em>|<em>false</em>}<br />
+Allow to extend .git/shallow if the new refs require it.</p>
+
+<p><em>option pushcert {&lsquo;true</em>|<em>false</em>}<br />
+GPG sign pushes.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-remote">git-remote(1)</a></p>
+
+<p><a href="../git-remote-ext">git-remote-ext(1)</a></p>
+
+<p><a href="../git-remote-fd">git-remote-fd(1)</a></p>
+
+<p><a href="../git-remote-testgit">git-remote-testgit(1)</a></p>
+
+<p><a href="../git-fast-import">git-fast-import(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

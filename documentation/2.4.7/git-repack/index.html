@@ -112,64 +112,124 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This command is used to combine all objects that do not currently reside in a &ldquo;pack&rdquo;, into a pack. It can also be used to re-organize existing packs into a single, more efficient pack.</p>
+<p>This command is used to combine all objects that do not currently reside
+in a &ldquo;pack&rdquo;, into a pack. It can also be used to re-organize existing
+packs into a single, more efficient pack.</p>
 
-<p>A pack is a collection of objects, individually compressed, with delta compression applied, stored in a single file, with an associated index file.</p>
+<p>A pack is a collection of objects, individually compressed, with delta
+compression applied, stored in a single file, with an associated index
+file.</p>
 
-<p>Packs are used to reduce the load on mirror systems, backup engines, disk storage, etc.</p>
+<p>Packs are used to reduce the load on mirror systems, backup engines,
+disk storage, etc.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>-a<br />
-Instead of incrementally packing the unpacked objects, pack everything referenced into a single pack. Especially useful when packing a repository that is used for private development. Use with <em>-d</em>. This will clean up the objects that <code>git prune</code> leaves behind, but <code>git fsck                   --full --dangling</code> shows as dangling.</p>
+Instead of incrementally packing the unpacked objects, pack everything
+referenced into a single pack. Especially useful when packing a
+repository that is used for private development. Use with <em>-d</em>. This
+will clean up the objects that <code>git prune</code> leaves behind, but
+<code>git fsck                   --full --dangling</code> shows as dangling.</p>
 
-<p>Note that users fetching over dumb protocols will have to fetch the whole new pack in order to get any contained object, no matter how many other objects in that pack they already have locally.</p>
+<p>Note that users fetching over dumb protocols will have to fetch the
+whole new pack in order to get any contained object, no matter how many
+other objects in that pack they already have locally.</p>
 
 <p>-A<br />
-Same as <code>-a</code>, unless <em>-d</em> is used. Then any unreachable objects in a previous pack become loose, unpacked objects, instead of being left in the old pack. Unreachable objects are never intentionally added to a pack, even when repacking. This option prevents unreachable objects from being immediately deleted by way of being left in the old pack and then removed. Instead, the loose unreachable objects will be pruned according to normal expiry rules with the next <em>git gc</em> invocation. See <a href="../git-gc">git-gc(1)</a>.</p>
+Same as <code>-a</code>, unless <em>-d</em> is used. Then any unreachable objects in a
+previous pack become loose, unpacked objects, instead of being left in
+the old pack. Unreachable objects are never intentionally added to a
+pack, even when repacking. This option prevents unreachable objects from
+being immediately deleted by way of being left in the old pack and then
+removed. Instead, the loose unreachable objects will be pruned according
+to normal expiry rules with the next <em>git gc</em> invocation. See
+<a href="../git-gc">git-gc(1)</a>.</p>
 
 <p>-d<br />
-After packing, if the newly created packs make some existing packs redundant, remove the redundant packs. Also run <em>git prune-packed</em> to remove redundant loose object files.</p>
+After packing, if the newly created packs make some existing packs
+redundant, remove the redundant packs. Also run <em>git prune-packed</em> to
+remove redundant loose object files.</p>
 
 <p>-l<br />
-Pass the <code>--local</code> option to <em>git pack-objects</em>. See <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+Pass the <code>--local</code> option to <em>git pack-objects</em>. See
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
 <p>-f<br />
-Pass the <code>--no-reuse-delta</code> option to <code>git-pack-objects</code>, see <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+Pass the <code>--no-reuse-delta</code> option to <code>git-pack-objects</code>, see
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
 <p>-F<br />
-Pass the <code>--no-reuse-object</code> option to <code>git-pack-objects</code>, see <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+Pass the <code>--no-reuse-object</code> option to <code>git-pack-objects</code>, see
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
 <p>-q<br />
-Pass the <code>-q</code> option to <em>git pack-objects</em>. See <a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
+Pass the <code>-q</code> option to <em>git pack-objects</em>. See
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
 <p>-n<br />
-Do not update the server information with <em>git update-server-info</em>. This option skips updating local catalog files needed to publish this repository (or a direct copy of it) over HTTP or FTP. See <a href="../git-update-server-info">git-update-server-info(1)</a>.</p>
+Do not update the server information with <em>git update-server-info</em>. This
+option skips updating local catalog files needed to publish this
+repository (or a direct copy of it) over HTTP or FTP. See
+<a href="../git-update-server-info">git-update-server-info(1)</a>.</p>
 
-<p>&ndash;window=&lt;n&gt;
+<p>&ndash;window=&lt;n&gt;<br />
 &ndash;depth=&lt;n&gt;<br />
-These two options affect how the objects contained in the pack are stored using delta compression. The objects are first internally sorted by type, size and optionally names and compared against the other objects within <code>--window</code> to see if using delta compression saves space. <code>--depth</code> limits the maximum delta depth; making it too deep affects the performance on the unpacker side, because delta data needs to be applied that many times to get to the necessary object. The default value for &ndash;window is 10 and &ndash;depth is 50.</p>
+These two options affect how the objects contained in the pack are
+stored using delta compression. The objects are first internally sorted
+by type, size and optionally names and compared against the other
+objects within <code>--window</code> to see if using delta compression saves space.
+<code>--depth</code> limits the maximum delta depth; making it too deep affects the
+performance on the unpacker side, because delta data needs to be applied
+that many times to get to the necessary object. The default value for
+&ndash;window is 10 and &ndash;depth is 50.</p>
 
 <p>&ndash;window-memory=&lt;n&gt;<br />
-This option provides an additional limit on top of <code>--window</code>; the window size will dynamically scale down so as to not take up more than <em>&lt;n&gt;</em> bytes in memory. This is useful in repositories with a mix of large and small objects to not run out of memory with a large window, but still be able to take advantage of the large window for the smaller objects. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. <code>--window-memory=0</code> makes memory usage unlimited, which is the default.</p>
+This option provides an additional limit on top of <code>--window</code>; the
+window size will dynamically scale down so as to not take up more than
+<em>&lt;n&gt;</em> bytes in memory. This is useful in repositories with a mix
+of large and small objects to not run out of memory with a large window,
+but still be able to take advantage of the large window for the smaller
+objects. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;.
+<code>--window-memory=0</code> makes memory usage unlimited, which is the default.</p>
 
 <p>&ndash;max-pack-size=&lt;n&gt;<br />
-Maximum size of each output pack file. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. The minimum size allowed is limited to 1 MiB. If specified, multiple packfiles may be created. The default is unlimited, unless the config variable <code>pack.packSizeLimit</code> is set.</p>
+Maximum size of each output pack file. The size can be suffixed with
+&ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. The minimum size allowed is limited to 1 MiB. If
+specified, multiple packfiles may be created. The default is unlimited,
+unless the config variable <code>pack.packSizeLimit</code> is set.</p>
 
-<p>-b
+<p>-b<br />
 &ndash;write-bitmap-index<br />
-Write a reachability bitmap index as part of the repack. This only makes sense when used with <code>-a</code> or <code>-A</code>, as the bitmaps must be able to refer to all reachable objects. This option overrides the setting of <code>pack.writeBitmaps</code>.</p>
+Write a reachability bitmap index as part of the repack. This only makes
+sense when used with <code>-a</code> or <code>-A</code>, as the bitmaps must be able to refer
+to all reachable objects. This option overrides the setting of
+<code>pack.writeBitmaps</code>.</p>
 
 <p>&ndash;pack-kept-objects<br />
-Include objects in <code>.keep</code> files when repacking. Note that we still do not delete <code>.keep</code> packs after <code>pack-objects</code> finishes. This means that we may duplicate objects, but this makes the option safe to use when there are concurrent pushes or fetches. This option is generally only useful if you are writing bitmaps with <code>-b</code> or <code>pack.writeBitmaps</code>, as it ensures that the bitmapped packfile has the necessary objects.</p>
+Include objects in <code>.keep</code> files when repacking. Note that we still do
+not delete <code>.keep</code> packs after <code>pack-objects</code> finishes. This means that
+we may duplicate objects, but this makes the option safe to use when
+there are concurrent pushes or fetches. This option is generally only
+useful if you are writing bitmaps with <code>-b</code> or <code>pack.writeBitmaps</code>, as
+it ensures that the bitmapped packfile has the necessary objects.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>By default, the command passes <code>--delta-base-offset</code> option to <em>git pack-objects</em>; this typically results in slightly smaller packs, but the generated packs are incompatible with versions of Git older than version 1.4.4. If you need to share your repository with such ancient Git versions, either directly or via the dumb http or rsync protocol, then you need to set the configuration variable <code>repack.UseDeltaBaseOffset</code> to &ldquo;false&rdquo; and repack. Access from old Git versions over the native protocol is unaffected by this option as the conversion is performed on the fly as needed in that case.</p>
+<p>By default, the command passes <code>--delta-base-offset</code> option to <em>git
+pack-objects</em>; this typically results in slightly smaller packs, but the
+generated packs are incompatible with versions of Git older than version
+1.4.4. If you need to share your repository with such ancient Git
+versions, either directly or via the dumb http or rsync protocol, then
+you need to set the configuration variable <code>repack.UseDeltaBaseOffset</code>
+to &ldquo;false&rdquo; and repack. Access from old Git versions over the native
+protocol is unaffected by this option as the conversion is performed on
+the fly as needed in that case.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../git-pack-objects">git-pack-objects(1)</a> <a href="../git-prune-packed">git-prune-packed(1)</a></p>
+<p><a href="../git-pack-objects">git-pack-objects(1)</a>
+<a href="../git-prune-packed">git-prune-packed(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

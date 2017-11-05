@@ -112,25 +112,37 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Displays changes in a repository or a selected set of commits. This includes visualizing the commit graph, showing information related to each commit, and the files in the trees of each revision.</p>
+<p>Displays changes in a repository or a selected set of commits. This
+includes visualizing the commit graph, showing information related to
+each commit, and the files in the trees of each revision.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>To control which revisions to show, gitk supports most options applicable to the <em>git rev-list</em> command. It also supports a few options applicable to the <em>git diff-*</em> commands to control how the changes each commit introduces are shown. Finally, it supports some gitk-specific options.</p>
+<p>To control which revisions to show, gitk supports most options
+applicable to the <em>git rev-list</em> command. It also supports a few options
+applicable to the <em>git diff-*</em> commands to control how the changes each
+commit introduces are shown. Finally, it supports some gitk-specific
+options.</p>
 
-<p>gitk generally only understands options with arguments in the <em>sticked</em> form (see <a href="../gitcli">gitcli(7)</a>) due to limitations in the command-line parser.</p>
+<p>gitk generally only understands options with arguments in the <em>sticked</em>
+form (see <a href="../gitcli">gitcli(7)</a>) due to limitations in the
+command-line parser.</p>
 
 <h3 id="rev-list-options-and-arguments">rev-list options and arguments</h3>
 
-<p>This manual page describes only the most frequently used options. See <a href="../git-rev-list">git-rev-list(1)</a> for a complete list.</p>
+<p>This manual page describes only the most frequently used options. See
+<a href="../git-rev-list">git-rev-list(1)</a> for a complete list.</p>
 
 <p>&ndash;all<br />
 Show all refs (branches, tags, etc.).</p>
 
-<p>&ndash;branches[=&lt;pattern&gt;]
-&ndash;tags[=&lt;pattern&gt;]
+<p>&ndash;branches[=&lt;pattern&gt;]<br />
+&ndash;tags[=&lt;pattern&gt;]<br />
 &ndash;remotes[=&lt;pattern&gt;]<br />
-Pretend as if all the branches (tags, remote branches, resp.) are listed on the command line as <em>&lt;commit&gt;</em>. If <em>&lt;pattern&gt;</em> is given, limit refs to ones matching given shell glob. If pattern lacks <em>?</em>, <em>*</em>, or <em>[</em>, <em>/*</em> at the end is implied.</p>
+Pretend as if all the branches (tags, remote branches, resp.) are listed
+on the command line as <em>&lt;commit&gt;</em>. If <em>&lt;pattern&gt;</em> is given,
+limit refs to ones matching given shell glob. If pattern lacks <em>?</em>,
+<em>*</em>, or <em>[</em>, <em>/*</em> at the end is implied.</p>
 
 <p>&ndash;since=&lt;date&gt;<br />
 Show commits more recent than a specific date.</p>
@@ -142,68 +154,117 @@ Show commits older than a specific date.</p>
 Sort commits by date when possible.</p>
 
 <p>&ndash;merge<br />
-After an attempt to merge stops with conflicts, show the commits on the history between two branches (i.e. the HEAD and the MERGE_HEAD) that modify the conflicted files and do not exist on all the heads being merged.</p>
+After an attempt to merge stops with conflicts, show the commits on the
+history between two branches (i.e. the HEAD and the MERGE_HEAD) that
+modify the conflicted files and do not exist on all the heads being
+merged.</p>
 
 <p>&ndash;left-right<br />
-Mark which side of a symmetric diff a commit is reachable from. Commits from the left side are prefixed with a <code>&lt;</code> symbol and those from the right with a <code>&gt;</code> symbol.</p>
+Mark which side of a symmetric diff a commit is reachable from. Commits
+from the left side are prefixed with a <code>&lt;</code> symbol and those from the
+right with a <code>&gt;</code> symbol.</p>
 
 <p>&ndash;full-history<br />
-When filtering history with <em>&lt;path&gt;…</em>, does not prune some history. (See &ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for a more detailed explanation.)</p>
+When filtering history with <em>&lt;path&gt;…</em>, does not prune some
+history. (See &ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for
+a more detailed explanation.)</p>
 
 <p>&ndash;simplify-merges<br />
-Additional option to <code>--full-history</code> to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge. (See &ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for a more detailed explanation.)</p>
+Additional option to <code>--full-history</code> to remove some needless merges
+from the resulting history, as there are no selected commits
+contributing to this merge. (See &ldquo;History simplification&rdquo; in
+<a href="../git-log">git-log(1)</a> for a more detailed explanation.)</p>
 
 <p>&ndash;ancestry-path<br />
-When given a range of commits to display (e.g. <em>commit1..commit2</em> or <em>commit2 ^commit1</em>), only display commits that exist directly on the ancestry chain between the <em>commit1</em> and <em>commit2</em>, i.e. commits that are both descendants of <em>commit1</em>, and ancestors of <em>commit2</em>. (See &ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for a more detailed explanation.)</p>
+When given a range of commits to display (e.g. <em>commit1..commit2</em> or
+<em>commit2 ^commit1</em>), only display commits that exist directly on the
+ancestry chain between the <em>commit1</em> and <em>commit2</em>, i.e. commits that
+are both descendants of <em>commit1</em>, and ancestors of <em>commit2</em>. (See
+&ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for a more
+detailed explanation.)</p>
 
-<p>-L&lt;start&gt;,&lt;end&gt;:&lt;file&gt;
+<p>-L&lt;start&gt;,&lt;end&gt;:&lt;file&gt;<br />
 -L:&lt;funcname&gt;:&lt;file&gt;<br />
-Trace the evolution of the line range given by &ldquo;&lt;start&gt;,&lt;end&gt;&rdquo; (or the function name regex &lt;funcname&gt;) within the &lt;file&gt;. You may not give any pathspec limiters. This is currently limited to a walk starting from a single revision, i.e., you may only give zero or one positive revision arguments. You can specify this option more than once.</p>
+Trace the evolution of the line range given by
+&ldquo;&lt;start&gt;,&lt;end&gt;&rdquo; (or the function name regex
+&lt;funcname&gt;) within the &lt;file&gt;. You may not give any pathspec
+limiters. This is currently limited to a walk starting from a single
+revision, i.e., you may only give zero or one positive revision
+arguments. You can specify this option more than once.</p>
 
-<p><strong>Note:</strong> gitk (unlike <a href="../git-log">git-log(1)</a>) currently only understands this option if you specify it &ldquo;glued together&rdquo; with its argument. Do <strong>not</strong> put a space after <code>-L</code>.</p>
+<p><strong>Note:</strong> gitk (unlike <a href="../git-log">git-log(1)</a>) currently only
+understands this option if you specify it &ldquo;glued together&rdquo; with its
+argument. Do <strong>not</strong> put a space after <code>-L</code>.</p>
 
 <p>&lt;start&gt; and &lt;end&gt; can take one of these forms:</p>
 
 <ul>
 <li><p>number</p>
 
-<p>If &lt;start&gt; or &lt;end&gt; is a number, it specifies an absolute line number (lines count from 1).</p></li>
+<p>If &lt;start&gt; or &lt;end&gt; is a number, it specifies an
+absolute line number (lines count from 1).</p></li>
 
 <li><p>/regex/</p>
 
-<p>This form will use the first line matching the given POSIX regex. If &lt;start&gt; is a regex, it will search from the end of the previous <code>-L</code> range, if any, otherwise from the start of file. If &lt;start&gt; is “^/regex/”, it will search from the start of file. If &lt;end&gt; is a regex, it will search starting at the line given by &lt;start&gt;.</p></li>
+<p>This form will use the first line matching the given POSIX regex. If
+&lt;start&gt; is a regex, it will search from the end of the
+previous <code>-L</code> range, if any, otherwise from the start of file. If
+&lt;start&gt; is “^/regex/”, it will search from the start of file.
+If &lt;end&gt; is a regex, it will search starting at the line given
+by &lt;start&gt;.</p></li>
 
 <li><p>+offset or -offset</p>
 
-<p>This is only valid for &lt;end&gt; and will specify a number of lines before or after the line given by &lt;start&gt;.</p></li>
+<p>This is only valid for &lt;end&gt; and will specify a number of
+lines before or after the line given by &lt;start&gt;.</p></li>
 </ul>
 
-<p>If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and &lt;end&gt;, it is a regular expression that denotes the range from the first funcname line that matches &lt;funcname&gt;, up to the next funcname line. “:&lt;funcname&gt;” searches from the end of the previous <code>-L</code> range, if any, otherwise from the start of file. “^:&lt;funcname&gt;” searches from the start of file.</p>
+<p>If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and
+&lt;end&gt;, it is a regular expression that denotes the range from the
+first funcname line that matches &lt;funcname&gt;, up to the next
+funcname line. “:&lt;funcname&gt;” searches from the end of the previous
+<code>-L</code> range, if any, otherwise from the start of file.
+“^:&lt;funcname&gt;” searches from the start of file.</p>
 
 <p>&lt;revision range&gt;<br />
-Limit the revisions to show. This can be either a single revision meaning show from the given revision and back, or it can be a range in the form &ldquo;<em>&lt;from&gt;</em>..<em>&lt;to&gt;</em>&rdquo; to show all revisions between <em>&lt;from&gt;</em> and back to <em>&lt;to&gt;</em>. Note, more advanced revision selection can be applied. For a more complete list of ways to spell object names, see <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+Limit the revisions to show. This can be either a single revision
+meaning show from the given revision and back, or it can be a range in
+the form &ldquo;<em>&lt;from&gt;</em>..<em>&lt;to&gt;</em>&rdquo; to show all revisions between
+<em>&lt;from&gt;</em> and back to <em>&lt;to&gt;</em>. Note, more advanced revision
+selection can be applied. For a more complete list of ways to spell
+object names, see <a href="../gitrevisions">gitrevisions(7)</a>.</p>
 
 <p>&lt;path&gt;…<br />
-Limit commits to the ones touching files in the given paths. Note, to avoid ambiguity with respect to revision names use &ldquo;&ndash;&rdquo; to separate the paths from any preceding options.</p>
+Limit commits to the ones touching files in the given paths. Note, to
+avoid ambiguity with respect to revision names use &ldquo;&ndash;&rdquo; to separate the
+paths from any preceding options.</p>
 
 <h3 id="gitk-specific-options">gitk-specific options</h3>
 
 <p>&ndash;argscmd=&lt;command&gt;<br />
-Command to be run each time gitk has to determine the revision range to show. The command is expected to print on its standard output a list of additional revisions to be shown, one per line. Use this instead of explicitly specifying a <em>&lt;revision range&gt;</em> if the set of commits to show may vary between refreshes.</p>
+Command to be run each time gitk has to determine the revision range to
+show. The command is expected to print on its standard output a list of
+additional revisions to be shown, one per line. Use this instead of
+explicitly specifying a <em>&lt;revision range&gt;</em> if the set of commits
+to show may vary between refreshes.</p>
 
 <p>&ndash;select-commit=&lt;ref&gt;<br />
-Select the specified commit after loading the graph. Default behavior is equivalent to specifying <em>&ndash;select-commit=HEAD</em>.</p>
+Select the specified commit after loading the graph. Default behavior is
+equivalent to specifying <em>&ndash;select-commit=HEAD</em>.</p>
 
 <h2 id="examples">Examples</h2>
 
 <p>gitk v2.6.12.. include/scsi drivers/scsi<br />
-Show the changes since version <em>v2.6.12</em> that changed any file in the include/scsi or drivers/scsi subdirectories</p>
+Show the changes since version <em>v2.6.12</em> that changed any file in the
+include/scsi or drivers/scsi subdirectories</p>
 
 <p>gitk &ndash;since=&ldquo;2 weeks ago&rdquo; &ndash; gitk<br />
-Show the changes during the last two weeks to the file <em>gitk</em>. The &ldquo;&ndash;&rdquo; is necessary to avoid confusion with the <strong>branch</strong> named <em>gitk</em></p>
+Show the changes during the last two weeks to the file <em>gitk</em>. The &ldquo;&ndash;&rdquo;
+is necessary to avoid confusion with the <strong>branch</strong> named <em>gitk</em></p>
 
 <p>gitk &ndash;max-count=100 &ndash;all &ndash; Makefile<br />
-Show at most 100 changes made to the file <em>Makefile</em>. Instead of only looking for changes in the current branch look in all branches.</p>
+Show at most 100 changes made to the file <em>Makefile</em>. Instead of only
+looking for changes in the current branch look in all branches.</p>
 
 <h2 id="files">Files</h2>
 
@@ -215,11 +276,15 @@ Show at most 100 changes made to the file <em>Makefile</em>. Instead of only loo
 <li><p><em>$HOME/.gitk</em> if it exists</p></li>
 </ul>
 
-<p>If neither of the above exist then <em>$XDG_CONFIG_HOME/git/gitk</em> is created and used by default. If <em>$XDG_CONFIG_HOME</em> is not set it defaults to <em>$HOME/.config</em> in all cases.</p>
+<p>If neither of the above exist then <em>$XDG_CONFIG_HOME/git/gitk</em> is
+created and used by default. If <em>$XDG_CONFIG_HOME</em> is not set it
+defaults to <em>$HOME/.config</em> in all cases.</p>
 
 <h2 id="history">History</h2>
 
-<p>Gitk was the first graphical repository browser. It’s written in tcl/tk and started off in a separate repository but was later merged into the main Git repository.</p>
+<p>Gitk was the first graphical repository browser. It’s written in tcl/tk
+and started off in a separate repository but was later merged into the
+main Git repository.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -227,10 +292,12 @@ Show at most 100 changes made to the file <em>Makefile</em>. Instead of only loo
 A repository browser written in C++ using Qt.</p>
 
 <p><em>gitview(1)</em><br />
-A repository browser written in Python using Gtk. It’s based on <em>bzrk(1)</em> and distributed in the contrib area of the Git repository.</p>
+A repository browser written in Python using Gtk. It’s based on
+<em>bzrk(1)</em> and distributed in the contrib area of the Git repository.</p>
 
 <p><em>tig(1)</em><br />
-A minimal repository browser and Git tool output highlighter written in C using Ncurses.</p>
+A minimal repository browser and Git tool output highlighter written in
+C using Ncurses.</p>
 
 <h2 id="git">GIT</h2>
 

@@ -112,73 +112,125 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This program dumps the given revisions in a form suitable to be piped into <em>git fast-import</em>.</p>
+<p>This program dumps the given revisions in a form suitable to be piped
+into <em>git fast-import</em>.</p>
 
-<p>You can use it as a human-readable bundle replacement (see <a href="../git-bundle">git-bundle(1)</a>), or as a kind of an interactive <em>git filter-branch</em>.</p>
+<p>You can use it as a human-readable bundle replacement (see
+<a href="../git-bundle">git-bundle(1)</a>), or as a kind of an interactive <em>git
+filter-branch</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&ndash;progress=&lt;n&gt;<br />
-Insert <em>progress</em> statements every &lt;n&gt; objects, to be shown by <em>git fast-import</em> during import.</p>
+Insert <em>progress</em> statements every &lt;n&gt; objects, to be shown by
+<em>git fast-import</em> during import.</p>
 
 <p>&ndash;signed-tags=(verbatim|warn|warn-strip|strip|abort)<br />
-Specify how to handle signed tags. Since any transformation after the export can change the tag names (which can also happen when excluding revisions) the signatures will not match.</p>
+Specify how to handle signed tags. Since any transformation after the
+export can change the tag names (which can also happen when excluding
+revisions) the signatures will not match.</p>
 
-<p>When asking to <em>abort</em> (which is the default), this program will die when encountering a signed tag. With <em>strip</em>, the tags will silently be made unsigned, with <em>warn-strip</em> they will be made unsigned but a warning will be displayed, with <em>verbatim</em>, they will be silently exported and with <em>warn</em>, they will be exported, but you will see a warning.</p>
+<p>When asking to <em>abort</em> (which is the default), this program will die
+when encountering a signed tag. With <em>strip</em>, the tags will silently be
+made unsigned, with <em>warn-strip</em> they will be made unsigned but a
+warning will be displayed, with <em>verbatim</em>, they will be silently
+exported and with <em>warn</em>, they will be exported, but you will see a
+warning.</p>
 
 <p>&ndash;tag-of-filtered-object=(abort|drop|rewrite)<br />
-Specify how to handle tags whose tagged object is filtered out. Since revisions and files to export can be limited by path, tagged objects may be filtered completely.</p>
+Specify how to handle tags whose tagged object is filtered out. Since
+revisions and files to export can be limited by path, tagged objects may
+be filtered completely.</p>
 
-<p>When asking to <em>abort</em> (which is the default), this program will die when encountering such a tag. With <em>drop</em> it will omit such tags from the output. With <em>rewrite</em>, if the tagged object is a commit, it will rewrite the tag to tag an ancestor commit (via parent rewriting; see <a href="../git-rev-list">git-rev-list(1)</a>)</p>
+<p>When asking to <em>abort</em> (which is the default), this program will die
+when encountering such a tag. With <em>drop</em> it will omit such tags from
+the output. With <em>rewrite</em>, if the tagged object is a commit, it will
+rewrite the tag to tag an ancestor commit (via parent rewriting; see
+<a href="../git-rev-list">git-rev-list(1)</a>)</p>
 
-<p>-M
+<p>-M<br />
 -C<br />
-Perform move and/or copy detection, as described in the <a href="../git-diff">git-diff(1)</a> manual page, and use it to generate rename and copy commands in the output dump.</p>
+Perform move and/or copy detection, as described in the
+<a href="../git-diff">git-diff(1)</a> manual page, and use it to generate rename
+and copy commands in the output dump.</p>
 
-<p>Note that earlier versions of this command did not complain and produced incorrect results if you gave these options.</p>
+<p>Note that earlier versions of this command did not complain and produced
+incorrect results if you gave these options.</p>
 
 <p>&ndash;export-marks=&lt;file&gt;<br />
-Dumps the internal marks table to &lt;file&gt; when complete. Marks are written one per line as <code>:markid SHA-1</code>. Only marks for revisions are dumped; marks for blobs are ignored. Backends can use this file to validate imports after they have been completed, or to save the marks table across incremental runs. As &lt;file&gt; is only opened and truncated at completion, the same path can also be safely given to &ndash;import-marks. The file will not be written if no new object has been marked/exported.</p>
+Dumps the internal marks table to &lt;file&gt; when complete. Marks are
+written one per line as <code>:markid SHA-1</code>. Only marks for revisions are
+dumped; marks for blobs are ignored. Backends can use this file to
+validate imports after they have been completed, or to save the marks
+table across incremental runs. As &lt;file&gt; is only opened and
+truncated at completion, the same path can also be safely given to
+&ndash;import-marks. The file will not be written if no new object has been
+marked/exported.</p>
 
 <p>&ndash;import-marks=&lt;file&gt;<br />
-Before processing any input, load the marks specified in &lt;file&gt;. The input file must exist, must be readable, and must use the same format as produced by &ndash;export-marks.</p>
+Before processing any input, load the marks specified in &lt;file&gt;.
+The input file must exist, must be readable, and must use the same
+format as produced by &ndash;export-marks.</p>
 
-<p>Any commits that have already been marked will not be exported again. If the backend uses a similar &ndash;import-marks file, this allows for incremental bidirectional exporting of the repository by keeping the marks the same across runs.</p>
+<p>Any commits that have already been marked will not be exported again. If
+the backend uses a similar &ndash;import-marks file, this allows for
+incremental bidirectional exporting of the repository by keeping the
+marks the same across runs.</p>
 
 <p>&ndash;fake-missing-tagger<br />
-Some old repositories have tags without a tagger. The fast-import protocol was pretty strict about that, and did not allow that. So fake a tagger to be able to fast-import the output.</p>
+Some old repositories have tags without a tagger. The fast-import
+protocol was pretty strict about that, and did not allow that. So fake a
+tagger to be able to fast-import the output.</p>
 
 <p>&ndash;use-done-feature<br />
-Start the stream with a <em>feature done</em> stanza, and terminate it with a <em>done</em> command.</p>
+Start the stream with a <em>feature done</em> stanza, and terminate it with a
+<em>done</em> command.</p>
 
 <p>&ndash;no-data<br />
-Skip output of blob objects and instead refer to blobs via their original SHA-1 hash. This is useful when rewriting the directory structure or history of a repository without touching the contents of individual files. Note that the resulting stream can only be used by a repository which already contains the necessary objects.</p>
+Skip output of blob objects and instead refer to blobs via their
+original SHA-1 hash. This is useful when rewriting the directory
+structure or history of a repository without touching the contents of
+individual files. Note that the resulting stream can only be used by a
+repository which already contains the necessary objects.</p>
 
 <p>&ndash;full-tree<br />
-This option will cause fast-export to issue a &ldquo;deleteall&rdquo; directive for each commit followed by a full list of all files in the commit (as opposed to just listing the files which are different from the commit’s first parent).</p>
+This option will cause fast-export to issue a &ldquo;deleteall&rdquo; directive for
+each commit followed by a full list of all files in the commit (as
+opposed to just listing the files which are different from the commit’s
+first parent).</p>
 
 <p>[&lt;git-rev-list-args&gt;…]<br />
-A list of arguments, acceptable to <em>git rev-parse</em> and <em>git rev-list</em>, that specifies the specific objects and references to export. For example, <code>master~10..master</code> causes the current master reference to be exported along with all objects added since its 10th ancestor commit.</p>
+A list of arguments, acceptable to <em>git rev-parse</em> and <em>git rev-list</em>,
+that specifies the specific objects and references to export. For
+example, <code>master~10..master</code> causes the current master reference to be
+exported along with all objects added since its 10th ancestor commit.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
 <pre><code>$ git fast-export --all | (cd /empty/repository &amp;&amp; git fast-import)
 </code></pre>
 
-<p>This will export the whole repository and import it into the existing empty repository. Except for reencoding commits that are not in UTF-8, it would be a one-to-one mirror.</p>
+<p>This will export the whole repository and import it into the existing
+empty repository. Except for reencoding commits that are not in UTF-8,
+it would be a one-to-one mirror.</p>
 
 <pre><code>$ git fast-export master~5..master |
         sed &quot;s|refs/heads/master|refs/heads/other|&quot; |
         git fast-import
 </code></pre>
 
-<p>This makes a new branch called <em>other</em> from <em>master~5..master</em> (i.e. if <em>master</em> has linear history, it will take the last 5 commits).</p>
+<p>This makes a new branch called <em>other</em> from <em>master~5..master</em> (i.e. if
+<em>master</em> has linear history, it will take the last 5 commits).</p>
 
-<p>Note that this assumes that none of the blobs and commit messages referenced by that revision range contains the string <em>refs/heads/master</em>.</p>
+<p>Note that this assumes that none of the blobs and commit messages
+referenced by that revision range contains the string
+<em>refs/heads/master</em>.</p>
 
 <h2 id="limitations">Limitations</h2>
 
-<p>Since <em>git fast-import</em> cannot tag trees, you will not be able to export the linux.git repository completely, as it contains a tag referencing a tree instead of a commit.</p>
+<p>Since <em>git fast-import</em> cannot tag trees, you will not be able to export
+the linux.git repository completely, as it contains a tag referencing a
+tree instead of a commit.</p>
 
 <h2 id="git">GIT</h2>
 

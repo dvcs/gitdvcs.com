@@ -118,91 +118,136 @@ git tag -v &lt;tagname&gt;…
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Add a tag reference in <code>refs/tags/</code>, unless <code>-d/-l/-v</code> is given to delete, list or verify tags.</p>
+<p>Add a tag reference in <code>refs/tags/</code>, unless <code>-d/-l/-v</code> is given to
+delete, list or verify tags.</p>
 
 <p>Unless <code>-f</code> is given, the named tag must not yet exist.</p>
 
-<p>If one of <code>-a</code>, <code>-s</code>, or <code>-u &lt;key-id&gt;</code> is passed, the command creates a <em>tag</em> object, and requires a tag message. Unless <code>-m &lt;msg&gt;</code> or <code>-F &lt;file&gt;</code> is given, an editor is started for the user to type in the tag message.</p>
+<p>If one of <code>-a</code>, <code>-s</code>, or <code>-u &lt;key-id&gt;</code> is passed, the command creates a
+<em>tag</em> object, and requires a tag message. Unless <code>-m &lt;msg&gt;</code> or
+<code>-F &lt;file&gt;</code> is given, an editor is started for the user to type in the
+tag message.</p>
 
-<p>If <code>-m &lt;msg&gt;</code> or <code>-F               &lt;file&gt;</code> is given and <code>-a</code>, <code>-s</code>, and <code>-u &lt;key-id&gt;</code> are absent, <code>-a</code> is implied.</p>
+<p>If <code>-m &lt;msg&gt;</code> or <code>-F               &lt;file&gt;</code> is given and <code>-a</code>, <code>-s</code>, and
+<code>-u &lt;key-id&gt;</code> are absent, <code>-a</code> is implied.</p>
 
-<p>Otherwise just a tag reference for the SHA-1 object name of the commit object is created (i.e. a lightweight tag).</p>
+<p>Otherwise just a tag reference for the SHA-1 object name of the commit
+object is created (i.e. a lightweight tag).</p>
 
-<p>A GnuPG signed tag object will be created when <code>-s</code> or <code>-u &lt;key-id&gt;</code> is used. When <code>-u &lt;key-id&gt;</code> is not used, the committer identity for the current user is used to find the GnuPG key for signing. The configuration variable <code>gpg.program</code> is used to specify custom GnuPG binary.</p>
+<p>A GnuPG signed tag object will be created when <code>-s</code> or <code>-u &lt;key-id&gt;</code> is
+used. When <code>-u &lt;key-id&gt;</code> is not used, the committer identity for the
+current user is used to find the GnuPG key for signing. The
+configuration variable <code>gpg.program</code> is used to specify custom GnuPG
+binary.</p>
 
-<p>Tag objects (created with <code>-a</code>, <code>-s</code>, or <code>-u</code>) are called &ldquo;annotated&rdquo; tags; they contain a creation date, the tagger name and e-mail, a tagging message, and an optional GnuPG signature. Whereas a &ldquo;lightweight&rdquo; tag is simply a name for an object (usually a commit object).</p>
+<p>Tag objects (created with <code>-a</code>, <code>-s</code>, or <code>-u</code>) are called &ldquo;annotated&rdquo;
+tags; they contain a creation date, the tagger name and e-mail, a
+tagging message, and an optional GnuPG signature. Whereas a
+&ldquo;lightweight&rdquo; tag is simply a name for an object (usually a commit
+object).</p>
 
-<p>Annotated tags are meant for release while lightweight tags are meant for private or temporary object labels. For this reason, some git commands for naming objects (like <code>git describe</code>) will ignore lightweight tags by default.</p>
+<p>Annotated tags are meant for release while lightweight tags are meant
+for private or temporary object labels. For this reason, some git
+commands for naming objects (like <code>git describe</code>) will ignore
+lightweight tags by default.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-a
+<p>-a<br />
 &ndash;annotate<br />
 Make an unsigned, annotated tag object</p>
 
-<p>-s
+<p>-s<br />
 &ndash;sign<br />
 Make a GPG-signed tag, using the default e-mail address’s key.</p>
 
-<p>-u &lt;key-id&gt;
+<p>-u &lt;key-id&gt;<br />
 &ndash;local-user=&lt;key-id&gt;<br />
 Make a GPG-signed tag, using the given key.</p>
 
-<p>-f
+<p>-f<br />
 &ndash;force<br />
 Replace an existing tag with the given name (instead of failing)</p>
 
-<p>-d
+<p>-d<br />
 &ndash;delete<br />
 Delete existing tags with the given names.</p>
 
-<p>-v
+<p>-v<br />
 &ndash;verify<br />
 Verify the gpg signature of the given tag names.</p>
 
 <p>-n&lt;num&gt;<br />
-&lt;num&gt; specifies how many lines from the annotation, if any, are printed when using -l. The default is not to print any annotation lines. If no number is given to <code>-n</code>, only the first line is printed. If the tag is not annotated, the commit message is displayed instead.</p>
+&lt;num&gt; specifies how many lines from the annotation, if any, are
+printed when using -l. The default is not to print any annotation lines.
+If no number is given to <code>-n</code>, only the first line is printed. If the
+tag is not annotated, the commit message is displayed instead.</p>
 
-<p>-l &lt;pattern&gt;
+<p>-l &lt;pattern&gt;<br />
 &ndash;list &lt;pattern&gt;<br />
-List tags with names that match the given pattern (or all if no pattern is given). Running &ldquo;git tag&rdquo; without arguments also lists all tags. The pattern is a shell wildcard (i.e., matched using fnmatch(3)). Multiple patterns may be given; if any of them matches, the tag is shown.</p>
+List tags with names that match the given pattern (or all if no pattern
+is given). Running &ldquo;git tag&rdquo; without arguments also lists all tags. The
+pattern is a shell wildcard (i.e., matched using fnmatch(3)). Multiple
+patterns may be given; if any of them matches, the tag is shown.</p>
 
 <p>&ndash;sort=&lt;type&gt;<br />
-Sort in a specific order. Supported type is &ldquo;refname&rdquo; (lexicographic order), &ldquo;version:refname&rdquo; or &ldquo;v:refname&rdquo; (tag names are treated as versions). Prepend &ldquo;-&rdquo; to reverse sort order.</p>
+Sort in a specific order. Supported type is &ldquo;refname&rdquo; (lexicographic
+order), &ldquo;version:refname&rdquo; or &ldquo;v:refname&rdquo; (tag names are treated as
+versions). Prepend &ldquo;-&rdquo; to reverse sort order.</p>
 
-<p>&ndash;column[=&lt;options&gt;]
+<p>&ndash;column[=&lt;options&gt;]<br />
 &ndash;no-column<br />
-Display tag listing in columns. See configuration variable column.tag for option syntax.<code>--column</code> and <code>--no-column</code> without options are equivalent to <em>always</em> and <em>never</em> respectively.</p>
+Display tag listing in columns. See configuration variable column.tag
+for option syntax.<code>--column</code> and <code>--no-column</code> without options are
+equivalent to <em>always</em> and <em>never</em> respectively.</p>
 
-<p>This option is only applicable when listing tags without annotation lines.</p>
+<p>This option is only applicable when listing tags without annotation
+lines.</p>
 
 <p>&ndash;contains [&lt;commit&gt;]<br />
-Only list tags which contain the specified commit (HEAD if not specified).</p>
+Only list tags which contain the specified commit (HEAD if not
+specified).</p>
 
 <p>&ndash;points-at &lt;object&gt;<br />
 Only list tags of the given object.</p>
 
-<p>-m &lt;msg&gt;
+<p>-m &lt;msg&gt;<br />
 &ndash;message=&lt;msg&gt;<br />
-Use the given tag message (instead of prompting). If multiple <code>-m</code> options are given, their values are concatenated as separate paragraphs. Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or <code>-u                   &lt;key-id&gt;</code> is given.</p>
+Use the given tag message (instead of prompting). If multiple <code>-m</code>
+options are given, their values are concatenated as separate paragraphs.
+Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or <code>-u                   &lt;key-id&gt;</code>
+is given.</p>
 
-<p>-F &lt;file&gt;
+<p>-F &lt;file&gt;<br />
 &ndash;file=&lt;file&gt;<br />
-Take the tag message from the given file. Use <em>-</em> to read the message from the standard input. Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or <code>-u                   &lt;key-id&gt;</code> is given.</p>
+Take the tag message from the given file. Use <em>-</em> to read the message
+from the standard input. Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or
+<code>-u                   &lt;key-id&gt;</code> is given.</p>
 
 <p>&ndash;cleanup=&lt;mode&gt;<br />
-This option sets how the tag message is cleaned up. The <em>&lt;mode&gt;</em> can be one of <em>verbatim</em>, <em>whitespace</em> and <em>strip</em>. The <em>strip</em> mode is default. The <em>verbatim</em> mode does not change message at all, <em>whitespace</em> removes just leading/trailing whitespace lines and <em>strip</em> removes both whitespace and commentary.</p>
+This option sets how the tag message is cleaned up. The <em>&lt;mode&gt;</em>
+can be one of <em>verbatim</em>, <em>whitespace</em> and <em>strip</em>. The <em>strip</em> mode is
+default. The <em>verbatim</em> mode does not change message at all,
+<em>whitespace</em> removes just leading/trailing whitespace lines and <em>strip</em>
+removes both whitespace and commentary.</p>
 
 <p>&lt;tagname&gt;<br />
-The name of the tag to create, delete, or describe. The new tag name must pass all checks defined by <a href="../git-check-ref-format">git-check-ref-format(1)</a>. Some of these checks may restrict the characters allowed in a tag name.</p>
+The name of the tag to create, delete, or describe. The new tag name
+must pass all checks defined by
+<a href="../git-check-ref-format">git-check-ref-format(1)</a>. Some of these
+checks may restrict the characters allowed in a tag name.</p>
 
-<p>&lt;commit&gt;
+<p>&lt;commit&gt;<br />
 &lt;object&gt;<br />
-The object that the new tag will refer to, usually a commit. Defaults to HEAD.</p>
+The object that the new tag will refer to, usually a commit. Defaults to
+HEAD.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
-<p>By default, <em>git tag</em> in sign-with-default mode (-s) will use your committer identity (of the form &ldquo;Your Name &lt;your@email.address&gt;&rdquo;) to find a key. If you want to use a different default key, you can specify it in the repository configuration as follows:</p>
+<p>By default, <em>git tag</em> in sign-with-default mode (-s) will use your
+committer identity (of the form &ldquo;Your Name &lt;your@email.address&gt;&rdquo;)
+to find a key. If you want to use a different default key, you can
+specify it in the repository configuration as follows:</p>
 
 <pre><code>[user]
     signingkey = &lt;gpg-key-id&gt;
@@ -212,21 +257,38 @@ The object that the new tag will refer to, usually a commit. Defaults to HEAD.</
 
 <h3 id="on-re-tagging">On Re-tagging</h3>
 
-<p>What should you do when you tag a wrong commit and you would want to re-tag?</p>
+<p>What should you do when you tag a wrong commit and you would want to
+re-tag?</p>
 
-<p>If you never pushed anything out, just re-tag it. Use &ldquo;-f&rdquo; to replace the old one. And you’re done.</p>
+<p>If you never pushed anything out, just re-tag it. Use &ldquo;-f&rdquo; to replace
+the old one. And you’re done.</p>
 
-<p>But if you have pushed things out (or others could just read your repository directly), then others will have already seen the old tag. In that case you can do one of two things:</p>
+<p>But if you have pushed things out (or others could just read your
+repository directly), then others will have already seen the old tag. In
+that case you can do one of two things:</p>
 
 <ol>
-<li><p>The sane thing. Just admit you screwed up, and use a different name. Others have already seen one tag-name, and if you keep the same name, you may be in the situation that two people both have &ldquo;version X&rdquo;, but they actually have <em>different</em> &ldquo;X&rdquo;&rsquo;s. So just call it &ldquo;X.1&rdquo; and be done with it.</p></li>
+<li><p>The sane thing. Just admit you screwed up, and use a different name.
+Others have already seen one tag-name, and if you keep the same
+name, you may be in the situation that two people both have &ldquo;version
+X&rdquo;, but they actually have <em>different</em> &ldquo;X&rdquo;&rsquo;s. So just call it &ldquo;X.1&rdquo;
+and be done with it.</p></li>
 
-<li><p>The insane thing. You really want to call the new version &ldquo;X&rdquo; too, <em>even though</em> others have already seen the old one. So just use <em>git tag -f</em> again, as if you hadn’t already published the old one.</p></li>
+<li><p>The insane thing. You really want to call the new version &ldquo;X&rdquo; too,
+<em>even though</em> others have already seen the old one. So just use <em>git
+tag -f</em> again, as if you hadn’t already published the old one.</p></li>
 </ol>
 
-<p>However, Git does <strong>not</strong> (and it should not) change tags behind users back. So if somebody already got the old tag, doing a <em>git pull</em> on your tree shouldn’t just make them overwrite the old one.</p>
+<p>However, Git does <strong>not</strong> (and it should not) change tags behind users
+back. So if somebody already got the old tag, doing a <em>git pull</em> on your
+tree shouldn’t just make them overwrite the old one.</p>
 
-<p>If somebody got a release tag from you, you cannot just change the tag for them by updating your own one. This is a big security issue, in that people MUST be able to trust their tag-names. If you really want to do the insane thing, you need to just fess up to it, and tell people that you messed up. You can do that by making a very public announcement saying:</p>
+<p>If somebody got a release tag from you, you cannot just change the tag
+for them by updating your own one. This is a big security issue, in that
+people MUST be able to trust their tag-names. If you really want to do
+the insane thing, you need to just fess up to it, and tell people that
+you messed up. You can do that by making a very public announcement
+saying:</p>
 
 <pre><code>Ok, I messed up, and I pushed out an earlier version tagged as X. I
 then fixed something, and retagged the *fixed* tree as X again.
@@ -248,15 +310,27 @@ which should return 0123456789abcdef.. if you have the new version.
 Sorry for the inconvenience.
 </code></pre>
 
-<p>Does this seem a bit complicated? It <strong>should</strong> be. There is no way that it would be correct to just &ldquo;fix&rdquo; it automatically. People need to know that their tags might have been changed.</p>
+<p>Does this seem a bit complicated? It <strong>should</strong> be. There is no way that
+it would be correct to just &ldquo;fix&rdquo; it automatically. People need to know
+that their tags might have been changed.</p>
 
 <h3 id="on-automatic-following">On Automatic following</h3>
 
-<p>If you are following somebody else’s tree, you are most likely using remote-tracking branches (<code>refs/heads/origin</code> in traditional layout, or <code>refs/remotes/origin/master</code> in the separate-remote layout). You usually want the tags from the other end.</p>
+<p>If you are following somebody else’s tree, you are most likely using
+remote-tracking branches (<code>refs/heads/origin</code> in traditional layout, or
+<code>refs/remotes/origin/master</code> in the separate-remote layout). You usually
+want the tags from the other end.</p>
 
-<p>On the other hand, if you are fetching because you would want a one-shot merge from somebody else, you typically do not want to get tags from there. This happens more often for people near the toplevel but not limited to them. Mere mortals when pulling from each other do not necessarily want to automatically get private anchor point tags from the other person.</p>
+<p>On the other hand, if you are fetching because you would want a one-shot
+merge from somebody else, you typically do not want to get tags from
+there. This happens more often for people near the toplevel but not
+limited to them. Mere mortals when pulling from each other do not
+necessarily want to automatically get private anchor point tags from the
+other person.</p>
 
-<p>Often, &ldquo;please pull&rdquo; messages on the mailing list just provide two pieces of information: a repo URL and a branch name; this is designed to be easily cut&amp;pasted at the end of a <em>git fetch</em> command line:</p>
+<p>Often, &ldquo;please pull&rdquo; messages on the mailing list just provide two
+pieces of information: a repo URL and a branch name; this is designed to
+be easily cut&amp;pasted at the end of a <em>git fetch</em> command line:</p>
 
 <pre><code>Linus, please pull from
 
@@ -270,19 +344,43 @@ to get the following updates...
 <pre><code>$ git pull git://git..../proj.git master
 </code></pre>
 
-<p>In such a case, you do not want to automatically follow the other person’s tags.</p>
+<p>In such a case, you do not want to automatically follow the other
+person’s tags.</p>
 
-<p>One important aspect of Git is its distributed nature, which largely means there is no inherent &ldquo;upstream&rdquo; or &ldquo;downstream&rdquo; in the system. On the face of it, the above example might seem to indicate that the tag namespace is owned by the upper echelon of people and that tags only flow downwards, but that is not the case. It only shows that the usage pattern determines who are interested in whose tags.</p>
+<p>One important aspect of Git is its distributed nature, which largely
+means there is no inherent &ldquo;upstream&rdquo; or &ldquo;downstream&rdquo; in the system. On
+the face of it, the above example might seem to indicate that the tag
+namespace is owned by the upper echelon of people and that tags only
+flow downwards, but that is not the case. It only shows that the usage
+pattern determines who are interested in whose tags.</p>
 
-<p>A one-shot pull is a sign that a commit history is now crossing the boundary between one circle of people (e.g. &ldquo;people who are primarily interested in the networking part of the kernel&rdquo;) who may have their own set of tags (e.g. &ldquo;this is the third release candidate from the networking group to be proposed for general consumption with 2.6.21 release&rdquo;) to another circle of people (e.g. &ldquo;people who integrate various subsystem improvements&rdquo;). The latter are usually not interested in the detailed tags used internally in the former group (that is what &ldquo;internal&rdquo; means). That is why it is desirable not to follow tags automatically in this case.</p>
+<p>A one-shot pull is a sign that a commit history is now crossing the
+boundary between one circle of people (e.g. &ldquo;people who are primarily
+interested in the networking part of the kernel&rdquo;) who may have their own
+set of tags (e.g. &ldquo;this is the third release candidate from the
+networking group to be proposed for general consumption with 2.6.21
+release&rdquo;) to another circle of people (e.g. &ldquo;people who integrate
+various subsystem improvements&rdquo;). The latter are usually not interested
+in the detailed tags used internally in the former group (that is what
+&ldquo;internal&rdquo; means). That is why it is desirable not to follow tags
+automatically in this case.</p>
 
-<p>It may well be that among networking people, they may want to exchange the tags internal to their group, but in that workflow they are most likely tracking each other’s progress by having remote-tracking branches. Again, the heuristic to automatically follow such tags is a good thing.</p>
+<p>It may well be that among networking people, they may want to exchange
+the tags internal to their group, but in that workflow they are most
+likely tracking each other’s progress by having remote-tracking
+branches. Again, the heuristic to automatically follow such tags is a
+good thing.</p>
 
 <h3 id="on-backdating-tags">On Backdating Tags</h3>
 
-<p>If you have imported some changes from another VCS and would like to add tags for major releases of your work, it is useful to be able to specify the date to embed inside of the tag object; such data in the tag object affects, for example, the ordering of tags in the gitweb interface.</p>
+<p>If you have imported some changes from another VCS and would like to add
+tags for major releases of your work, it is useful to be able to specify
+the date to embed inside of the tag object; such data in the tag object
+affects, for example, the ordering of tags in the gitweb interface.</p>
 
-<p>To set the date used in future tag objects, set the environment variable GIT_COMMITTER_DATE (see the later discussion of possible values; the most common form is &ldquo;YYYY-MM-DD HH:MM&rdquo;).</p>
+<p>To set the date used in future tag objects, set the environment variable
+GIT_COMMITTER_DATE (see the later discussion of possible values; the
+most common form is &ldquo;YYYY-MM-DD HH:MM&rdquo;).</p>
 
 <p>For example:</p>
 
@@ -291,21 +389,28 @@ to get the following updates...
 
 <h2 id="date-formats">DATE FORMATS</h2>
 
-<p>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables support the following date formats:</p>
+<p>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables
+support the following date formats:</p>
 
 <p>Git internal format<br />
-It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where <code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
+It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where
+<code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the
+UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from
+UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
 
 <p>RFC 2822<br />
-The standard email format as described by RFC 2822, for example <code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
+The standard email format as described by RFC 2822, for example
+<code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
 
 <p>ISO 8601<br />
-Time and date specified by the ISO 8601 standard, for example <code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code> character as well.</p>
+Time and date specified by the ISO 8601 standard, for example
+<code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code>
+character as well.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">

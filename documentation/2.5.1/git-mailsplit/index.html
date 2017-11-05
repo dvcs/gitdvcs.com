@@ -112,12 +112,13 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Splits a mbox file or a Maildir into a list of files: &ldquo;0001&rdquo; &ldquo;0002&rdquo; .. in the specified directory so you can process them further from there.</p>
+<p>Splits a mbox file or a Maildir into a list of files: &ldquo;0001&rdquo; &ldquo;0002&rdquo; ..
+in the specified directory so you can process them further from there.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -132,22 +133,27 @@ Important
 <h2 id="options">OPTIONS</h2>
 
 <p>&lt;mbox&gt;<br />
-Mbox file to split. If not given, the mbox is read from the standard input.</p>
+Mbox file to split. If not given, the mbox is read from the standard
+input.</p>
 
 <p>&lt;Maildir&gt;<br />
-Root of the Maildir to split. This directory should contain the cur, tmp and new subdirectories.</p>
+Root of the Maildir to split. This directory should contain the cur, tmp
+and new subdirectories.</p>
 
 <p>-o&lt;directory&gt;<br />
 Directory in which to place the individual messages.</p>
 
 <p>-b<br />
-If any file doesn’t begin with a From line, assume it is a single mail message instead of signaling error.</p>
+If any file doesn’t begin with a From line, assume it is a single mail
+message instead of signaling error.</p>
 
 <p>-d&lt;prec&gt;<br />
-Instead of the default 4 digits with leading zeros, different precision can be specified for the generated filenames.</p>
+Instead of the default 4 digits with leading zeros, different precision
+can be specified for the generated filenames.</p>
 
 <p>-f&lt;nn&gt;<br />
-Skip the first &lt;nn&gt; numbers, for example if -f3 is specified, start the numbering with 0004.</p>
+Skip the first &lt;nn&gt; numbers, for example if -f3 is specified,
+start the numbering with 0004.</p>
 
 <p>&ndash;keep-cr<br />
 Do not remove <code>\r</code> from lines ending with <code>\r\n</code>.</p>

@@ -2,11 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Downloads on Git</title>
-    <link>https://www.gitdvcs.com/download/index.xml</link>
+    <link>https://www.gitdvcs.com/download/</link>
     <description>Recent content in Downloads on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://www.gitdvcs.com/download/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://www.gitdvcs.com/download/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Aurees</title>
@@ -140,6 +142,115 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/download/desktop/gitx-dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitbox</title>
+      <link>https://www.gitdvcs.com/download/desktop/gitbox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/desktop/gitbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://www.gitdvcs.com/download/git/linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/git/linux/</guid>
+      <description>Debian/Ubuntu
+$ apt-get install git   Fedora
+$ yum install git # Up to Fedora 21  $ dnf install git # Fedora 22 and later   Gentoo
+$ emerge --ask --verbose dev-vcs/git   Arch Linux
+$ pacman -S git   openSUSE
+$ zypper install git   Mageia
+$ urpmi git   FreeBSD
+$ pkg install git   OpenBSD
+$ pkg_add git   Alpine</description>
+    </item>
+    
+    <item>
+      <title>MGit</title>
+      <link>https://www.gitdvcs.com/download/mobile/mgit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/mobile/mgit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Smart Git</title>
+      <link>https://www.gitdvcs.com/download/desktop/smart-git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/desktop/smart-git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Solaris</title>
+      <link>https://www.gitdvcs.com/download/git/solaris/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/git/solaris/</guid>
+      <description> Solaris 9/10/11 (OpenCSW)
+$ pkgutil -i git   Solaris 11 Express
+$ pkg install developer/versioning/git    </description>
+    </item>
+    
+    <item>
+      <title>SourceTree</title>
+      <link>https://www.gitdvcs.com/download/desktop/sourcetree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/desktop/sourcetree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TortoiseGit</title>
+      <link>https://www.gitdvcs.com/download/desktop/tortoisegit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/desktop/tortoisegit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://www.gitdvcs.com/download/git/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/git/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitg</title>
+      <link>https://www.gitdvcs.com/download/desktop/gitg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/desktop/gitg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iOctocat</title>
+      <link>https://www.gitdvcs.com/download/mobile/ioctocat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/mobile/ioctocat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>macOS</title>
+      <link>https://www.gitdvcs.com/download/git/macos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.gitdvcs.com/download/git/macos/</guid>
       <description></description>
     </item>
     

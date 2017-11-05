@@ -112,17 +112,23 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>A dumb server that does not do on-the-fly pack generations must have some auxiliary information files in $GIT_DIR/info and $GIT_OBJECT_DIRECTORY/info directories to help clients discover what references and packs the server has. This command generates such auxiliary files.</p>
+<p>A dumb server that does not do on-the-fly pack generations must have
+some auxiliary information files in $GIT_DIR/info and
+$GIT_OBJECT_DIRECTORY/info directories to help clients discover what
+references and packs the server has. This command generates such
+auxiliary files.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-f
+<p>-f<br />
 &ndash;force<br />
 Update the info files from scratch.</p>
 
 <h2 id="output">OUTPUT</h2>
 
-<p>Currently the command updates the following files. Please see <a href="../gitrepository-layout">gitrepository-layout(5)</a> for description of what they are for:</p>
+<p>Currently the command updates the following files. Please see
+<a href="../gitrepository-layout">gitrepository-layout(5)</a> for description of
+what they are for:</p>
 
 <ul>
 <li><p>objects/info/packs</p></li>

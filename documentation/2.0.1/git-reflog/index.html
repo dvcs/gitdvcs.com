@@ -112,7 +112,8 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>The command takes various subcommands, and different options depending on the subcommand:</p>
+<p>The command takes various subcommands, and different options depending
+on the subcommand:</p>
 
 <pre><code class="language-content">git reflog expire [--dry-run] [--stale-fix] [--verbose]
         [--expire=&lt;time&gt;] [--expire-unreachable=&lt;time&gt;] [--all] &lt;refs&gt;…
@@ -120,37 +121,70 @@ git reflog delete ref@{specifier}…
 git reflog [show] [log-options] [&lt;ref&gt;]
 </code></pre>
 
-<p>Reflog is a mechanism to record when the tip of branches are updated. This command is to manage the information recorded in it.</p>
+<p>Reflog is a mechanism to record when the tip of branches are updated.
+This command is to manage the information recorded in it.</p>
 
-<p>The subcommand &ldquo;expire&rdquo; is used to prune older reflog entries. Entries older than <code>expire</code> time, or entries older than <code>expire-unreachable</code> time and not reachable from the current tip, are removed from the reflog. This is typically not used directly by the end users — instead, see <a href="../git-gc">git-gc(1)</a>.</p>
+<p>The subcommand &ldquo;expire&rdquo; is used to prune older reflog entries. Entries
+older than <code>expire</code> time, or entries older than <code>expire-unreachable</code>
+time and not reachable from the current tip, are removed from the
+reflog. This is typically not used directly by the end users — instead,
+see <a href="../git-gc">git-gc(1)</a>.</p>
 
-<p>The subcommand &ldquo;show&rdquo; (which is also the default, in the absence of any subcommands) will take all the normal log options, and show the log of the reference provided in the command-line (or <code>HEAD</code>, by default). The reflog will cover all recent actions (HEAD reflog records branch switching as well). It is an alias for <code>git               log -g --abbrev-commit --pretty=oneline</code>; see <a href="../git-log">git-log(1)</a>.</p>
+<p>The subcommand &ldquo;show&rdquo; (which is also the default, in the absence of any
+subcommands) will take all the normal log options, and show the log of
+the reference provided in the command-line (or <code>HEAD</code>, by default). The
+reflog will cover all recent actions (HEAD reflog records branch
+switching as well). It is an alias for
+<code>git               log -g --abbrev-commit --pretty=oneline</code>; see
+<a href="../git-log">git-log(1)</a>.</p>
 
-<p>The reflog is useful in various Git commands, to specify the old value of a reference. For example, <code>HEAD@{2}</code> means &ldquo;where HEAD used to be two moves ago&rdquo;, <code>master@{one.week.ago}</code> means &ldquo;where master used to point to one week ago&rdquo;, and so on. See <a href="../gitrevisions">gitrevisions(7)</a> for more details.</p>
+<p>The reflog is useful in various Git commands, to specify the old value
+of a reference. For example, <code>HEAD@{2}</code> means &ldquo;where HEAD used to be two
+moves ago&rdquo;, <code>master@{one.week.ago}</code> means &ldquo;where master used to point to
+one week ago&rdquo;, and so on. See <a href="../gitrevisions">gitrevisions(7)</a> for
+more details.</p>
 
-<p>To delete single entries from the reflog, use the subcommand &ldquo;delete&rdquo; and specify the <em>exact</em> entry (e.g. &ldquo;<code>git reflog delete master@{2}</code>&rdquo;).</p>
+<p>To delete single entries from the reflog, use the subcommand &ldquo;delete&rdquo;
+and specify the <em>exact</em> entry (e.g. &ldquo;<code>git reflog delete master@{2}</code>&rdquo;).</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&ndash;stale-fix<br />
-This revamps the logic — the definition of &ldquo;broken commit&rdquo; becomes: a commit that is not reachable from any of the refs and there is a missing object among the commit, tree, or blob objects reachable from it that is not reachable from any of the refs.</p>
+This revamps the logic — the definition of &ldquo;broken commit&rdquo; becomes: a
+commit that is not reachable from any of the refs and there is a missing
+object among the commit, tree, or blob objects reachable from it that is
+not reachable from any of the refs.</p>
 
-<p>This computation involves traversing all the reachable objects, i.e. it has the same cost as <em>git prune</em>. Fortunately, once this is run, we should not have to ever worry about missing objects, because the current prune and pack-objects know about reflogs and protect objects referred by them.</p>
+<p>This computation involves traversing all the reachable objects, i.e. it
+has the same cost as <em>git prune</em>. Fortunately, once this is run, we
+should not have to ever worry about missing objects, because the current
+prune and pack-objects know about reflogs and protect objects referred
+by them.</p>
 
 <p>&ndash;expire=&lt;time&gt;<br />
-Entries older than this time are pruned. Without the option it is taken from configuration <code>gc.reflogExpire</code>, which in turn defaults to 90 days. &ndash;expire=all prunes entries regardless of their age; &ndash;expire=never turns off pruning of reachable entries (but see &ndash;expire-unreachable).</p>
+Entries older than this time are pruned. Without the option it is taken
+from configuration <code>gc.reflogExpire</code>, which in turn defaults to 90 days.
+&ndash;expire=all prunes entries regardless of their age; &ndash;expire=never
+turns off pruning of reachable entries (but see &ndash;expire-unreachable).</p>
 
 <p>&ndash;expire-unreachable=&lt;time&gt;<br />
-Entries older than this time and not reachable from the current tip of the branch are pruned. Without the option it is taken from configuration <code>gc.reflogExpireUnreachable</code>, which in turn defaults to 30 days. &ndash;expire-unreachable=all prunes unreachable entries regardless of their age; &ndash;expire-unreachable=never turns off early pruning of unreachable entries (but see &ndash;expire).</p>
+Entries older than this time and not reachable from the current tip of
+the branch are pruned. Without the option it is taken from configuration
+<code>gc.reflogExpireUnreachable</code>, which in turn defaults to 30 days.
+&ndash;expire-unreachable=all prunes unreachable entries regardless of their
+age; &ndash;expire-unreachable=never turns off early pruning of unreachable
+entries (but see &ndash;expire).</p>
 
 <p>&ndash;all<br />
 Instead of listing &lt;refs&gt; explicitly, prune all refs.</p>
 
 <p>&ndash;updateref<br />
-Update the ref with the sha1 of the top reflog entry (i.e. &lt;ref&gt;@{0}) after expiring or deleting.</p>
+Update the ref with the sha1 of the top reflog entry (i.e.
+&lt;ref&gt;@{0}) after expiring or deleting.</p>
 
 <p>&ndash;rewrite<br />
-While expiring or deleting, adjust each reflog entry to ensure that the <code>old</code> sha1 field points to the <code>new</code> sha1 field of the previous entry.</p>
+While expiring or deleting, adjust each reflog entry to ensure that the
+<code>old</code> sha1 field points to the <code>new</code> sha1 field of the previous entry.</p>
 
 <p>&ndash;verbose<br />
 Print extra information on screen.</p>

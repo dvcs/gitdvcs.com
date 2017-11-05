@@ -116,37 +116,64 @@ git merge-base --fork-point &lt;ref&gt; [&lt;commit&gt;]
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p><em>git merge-base</em> finds best common ancestor(s) between two commits to use in a three-way merge. One common ancestor is <em>better</em> than another common ancestor if the latter is an ancestor of the former. A common ancestor that does not have any better common ancestor is a <em>best common ancestor</em>, i.e. a <em>merge base</em>. Note that there can be more than one merge base for a pair of commits.</p>
+<p><em>git merge-base</em> finds best common ancestor(s) between two commits to
+use in a three-way merge. One common ancestor is <em>better</em> than another
+common ancestor if the latter is an ancestor of the former. A common
+ancestor that does not have any better common ancestor is a <em>best common
+ancestor</em>, i.e. a <em>merge base</em>. Note that there can be more than one
+merge base for a pair of commits.</p>
 
 <h2 id="operation-modes">OPERATION MODES</h2>
 
-<p>As the most common special case, specifying only two commits on the command line means computing the merge base between the given two commits.</p>
+<p>As the most common special case, specifying only two commits on the
+command line means computing the merge base between the given two
+commits.</p>
 
-<p>More generally, among the two commits to compute the merge base from, one is specified by the first commit argument on the command line; the other commit is a (possibly hypothetical) commit that is a merge across all the remaining commits on the command line.</p>
+<p>More generally, among the two commits to compute the merge base from,
+one is specified by the first commit argument on the command line; the
+other commit is a (possibly hypothetical) commit that is a merge across
+all the remaining commits on the command line.</p>
 
-<p>As a consequence, the <em>merge base</em> is not necessarily contained in each of the commit arguments if more than two commits are specified. This is different from <a href="../git-show-branch">git-show-branch(1)</a> when used with the <code>--merge-base</code> option.</p>
+<p>As a consequence, the <em>merge base</em> is not necessarily contained in each
+of the commit arguments if more than two commits are specified. This is
+different from <a href="../git-show-branch">git-show-branch(1)</a> when used with
+the <code>--merge-base</code> option.</p>
 
 <p>&ndash;octopus<br />
-Compute the best common ancestors of all supplied commits, in preparation for an n-way merge. This mimics the behavior of <em>git show-branch &ndash;merge-base</em>.</p>
+Compute the best common ancestors of all supplied commits, in
+preparation for an n-way merge. This mimics the behavior of <em>git
+show-branch &ndash;merge-base</em>.</p>
 
 <p>&ndash;independent<br />
-Instead of printing merge bases, print a minimal subset of the supplied commits with the same ancestors. In other words, among the commits given, list those which cannot be reached from any other. This mimics the behavior of <em>git show-branch &ndash;independent</em>.</p>
+Instead of printing merge bases, print a minimal subset of the supplied
+commits with the same ancestors. In other words, among the commits
+given, list those which cannot be reached from any other. This mimics
+the behavior of <em>git show-branch &ndash;independent</em>.</p>
 
 <p>&ndash;is-ancestor<br />
-Check if the first &lt;commit&gt; is an ancestor of the second &lt;commit&gt;, and exit with status 0 if true, or with status 1 if not. Errors are signaled by a non-zero status that is not 1.</p>
+Check if the first &lt;commit&gt; is an ancestor of the second
+&lt;commit&gt;, and exit with status 0 if true, or with status 1 if not.
+Errors are signaled by a non-zero status that is not 1.</p>
 
 <p>&ndash;fork-point<br />
-Find the point at which a branch (or any history that leads to &lt;commit&gt;) forked from another branch (or any reference) &lt;ref&gt;. This does not just look for the common ancestor of the two commits, but also takes into account the reflog of &lt;ref&gt; to see if the history leading to &lt;commit&gt; forked from an earlier incarnation of the branch &lt;ref&gt; (see discussion on this mode below).</p>
+Find the point at which a branch (or any history that leads to
+&lt;commit&gt;) forked from another branch (or any reference)
+&lt;ref&gt;. This does not just look for the common ancestor of the two
+commits, but also takes into account the reflog of &lt;ref&gt; to see if
+the history leading to &lt;commit&gt; forked from an earlier incarnation
+of the branch &lt;ref&gt; (see discussion on this mode below).</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-a
+<p>-a<br />
 &ndash;all<br />
 Output all merge bases for the commits, instead of just one.</p>
 
 <h2 id="discussion">DISCUSSION</h2>
 
-<p>Given two commits <em>A</em> and <em>B</em>, <code>git merge-base A B</code> will output a commit which is reachable from both <em>A</em> and <em>B</em> through the parent relationship.</p>
+<p>Given two commits <em>A</em> and <em>B</em>, <code>git merge-base A B</code> will output a commit
+which is reachable from both <em>A</em> and <em>B</em> through the parent
+relationship.</p>
 
 <p>For example, with this topology:</p>
 
@@ -157,7 +184,9 @@ Output all merge bases for the commits, instead of just one.</p>
 
 <p>the merge base between <em>A</em> and <em>B</em> is <em>1</em>.</p>
 
-<p>Given three commits <em>A</em>, <em>B</em> and <em>C</em>, <code>git merge-base A B C</code> will compute the merge base between <em>A</em> and a hypothetical commit <em>M</em>, which is a merge between <em>B</em> and <em>C</em>. For example, with this topology:</p>
+<p>Given three commits <em>A</em>, <em>B</em> and <em>C</em>, <code>git merge-base A B C</code> will
+compute the merge base between <em>A</em> and a hypothetical commit <em>M</em>, which
+is a merge between <em>B</em> and <em>C</em>. For example, with this topology:</p>
 
 <pre><code>       o---o---o---o---C
       /
@@ -166,7 +195,8 @@ Output all merge bases for the commits, instead of just one.</p>
 ---2---1---o---o---o---A
 </code></pre>
 
-<p>the result of <code>git merge-base A B C</code> is <em>1</em>. This is because the equivalent topology with a merge commit <em>M</em> between <em>B</em> and <em>C</em> is:</p>
+<p>the result of <code>git merge-base A B C</code> is <em>1</em>. This is because the
+equivalent topology with a merge commit <em>M</em> between <em>B</em> and <em>C</em> is:</p>
 
 <pre><code>       o---o---o---o---o
       /                 \
@@ -175,11 +205,16 @@ Output all merge bases for the commits, instead of just one.</p>
 ---2---1---o---o---o---A
 </code></pre>
 
-<p>and the result of <code>git merge-base A M</code> is <em>1</em>. Commit <em>2</em> is also a common ancestor between <em>A</em> and <em>M</em>, but <em>1</em> is a better common ancestor, because <em>2</em> is an ancestor of <em>1</em>. Hence, <em>2</em> is not a merge base.</p>
+<p>and the result of <code>git merge-base A M</code> is <em>1</em>. Commit <em>2</em> is also a
+common ancestor between <em>A</em> and <em>M</em>, but <em>1</em> is a better common
+ancestor, because <em>2</em> is an ancestor of <em>1</em>. Hence, <em>2</em> is not a merge
+base.</p>
 
-<p>The result of <code>git merge-base --octopus A B               C</code> is <em>2</em>, because <em>2</em> is the best common ancestor of all commits.</p>
+<p>The result of <code>git merge-base --octopus A B               C</code> is <em>2</em>,
+because <em>2</em> is the best common ancestor of all commits.</p>
 
-<p>When the history involves criss-cross merges, there can be more than one <em>best</em> common ancestor for two commits. For example, with this topology:</p>
+<p>When the history involves criss-cross merges, there can be more than one
+<em>best</em> common ancestor for two commits. For example, with this topology:</p>
 
 <pre><code>---1---o---A
     \ /
@@ -188,9 +223,14 @@ Output all merge bases for the commits, instead of just one.</p>
 ---2---o---o---B
 </code></pre>
 
-<p>both <em>1</em> and <em>2</em> are merge-bases of A and B. Neither one is better than the other (both are <em>best</em> merge bases). When the <code>--all</code> option is not given, it is unspecified which best one is output.</p>
+<p>both <em>1</em> and <em>2</em> are merge-bases of A and B. Neither one is better than
+the other (both are <em>best</em> merge bases). When the <code>--all</code> option is not
+given, it is unspecified which best one is output.</p>
 
-<p>A common idiom to check &ldquo;fast-forward-ness&rdquo; between two commits A and B is (or at least used to be) to compute the merge base between A and B, and check if it is the same as A, in which case, A is an ancestor of B. You will see this idiom used often in older scripts.</p>
+<p>A common idiom to check &ldquo;fast-forward-ness&rdquo; between two commits A and B
+is (or at least used to be) to compute the merge base between A and B,
+and check if it is the same as A, in which case, A is an ancestor of B.
+You will see this idiom used often in older scripts.</p>
 
 <pre><code>A=$(git rev-parse --verify A)
 if test &quot;$A&quot; = &quot;$(git merge-base A B)&quot;
@@ -211,7 +251,10 @@ fi
 
 <h2 id="discussion-on-fork-point-mode">Discussion on fork-point mode</h2>
 
-<p>After working on the <code>topic</code> branch created with <code>git checkout -b topic               origin/master</code>, the history of remote-tracking branch <code>origin/master</code> may have been rewound and rebuilt, leading to a history of this shape:</p>
+<p>After working on the <code>topic</code> branch created with
+<code>git checkout -b topic               origin/master</code>, the history of
+remote-tracking branch <code>origin/master</code> may have been rewound and
+rebuilt, leading to a history of this shape:</p>
 
 <pre><code>                 o---B1
                 /
@@ -222,7 +265,11 @@ fi
            Derived (topic)
 </code></pre>
 
-<p>where <code>origin/master</code> used to point at commits B3, B2, B1 and now it points at B, and your <code>topic</code> branch was started on top of it back when <code>origin/master</code> was at B3. This mode uses the reflog of <code>origin/master</code> to find B3 as the fork point, so that the <code>topic</code> can be rebased on top of the updated <code>origin/master</code> by:</p>
+<p>where <code>origin/master</code> used to point at commits B3, B2, B1 and now it
+points at B, and your <code>topic</code> branch was started on top of it back when
+<code>origin/master</code> was at B3. This mode uses the reflog of <code>origin/master</code>
+to find B3 as the fork point, so that the <code>topic</code> can be rebased on top
+of the updated <code>origin/master</code> by:</p>
 
 <pre><code>$ fork_point=$(git merge-base --fork-point origin/master topic)
 $ git rebase --onto origin/master $fork_point topic
@@ -230,7 +277,9 @@ $ git rebase --onto origin/master $fork_point topic
 
 <h2 id="see-also">See also</h2>
 
-<p><a href="../git-rev-list">git-rev-list(1)</a>, <a href="../git-show-branch">git-show-branch(1)</a>, <a href="../git-merge">git-merge(1)</a></p>
+<p><a href="../git-rev-list">git-rev-list(1)</a>,
+<a href="../git-show-branch">git-show-branch(1)</a>,
+<a href="../git-merge">git-merge(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

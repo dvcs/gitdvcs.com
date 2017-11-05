@@ -113,45 +113,59 @@ git fmt-merge-msg [-m &lt;message&gt;] [--log[=&lt;n&gt;] | --no-log] -F &lt;fil
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Takes the list of merged objects on stdin and produces a suitable commit message to be used for the merge commit, usually to be passed as the <em>&lt;merge-message&gt;</em> argument of <em>git merge</em>.</p>
+<p>Takes the list of merged objects on stdin and produces a suitable commit
+message to be used for the merge commit, usually to be passed as the
+<em>&lt;merge-message&gt;</em> argument of <em>git merge</em>.</p>
 
-<p>This command is intended mostly for internal use by scripts automatically invoking <em>git merge</em>.</p>
+<p>This command is intended mostly for internal use by scripts
+automatically invoking <em>git merge</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&ndash;log[=&lt;n&gt;]<br />
-In addition to branch names, populate the log message with one-line descriptions from the actual commits that are being merged. At most &lt;n&gt; commits from each merge parent will be used (20 if &lt;n&gt; is omitted). This overrides the <code>merge.log</code> configuration variable.</p>
+In addition to branch names, populate the log message with one-line
+descriptions from the actual commits that are being merged. At most
+&lt;n&gt; commits from each merge parent will be used (20 if &lt;n&gt;
+is omitted). This overrides the <code>merge.log</code> configuration variable.</p>
 
 <p>&ndash;no-log<br />
 Do not list one-line descriptions from the actual commits being merged.</p>
 
 <p>&ndash;[no-]summary<br />
-Synonyms to &ndash;log and &ndash;no-log; these are deprecated and will be removed in the future.</p>
+Synonyms to &ndash;log and &ndash;no-log; these are deprecated and will be removed
+in the future.</p>
 
-<p>-m &lt;message&gt;
+<p>-m &lt;message&gt;<br />
 &ndash;message &lt;message&gt;<br />
-Use &lt;message&gt; instead of the branch names for the first line of the log message. For use with <code>--log</code>.</p>
+Use &lt;message&gt; instead of the branch names for the first line of
+the log message. For use with <code>--log</code>.</p>
 
-<p>-F &lt;file&gt;
+<p>-F &lt;file&gt;<br />
 &ndash;file &lt;file&gt;<br />
 Take the list of merged objects from &lt;file&gt; instead of stdin.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
 <p>merge.branchdesc<br />
-In addition to branch names, populate the log message with the branch description text associated with them. Defaults to false.</p>
+In addition to branch names, populate the log message with the branch
+description text associated with them. Defaults to false.</p>
 
 <p>merge.log<br />
-In addition to branch names, populate the log message with at most the specified number of one-line descriptions from the actual commits that are being merged. Defaults to false, and true is a synonym for 20.</p>
+In addition to branch names, populate the log message with at most the
+specified number of one-line descriptions from the actual commits that
+are being merged. Defaults to false, and true is a synonym for 20.</p>
 
 <p>merge.summary<br />
-Synonym to <code>merge.log</code>; this is deprecated and will be removed in the future.</p>
+Synonym to <code>merge.log</code>; this is deprecated and will be removed in the
+future.</p>
 
 <h2 id="example">EXAMPLE</h2>
 
-<p>$ git fetch origin master $ git fmt-merge-msg &ndash;log &lt;$GIT_DIR/FETCH_HEAD</p>
+<p>$ git fetch origin master $ git fmt-merge-msg &ndash;log
+&lt;$GIT_DIR/FETCH_HEAD</p>
 
-<p>Print a log message describing a merge of the &ldquo;master&rdquo; branch from the &ldquo;origin&rdquo; remote.</p>
+<p>Print a log message describing a merge of the &ldquo;master&rdquo; branch from the
+&ldquo;origin&rdquo; remote.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 

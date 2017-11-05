@@ -112,11 +112,17 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This program computes which packs in your repository are redundant. The output is suitable for piping to <code>xargs rm</code> if you are in the root of the repository.</p>
+<p>This program computes which packs in your repository are redundant. The
+output is suitable for piping to <code>xargs rm</code> if you are in the root of
+the repository.</p>
 
-<p><em>git pack-redundant</em> accepts a list of objects on standard input. Any objects given will be ignored when checking which packs are required. This makes the following command useful when wanting to remove packs which contain unreachable objects.</p>
+<p><em>git pack-redundant</em> accepts a list of objects on standard input. Any
+objects given will be ignored when checking which packs are required.
+This makes the following command useful when wanting to remove packs
+which contain unreachable objects.</p>
 
-<p>git fsck &ndash;full &ndash;unreachable | cut -d &lsquo; &rsquo; -f3 | \ git pack-redundant &ndash;all | xargs rm</p>
+<p>git fsck &ndash;full &ndash;unreachable | cut -d &lsquo; &rsquo; -f3 | \ git pack-redundant
+&ndash;all | xargs rm</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -124,14 +130,17 @@
 Processes all packs. Any filenames on the command line are ignored.</p>
 
 <p>&ndash;alt-odb<br />
-Don’t require objects present in packs from alternate object directories to be present in local packs.</p>
+Don’t require objects present in packs from alternate object directories
+to be present in local packs.</p>
 
 <p>&ndash;verbose<br />
 Outputs some statistics to stderr. Has a small performance penalty.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../git-pack-objects">git-pack-objects(1)</a> <a href="../git-repack">git-repack(1)</a> <a href="../git-prune-packed">git-prune-packed(1)</a></p>
+<p><a href="../git-pack-objects">git-pack-objects(1)</a>
+<a href="../git-repack">git-repack(1)</a>
+<a href="../git-prune-packed">git-prune-packed(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

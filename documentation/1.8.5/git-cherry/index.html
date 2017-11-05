@@ -112,9 +112,16 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>The changeset (or &ldquo;diff&rdquo;) of each commit between the fork-point and &lt;head&gt; is compared against each commit between the fork-point and &lt;upstream&gt;. The diffs are compared after removing any whitespace and line numbers.</p>
+<p>The changeset (or &ldquo;diff&rdquo;) of each commit between the fork-point and
+&lt;head&gt; is compared against each commit between the fork-point and
+&lt;upstream&gt;. The diffs are compared after removing any whitespace
+and line numbers.</p>
 
-<p>Every commit that doesn’t exist in the &lt;upstream&gt; branch has its id (sha1) reported, prefixed by a symbol. The ones that have equivalent change already in the &lt;upstream&gt; branch are prefixed with a minus (-) sign, and those that only exist in the &lt;head&gt; branch are prefixed with a plus (+) symbol:</p>
+<p>Every commit that doesn’t exist in the &lt;upstream&gt; branch has its
+id (sha1) reported, prefixed by a symbol. The ones that have equivalent
+change already in the &lt;upstream&gt; branch are prefixed with a minus
+(-) sign, and those that only exist in the &lt;head&gt; branch are
+prefixed with a plus (+) symbol:</p>
 
 <pre><code>           __*__*__*__*__&gt; &lt;upstream&gt;
           /
@@ -122,7 +129,8 @@ fork-point
           \__+__+__-__+__+__-__+__&gt; &lt;head&gt;
 </code></pre>
 
-<p>If a &lt;limit&gt; has been given then the commits along the &lt;head&gt; branch up to and including &lt;limit&gt; are not reported:</p>
+<p>If a &lt;limit&gt; has been given then the commits along the
+&lt;head&gt; branch up to and including &lt;limit&gt; are not reported:</p>
 
 <pre><code>           __*__*__*__*__&gt; &lt;upstream&gt;
           /
@@ -130,7 +138,11 @@ fork-point
           \__*__*__&lt;limit&gt;__-__+__&gt; &lt;head&gt;
 </code></pre>
 
-<p>Because <em>git cherry</em> compares the changeset rather than the commit id (sha1), you can use <em>git cherry</em> to find out if a commit you made locally has been applied &lt;upstream&gt; under a different commit id. For example, this will happen if you’re feeding patches &lt;upstream&gt; via email rather than pushing or pulling commits directly.</p>
+<p>Because <em>git cherry</em> compares the changeset rather than the commit id
+(sha1), you can use <em>git cherry</em> to find out if a commit you made
+locally has been applied &lt;upstream&gt; under a different commit id.
+For example, this will happen if you’re feeding patches &lt;upstream&gt;
+via email rather than pushing or pulling commits directly.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -138,7 +150,8 @@ fork-point
 Verbose.</p>
 
 <p>&lt;upstream&gt;<br />
-Upstream branch to compare against. Defaults to the first tracked remote branch, if available.</p>
+Upstream branch to compare against. Defaults to the first tracked remote
+branch, if available.</p>
 
 <p>&lt;head&gt;<br />
 Working branch; defaults to HEAD.</p>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-rm </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-rm</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.9.4'>2.9.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.9.4/git-rm'>git-rm</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch] [--quiet] [--] &lt;file&gt;…
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Remove files from the index, or from the working tree and the index.
+<code>git rm</code> will not remove a file from just your working directory. (There
+is no option to remove a file only from the working tree and yet keep it
+in the index; use <code>/bin/rm</code> if you want to do that.) The files being
+removed have to be identical to the tip of the branch, and no updates to
+their contents can be staged in the index, though that default behavior
+can be overridden with the <code>-f</code> option. When <code>--cached</code> is given, the
+staged content has to match either the tip of the branch or the file on
+disk, allowing the file to be removed from just the index.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;file&gt;…<br />
+Files to remove. Fileglobs (e.g. <code>*.c</code>) can be given to remove all
+matching files. If you want Git to expand file glob characters, you may
+need to shell-escape them. A leading directory name (e.g. <code>dir</code> to
+remove <code>dir/file1</code> and <code>dir/file2</code>) can be given to remove all files in
+the directory, and recursively all sub-directories, but this requires
+the <code>-r</code> option to be explicitly given.</p>
+
+<p>-f<br />
+&ndash;force<br />
+Override the up-to-date check.</p>
+
+<p>-n<br />
+&ndash;dry-run<br />
+Don’t actually remove any file(s). Instead, just show if they exist in
+the index and would otherwise be removed by the command.</p>
+
+<p>-r<br />
+Allow recursive removal when a leading directory name is given.</p>
+
+<p>&ndash;<br />
+This option can be used to separate command-line options from the list
+of files, (useful when filenames might be mistaken for command-line
+options).</p>
+
+<p>&ndash;cached<br />
+Use this option to unstage and remove paths only from the index. Working
+tree files, whether modified or not, will be left alone.</p>
+
+<p>&ndash;ignore-unmatch<br />
+Exit with a zero status even if no files matched.</p>
+
+<p>-q<br />
+&ndash;quiet<br />
+<code>git rm</code> normally outputs one line (in the form of an <code>rm</code> command) for
+each file removed. This option suppresses that output.</p>
+
+<h2 id="discussion">DISCUSSION</h2>
+
+<p>The &lt;file&gt; list given to the command can be exact pathnames, file
+glob patterns, or leading directory names. The command removes only the
+paths that are known to Git. Giving the name of a file that you have not
+told Git about does not remove that file.</p>
+
+<p>File globbing matches across directory boundaries. Thus, given two
+directories <code>d</code> and <code>d2</code>, there is a difference between using
+<code>git rm 'd*'</code> and <code>git rm 'd/*'</code>, as the former will also remove all of
+directory <code>d2</code>.</p>
+
+<h2 id="removing-files-that-have-disappeared-from-the-filesystem">REMOVING FILES THAT HAVE DISAPPEARED FROM THE FILESYSTEM</h2>
+
+<p>There is no option for <code>git rm</code> to remove from the index only the paths
+that have disappeared from the filesystem. However, depending on the use
+case, there are several ways that can be done.</p>
+
+<h3 id="using-git-commit-a">Using “git commit -a”</h3>
+
+<p>If you intend that your next commit should record all modifications of
+tracked files in the working tree and record all removals of files that
+have been removed from the working tree with <code>rm</code> (as opposed to
+<code>git rm</code>), use <code>git                 commit -a</code>, as it will automatically
+notice and record all removals. You can also have a similar effect
+without committing by using <code>git add -u</code>.</p>
+
+<h3 id="using-git-add-a">Using “git add -A”</h3>
+
+<p>When accepting a new code drop for a vendor branch, you probably want to
+record both the removal of paths and additions of new paths as well as
+modifications of existing paths.</p>
+
+<p>Typically you would first remove all tracked files from the working tree
+using this command:</p>
+
+<pre><code>git ls-files -z | xargs -0 rm -f
+</code></pre>
+
+<p>and then untar the new code in the working tree. Alternately you could
+<em>rsync</em> the changes into the working tree.</p>
+
+<p>After that, the easiest way to record all removals, additions, and
+modifications in the working tree is:</p>
+
+<pre><code>git add -A
+</code></pre>
+
+<p>See <a href="../git-add">git-add(1)</a>.</p>
+
+<h3 id="other-ways">Other ways</h3>
+
+<p>If all you really want to do is to remove from the index the files that
+are no longer present in the working tree (perhaps because your working
+tree is dirty so that you cannot use <code>git commit -a</code>), use the following
+command:</p>
+
+<pre><code>git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
+</code></pre>
+
+<h2 id="submodules">SUBMODULES</h2>
+
+<p>Only submodules using a gitfile (which means they were cloned with a Git
+version 1.7.8 or newer) will be removed from the work tree, as their
+repository lives inside the .git directory of the superproject. If a
+submodule (or one of those nested inside it) still uses a .git
+directory, <code>git rm</code> will fail - no matter if forced or not - to protect
+the submodule’s history. If it exists the submodule.&lt;name&gt; section
+in the <a href="../gitmodules">gitmodules(5)</a> file will also be removed and
+that file will be staged (unless &ndash;cached or -n are used).</p>
+
+<p>A submodule is considered up-to-date when the HEAD is the same as
+recorded in the index, no tracked files are modified and no untracked
+files that aren’t ignored are present in the submodules work tree.
+Ignored files are deemed expendable and won’t stop a submodule’s work
+tree from being removed.</p>
+
+<p>If you only want to remove the local checkout of a submodule from your
+work tree without committing the removal, use
+<a href="../git-submodule">git-submodule(1)</a> <code>deinit</code> instead.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p><code>git rm                 Documentation/\*.txt</code><br />
+Removes all <code>*.txt</code> files from the index that are under the
+<code>Documentation</code> directory and any of its subdirectories.</p>
+
+<p>Note that the asterisk <code>*</code> is quoted from the shell in this example;
+this lets Git, and not the shell, expand the pathnames of files and
+subdirectories under the <code>Documentation/</code> directory.</p>
+
+<p><code>git rm -f git-*.sh</code><br />
+Because this example lets the shell expand the asterisk (i.e. you are
+listing the files explicitly), it does not remove <code>subdir/git-foo.sh</code>.</p>
+
+<h2 id="bugs">BUGS</h2>
+
+<p>Each time a superproject update removes a populated submodule (e.g. when
+switching between commits before and after the removal) a stale
+submodule checkout will remain in the old location. Removing the old
+directory is only safe when it uses a gitfile, as otherwise the history
+of the submodule will be deleted too. This step will be obsolete when
+recursive submodule update has been implemented.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-add">git-add(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

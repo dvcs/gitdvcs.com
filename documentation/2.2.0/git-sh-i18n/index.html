@@ -112,17 +112,28 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This is not a command the end user would want to run. Ever. This documentation is meant for people who are studying the Porcelain-ish scripts and/or are writing new ones.</p>
+<p>This is not a command the end user would want to run. Ever. This
+documentation is meant for people who are studying the Porcelain-ish
+scripts and/or are writing new ones.</p>
 
-<p>The &lsquo;git sh-i18n scriptlet is designed to be sourced (using <code>.</code>) by Git’s porcelain programs implemented in shell script. It provides wrappers for the GNU <code>gettext</code> and <code>eval_gettext</code> functions accessible through the <code>gettext.sh</code> script, and provides pass-through fallbacks on systems without GNU gettext.</p>
+<p>The &lsquo;git sh-i18n scriptlet is designed to be sourced (using <code>.</code>) by
+Git’s porcelain programs implemented in shell script. It provides
+wrappers for the GNU <code>gettext</code> and <code>eval_gettext</code> functions accessible
+through the <code>gettext.sh</code> script, and provides pass-through fallbacks on
+systems without GNU gettext.</p>
 
 <h2 id="functions">FUNCTIONS</h2>
 
 <p>gettext<br />
-Currently a dummy fall-through function implemented as a wrapper around <code>printf(1)</code>. Will be replaced by a real gettext implementation in a later version.</p>
+Currently a dummy fall-through function implemented as a wrapper around
+<code>printf(1)</code>. Will be replaced by a real gettext implementation in a
+later version.</p>
 
 <p>eval_gettext<br />
-Currently a dummy fall-through function implemented as a wrapper around <code>printf(1)</code> with variables expanded by the <a href="../git-sh-i18n--envsubst">git-sh-i18n&ndash;envsubst(1)</a> helper. Will be replaced by a real gettext implementation in a later version.</p>
+Currently a dummy fall-through function implemented as a wrapper around
+<code>printf(1)</code> with variables expanded by the
+<a href="../git-sh-i18n--envsubst">git-sh-i18n&ndash;envsubst(1)</a> helper. Will be
+replaced by a real gettext implementation in a later version.</p>
 
 <h2 id="git">GIT</h2>
 

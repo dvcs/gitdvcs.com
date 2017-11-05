@@ -115,48 +115,78 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Iterate over all refs that match <code>&lt;pattern&gt;</code> and show them according to the given <code>&lt;format&gt;</code>, after sorting them according to the given set of <code>&lt;key&gt;</code>. If <code>&lt;count&gt;</code> is given, stop after showing that many refs. The interpolated values in <code>&lt;format&gt;</code> can optionally be quoted as string literals in the specified host language allowing their direct evaluation in that language.</p>
+<p>Iterate over all refs that match <code>&lt;pattern&gt;</code> and show them according to
+the given <code>&lt;format&gt;</code>, after sorting them according to the given set of
+<code>&lt;key&gt;</code>. If <code>&lt;count&gt;</code> is given, stop after showing that many refs. The
+interpolated values in <code>&lt;format&gt;</code> can optionally be quoted as string
+literals in the specified host language allowing their direct evaluation
+in that language.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&lt;count&gt;<br />
-By default the command shows all refs that match <code>&lt;pattern&gt;</code>. This option makes it stop after showing that many refs.</p>
+By default the command shows all refs that match <code>&lt;pattern&gt;</code>. This
+option makes it stop after showing that many refs.</p>
 
 <p>&lt;key&gt;<br />
-A field name to sort on. Prefix <code>-</code> to sort in descending order of the value. When unspecified, <code>refname</code> is used. You may use the &ndash;sort=&lt;key&gt; option multiple times, in which case the last key becomes the primary key.</p>
+A field name to sort on. Prefix <code>-</code> to sort in descending order of the
+value. When unspecified, <code>refname</code> is used. You may use the
+&ndash;sort=&lt;key&gt; option multiple times, in which case the last key
+becomes the primary key.</p>
 
 <p>&lt;format&gt;<br />
-A string that interpolates <code>%(fieldname)</code> from the object pointed at by a ref being shown. If <code>fieldname</code> is prefixed with an asterisk (<code>*</code>) and the ref points at a tag object, the value for the field in the object tag refers is used. When unspecified, defaults to <code>%(objectname) SPC %(objecttype)                   TAB %(refname)</code>. It also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits interpolates to character with hex code <code>xx</code>; for example <code>%00</code> interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
+A string that interpolates <code>%(fieldname)</code> from the object pointed at by
+a ref being shown. If <code>fieldname</code> is prefixed with an asterisk (<code>*</code>) and
+the ref points at a tag object, the value for the field in the object
+tag refers is used. When unspecified, defaults to
+<code>%(objectname) SPC %(objecttype)                   TAB %(refname)</code>. It
+also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
+interpolates to character with hex code <code>xx</code>; for example <code>%00</code>
+interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
 
 <p>&lt;pattern&gt;…<br />
-If one or more patterns are given, only refs are shown that match against at least one pattern, either using fnmatch(3) or literally, in the latter case matching completely or from the beginning up to a slash.</p>
+If one or more patterns are given, only refs are shown that match
+against at least one pattern, either using fnmatch(3) or literally, in
+the latter case matching completely or from the beginning up to a slash.</p>
 
-<p>&ndash;shell
-&ndash;perl
-&ndash;python
+<p>&ndash;shell<br />
+&ndash;perl<br />
+&ndash;python<br />
 &ndash;tcl<br />
-If given, strings that substitute <code>%(fieldname)</code> placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be `eval`ed.</p>
+If given, strings that substitute <code>%(fieldname)</code> placeholders are quoted
+as string literals suitable for the specified host language. This is
+meant to produce a scriptlet that can directly be `eval`ed.</p>
 
 <p>&ndash;points-at &lt;object&gt;<br />
 Only list refs which points at the given object.</p>
 
 <p>&ndash;merged [&lt;object&gt;]<br />
-Only list refs whose tips are reachable from the specified commit (HEAD if not specified).</p>
+Only list refs whose tips are reachable from the specified commit (HEAD
+if not specified).</p>
 
 <p>&ndash;no-merged [&lt;object&gt;]<br />
-Only list refs whose tips are not reachable from the specified commit (HEAD if not specified).</p>
+Only list refs whose tips are not reachable from the specified commit
+(HEAD if not specified).</p>
 
 <p>&ndash;contains [&lt;object&gt;]<br />
-Only list refs which contain the specified commit (HEAD if not specified).</p>
+Only list refs which contain the specified commit (HEAD if not
+specified).</p>
 
 <h2 id="field-names">FIELD NAMES</h2>
 
-<p>Various values from structured fields in referenced objects can be used to interpolate into the resulting output, or as sort keys.</p>
+<p>Various values from structured fields in referenced objects can be used
+to interpolate into the resulting output, or as sort keys.</p>
 
 <p>For all objects, the following names can be used:</p>
 
 <p>refname<br />
-The name of the ref (the part after $GIT_DIR/). For a non-ambiguous short name of the ref append <code>:short</code>. The option core.warnAmbiguousRefs is used to select the strict abbreviation mode. If <code>strip=&lt;N&gt;</code> is appended, strips <code>&lt;N&gt;</code> slash-separated path components from the front of the refname (e.g., <code>%(refname:strip=2)</code> turns <code>refs/tags/foo</code> into <code>foo</code>. <code>&lt;N&gt;</code> must be a positive integer. If a displayed ref has fewer components than <code>&lt;N&gt;</code>, the command aborts with an error.</p>
+The name of the ref (the part after $GIT_DIR/). For a non-ambiguous
+short name of the ref append <code>:short</code>. The option core.warnAmbiguousRefs
+is used to select the strict abbreviation mode. If <code>strip=&lt;N&gt;</code> is
+appended, strips <code>&lt;N&gt;</code> slash-separated path components from the front of
+the refname (e.g., <code>%(refname:strip=2)</code> turns <code>refs/tags/foo</code> into
+<code>foo</code>. <code>&lt;N&gt;</code> must be a positive integer. If a displayed ref has fewer
+components than <code>&lt;N&gt;</code>, the command aborts with an error.</p>
 
 <p>objecttype<br />
 The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p>
@@ -165,42 +195,85 @@ The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code
 The size of the object (the same as <em>git cat-file -s</em> reports).</p>
 
 <p>objectname<br />
-The object name (aka SHA-1). For a non-ambiguous abbreviation of the object name append <code>:short</code>.</p>
+The object name (aka SHA-1). For a non-ambiguous abbreviation of the
+object name append <code>:short</code>.</p>
 
 <p>upstream<br />
-The name of a local ref which can be considered “upstream” from the displayed ref. Respects <code>:short</code> in the same way as <code>refname</code> above. Additionally respects <code>:track</code> to show &ldquo;[ahead N, behind M]&rdquo; and <code>:trackshort</code> to show the terse version: &ldquo;&gt;&rdquo; (ahead), &ldquo;&lt;&rdquo; (behind), &ldquo;&lt;&gt;&rdquo; (ahead and behind), or &ldquo;=&rdquo; (in sync). Has no effect if the ref does not have tracking information associated with it.</p>
+The name of a local ref which can be considered “upstream” from the
+displayed ref. Respects <code>:short</code> in the same way as <code>refname</code> above.
+Additionally respects <code>:track</code> to show &ldquo;[ahead N, behind M]&rdquo; and
+<code>:trackshort</code> to show the terse version: &ldquo;&gt;&rdquo; (ahead), &ldquo;&lt;&ldquo;
+(behind), &ldquo;&lt;&gt;&rdquo; (ahead and behind), or &ldquo;=&rdquo; (in sync). Has no effect
+if the ref does not have tracking information associated with it.</p>
 
 <p>push<br />
-The name of a local ref which represents the <code>@{push}</code> location for the displayed ref. Respects <code>:short</code>, <code>:track</code>, and <code>:trackshort</code> options as <code>upstream</code> does. Produces an empty string if no <code>@{push}</code> ref is configured.</p>
+The name of a local ref which represents the <code>@{push}</code> location for the
+displayed ref. Respects <code>:short</code>, <code>:track</code>, and <code>:trackshort</code> options as
+<code>upstream</code> does. Produces an empty string if no <code>@{push}</code> ref is
+configured.</p>
 
 <p>HEAD<br />
-<em>*</em> if HEAD matches current ref (the checked out branch), &lsquo; &rsquo; otherwise.</p>
+<em>*</em> if HEAD matches current ref (the checked out branch), &lsquo; &lsquo;
+otherwise.</p>
 
 <p>color<br />
-Change output color. Followed by <code>:&lt;colorname&gt;</code>, where names are described in <code>color.branch.*</code>.</p>
+Change output color. Followed by <code>:&lt;colorname&gt;</code>, where names are
+described in <code>color.branch.*</code>.</p>
 
 <p>align<br />
-Left-, middle-, or right-align the content between %(align:…) and %(end). The &ldquo;align:&rdquo; is followed by <code>width=&lt;width&gt;</code> and <code>position=&lt;position&gt;</code> in any order separated by a comma, where the <code>&lt;position&gt;</code> is either left, right or middle, default being left and <code>&lt;width&gt;</code> is the total length of the content with alignment. For brevity, the &ldquo;width=&rdquo; and/or &ldquo;position=&rdquo; prefixes may be omitted, and bare &lt;width&gt; and &lt;position&gt; used instead. For instance, <code>%(align:&lt;width&gt;,&lt;position&gt;)</code>. If the contents length is more than the width then no alignment is performed. If used with <em>&ndash;quote</em> everything in between %(align:…) and %(end) is quoted, but if nested then only the topmost level performs quoting.</p>
+Left-, middle-, or right-align the content between %(align:…) and
+%(end). The &ldquo;align:&rdquo; is followed by <code>width=&lt;width&gt;</code> and
+<code>position=&lt;position&gt;</code> in any order separated by a comma, where the
+<code>&lt;position&gt;</code> is either left, right or middle, default being left and
+<code>&lt;width&gt;</code> is the total length of the content with alignment. For
+brevity, the &ldquo;width=&rdquo; and/or &ldquo;position=&rdquo; prefixes may be omitted, and
+bare &lt;width&gt; and &lt;position&gt; used instead. For instance,
+<code>%(align:&lt;width&gt;,&lt;position&gt;)</code>. If the contents length is more than the
+width then no alignment is performed. If used with <em>&ndash;quote</em> everything
+in between %(align:…) and %(end) is quoted, but if nested then only the
+topmost level performs quoting.</p>
 
-<p>In addition to the above, for commit and tag objects, the header field names (<code>tree</code>, <code>parent</code>, <code>object</code>, <code>type</code>, and <code>tag</code>) can be used to specify the value in the header field.</p>
+<p>In addition to the above, for commit and tag objects, the header field
+names (<code>tree</code>, <code>parent</code>, <code>object</code>, <code>type</code>, and <code>tag</code>) can be used to
+specify the value in the header field.</p>
 
-<p>For commit and tag objects, the special <code>creatordate</code> and <code>creator</code> fields will correspond to the appropriate date or name-email-date tuple from the <code>committer</code> or <code>tagger</code> fields depending on the object type. These are intended for working on a mix of annotated and lightweight tags.</p>
+<p>For commit and tag objects, the special <code>creatordate</code> and <code>creator</code>
+fields will correspond to the appropriate date or name-email-date tuple
+from the <code>committer</code> or <code>tagger</code> fields depending on the object type.
+These are intended for working on a mix of annotated and lightweight
+tags.</p>
 
-<p>Fields that have name-email-date tuple as its value (<code>author</code>, <code>committer</code>, and <code>tagger</code>) can be suffixed with <code>name</code>, <code>email</code>, and <code>date</code> to extract the named component.</p>
+<p>Fields that have name-email-date tuple as its value (<code>author</code>,
+<code>committer</code>, and <code>tagger</code>) can be suffixed with <code>name</code>, <code>email</code>, and
+<code>date</code> to extract the named component.</p>
 
-<p>The complete message in a commit and tag object is <code>contents</code>. Its first line is <code>contents:subject</code>, where subject is the concatenation of all lines of the commit message up to the first blank line. The next line is <em>contents:body</em>, where body is all of the lines after the first blank line. The optional GPG signature is <code>contents:signature</code>. The first <code>N</code> lines of the message is obtained using <code>contents:lines=N</code>.</p>
+<p>The complete message in a commit and tag object is <code>contents</code>. Its first
+line is <code>contents:subject</code>, where subject is the concatenation of all
+lines of the commit message up to the first blank line. The next line is
+<em>contents:body</em>, where body is all of the lines after the first blank
+line. The optional GPG signature is <code>contents:signature</code>. The first <code>N</code>
+lines of the message is obtained using <code>contents:lines=N</code>.</p>
 
-<p>For sorting purposes, fields with numeric values sort in numeric order (<code>objectsize</code>, <code>authordate</code>, <code>committerdate</code>, <code>creatordate</code>, <code>taggerdate</code>). All other fields are used to sort in their byte-value order.</p>
+<p>For sorting purposes, fields with numeric values sort in numeric order
+(<code>objectsize</code>, <code>authordate</code>, <code>committerdate</code>, <code>creatordate</code>,
+<code>taggerdate</code>). All other fields are used to sort in their byte-value
+order.</p>
 
-<p>There is also an option to sort by versions, this can be done by using the fieldname <code>version:refname</code> or its alias <code>v:refname</code>.</p>
+<p>There is also an option to sort by versions, this can be done by using
+the fieldname <code>version:refname</code> or its alias <code>v:refname</code>.</p>
 
-<p>In any case, a field name that refers to a field inapplicable to the object referred by the ref does not cause an error. It returns an empty string instead.</p>
+<p>In any case, a field name that refers to a field inapplicable to the
+object referred by the ref does not cause an error. It returns an empty
+string instead.</p>
 
-<p>As a special case for the date-type fields, you may specify a format for the date by adding <code>:</code> followed by date format name (see the values the <code>--date</code> option to <a href="../:git-rev-list">:git-rev-list(1)</a> takes).</p>
+<p>As a special case for the date-type fields, you may specify a format for
+the date by adding <code>:</code> followed by date format name (see the values the
+<code>--date</code> option to <a href="../:git-rev-list">:git-rev-list(1)</a> takes).</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<p>An example directly producing formatted text. Show the most recent 3 tagged commits:</p>
+<p>An example directly producing formatted text. Show the most recent 3
+tagged commits:</p>
 
 <pre><code>#!/bin/sh
 
@@ -214,7 +287,8 @@ Ref: %(*refname)
 ' 'refs/tags'
 </code></pre>
 
-<p>A simple example showing the use of shell eval on the output, demonstrating the use of &ndash;shell. List the prefixes of all heads:</p>
+<p>A simple example showing the use of shell eval on the output,
+demonstrating the use of &ndash;shell. List the prefixes of all heads:</p>
 
 <pre><code>#!/bin/sh
 
@@ -226,7 +300,8 @@ do
 done
 </code></pre>
 
-<p>A bit more elaborate report on tags, demonstrating that the format may be an entire script:</p>
+<p>A bit more elaborate report on tags, demonstrating that the format may
+be an entire script:</p>
 
 <pre><code>#!/bin/sh
 

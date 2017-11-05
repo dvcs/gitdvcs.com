@@ -112,7 +112,10 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Reads standard input in non-recursive <code>ls-tree</code> output format, and creates a tree object. The order of the tree entries is normalised by mktree so pre-sorting the input is not required. The object name of the tree object built is written to the standard output.</p>
+<p>Reads standard input in non-recursive <code>ls-tree</code> output format, and
+creates a tree object. The order of the tree entries is normalised by
+mktree so pre-sorting the input is not required. The object name of the
+tree object built is written to the standard output.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -120,10 +123,15 @@
 Read the NUL-terminated <code>ls-tree -z</code> output instead.</p>
 
 <p>&ndash;missing<br />
-Allow missing objects. The default behaviour (without this option) is to verify that each tree entry’s sha1 identifies an existing object. This option has no effect on the treatment of gitlink entries (aka &ldquo;submodules&rdquo;) which are always allowed to be missing.</p>
+Allow missing objects. The default behaviour (without this option) is to
+verify that each tree entry’s sha1 identifies an existing object. This
+option has no effect on the treatment of gitlink entries (aka
+&ldquo;submodules&rdquo;) which are always allowed to be missing.</p>
 
 <p>&ndash;batch<br />
-Allow building of more than one tree object before exiting. Each tree is separated by as single blank line. The final new-line is optional. Note - if the <em>-z</em> option is used, lines are terminated with NUL.</p>
+Allow building of more than one tree object before exiting. Each tree is
+separated by as single blank line. The final new-line is optional.
+Note - if the <em>-z</em> option is used, lines are terminated with NUL.</p>
 
 <h2 id="git">GIT</h2>
 

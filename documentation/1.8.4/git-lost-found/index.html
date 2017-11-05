@@ -112,17 +112,24 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p><strong>NOTE</strong>: this command is deprecated. Use <a href="../git-fsck">git-fsck(1)</a> with the option <em>&ndash;lost-found</em> instead.</p>
+<p><strong>NOTE</strong>: this command is deprecated. Use <a href="../git-fsck">git-fsck(1)</a>
+with the option <em>&ndash;lost-found</em> instead.</p>
 
-<p>Finds dangling commits and tags from the object database, and creates refs to them in the .git/lost-found/ directory. Commits and tags that dereference to commits are stored in .git/lost-found/commit, and other objects are stored in .git/lost-found/other.</p>
+<p>Finds dangling commits and tags from the object database, and creates
+refs to them in the .git/lost-found/ directory. Commits and tags that
+dereference to commits are stored in .git/lost-found/commit, and other
+objects are stored in .git/lost-found/other.</p>
 
 <h2 id="output">OUTPUT</h2>
 
-<p>Prints to standard output the object names and one-line descriptions of any commits or tags found.</p>
+<p>Prints to standard output the object names and one-line descriptions of
+any commits or tags found.</p>
 
 <h2 id="example">EXAMPLE</h2>
 
-<p>Suppose you run <em>git tag -f</em> and mistype the tag to overwrite. The ref to your tag is overwritten, but until you run <em>git prune</em>, the tag itself is still there.</p>
+<p>Suppose you run <em>git tag -f</em> and mistype the tag to overwrite. The ref
+to your tag is overwritten, but until you run <em>git prune</em>, the tag
+itself is still there.</p>
 
 <pre><code>$ git lost-found
 [1ef2b196d909eed523d4f3c9bf54b78cdd6843c6] GIT 0.99.9c
@@ -134,7 +141,9 @@
 <pre><code>$ gitk $(cd .git/lost-found/commit &amp;&amp; echo ??*)
 </code></pre>
 
-<p>After making sure you know which the object is the tag you are looking for, you can reconnect it to your regular <code>refs</code> hierarchy by using the <code>update-ref</code> command.</p>
+<p>After making sure you know which the object is the tag you are looking
+for, you can reconnect it to your regular <code>refs</code> hierarchy by using the
+<code>update-ref</code> command.</p>
 
 <pre><code>$ git cat-file -t 1ef2b196
 tag

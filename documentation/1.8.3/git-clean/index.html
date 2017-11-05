@@ -112,38 +112,54 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Cleans the working tree by recursively removing files that are not under version control, starting from the current directory.</p>
+<p>Cleans the working tree by recursively removing files that are not under
+version control, starting from the current directory.</p>
 
-<p>Normally, only files unknown to Git are removed, but if the <em>-x</em> option is specified, ignored files are also removed. This can, for example, be useful to remove all build products.</p>
+<p>Normally, only files unknown to Git are removed, but if the <em>-x</em> option
+is specified, ignored files are also removed. This can, for example, be
+useful to remove all build products.</p>
 
-<p>If any optional <code>&lt;path&gt;...</code> arguments are given, only those paths are affected.</p>
+<p>If any optional <code>&lt;path&gt;...</code> arguments are given, only those paths are
+affected.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>-d<br />
-Remove untracked directories in addition to untracked files. If an untracked directory is managed by a different Git repository, it is not removed by default. Use -f option twice if you really want to remove such a directory.</p>
+Remove untracked directories in addition to untracked files. If an
+untracked directory is managed by a different Git repository, it is not
+removed by default. Use -f option twice if you really want to remove
+such a directory.</p>
 
-<p>-f
+<p>-f<br />
 &ndash;force<br />
-If the Git configuration variable clean.requireForce is not set to false, <em>git clean</em> will refuse to run unless given -f or -n.</p>
+If the Git configuration variable clean.requireForce is not set to
+false, <em>git clean</em> will refuse to run unless given -f or -n.</p>
 
-<p>-n
+<p>-n<br />
 &ndash;dry-run<br />
 Don’t actually remove anything, just show what would be done.</p>
 
-<p>-q
+<p>-q<br />
 &ndash;quiet<br />
-Be quiet, only report errors, but not the files that are successfully removed.</p>
+Be quiet, only report errors, but not the files that are successfully
+removed.</p>
 
-<p>-e &lt;pattern&gt;
+<p>-e &lt;pattern&gt;<br />
 &ndash;exclude=&lt;pattern&gt;<br />
-In addition to those found in .gitignore (per directory) and $GIT_DIR/info/exclude, also consider these patterns to be in the set of the ignore rules in effect.</p>
+In addition to those found in .gitignore (per directory) and
+$GIT_DIR/info/exclude, also consider these patterns to be in the set of
+the ignore rules in effect.</p>
 
 <p>-x<br />
-Don’t use the standard ignore rules read from .gitignore (per directory) and $GIT_DIR/info/exclude, but do still use the ignore rules given with <code>-e</code> options. This allows removing all untracked files, including build products. This can be used (possibly in conjunction with <em>git reset</em>) to create a pristine working directory to test a clean build.</p>
+Don’t use the standard ignore rules read from .gitignore (per directory)
+and $GIT_DIR/info/exclude, but do still use the ignore rules given with
+<code>-e</code> options. This allows removing all untracked files, including build
+products. This can be used (possibly in conjunction with <em>git reset</em>) to
+create a pristine working directory to test a clean build.</p>
 
 <p>-X<br />
-Remove only files ignored by Git. This may be useful to rebuild everything from scratch, but keep manually created files.</p>
+Remove only files ignored by Git. This may be useful to rebuild
+everything from scratch, but keep manually created files.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 

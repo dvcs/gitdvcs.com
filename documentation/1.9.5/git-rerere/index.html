@@ -112,14 +112,20 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>In a workflow employing relatively long lived topic branches, the developer sometimes needs to resolve the same conflicts over and over again until the topic branches are done (either merged to the &ldquo;release&rdquo; branch, or sent out and accepted upstream).</p>
+<p>In a workflow employing relatively long lived topic branches, the
+developer sometimes needs to resolve the same conflicts over and over
+again until the topic branches are done (either merged to the &ldquo;release&rdquo;
+branch, or sent out and accepted upstream).</p>
 
-<p>This command assists the developer in this process by recording conflicted automerge results and corresponding hand resolve results on the initial manual merge, and applying previously recorded hand resolutions to their corresponding automerge results.</p>
+<p>This command assists the developer in this process by recording
+conflicted automerge results and corresponding hand resolve results on
+the initial manual merge, and applying previously recorded hand
+resolutions to their corresponding automerge results.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -133,36 +139,54 @@ Note
 
 <h2 id="commands">COMMANDS</h2>
 
-<p>Normally, <em>git rerere</em> is run without arguments or user-intervention. However, it has several commands that allow it to interact with its working state.</p>
+<p>Normally, <em>git rerere</em> is run without arguments or user-intervention.
+However, it has several commands that allow it to interact with its
+working state.</p>
 
 <p><em>clear</em><br />
-Reset the metadata used by rerere if a merge resolution is to be aborted. Calling <em>git am [&ndash;skip|&ndash;abort]</em> or <em>git rebase [&ndash;skip|&ndash;abort]</em> will automatically invoke this command.</p>
+Reset the metadata used by rerere if a merge resolution is to be
+aborted. Calling <em>git am [&ndash;skip|&ndash;abort]</em> or <em>git rebase
+[&ndash;skip|&ndash;abort]</em> will automatically invoke this command.</p>
 
 <p><em>forget</em> &lt;pathspec&gt;<br />
-Reset the conflict resolutions which rerere has recorded for the current conflict in &lt;pathspec&gt;.</p>
+Reset the conflict resolutions which rerere has recorded for the current
+conflict in &lt;pathspec&gt;.</p>
 
 <p><em>diff</em><br />
-Display diffs for the current state of the resolution. It is useful for tracking what has changed while the user is resolving conflicts. Additional arguments are passed directly to the system <em>diff</em> command installed in PATH.</p>
+Display diffs for the current state of the resolution. It is useful for
+tracking what has changed while the user is resolving conflicts.
+Additional arguments are passed directly to the system <em>diff</em> command
+installed in PATH.</p>
 
 <p><em>status</em><br />
 Print paths with conflicts whose merge resolution rerere will record.</p>
 
 <p><em>remaining</em><br />
-Print paths with conflicts that have not been autoresolved by rerere. This includes paths whose resolutions cannot be tracked by rerere, such as conflicting submodules.</p>
+Print paths with conflicts that have not been autoresolved by rerere.
+This includes paths whose resolutions cannot be tracked by rerere, such
+as conflicting submodules.</p>
 
 <p><em>gc</em><br />
-Prune records of conflicted merges that occurred a long time ago. By default, unresolved conflicts older than 15 days and resolved conflicts older than 60 days are pruned. These defaults are controlled via the <code>gc.rerereunresolved</code> and <code>gc.rerereresolved</code> configuration variables respectively.</p>
+Prune records of conflicted merges that occurred a long time ago. By
+default, unresolved conflicts older than 15 days and resolved conflicts
+older than 60 days are pruned. These defaults are controlled via the
+<code>gc.rerereunresolved</code> and <code>gc.rerereresolved</code> configuration variables
+respectively.</p>
 
 <h2 id="discussion">DISCUSSION</h2>
 
-<p>When your topic branch modifies an overlapping area that your master branch (or upstream) touched since your topic branch forked from it, you may want to test it with the latest master, even before your topic branch is ready to be pushed upstream:</p>
+<p>When your topic branch modifies an overlapping area that your master
+branch (or upstream) touched since your topic branch forked from it, you
+may want to test it with the latest master, even before your topic
+branch is ready to be pushed upstream:</p>
 
 <pre><code>              o---*---o topic
              /
     o---o---o---*---o---o master
 </code></pre>
 
-<p>For such a test, you need to merge master and topic somehow. One way to do it is to pull master into the topic branch:</p>
+<p>For such a test, you need to merge master and topic somehow. One way to
+do it is to pull master into the topic branch:</p>
 
 <pre><code>        $ git checkout topic
         $ git merge master
@@ -172,9 +196,18 @@ Prune records of conflicted merges that occurred a long time ago. By default, un
     o---o---o---*---o---o master
 </code></pre>
 
-<p>The commits marked with <code>*</code> touch the same area in the same file; you need to resolve the conflicts when creating the commit marked with <code>+</code>. Then you can test the result to make sure your work-in-progress still works with what is in the latest master.</p>
+<p>The commits marked with <code>*</code> touch the same area in the same file; you
+need to resolve the conflicts when creating the commit marked with <code>+</code>.
+Then you can test the result to make sure your work-in-progress still
+works with what is in the latest master.</p>
 
-<p>After this test merge, there are two ways to continue your work on the topic. The easiest is to build on top of the test merge commit <code>+</code>, and when your work in the topic branch is finally ready, pull the topic branch into master, and/or ask the upstream to pull from you. By that time, however, the master or the upstream might have been advanced since the test merge <code>+</code>, in which case the final commit graph would look like this:</p>
+<p>After this test merge, there are two ways to continue your work on the
+topic. The easiest is to build on top of the test merge commit <code>+</code>, and
+when your work in the topic branch is finally ready, pull the topic
+branch into master, and/or ask the upstream to pull from you. By that
+time, however, the master or the upstream might have been advanced since
+the test merge <code>+</code>, in which case the final commit graph would look like
+this:</p>
 
 <pre><code>        $ git checkout topic
         $ git merge master
@@ -187,9 +220,16 @@ Prune records of conflicted merges that occurred a long time ago. By default, un
     o---o---o---*---o---o---o---o---+ master
 </code></pre>
 
-<p>When your topic branch is long-lived, however, your topic branch would end up having many such &ldquo;Merge from master&rdquo; commits on it, which would unnecessarily clutter the development history. Readers of the Linux kernel mailing list may remember that Linus complained about such too frequent test merges when a subsystem maintainer asked to pull from a branch full of &ldquo;useless merges&rdquo;.</p>
+<p>When your topic branch is long-lived, however, your topic branch would
+end up having many such &ldquo;Merge from master&rdquo; commits on it, which would
+unnecessarily clutter the development history. Readers of the Linux
+kernel mailing list may remember that Linus complained about such too
+frequent test merges when a subsystem maintainer asked to pull from a
+branch full of &ldquo;useless merges&rdquo;.</p>
 
-<p>As an alternative, to keep the topic branch clean of test merges, you could blow away the test merge, and keep building on top of the tip before the test merge:</p>
+<p>As an alternative, to keep the topic branch clean of test merges, you
+could blow away the test merge, and keep building on top of the tip
+before the test merge:</p>
 
 <pre><code>        $ git checkout topic
         $ git merge master
@@ -203,17 +243,45 @@ Prune records of conflicted merges that occurred a long time ago. By default, un
     o---o---o---*---o---o---o---o---+ master
 </code></pre>
 
-<p>This would leave only one merge commit when your topic branch is finally ready and merged into the master branch. This merge would require you to resolve the conflict, introduced by the commits marked with <code>*</code>. However, this conflict is often the same conflict you resolved when you created the test merge you blew away. <em>git rerere</em> helps you resolve this final conflicted merge using the information from your earlier hand resolve.</p>
+<p>This would leave only one merge commit when your topic branch is finally
+ready and merged into the master branch. This merge would require you to
+resolve the conflict, introduced by the commits marked with <code>*</code>.
+However, this conflict is often the same conflict you resolved when you
+created the test merge you blew away. <em>git rerere</em> helps you resolve
+this final conflicted merge using the information from your earlier hand
+resolve.</p>
 
-<p>Running the <em>git rerere</em> command immediately after a conflicted automerge records the conflicted working tree files, with the usual conflict markers <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> in them. Later, after you are done resolving the conflicts, running <em>git rerere</em> again will record the resolved state of these files. Suppose you did this when you created the test merge of master into the topic branch.</p>
+<p>Running the <em>git rerere</em> command immediately after a conflicted
+automerge records the conflicted working tree files, with the usual
+conflict markers <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> in them. Later,
+after you are done resolving the conflicts, running <em>git rerere</em> again
+will record the resolved state of these files. Suppose you did this when
+you created the test merge of master into the topic branch.</p>
 
-<p>Next time, after seeing the same conflicted automerge, running <em>git rerere</em> will perform a three-way merge between the earlier conflicted automerge, the earlier manual resolution, and the current conflicted automerge. If this three-way merge resolves cleanly, the result is written out to your working tree file, so you do not have to manually resolve it. Note that <em>git rerere</em> leaves the index file alone, so you still need to do the final sanity checks with <code>git               diff</code> (or <code>git diff -c</code>) and <em>git add</em> when you are satisfied.</p>
+<p>Next time, after seeing the same conflicted automerge, running <em>git
+rerere</em> will perform a three-way merge between the earlier conflicted
+automerge, the earlier manual resolution, and the current conflicted
+automerge. If this three-way merge resolves cleanly, the result is
+written out to your working tree file, so you do not have to manually
+resolve it. Note that <em>git rerere</em> leaves the index file alone, so you
+still need to do the final sanity checks with <code>git               diff</code>
+(or <code>git diff -c</code>) and <em>git add</em> when you are satisfied.</p>
 
-<p>As a convenience measure, <em>git merge</em> automatically invokes <em>git rerere</em> upon exiting with a failed automerge and <em>git rerere</em> records the hand resolve when it is a new conflict, or reuses the earlier hand resolve when it is not. <em>git commit</em> also invokes <em>git rerere</em> when committing a merge result. What this means is that you do not have to do anything special yourself (besides enabling the rerere.enabled config variable).</p>
+<p>As a convenience measure, <em>git merge</em> automatically invokes <em>git rerere</em>
+upon exiting with a failed automerge and <em>git rerere</em> records the hand
+resolve when it is a new conflict, or reuses the earlier hand resolve
+when it is not. <em>git commit</em> also invokes <em>git rerere</em> when committing a
+merge result. What this means is that you do not have to do anything
+special yourself (besides enabling the rerere.enabled config variable).</p>
 
-<p>In our example, when you do the test merge, the manual resolution is recorded, and it will be reused when you do the actual merge later with the updated master and topic branch, as long as the recorded resolution is still applicable.</p>
+<p>In our example, when you do the test merge, the manual resolution is
+recorded, and it will be reused when you do the actual merge later with
+the updated master and topic branch, as long as the recorded resolution
+is still applicable.</p>
 
-<p>The information <em>git rerere</em> records is also used when running <em>git rebase</em>. After blowing away the test merge and continuing development on the topic branch:</p>
+<p>The information <em>git rerere</em> records is also used when running <em>git
+rebase</em>. After blowing away the test merge and continuing development on
+the topic branch:</p>
 
 <pre><code>              o---*---o-------o---o topic
              /
@@ -226,7 +294,11 @@ Prune records of conflicted merges that occurred a long time ago. By default, un
     o---o---o---*---o---o---o---o   master
 </code></pre>
 
-<p>you could run <code>git rebase master topic</code>, to bring yourself up-to-date before your topic is ready to be sent upstream. This would result in falling back to a three-way merge, and it would conflict the same way as the test merge you resolved earlier. <em>git rerere</em> will be run by <em>git rebase</em> to help you resolve this conflict.</p>
+<p>you could run <code>git rebase master topic</code>, to bring yourself up-to-date
+before your topic is ready to be sent upstream. This would result in
+falling back to a three-way merge, and it would conflict the same way as
+the test merge you resolved earlier. <em>git rerere</em> will be run by <em>git
+rebase</em> to help you resolve this conflict.</p>
 
 <h2 id="git">GIT</h2>
 

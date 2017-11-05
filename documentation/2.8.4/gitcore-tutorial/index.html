@@ -111,20 +111,33 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This tutorial explains how to use the &ldquo;core&rdquo; Git commands to set up and work with a Git repository.</p>
+<p>This tutorial explains how to use the &ldquo;core&rdquo; Git commands to set up and
+work with a Git repository.</p>
 
-<p>If you just need to use Git as a revision control system you may prefer to start with &ldquo;A Tutorial Introduction to Git&rdquo; (<a href="../gittutorial">gittutorial(7)</a>) or <a href="user-manual">the Git User Manual</a>.</p>
+<p>If you just need to use Git as a revision control system you may prefer
+to start with &ldquo;A Tutorial Introduction to Git&rdquo;
+(<a href="../gittutorial">gittutorial(7)</a>) or <a href="user-manual">the Git User
+Manual</a>.</p>
 
-<p>However, an understanding of these low-level tools can be helpful if you want to understand Git’s internals.</p>
+<p>However, an understanding of these low-level tools can be helpful if you
+want to understand Git’s internals.</p>
 
-<p>The core Git is often called &ldquo;plumbing&rdquo;, with the prettier user interfaces on top of it called &ldquo;porcelain&rdquo;. You may not want to use the plumbing directly very often, but it can be good to know what the plumbing does for when the porcelain isn’t flushing.</p>
+<p>The core Git is often called &ldquo;plumbing&rdquo;, with the prettier user
+interfaces on top of it called &ldquo;porcelain&rdquo;. You may not want to use the
+plumbing directly very often, but it can be good to know what the
+plumbing does for when the porcelain isn’t flushing.</p>
 
-<p>Back when this document was originally written, many porcelain commands were shell scripts. For simplicity, it still uses them as examples to illustrate how plumbing is fit together to form the porcelain commands. The source tree includes some of these scripts in contrib/examples/ for reference. Although these are not implemented as shell scripts anymore, the description of what the plumbing layer commands do is still valid.</p>
+<p>Back when this document was originally written, many porcelain commands
+were shell scripts. For simplicity, it still uses them as examples to
+illustrate how plumbing is fit together to form the porcelain commands.
+The source tree includes some of these scripts in contrib/examples/ for
+reference. Although these are not implemented as shell scripts anymore,
+the description of what the plumbing layer commands do is still valid.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -138,9 +151,17 @@ Note
 
 <h2 id="creating-a-git-repository">Creating a Git repository</h2>
 
-<p>Creating a new Git repository couldn’t be easier: all Git repositories start out empty, and the only thing you need to do is find yourself a subdirectory that you want to use as a working tree - either an empty one for a totally new project, or an existing working tree that you want to import into Git.</p>
+<p>Creating a new Git repository couldn’t be easier: all Git repositories
+start out empty, and the only thing you need to do is find yourself a
+subdirectory that you want to use as a working tree - either an empty
+one for a totally new project, or an existing working tree that you want
+to import into Git.</p>
 
-<p>For our first example, we’re going to start a totally new repository from scratch, with no pre-existing files, and we’ll call it <em>git-tutorial</em>. To start up, create a subdirectory for it, change into that subdirectory, and initialize the Git infrastructure with <em>git init</em>:</p>
+<p>For our first example, we’re going to start a totally new repository
+from scratch, with no pre-existing files, and we’ll call it
+<em>git-tutorial</em>. To start up, create a subdirectory for it, change into
+that subdirectory, and initialize the Git infrastructure with <em>git
+init</em>:</p>
 
 <pre><code>$ mkdir git-tutorial
 $ cd git-tutorial
@@ -152,28 +173,49 @@ $ git init
 <pre><code>Initialized empty Git repository in .git/
 </code></pre>
 
-<p>which is just Git’s way of saying that you haven’t been doing anything strange, and that it will have created a local <code>.git</code> directory setup for your new project. You will now have a <code>.git</code> directory, and you can inspect that with <em>ls</em>. For your new empty project, it should show you three entries, among other things:</p>
+<p>which is just Git’s way of saying that you haven’t been doing anything
+strange, and that it will have created a local <code>.git</code> directory setup
+for your new project. You will now have a <code>.git</code> directory, and you can
+inspect that with <em>ls</em>. For your new empty project, it should show you
+three entries, among other things:</p>
 
 <ul>
-<li><p>a file called <code>HEAD</code>, that has <code>ref: refs/heads/master</code> in it. This is similar to a symbolic link and points at <code>refs/heads/master</code> relative to the <code>HEAD</code> file.</p>
+<li><p>a file called <code>HEAD</code>, that has <code>ref: refs/heads/master</code> in it. This
+is similar to a symbolic link and points at <code>refs/heads/master</code>
+relative to the <code>HEAD</code> file.</p>
 
-<p>Don’t worry about the fact that the file that the <code>HEAD</code> link points to doesn’t even exist yet — you haven’t created the commit that will start your <code>HEAD</code> development branch yet.</p></li>
+<p>Don’t worry about the fact that the file that the <code>HEAD</code> link points
+to doesn’t even exist yet — you haven’t created the commit that will
+start your <code>HEAD</code> development branch yet.</p></li>
 
-<li><p>a subdirectory called <code>objects</code>, which will contain all the objects of your project. You should never have any real reason to look at the objects directly, but you might want to know that these objects are what contains all the real <em>data</em> in your repository.</p></li>
+<li><p>a subdirectory called <code>objects</code>, which will contain all the objects
+of your project. You should never have any real reason to look at
+the objects directly, but you might want to know that these objects
+are what contains all the real <em>data</em> in your repository.</p></li>
 
 <li><p>a subdirectory called <code>refs</code>, which contains references to objects.</p></li>
 </ul>
 
-<p>In particular, the <code>refs</code> subdirectory will contain two other subdirectories, named <code>heads</code> and <code>tags</code> respectively. They do exactly what their names imply: they contain references to any number of different <em>heads</em> of development (aka <em>branches</em>), and to any <em>tags</em> that you have created to name specific versions in your repository.</p>
+<p>In particular, the <code>refs</code> subdirectory will contain two other
+subdirectories, named <code>heads</code> and <code>tags</code> respectively. They do exactly
+what their names imply: they contain references to any number of
+different <em>heads</em> of development (aka <em>branches</em>), and to any <em>tags</em>
+that you have created to name specific versions in your repository.</p>
 
-<p>One note: the special <code>master</code> head is the default branch, which is why the <code>.git/HEAD</code> file was created points to it even if it doesn’t yet exist. Basically, the <code>HEAD</code> link is supposed to always point to the branch you are working on right now, and you always start out expecting to work on the <code>master</code> branch.</p>
+<p>One note: the special <code>master</code> head is the default branch, which is why
+the <code>.git/HEAD</code> file was created points to it even if it doesn’t yet
+exist. Basically, the <code>HEAD</code> link is supposed to always point to the
+branch you are working on right now, and you always start out expecting
+to work on the <code>master</code> branch.</p>
 
-<p>However, this is only a convention, and you can name your branches anything you want, and don’t have to ever even <em>have</em> a <code>master</code> branch. A number of the Git tools will assume that <code>.git/HEAD</code> is valid, though.</p>
+<p>However, this is only a convention, and you can name your branches
+anything you want, and don’t have to ever even <em>have</em> a <code>master</code> branch.
+A number of the Git tools will assume that <code>.git/HEAD</code> is valid, though.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -187,8 +229,8 @@ Note
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -200,27 +242,40 @@ Note
 </tbody>
 </table>
 
-<p>You have now created your first Git repository. Of course, since it’s empty, that’s not very useful, so let’s start populating it with data.</p>
+<p>You have now created your first Git repository. Of course, since it’s
+empty, that’s not very useful, so let’s start populating it with data.</p>
 
 <h2 id="populating-a-git-repository">Populating a Git repository</h2>
 
-<p>We’ll keep this simple and stupid, so we’ll start off with populating a few trivial files just to get a feel for it.</p>
+<p>We’ll keep this simple and stupid, so we’ll start off with populating a
+few trivial files just to get a feel for it.</p>
 
-<p>Start off with just creating any random files that you want to maintain in your Git repository. We’ll start off with a few bad examples, just to get a feel for how this works:</p>
+<p>Start off with just creating any random files that you want to maintain
+in your Git repository. We’ll start off with a few bad examples, just to
+get a feel for how this works:</p>
 
 <pre><code>$ echo &quot;Hello World&quot; &gt;hello
 $ echo &quot;Silly example&quot; &gt;example
 </code></pre>
 
-<p>you have now created two files in your working tree (aka <em>working directory</em>), but to actually check in your hard work, you will have to go through two steps:</p>
+<p>you have now created two files in your working tree (aka <em>working
+directory</em>), but to actually check in your hard work, you will have to
+go through two steps:</p>
 
 <ul>
-<li><p>fill in the <em>index</em> file (aka <em>cache</em>) with the information about your working tree state.</p></li>
+<li><p>fill in the <em>index</em> file (aka <em>cache</em>) with the information about
+your working tree state.</p></li>
 
 <li><p>commit that index file as an object.</p></li>
 </ul>
 
-<p>The first step is trivial: when you want to tell Git about any changes to your working tree, you use the <em>git update-index</em> program. That program normally just takes a list of filenames you want to update, but to avoid trivial mistakes, it refuses to add new entries to the index (or remove existing ones) unless you explicitly tell it that you’re adding a new entry with the <code>--add</code> flag (or removing an entry with the <code>--remove</code>) flag.</p>
+<p>The first step is trivial: when you want to tell Git about any changes
+to your working tree, you use the <em>git update-index</em> program. That
+program normally just takes a list of filenames you want to update, but
+to avoid trivial mistakes, it refuses to add new entries to the index
+(or remove existing ones) unless you explicitly tell it that you’re
+adding a new entry with the <code>--add</code> flag (or removing an entry with the
+<code>--remove</code>) flag.</p>
 
 <p>So to populate the index with the two files you just created, you can do</p>
 
@@ -229,7 +284,10 @@ $ echo &quot;Silly example&quot; &gt;example
 
 <p>and you have now told Git to track those two files.</p>
 
-<p>In fact, as you did that, if you now look into your object directory, you’ll notice that Git will have added two new objects to the object database. If you did exactly the steps above, you should now be able to do</p>
+<p>In fact, as you did that, if you now look into your object directory,
+you’ll notice that Git will have added two new objects to the object
+database. If you did exactly the steps above, you should now be able to
+do</p>
 
 <pre><code>$ ls .git/objects/??/*
 </code></pre>
@@ -240,24 +298,29 @@ $ echo &quot;Silly example&quot; &gt;example
 .git/objects/f2/4c74a2e500f5ee1332c86b94199f52b1d1d962
 </code></pre>
 
-<p>which correspond with the objects with names of <code>557db...</code> and <code>f24c7...</code> respectively.</p>
+<p>which correspond with the objects with names of <code>557db...</code> and
+<code>f24c7...</code> respectively.</p>
 
-<p>If you want to, you can use <em>git cat-file</em> to look at those objects, but you’ll have to use the object name, not the filename of the object:</p>
+<p>If you want to, you can use <em>git cat-file</em> to look at those objects, but
+you’ll have to use the object name, not the filename of the object:</p>
 
 <pre><code>$ git cat-file -t 557db03de997c86a4a028e1ebd3a1ceb225be238
 </code></pre>
 
-<p>where the <code>-t</code> tells <em>git cat-file</em> to tell you what the &ldquo;type&rdquo; of the object is. Git will tell you that you have a &ldquo;blob&rdquo; object (i.e., just a regular file), and you can see the contents with</p>
+<p>where the <code>-t</code> tells <em>git cat-file</em> to tell you what the &ldquo;type&rdquo; of the
+object is. Git will tell you that you have a &ldquo;blob&rdquo; object (i.e., just a
+regular file), and you can see the contents with</p>
 
 <pre><code>$ git cat-file blob 557db03
 </code></pre>
 
-<p>which will print out &ldquo;Hello World&rdquo;. The object <code>557db03</code> is nothing more than the contents of your file <code>hello</code>.</p>
+<p>which will print out &ldquo;Hello World&rdquo;. The object <code>557db03</code> is nothing more
+than the contents of your file <code>hello</code>.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -271,8 +334,8 @@ Note
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -284,25 +347,42 @@ Note
 </tbody>
 </table>
 
-<p>Anyway, as we mentioned previously, you normally never actually take a look at the objects themselves, and typing long 40-character hex names is not something you’d normally want to do. The above digression was just to show that <em>git update-index</em> did something magical, and actually saved away the contents of your files into the Git object database.</p>
+<p>Anyway, as we mentioned previously, you normally never actually take a
+look at the objects themselves, and typing long 40-character hex names
+is not something you’d normally want to do. The above digression was
+just to show that <em>git update-index</em> did something magical, and actually
+saved away the contents of your files into the Git object database.</p>
 
-<p>Updating the index did something else too: it created a <code>.git/index</code> file. This is the index that describes your current working tree, and something you should be very aware of. Again, you normally never worry about the index file itself, but you should be aware of the fact that you have not actually really &ldquo;checked in&rdquo; your files into Git so far, you’ve only <strong>told</strong> Git about them.</p>
+<p>Updating the index did something else too: it created a <code>.git/index</code>
+file. This is the index that describes your current working tree, and
+something you should be very aware of. Again, you normally never worry
+about the index file itself, but you should be aware of the fact that
+you have not actually really &ldquo;checked in&rdquo; your files into Git so far,
+you’ve only <strong>told</strong> Git about them.</p>
 
-<p>However, since Git knows about them, you can now start using some of the most basic Git commands to manipulate the files or look at their status.</p>
+<p>However, since Git knows about them, you can now start using some of the
+most basic Git commands to manipulate the files or look at their status.</p>
 
-<p>In particular, let’s not even check in the two files into Git yet, we’ll start off by adding another line to <code>hello</code> first:</p>
+<p>In particular, let’s not even check in the two files into Git yet, we’ll
+start off by adding another line to <code>hello</code> first:</p>
 
 <pre><code>$ echo &quot;It's a new day for git&quot; &gt;&gt;hello
 </code></pre>
 
-<p>and you can now, since you told Git about the previous state of <code>hello</code>, ask Git what has changed in the tree compared to your old index, using the <em>git diff-files</em> command:</p>
+<p>and you can now, since you told Git about the previous state of <code>hello</code>,
+ask Git what has changed in the tree compared to your old index, using
+the <em>git diff-files</em> command:</p>
 
 <pre><code>$ git diff-files
 </code></pre>
 
-<p>Oops. That wasn’t very readable. It just spit out its own internal version of a <em>diff</em>, but that internal version really just tells you that it has noticed that &ldquo;hello&rdquo; has been modified, and that the old object contents it had have been replaced with something else.</p>
+<p>Oops. That wasn’t very readable. It just spit out its own internal
+version of a <em>diff</em>, but that internal version really just tells you
+that it has noticed that &ldquo;hello&rdquo; has been modified, and that the old
+object contents it had have been replaced with something else.</p>
 
-<p>To make it readable, we can tell <em>git diff-files</em> to output the differences as a patch, using the <code>-p</code> flag:</p>
+<p>To make it readable, we can tell <em>git diff-files</em> to output the
+differences as a patch, using the <code>-p</code> flag:</p>
 
 <pre><code>$ git diff-files -p
 diff --git a/hello b/hello
@@ -316,9 +396,12 @@ index 557db03..263414f 100644
 
 <p>i.e. the diff of the change we caused by adding another line to <code>hello</code>.</p>
 
-<p>In other words, <em>git diff-files</em> always shows us the difference between what is recorded in the index, and what is currently in the working tree. That’s very useful.</p>
+<p>In other words, <em>git diff-files</em> always shows us the difference between
+what is recorded in the index, and what is currently in the working
+tree. That’s very useful.</p>
 
-<p>A common shorthand for <code>git diff-files -p</code> is to just write <code>git diff</code>, which will do the same thing.</p>
+<p>A common shorthand for <code>git diff-files -p</code> is to just write <code>git diff</code>,
+which will do the same thing.</p>
 
 <pre><code>$ git diff
 diff --git a/hello b/hello
@@ -332,65 +415,123 @@ index 557db03..263414f 100644
 
 <h2 id="committing-git-state">Committing Git state</h2>
 
-<p>Now, we want to go to the next stage in Git, which is to take the files that Git knows about in the index, and commit them as a real tree. We do that in two phases: creating a <em>tree</em> object, and committing that <em>tree</em> object as a <em>commit</em> object together with an explanation of what the tree was all about, along with information of how we came to that state.</p>
+<p>Now, we want to go to the next stage in Git, which is to take the files
+that Git knows about in the index, and commit them as a real tree. We do
+that in two phases: creating a <em>tree</em> object, and committing that <em>tree</em>
+object as a <em>commit</em> object together with an explanation of what the
+tree was all about, along with information of how we came to that state.</p>
 
-<p>Creating a tree object is trivial, and is done with <em>git write-tree</em>. There are no options or other input: <code>git write-tree</code> will take the current index state, and write an object that describes that whole index. In other words, we’re now tying together all the different filenames with their contents (and their permissions), and we’re creating the equivalent of a Git &ldquo;directory&rdquo; object:</p>
+<p>Creating a tree object is trivial, and is done with <em>git write-tree</em>.
+There are no options or other input: <code>git write-tree</code> will take the
+current index state, and write an object that describes that whole
+index. In other words, we’re now tying together all the different
+filenames with their contents (and their permissions), and we’re
+creating the equivalent of a Git &ldquo;directory&rdquo; object:</p>
 
 <pre><code>$ git write-tree
 </code></pre>
 
-<p>and this will just output the name of the resulting tree, in this case (if you have done exactly as I’ve described) it should be</p>
+<p>and this will just output the name of the resulting tree, in this case
+(if you have done exactly as I’ve described) it should be</p>
 
 <pre><code>8988da15d077d4829fc51d8544c097def6644dbb
 </code></pre>
 
-<p>which is another incomprehensible object name. Again, if you want to, you can use <code>git cat-file -t               8988d...</code> to see that this time the object is not a &ldquo;blob&rdquo; object, but a &ldquo;tree&rdquo; object (you can also use <code>git cat-file</code> to actually output the raw object contents, but you’ll see mainly a binary mess, so that’s less interesting).</p>
+<p>which is another incomprehensible object name. Again, if you want to,
+you can use <code>git cat-file -t               8988d...</code> to see that this
+time the object is not a &ldquo;blob&rdquo; object, but a &ldquo;tree&rdquo; object (you can
+also use <code>git cat-file</code> to actually output the raw object contents, but
+you’ll see mainly a binary mess, so that’s less interesting).</p>
 
-<p>However — normally you’d never use <em>git write-tree</em> on its own, because normally you always commit a tree into a commit object using the <em>git commit-tree</em> command. In fact, it’s easier to not actually use <em>git write-tree</em> on its own at all, but to just pass its result in as an argument to <em>git commit-tree</em>.</p>
+<p>However — normally you’d never use <em>git write-tree</em> on its own, because
+normally you always commit a tree into a commit object using the <em>git
+commit-tree</em> command. In fact, it’s easier to not actually use <em>git
+write-tree</em> on its own at all, but to just pass its result in as an
+argument to <em>git commit-tree</em>.</p>
 
-<p><em>git commit-tree</em> normally takes several arguments — it wants to know what the <em>parent</em> of a commit was, but since this is the first commit ever in this new repository, and it has no parents, we only need to pass in the object name of the tree. However, <em>git commit-tree</em> also wants to get a commit message on its standard input, and it will write out the resulting object name for the commit to its standard output.</p>
+<p><em>git commit-tree</em> normally takes several arguments — it wants to know
+what the <em>parent</em> of a commit was, but since this is the first commit
+ever in this new repository, and it has no parents, we only need to pass
+in the object name of the tree. However, <em>git commit-tree</em> also wants to
+get a commit message on its standard input, and it will write out the
+resulting object name for the commit to its standard output.</p>
 
-<p>And this is where we create the <code>.git/refs/heads/master</code> file which is pointed at by <code>HEAD</code>. This file is supposed to contain the reference to the top-of-tree of the master branch, and since that’s exactly what <em>git commit-tree</em> spits out, we can do this all with a sequence of simple shell commands:</p>
+<p>And this is where we create the <code>.git/refs/heads/master</code> file which is
+pointed at by <code>HEAD</code>. This file is supposed to contain the reference to
+the top-of-tree of the master branch, and since that’s exactly what <em>git
+commit-tree</em> spits out, we can do this all with a sequence of simple
+shell commands:</p>
 
 <pre><code>$ tree=$(git write-tree)
 $ commit=$(echo 'Initial commit' | git commit-tree $tree)
 $ git update-ref HEAD $commit
 </code></pre>
 
-<p>In this case this creates a totally new commit that is not related to anything else. Normally you do this only <strong>once</strong> for a project ever, and all later commits will be parented on top of an earlier commit.</p>
+<p>In this case this creates a totally new commit that is not related to
+anything else. Normally you do this only <strong>once</strong> for a project ever,
+and all later commits will be parented on top of an earlier commit.</p>
 
-<p>Again, normally you’d never actually do this by hand. There is a helpful script called <code>git               commit</code> that will do all of this for you. So you could have just written <code>git commit</code> instead, and it would have done the above magic scripting for you.</p>
+<p>Again, normally you’d never actually do this by hand. There is a helpful
+script called <code>git               commit</code> that will do all of this for
+you. So you could have just written <code>git commit</code> instead, and it would
+have done the above magic scripting for you.</p>
 
 <h2 id="making-a-change">Making a change</h2>
 
-<p>Remember how we did the <em>git update-index</em> on file <code>hello</code> and then we changed <code>hello</code> afterward, and could compare the new state of <code>hello</code> with the state we saved in the index file?</p>
+<p>Remember how we did the <em>git update-index</em> on file <code>hello</code> and then we
+changed <code>hello</code> afterward, and could compare the new state of <code>hello</code>
+with the state we saved in the index file?</p>
 
-<p>Further, remember how I said that <em>git write-tree</em> writes the contents of the <strong>index</strong> file to the tree, and thus what we just committed was in fact the <strong>original</strong> contents of the file <code>hello</code>, not the new ones. We did that on purpose, to show the difference between the index state, and the state in the working tree, and how they don’t have to match, even when we commit things.</p>
+<p>Further, remember how I said that <em>git write-tree</em> writes the contents
+of the <strong>index</strong> file to the tree, and thus what we just committed was
+in fact the <strong>original</strong> contents of the file <code>hello</code>, not the new ones.
+We did that on purpose, to show the difference between the index state,
+and the state in the working tree, and how they don’t have to match,
+even when we commit things.</p>
 
-<p>As before, if we do <code>git diff-files -p</code> in our git-tutorial project, we’ll still see the same difference we saw last time: the index file hasn’t changed by the act of committing anything. However, now that we have committed something, we can also learn to use a new command: <em>git diff-index</em>.</p>
+<p>As before, if we do <code>git diff-files -p</code> in our git-tutorial project,
+we’ll still see the same difference we saw last time: the index file
+hasn’t changed by the act of committing anything. However, now that we
+have committed something, we can also learn to use a new command: <em>git
+diff-index</em>.</p>
 
-<p>Unlike <em>git diff-files</em>, which showed the difference between the index file and the working tree, <em>git diff-index</em> shows the differences between a committed <strong>tree</strong> and either the index file or the working tree. In other words, <em>git diff-index</em> wants a tree to be diffed against, and before we did the commit, we couldn’t do that, because we didn’t have anything to diff against.</p>
+<p>Unlike <em>git diff-files</em>, which showed the difference between the index
+file and the working tree, <em>git diff-index</em> shows the differences
+between a committed <strong>tree</strong> and either the index file or the working
+tree. In other words, <em>git diff-index</em> wants a tree to be diffed
+against, and before we did the commit, we couldn’t do that, because we
+didn’t have anything to diff against.</p>
 
 <p>But now we can do</p>
 
 <pre><code>$ git diff-index -p HEAD
 </code></pre>
 
-<p>(where <code>-p</code> has the same meaning as it did in <em>git diff-files</em>), and it will show us the same difference, but for a totally different reason. Now we’re comparing the working tree not against the index file, but against the tree we just wrote. It just so happens that those two are obviously the same, so we get the same result.</p>
+<p>(where <code>-p</code> has the same meaning as it did in <em>git diff-files</em>), and it
+will show us the same difference, but for a totally different reason.
+Now we’re comparing the working tree not against the index file, but
+against the tree we just wrote. It just so happens that those two are
+obviously the same, so we get the same result.</p>
 
-<p>Again, because this is a common operation, you can also just shorthand it with</p>
+<p>Again, because this is a common operation, you can also just shorthand
+it with</p>
 
 <pre><code>$ git diff HEAD
 </code></pre>
 
 <p>which ends up doing the above for you.</p>
 
-<p>In other words, <em>git diff-index</em> normally compares a tree against the working tree, but when given the <code>--cached</code> flag, it is told to instead compare against just the index cache contents, and ignore the current working tree state entirely. Since we just wrote the index file to HEAD, doing <code>git diff-index               --cached -p HEAD</code> should thus return an empty set of differences, and that’s exactly what it does.</p>
+<p>In other words, <em>git diff-index</em> normally compares a tree against the
+working tree, but when given the <code>--cached</code> flag, it is told to instead
+compare against just the index cache contents, and ignore the current
+working tree state entirely. Since we just wrote the index file to HEAD,
+doing <code>git diff-index               --cached -p HEAD</code> should thus return
+an empty set of differences, and that’s exactly what it does.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -407,41 +548,76 @@ Note
 </tbody>
 </table>
 
-<p>However, our next step is to commit the <strong>change</strong> we did, and again, to understand what’s going on, keep in mind the difference between &ldquo;working tree contents&rdquo;, &ldquo;index file&rdquo; and &ldquo;committed tree&rdquo;. We have changes in the working tree that we want to commit, and we always have to work through the index file, so the first thing we need to do is to update the index cache:</p>
+<p>However, our next step is to commit the <strong>change</strong> we did, and again, to
+understand what’s going on, keep in mind the difference between &ldquo;working
+tree contents&rdquo;, &ldquo;index file&rdquo; and &ldquo;committed tree&rdquo;. We have changes in
+the working tree that we want to commit, and we always have to work
+through the index file, so the first thing we need to do is to update
+the index cache:</p>
 
 <pre><code>$ git update-index hello
 </code></pre>
 
-<p>(note how we didn’t need the <code>--add</code> flag this time, since Git knew about the file already).</p>
+<p>(note how we didn’t need the <code>--add</code> flag this time, since Git knew
+about the file already).</p>
 
-<p>Note what happens to the different <em>git diff-*</em> versions here. After we’ve updated <code>hello</code> in the index, <code>git diff-files               -p</code> now shows no differences, but <code>git               diff-index -p HEAD</code> still <strong>does</strong> show that the current state is different from the state we committed. In fact, now <em>git diff-index</em> shows the same difference whether we use the <code>--cached</code> flag or not, since now the index is coherent with the working tree.</p>
+<p>Note what happens to the different <em>git diff-*</em> versions here. After
+we’ve updated <code>hello</code> in the index, <code>git diff-files               -p</code>
+now shows no differences, but <code>git               diff-index -p HEAD</code>
+still <strong>does</strong> show that the current state is different from the state
+we committed. In fact, now <em>git diff-index</em> shows the same difference
+whether we use the <code>--cached</code> flag or not, since now the index is
+coherent with the working tree.</p>
 
-<p>Now, since we’ve updated <code>hello</code> in the index, we can commit the new version. We could do it by writing the tree by hand again, and committing the tree (this time we’d have to use the <code>-p               HEAD</code> flag to tell commit that the HEAD was the <strong>parent</strong> of the new commit, and that this wasn’t an initial commit any more), but you’ve done that once already, so let’s just use the helpful script this time:</p>
+<p>Now, since we’ve updated <code>hello</code> in the index, we can commit the new
+version. We could do it by writing the tree by hand again, and
+committing the tree (this time we’d have to use the
+<code>-p               HEAD</code> flag to tell commit that the HEAD was the
+<strong>parent</strong> of the new commit, and that this wasn’t an initial commit any
+more), but you’ve done that once already, so let’s just use the helpful
+script this time:</p>
 
 <pre><code>$ git commit
 </code></pre>
 
-<p>which starts an editor for you to write the commit message and tells you a bit about what you have done.</p>
+<p>which starts an editor for you to write the commit message and tells you
+a bit about what you have done.</p>
 
-<p>Write whatever message you want, and all the lines that start with <em>#</em> will be pruned out, and the rest will be used as the commit message for the change. If you decide you don’t want to commit anything after all at this point (you can continue to edit things and update the index), you can just leave an empty message. Otherwise <code>git commit</code> will commit the change for you.</p>
+<p>Write whatever message you want, and all the lines that start with <em>#</em>
+will be pruned out, and the rest will be used as the commit message for
+the change. If you decide you don’t want to commit anything after all at
+this point (you can continue to edit things and update the index), you
+can just leave an empty message. Otherwise <code>git commit</code> will commit the
+change for you.</p>
 
-<p>You’ve now made your first real Git commit. And if you’re interested in looking at what <code>git               commit</code> really does, feel free to investigate: it’s a few very simple shell scripts to generate the helpful (?) commit message headers, and a few one-liners that actually do the commit itself (<em>git commit</em>).</p>
+<p>You’ve now made your first real Git commit. And if you’re interested in
+looking at what <code>git               commit</code> really does, feel free to
+investigate: it’s a few very simple shell scripts to generate the
+helpful (?) commit message headers, and a few one-liners that actually
+do the commit itself (<em>git commit</em>).</p>
 
 <h2 id="inspecting-changes">Inspecting Changes</h2>
 
-<p>While creating changes is useful, it’s even more useful if you can tell later what changed. The most useful command for this is another of the <em>diff</em> family, namely <em>git diff-tree</em>.</p>
+<p>While creating changes is useful, it’s even more useful if you can tell
+later what changed. The most useful command for this is another of the
+<em>diff</em> family, namely <em>git diff-tree</em>.</p>
 
-<p><em>git diff-tree</em> can be given two arbitrary trees, and it will tell you the differences between them. Perhaps even more commonly, though, you can give it just a single commit object, and it will figure out the parent of that commit itself, and show the difference directly. Thus, to get the same diff that we’ve already seen several times, we can now do</p>
+<p><em>git diff-tree</em> can be given two arbitrary trees, and it will tell you
+the differences between them. Perhaps even more commonly, though, you
+can give it just a single commit object, and it will figure out the
+parent of that commit itself, and show the difference directly. Thus, to
+get the same diff that we’ve already seen several times, we can now do</p>
 
 <pre><code>$ git diff-tree -p HEAD
 </code></pre>
 
-<p>(again, <code>-p</code> means to show the difference as a human-readable patch), and it will show what the last commit (in <code>HEAD</code>) actually changed.</p>
+<p>(again, <code>-p</code> means to show the difference as a human-readable patch),
+and it will show what the last commit (in <code>HEAD</code>) actually changed.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -487,43 +663,75 @@ diff-index  |    V
 </tbody>
 </table>
 
-<p>More interestingly, you can also give <em>git diff-tree</em> the <code>--pretty</code> flag, which tells it to also show the commit message and author and date of the commit, and you can tell it to show a whole series of diffs. Alternatively, you can tell it to be &ldquo;silent&rdquo;, and not show the diffs at all, but just show the actual commit message.</p>
+<p>More interestingly, you can also give <em>git diff-tree</em> the <code>--pretty</code>
+flag, which tells it to also show the commit message and author and date
+of the commit, and you can tell it to show a whole series of diffs.
+Alternatively, you can tell it to be &ldquo;silent&rdquo;, and not show the diffs at
+all, but just show the actual commit message.</p>
 
-<p>In fact, together with the <em>git rev-list</em> program (which generates a list of revisions), <em>git diff-tree</em> ends up being a veritable fount of changes. You can emulate <code>git log</code>, <code>git log -p</code>, etc. with a trivial script that pipes the output of <code>git rev-list</code> to <code>git diff-tree --stdin</code>, which was exactly how early versions of <code>git log</code> were implemented.</p>
+<p>In fact, together with the <em>git rev-list</em> program (which generates a
+list of revisions), <em>git diff-tree</em> ends up being a veritable fount of
+changes. You can emulate <code>git log</code>, <code>git log -p</code>, etc. with a trivial
+script that pipes the output of <code>git rev-list</code> to
+<code>git diff-tree --stdin</code>, which was exactly how early versions of
+<code>git log</code> were implemented.</p>
 
 <h2 id="tagging-a-version">Tagging a version</h2>
 
-<p>In Git, there are two kinds of tags, a &ldquo;light&rdquo; one, and an &ldquo;annotated tag&rdquo;.</p>
+<p>In Git, there are two kinds of tags, a &ldquo;light&rdquo; one, and an &ldquo;annotated
+tag&rdquo;.</p>
 
-<p>A &ldquo;light&rdquo; tag is technically nothing more than a branch, except we put it in the <code>.git/refs/tags/</code> subdirectory instead of calling it a <code>head</code>. So the simplest form of tag involves nothing more than</p>
+<p>A &ldquo;light&rdquo; tag is technically nothing more than a branch, except we put
+it in the <code>.git/refs/tags/</code> subdirectory instead of calling it a <code>head</code>.
+So the simplest form of tag involves nothing more than</p>
 
 <pre><code>$ git tag my-first-tag
 </code></pre>
 
-<p>which just writes the current <code>HEAD</code> into the <code>.git/refs/tags/my-first-tag</code> file, after which point you can then use this symbolic name for that particular state. You can, for example, do</p>
+<p>which just writes the current <code>HEAD</code> into the
+<code>.git/refs/tags/my-first-tag</code> file, after which point you can then use
+this symbolic name for that particular state. You can, for example, do</p>
 
 <pre><code>$ git diff my-first-tag
 </code></pre>
 
-<p>to diff your current state against that tag which at this point will obviously be an empty diff, but if you continue to develop and commit stuff, you can use your tag as an &ldquo;anchor-point&rdquo; to see what has changed since you tagged it.</p>
+<p>to diff your current state against that tag which at this point will
+obviously be an empty diff, but if you continue to develop and commit
+stuff, you can use your tag as an &ldquo;anchor-point&rdquo; to see what has changed
+since you tagged it.</p>
 
-<p>An &ldquo;annotated tag&rdquo; is actually a real Git object, and contains not only a pointer to the state you want to tag, but also a small tag name and message, along with optionally a PGP signature that says that yes, you really did that tag. You create these annotated tags with either the <code>-a</code> or <code>-s</code> flag to <em>git tag</em>:</p>
+<p>An &ldquo;annotated tag&rdquo; is actually a real Git object, and contains not only
+a pointer to the state you want to tag, but also a small tag name and
+message, along with optionally a PGP signature that says that yes, you
+really did that tag. You create these annotated tags with either the
+<code>-a</code> or <code>-s</code> flag to <em>git tag</em>:</p>
 
 <pre><code>$ git tag -s &lt;tagname&gt;
 </code></pre>
 
-<p>which will sign the current <code>HEAD</code> (but you can also give it another argument that specifies the thing to tag, e.g., you could have tagged the current <code>mybranch</code> point by using <code>git tag               &lt;tagname&gt; mybranch</code>).</p>
+<p>which will sign the current <code>HEAD</code> (but you can also give it another
+argument that specifies the thing to tag, e.g., you could have tagged
+the current <code>mybranch</code> point by using
+<code>git tag               &lt;tagname&gt; mybranch</code>).</p>
 
-<p>You normally only do signed tags for major releases or things like that, while the light-weight tags are useful for any marking you want to do — any time you decide that you want to remember a certain point, just create a private tag for it, and you have a nice symbolic name for the state at that point.</p>
+<p>You normally only do signed tags for major releases or things like that,
+while the light-weight tags are useful for any marking you want to
+do — any time you decide that you want to remember a certain point, just
+create a private tag for it, and you have a nice symbolic name for the
+state at that point.</p>
 
 <h2 id="copying-repositories">Copying repositories</h2>
 
-<p>Git repositories are normally totally self-sufficient and relocatable. Unlike CVS, for example, there is no separate notion of &ldquo;repository&rdquo; and &ldquo;working tree&rdquo;. A Git repository normally <strong>is</strong> the working tree, with the local Git information hidden in the <code>.git</code> subdirectory. There is nothing else. What you see is what you got.</p>
+<p>Git repositories are normally totally self-sufficient and relocatable.
+Unlike CVS, for example, there is no separate notion of &ldquo;repository&rdquo; and
+&ldquo;working tree&rdquo;. A Git repository normally <strong>is</strong> the working tree, with
+the local Git information hidden in the <code>.git</code> subdirectory. There is
+nothing else. What you see is what you got.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -538,43 +746,78 @@ Note
 <p>This has two implications:</p>
 
 <ul>
-<li><p>if you grow bored with the tutorial repository you created (or you’ve made a mistake and want to start all over), you can just do simple</p>
+<li><p>if you grow bored with the tutorial repository you created (or
+you’ve made a mistake and want to start all over), you can just do
+simple</p>
 
 <pre><code>$ rm -rf git-tutorial
 </code></pre>
 
-<p>and it will be gone. There’s no external repository, and there’s no history outside the project you created.</p></li>
+<p>and it will be gone. There’s no external repository, and there’s no
+history outside the project you created.</p></li>
 
-<li><p>if you want to move or duplicate a Git repository, you can do so. There is <em>git clone</em> command, but if all you want to do is just to create a copy of your repository (with all the full history that went along with it), you can do so with a regular <code>cp -a git-tutorial new-git-tutorial</code>.</p>
+<li><p>if you want to move or duplicate a Git repository, you can do so.
+There is <em>git clone</em> command, but if all you want to do is just to
+create a copy of your repository (with all the full history that
+went along with it), you can do so with a regular
+<code>cp -a git-tutorial new-git-tutorial</code>.</p>
 
-<p>Note that when you’ve moved or copied a Git repository, your Git index file (which caches various information, notably some of the &ldquo;stat&rdquo; information for the files involved) will likely need to be refreshed. So after you do a <code>cp                     -a</code> to create a new copy, you’ll want to do</p>
+<p>Note that when you’ve moved or copied a Git repository, your Git
+index file (which caches various information, notably some of the
+&ldquo;stat&rdquo; information for the files involved) will likely need to be
+refreshed. So after you do a <code>cp                     -a</code> to create a
+new copy, you’ll want to do</p>
 
 <pre><code>$ git update-index --refresh
 </code></pre>
 
-<p>in the new repository to make sure that the index file is up-to-date.</p></li>
+<p>in the new repository to make sure that the index file is
+up-to-date.</p></li>
 </ul>
 
-<p>Note that the second point is true even across machines. You can duplicate a remote Git repository with <strong>any</strong> regular copy mechanism, be it <em>scp</em>, <em>rsync</em> or <em>wget</em>.</p>
+<p>Note that the second point is true even across machines. You can
+duplicate a remote Git repository with <strong>any</strong> regular copy mechanism,
+be it <em>scp</em>, <em>rsync</em> or <em>wget</em>.</p>
 
-<p>When copying a remote repository, you’ll want to at a minimum update the index cache when you do this, and especially with other peoples&rsquo; repositories you often want to make sure that the index cache is in some known state (you don’t know <strong>what</strong> they’ve done and not yet checked in), so usually you’ll precede the <em>git update-index</em> with a</p>
+<p>When copying a remote repository, you’ll want to at a minimum update the
+index cache when you do this, and especially with other peoples&rsquo;
+repositories you often want to make sure that the index cache is in some
+known state (you don’t know <strong>what</strong> they’ve done and not yet checked
+in), so usually you’ll precede the <em>git update-index</em> with a</p>
 
 <pre><code>$ git read-tree --reset HEAD
 $ git update-index --refresh
 </code></pre>
 
-<p>which will force a total index re-build from the tree pointed to by <code>HEAD</code>. It resets the index contents to <code>HEAD</code>, and then the <em>git update-index</em> makes sure to match up all index entries with the checked-out files. If the original repository had uncommitted changes in its working tree, <code>git update-index --refresh</code> notices them and tells you they need to be updated.</p>
+<p>which will force a total index re-build from the tree pointed to by
+<code>HEAD</code>. It resets the index contents to <code>HEAD</code>, and then the <em>git
+update-index</em> makes sure to match up all index entries with the
+checked-out files. If the original repository had uncommitted changes in
+its working tree, <code>git update-index --refresh</code> notices them and tells
+you they need to be updated.</p>
 
 <p>The above can also be written as simply</p>
 
 <pre><code>$ git reset
 </code></pre>
 
-<p>and in fact a lot of the common Git command combinations can be scripted with the <code>git               xyz</code> interfaces. You can learn things by just looking at what the various git scripts do. For example, <code>git reset</code> used to be the above two lines implemented in <em>git reset</em>, but some things like <em>git status</em> and <em>git commit</em> are slightly more complex scripts around the basic Git commands.</p>
+<p>and in fact a lot of the common Git command combinations can be scripted
+with the <code>git               xyz</code> interfaces. You can learn things by
+just looking at what the various git scripts do. For example,
+<code>git reset</code> used to be the above two lines implemented in <em>git reset</em>,
+but some things like <em>git status</em> and <em>git commit</em> are slightly more
+complex scripts around the basic Git commands.</p>
 
-<p>Many (most?) public remote repositories will not contain any of the checked out files or even an index file, and will <strong>only</strong> contain the actual core Git files. Such a repository usually doesn’t even have the <code>.git</code> subdirectory, but has all the Git files directly in the repository.</p>
+<p>Many (most?) public remote repositories will not contain any of the
+checked out files or even an index file, and will <strong>only</strong> contain the
+actual core Git files. Such a repository usually doesn’t even have the
+<code>.git</code> subdirectory, but has all the Git files directly in the
+repository.</p>
 
-<p>To create your own local live copy of such a &ldquo;raw&rdquo; Git repository, you’d first create your own subdirectory for the project, and then copy the raw repository contents into the <code>.git</code> directory. For example, to create your own copy of the Git repository, you’d do the following</p>
+<p>To create your own local live copy of such a &ldquo;raw&rdquo; Git repository, you’d
+first create your own subdirectory for the project, and then copy the
+raw repository contents into the <code>.git</code> directory. For example, to
+create your own copy of the Git repository, you’d do the following</p>
 
 <pre><code>$ mkdir my-git
 $ cd my-git
@@ -586,12 +829,20 @@ $ rsync -rL rsync://rsync.kernel.org/pub/scm/git/git.git/ .git
 <pre><code>$ git read-tree HEAD
 </code></pre>
 
-<p>to populate the index. However, now you have populated the index, and you have all the Git internal files, but you will notice that you don’t actually have any of the working tree files to work on. To get those, you’d check them out with</p>
+<p>to populate the index. However, now you have populated the index, and
+you have all the Git internal files, but you will notice that you don’t
+actually have any of the working tree files to work on. To get those,
+you’d check them out with</p>
 
 <pre><code>$ git checkout-index -u -a
 </code></pre>
 
-<p>where the <code>-u</code> flag means that you want the checkout to keep the index up-to-date (so that you don’t have to refresh it afterward), and the <code>-a</code> flag means &ldquo;check out all files&rdquo; (if you have a stale copy or an older version of a checked out tree you may also need to add the <code>-f</code> flag first, to tell <em>git checkout-index</em> to <strong>force</strong> overwriting of any old files).</p>
+<p>where the <code>-u</code> flag means that you want the checkout to keep the index
+up-to-date (so that you don’t have to refresh it afterward), and the
+<code>-a</code> flag means &ldquo;check out all files&rdquo; (if you have a stale copy or an
+older version of a checked out tree you may also need to add the <code>-f</code>
+flag first, to tell <em>git checkout-index</em> to <strong>force</strong> overwriting of any
+old files).</p>
 
 <p>Again, this can all be simplified with</p>
 
@@ -602,25 +853,37 @@ $ git checkout
 
 <p>which will end up doing all of the above for you.</p>
 
-<p>You have now successfully copied somebody else’s (mine) remote repository, and checked it out.</p>
+<p>You have now successfully copied somebody else’s (mine) remote
+repository, and checked it out.</p>
 
 <h2 id="creating-a-new-branch">Creating a new branch</h2>
 
-<p>Branches in Git are really nothing more than pointers into the Git object database from within the <code>.git/refs/</code> subdirectory, and as we already discussed, the <code>HEAD</code> branch is nothing but a symlink to one of these object pointers.</p>
+<p>Branches in Git are really nothing more than pointers into the Git
+object database from within the <code>.git/refs/</code> subdirectory, and as we
+already discussed, the <code>HEAD</code> branch is nothing but a symlink to one of
+these object pointers.</p>
 
-<p>You can at any time create a new branch by just picking an arbitrary point in the project history, and just writing the SHA-1 name of that object into a file under <code>.git/refs/heads/</code>. You can use any filename you want (and indeed, subdirectories), but the convention is that the &ldquo;normal&rdquo; branch is called <code>master</code>. That’s just a convention, though, and nothing enforces it.</p>
+<p>You can at any time create a new branch by just picking an arbitrary
+point in the project history, and just writing the SHA-1 name of that
+object into a file under <code>.git/refs/heads/</code>. You can use any filename
+you want (and indeed, subdirectories), but the convention is that the
+&ldquo;normal&rdquo; branch is called <code>master</code>. That’s just a convention, though,
+and nothing enforces it.</p>
 
-<p>To show that as an example, let’s go back to the git-tutorial repository we used earlier, and create a branch in it. You do that by simply just saying that you want to check out a new branch:</p>
+<p>To show that as an example, let’s go back to the git-tutorial repository
+we used earlier, and create a branch in it. You do that by simply just
+saying that you want to check out a new branch:</p>
 
 <pre><code>$ git checkout -b mybranch
 </code></pre>
 
-<p>will create a new branch based at the current <code>HEAD</code> position, and switch to it.</p>
+<p>will create a new branch based at the current <code>HEAD</code> position, and
+switch to it.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -647,42 +910,63 @@ Note
 <pre><code>$ git checkout master
 </code></pre>
 
-<p>(or any other branch-name, for that matter) and if you forget which branch you happen to be on, a simple</p>
+<p>(or any other branch-name, for that matter) and if you forget which
+branch you happen to be on, a simple</p>
 
 <pre><code>$ cat .git/HEAD
 </code></pre>
 
-<p>will tell you where it’s pointing. To get the list of branches you have, you can say</p>
+<p>will tell you where it’s pointing. To get the list of branches you have,
+you can say</p>
 
 <pre><code>$ git branch
 </code></pre>
 
-<p>which used to be nothing more than a simple script around <code>ls .git/refs/heads</code>. There will be an asterisk in front of the branch you are currently on.</p>
+<p>which used to be nothing more than a simple script around
+<code>ls .git/refs/heads</code>. There will be an asterisk in front of the branch
+you are currently on.</p>
 
-<p>Sometimes you may wish to create a new branch <em>without</em> actually checking it out and switching to it. If so, just use the command</p>
+<p>Sometimes you may wish to create a new branch <em>without</em> actually
+checking it out and switching to it. If so, just use the command</p>
 
 <pre><code>$ git branch &lt;branchname&gt; [startingpoint]
 </code></pre>
 
-<p>which will simply <em>create</em> the branch, but will not do anything further. You can then later — once you decide that you want to actually develop on that branch — switch to that branch with a regular <em>git checkout</em> with the branchname as the argument.</p>
+<p>which will simply <em>create</em> the branch, but will not do anything further.
+You can then later — once you decide that you want to actually develop
+on that branch — switch to that branch with a regular <em>git checkout</em>
+with the branchname as the argument.</p>
 
 <h2 id="merging-two-branches">Merging two branches</h2>
 
-<p>One of the ideas of having a branch is that you do some (possibly experimental) work in it, and eventually merge it back to the main branch. So assuming you created the above <code>mybranch</code> that started out being the same as the original <code>master</code> branch, let’s make sure we’re in that branch, and do some work there.</p>
+<p>One of the ideas of having a branch is that you do some (possibly
+experimental) work in it, and eventually merge it back to the main
+branch. So assuming you created the above <code>mybranch</code> that started out
+being the same as the original <code>master</code> branch, let’s make sure we’re in
+that branch, and do some work there.</p>
 
 <pre><code>$ git checkout mybranch
 $ echo &quot;Work, work, work&quot; &gt;&gt;hello
 $ git commit -m &quot;Some work.&quot; -i hello
 </code></pre>
 
-<p>Here, we just added another line to <code>hello</code>, and we used a shorthand for doing both <code>git               update-index hello</code> and <code>git commit</code> by just giving the filename directly to <code>git               commit</code>, with an <code>-i</code> flag (it tells Git to <em>include</em> that file in addition to what you have done to the index file so far when making the commit). The <code>-m</code> flag is to give the commit log message from the command line.</p>
+<p>Here, we just added another line to <code>hello</code>, and we used a shorthand for
+doing both <code>git               update-index hello</code> and <code>git commit</code> by
+just giving the filename directly to <code>git               commit</code>, with an
+<code>-i</code> flag (it tells Git to <em>include</em> that file in addition to what you
+have done to the index file so far when making the commit). The <code>-m</code>
+flag is to give the commit log message from the command line.</p>
 
-<p>Now, to make it a bit more interesting, let’s assume that somebody else does some work in the original branch, and simulate that by going back to the master branch, and editing the same file differently there:</p>
+<p>Now, to make it a bit more interesting, let’s assume that somebody else
+does some work in the original branch, and simulate that by going back
+to the master branch, and editing the same file differently there:</p>
 
 <pre><code>$ git checkout master
 </code></pre>
 
-<p>Here, take a moment to look at the contents of <code>hello</code>, and notice how they don’t contain the work we just did in <code>mybranch</code> — because that work hasn’t happened in the <code>master</code> branch at all. Then do</p>
+<p>Here, take a moment to look at the contents of <code>hello</code>, and notice how
+they don’t contain the work we just did in <code>mybranch</code> — because that
+work hasn’t happened in the <code>master</code> branch at all. Then do</p>
 
 <pre><code>$ echo &quot;Play, play, play&quot; &gt;&gt;hello
 $ echo &quot;Lots of fun&quot; &gt;&gt;example
@@ -691,30 +975,49 @@ $ git commit -m &quot;Some fun.&quot; -i hello example
 
 <p>since the master branch is obviously in a much better mood.</p>
 
-<p>Now, you’ve got two branches, and you decide that you want to merge the work done. Before we do that, let’s introduce a cool graphical tool that helps you view what’s going on:</p>
+<p>Now, you’ve got two branches, and you decide that you want to merge the
+work done. Before we do that, let’s introduce a cool graphical tool that
+helps you view what’s going on:</p>
 
 <pre><code>$ gitk --all
 </code></pre>
 
-<p>will show you graphically both of your branches (that’s what the <code>--all</code> means: normally it will just show you your current <code>HEAD</code>) and their histories. You can also see exactly how they came to be from a common source.</p>
+<p>will show you graphically both of your branches (that’s what the <code>--all</code>
+means: normally it will just show you your current <code>HEAD</code>) and their
+histories. You can also see exactly how they came to be from a common
+source.</p>
 
-<p>Anyway, let’s exit <em>gitk</em> (<code>^Q</code> or the File menu), and decide that we want to merge the work we did on the <code>mybranch</code> branch into the <code>master</code> branch (which is currently our <code>HEAD</code> too). To do that, there’s a nice script called <em>git merge</em>, which wants to know which branches you want to resolve and what the merge is all about:</p>
+<p>Anyway, let’s exit <em>gitk</em> (<code>^Q</code> or the File menu), and decide that we
+want to merge the work we did on the <code>mybranch</code> branch into the <code>master</code>
+branch (which is currently our <code>HEAD</code> too). To do that, there’s a nice
+script called <em>git merge</em>, which wants to know which branches you want
+to resolve and what the merge is all about:</p>
 
 <pre><code>$ git merge -m &quot;Merge work in mybranch&quot; mybranch
 </code></pre>
 
-<p>where the first argument is going to be used as the commit message if the merge can be resolved automatically.</p>
+<p>where the first argument is going to be used as the commit message if
+the merge can be resolved automatically.</p>
 
-<p>Now, in this case we’ve intentionally created a situation where the merge will need to be fixed up by hand, though, so Git will do as much of it as it can automatically (which in this case is just merge the <code>example</code> file, which had no differences in the <code>mybranch</code> branch), and say:</p>
+<p>Now, in this case we’ve intentionally created a situation where the
+merge will need to be fixed up by hand, though, so Git will do as much
+of it as it can automatically (which in this case is just merge the
+<code>example</code> file, which had no differences in the <code>mybranch</code> branch), and
+say:</p>
 
 <pre><code>        Auto-merging hello
         CONFLICT (content): Merge conflict in hello
         Automatic merge failed; fix conflicts and then commit the result.
 </code></pre>
 
-<p>It tells you that it did an &ldquo;Automatic merge&rdquo;, which failed due to conflicts in <code>hello</code>.</p>
+<p>It tells you that it did an &ldquo;Automatic merge&rdquo;, which failed due to
+conflicts in <code>hello</code>.</p>
 
-<p>Not to worry. It left the (trivial) conflict in <code>hello</code> in the same form you should already be well used to if you’ve ever used CVS, so let’s just open <code>hello</code> in our editor (whatever that may be), and fix it up somehow. I’d suggest just making it so that <code>hello</code> contains all four lines:</p>
+<p>Not to worry. It left the (trivial) conflict in <code>hello</code> in the same form
+you should already be well used to if you’ve ever used CVS, so let’s
+just open <code>hello</code> in our editor (whatever that may be), and fix it up
+somehow. I’d suggest just making it so that <code>hello</code> contains all four
+lines:</p>
 
 <pre><code>Hello World
 It's a new day for git
@@ -727,11 +1030,19 @@ Work, work, work
 <pre><code>$ git commit -i hello
 </code></pre>
 
-<p>which will very loudly warn you that you’re now committing a merge (which is correct, so never mind), and you can write a small merge message about your adventures in <em>git merge</em>-land.</p>
+<p>which will very loudly warn you that you’re now committing a merge
+(which is correct, so never mind), and you can write a small merge
+message about your adventures in <em>git merge</em>-land.</p>
 
-<p>After you’re done, start up <code>gitk               --all</code> to see graphically what the history looks like. Notice that <code>mybranch</code> still exists, and you can switch to it, and continue to work with it if you want to. The <code>mybranch</code> branch will not contain the merge, but next time you merge it from the <code>master</code> branch, Git will know how you merged it, so you’ll not have to do <em>that</em> merge again.</p>
+<p>After you’re done, start up <code>gitk               --all</code> to see
+graphically what the history looks like. Notice that <code>mybranch</code> still
+exists, and you can switch to it, and continue to work with it if you
+want to. The <code>mybranch</code> branch will not contain the merge, but next time
+you merge it from the <code>master</code> branch, Git will know how you merged it,
+so you’ll not have to do <em>that</em> merge again.</p>
 
-<p>Another useful tool, especially if you do not always work in X-Window environment, is <code>git               show-branch</code>.</p>
+<p>Another useful tool, especially if you do not always work in X-Window
+environment, is <code>git               show-branch</code>.</p>
 
 <pre><code>$ git show-branch --topo-order --more=1 master mybranch
 * [master] Merge work in mybranch
@@ -742,12 +1053,27 @@ Work, work, work
 *  [master^] Some fun.
 </code></pre>
 
-<p>The first two lines indicate that it is showing the two branches with the titles of their top-of-the-tree commits, you are currently on <code>master</code> branch (notice the asterisk <code>*</code> character), and the first column for the later output lines is used to show commits contained in the <code>master</code> branch, and the second column for the <code>mybranch</code> branch. Three commits are shown along with their titles. All of them have non blank characters in the first column (<code>*</code> shows an ordinary commit on the current branch, <code>-</code> is a merge commit), which means they are now part of the <code>master</code> branch. Only the &ldquo;Some work&rdquo; commit has the plus <code>+</code> character in the second column, because <code>mybranch</code> has not been merged to incorporate these commits from the master branch. The string inside brackets before the commit log message is a short name you can use to name the commit. In the above example, <em>master</em> and <em>mybranch</em> are branch heads. <em>master^</em> is the first parent of <em>master</em> branch head. Please see <a href="../gitrevisions">gitrevisions(7)</a> if you want to see more complex cases.</p>
+<p>The first two lines indicate that it is showing the two branches with
+the titles of their top-of-the-tree commits, you are currently on
+<code>master</code> branch (notice the asterisk <code>*</code> character), and the first
+column for the later output lines is used to show commits contained in
+the <code>master</code> branch, and the second column for the <code>mybranch</code> branch.
+Three commits are shown along with their titles. All of them have non
+blank characters in the first column (<code>*</code> shows an ordinary commit on
+the current branch, <code>-</code> is a merge commit), which means they are now
+part of the <code>master</code> branch. Only the &ldquo;Some work&rdquo; commit has the plus
+<code>+</code> character in the second column, because <code>mybranch</code> has not been
+merged to incorporate these commits from the master branch. The string
+inside brackets before the commit log message is a short name you can
+use to name the commit. In the above example, <em>master</em> and <em>mybranch</em>
+are branch heads. <em>master^</em> is the first parent of <em>master</em> branch head.
+Please see <a href="../gitrevisions">gitrevisions(7)</a> if you want to see more
+complex cases.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -761,8 +1087,8 @@ Note
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -774,13 +1100,17 @@ Note
 </tbody>
 </table>
 
-<p>Now, let’s pretend you are the one who did all the work in <code>mybranch</code>, and the fruit of your hard work has finally been merged to the <code>master</code> branch. Let’s go back to <code>mybranch</code>, and run <em>git merge</em> to get the &ldquo;upstream changes&rdquo; back to your branch.</p>
+<p>Now, let’s pretend you are the one who did all the work in <code>mybranch</code>,
+and the fruit of your hard work has finally been merged to the <code>master</code>
+branch. Let’s go back to <code>mybranch</code>, and run <em>git merge</em> to get the
+&ldquo;upstream changes&rdquo; back to your branch.</p>
 
 <pre><code>$ git checkout mybranch
 $ git merge -m &quot;Merge upstream changes.&quot; master
 </code></pre>
 
-<p>This outputs something like this (the actual commit object names would be different)</p>
+<p>This outputs something like this (the actual commit object names would
+be different)</p>
 
 <pre><code>Updating from ae3a2da... to a80b4aa....
 Fast-forward (no commit created; -m option ignored)
@@ -789,9 +1119,14 @@ Fast-forward (no commit created; -m option ignored)
  2 files changed, 2 insertions(+)
 </code></pre>
 
-<p>Because your branch did not contain anything more than what had already been merged into the <code>master</code> branch, the merge operation did not actually do a merge. Instead, it just updated the top of the tree of your branch to that of the <code>master</code> branch. This is often called <em>fast-forward</em> merge.</p>
+<p>Because your branch did not contain anything more than what had already
+been merged into the <code>master</code> branch, the merge operation did not
+actually do a merge. Instead, it just updated the top of the tree of
+your branch to that of the <code>master</code> branch. This is often called
+<em>fast-forward</em> merge.</p>
 
-<p>You can run <code>gitk --all</code> again to see how the commit ancestry looks like, or run <em>show-branch</em>, which tells you this.</p>
+<p>You can run <code>gitk --all</code> again to see how the commit ancestry looks
+like, or run <em>show-branch</em>, which tells you this.</p>
 
 <pre><code>$ git show-branch master mybranch
 ! [master] Merge work in mybranch
@@ -802,52 +1137,83 @@ Fast-forward (no commit created; -m option ignored)
 
 <h2 id="merging-external-work">Merging external work</h2>
 
-<p>It’s usually much more common that you merge with somebody else than merging with your own branches, so it’s worth pointing out that Git makes that very easy too, and in fact, it’s not that different from doing a <em>git merge</em>. In fact, a remote merge ends up being nothing more than &ldquo;fetch the work from a remote repository into a temporary tag&rdquo; followed by a <em>git merge</em>.</p>
+<p>It’s usually much more common that you merge with somebody else than
+merging with your own branches, so it’s worth pointing out that Git
+makes that very easy too, and in fact, it’s not that different from
+doing a <em>git merge</em>. In fact, a remote merge ends up being nothing more
+than &ldquo;fetch the work from a remote repository into a temporary tag&rdquo;
+followed by a <em>git merge</em>.</p>
 
-<p>Fetching from a remote repository is done by, unsurprisingly, <em>git fetch</em>:</p>
+<p>Fetching from a remote repository is done by, unsurprisingly, <em>git
+fetch</em>:</p>
 
 <pre><code>$ git fetch &lt;remote-repository&gt;
 </code></pre>
 
-<p>One of the following transports can be used to name the repository to download from:</p>
+<p>One of the following transports can be used to name the repository to
+download from:</p>
 
 <p>SSH<br />
 <code>remote.machine:/path/to/repo.git/</code> or</p>
 
 <p><code>ssh://remote.machine/path/to/repo.git/</code></p>
 
-<p>This transport can be used for both uploading and downloading, and requires you to have a log-in privilege over <code>ssh</code> to the remote machine. It finds out the set of objects the other side lacks by exchanging the head commits both ends have and transfers (close to) minimum set of objects. It is by far the most efficient way to exchange Git objects between repositories.</p>
+<p>This transport can be used for both uploading and downloading, and
+requires you to have a log-in privilege over <code>ssh</code> to the remote
+machine. It finds out the set of objects the other side lacks by
+exchanging the head commits both ends have and transfers (close to)
+minimum set of objects. It is by far the most efficient way to exchange
+Git objects between repositories.</p>
 
 <p>Local directory<br />
 <code>/path/to/repo.git/</code></p>
 
-<p>This transport is the same as SSH transport but uses <em>sh</em> to run both ends on the local machine instead of running other end on the remote machine via <em>ssh</em>.</p>
+<p>This transport is the same as SSH transport but uses <em>sh</em> to run both
+ends on the local machine instead of running other end on the remote
+machine via <em>ssh</em>.</p>
 
 <p>Git Native<br />
 <code>git://remote.machine/path/to/repo.git/</code></p>
 
-<p>This transport was designed for anonymous downloading. Like SSH transport, it finds out the set of objects the downstream side lacks and transfers (close to) minimum set of objects.</p>
+<p>This transport was designed for anonymous downloading. Like SSH
+transport, it finds out the set of objects the downstream side lacks and
+transfers (close to) minimum set of objects.</p>
 
 <p>HTTP(S)<br />
 <code>http://remote.machine/path/to/repo.git/</code></p>
 
-<p>Downloader from http and https URL first obtains the topmost commit object name from the remote site by looking at the specified refname under <code>repo.git/refs/</code> directory, and then tries to obtain the commit object by downloading from <code>repo.git/objects/xx/xxx...</code> using the object name of that commit object. Then it reads the commit object to find out its parent commits and the associate tree object; it repeats this process until it gets all the necessary objects. Because of this behavior, they are sometimes also called <em>commit walkers</em>.</p>
+<p>Downloader from http and https URL first obtains the topmost commit
+object name from the remote site by looking at the specified refname
+under <code>repo.git/refs/</code> directory, and then tries to obtain the commit
+object by downloading from <code>repo.git/objects/xx/xxx...</code> using the object
+name of that commit object. Then it reads the commit object to find out
+its parent commits and the associate tree object; it repeats this
+process until it gets all the necessary objects. Because of this
+behavior, they are sometimes also called <em>commit walkers</em>.</p>
 
-<p>The <em>commit walkers</em> are sometimes also called <em>dumb transports</em>, because they do not require any Git aware smart server like Git Native transport does. Any stock HTTP server that does not even support directory index would suffice. But you must prepare your repository with <em>git update-server-info</em> to help dumb transport downloaders.</p>
+<p>The <em>commit walkers</em> are sometimes also called <em>dumb transports</em>,
+because they do not require any Git aware smart server like Git Native
+transport does. Any stock HTTP server that does not even support
+directory index would suffice. But you must prepare your repository with
+<em>git update-server-info</em> to help dumb transport downloaders.</p>
 
-<p>Once you fetch from the remote repository, you <code>merge</code> that with your current branch.</p>
+<p>Once you fetch from the remote repository, you <code>merge</code> that with your
+current branch.</p>
 
-<p>However — it’s such a common thing to <code>fetch</code> and then immediately <code>merge</code>, that it’s called <code>git               pull</code>, and you can simply do</p>
+<p>However — it’s such a common thing to <code>fetch</code> and then immediately
+<code>merge</code>, that it’s called <code>git               pull</code>, and you can simply
+do</p>
 
 <pre><code>$ git pull &lt;remote-repository&gt;
 </code></pre>
 
-<p>and optionally give a branch-name for the remote end as a second argument.</p>
+<p>and optionally give a branch-name for the remote end as a second
+argument.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -859,7 +1225,9 @@ Note
 </tbody>
 </table>
 
-<p>It is likely that you will be pulling from the same remote repository from time to time. As a short hand, you can store the remote repository URL in the local repository’s config file like this:</p>
+<p>It is likely that you will be pulling from the same remote repository
+from time to time. As a short hand, you can store the remote repository
+URL in the local repository’s config file like this:</p>
 
 <pre><code>$ git config remote.linus.url http://www.kernel.org/pub/scm/git/git.git/
 </code></pre>
@@ -884,9 +1252,15 @@ Note
 
 <h2 id="how-does-the-merge-work">How does the merge work?</h2>
 
-<p>We said this tutorial shows what plumbing does to help you cope with the porcelain that isn’t flushing, but we so far did not talk about how the merge really works. If you are following this tutorial the first time, I’d suggest to skip to &ldquo;Publishing your work&rdquo; section and come back here later.</p>
+<p>We said this tutorial shows what plumbing does to help you cope with the
+porcelain that isn’t flushing, but we so far did not talk about how the
+merge really works. If you are following this tutorial the first time,
+I’d suggest to skip to &ldquo;Publishing your work&rdquo; section and come back here
+later.</p>
 
-<p>OK, still with me? To give us an example to look at, let’s go back to the earlier repository with &ldquo;hello&rdquo; and &ldquo;example&rdquo; file, and bring ourselves back to the pre-merge state:</p>
+<p>OK, still with me? To give us an example to look at, let’s go back to
+the earlier repository with &ldquo;hello&rdquo; and &ldquo;example&rdquo; file, and bring
+ourselves back to the pre-merge state:</p>
 
 <pre><code>$ git show-branch --more=2 master mybranch
 ! [master] Merge work in mybranch
@@ -897,7 +1271,8 @@ Note
 +* [master^] Some fun.
 </code></pre>
 
-<p>Remember, before running <em>git merge</em>, our <code>master</code> head was at &ldquo;Some fun.&rdquo; commit, while our <code>mybranch</code> head was at &ldquo;Some work.&rdquo; commit.</p>
+<p>Remember, before running <em>git merge</em>, our <code>master</code> head was at &ldquo;Some
+fun.&rdquo; commit, while our <code>mybranch</code> head was at &ldquo;Some work.&rdquo; commit.</p>
 
 <pre><code>$ git checkout mybranch
 $ git reset --hard master^2
@@ -918,12 +1293,17 @@ $ git reset --hard master^
 
 <p>Now we are ready to experiment with the merge by hand.</p>
 
-<p><code>git merge</code> command, when merging two branches, uses 3-way merge algorithm. First, it finds the common ancestor between them. The command it uses is <em>git merge-base</em>:</p>
+<p><code>git merge</code> command, when merging two branches, uses 3-way merge
+algorithm. First, it finds the common ancestor between them. The command
+it uses is <em>git merge-base</em>:</p>
 
 <pre><code>$ mb=$(git merge-base HEAD mybranch)
 </code></pre>
 
-<p>The command writes the commit object name of the common ancestor to the standard output, so we captured its output to a variable, because we will be using it in the next step. By the way, the common ancestor commit is the &ldquo;Initial commit&rdquo; commit in this case. You can tell it by:</p>
+<p>The command writes the commit object name of the common ancestor to the
+standard output, so we captured its output to a variable, because we
+will be using it in the next step. By the way, the common ancestor
+commit is the &ldquo;Initial commit&rdquo; commit in this case. You can tell it by:</p>
 
 <pre><code>$ git name-rev --name-only --tags $mb
 my-first-tag
@@ -934,9 +1314,19 @@ my-first-tag
 <pre><code>$ git read-tree -m -u $mb HEAD mybranch
 </code></pre>
 
-<p>This is the same <em>git read-tree</em> command we have already seen, but it takes three trees, unlike previous examples. This reads the contents of each tree into different <em>stage</em> in the index file (the first tree goes to stage 1, the second to stage 2, etc.). After reading three trees into three stages, the paths that are the same in all three stages are <em>collapsed</em> into stage 0. Also paths that are the same in two of three stages are collapsed into stage 0, taking the SHA-1 from either stage 2 or stage 3, whichever is different from stage 1 (i.e. only one side changed from the common ancestor).</p>
+<p>This is the same <em>git read-tree</em> command we have already seen, but it
+takes three trees, unlike previous examples. This reads the contents of
+each tree into different <em>stage</em> in the index file (the first tree goes
+to stage 1, the second to stage 2, etc.). After reading three trees into
+three stages, the paths that are the same in all three stages are
+<em>collapsed</em> into stage 0. Also paths that are the same in two of three
+stages are collapsed into stage 0, taking the SHA-1 from either stage 2
+or stage 3, whichever is different from stage 1 (i.e. only one side
+changed from the common ancestor).</p>
 
-<p>After <em>collapsing</em> operation, paths that are different in three trees are left in non-zero stages. At this point, you can inspect the index file with this command:</p>
+<p>After <em>collapsing</em> operation, paths that are different in three trees
+are left in non-zero stages. At this point, you can inspect the index
+file with this command:</p>
 
 <pre><code>$ git ls-files --stage
 100644 7f8b141b65fdcee47321e399a2598a235a032422 0       example
@@ -945,7 +1335,11 @@ my-first-tag
 100644 cc44c73eb783565da5831b4d820c962954019b69 3       hello
 </code></pre>
 
-<p>In our example of only two files, we did not have unchanged files so only <em>example</em> resulted in collapsing. But in real-life large projects, when only a small number of files change in one commit, this <em>collapsing</em> tends to trivially merge most of the paths fairly quickly, leaving only a handful of real changes in non-zero stages.</p>
+<p>In our example of only two files, we did not have unchanged files so
+only <em>example</em> resulted in collapsing. But in real-life large projects,
+when only a small number of files change in one commit, this
+<em>collapsing</em> tends to trivially merge most of the paths fairly quickly,
+leaving only a handful of real changes in non-zero stages.</p>
 
 <p>To look at only non-zero stages, use <code>--unmerged</code> flag:</p>
 
@@ -955,7 +1349,9 @@ my-first-tag
 100644 cc44c73eb783565da5831b4d820c962954019b69 3       hello
 </code></pre>
 
-<p>The next step of merging is to merge these three versions of the file, using 3-way merge. This is done by giving <em>git merge-one-file</em> command as one of the arguments to <em>git merge-index</em> command:</p>
+<p>The next step of merging is to merge these three versions of the file,
+using 3-way merge. This is done by giving <em>git merge-one-file</em> command
+as one of the arguments to <em>git merge-index</em> command:</p>
 
 <pre><code>$ git merge-index git-merge-one-file hello
 Auto-merging hello
@@ -963,7 +1359,13 @@ ERROR: Merge conflict in hello
 fatal: merge program failed
 </code></pre>
 
-<p><em>git merge-one-file</em> script is called with parameters to describe those three versions, and is responsible to leave the merge results in the working tree. It is a fairly straightforward shell script, and eventually calls <em>merge</em> program from RCS suite to perform a file-level 3-way merge. In this case, <em>merge</em> detects conflicts, and the merge result with conflict marks is left in the working tree.. This can be seen if you run <code>ls-files --stage</code> again at this point:</p>
+<p><em>git merge-one-file</em> script is called with parameters to describe those
+three versions, and is responsible to leave the merge results in the
+working tree. It is a fairly straightforward shell script, and
+eventually calls <em>merge</em> program from RCS suite to perform a file-level
+3-way merge. In this case, <em>merge</em> detects conflicts, and the merge
+result with conflict marks is left in the working tree.. This can be
+seen if you run <code>ls-files --stage</code> again at this point:</p>
 
 <pre><code>$ git ls-files --stage
 100644 7f8b141b65fdcee47321e399a2598a235a032422 0       example
@@ -972,18 +1374,30 @@ fatal: merge program failed
 100644 cc44c73eb783565da5831b4d820c962954019b69 3       hello
 </code></pre>
 
-<p>This is the state of the index file and the working file after <em>git merge</em> returns control back to you, leaving the conflicting merge for you to resolve. Notice that the path <code>hello</code> is still unmerged, and what you see with <em>git diff</em> at this point is differences since stage 2 (i.e. your version).</p>
+<p>This is the state of the index file and the working file after <em>git
+merge</em> returns control back to you, leaving the conflicting merge for
+you to resolve. Notice that the path <code>hello</code> is still unmerged, and what
+you see with <em>git diff</em> at this point is differences since stage 2 (i.e.
+your version).</p>
 
 <h2 id="publishing-your-work">Publishing your work</h2>
 
-<p>So, we can use somebody else’s work from a remote repository, but how can <strong>you</strong> prepare a repository to let other people pull from it?</p>
+<p>So, we can use somebody else’s work from a remote repository, but how
+can <strong>you</strong> prepare a repository to let other people pull from it?</p>
 
-<p>You do your real work in your working tree that has your primary repository hanging under it as its <code>.git</code> subdirectory. You <strong>could</strong> make that repository accessible remotely and ask people to pull from it, but in practice that is not the way things are usually done. A recommended way is to have a public repository, make it reachable by other people, and when the changes you made in your primary working tree are in good shape, update the public repository from it. This is often called <em>pushing</em>.</p>
+<p>You do your real work in your working tree that has your primary
+repository hanging under it as its <code>.git</code> subdirectory. You <strong>could</strong>
+make that repository accessible remotely and ask people to pull from it,
+but in practice that is not the way things are usually done. A
+recommended way is to have a public repository, make it reachable by
+other people, and when the changes you made in your primary working tree
+are in good shape, update the public repository from it. This is often
+called <em>pushing</em>.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -995,14 +1409,20 @@ Note
 </tbody>
 </table>
 
-<p>Publishing the changes from your local (private) repository to your remote (public) repository requires a write privilege on the remote machine. You need to have an SSH account there to run a single command, <em>git-receive-pack</em>.</p>
+<p>Publishing the changes from your local (private) repository to your
+remote (public) repository requires a write privilege on the remote
+machine. You need to have an SSH account there to run a single command,
+<em>git-receive-pack</em>.</p>
 
-<p>First, you need to create an empty repository on the remote machine that will house your public repository. This empty repository will be populated and be kept up-to-date by pushing into it later. Obviously, this repository creation needs to be done only once.</p>
+<p>First, you need to create an empty repository on the remote machine that
+will house your public repository. This empty repository will be
+populated and be kept up-to-date by pushing into it later. Obviously,
+this repository creation needs to be done only once.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1014,22 +1434,30 @@ Note
 </tbody>
 </table>
 
-<p>Your private repository’s Git directory is usually <code>.git</code>, but your public repository is often named after the project name, i.e. <code>&lt;project&gt;.git</code>. Let’s create such a public repository for project <code>my-git</code>. After logging into the remote machine, create an empty directory:</p>
+<p>Your private repository’s Git directory is usually <code>.git</code>, but your
+public repository is often named after the project name, i.e.
+<code>&lt;project&gt;.git</code>. Let’s create such a public repository for project
+<code>my-git</code>. After logging into the remote machine, create an empty
+directory:</p>
 
 <pre><code>$ mkdir my-git.git
 </code></pre>
 
-<p>Then, make that directory into a Git repository by running <em>git init</em>, but this time, since its name is not the usual <code>.git</code>, we do things slightly differently:</p>
+<p>Then, make that directory into a Git repository by running <em>git init</em>,
+but this time, since its name is not the usual <code>.git</code>, we do things
+slightly differently:</p>
 
 <pre><code>$ GIT_DIR=my-git.git git init
 </code></pre>
 
-<p>Make sure this directory is available for others you want your changes to be pulled via the transport of your choice. Also you need to make sure that you have the <em>git-receive-pack</em> program on the <code>$PATH</code>.</p>
+<p>Make sure this directory is available for others you want your changes
+to be pulled via the transport of your choice. Also you need to make
+sure that you have the <em>git-receive-pack</em> program on the <code>$PATH</code>.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1043,8 +1471,8 @@ Note
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1056,31 +1484,45 @@ Note
 </tbody>
 </table>
 
-<p>Your &ldquo;public repository&rdquo; is now ready to accept your changes. Come back to the machine you have your private repository. From there, run this command:</p>
+<p>Your &ldquo;public repository&rdquo; is now ready to accept your changes. Come back
+to the machine you have your private repository. From there, run this
+command:</p>
 
 <pre><code>$ git push &lt;public-host&gt;:/path/to/my-git.git master
 </code></pre>
 
-<p>This synchronizes your public repository to match the named branch head (i.e. <code>master</code> in this case) and objects reachable from them in your current repository.</p>
+<p>This synchronizes your public repository to match the named branch head
+(i.e. <code>master</code> in this case) and objects reachable from them in your
+current repository.</p>
 
-<p>As a real example, this is how I update my public Git repository. Kernel.org mirror network takes care of the propagation to other publicly visible machines:</p>
+<p>As a real example, this is how I update my public Git repository.
+Kernel.org mirror network takes care of the propagation to other
+publicly visible machines:</p>
 
 <pre><code>$ git push master.kernel.org:/pub/scm/git/git.git/
 </code></pre>
 
 <h2 id="packing-your-repository">Packing your repository</h2>
 
-<p>Earlier, we saw that one file under <code>.git/objects/??/</code> directory is stored for each Git object you create. This representation is efficient to create atomically and safely, but not so convenient to transport over the network. Since Git objects are immutable once they are created, there is a way to optimize the storage by &ldquo;packing them together&rdquo;. The command</p>
+<p>Earlier, we saw that one file under <code>.git/objects/??/</code> directory is
+stored for each Git object you create. This representation is efficient
+to create atomically and safely, but not so convenient to transport over
+the network. Since Git objects are immutable once they are created,
+there is a way to optimize the storage by &ldquo;packing them together&rdquo;. The
+command</p>
 
 <pre><code>$ git repack
 </code></pre>
 
-<p>will do it for you. If you followed the tutorial examples, you would have accumulated about 17 objects in <code>.git/objects/??/</code> directories by now. <em>git repack</em> tells you how many objects it packed, and stores the packed file in <code>.git/objects/pack</code> directory.</p>
+<p>will do it for you. If you followed the tutorial examples, you would
+have accumulated about 17 objects in <code>.git/objects/??/</code> directories by
+now. <em>git repack</em> tells you how many objects it packed, and stores the
+packed file in <code>.git/objects/pack</code> directory.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1092,21 +1534,27 @@ Note
 </tbody>
 </table>
 
-<p>If you are paranoid, running <em>git verify-pack</em> command would detect if you have a corrupt pack, but do not worry too much. Our programs are always perfect ;-).</p>
+<p>If you are paranoid, running <em>git verify-pack</em> command would detect if
+you have a corrupt pack, but do not worry too much. Our programs are
+always perfect ;-).</p>
 
-<p>Once you have packed objects, you do not need to leave the unpacked objects that are contained in the pack file anymore.</p>
+<p>Once you have packed objects, you do not need to leave the unpacked
+objects that are contained in the pack file anymore.</p>
 
 <pre><code>$ git prune-packed
 </code></pre>
 
 <p>would remove them for you.</p>
 
-<p>You can try running <code>find .git/objects -type               f</code> before and after you run <code>git               prune-packed</code> if you are curious. Also <code>git               count-objects</code> would tell you how many unpacked objects are in your repository and how much space they are consuming.</p>
+<p>You can try running <code>find .git/objects -type               f</code> before and
+after you run <code>git               prune-packed</code> if you are curious. Also
+<code>git               count-objects</code> would tell you how many unpacked
+objects are in your repository and how much space they are consuming.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1118,83 +1566,150 @@ Note
 </tbody>
 </table>
 
-<p>If you run <code>git repack</code> again at this point, it will say &ldquo;Nothing new to pack.&rdquo;. Once you continue your development and accumulate the changes, running <code>git repack</code> again will create a new pack, that contains objects created since you packed your repository the last time. We recommend that you pack your project soon after the initial import (unless you are starting your project from scratch), and then run <code>git repack</code> every once in a while, depending on how active your project is.</p>
+<p>If you run <code>git repack</code> again at this point, it will say &ldquo;Nothing new to
+pack.&ldquo;. Once you continue your development and accumulate the changes,
+running <code>git repack</code> again will create a new pack, that contains objects
+created since you packed your repository the last time. We recommend
+that you pack your project soon after the initial import (unless you are
+starting your project from scratch), and then run <code>git repack</code> every
+once in a while, depending on how active your project is.</p>
 
-<p>When a repository is synchronized via <code>git               push</code> and <code>git pull</code> objects packed in the source repository are usually stored unpacked in the destination. While this allows you to use different packing strategies on both ends, it also means you may need to repack both repositories every once in a while.</p>
+<p>When a repository is synchronized via <code>git               push</code> and
+<code>git pull</code> objects packed in the source repository are usually stored
+unpacked in the destination. While this allows you to use different
+packing strategies on both ends, it also means you may need to repack
+both repositories every once in a while.</p>
 
 <h2 id="working-with-others">Working with Others</h2>
 
-<p>Although Git is a truly distributed system, it is often convenient to organize your project with an informal hierarchy of developers. Linux kernel development is run this way. There is a nice illustration (page 17, &ldquo;Merges to Mainline&rdquo;) in <a href="http://www.xenotime.net/linux/mentor/linux-mentoring-2006.pdf">Randy Dunlap’s presentation</a>.</p>
+<p>Although Git is a truly distributed system, it is often convenient to
+organize your project with an informal hierarchy of developers. Linux
+kernel development is run this way. There is a nice illustration (page
+17, &ldquo;Merges to Mainline&rdquo;) in <a href="http://www.xenotime.net/linux/mentor/linux-mentoring-2006.pdf">Randy Dunlap’s
+presentation</a>.</p>
 
-<p>It should be stressed that this hierarchy is purely <strong>informal</strong>. There is nothing fundamental in Git that enforces the &ldquo;chain of patch flow&rdquo; this hierarchy implies. You do not have to pull from only one remote repository.</p>
+<p>It should be stressed that this hierarchy is purely <strong>informal</strong>. There
+is nothing fundamental in Git that enforces the &ldquo;chain of patch flow&rdquo;
+this hierarchy implies. You do not have to pull from only one remote
+repository.</p>
 
 <p>A recommended workflow for a &ldquo;project lead&rdquo; goes like this:</p>
 
 <ol>
-<li><p>Prepare your primary repository on your local machine. Your work is done there.</p></li>
+<li><p>Prepare your primary repository on your local machine. Your work is
+done there.</p></li>
 
 <li><p>Prepare a public repository accessible to others.</p>
 
-<p>If other people are pulling from your repository over dumb transport protocols (HTTP), you need to keep this repository <em>dumb transport friendly</em>. After <code>git init</code>, <code>$GIT_DIR/hooks/post-update.sample</code> copied from the standard templates would contain a call to <em>git update-server-info</em> but you need to manually enable the hook with <code>mv                     post-update.sample post-update</code>. This makes sure <em>git update-server-info</em> keeps the necessary files up-to-date.</p></li>
+<p>If other people are pulling from your repository over dumb transport
+protocols (HTTP), you need to keep this repository <em>dumb transport
+friendly</em>. After <code>git init</code>, <code>$GIT_DIR/hooks/post-update.sample</code>
+copied from the standard templates would contain a call to <em>git
+update-server-info</em> but you need to manually enable the hook with
+<code>mv                     post-update.sample post-update</code>. This makes
+sure <em>git update-server-info</em> keeps the necessary files up-to-date.</p></li>
 
 <li><p>Push into the public repository from your primary repository.</p></li>
 
-<li><p><em>git repack</em> the public repository. This establishes a big pack that contains the initial set of objects as the baseline, and possibly <em>git prune</em> if the transport used for pulling from your repository supports packed repositories.</p></li>
+<li><p><em>git repack</em> the public repository. This establishes a big pack that
+contains the initial set of objects as the baseline, and possibly
+<em>git prune</em> if the transport used for pulling from your repository
+supports packed repositories.</p></li>
 
-<li><p>Keep working in your primary repository. Your changes include modifications of your own, patches you receive via e-mails, and merges resulting from pulling the &ldquo;public&rdquo; repositories of your &ldquo;subsystem maintainers&rdquo;.</p>
-
-<p>You can repack this private repository whenever you feel like.</p></li>
-
-<li><p>Push your changes to the public repository, and announce it to the public.</p></li>
-
-<li><p>Every once in a while, <em>git repack</em> the public repository. Go back to step 5. and continue working.</p></li>
-</ol>
-
-<p>A recommended work cycle for a &ldquo;subsystem maintainer&rdquo; who works on that project and has an own &ldquo;public repository&rdquo; goes like this:</p>
-
-<ol>
-<li><p>Prepare your work repository, by <em>git clone</em> the public repository of the &ldquo;project lead&rdquo;. The URL used for the initial cloning is stored in the remote.origin.url configuration variable.</p></li>
-
-<li><p>Prepare a public repository accessible to others, just like the &ldquo;project lead&rdquo; person does.</p></li>
-
-<li><p>Copy over the packed files from &ldquo;project lead&rdquo; public repository to your public repository, unless the &ldquo;project lead&rdquo; repository lives on the same machine as yours. In the latter case, you can use <code>objects/info/alternates</code> file to point at the repository you are borrowing from.</p></li>
-
-<li><p>Push into the public repository from your primary repository. Run <em>git repack</em>, and possibly <em>git prune</em> if the transport used for pulling from your repository supports packed repositories.</p></li>
-
-<li><p>Keep working in your primary repository. Your changes include modifications of your own, patches you receive via e-mails, and merges resulting from pulling the &ldquo;public&rdquo; repositories of your &ldquo;project lead&rdquo; and possibly your &ldquo;sub-subsystem maintainers&rdquo;.</p>
+<li><p>Keep working in your primary repository. Your changes include
+modifications of your own, patches you receive via e-mails, and
+merges resulting from pulling the &ldquo;public&rdquo; repositories of your
+&ldquo;subsystem maintainers&rdquo;.</p>
 
 <p>You can repack this private repository whenever you feel like.</p></li>
 
-<li><p>Push your changes to your public repository, and ask your &ldquo;project lead&rdquo; and possibly your &ldquo;sub-subsystem maintainers&rdquo; to pull from it.</p></li>
+<li><p>Push your changes to the public repository, and announce it to the
+public.</p></li>
 
-<li><p>Every once in a while, <em>git repack</em> the public repository. Go back to step 5. and continue working.</p></li>
+<li><p>Every once in a while, <em>git repack</em> the public repository. Go back
+to step 5. and continue working.</p></li>
 </ol>
 
-<p>A recommended work cycle for an &ldquo;individual developer&rdquo; who does not have a &ldquo;public&rdquo; repository is somewhat different. It goes like this:</p>
+<p>A recommended work cycle for a &ldquo;subsystem maintainer&rdquo; who works on that
+project and has an own &ldquo;public repository&rdquo; goes like this:</p>
 
 <ol>
-<li><p>Prepare your work repository, by <em>git clone</em> the public repository of the &ldquo;project lead&rdquo; (or a &ldquo;subsystem maintainer&rdquo;, if you work on a subsystem). The URL used for the initial cloning is stored in the remote.origin.url configuration variable.</p></li>
+<li><p>Prepare your work repository, by <em>git clone</em> the public repository
+of the &ldquo;project lead&rdquo;. The URL used for the initial cloning is
+stored in the remote.origin.url configuration variable.</p></li>
+
+<li><p>Prepare a public repository accessible to others, just like the
+&ldquo;project lead&rdquo; person does.</p></li>
+
+<li><p>Copy over the packed files from &ldquo;project lead&rdquo; public repository to
+your public repository, unless the &ldquo;project lead&rdquo; repository lives
+on the same machine as yours. In the latter case, you can use
+<code>objects/info/alternates</code> file to point at the repository you are
+borrowing from.</p></li>
+
+<li><p>Push into the public repository from your primary repository. Run
+<em>git repack</em>, and possibly <em>git prune</em> if the transport used for
+pulling from your repository supports packed repositories.</p></li>
+
+<li><p>Keep working in your primary repository. Your changes include
+modifications of your own, patches you receive via e-mails, and
+merges resulting from pulling the &ldquo;public&rdquo; repositories of your
+&ldquo;project lead&rdquo; and possibly your &ldquo;sub-subsystem maintainers&rdquo;.</p>
+
+<p>You can repack this private repository whenever you feel like.</p></li>
+
+<li><p>Push your changes to your public repository, and ask your &ldquo;project
+lead&rdquo; and possibly your &ldquo;sub-subsystem maintainers&rdquo; to pull from it.</p></li>
+
+<li><p>Every once in a while, <em>git repack</em> the public repository. Go back
+to step 5. and continue working.</p></li>
+</ol>
+
+<p>A recommended work cycle for an &ldquo;individual developer&rdquo; who does not have
+a &ldquo;public&rdquo; repository is somewhat different. It goes like this:</p>
+
+<ol>
+<li><p>Prepare your work repository, by <em>git clone</em> the public repository
+of the &ldquo;project lead&rdquo; (or a &ldquo;subsystem maintainer&rdquo;, if you work on a
+subsystem). The URL used for the initial cloning is stored in the
+remote.origin.url configuration variable.</p></li>
 
 <li><p>Do your work in your repository on <em>master</em> branch.</p></li>
 
-<li><p>Run <code>git fetch origin</code> from the public repository of your upstream every once in a while. This does only the first half of <code>git                   pull</code> but does not merge. The head of the public repository is stored in <code>.git/refs/remotes/origin/master</code>.</p></li>
+<li><p>Run <code>git fetch origin</code> from the public repository of your upstream
+every once in a while. This does only the first half of
+<code>git                   pull</code> but does not merge. The head of the
+public repository is stored in <code>.git/refs/remotes/origin/master</code>.</p></li>
 
-<li><p>Use <code>git cherry origin</code> to see which ones of your patches were accepted, and/or use <code>git rebase origin</code> to port your unmerged changes forward to the updated upstream.</p></li>
+<li><p>Use <code>git cherry origin</code> to see which ones of your patches were
+accepted, and/or use <code>git rebase origin</code> to port your unmerged
+changes forward to the updated upstream.</p></li>
 
-<li><p>Use <code>git format-patch origin</code> to prepare patches for e-mail submission to your upstream and send it out. Go back to step 2. and continue.</p></li>
+<li><p>Use <code>git format-patch origin</code> to prepare patches for e-mail
+submission to your upstream and send it out. Go back to step 2. and
+continue.</p></li>
 </ol>
 
 <h2 id="working-with-others-shared-repository-style">Working with Others, Shared Repository Style</h2>
 
-<p>If you are coming from CVS background, the style of cooperation suggested in the previous section may be new to you. You do not have to worry. Git supports &ldquo;shared public repository&rdquo; style of cooperation you are probably more familiar with as well.</p>
+<p>If you are coming from CVS background, the style of cooperation
+suggested in the previous section may be new to you. You do not have to
+worry. Git supports &ldquo;shared public repository&rdquo; style of cooperation you
+are probably more familiar with as well.</p>
 
 <p>See <a href="../gitcvs-migration">gitcvs-migration(7)</a> for the details.</p>
 
 <h2 id="bundling-your-work-together">Bundling your work together</h2>
 
-<p>It is likely that you will be working on more than one thing at a time. It is easy to manage those more-or-less independent tasks using branches with Git.</p>
+<p>It is likely that you will be working on more than one thing at a time.
+It is easy to manage those more-or-less independent tasks using branches
+with Git.</p>
 
-<p>We have already seen how branches work previously, with &ldquo;fun and work&rdquo; example using two branches. The idea is the same if there are more than two branches. Let’s say you started out from &ldquo;master&rdquo; head, and have some new code in the &ldquo;master&rdquo; branch, and two independent fixes in the &ldquo;commit-fix&rdquo; and &ldquo;diff-fix&rdquo; branches:</p>
+<p>We have already seen how branches work previously, with &ldquo;fun and work&rdquo;
+example using two branches. The idea is the same if there are more than
+two branches. Let’s say you started out from &ldquo;master&rdquo; head, and have
+some new code in the &ldquo;master&rdquo; branch, and two independent fixes in the
+&ldquo;commit-fix&rdquo; and &ldquo;diff-fix&rdquo; branches:</p>
 
 <pre><code>$ git show-branch
 ! [commit-fix] Fix commit message normalization.
@@ -1208,7 +1723,9 @@ Note
 ++* [diff-fix~2] Pretty-print messages.
 </code></pre>
 
-<p>Both fixes are tested well, and at this point, you want to merge in both of them. You could merge in <em>diff-fix</em> first and then <em>commit-fix</em> next, like this:</p>
+<p>Both fixes are tested well, and at this point, you want to merge in both
+of them. You could merge in <em>diff-fix</em> first and then <em>commit-fix</em> next,
+like this:</p>
 
 <pre><code>$ git merge -m &quot;Merge fix in diff-fix&quot; diff-fix
 $ git merge -m &quot;Merge fix in commit-fix&quot; commit-fix
@@ -1230,12 +1747,21 @@ $ git merge -m &quot;Merge fix in commit-fix&quot; commit-fix
 ++* [master~3] Pretty-print messages.
 </code></pre>
 
-<p>However, there is no particular reason to merge in one branch first and the other next, when what you have are a set of truly independent changes (if the order mattered, then they are not independent by definition). You could instead merge those two branches into the current branch at once. First let’s undo what we just did and start over. We would want to get the master branch before these two merges by resetting it to <em>master~2</em>:</p>
+<p>However, there is no particular reason to merge in one branch first and
+the other next, when what you have are a set of truly independent
+changes (if the order mattered, then they are not independent by
+definition). You could instead merge those two branches into the current
+branch at once. First let’s undo what we just did and start over. We
+would want to get the master branch before these two merges by resetting
+it to <em>master~2</em>:</p>
 
 <pre><code>$ git reset --hard master~2
 </code></pre>
 
-<p>You can make sure <code>git show-branch</code> matches the state before those two <em>git merge</em> you just did. Then, instead of running two <em>git merge</em> commands in a row, you would merge these two branch heads (this is known as <em>making an Octopus</em>):</p>
+<p>You can make sure <code>git show-branch</code> matches the state before those two
+<em>git merge</em> you just did. Then, instead of running two <em>git merge</em>
+commands in a row, you would merge these two branch heads (this is known
+as <em>making an Octopus</em>):</p>
 
 <pre><code>$ git merge commit-fix diff-fix
 $ git show-branch
@@ -1251,11 +1777,24 @@ $ git show-branch
 ++* [master~2] Pretty-print messages.
 </code></pre>
 
-<p>Note that you should not do Octopus because you can. An octopus is a valid thing to do and often makes it easier to view the commit history if you are merging more than two independent changes at the same time. However, if you have merge conflicts with any of the branches you are merging in and need to hand resolve, that is an indication that the development happened in those branches were not independent after all, and you should merge two at a time, documenting how you resolved the conflicts, and the reason why you preferred changes made in one side over the other. Otherwise it would make the project history harder to follow, not easier.</p>
+<p>Note that you should not do Octopus because you can. An octopus is a
+valid thing to do and often makes it easier to view the commit history
+if you are merging more than two independent changes at the same time.
+However, if you have merge conflicts with any of the branches you are
+merging in and need to hand resolve, that is an indication that the
+development happened in those branches were not independent after all,
+and you should merge two at a time, documenting how you resolved the
+conflicts, and the reason why you preferred changes made in one side
+over the other. Otherwise it would make the project history harder to
+follow, not easier.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../gittutorial">gittutorial(7)</a>, <a href="../gittutorial-2">gittutorial-2(7)</a>, <a href="../gitcvs-migration">gitcvs-migration(7)</a>, <a href="../git-help">git-help(1)</a>, <a href="../giteveryday">giteveryday(7)</a>, <a href="user-manual">The Git User’s Manual</a></p>
+<p><a href="../gittutorial">gittutorial(7)</a>,
+<a href="../gittutorial-2">gittutorial-2(7)</a>,
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>,
+<a href="../git-help">git-help(1)</a>, <a href="../giteveryday">giteveryday(7)</a>, <a href="user-manual">The
+Git User’s Manual</a></p>
 
 <h2 id="git">GIT</h2>
 

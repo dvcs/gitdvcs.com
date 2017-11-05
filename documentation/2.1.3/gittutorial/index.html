@@ -112,11 +112,15 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This tutorial explains how to import a new project into Git, make changes to it, and share changes with other developers.</p>
+<p>This tutorial explains how to import a new project into Git, make
+changes to it, and share changes with other developers.</p>
 
-<p>If you are instead primarily interested in using Git to fetch a project, for example, to test the latest version, you may prefer to start with the first two chapters of <a href="user-manual">The Git User’s Manual</a>.</p>
+<p>If you are instead primarily interested in using Git to fetch a project,
+for example, to test the latest version, you may prefer to start with
+the first two chapters of <a href="user-manual">The Git User’s Manual</a>.</p>
 
-<p>First, note that you can get documentation for a command such as <code>git log --graph</code> with:</p>
+<p>First, note that you can get documentation for a command such as
+<code>git log --graph</code> with:</p>
 
 <pre><code>$ man git-log
 </code></pre>
@@ -126,9 +130,11 @@
 <pre><code>$ git help log
 </code></pre>
 
-<p>With the latter, you can use the manual viewer of your choice; see <a href="../git-help">git-help(1)</a> for more information.</p>
+<p>With the latter, you can use the manual viewer of your choice; see
+<a href="../git-help">git-help(1)</a> for more information.</p>
 
-<p>It is a good idea to introduce yourself to Git with your name and public email address before doing any operation. The easiest way to do so is:</p>
+<p>It is a good idea to introduce yourself to Git with your name and public
+email address before doing any operation. The easiest way to do so is:</p>
 
 <pre><code>$ git config --global user.name &quot;Your Name Comes Here&quot;
 $ git config --global user.email you@yourdomain.example.com
@@ -136,7 +142,8 @@ $ git config --global user.email you@yourdomain.example.com
 
 <h2 id="importing-a-new-project">Importing a new project</h2>
 
-<p>Assume you have a tarball project.tar.gz with your initial work. You can place it under Git revision control as follows.</p>
+<p>Assume you have a tarball project.tar.gz with your initial work. You can
+place it under Git revision control as follows.</p>
 
 <pre><code>$ tar xzf project.tar.gz
 $ cd project
@@ -148,19 +155,24 @@ $ git init
 <pre><code>Initialized empty Git repository in .git/
 </code></pre>
 
-<p>You’ve now initialized the working directory—you may notice a new directory created, named &ldquo;.git&rdquo;.</p>
+<p>You’ve now initialized the working directory—you may notice a new
+directory created, named &ldquo;.git&rdquo;.</p>
 
-<p>Next, tell Git to take a snapshot of the contents of all files under the current directory (note the <em>.</em>), with <em>git add</em>:</p>
+<p>Next, tell Git to take a snapshot of the contents of all files under the
+current directory (note the <em>.</em>), with <em>git add</em>:</p>
 
 <pre><code>$ git add .
 </code></pre>
 
-<p>This snapshot is now stored in a temporary staging area which Git calls the &ldquo;index&rdquo;. You can permanently store the contents of the index in the repository with <em>git commit</em>:</p>
+<p>This snapshot is now stored in a temporary staging area which Git calls
+the &ldquo;index&rdquo;. You can permanently store the contents of the index in the
+repository with <em>git commit</em>:</p>
 
 <pre><code>$ git commit
 </code></pre>
 
-<p>This will prompt you for a commit message. You’ve now stored the first version of your project in Git.</p>
+<p>This will prompt you for a commit message. You’ve now stored the first
+version of your project in Git.</p>
 
 <h2 id="making-changes">Making changes</h2>
 
@@ -169,12 +181,15 @@ $ git init
 <pre><code>$ git add file1 file2 file3
 </code></pre>
 
-<p>You are now ready to commit. You can see what is about to be committed using <em>git diff</em> with the &ndash;cached option:</p>
+<p>You are now ready to commit. You can see what is about to be committed
+using <em>git diff</em> with the &ndash;cached option:</p>
 
 <pre><code>$ git diff --cached
 </code></pre>
 
-<p>(Without &ndash;cached, <em>git diff</em> will show you any changes that you’ve made but not yet added to the index.) You can also get a brief summary of the situation with <em>git status</em>:</p>
+<p>(Without &ndash;cached, <em>git diff</em> will show you any changes that you’ve made
+but not yet added to the index.) You can also get a brief summary of the
+situation with <em>git status</em>:</p>
 
 <pre><code>$ git status
 # On branch master
@@ -187,25 +202,41 @@ $ git init
 #
 </code></pre>
 
-<p>If you need to make any further adjustments, do so now, and then add any newly modified content to the index. Finally, commit your changes with:</p>
+<p>If you need to make any further adjustments, do so now, and then add any
+newly modified content to the index. Finally, commit your changes with:</p>
 
 <pre><code>$ git commit
 </code></pre>
 
-<p>This will again prompt you for a message describing the change, and then record a new version of the project.</p>
+<p>This will again prompt you for a message describing the change, and then
+record a new version of the project.</p>
 
 <p>Alternatively, instead of running <em>git add</em> beforehand, you can use</p>
 
 <pre><code>$ git commit -a
 </code></pre>
 
-<p>which will automatically notice any modified (but not new) files, add them to the index, and commit, all in one step.</p>
+<p>which will automatically notice any modified (but not new) files, add
+them to the index, and commit, all in one step.</p>
 
-<p>A note on commit messages: Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, <a href="../git-format-patch">git-format-patch(1)</a> turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.</p>
+<p>A note on commit messages: Though not required, it’s a good idea to
+begin the commit message with a single short (less than 50 character)
+line summarizing the change, followed by a blank line and then a more
+thorough description. The text up to the first blank line in a commit
+message is treated as the commit title, and that title is used
+throughout Git. For example,
+<a href="../git-format-patch">git-format-patch(1)</a> turns a commit into email,
+and it uses the title on the Subject line and the rest of the commit in
+the body.</p>
 
 <h2 id="git-tracks-content-not-files">Git tracks content not files</h2>
 
-<p>Many revision control systems provide an <code>add</code> command that tells the system to start tracking changes to a new file. Git’s <code>add</code> command does something simpler and more powerful: <em>git add</em> is used both for new and newly modified files, and in both cases it takes a snapshot of the given files and stages that content in the index, ready for inclusion in the next commit.</p>
+<p>Many revision control systems provide an <code>add</code> command that tells the
+system to start tracking changes to a new file. Git’s <code>add</code> command does
+something simpler and more powerful: <em>git add</em> is used both for new and
+newly modified files, and in both cases it takes a snapshot of the given
+files and stages that content in the index, ready for inclusion in the
+next commit.</p>
 
 <h2 id="viewing-project-history">Viewing project history</h2>
 
@@ -226,7 +257,8 @@ $ git init
 
 <h2 id="managing-branches">Managing branches</h2>
 
-<p>A single Git repository can maintain multiple branches of development. To create a new branch named &ldquo;experimental&rdquo;, use</p>
+<p>A single Git repository can maintain multiple branches of development.
+To create a new branch named &ldquo;experimental&rdquo;, use</p>
 
 <pre><code>$ git branch experimental
 </code></pre>
@@ -242,19 +274,23 @@ $ git init
 * master
 </code></pre>
 
-<p>The &ldquo;experimental&rdquo; branch is the one you just created, and the &ldquo;master&rdquo; branch is a default branch that was created for you automatically. The asterisk marks the branch you are currently on; type</p>
+<p>The &ldquo;experimental&rdquo; branch is the one you just created, and the &ldquo;master&rdquo;
+branch is a default branch that was created for you automatically. The
+asterisk marks the branch you are currently on; type</p>
 
 <pre><code>$ git checkout experimental
 </code></pre>
 
-<p>to switch to the experimental branch. Now edit a file, commit the change, and switch back to the master branch:</p>
+<p>to switch to the experimental branch. Now edit a file, commit the
+change, and switch back to the master branch:</p>
 
 <pre><code>(edit file)
 $ git commit -a
 $ git checkout master
 </code></pre>
 
-<p>Check that the change you made is no longer visible, since it was made on the experimental branch and you’re back on the master branch.</p>
+<p>Check that the change you made is no longer visible, since it was made
+on the experimental branch and you’re back on the master branch.</p>
 
 <p>You can make a different change on the master branch:</p>
 
@@ -262,12 +298,14 @@ $ git checkout master
 $ git commit -a
 </code></pre>
 
-<p>at this point the two branches have diverged, with different changes made in each. To merge the changes made in experimental into master, run</p>
+<p>at this point the two branches have diverged, with different changes
+made in each. To merge the changes made in experimental into master, run</p>
 
 <pre><code>$ git merge experimental
 </code></pre>
 
-<p>If the changes don’t conflict, you’re done. If there are conflicts, markers will be left in the problematic files showing the conflict;</p>
+<p>If the changes don’t conflict, you’re done. If there are conflicts,
+markers will be left in the problematic files showing the conflict;</p>
 
 <pre><code>$ git diff
 </code></pre>
@@ -289,9 +327,11 @@ $ git commit -a
 <pre><code>$ git branch -d experimental
 </code></pre>
 
-<p>This command ensures that the changes in the experimental branch are already in the current branch.</p>
+<p>This command ensures that the changes in the experimental branch are
+already in the current branch.</p>
 
-<p>If you develop on a branch crazy-idea, then regret it, you can always delete the branch with</p>
+<p>If you develop on a branch crazy-idea, then regret it, you can always
+delete the branch with</p>
 
 <pre><code>$ git branch -D crazy-idea
 </code></pre>
@@ -300,14 +340,18 @@ $ git commit -a
 
 <h2 id="using-git-for-collaboration">Using Git for collaboration</h2>
 
-<p>Suppose that Alice has started a new project with a Git repository in /home/alice/project, and that Bob, who has a home directory on the same machine, wants to contribute.</p>
+<p>Suppose that Alice has started a new project with a Git repository in
+/home/alice/project, and that Bob, who has a home directory on the same
+machine, wants to contribute.</p>
 
 <p>Bob begins with:</p>
 
 <pre><code>bob$ git clone /home/alice/project myrepo
 </code></pre>
 
-<p>This creates a new directory &ldquo;myrepo&rdquo; containing a clone of Alice’s repository. The clone is on an equal footing with the original project, possessing its own copy of the original project’s history.</p>
+<p>This creates a new directory &ldquo;myrepo&rdquo; containing a clone of Alice’s
+repository. The clone is on an equal footing with the original project,
+possessing its own copy of the original project’s history.</p>
 
 <p>Bob then makes some changes and commits them:</p>
 
@@ -316,104 +360,152 @@ bob$ git commit -a
 (repeat as necessary)
 </code></pre>
 
-<p>When he’s ready, he tells Alice to pull changes from the repository at /home/bob/myrepo. She does this with:</p>
+<p>When he’s ready, he tells Alice to pull changes from the repository at
+/home/bob/myrepo. She does this with:</p>
 
 <pre><code>alice$ cd /home/alice/project
 alice$ git pull /home/bob/myrepo master
 </code></pre>
 
-<p>This merges the changes from Bob’s &ldquo;master&rdquo; branch into Alice’s current branch. If Alice has made her own changes in the meantime, then she may need to manually fix any conflicts.</p>
+<p>This merges the changes from Bob’s &ldquo;master&rdquo; branch into Alice’s current
+branch. If Alice has made her own changes in the meantime, then she may
+need to manually fix any conflicts.</p>
 
-<p>The &ldquo;pull&rdquo; command thus performs two operations: it fetches changes from a remote branch, then merges them into the current branch.</p>
+<p>The &ldquo;pull&rdquo; command thus performs two operations: it fetches changes from
+a remote branch, then merges them into the current branch.</p>
 
-<p>Note that in general, Alice would want her local changes committed before initiating this &ldquo;pull&rdquo;. If Bob’s work conflicts with what Alice did since their histories forked, Alice will use her working tree and the index to resolve conflicts, and existing local changes will interfere with the conflict resolution process (Git will still perform the fetch but will refuse to merge &mdash; Alice will have to get rid of her local changes in some way and pull again when this happens).</p>
+<p>Note that in general, Alice would want her local changes committed
+before initiating this &ldquo;pull&rdquo;. If Bob’s work conflicts with what Alice
+did since their histories forked, Alice will use her working tree and
+the index to resolve conflicts, and existing local changes will
+interfere with the conflict resolution process (Git will still perform
+the fetch but will refuse to merge &mdash; Alice will have to get rid of her
+local changes in some way and pull again when this happens).</p>
 
-<p>Alice can peek at what Bob did without merging first, using the &ldquo;fetch&rdquo; command; this allows Alice to inspect what Bob did, using a special symbol &ldquo;FETCH_HEAD&rdquo;, in order to determine if he has anything worth pulling, like this:</p>
+<p>Alice can peek at what Bob did without merging first, using the &ldquo;fetch&rdquo;
+command; this allows Alice to inspect what Bob did, using a special
+symbol &ldquo;FETCH_HEAD&rdquo;, in order to determine if he has anything worth
+pulling, like this:</p>
 
 <pre><code>alice$ git fetch /home/bob/myrepo master
 alice$ git log -p HEAD..FETCH_HEAD
 </code></pre>
 
-<p>This operation is safe even if Alice has uncommitted local changes. The range notation &ldquo;HEAD..FETCH_HEAD&rdquo; means &ldquo;show everything that is reachable from the FETCH_HEAD but exclude anything that is reachable from HEAD&rdquo;. Alice already knows everything that leads to her current state (HEAD), and reviews what Bob has in his state (FETCH_HEAD) that she has not seen with this command.</p>
+<p>This operation is safe even if Alice has uncommitted local changes. The
+range notation &ldquo;HEAD..FETCH_HEAD&rdquo; means &ldquo;show everything that is
+reachable from the FETCH_HEAD but exclude anything that is reachable
+from HEAD&rdquo;. Alice already knows everything that leads to her current
+state (HEAD), and reviews what Bob has in his state (FETCH_HEAD) that
+she has not seen with this command.</p>
 
-<p>If Alice wants to visualize what Bob did since their histories forked she can issue the following command:</p>
+<p>If Alice wants to visualize what Bob did since their histories forked
+she can issue the following command:</p>
 
 <pre><code>$ gitk HEAD..FETCH_HEAD
 </code></pre>
 
 <p>This uses the same two-dot range notation we saw earlier with <em>git log</em>.</p>
 
-<p>Alice may want to view what both of them did since they forked. She can use three-dot form instead of the two-dot form:</p>
+<p>Alice may want to view what both of them did since they forked. She can
+use three-dot form instead of the two-dot form:</p>
 
 <pre><code>$ gitk HEAD...FETCH_HEAD
 </code></pre>
 
-<p>This means &ldquo;show everything that is reachable from either one, but exclude anything that is reachable from both of them&rdquo;.</p>
+<p>This means &ldquo;show everything that is reachable from either one, but
+exclude anything that is reachable from both of them&rdquo;.</p>
 
-<p>Please note that these range notation can be used with both gitk and &ldquo;git log&rdquo;.</p>
+<p>Please note that these range notation can be used with both gitk and
+&ldquo;git log&rdquo;.</p>
 
-<p>After inspecting what Bob did, if there is nothing urgent, Alice may decide to continue working without pulling from Bob. If Bob’s history does have something Alice would immediately need, Alice may choose to stash her work-in-progress first, do a &ldquo;pull&rdquo;, and then finally unstash her work-in-progress on top of the resulting history.</p>
+<p>After inspecting what Bob did, if there is nothing urgent, Alice may
+decide to continue working without pulling from Bob. If Bob’s history
+does have something Alice would immediately need, Alice may choose to
+stash her work-in-progress first, do a &ldquo;pull&rdquo;, and then finally unstash
+her work-in-progress on top of the resulting history.</p>
 
-<p>When you are working in a small closely knit group, it is not unusual to interact with the same repository over and over again. By defining <em>remote</em> repository shorthand, you can make it easier:</p>
+<p>When you are working in a small closely knit group, it is not unusual to
+interact with the same repository over and over again. By defining
+<em>remote</em> repository shorthand, you can make it easier:</p>
 
 <pre><code>alice$ git remote add bob /home/bob/myrepo
 </code></pre>
 
-<p>With this, Alice can perform the first part of the &ldquo;pull&rdquo; operation alone using the <em>git fetch</em> command without merging them with her own branch, using:</p>
+<p>With this, Alice can perform the first part of the &ldquo;pull&rdquo; operation
+alone using the <em>git fetch</em> command without merging them with her own
+branch, using:</p>
 
 <pre><code>alice$ git fetch bob
 </code></pre>
 
-<p>Unlike the longhand form, when Alice fetches from Bob using a remote repository shorthand set up with <em>git remote</em>, what was fetched is stored in a remote-tracking branch, in this case <code>bob/master</code>. So after this:</p>
+<p>Unlike the longhand form, when Alice fetches from Bob using a remote
+repository shorthand set up with <em>git remote</em>, what was fetched is
+stored in a remote-tracking branch, in this case <code>bob/master</code>. So after
+this:</p>
 
 <pre><code>alice$ git log -p master..bob/master
 </code></pre>
 
-<p>shows a list of all the changes that Bob made since he branched from Alice’s master branch.</p>
+<p>shows a list of all the changes that Bob made since he branched from
+Alice’s master branch.</p>
 
-<p>After examining those changes, Alice could merge the changes into her master branch:</p>
+<p>After examining those changes, Alice could merge the changes into her
+master branch:</p>
 
 <pre><code>alice$ git merge bob/master
 </code></pre>
 
-<p>This <code>merge</code> can also be done by <em>pulling from her own remote-tracking branch</em>, like this:</p>
+<p>This <code>merge</code> can also be done by <em>pulling from her own remote-tracking
+branch</em>, like this:</p>
 
 <pre><code>alice$ git pull . remotes/bob/master
 </code></pre>
 
-<p>Note that git pull always merges into the current branch, regardless of what else is given on the command line.</p>
+<p>Note that git pull always merges into the current branch, regardless of
+what else is given on the command line.</p>
 
 <p>Later, Bob can update his repo with Alice’s latest changes using</p>
 
 <pre><code>bob$ git pull
 </code></pre>
 
-<p>Note that he doesn’t need to give the path to Alice’s repository; when Bob cloned Alice’s repository, Git stored the location of her repository in the repository configuration, and that location is used for pulls:</p>
+<p>Note that he doesn’t need to give the path to Alice’s repository; when
+Bob cloned Alice’s repository, Git stored the location of her repository
+in the repository configuration, and that location is used for pulls:</p>
 
 <pre><code>bob$ git config --get remote.origin.url
 /home/alice/project
 </code></pre>
 
-<p>(The complete configuration created by <em>git clone</em> is visible using <code>git config -l</code>, and the <a href="../git-config">git-config(1)</a> man page explains the meaning of each option.)</p>
+<p>(The complete configuration created by <em>git clone</em> is visible using
+<code>git config -l</code>, and the <a href="../git-config">git-config(1)</a> man page
+explains the meaning of each option.)</p>
 
-<p>Git also keeps a pristine copy of Alice’s master branch under the name &ldquo;origin/master&rdquo;:</p>
+<p>Git also keeps a pristine copy of Alice’s master branch under the name
+&ldquo;origin/master&rdquo;:</p>
 
 <pre><code>bob$ git branch -r
   origin/master
 </code></pre>
 
-<p>If Bob later decides to work from a different host, he can still perform clones and pulls using the ssh protocol:</p>
+<p>If Bob later decides to work from a different host, he can still perform
+clones and pulls using the ssh protocol:</p>
 
 <pre><code>bob$ git clone alice.org:/home/alice/project myrepo
 </code></pre>
 
-<p>Alternatively, Git has a native protocol, or can use rsync or http; see <a href="../git-pull">git-pull(1)</a> for details.</p>
+<p>Alternatively, Git has a native protocol, or can use rsync or http; see
+<a href="../git-pull">git-pull(1)</a> for details.</p>
 
-<p>Git can also be used in a CVS-like mode, with a central repository that various users push changes to; see <a href="../git-push">git-push(1)</a> and <a href="../gitcvs-migration">gitcvs-migration(7)</a>.</p>
+<p>Git can also be used in a CVS-like mode, with a central repository that
+various users push changes to; see <a href="../git-push">git-push(1)</a> and
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>.</p>
 
 <h2 id="exploring-history">Exploring history</h2>
 
-<p>Git history is represented as a series of interrelated commits. We have already seen that the <em>git log</em> command can list those commits. Note that first line of each git log entry also gives a name for the commit:</p>
+<p>Git history is represented as a series of interrelated commits. We have
+already seen that the <em>git log</em> command can list those commits. Note
+that first line of each git log entry also gives a name for the commit:</p>
 
 <pre><code>$ git log
 commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
@@ -423,12 +515,14 @@ Date:   Tue May 16 17:18:22 2006 -0700
     merge-base: Clarify the comments on post processing.
 </code></pre>
 
-<p>We can give this name to <em>git show</em> to see the details about this commit.</p>
+<p>We can give this name to <em>git show</em> to see the details about this
+commit.</p>
 
 <pre><code>$ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
 </code></pre>
 
-<p>But there are other ways to refer to commits. You can use any initial part of the name that is long enough to uniquely identify the commit:</p>
+<p>But there are other ways to refer to commits. You can use any initial
+part of the name that is long enough to uniquely identify the commit:</p>
 
 <pre><code>$ git show c82a22c39c   # the first few characters of the name are
                         # usually enough
@@ -436,7 +530,8 @@ $ git show HEAD         # the tip of the current branch
 $ git show experimental # the tip of the &quot;experimental&quot; branch
 </code></pre>
 
-<p>Every commit usually has one &ldquo;parent&rdquo; commit which points to the previous state of the project:</p>
+<p>Every commit usually has one &ldquo;parent&rdquo; commit which points to the
+previous state of the project:</p>
 
 <pre><code>$ git show HEAD^  # to see the parent of HEAD
 $ git show HEAD^^ # to see the grandparent of HEAD
@@ -454,9 +549,13 @@ $ git show HEAD^2 # show the second parent of HEAD
 <pre><code>$ git tag v2.5 1b2e1d63ff
 </code></pre>
 
-<p>you can refer to 1b2e1d63ff by the name &ldquo;v2.5&rdquo;. If you intend to share this name with other people (for example, to identify a release version), you should create a &ldquo;tag&rdquo; object, and perhaps sign it; see <a href="../git-tag">git-tag(1)</a> for details.</p>
+<p>you can refer to 1b2e1d63ff by the name &ldquo;v2.5&rdquo;. If you intend to share
+this name with other people (for example, to identify a release
+version), you should create a &ldquo;tag&rdquo; object, and perhaps sign it; see
+<a href="../git-tag">git-tag(1)</a> for details.</p>
 
-<p>Any Git command that needs to know a commit can take any of these names. For example:</p>
+<p>Any Git command that needs to know a commit can take any of these names.
+For example:</p>
 
 <pre><code>$ git diff v2.5 HEAD     # compare the current HEAD to v2.5
 $ git branch stable v2.5 # start a new branch named &quot;stable&quot; based
@@ -465,23 +564,32 @@ $ git reset --hard HEAD^ # reset your current branch and working
                          # directory to its state at HEAD^
 </code></pre>
 
-<p>Be careful with that last command: in addition to losing any changes in the working directory, it will also remove all later commits from this branch. If this branch is the only branch containing those commits, they will be lost. Also, don’t use <em>git reset</em> on a publicly-visible branch that other developers pull from, as it will force needless merges on other developers to clean up the history. If you need to undo changes that you have pushed, use <em>git revert</em> instead.</p>
+<p>Be careful with that last command: in addition to losing any changes in
+the working directory, it will also remove all later commits from this
+branch. If this branch is the only branch containing those commits, they
+will be lost. Also, don’t use <em>git reset</em> on a publicly-visible branch
+that other developers pull from, as it will force needless merges on
+other developers to clean up the history. If you need to undo changes
+that you have pushed, use <em>git revert</em> instead.</p>
 
-<p>The <em>git grep</em> command can search for strings in any version of your project, so</p>
+<p>The <em>git grep</em> command can search for strings in any version of your
+project, so</p>
 
 <pre><code>$ git grep &quot;hello&quot; v2.5
 </code></pre>
 
 <p>searches for all occurrences of &ldquo;hello&rdquo; in v2.5.</p>
 
-<p>If you leave out the commit name, <em>git grep</em> will search any of the files it manages in your current directory. So</p>
+<p>If you leave out the commit name, <em>git grep</em> will search any of the
+files it manages in your current directory. So</p>
 
 <pre><code>$ git grep &quot;hello&quot;
 </code></pre>
 
 <p>is a quick way to search just the files that are tracked by Git.</p>
 
-<p>Many Git commands also take sets of commits, which can be specified in a number of ways. Here are some examples with <em>git log</em>:</p>
+<p>Many Git commands also take sets of commits, which can be specified in a
+number of ways. Here are some examples with <em>git log</em>:</p>
 
 <pre><code>$ git log v2.5..v2.6            # commits between v2.5 and v2.6
 $ git log v2.5..                # commits since v2.5
@@ -490,28 +598,42 @@ $ git log v2.5.. Makefile       # commits since v2.5 which modify
                                 # Makefile
 </code></pre>
 
-<p>You can also give <em>git log</em> a &ldquo;range&rdquo; of commits where the first is not necessarily an ancestor of the second; for example, if the tips of the branches &ldquo;stable&rdquo; and &ldquo;master&rdquo; diverged from a common commit some time ago, then</p>
+<p>You can also give <em>git log</em> a &ldquo;range&rdquo; of commits where the first is not
+necessarily an ancestor of the second; for example, if the tips of the
+branches &ldquo;stable&rdquo; and &ldquo;master&rdquo; diverged from a common commit some time
+ago, then</p>
 
 <pre><code>$ git log stable..master
 </code></pre>
 
-<p>will list commits made in the master branch but not in the stable branch, while</p>
+<p>will list commits made in the master branch but not in the stable
+branch, while</p>
 
 <pre><code>$ git log master..stable
 </code></pre>
 
-<p>will show the list of commits made on the stable branch but not the master branch.</p>
+<p>will show the list of commits made on the stable branch but not the
+master branch.</p>
 
-<p>The <em>git log</em> command has a weakness: it must present commits in a list. When the history has lines of development that diverged and then merged back together, the order in which <em>git log</em> presents those commits is meaningless.</p>
+<p>The <em>git log</em> command has a weakness: it must present commits in a list.
+When the history has lines of development that diverged and then merged
+back together, the order in which <em>git log</em> presents those commits is
+meaningless.</p>
 
-<p>Most projects with multiple contributors (such as the Linux kernel, or Git itself) have frequent merges, and <em>gitk</em> does a better job of visualizing their history. For example,</p>
+<p>Most projects with multiple contributors (such as the Linux kernel, or
+Git itself) have frequent merges, and <em>gitk</em> does a better job of
+visualizing their history. For example,</p>
 
 <pre><code>$ gitk --since=&quot;2 weeks ago&quot; drivers/
 </code></pre>
 
-<p>allows you to browse any commits from the last 2 weeks of commits that modified files under the &ldquo;drivers&rdquo; directory. (Note: you can adjust gitk’s fonts by holding down the control key while pressing &ldquo;-&rdquo; or &ldquo;+&rdquo;.)</p>
+<p>allows you to browse any commits from the last 2 weeks of commits that
+modified files under the &ldquo;drivers&rdquo; directory. (Note: you can adjust
+gitk’s fonts by holding down the control key while pressing &ldquo;-&rdquo; or &ldquo;+&rdquo;.)</p>
 
-<p>Finally, most commands that take filenames will optionally allow you to precede any filename by a commit, to specify a particular version of the file:</p>
+<p>Finally, most commands that take filenames will optionally allow you to
+precede any filename by a commit, to specify a particular version of the
+file:</p>
 
 <pre><code>$ git diff v2.5:Makefile HEAD:Makefile.in
 </code></pre>
@@ -523,24 +645,42 @@ $ git log v2.5.. Makefile       # commits since v2.5 which modify
 
 <h2 id="next-steps">Next Steps</h2>
 
-<p>This tutorial should be enough to perform basic distributed revision control for your projects. However, to fully understand the depth and power of Git you need to understand two simple ideas on which it is based:</p>
+<p>This tutorial should be enough to perform basic distributed revision
+control for your projects. However, to fully understand the depth and
+power of Git you need to understand two simple ideas on which it is
+based:</p>
 
 <ul>
-<li><p>The object database is the rather elegant system used to store the history of your project—files, directories, and commits.</p></li>
+<li><p>The object database is the rather elegant system used to store the
+history of your project—files, directories, and commits.</p></li>
 
-<li><p>The index file is a cache of the state of a directory tree, used to create commits, check out working directories, and hold the various trees involved in a merge.</p></li>
+<li><p>The index file is a cache of the state of a directory tree, used to
+create commits, check out working directories, and hold the various
+trees involved in a merge.</p></li>
 </ul>
 
-<p>Part two of this tutorial explains the object database, the index file, and a few other odds and ends that you’ll need to make the most of Git. You can find it at <a href="../gittutorial-2">gittutorial-2(7)</a>.</p>
+<p>Part two of this tutorial explains the object database, the index file,
+and a few other odds and ends that you’ll need to make the most of Git.
+You can find it at <a href="../gittutorial-2">gittutorial-2(7)</a>.</p>
 
-<p>If you don’t want to continue with that right away, a few other digressions that may be interesting at this point are:</p>
+<p>If you don’t want to continue with that right away, a few other
+digressions that may be interesting at this point are:</p>
 
 <ul>
-<li><p><a href="../git-format-patch">git-format-patch(1)</a>, <a href="../git-am">git-am(1)</a>: These convert series of git commits into emailed patches, and vice versa, useful for projects such as the Linux kernel which rely heavily on emailed patches.</p></li>
+<li><p><a href="../git-format-patch">git-format-patch(1)</a>,
+<a href="../git-am">git-am(1)</a>: These convert series of git commits into
+emailed patches, and vice versa, useful for projects such as the
+Linux kernel which rely heavily on emailed patches.</p></li>
 
-<li><p><a href="../git-bisect">git-bisect(1)</a>: When there is a regression in your project, one way to track down the bug is by searching through the history to find the exact commit that’s to blame. Git bisect can help you perform a binary search for that commit. It is smart enough to perform a close-to-optimal search even in the case of complex non-linear history with lots of merged branches.</p></li>
+<li><p><a href="../git-bisect">git-bisect(1)</a>: When there is a regression in your
+project, one way to track down the bug is by searching through the
+history to find the exact commit that’s to blame. Git bisect can
+help you perform a binary search for that commit. It is smart enough
+to perform a close-to-optimal search even in the case of complex
+non-linear history with lots of merged branches.</p></li>
 
-<li><p><a href="../gitworkflows">gitworkflows(7)</a>: Gives an overview of recommended workflows.</p></li>
+<li><p><a href="../gitworkflows">gitworkflows(7)</a>: Gives an overview of
+recommended workflows.</p></li>
 
 <li><p><a href="everyday">Everyday Git with 20 Commands Or So</a></p></li>
 
@@ -549,7 +689,12 @@ $ git log v2.5.. Makefile       # commits since v2.5 which modify
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../gittutorial-2">gittutorial-2(7)</a>, <a href="../gitcvs-migration">gitcvs-migration(7)</a>, <a href="../gitcore-tutorial">gitcore-tutorial(7)</a>, <a href="../gitglossary">gitglossary(7)</a>, <a href="../git-help">git-help(1)</a>, <a href="../gitworkflows">gitworkflows(7)</a>, <a href="everyday">Everyday Git</a>, <a href="user-manual">The Git User’s Manual</a></p>
+<p><a href="../gittutorial-2">gittutorial-2(7)</a>,
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>,
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a>,
+<a href="../gitglossary">gitglossary(7)</a>, <a href="../git-help">git-help(1)</a>,
+<a href="../gitworkflows">gitworkflows(7)</a>, <a href="everyday">Everyday Git</a>,
+<a href="user-manual">The Git User’s Manual</a></p>
 
 <h2 id="git">GIT</h2>
 

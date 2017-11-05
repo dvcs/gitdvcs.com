@@ -112,7 +112,10 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This looks up the &lt;file&gt;(s) in the index and, if there are any merge entries, passes the SHA-1 hash for those files as arguments 1, 2, 3 (empty argument if no file), and &lt;file&gt; as argument 4. File modes for the three files are passed as arguments 5, 6 and 7.</p>
+<p>This looks up the &lt;file&gt;(s) in the index and, if there are any
+merge entries, passes the SHA-1 hash for those files as arguments 1, 2,
+3 (empty argument if no file), and &lt;file&gt; as argument 4. File
+modes for the three files are passed as arguments 5, 6 and 7.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -123,18 +126,29 @@ Do not interpret any more arguments as options.</p>
 Run merge against all files in the index that need merging.</p>
 
 <p>-o<br />
-Instead of stopping at the first failed merge, do all of them in one shot - continue with merging even when previous merges returned errors, and only return the error code after all the merges.</p>
+Instead of stopping at the first failed merge, do all of them in one
+shot - continue with merging even when previous merges returned errors,
+and only return the error code after all the merges.</p>
 
 <p>-q<br />
-Do not complain about a failed merge program (a merge program failure usually indicates conflicts during the merge). This is for porcelains which might want to emit custom messages.</p>
+Do not complain about a failed merge program (a merge program failure
+usually indicates conflicts during the merge). This is for porcelains
+which might want to emit custom messages.</p>
 
-<p>If <em>git merge-index</em> is called with multiple &lt;file&gt;s (or -a) then it processes them in turn only stopping if merge returns a non-zero exit code.</p>
+<p>If <em>git merge-index</em> is called with multiple &lt;file&gt;s (or -a) then
+it processes them in turn only stopping if merge returns a non-zero exit
+code.</p>
 
-<p>Typically this is run with a script calling Git’s imitation of the <em>merge</em> command from the RCS package.</p>
+<p>Typically this is run with a script calling Git’s imitation of the
+<em>merge</em> command from the RCS package.</p>
 
-<p>A sample script called <em>git merge-one-file</em> is included in the distribution.</p>
+<p>A sample script called <em>git merge-one-file</em> is included in the
+distribution.</p>
 
-<p>ALERT ALERT ALERT! The Git &ldquo;merge object order&rdquo; is different from the RCS <em>merge</em> program merge object order. In the above ordering, the original is first. But the argument order to the 3-way merge program <em>merge</em> is to have the original in the middle. Don’t ask me why.</p>
+<p>ALERT ALERT ALERT! The Git &ldquo;merge object order&rdquo; is different from the
+RCS <em>merge</em> program merge object order. In the above ordering, the
+original is first. But the argument order to the 3-way merge program
+<em>merge</em> is to have the original in the middle. Don’t ask me why.</p>
 
 <p>Examples:</p>
 
@@ -155,7 +169,10 @@ This is added AA in the branch B.
 fatal: merge program failed
 </code></pre>
 
-<p>where the latter example shows how <em>git merge-index</em> will stop trying to merge once anything has returned an error (i.e., <code>cat</code> returned an error for the AA file, because it didn’t exist in the original, and thus <em>git merge-index</em> didn’t even try to merge the MM thing).</p>
+<p>where the latter example shows how <em>git merge-index</em> will stop trying to
+merge once anything has returned an error (i.e., <code>cat</code> returned an error
+for the AA file, because it didn’t exist in the original, and thus <em>git
+merge-index</em> didn’t even try to merge the MM thing).</p>
 
 <h2 id="git">GIT</h2>
 

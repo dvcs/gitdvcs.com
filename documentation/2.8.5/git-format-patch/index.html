@@ -1,0 +1,1017 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-format-patch </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-format-patch</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.8.5'>2.8.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.8.5/git-format-patch'>git-format-patch</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git format-patch [-k] [(-o|--output-directory) &lt;dir&gt; | --stdout]
+                   [--no-thread | --thread[=&lt;style&gt;]]
+                   [(--attach|--inline)[=&lt;boundary&gt;] | --no-attach]
+                   [-s | --signoff]
+                   [--signature=&lt;signature&gt; | --no-signature]
+                   [--signature-file=&lt;file&gt;]
+                   [-n | --numbered | -N | --no-numbered]
+                   [--start-number &lt;n&gt;] [--numbered-files]
+                   [--in-reply-to=Message-Id] [--suffix=.&lt;sfx&gt;]
+                   [--ignore-if-in-upstream]
+                   [--subject-prefix=Subject-Prefix] [(--reroll-count|-v) &lt;n&gt;]
+                   [--to=&lt;email&gt;] [--cc=&lt;email&gt;]
+                   [--[no-]cover-letter] [--quiet] [--notes[=&lt;ref&gt;]]
+                   [&lt;common diff options&gt;]
+                   [ &lt;since&gt; | &lt;revision range&gt; ]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Prepare each commit with its patch in one file per commit, formatted to
+resemble UNIX mailbox format. The output of this command is convenient
+for e-mail submission or for use with <em>git am</em>.</p>
+
+<p>There are two ways to specify which commits to operate on.</p>
+
+<ol>
+<li><p>A single commit, &lt;since&gt;, specifies that the commits leading
+to the tip of the current branch that are not in the history that
+leads to the &lt;since&gt; to be output.</p></li>
+
+<li><p>Generic &lt;revision range&gt; expression (see &ldquo;SPECIFYING
+REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>) means
+the commits in the specified range.</p></li>
+</ol>
+
+<p>The first rule takes precedence in the case of a single &lt;commit&gt;.
+To apply the second rule, i.e., format everything since the beginning of
+history up until &lt;commit&gt;, use the <em>&ndash;root</em> option:
+<code>git format-patch --root &lt;commit&gt;</code>. If you want to format only
+&lt;commit&gt; itself, you can do this with
+<code>git format-patch -1 &lt;commit&gt;</code>.</p>
+
+<p>By default, each output file is numbered sequentially from 1, and uses
+the first line of the commit message (massaged for pathname safety) as
+the filename. With the <code>--numbered-files</code> option, the output file names
+will only be numbers, without the first line of the commit appended. The
+names of the output files are printed to standard output, unless the
+<code>--stdout</code> option is specified.</p>
+
+<p>If <code>-o</code> is specified, output files are created in &lt;dir&gt;. Otherwise
+they are created in the current working directory. The default path can
+be set with the <em>format.outputDirectory</em> configuration option. The <code>-o</code>
+option takes precedence over <code>format.outputDirectory</code>. To store patches
+in the current working directory even when <code>format.outputDirectory</code>
+points elsewhere, use <code>-o .</code>.</p>
+
+<p>By default, the subject of a single patch is &ldquo;[PATCH] &ldquo; followed by
+the concatenation of lines from the commit message up to the first blank
+line (see the DISCUSSION section of <a href="../git-commit">git-commit(1)</a>).</p>
+
+<p>When multiple patches are output, the subject prefix will instead be
+&ldquo;[PATCH n/m] &ldquo;. To force <sup>1</sup>&frasl;<sub>1</sub> to be added for a single patch, use <code>-n</code>.
+To omit patch numbers from the subject, use <code>-N</code>.</p>
+
+<p>If given <code>--thread</code>, <code>git-format-patch</code> will generate <code>In-Reply-To</code> and
+<code>References</code> headers to make the second and subsequent patch mails
+appear as replies to the first mail; this also generates a <code>Message-Id</code>
+header to reference.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-p<br />
+&ndash;no-stat<br />
+Generate plain patches without any diffstats.</p>
+
+<p>-U&lt;n&gt;<br />
+&ndash;unified=&lt;n&gt;<br />
+Generate diffs with &lt;n&gt; lines of context instead of the usual
+three.</p>
+
+<p>&ndash;minimal<br />
+Spend extra time to make sure the smallest possible diff is produced.</p>
+
+<p>&ndash;patience<br />
+Generate a diff using the &ldquo;patience diff&rdquo; algorithm.</p>
+
+<p>&ndash;histogram<br />
+Generate a diff using the &ldquo;histogram diff&rdquo; algorithm.</p>
+
+<p>&ndash;diff-algorithm={patience|minimal|histogram|myers}<br />
+Choose a diff algorithm. The variants are as follows:</p>
+
+<p><code>default</code>, <code>myers</code><br />
+The basic greedy diff algorithm. Currently, this is the default.</p>
+
+<p><code>minimal</code><br />
+Spend extra time to make sure the smallest possible diff is produced.</p>
+
+<p><code>patience</code><br />
+Use &ldquo;patience diff&rdquo; algorithm when generating patches.</p>
+
+<p><code>histogram</code><br />
+This algorithm extends the patience algorithm to &ldquo;support low-occurrence
+common elements&rdquo;.</p>
+
+<p>For instance, if you configured diff.algorithm variable to a non-default
+value and want to use the default one, then you have to use
+<code>--diff-algorithm=default</code> option.</p>
+
+<p>&ndash;stat[=&lt;width&gt;[,&lt;name-width&gt;[,&lt;count&gt;]]]<br />
+Generate a diffstat. By default, as much space as necessary will be used
+for the filename part, and the rest for the graph part. Maximum width
+defaults to terminal width, or 80 columns if not connected to a
+terminal, and can be overridden by <code>&lt;width&gt;</code>. The width of the filename
+part can be limited by giving another width <code>&lt;name-width&gt;</code> after a
+comma. The width of the graph part can be limited by using
+<code>--stat-graph-width=&lt;width&gt;</code> (affects all commands generating a stat
+graph) or by setting <code>diff.statGraphWidth=&lt;width&gt;</code> (does not affect
+<code>git format-patch</code>). By giving a third parameter <code>&lt;count&gt;</code>, you can
+limit the output to the first <code>&lt;count&gt;</code> lines, followed by <code>...</code> if
+there are more.</p>
+
+<p>These parameters can also be set individually with
+<code>--stat-width=&lt;width&gt;</code>, <code>--stat-name-width=&lt;name-width&gt;</code> and
+<code>--stat-count=&lt;count&gt;</code>.</p>
+
+<p>&ndash;numstat<br />
+Similar to <code>--stat</code>, but shows number of added and deleted lines in
+decimal notation and pathname without abbreviation, to make it more
+machine friendly. For binary files, outputs two <code>-</code> instead of saying
+<code>0 0</code>.</p>
+
+<p>&ndash;shortstat<br />
+Output only the last line of the <code>--stat</code> format containing total number
+of modified files, as well as number of added and deleted lines.</p>
+
+<p>&ndash;dirstat[=&lt;param1,param2,…&gt;]<br />
+Output the distribution of relative amount of changes for each
+sub-directory. The behavior of <code>--dirstat</code> can be customized by passing
+it a comma separated list of parameters. The defaults are controlled by
+the <code>diff.dirstat</code> configuration variable (see
+<a href="../git-config">git-config(1)</a>). The following parameters are
+available:</p>
+
+<p><code>changes</code><br />
+Compute the dirstat numbers by counting the lines that have been removed
+from the source, or added to the destination. This ignores the amount of
+pure code movements within a file. In other words, rearranging lines in
+a file is not counted as much as other changes. This is the default
+behavior when no parameter is given.</p>
+
+<p><code>lines</code><br />
+Compute the dirstat numbers by doing the regular line-based diff
+analysis, and summing the removed/added line counts. (For binary files,
+count 64-byte chunks instead, since binary files have no natural concept
+of lines). This is a more expensive <code>--dirstat</code> behavior than the
+<code>changes</code> behavior, but it does count rearranged lines within a file as
+much as other changes. The resulting output is consistent with what you
+get from the other <code>--*stat</code> options.</p>
+
+<p><code>files</code><br />
+Compute the dirstat numbers by counting the number of files changed.
+Each changed file counts equally in the dirstat analysis. This is the
+computationally cheapest <code>--dirstat</code> behavior, since it does not have to
+look at the file contents at all.</p>
+
+<p><code>cumulative</code><br />
+Count changes in a child directory for the parent directory as well.
+Note that when using <code>cumulative</code>, the sum of the percentages reported
+may exceed 100%. The default (non-cumulative) behavior can be specified
+with the <code>noncumulative</code> parameter.</p>
+
+<p>&lt;limit&gt;<br />
+An integer parameter specifies a cut-off percent (3% by default).
+Directories contributing less than this percentage of the changes are
+not shown in the output.</p>
+
+<p>Example: The following will count changed files, while ignoring
+directories with less than 10% of the total amount of changed files, and
+accumulating child directory counts in the parent directories:
+<code>--dirstat=files,10,cumulative</code>.</p>
+
+<p>&ndash;summary<br />
+Output a condensed summary of extended header information such as
+creations, renames and mode changes.</p>
+
+<p>&ndash;no-renames<br />
+Turn off rename detection, even when the configuration file gives the
+default to do so.</p>
+
+<p>&ndash;full-index<br />
+Instead of the first handful of characters, show the full pre- and
+post-image blob object names on the &ldquo;index&rdquo; line when generating patch
+format output.</p>
+
+<p>&ndash;binary<br />
+In addition to <code>--full-index</code>, output a binary diff that can be applied
+with <code>git-apply</code>.</p>
+
+<p>&ndash;abbrev[=&lt;n&gt;]<br />
+Instead of showing the full 40-byte hexadecimal object name in diff-raw
+format output and diff-tree header lines, show only a partial prefix.
+This is independent of the <code>--full-index</code> option above, which controls
+the diff-patch output format. Non default number of digits can be
+specified with <code>--abbrev=&lt;n&gt;</code>.</p>
+
+<p>-B[&lt;n&gt;][/&lt;m&gt;]<br />
+&ndash;break-rewrites[=[&lt;n&gt;][/&lt;m&gt;]]<br />
+Break complete rewrite changes into pairs of delete and create. This
+serves two purposes:</p>
+
+<p>It affects the way a change that amounts to a total rewrite of a file
+not as a series of deletion and insertion mixed together with a very few
+lines that happen to match textually as the context, but as a single
+deletion of everything old followed by a single insertion of everything
+new, and the number <code>m</code> controls this aspect of the -B option (defaults
+to 60%). <code>-B/70%</code> specifies that less than 30% of the original should
+remain in the result for Git to consider it a total rewrite (i.e.
+otherwise the resulting patch will be a series of deletion and insertion
+mixed together with context lines).</p>
+
+<p>When used with -M, a totally-rewritten file is also considered as the
+source of a rename (usually -M only considers a file that disappeared as
+the source of a rename), and the number <code>n</code> controls this aspect of the
+-B option (defaults to 50%). <code>-B20%</code> specifies that a change with
+addition and deletion compared to 20% or more of the file’s size are
+eligible for being picked up as a possible source of a rename to another
+file.</p>
+
+<p>-M[&lt;n&gt;]<br />
+&ndash;find-renames[=&lt;n&gt;]<br />
+Detect renames. If <code>n</code> is specified, it is a threshold on the similarity
+index (i.e. amount of addition/deletions compared to the file’s size).
+For example, <code>-M90%</code> means Git should consider a delete/add pair to be a
+rename if more than 90% of the file hasn’t changed. Without a <code>%</code> sign,
+the number is to be read as a fraction, with a decimal point before it.
+I.e., <code>-M5</code> becomes 0.5, and is thus the same as <code>-M50%</code>. Similarly,
+<code>-M05</code> is the same as <code>-M5%</code>. To limit detection to exact renames, use
+<code>-M100%</code>. The default similarity index is 50%.</p>
+
+<p>-C[&lt;n&gt;]<br />
+&ndash;find-copies[=&lt;n&gt;]<br />
+Detect copies as well as renames. See also <code>--find-copies-harder</code>. If
+<code>n</code> is specified, it has the same meaning as for <code>-M&lt;n&gt;</code>.</p>
+
+<p>&ndash;find-copies-harder<br />
+For performance reasons, by default, <code>-C</code> option finds copies only if
+the original file of the copy was modified in the same changeset. This
+flag makes the command inspect unmodified files as candidates for the
+source of copy. This is a very expensive operation for large projects,
+so use it with caution. Giving more than one <code>-C</code> option has the same
+effect.</p>
+
+<p>-D<br />
+&ndash;irreversible-delete<br />
+Omit the preimage for deletes, i.e. print only the header but not the
+diff between the preimage and <code>/dev/null</code>. The resulting patch is not
+meant to be applied with <code>patch</code> or <code>git apply</code>; this is solely for
+people who want to just concentrate on reviewing the text after the
+change. In addition, the output obviously lack enough information to
+apply such a patch in reverse, even manually, hence the name of the
+option.</p>
+
+<p>When used together with <code>-B</code>, omit also the preimage in the deletion
+part of a delete/create pair.</p>
+
+<p>-l&lt;num&gt;<br />
+The <code>-M</code> and <code>-C</code> options require O(n^2) processing time where n is the
+number of potential rename/copy targets. This option prevents
+rename/copy detection from running if the number of rename/copy targets
+exceeds the specified number.</p>
+
+<p>-O&lt;orderfile&gt;<br />
+Output the patch in the order specified in the &lt;orderfile&gt;, which
+has one shell glob pattern per line. This overrides the <code>diff.orderFile</code>
+configuration variable (see <a href="../git-config">git-config(1)</a>). To cancel
+<code>diff.orderFile</code>, use <code>-O/dev/null</code>.</p>
+
+<p>-a<br />
+&ndash;text<br />
+Treat all files as text.</p>
+
+<p>&ndash;ignore-space-at-eol<br />
+Ignore changes in whitespace at EOL.</p>
+
+<p>-b<br />
+&ndash;ignore-space-change<br />
+Ignore changes in amount of whitespace. This ignores whitespace at line
+end, and considers all other sequences of one or more whitespace
+characters to be equivalent.</p>
+
+<p>-w<br />
+&ndash;ignore-all-space<br />
+Ignore whitespace when comparing lines. This ignores differences even if
+one line has whitespace where the other line has none.</p>
+
+<p>&ndash;ignore-blank-lines<br />
+Ignore changes whose lines are all blank.</p>
+
+<p>&ndash;inter-hunk-context=&lt;lines&gt;<br />
+Show the context between diff hunks, up to the specified number of
+lines, thereby fusing hunks that are close to each other.</p>
+
+<p>-W<br />
+&ndash;function-context<br />
+Show whole surrounding functions of changes.</p>
+
+<p>&ndash;ext-diff<br />
+Allow an external diff helper to be executed. If you set an external
+diff driver with <a href="../gitattributes">gitattributes(5)</a>, you need to use
+this option with <a href="../git-log">git-log(1)</a> and friends.</p>
+
+<p>&ndash;no-ext-diff<br />
+Disallow external diff drivers.</p>
+
+<p>&ndash;textconv<br />
+&ndash;no-textconv<br />
+Allow (or disallow) external text conversion filters to be run when
+comparing binary files. See <a href="../gitattributes">gitattributes(5)</a> for
+details. Because textconv filters are typically a one-way conversion,
+the resulting diff is suitable for human consumption, but cannot be
+applied. For this reason, textconv filters are enabled by default only
+for <a href="../git-diff">git-diff(1)</a> and <a href="../git-log">git-log(1)</a>, but not
+for <a href="../git-format-patch">git-format-patch(1)</a> or diff plumbing
+commands.</p>
+
+<p>&ndash;ignore-submodules[=&lt;when&gt;]<br />
+Ignore changes to submodules in the diff generation. &lt;when&gt; can be
+either &ldquo;none&rdquo;, &ldquo;untracked&rdquo;, &ldquo;dirty&rdquo; or &ldquo;all&rdquo;, which is the default.
+Using &ldquo;none&rdquo; will consider the submodule modified when it either
+contains untracked or modified files or its HEAD differs from the commit
+recorded in the superproject and can be used to override any settings of
+the <em>ignore</em> option in <a href="../git-config">git-config(1)</a> or
+<a href="../gitmodules">gitmodules(5)</a>. When &ldquo;untracked&rdquo; is used submodules
+are not considered dirty when they only contain untracked content (but
+they are still scanned for modified content). Using &ldquo;dirty&rdquo; ignores all
+changes to the work tree of submodules, only changes to the commits
+stored in the superproject are shown (this was the behavior until
+1.7.0). Using &ldquo;all&rdquo; hides all changes to submodules.</p>
+
+<p>&ndash;src-prefix=&lt;prefix&gt;<br />
+Show the given source prefix instead of &ldquo;a/&rdquo;.</p>
+
+<p>&ndash;dst-prefix=&lt;prefix&gt;<br />
+Show the given destination prefix instead of &ldquo;b/&rdquo;.</p>
+
+<p>&ndash;no-prefix<br />
+Do not show any source or destination prefix.</p>
+
+<p>For more detailed explanation on these common options, see also
+<a href="../gitdiffcore">gitdiffcore(7)</a>.</p>
+
+<p>-&lt;n&gt;<br />
+Prepare patches from the topmost &lt;n&gt; commits.</p>
+
+<p>-o &lt;dir&gt;<br />
+&ndash;output-directory &lt;dir&gt;<br />
+Use &lt;dir&gt; to store the resulting files, instead of the current
+working directory.</p>
+
+<p>-n<br />
+&ndash;numbered<br />
+Name output in <em>[PATCH n/m]</em> format, even with a single patch.</p>
+
+<p>-N<br />
+&ndash;no-numbered<br />
+Name output in <em>[PATCH]</em> format.</p>
+
+<p>&ndash;start-number &lt;n&gt;<br />
+Start numbering the patches at &lt;n&gt; instead of 1.</p>
+
+<p>&ndash;numbered-files<br />
+Output file names will be a simple number sequence without the default
+first line of the commit appended.</p>
+
+<p>-k<br />
+&ndash;keep-subject<br />
+Do not strip/add <em>[PATCH]</em> from the first line of the commit log
+message.</p>
+
+<p>-s<br />
+&ndash;signoff<br />
+Add <code>Signed-off-by:</code> line to the commit message, using the committer
+identity of yourself. See the signoff option in
+<a href="../git-commit">git-commit(1)</a> for more information.</p>
+
+<p>&ndash;stdout<br />
+Print all commits to the standard output in mbox format, instead of
+creating a file for each one.</p>
+
+<p>&ndash;attach[=&lt;boundary&gt;]<br />
+Create multipart/mixed attachment, the first part of which is the commit
+message and the patch itself in the second part, with
+<code>Content-Disposition:                   attachment</code>.</p>
+
+<p>&ndash;no-attach<br />
+Disable the creation of an attachment, overriding the configuration
+setting.</p>
+
+<p>&ndash;inline[=&lt;boundary&gt;]<br />
+Create multipart/mixed attachment, the first part of which is the commit
+message and the patch itself in the second part, with
+<code>Content-Disposition:                   inline</code>.</p>
+
+<p>&ndash;thread[=&lt;style&gt;]<br />
+&ndash;no-thread<br />
+Controls addition of <code>In-Reply-To</code> and <code>References</code> headers to make the
+second and subsequent mails appear as replies to the first. Also
+controls generation of the <code>Message-Id</code> header to reference.</p>
+
+<p>The optional &lt;style&gt; argument can be either <code>shallow</code> or <code>deep</code>.
+<em>shallow</em> threading makes every mail a reply to the head of the series,
+where the head is chosen from the cover letter, the <code>--in-reply-to</code>, and
+the first patch mail, in this order. <em>deep</em> threading makes every mail a
+reply to the previous one.</p>
+
+<p>The default is <code>--no-thread</code>, unless the <em>format.thread</em> configuration
+is set. If <code>--thread</code> is specified without a style, it defaults to the
+style specified by <em>format.thread</em> if any, or else <code>shallow</code>.</p>
+
+<p>Beware that the default for <em>git send-email</em> is to thread emails itself.
+If you want <code>git format-patch</code> to take care of threading, you will want
+to ensure that threading is disabled for
+<code>git                     send-email</code>.</p>
+
+<p>&ndash;in-reply-to=Message-Id<br />
+Make the first mail (or all the mails with <code>--no-thread</code>) appear as a
+reply to the given Message-Id, which avoids breaking threads to provide
+a new patch series.</p>
+
+<p>&ndash;ignore-if-in-upstream<br />
+Do not include a patch that matches a commit in
+&lt;until&gt;..&lt;since&gt;. This will examine all patches reachable
+from &lt;since&gt; but not from &lt;until&gt; and compare them with the
+patches being generated, and any patch that matches is ignored.</p>
+
+<p>&ndash;subject-prefix=&lt;Subject-Prefix&gt;<br />
+Instead of the standard <em>[PATCH]</em> prefix in the subject line, instead
+use <em>[&lt;Subject-Prefix&gt;]</em>. This allows for useful naming of a
+patch series, and can be combined with the <code>--numbered</code> option.</p>
+
+<p>-v &lt;n&gt;<br />
+&ndash;reroll-count=&lt;n&gt;<br />
+Mark the series as the &lt;n&gt;-th iteration of the topic. The output
+filenames have <code>v&lt;n&gt;</code> prepended to them, and the subject prefix (&ldquo;PATCH&rdquo;
+by default, but configurable via the <code>--subject-prefix</code> option) has `
+v&lt;n&gt;` appended to it. E.g. <code>--reroll-count=4</code> may produce
+<code>v4-0001-add-makefile.patch</code> file that has &ldquo;Subject: [PATCH v4 <sup>1</sup>&frasl;<sub>20</sub>]
+Add makefile&rdquo; in it.</p>
+
+<p>&ndash;to=&lt;email&gt;<br />
+Add a <code>To:</code> header to the email headers. This is in addition to any
+configured headers, and may be used multiple times. The negated form
+<code>--no-to</code> discards all <code>To:</code> headers added so far (from config or
+command line).</p>
+
+<p>&ndash;cc=&lt;email&gt;<br />
+Add a <code>Cc:</code> header to the email headers. This is in addition to any
+configured headers, and may be used multiple times. The negated form
+<code>--no-cc</code> discards all <code>Cc:</code> headers added so far (from config or
+command line).</p>
+
+<p>&ndash;from<br />
+&ndash;from=&lt;ident&gt;<br />
+Use <code>ident</code> in the <code>From:</code> header of each commit email. If the author
+ident of the commit is not textually identical to the provided <code>ident</code>,
+place a <code>From:</code> header in the body of the message with the original
+author. If no <code>ident</code> is given, use the committer ident.</p>
+
+<p>Note that this option is only useful if you are actually sending the
+emails and want to identify yourself as the sender, but retain the
+original author (and <code>git am</code> will correctly pick up the in-body
+header). Note also that <code>git send-email</code> already handles this
+transformation for you, and this option should not be used if you are
+feeding the result to <code>git                     send-email</code>.</p>
+
+<p>&ndash;add-header=&lt;header&gt;<br />
+Add an arbitrary header to the email headers. This is in addition to any
+configured headers, and may be used multiple times. For example,
+<code>--add-header=&quot;Organization: git-foo&quot;</code>. The negated form
+<code>--no-add-header</code> discards <strong>all</strong> (<code>To:</code>, <code>Cc:</code>, and custom) headers
+added so far from config or command line.</p>
+
+<p>&ndash;[no-]cover-letter<br />
+In addition to the patches, generate a cover letter file containing the
+branch description, shortlog and the overall diffstat. You can fill in a
+description in the file before sending it out.</p>
+
+<p>&ndash;notes[=&lt;ref&gt;]<br />
+Append the notes (see <a href="../git-notes">git-notes(1)</a>) for the commit
+after the three-dash line.</p>
+
+<p>The expected use case of this is to write supporting explanation for the
+commit that does not belong to the commit log message proper, and
+include it with the patch submission. While one can simply write these
+explanations after <code>format-patch</code> has run but before sending, keeping
+them as Git notes allows them to be maintained between versions of the
+patch series (but see the discussion of the <code>notes.rewrite</code>
+configuration options in <a href="../git-notes">git-notes(1)</a> to use this
+workflow).</p>
+
+<p>&ndash;[no]-signature=&lt;signature&gt;<br />
+Add a signature to each message produced. Per RFC 3676 the signature is
+separated from the body by a line with &lsquo;&ndash; &rsquo; on it. If the signature
+option is omitted the signature defaults to the Git version number.</p>
+
+<p>&ndash;signature-file=&lt;file&gt;<br />
+Works just like &ndash;signature except the signature is read from a file.</p>
+
+<p>&ndash;suffix=.&lt;sfx&gt;<br />
+Instead of using <code>.patch</code> as the suffix for generated filenames, use
+specified suffix. A common alternative is <code>--suffix=.txt</code>. Leaving this
+empty will remove the <code>.patch</code> suffix.</p>
+
+<p>Note that the leading character does not have to be a dot; for example,
+you can use <code>--suffix=-patch</code> to get
+<code>0001-description-of-my-change-patch</code>.</p>
+
+<p>-q<br />
+&ndash;quiet<br />
+Do not print the names of the generated files to standard output.</p>
+
+<p>&ndash;no-binary<br />
+Do not output contents of changes in binary files, instead display a
+notice that those files changed. Patches generated using this option
+cannot be applied properly, but they are still useful for code review.</p>
+
+<p>&ndash;zero-commit<br />
+Output an all-zero hash in each patch’s From header instead of the hash
+of the commit.</p>
+
+<p>&ndash;root<br />
+Treat the revision argument as a &lt;revision range&gt;, even if it is
+just a single commit (that would normally be treated as a
+&lt;since&gt;). Note that root commits included in the specified range
+are always formatted as creation patches, independently of this flag.</p>
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<p>You can specify extra mail header lines to be added to each message,
+defaults for the subject prefix and file suffix, number patches when
+outputting more than one patch, add &ldquo;To&rdquo; or &ldquo;Cc:&rdquo; headers, configure
+attachments, and sign off patches with configuration variables.</p>
+
+<pre><code>[format]
+        headers = &quot;Organization: git-foo\n&quot;
+        subjectPrefix = CHANGE
+        suffix = .txt
+        numbered = auto
+        to = &lt;email&gt;
+        cc = &lt;email&gt;
+        attach [ = mime-boundary-string ]
+        signOff = true
+        coverletter = auto
+</code></pre>
+
+<h2 id="discussion">DISCUSSION</h2>
+
+<p>The patch produced by <em>git format-patch</em> is in UNIX mailbox format, with
+a fixed &ldquo;magic&rdquo; time stamp to indicate that the file is output from
+format-patch rather than a real mailbox, like so:</p>
+
+<pre><code>From 8f72bad1baf19a53459661343e21d6491c3908d3 Mon Sep 17 00:00:00 2001
+From: Tony Luck &lt;tony.luck@intel.com&gt;
+Date: Tue, 13 Jul 2010 11:42:54 -0700
+Subject: [PATCH] =?UTF-8?q?[IA64]=20Put=20ia64=20config=20files=20on=20the=20?=
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20diet?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+arch/arm config files were slimmed down using a python script
+(See commit c2330e286f68f1c408b4aa6515ba49d57f05beae comment)
+
+Do the same for ia64 so we can have sleek &amp; trim looking
+...
+</code></pre>
+
+<p>Typically it will be placed in a MUA’s drafts folder, edited to add
+timely commentary that should not go in the changelog after the three
+dashes, and then sent as a message whose body, in our example, starts
+with &ldquo;arch/arm config files were…&rdquo;. On the receiving end, readers can
+save interesting patches in a UNIX mailbox and apply them with
+<a href="../git-am">git-am(1)</a>.</p>
+
+<p>When a patch is part of an ongoing discussion, the patch generated by
+<em>git format-patch</em> can be tweaked to take advantage of the <em>git am
+&ndash;scissors</em> feature. After your response to the discussion comes a line
+that consists solely of &ldquo;<code>-- &gt;8 --</code>&rdquo; (scissors and perforation),
+followed by the patch with unnecessary header fields removed:</p>
+
+<pre><code>...
+&gt; So we should do such-and-such.
+
+Makes sense to me.  How about this patch?
+
+-- &gt;8 --
+Subject: [IA64] Put ia64 config files on the Uwe Kleine-König diet
+
+arch/arm config files were slimmed down using a python script
+...
+</code></pre>
+
+<p>When sending a patch this way, most often you are sending your own
+patch, so in addition to the &ldquo;<code>From $SHA1 $magic_timestamp</code>&rdquo; marker you
+should omit <code>From:</code> and <code>Date:</code> lines from the patch file. The patch
+title is likely to be different from the subject of the discussion the
+patch is in response to, so it is likely that you would want to keep the
+Subject: line, like the example above.</p>
+
+<h3 id="checking-for-patch-corruption">Checking for patch corruption</h3>
+
+<p>Many mailers if not set up properly will corrupt whitespace. Here are
+two common types of corruption:</p>
+
+<ul>
+<li><p>Empty context lines that do not have <em>any</em> whitespace.</p></li>
+
+<li><p>Non-empty context lines that have one extra whitespace at the
+beginning.</p></li>
+</ul>
+
+<p>One way to test if your MUA is set up correctly is:</p>
+
+<ul>
+<li><p>Send the patch to yourself, exactly the way you would, except with
+To: and Cc: lines that do not contain the list and maintainer
+address.</p></li>
+
+<li><p>Save that patch to a file in UNIX mailbox format. Call it a.patch,
+say.</p></li>
+
+<li><p>Apply it:</p>
+
+<pre><code>$ git fetch &lt;project&gt; master:test-apply
+$ git checkout test-apply
+$ git reset --hard
+$ git am a.patch
+</code></pre></li>
+</ul>
+
+<p>If it does not apply correctly, there can be various reasons.</p>
+
+<ul>
+<li><p>The patch itself does not apply cleanly. That is <em>bad</em> but does not
+have much to do with your MUA. You might want to rebase the patch
+with <a href="../git-rebase">git-rebase(1)</a> before regenerating it in this
+case.</p></li>
+
+<li><p>The MUA corrupted your patch; &ldquo;am&rdquo; would complain that the patch
+does not apply. Look in the .git/rebase-apply/ subdirectory and see
+what <em>patch</em> file contains and check for the common corruption
+patterns mentioned above.</p></li>
+
+<li><p>While at it, check the <em>info</em> and <em>final-commit</em> files as well. If
+what is in <em>final-commit</em> is not exactly what you would want to see
+in the commit log message, it is very likely that the receiver would
+end up hand editing the log message when applying your patch. Things
+like &ldquo;Hi, this is my first patch.\n&rdquo; in the patch e-mail should
+come after the three-dash line that signals the end of the commit
+message.</p></li>
+</ul>
+
+<h2 id="mua-specific-hints">MUA-SPECIFIC HINTS</h2>
+
+<p>Here are some hints on how to successfully submit patches inline using
+various mailers.</p>
+
+<h3 id="gmail">GMail</h3>
+
+<p>GMail does not have any way to turn off line wrapping in the web
+interface, so it will mangle any emails that you send. You can however
+use &ldquo;git send-email&rdquo; and send your patches through the GMail SMTP
+server, or use any IMAP email client to connect to the google IMAP
+server and forward the emails through that.</p>
+
+<p>For hints on using <em>git send-email</em> to send your patches through the
+GMail SMTP server, see the EXAMPLE section of
+<a href="../git-send-email">git-send-email(1)</a>.</p>
+
+<p>For hints on submission using the IMAP interface, see the EXAMPLE
+section of <a href="../git-imap-send">git-imap-send(1)</a>.</p>
+
+<h3 id="thunderbird">Thunderbird</h3>
+
+<p>By default, Thunderbird will both wrap emails as well as flag them as
+being <em>format=flowed</em>, both of which will make the resulting email
+unusable by Git.</p>
+
+<p>There are three different approaches: use an add-on to turn off line
+wraps, configure Thunderbird to not mangle patches, or use an external
+editor to keep Thunderbird from mangling the patches.</p>
+
+<h4 id="approach-1-add-on">Approach #1 (add-on)</h4>
+
+<p>Install the Toggle Word Wrap add-on that is available from
+<a href="https://addons.mozilla.org/thunderbird/addon/toggle-word-wrap/">https://addons.mozilla.org/thunderbird/addon/toggle-word-wrap/</a> It adds
+a menu entry &ldquo;Enable Word Wrap&rdquo; in the composer’s &ldquo;Options&rdquo; menu that
+you can tick off. Now you can compose the message as you otherwise do
+(cut + paste, <em>git format-patch</em> | <em>git imap-send</em>, etc), but you have
+to insert line breaks manually in any text that you type.</p>
+
+<h4 id="approach-2-configuration">Approach #2 (configuration)</h4>
+
+<p>Three steps:</p>
+
+<ol>
+<li><p>Configure your mail server composition as plain text: Edit…Account
+Settings…Composition &amp; Addressing, uncheck &ldquo;Compose Messages in
+HTML&rdquo;.</p></li>
+
+<li><p>Configure your general composition window to not wrap.</p>
+
+<p>In Thunderbird 2: Edit..Preferences..Composition, wrap plain text
+messages at 0</p>
+
+<p>In Thunderbird 3: Edit..Preferences..Advanced..Config Editor. Search
+for &ldquo;mail.wrap_long_lines&rdquo;. Toggle it to make sure it is set to
+<code>false</code>. Also, search for &ldquo;mailnews.wraplength&rdquo; and set the value
+to 0.</p></li>
+
+<li><p>Disable the use of format=flowed:
+Edit..Preferences..Advanced..Config Editor. Search for
+&ldquo;mailnews.send_plaintext_flowed&rdquo;. Toggle it to make sure it is set
+to <code>false</code>.</p></li>
+</ol>
+
+<p>After that is done, you should be able to compose email as you otherwise
+would (cut + paste, <em>git format-patch</em> | <em>git imap-send</em>, etc), and the
+patches will not be mangled.</p>
+
+<h4 id="approach-3-external-editor">Approach #3 (external editor)</h4>
+
+<p>The following Thunderbird extensions are needed: AboutConfig from
+<a href="http://aboutconfig.mozdev.org/">http://aboutconfig.mozdev.org/</a> and External Editor from
+<a href="http://globs.org/articles.php?lng=en&amp;pg=8">http://globs.org/articles.php?lng=en&amp;pg=8</a></p>
+
+<ol>
+<li><p>Prepare the patch as a text file using your method of choice.</p></li>
+
+<li><p>Before opening a compose window, use Edit→Account Settings to
+uncheck the &ldquo;Compose messages in HTML format&rdquo; setting in the
+&ldquo;Composition &amp; Addressing&rdquo; panel of the account to be used to send
+the patch.</p></li>
+
+<li><p>In the main Thunderbird window, <em>before</em> you open the compose window
+for the patch, use Tools→about:config to set the following to the
+indicated values:</p>
+
+<pre><code>        mailnews.send_plaintext_flowed  =&gt; false
+        mailnews.wraplength             =&gt; 0
+</code></pre></li>
+
+<li><p>Open a compose window and click the external editor icon.</p></li>
+
+<li><p>In the external editor window, read in the patch file and exit the
+editor normally.</p></li>
+</ol>
+
+<p>Side note: it may be possible to do step 2 with about:config and the
+following settings but no one’s tried yet.</p>
+
+<pre><code>        mail.html_compose                       =&gt; false
+        mail.identity.default.compose_html      =&gt; false
+        mail.identity.id?.compose_html          =&gt; false
+</code></pre>
+
+<p>There is a script in contrib/thunderbird-patch-inline which can help you
+include patches with Thunderbird in an easy way. To use it, do the steps
+above and then use the script as the external editor.</p>
+
+<h3 id="kmail">KMail</h3>
+
+<p>This should help you to submit patches inline using KMail.</p>
+
+<ol>
+<li><p>Prepare the patch as a text file.</p></li>
+
+<li><p>Click on New Mail.</p></li>
+
+<li><p>Go under &ldquo;Options&rdquo; in the Composer window and be sure that &ldquo;Word
+wrap&rdquo; is not set.</p></li>
+
+<li><p>Use Message → Insert file… and insert the patch.</p></li>
+
+<li><p>Back in the compose window: add whatever other text you wish to the
+message, complete the addressing and subject fields, and press send.</p></li>
+</ol>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Extract commits between revisions R1 and R2, and apply them on top
+of the current branch using <em>git am</em> to cherry-pick them:</p>
+
+<pre><code>$ git format-patch -k --stdout R1..R2 | git am -3 -k
+</code></pre></li>
+
+<li><p>Extract all commits which are in the current branch but not in the
+origin branch:</p>
+
+<pre><code>$ git format-patch origin
+</code></pre>
+
+<p>For each commit a separate file is created in the current directory.</p></li>
+
+<li><p>Extract all commits that lead to <em>origin</em> since the inception of the
+project:</p>
+
+<pre><code>$ git format-patch --root origin
+</code></pre></li>
+
+<li><p>The same as the previous one:</p>
+
+<pre><code>$ git format-patch -M -B origin
+</code></pre>
+
+<p>Additionally, it detects and handles renames and complete rewrites
+intelligently to produce a renaming patch. A renaming patch reduces
+the amount of text output, and generally makes it easier to review.
+Note that non-Git &ldquo;patch&rdquo; programs won’t understand renaming
+patches, so use it only when you know the recipient uses Git to
+apply your patch.</p></li>
+
+<li><p>Extract three topmost commits from the current branch and format
+them as e-mailable patches:</p>
+
+<pre><code>$ git format-patch -3
+</code></pre></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-am">git-am(1)</a>, <a href="../git-send-email">git-send-email(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

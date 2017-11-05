@@ -2,11 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Resources on Git</title>
-    <link>https://www.gitdvcs.com/resources/index.xml</link>
+    <link>https://www.gitdvcs.com/resources/</link>
     <description>Recent content in Resources on Git</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://www.gitdvcs.com/resources/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://www.gitdvcs.com/resources/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Links</title>
@@ -14,13 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/resources/links/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://ndpsoftware.com/git-cheatsheet.html#loc=workspace;&#34;&gt;Visual Git Cheat Sheat&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf&#34;&gt;GitHub Cheat Sheet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://learngitbranching.js.org&#34;&gt;Learn Git Branching&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.gitignore.io&#34;&gt;Generate useful .gitignore files&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> Visual Git Cheat Sheat GitHub Cheat Sheet Learn Git Branching Generate useful .gitignore files  </description>
     </item>
     
     <item>
@@ -29,314 +25,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/resources/logo/</guid>
-      <description>&lt;!-- bloc-7 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-7&#34;&gt;
-    &lt;div class=&#34;container&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;h2 class=&#34;mg-md&#34;&gt;
-                    LOGO
-                &lt;/h2&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-7 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-8 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-8&#34;&gt;
-    &lt;div class=&#34;container bloc-md&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/design-logo.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p&gt;
-                    The git logomark is comprised of a diamond and the word git. &amp;nbsp;The diamod symbolizes how a distributed version control system works with the orange color being associated with git, a specific; a specific type of version control system. &amp;nbsp;The text associated with the logomark is the name of the version control system.
-                &lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-8 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-9 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-9&#34;&gt;
-    &lt;div class=&#34;container&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;h2 class=&#34;mg-md&#34;&gt;
-                    RATIONALIZATION
-                &lt;/h2&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-9 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-10 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white &#34; id=&#34;bloc-10&#34;&gt;
-    &lt;div class=&#34;container bloc-md&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-6&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/design-rationale.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-6&#34;&gt;
-                &lt;h3 class=&#34;mg-sm&#34;&gt;
-                    Logo
-                &lt;/h3&gt;
-                &lt;p class=&#34;mg-lg&#34;&gt;
-                    The git logo is composed of a diamond with a vertical line and a diagnoal line. The vertical line symbolizes the master branch of development and the diagnoal line symobolizes a branch, one of the key features of a version control system. &amp;nbsp;The orange diamond in the bakground represents the git itself. &lt;br&gt; &lt;br&gt;The logo can be drawn on a 16px x 16px grid with the vertical bar and diagnoical bar each being 2px wide. &amp;nbsp;The branch extends from master at a 45 degree angle to the edge of the diamond.
-                &lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-10 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-11 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-11&#34;&gt;
-    &lt;div class=&#34;container&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;h2 class=&#34;mg-md&#34;&gt;
-                    LOCKUPS
-                &lt;/h2&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-11 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-12 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-12&#34;&gt;
-    &lt;div class=&#34;container bloc-md&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-4&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/logo-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
-                &lt;h3 class=&#34;mg-md text-center&#34;&gt;
-                    Logo&lt;br&gt;
-                &lt;/h3&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-4&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/horizontal-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
-                &lt;h3 class=&#34;mg-md text-center&#34;&gt;
-                    Horizontal Lockup
-                &lt;/h3&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-4&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/stacked-lockup.svg&#34; class=&#34;img-responsive&#34; /&gt;
-                &lt;h3 class=&#34;mg-md text-center&#34;&gt;
-                    Stacked Lockup
-                &lt;/h3&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-12 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-13 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-13&#34;&gt;
-    &lt;div class=&#34;container&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;h2 class=&#34;mg-md&#34;&gt;
-                    COLORS
-                &lt;/h2&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-13 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-14 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-14&#34;&gt;
-    &lt;div class=&#34;container bloc-md&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-2 text-center&#34;&gt;
-                &lt;h3 class=&#34;stat-bloc-text git-bg-orange git-text-light&#34;&gt;
-                    Orange
-                &lt;/h3&gt;
-                &lt;p class=&#34;stat-bloc-sub-text&#34;&gt;
-                    #E15B39
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-2 text-center&#34;&gt;
-                &lt;h3 class=&#34;stat-bloc-text git-bg-black git-text-light&#34;&gt;
-                    Black
-                &lt;/h3&gt;
-                &lt;p class=&#34;stat-bloc-sub-text&#34;&gt;
-                    #171219
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-2 text-center&#34;&gt;
-                &lt;h3 class=&#34;stat-bloc-text git-bg-navy git-text-light&#34;&gt;
-                    Navy
-                &lt;/h3&gt;
-                &lt;p class=&#34;stat-bloc-sub-text&#34;&gt;
-                    #2D3142
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-2 text-center&#34;&gt;
-                &lt;h3 class=&#34;stat-bloc-text git-bg-blue git-text-dark&#34;&gt;
-                    Blue
-                &lt;/h3&gt;
-                &lt;p class=&#34;stat-bloc-sub-text&#34;&gt;
-                    #42A5E8
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-2 text-center&#34;&gt;
-                &lt;h3 class=&#34;stat-bloc-text git-bg-grey git-text-dark&#34;&gt;
-                    Grey
-                &lt;/h3&gt;
-                &lt;p class=&#34;stat-bloc-sub-text&#34;&gt;
-                    #FAFAFA
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-2 text-center&#34;&gt;
-                &lt;h3 class=&#34;stat-bloc-text git-bg-white git-text-dark&#34;&gt;
-                    White
-                &lt;/h3&gt;
-                &lt;p class=&#34;stat-bloc-sub-text&#34;&gt;
-                    #FFFFFF
-                &lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-14 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-15 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-15&#34;&gt;
-    &lt;div class=&#34;container&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;h2 class=&#34;mg-md&#34;&gt;
-                    LOGOMARKS AND LOGOS
-                &lt;/h2&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-15 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-16 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-16&#34;&gt;
-    &lt;div class=&#34;container bloc-md&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-full-color-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Horizontal lockup full color logomark used best used on light backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-dark-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Horizontal lockup lack logomark best used with light backgrounds.
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-white-dark-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Horizontal lockup white logomark best used with dark backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-orange-light-background.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Horizontal lockup orange logomark best used with white backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&#34;row voffset&#34;&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-full-color-light-background-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Stacked lockup full color logomark used best used on light backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-dark-light-background-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Stacked lockup black logomark best used with light backgrounds.
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-white-dark-backgroun-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Stacked lockup white logomark best used with dark backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-orange-light-backgroun-stacked.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Stacked lockup orange logomark best used with white backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&#34;row voffset&#34;&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-logo-orange.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Orange logo best used on light backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-logo-dark.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-md&#34;&gt;
-                    Black logo best used on light backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-                &lt;img src=&#34;https://www.gitdvcs.com/img/logo/git-logo-white.svg&#34; class=&#34;img-responsive center-block&#34; /&gt;
-                &lt;p class=&#34;mg-sm&#34;&gt;
-                    White logo best used with dark backgrounds
-                &lt;/p&gt;
-            &lt;/div&gt;
-            &lt;div class=&#34;col-sm-3&#34;&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-16 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-17 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-17&#34;&gt;
-    &lt;div class=&#34;container&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;col-sm-12&#34;&gt;
-                &lt;h2 class=&#34;mg-md&#34;&gt;
-                    DOWNLOADS
-                &lt;/h2&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-17 END --&gt;&lt;/p&gt;
-
-&lt;!-- bloc-18 --&gt;
-
-&lt;p&gt;&lt;div class=&#34;bloc l-bloc bgc-white&#34; id=&#34;bloc-18&#34;&gt;
-    &lt;div class=&#34;container bloc-lg&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-            &lt;div class=&#34;text-center&#34;&gt;
-                &lt;a href=&#34;index.html&#34; class=&#34;a-btn large-links&#34;&gt;git-logos.zip&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- bloc-18 END --&gt;&lt;/p&gt;
-</description>
+      <description>LOGO       The git logomark is comprised of a diamond and the word git. &amp;nbsp;The diamod symbolizes how a distributed version control system works with the orange color being associated with git, a specific; a specific type of version control system. &amp;nbsp;The text associated with the logomark is the name of the version control system.     RATIONALIZATION       Logo  The git logo is composed of a diamond with a vertical line and a diagnoal line.</description>
     </item>
     
     <item>
@@ -345,15 +34,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/resources/videos/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;Learn Git In 20 Minutes
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/Y9XZQO1n_7c&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description> Learn Git In 20 Minutes     </description>
     </item>
     
   </channel>

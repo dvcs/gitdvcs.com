@@ -113,40 +113,61 @@ git cat-file (--batch | --batch-check) &lt; &lt;list-of-objects&gt;
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>In its first form, the command provides the content or the type of an object in the repository. The type is required unless <em>-t</em> or <em>-p</em> is used to find the object type, or <em>-s</em> is used to find the object size, or <em>&ndash;textconv</em> is used (which implies type &ldquo;blob&rdquo;).</p>
+<p>In its first form, the command provides the content or the type of an
+object in the repository. The type is required unless <em>-t</em> or <em>-p</em> is
+used to find the object type, or <em>-s</em> is used to find the object size,
+or <em>&ndash;textconv</em> is used (which implies type &ldquo;blob&rdquo;).</p>
 
-<p>In the second form, a list of objects (separated by linefeeds) is provided on stdin, and the SHA-1, type, and size of each object is printed on stdout.</p>
+<p>In the second form, a list of objects (separated by linefeeds) is
+provided on stdin, and the SHA-1, type, and size of each object is
+printed on stdout.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&lt;object&gt;<br />
-The name of the object to show. For a more complete list of ways to spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+The name of the object to show. For a more complete list of ways to
+spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in
+<a href="../gitrevisions">gitrevisions(7)</a>.</p>
 
 <p>-t<br />
-Instead of the content, show the object type identified by &lt;object&gt;.</p>
+Instead of the content, show the object type identified by
+&lt;object&gt;.</p>
 
 <p>-s<br />
-Instead of the content, show the object size identified by &lt;object&gt;.</p>
+Instead of the content, show the object size identified by
+&lt;object&gt;.</p>
 
 <p>-e<br />
-Suppress all output; instead exit with zero status if &lt;object&gt; exists and is a valid object.</p>
+Suppress all output; instead exit with zero status if &lt;object&gt;
+exists and is a valid object.</p>
 
 <p>-p<br />
 Pretty-print the contents of &lt;object&gt; based on its type.</p>
 
 <p>&lt;type&gt;<br />
-Typically this matches the real type of &lt;object&gt; but asking for a type that can trivially be dereferenced from the given &lt;object&gt; is also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt; being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with &lt;object&gt; being a tag object that points at it.</p>
+Typically this matches the real type of &lt;object&gt; but asking for a
+type that can trivially be dereferenced from the given &lt;object&gt; is
+also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt;
+being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with
+&lt;object&gt; being a tag object that points at it.</p>
 
 <p>&ndash;textconv<br />
-Show the content as transformed by a textconv filter. In this case, &lt;object&gt; has be of the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt; in order to apply the filter to the content recorded in the index at &lt;path&gt;.</p>
+Show the content as transformed by a textconv filter. In this case,
+&lt;object&gt; has be of the form &lt;tree-ish&gt;:&lt;path&gt;, or
+:&lt;path&gt; in order to apply the filter to the content recorded in
+the index at &lt;path&gt;.</p>
 
-<p>&ndash;batch
+<p>&ndash;batch<br />
 &ndash;batch=&lt;format&gt;<br />
-Print object information and contents for each object provided on stdin. May not be combined with any other options or arguments. See the section <code>BATCH OUTPUT</code> below for details.</p>
+Print object information and contents for each object provided on stdin.
+May not be combined with any other options or arguments. See the section
+<code>BATCH OUTPUT</code> below for details.</p>
 
-<p>&ndash;batch-check
+<p>&ndash;batch-check<br />
 &ndash;batch-check=&lt;format&gt;<br />
-Print object information for each object provided on stdin. May not be combined with any other options or arguments. See the section <code>BATCH                   OUTPUT</code> below for details.</p>
+Print object information for each object provided on stdin. May not be
+combined with any other options or arguments. See the section
+<code>BATCH                   OUTPUT</code> below for details.</p>
 
 <h2 id="output">OUTPUT</h2>
 
@@ -158,13 +179,20 @@ Print object information for each object provided on stdin. May not be combined 
 
 <p>If <em>-p</em> is specified, the contents of &lt;object&gt; are pretty-printed.</p>
 
-<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of the &lt;object&gt; will be returned.</p>
+<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of
+the &lt;object&gt; will be returned.</p>
 
 <h2 id="batch-output">BATCH OUTPUT</h2>
 
-<p>If <code>--batch</code> or <code>--batch-check</code> is given, <code>cat-file</code> will read objects from stdin, one per line, and print information about them. By default, the whole line is considered as an object, as if it were fed to <a href="../git-rev-parse">git-rev-parse(1)</a>.</p>
+<p>If <code>--batch</code> or <code>--batch-check</code> is given, <code>cat-file</code> will read objects
+from stdin, one per line, and print information about them. By default,
+the whole line is considered as an object, as if it were fed to
+<a href="../git-rev-parse">git-rev-parse(1)</a>.</p>
 
-<p>You can specify the information shown for each object by using a custom <code>&lt;format&gt;</code>. The <code>&lt;format&gt;</code> is copied literally to stdout for each object, with placeholders of the form <code>%(atom)</code> expanded, followed by a newline. The available atoms are:</p>
+<p>You can specify the information shown for each object by using a custom
+<code>&lt;format&gt;</code>. The <code>&lt;format&gt;</code> is copied literally to stdout for each
+object, with placeholders of the form <code>%(atom)</code> expanded, followed by a
+newline. The available atoms are:</p>
 
 <p><code>objectname</code><br />
 The 40-hex object name of the object.</p>
@@ -176,14 +204,22 @@ The type of of the object (the same as <code>cat-file -t</code> reports).</p>
 The size, in bytes, of the object (the same as <code>cat-file -s</code> reports).</p>
 
 <p><code>objectsize:disk</code><br />
-The size, in bytes, that the object takes up on disk. See the note about on-disk sizes in the <code>CAVEATS</code> section below.</p>
+The size, in bytes, that the object takes up on disk. See the note about
+on-disk sizes in the <code>CAVEATS</code> section below.</p>
 
 <p><code>rest</code><br />
-If this atom is used in the output string, input lines are split at the first whitespace boundary. All characters before that whitespace are considered to be the object name; characters after that first run of whitespace (i.e., the &ldquo;rest&rdquo; of the line) are output in place of the <code>%(rest)</code> atom.</p>
+If this atom is used in the output string, input lines are split at the
+first whitespace boundary. All characters before that whitespace are
+considered to be the object name; characters after that first run of
+whitespace (i.e., the &ldquo;rest&rdquo; of the line) are output in place of the
+<code>%(rest)</code> atom.</p>
 
-<p>If no format is specified, the default format is <code>%(objectname) %(objecttype) %(objectsize)</code>.</p>
+<p>If no format is specified, the default format is
+<code>%(objectname) %(objecttype) %(objectsize)</code>.</p>
 
-<p>If <code>--batch</code> is specified, the object information is followed by the object contents (consisting of <code>%(objectsize)</code> bytes), followed by a newline.</p>
+<p>If <code>--batch</code> is specified, the object information is followed by the
+object contents (consisting of <code>%(objectsize)</code> bytes), followed by a
+newline.</p>
 
 <p>For example, <code>--batch</code> without a custom format would produce:</p>
 
@@ -191,19 +227,28 @@ If this atom is used in the output string, input lines are split at the first wh
 &lt;contents&gt; LF
 </code></pre>
 
-<p>Whereas <code>--batch-check='%(objectname)               %(objecttype)'</code> would produce:</p>
+<p>Whereas <code>--batch-check='%(objectname)               %(objecttype)'</code>
+would produce:</p>
 
 <pre><code>&lt;sha1&gt; SP &lt;type&gt; LF
 </code></pre>
 
-<p>If a name is specified on stdin that cannot be resolved to an object in the repository, then <code>cat-file</code> will ignore any custom format and print:</p>
+<p>If a name is specified on stdin that cannot be resolved to an object in
+the repository, then <code>cat-file</code> will ignore any custom format and print:</p>
 
 <pre><code>&lt;object&gt; SP missing LF
 </code></pre>
 
 <h2 id="caveats">CAVEATS</h2>
 
-<p>Note that the sizes of objects on disk are reported accurately, but care should be taken in drawing conclusions about which refs or objects are responsible for disk usage. The size of a packed non-delta object may be much larger than the size of objects which delta against it, but the choice of which object is the base and which is the delta is arbitrary and is subject to change during a repack. Note also that multiple copies of an object may be present in the object database; in this case, it is undefined which copy’s size will be reported.</p>
+<p>Note that the sizes of objects on disk are reported accurately, but care
+should be taken in drawing conclusions about which refs or objects are
+responsible for disk usage. The size of a packed non-delta object may be
+much larger than the size of objects which delta against it, but the
+choice of which object is the base and which is the delta is arbitrary
+and is subject to change during a repack. Note also that multiple copies
+of an object may be present in the object database; in this case, it is
+undefined which copy’s size will be reported.</p>
 
 <h2 id="git">GIT</h2>
 

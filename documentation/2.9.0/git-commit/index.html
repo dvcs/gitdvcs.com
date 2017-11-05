@@ -117,106 +117,170 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Stores the current contents of the index in a new commit along with a log message from the user describing the changes.</p>
+<p>Stores the current contents of the index in a new commit along with a
+log message from the user describing the changes.</p>
 
 <p>The content to be added can be specified in several ways:</p>
 
 <ol>
-<li><p>by using <em>git add</em> to incrementally &ldquo;add&rdquo; changes to the index before using the <em>commit</em> command (Note: even modified files must be &ldquo;added&rdquo;);</p></li>
+<li><p>by using <em>git add</em> to incrementally &ldquo;add&rdquo; changes to the index
+before using the <em>commit</em> command (Note: even modified files must be
+&ldquo;added&rdquo;);</p></li>
 
-<li><p>by using <em>git rm</em> to remove files from the working tree and the index, again before using the <em>commit</em> command;</p></li>
+<li><p>by using <em>git rm</em> to remove files from the working tree and the
+index, again before using the <em>commit</em> command;</p></li>
 
-<li><p>by listing files as arguments to the <em>commit</em> command, in which case the commit will ignore changes staged in the index, and instead record the current content of the listed files (which must already be known to Git);</p></li>
+<li><p>by listing files as arguments to the <em>commit</em> command, in which case
+the commit will ignore changes staged in the index, and instead
+record the current content of the listed files (which must already
+be known to Git);</p></li>
 
-<li><p>by using the -a switch with the <em>commit</em> command to automatically &ldquo;add&rdquo; changes from all known files (i.e. all files that are already listed in the index) and to automatically &ldquo;rm&rdquo; files in the index that have been removed from the working tree, and then perform the actual commit;</p></li>
+<li><p>by using the -a switch with the <em>commit</em> command to automatically
+&ldquo;add&rdquo; changes from all known files (i.e. all files that are already
+listed in the index) and to automatically &ldquo;rm&rdquo; files in the index
+that have been removed from the working tree, and then perform the
+actual commit;</p></li>
 
-<li><p>by using the &ndash;interactive or &ndash;patch switches with the <em>commit</em> command to decide one by one which files or hunks should be part of the commit, before finalizing the operation. See the “Interactive Mode” section of <a href="../git-add">git-add(1)</a> to learn how to operate these modes.</p></li>
+<li><p>by using the &ndash;interactive or &ndash;patch switches with the <em>commit</em>
+command to decide one by one which files or hunks should be part of
+the commit, before finalizing the operation. See the “Interactive
+Mode” section of <a href="../git-add">git-add(1)</a> to learn how to operate
+these modes.</p></li>
 </ol>
 
-<p>The <code>--dry-run</code> option can be used to obtain a summary of what is included by any of the above for the next commit by giving the same set of parameters (options and paths).</p>
+<p>The <code>--dry-run</code> option can be used to obtain a summary of what is
+included by any of the above for the next commit by giving the same set
+of parameters (options and paths).</p>
 
-<p>If you make a commit and then find a mistake immediately after that, you can recover from it with <em>git reset</em>.</p>
+<p>If you make a commit and then find a mistake immediately after that, you
+can recover from it with <em>git reset</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-a
+<p>-a<br />
 &ndash;all<br />
-Tell the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.</p>
+Tell the command to automatically stage files that have been modified
+and deleted, but new files you have not told Git about are not affected.</p>
 
-<p>-p
+<p>-p<br />
 &ndash;patch<br />
-Use the interactive patch selection interface to chose which changes to commit. See <a href="../git-add">git-add(1)</a> for details.</p>
+Use the interactive patch selection interface to chose which changes to
+commit. See <a href="../git-add">git-add(1)</a> for details.</p>
 
-<p>-C &lt;commit&gt;
+<p>-C &lt;commit&gt;<br />
 &ndash;reuse-message=&lt;commit&gt;<br />
-Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit.</p>
+Take an existing commit object, and reuse the log message and the
+authorship information (including the timestamp) when creating the
+commit.</p>
 
-<p>-c &lt;commit&gt;
+<p>-c &lt;commit&gt;<br />
 &ndash;reedit-message=&lt;commit&gt;<br />
-Like <em>-C</em>, but with <em>-c</em> the editor is invoked, so that the user can further edit the commit message.</p>
+Like <em>-C</em>, but with <em>-c</em> the editor is invoked, so that the user can
+further edit the commit message.</p>
 
 <p>&ndash;fixup=&lt;commit&gt;<br />
-Construct a commit message for use with <code>rebase --autosquash</code>. The commit message will be the subject line from the specified commit with a prefix of &ldquo;fixup! &ldquo;. See <a href="../git-rebase">git-rebase(1)</a> for details.</p>
+Construct a commit message for use with <code>rebase --autosquash</code>. The
+commit message will be the subject line from the specified commit with a
+prefix of &ldquo;fixup! &ldquo;. See <a href="../git-rebase">git-rebase(1)</a> for details.</p>
 
 <p>&ndash;squash=&lt;commit&gt;<br />
-Construct a commit message for use with <code>rebase --autosquash</code>. The commit message subject line is taken from the specified commit with a prefix of &ldquo;squash! &ldquo;. Can be used with additional commit message options (<code>-m</code>/<code>-c</code>/<code>-C</code>/<code>-F</code>). See <a href="../git-rebase">git-rebase(1)</a> for details.</p>
+Construct a commit message for use with <code>rebase --autosquash</code>. The
+commit message subject line is taken from the specified commit with a
+prefix of &ldquo;squash! &ldquo;. Can be used with additional commit message options
+(<code>-m</code>/<code>-c</code>/<code>-C</code>/<code>-F</code>). See <a href="../git-rebase">git-rebase(1)</a> for details.</p>
 
 <p>&ndash;reset-author<br />
-When used with -C/-c/&ndash;amend options, or when committing after a a conflicting cherry-pick, declare that the authorship of the resulting commit now belongs to the committer. This also renews the author timestamp.</p>
+When used with -C/-c/&ndash;amend options, or when committing after a a
+conflicting cherry-pick, declare that the authorship of the resulting
+commit now belongs to the committer. This also renews the author
+timestamp.</p>
 
 <p>&ndash;short<br />
-When doing a dry-run, give the output in the short-format. See <a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p>
+When doing a dry-run, give the output in the short-format. See
+<a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p>
 
 <p>&ndash;branch<br />
 Show the branch and tracking info even in short-format.</p>
 
 <p>&ndash;porcelain<br />
-When doing a dry-run, give the output in a porcelain-ready format. See <a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p>
+When doing a dry-run, give the output in a porcelain-ready format. See
+<a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p>
 
 <p>&ndash;long<br />
-When doing a dry-run, give the output in a the long-format. Implies <code>--dry-run</code>.</p>
+When doing a dry-run, give the output in a the long-format. Implies
+<code>--dry-run</code>.</p>
 
-<p>-z
+<p>-z<br />
 &ndash;null<br />
-When showing <code>short</code> or <code>porcelain</code> status output, terminate entries in the status output with NUL, instead of LF. If no format is given, implies the <code>--porcelain</code> output format.</p>
+When showing <code>short</code> or <code>porcelain</code> status output, terminate entries in
+the status output with NUL, instead of LF. If no format is given,
+implies the <code>--porcelain</code> output format.</p>
 
-<p>-F &lt;file&gt;
+<p>-F &lt;file&gt;<br />
 &ndash;file=&lt;file&gt;<br />
-Take the commit message from the given file. Use <em>-</em> to read the message from the standard input.</p>
+Take the commit message from the given file. Use <em>-</em> to read the message
+from the standard input.</p>
 
 <p>&ndash;author=&lt;author&gt;<br />
-Override the commit author. Specify an explicit author using the standard <code>A U Thor                   &lt;author@example.com&gt;</code> format. Otherwise &lt;author&gt; is assumed to be a pattern and is used to search for an existing commit by that author (i.e. rev-list &ndash;all -i &ndash;author=&lt;author&gt;); the commit author is then copied from the first such commit found.</p>
+Override the commit author. Specify an explicit author using the
+standard <code>A U Thor                   &lt;author@example.com&gt;</code> format.
+Otherwise &lt;author&gt; is assumed to be a pattern and is used to
+search for an existing commit by that author (i.e. rev-list &ndash;all -i
+&ndash;author=&lt;author&gt;); the commit author is then copied from the
+first such commit found.</p>
 
 <p>&ndash;date=&lt;date&gt;<br />
 Override the author date used in the commit.</p>
 
-<p>-m &lt;msg&gt;
+<p>-m &lt;msg&gt;<br />
 &ndash;message=&lt;msg&gt;<br />
-Use the given &lt;msg&gt; as the commit message. If multiple <code>-m</code> options are given, their values are concatenated as separate paragraphs.</p>
+Use the given &lt;msg&gt; as the commit message. If multiple <code>-m</code>
+options are given, their values are concatenated as separate paragraphs.</p>
 
-<p>-t &lt;file&gt;
+<p>-t &lt;file&gt;<br />
 &ndash;template=&lt;file&gt;<br />
-When editing the commit message, start the editor with the contents in the given file. The <code>commit.template</code> configuration variable is often used to give this option implicitly to the command. This mechanism can be used by projects that want to guide participants with some hints on what to write in the message in what order. If the user exits the editor without editing the message, the commit is aborted. This has no effect when a message is given by other means, e.g. with the <code>-m</code> or <code>-F</code> options.</p>
+When editing the commit message, start the editor with the contents in
+the given file. The <code>commit.template</code> configuration variable is often
+used to give this option implicitly to the command. This mechanism can
+be used by projects that want to guide participants with some hints on
+what to write in the message in what order. If the user exits the editor
+without editing the message, the commit is aborted. This has no effect
+when a message is given by other means, e.g. with the <code>-m</code> or <code>-F</code>
+options.</p>
 
-<p>-s
+<p>-s<br />
 &ndash;signoff<br />
-Add Signed-off-by line by the committer at the end of the commit log message. The meaning of a signoff depends on the project, but it typically certifies that committer has the rights to submit this work under the same license and agrees to a Developer Certificate of Origin (see <a href="http://developercertificate.org/">http://developercertificate.org/</a> for more information).</p>
+Add Signed-off-by line by the committer at the end of the commit log
+message. The meaning of a signoff depends on the project, but it
+typically certifies that committer has the rights to submit this work
+under the same license and agrees to a Developer Certificate of Origin
+(see <a href="http://developercertificate.org/">http://developercertificate.org/</a> for more information).</p>
 
-<p>-n
+<p>-n<br />
 &ndash;no-verify<br />
-This option bypasses the pre-commit and commit-msg hooks. See also <a href="../githooks">githooks(5)</a>.</p>
+This option bypasses the pre-commit and commit-msg hooks. See also
+<a href="../githooks">githooks(5)</a>.</p>
 
 <p>&ndash;allow-empty<br />
-Usually recording a commit that has the exact same tree as its sole parent commit is a mistake, and the command prevents you from making such a commit. This option bypasses the safety, and is primarily for use by foreign SCM interface scripts.</p>
+Usually recording a commit that has the exact same tree as its sole
+parent commit is a mistake, and the command prevents you from making
+such a commit. This option bypasses the safety, and is primarily for use
+by foreign SCM interface scripts.</p>
 
 <p>&ndash;allow-empty-message<br />
-Like &ndash;allow-empty this command is primarily for use by foreign SCM interface scripts. It allows you to create a commit with an empty commit message without using plumbing commands like <a href="../git-commit-tree">git-commit-tree(1)</a>.</p>
+Like &ndash;allow-empty this command is primarily for use by foreign SCM
+interface scripts. It allows you to create a commit with an empty commit
+message without using plumbing commands like
+<a href="../git-commit-tree">git-commit-tree(1)</a>.</p>
 
 <p>&ndash;cleanup=&lt;mode&gt;<br />
-This option determines how the supplied commit message should be cleaned up before committing. The <em>&lt;mode&gt;</em> can be <code>strip</code>, <code>whitespace</code>, <code>verbatim</code>, <code>scissors</code> or <code>default</code>.</p>
+This option determines how the supplied commit message should be cleaned
+up before committing. The <em>&lt;mode&gt;</em> can be <code>strip</code>, <code>whitespace</code>,
+<code>verbatim</code>, <code>scissors</code> or <code>default</code>.</p>
 
 <p>strip<br />
-Strip leading and trailing empty lines, trailing whitespace, commentary and collapse consecutive empty lines.</p>
+Strip leading and trailing empty lines, trailing whitespace, commentary
+and collapse consecutive empty lines.</p>
 
 <p>whitespace<br />
 Same as <code>strip</code> except #commentary is not removed.</p>
@@ -225,22 +289,38 @@ Same as <code>strip</code> except #commentary is not removed.</p>
 Do not change the message at all.</p>
 
 <p>scissors<br />
-Same as <code>whitespace</code>, except that everything from (and including) the line &ldquo;<code># ------------------------                             &gt;8 ------------------------</code>&rdquo; is truncated if the message is to be edited. &ldquo;<code>#</code>&rdquo; can be customized with core.commentChar.</p>
+Same as <code>whitespace</code>, except that everything from (and including) the
+line
+&ldquo;<code># ------------------------                             &gt;8 ------------------------</code>&ldquo;
+is truncated if the message is to be edited. &ldquo;<code>#</code>&rdquo; can be customized
+with core.commentChar.</p>
 
 <p>default<br />
 Same as <code>strip</code> if the message is to be edited. Otherwise <code>whitespace</code>.</p>
 
-<p>The default can be changed by the <em>commit.cleanup</em> configuration variable (see <a href="../git-config">git-config(1)</a>).</p>
+<p>The default can be changed by the <em>commit.cleanup</em> configuration
+variable (see <a href="../git-config">git-config(1)</a>).</p>
 
-<p>-e
+<p>-e<br />
 &ndash;edit<br />
-The message taken from file with <code>-F</code>, command line with <code>-m</code>, and from commit object with <code>-C</code> are usually used as the commit log message unmodified. This option lets you further edit the message taken from these sources.</p>
+The message taken from file with <code>-F</code>, command line with <code>-m</code>, and from
+commit object with <code>-C</code> are usually used as the commit log message
+unmodified. This option lets you further edit the message taken from
+these sources.</p>
 
 <p>&ndash;no-edit<br />
-Use the selected commit message without launching an editor. For example, <code>git commit --amend                   --no-edit</code> amends a commit without changing its commit message.</p>
+Use the selected commit message without launching an editor. For
+example, <code>git commit --amend                   --no-edit</code> amends a
+commit without changing its commit message.</p>
 
 <p>&ndash;amend<br />
-Replace the tip of the current branch by creating a new commit. The recorded tree is prepared as usual (including the effect of the <code>-i</code> and <code>-o</code> options and explicit pathspec), and the message from the original commit is used as the starting point, instead of an empty message, when no other message is specified from the command line via options such as <code>-m</code>, <code>-F</code>, <code>-c</code>, etc. The new commit has the same parents and author as the current one (the <code>--reset-author</code> option can countermand this).</p>
+Replace the tip of the current branch by creating a new commit. The
+recorded tree is prepared as usual (including the effect of the <code>-i</code> and
+<code>-o</code> options and explicit pathspec), and the message from the original
+commit is used as the starting point, instead of an empty message, when
+no other message is specified from the command line via options such as
+<code>-m</code>, <code>-F</code>, <code>-c</code>, etc. The new commit has the same parents and author as
+the current one (the <code>--reset-author</code> option can countermand this).</p>
 
 <p>It is a rough equivalent for:</p>
 
@@ -251,24 +331,37 @@ Replace the tip of the current branch by creating a new commit. The recorded tre
 
 <p>but can be used to amend a merge commit.</p>
 
-<p>You should understand the implications of rewriting history if you amend a commit that has already been published. (See the &ldquo;RECOVERING FROM UPSTREAM REBASE&rdquo; section in <a href="../git-rebase">git-rebase(1)</a>.)</p>
+<p>You should understand the implications of rewriting history if you amend
+a commit that has already been published. (See the &ldquo;RECOVERING FROM
+UPSTREAM REBASE&rdquo; section in <a href="../git-rebase">git-rebase(1)</a>.)</p>
 
 <p>&ndash;no-post-rewrite<br />
 Bypass the post-rewrite hook.</p>
 
-<p>-i
+<p>-i<br />
 &ndash;include<br />
-Before making a commit out of staged contents so far, stage the contents of paths given on the command line as well. This is usually not what you want unless you are concluding a conflicted merge.</p>
+Before making a commit out of staged contents so far, stage the contents
+of paths given on the command line as well. This is usually not what you
+want unless you are concluding a conflicted merge.</p>
 
-<p>-o
+<p>-o<br />
 &ndash;only<br />
-Make a commit by taking the updated working tree contents of the paths specified on the command line, disregarding any contents that have been staged for other paths. This is the default mode of operation of <em>git commit</em> if any paths are given on the command line, in which case this option can be omitted. If this option is specified together with <em>&ndash;amend</em>, then no paths need to be specified, which can be used to amend the last commit without committing changes that have already been staged.</p>
+Make a commit by taking the updated working tree contents of the paths
+specified on the command line, disregarding any contents that have been
+staged for other paths. This is the default mode of operation of <em>git
+commit</em> if any paths are given on the command line, in which case this
+option can be omitted. If this option is specified together with
+<em>&ndash;amend</em>, then no paths need to be specified, which can be used to
+amend the last commit without committing changes that have already been
+staged.</p>
 
-<p>-u[&lt;mode&gt;]
+<p>-u[&lt;mode&gt;]<br />
 &ndash;untracked-files[=&lt;mode&gt;]<br />
 Show untracked files.</p>
 
-<p>The mode parameter is optional (defaults to <em>all</em>), and is used to specify the handling of untracked files; when -u is not used, the default is <em>normal</em>, i.e. show untracked files and directories.</p>
+<p>The mode parameter is optional (defaults to <em>all</em>), and is used to
+specify the handling of untracked files; when -u is not used, the
+default is <em>normal</em>, i.e. show untracked files and directories.</p>
 
 <p>The possible options are:</p>
 
@@ -279,58 +372,87 @@ Show untracked files.</p>
 
 <li><p><em>all</em> - Also shows individual files in untracked directories.</p>
 
-<p>The default can be changed using the status.showUntrackedFiles configuration variable documented in <a href="../git-config">git-config(1)</a>.</p></li>
+<p>The default can be changed using the status.showUntrackedFiles
+configuration variable documented in
+<a href="../git-config">git-config(1)</a>.</p></li>
 </ul>
 
-<p>-v
+<p>-v<br />
 &ndash;verbose<br />
-Show unified diff between the HEAD commit and what would be committed at the bottom of the commit message template to help the user describe the commit by reminding what changes the commit has. Note that this diff output doesn’t have its lines prefixed with <em>#</em>. This diff will not be a part of the commit message. See the <code>commit.verbose</code> configuration variable in <a href="../git-config">git-config(1)</a>.</p>
+Show unified diff between the HEAD commit and what would be committed at
+the bottom of the commit message template to help the user describe the
+commit by reminding what changes the commit has. Note that this diff
+output doesn’t have its lines prefixed with <em>#</em>. This diff will not be
+a part of the commit message. See the <code>commit.verbose</code> configuration
+variable in <a href="../git-config">git-config(1)</a>.</p>
 
-<p>If specified twice, show in addition the unified diff between what would be committed and the worktree files, i.e. the unstaged changes to tracked files.</p>
+<p>If specified twice, show in addition the unified diff between what would
+be committed and the worktree files, i.e. the unstaged changes to
+tracked files.</p>
 
-<p>-q
+<p>-q<br />
 &ndash;quiet<br />
 Suppress commit summary message.</p>
 
 <p>&ndash;dry-run<br />
-Do not create a commit, but show a list of paths that are to be committed, paths with local changes that will be left uncommitted and paths that are untracked.</p>
+Do not create a commit, but show a list of paths that are to be
+committed, paths with local changes that will be left uncommitted and
+paths that are untracked.</p>
 
 <p>&ndash;status<br />
-Include the output of <a href="../git-status">git-status(1)</a> in the commit message template when using an editor to prepare the commit message. Defaults to on, but can be used to override configuration variable commit.status.</p>
+Include the output of <a href="../git-status">git-status(1)</a> in the commit
+message template when using an editor to prepare the commit message.
+Defaults to on, but can be used to override configuration variable
+commit.status.</p>
 
 <p>&ndash;no-status<br />
-Do not include the output of <a href="../git-status">git-status(1)</a> in the commit message template when using an editor to prepare the default commit message.</p>
+Do not include the output of <a href="../git-status">git-status(1)</a> in the
+commit message template when using an editor to prepare the default
+commit message.</p>
 
-<p>-S[&lt;keyid&gt;]
+<p>-S[&lt;keyid&gt;]<br />
 &ndash;gpg-sign[=&lt;keyid&gt;]<br />
-GPG-sign commits. The <code>keyid</code> argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space.</p>
+GPG-sign commits. The <code>keyid</code> argument is optional and defaults to the
+committer identity; if specified, it must be stuck to the option without
+a space.</p>
 
 <p>&ndash;no-gpg-sign<br />
-Countermand <code>commit.gpgSign</code> configuration variable that is set to force each and every commit to be signed.</p>
+Countermand <code>commit.gpgSign</code> configuration variable that is set to force
+each and every commit to be signed.</p>
 
 <p>&ndash;<br />
 Do not interpret any more arguments as options.</p>
 
 <p>&lt;file&gt;…<br />
-When files are given on the command line, the command commits the contents of the named files, without recording the changes already staged. The contents of these files are also staged for the next commit on top of what have been staged before.</p>
+When files are given on the command line, the command commits the
+contents of the named files, without recording the changes already
+staged. The contents of these files are also staged for the next commit
+on top of what have been staged before.</p>
 
 <h2 id="date-formats">DATE FORMATS</h2>
 
-<p>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables and the <code>--date</code> option support the following date formats:</p>
+<p>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables and
+the <code>--date</code> option support the following date formats:</p>
 
 <p>Git internal format<br />
-It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where <code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
+It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where
+<code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the
+UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from
+UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
 
 <p>RFC 2822<br />
-The standard email format as described by RFC 2822, for example <code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
+The standard email format as described by RFC 2822, for example
+<code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
 
 <p>ISO 8601<br />
-Time and date specified by the ISO 8601 standard, for example <code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code> character as well.</p>
+Time and date specified by the ISO 8601 standard, for example
+<code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code>
+character as well.</p>
 
 <table>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -344,7 +466,16 @@ Note
 
 <h2 id="examples">EXAMPLES</h2>
 
-<p>When recording your own work, the contents of modified files in your working tree are temporarily stored to a staging area called the &ldquo;index&rdquo; with <em>git add</em>. A file can be reverted back, only in the index but not in the working tree, to that of the last commit with <code>git reset HEAD -- &lt;file&gt;</code>, which effectively reverts <em>git add</em> and prevents the changes to this file from participating in the next commit. After building the state to be committed incrementally with these commands, <code>git               commit</code> (without any pathname parameter) is used to record what has been staged so far. This is the most basic form of the command. An example:</p>
+<p>When recording your own work, the contents of modified files in your
+working tree are temporarily stored to a staging area called the &ldquo;index&rdquo;
+with <em>git add</em>. A file can be reverted back, only in the index but not
+in the working tree, to that of the last commit with
+<code>git reset HEAD -- &lt;file&gt;</code>, which effectively reverts <em>git add</em> and
+prevents the changes to this file from participating in the next commit.
+After building the state to be committed incrementally with these
+commands, <code>git               commit</code> (without any pathname parameter) is
+used to record what has been staged so far. This is the most basic form
+of the command. An example:</p>
 
 <pre><code>$ edit hello.c
 $ git rm goodbye.c
@@ -352,16 +483,25 @@ $ git add hello.c
 $ git commit
 </code></pre>
 
-<p>Instead of staging files after each individual change, you can tell <code>git commit</code> to notice the changes to the files whose contents are tracked in your working tree and do corresponding <code>git add</code> and <code>git rm</code> for you. That is, this example does the same as the earlier example if there is no other change in your working tree:</p>
+<p>Instead of staging files after each individual change, you can tell
+<code>git commit</code> to notice the changes to the files whose contents are
+tracked in your working tree and do corresponding <code>git add</code> and <code>git rm</code>
+for you. That is, this example does the same as the earlier example if
+there is no other change in your working tree:</p>
 
 <pre><code>$ edit hello.c
 $ rm goodbye.c
 $ git commit -a
 </code></pre>
 
-<p>The command <code>git commit -a</code> first looks at your working tree, notices that you have modified hello.c and removed goodbye.c, and performs necessary <code>git               add</code> and <code>git rm</code> for you.</p>
+<p>The command <code>git commit -a</code> first looks at your working tree, notices
+that you have modified hello.c and removed goodbye.c, and performs
+necessary <code>git               add</code> and <code>git rm</code> for you.</p>
 
-<p>After staging changes to many files, you can alter the order the changes are recorded in, by giving pathnames to <code>git commit</code>. When pathnames are given, the command makes a commit that only records the changes made to the named paths:</p>
+<p>After staging changes to many files, you can alter the order the changes
+are recorded in, by giving pathnames to <code>git commit</code>. When pathnames are
+given, the command makes a commit that only records the changes made to
+the named paths:</p>
 
 <pre><code>$ edit hello.c hello.h
 $ git add hello.c hello.h
@@ -369,14 +509,23 @@ $ edit Makefile
 $ git commit Makefile
 </code></pre>
 
-<p>This makes a commit that records the modification to <code>Makefile</code>. The changes staged for <code>hello.c</code> and <code>hello.h</code> are not included in the resulting commit. However, their changes are not lost — they are still staged and merely held back. After the above sequence, if you do:</p>
+<p>This makes a commit that records the modification to <code>Makefile</code>. The
+changes staged for <code>hello.c</code> and <code>hello.h</code> are not included in the
+resulting commit. However, their changes are not lost — they are still
+staged and merely held back. After the above sequence, if you do:</p>
 
 <pre><code>$ git commit
 </code></pre>
 
-<p>this second commit would record the changes to <code>hello.c</code> and <code>hello.h</code> as expected.</p>
+<p>this second commit would record the changes to <code>hello.c</code> and <code>hello.h</code>
+as expected.</p>
 
-<p>After a merge (initiated by <em>git merge</em> or <em>git pull</em>) stops because of conflicts, cleanly merged paths are already staged to be committed for you, and paths that conflicted are left in unmerged state. You would have to first check which paths are conflicting with <em>git status</em> and after fixing them manually in your working tree, you would stage the result as usual with <em>git add</em>:</p>
+<p>After a merge (initiated by <em>git merge</em> or <em>git pull</em>) stops because of
+conflicts, cleanly merged paths are already staged to be committed for
+you, and paths that conflicted are left in unmerged state. You would
+have to first check which paths are conflicting with <em>git status</em> and
+after fixing them manually in your working tree, you would stage the
+result as usual with <em>git add</em>:</p>
 
 <pre><code>$ git status | grep unmerged
 unmerged: hello.c
@@ -384,67 +533,128 @@ $ edit hello.c
 $ git add hello.c
 </code></pre>
 
-<p>After resolving conflicts and staging the result, <code>git ls-files -u</code> would stop mentioning the conflicted path. When you are done, run <code>git               commit</code> to finally record the merge:</p>
+<p>After resolving conflicts and staging the result, <code>git ls-files -u</code>
+would stop mentioning the conflicted path. When you are done, run
+<code>git               commit</code> to finally record the merge:</p>
 
 <pre><code>$ git commit
 </code></pre>
 
-<p>As with the case to record your own changes, you can use <code>-a</code> option to save typing. One difference is that during a merge resolution, you cannot use <code>git commit</code> with pathnames to alter the order the changes are committed, because the merge should be recorded as a single commit. In fact, the command refuses to run when given pathnames (but see <code>-i</code> option).</p>
+<p>As with the case to record your own changes, you can use <code>-a</code> option to
+save typing. One difference is that during a merge resolution, you
+cannot use <code>git commit</code> with pathnames to alter the order the changes
+are committed, because the merge should be recorded as a single commit.
+In fact, the command refuses to run when given pathnames (but see <code>-i</code>
+option).</p>
 
 <h2 id="discussion">DISCUSSION</h2>
 
-<p>Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, <a href="../git-format-patch">git-format-patch(1)</a> turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.</p>
+<p>Though not required, it’s a good idea to begin the commit message with a
+single short (less than 50 character) line summarizing the change,
+followed by a blank line and then a more thorough description. The text
+up to the first blank line in a commit message is treated as the commit
+title, and that title is used throughout Git. For example,
+<a href="../git-format-patch">git-format-patch(1)</a> turns a commit into email,
+and it uses the title on the Subject line and the rest of the commit in
+the body.</p>
 
 <p>Git is to some extent character encoding agnostic.</p>
 
 <ul>
-<li><p>The contents of the blob objects are uninterpreted sequences of bytes. There is no encoding translation at the core level.</p></li>
+<li><p>The contents of the blob objects are uninterpreted sequences of
+bytes. There is no encoding translation at the core level.</p></li>
 
-<li><p>Path names are encoded in UTF-8 normalization form C. This applies to tree objects, the index file, ref names, as well as path names in command line arguments, environment variables and config files (<code>.git/config</code> (see <a href="../git-config">git-config(1)</a>), <a href="../gitignore">gitignore(5)</a>, <a href="../gitattributes">gitattributes(5)</a> and <a href="../gitmodules">gitmodules(5)</a>).</p>
+<li><p>Path names are encoded in UTF-8 normalization form C. This applies
+to tree objects, the index file, ref names, as well as path names in
+command line arguments, environment variables and config files
+(<code>.git/config</code> (see <a href="../git-config">git-config(1)</a>),
+<a href="../gitignore">gitignore(5)</a>,
+<a href="../gitattributes">gitattributes(5)</a> and
+<a href="../gitmodules">gitmodules(5)</a>).</p>
 
-<p>Note that Git at the core level treats path names simply as sequences of non-NUL bytes, there are no path name encoding conversions (except on Mac and Windows). Therefore, using non-ASCII path names will mostly work even on platforms and file systems that use legacy extended ASCII encodings. However, repositories created on such systems will not work properly on UTF-8-based systems (e.g. Linux, Mac, Windows) and vice versa. Additionally, many Git-based tools simply assume path names to be UTF-8 and will fail to display other encodings correctly.</p></li>
+<p>Note that Git at the core level treats path names simply as
+sequences of non-NUL bytes, there are no path name encoding
+conversions (except on Mac and Windows). Therefore, using non-ASCII
+path names will mostly work even on platforms and file systems that
+use legacy extended ASCII encodings. However, repositories created
+on such systems will not work properly on UTF-8-based systems (e.g.
+Linux, Mac, Windows) and vice versa. Additionally, many Git-based
+tools simply assume path names to be UTF-8 and will fail to display
+other encodings correctly.</p></li>
 
-<li><p>Commit log messages are typically encoded in UTF-8, but other extended ASCII encodings are also supported. This includes ISO-8859-x, CP125x and many others, but <em>not</em> UTF-<sup>16</sup>&frasl;<sub>32</sub>, EBCDIC and CJK multi-byte encodings (GBK, Shift-JIS, Big5, EUC-x, CP9xx etc.).</p></li>
+<li><p>Commit log messages are typically encoded in UTF-8, but other
+extended ASCII encodings are also supported. This includes
+ISO-8859-x, CP125x and many others, but <em>not</em> UTF-<sup>16</sup>&frasl;<sub>32</sub>, EBCDIC and
+CJK multi-byte encodings (GBK, Shift-JIS, Big5, EUC-x, CP9xx etc.).</p></li>
 </ul>
 
-<p>Although we encourage that the commit log messages are encoded in UTF-8, both the core and Git Porcelain are designed not to force UTF-8 on projects. If all participants of a particular project find it more convenient to use legacy encodings, Git does not forbid it. However, there are a few things to keep in mind.</p>
+<p>Although we encourage that the commit log messages are encoded in UTF-8,
+both the core and Git Porcelain are designed not to force UTF-8 on
+projects. If all participants of a particular project find it more
+convenient to use legacy encodings, Git does not forbid it. However,
+there are a few things to keep in mind.</p>
 
 <ol>
-<li><p><em>git commit</em> and <em>git commit-tree</em> issues a warning if the commit log message given to it does not look like a valid UTF-8 string, unless you explicitly say your project uses a legacy encoding. The way to say this is to have i18n.commitencoding in <code>.git/config</code> file, like this:</p>
+<li><p><em>git commit</em> and <em>git commit-tree</em> issues a warning if the commit
+log message given to it does not look like a valid UTF-8 string,
+unless you explicitly say your project uses a legacy encoding. The
+way to say this is to have i18n.commitencoding in <code>.git/config</code>
+file, like this:</p>
 
 <pre><code>[i18n]
         commitencoding = ISO-8859-1
 </code></pre>
 
-<p>Commit objects created with the above setting record the value of <code>i18n.commitencoding</code> in its <code>encoding</code> header. This is to help other people who look at them later. Lack of this header implies that the commit log message is encoded in UTF-8.</p></li>
+<p>Commit objects created with the above setting record the value of
+<code>i18n.commitencoding</code> in its <code>encoding</code> header. This is to help
+other people who look at them later. Lack of this header implies
+that the commit log message is encoded in UTF-8.</p></li>
 
-<li><p><em>git log</em>, <em>git show</em>, <em>git blame</em> and friends look at the <code>encoding</code> header of a commit object, and try to re-code the log message into UTF-8 unless otherwise specified. You can specify the desired output encoding with <code>i18n.logoutputencoding</code> in <code>.git/config</code> file, like this:</p>
+<li><p><em>git log</em>, <em>git show</em>, <em>git blame</em> and friends look at the
+<code>encoding</code> header of a commit object, and try to re-code the log
+message into UTF-8 unless otherwise specified. You can specify the
+desired output encoding with <code>i18n.logoutputencoding</code> in
+<code>.git/config</code> file, like this:</p>
 
 <pre><code>[i18n]
         logoutputencoding = ISO-8859-1
 </code></pre>
 
-<p>If you do not have this configuration variable, the value of <code>i18n.commitencoding</code> is used instead.</p></li>
+<p>If you do not have this configuration variable, the value of
+<code>i18n.commitencoding</code> is used instead.</p></li>
 </ol>
 
-<p>Note that we deliberately chose not to re-code the commit log message when a commit is made to force UTF-8 at the commit object level, because re-coding to UTF-8 is not necessarily a reversible operation.</p>
+<p>Note that we deliberately chose not to re-code the commit log message
+when a commit is made to force UTF-8 at the commit object level, because
+re-coding to UTF-8 is not necessarily a reversible operation.</p>
 
 <h2 id="environment-and-configuration-variables">ENVIRONMENT AND CONFIGURATION VARIABLES</h2>
 
-<p>The editor used to edit the commit log message will be chosen from the GIT_EDITOR environment variable, the core.editor configuration variable, the VISUAL environment variable, or the EDITOR environment variable (in that order). See <a href="../git-var">git-var(1)</a> for details.</p>
+<p>The editor used to edit the commit log message will be chosen from the
+GIT_EDITOR environment variable, the core.editor configuration
+variable, the VISUAL environment variable, or the EDITOR environment
+variable (in that order). See <a href="../git-var">git-var(1)</a> for details.</p>
 
 <h2 id="hooks">HOOKS</h2>
 
-<p>This command can run <code>commit-msg</code>, <code>prepare-commit-msg</code>, <code>pre-commit</code>, and <code>post-commit</code> hooks. See <a href="../githooks">githooks(5)</a> for more information.</p>
+<p>This command can run <code>commit-msg</code>, <code>prepare-commit-msg</code>, <code>pre-commit</code>,
+and <code>post-commit</code> hooks. See <a href="../githooks">githooks(5)</a> for more
+information.</p>
 
 <h2 id="files">FILES</h2>
 
 <p><code>$GIT_DIR/COMMIT_EDITMSG</code><br />
-This file contains the commit message of a commit in progress. If <code>git commit</code> exits due to an error before creating a commit, any commit message that has been provided by the user (e.g., in an editor session) will be available in this file, but will be overwritten by the next invocation of <code>git commit</code>.</p>
+This file contains the commit message of a commit in progress. If
+<code>git commit</code> exits due to an error before creating a commit, any commit
+message that has been provided by the user (e.g., in an editor session)
+will be available in this file, but will be overwritten by the next
+invocation of <code>git commit</code>.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../git-add">git-add(1)</a>, <a href="../git-rm">git-rm(1)</a>, <a href="../git-mv">git-mv(1)</a>, <a href="../git-merge">git-merge(1)</a>, <a href="../git-commit-tree">git-commit-tree(1)</a></p>
+<p><a href="../git-add">git-add(1)</a>, <a href="../git-rm">git-rm(1)</a>,
+<a href="../git-mv">git-mv(1)</a>, <a href="../git-merge">git-merge(1)</a>,
+<a href="../git-commit-tree">git-commit-tree(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

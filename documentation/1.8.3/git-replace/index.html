@@ -116,13 +116,18 @@ git replace -l [&lt;pattern&gt;]
 
 <p>Adds a <em>replace</em> reference in <code>refs/replace/</code> namespace.</p>
 
-<p>The name of the <em>replace</em> reference is the SHA-1 of the object that is replaced. The content of the <em>replace</em> reference is the SHA-1 of the replacement object.</p>
+<p>The name of the <em>replace</em> reference is the SHA-1 of the object that is
+replaced. The content of the <em>replace</em> reference is the SHA-1 of the
+replacement object.</p>
 
 <p>Unless <code>-f</code> is given, the <em>replace</em> reference must not yet exist.</p>
 
-<p>Replacement references will be used by default by all Git commands except those doing reachability traversal (prune, pack transfer and fsck).</p>
+<p>Replacement references will be used by default by all Git commands
+except those doing reachability traversal (prune, pack transfer and
+fsck).</p>
 
-<p>It is possible to disable use of replacement references for any command using the <code>--no-replace-objects</code> option just after <em>git</em>.</p>
+<p>It is possible to disable use of replacement references for any command
+using the <code>--no-replace-objects</code> option just after <em>git</em>.</p>
 
 <p>For example if commit <em>foo</em> has been replaced by commit <em>bar</em>:</p>
 
@@ -136,28 +141,39 @@ git replace -l [&lt;pattern&gt;]
 
 <p>shows information about commit <em>bar</em>.</p>
 
-<p>The <em>GIT_NO_REPLACE_OBJECTS</em> environment variable can be set to achieve the same effect as the <code>--no-replace-objects</code> option.</p>
+<p>The <em>GIT_NO_REPLACE_OBJECTS</em> environment variable can be set to
+achieve the same effect as the <code>--no-replace-objects</code> option.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>-f<br />
-If an existing replace ref for the same object exists, it will be overwritten (instead of failing).</p>
+If an existing replace ref for the same object exists, it will be
+overwritten (instead of failing).</p>
 
 <p>-d<br />
 Delete existing replace refs for the given objects.</p>
 
 <p>-l &lt;pattern&gt;<br />
-List replace refs for objects that match the given pattern (or all if no pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists all replace refs.</p>
+List replace refs for objects that match the given pattern (or all if no
+pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists
+all replace refs.</p>
 
 <h2 id="bugs">BUGS</h2>
 
-<p>Comparing blobs or trees that have been replaced with those that replace them will not work properly. And using <code>git reset --hard</code> to go back to a replaced commit will move the branch to the replacement commit instead of the replaced commit.</p>
+<p>Comparing blobs or trees that have been replaced with those that replace
+them will not work properly. And using <code>git reset --hard</code> to go back to
+a replaced commit will move the branch to the replacement commit instead
+of the replaced commit.</p>
 
-<p>There may be other problems when using <em>git rev-list</em> related to pending objects. And of course things may break if an object of one type is replaced by an object of another type (for example a blob replaced by a commit).</p>
+<p>There may be other problems when using <em>git rev-list</em> related to pending
+objects. And of course things may break if an object of one type is
+replaced by an object of another type (for example a blob replaced by a
+commit).</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../git-tag">git-tag(1)</a> <a href="../git-branch">git-branch(1)</a> <a href="../git">git(1)</a></p>
+<p><a href="../git-tag">git-tag(1)</a> <a href="../git-branch">git-branch(1)</a>
+<a href="../git">git(1)</a></p>
 
 <h2 id="git">GIT</h2>
 

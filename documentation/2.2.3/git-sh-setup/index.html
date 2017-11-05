@@ -112,51 +112,79 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This is not a command the end user would want to run. Ever. This documentation is meant for people who are studying the Porcelain-ish scripts and/or are writing new ones.</p>
+<p>This is not a command the end user would want to run. Ever. This
+documentation is meant for people who are studying the Porcelain-ish
+scripts and/or are writing new ones.</p>
 
-<p>The <em>git sh-setup</em> scriptlet is designed to be sourced (using <code>.</code>) by other shell scripts to set up some variables pointing at the normal Git directories and a few helper shell functions.</p>
+<p>The <em>git sh-setup</em> scriptlet is designed to be sourced (using <code>.</code>) by
+other shell scripts to set up some variables pointing at the normal Git
+directories and a few helper shell functions.</p>
 
-<p>Before sourcing it, your script should set up a few variables; <code>USAGE</code> (and <code>LONG_USAGE</code>, if any) is used to define message given by <code>usage()</code> shell function. <code>SUBDIRECTORY_OK</code> can be set if the script can run from a subdirectory of the working tree (some commands do not).</p>
+<p>Before sourcing it, your script should set up a few variables; <code>USAGE</code>
+(and <code>LONG_USAGE</code>, if any) is used to define message given by <code>usage()</code>
+shell function. <code>SUBDIRECTORY_OK</code> can be set if the script can run from
+a subdirectory of the working tree (some commands do not).</p>
 
-<p>The scriptlet sets <code>GIT_DIR</code> and <code>GIT_OBJECT_DIRECTORY</code> shell variables, but does <strong>not</strong> export them to the environment.</p>
+<p>The scriptlet sets <code>GIT_DIR</code> and <code>GIT_OBJECT_DIRECTORY</code> shell variables,
+but does <strong>not</strong> export them to the environment.</p>
 
 <h2 id="functions">FUNCTIONS</h2>
 
 <p>die<br />
-exit after emitting the supplied error message to the standard error stream.</p>
+exit after emitting the supplied error message to the standard error
+stream.</p>
 
 <p>usage<br />
 die with the usage message.</p>
 
 <p>set_reflog_action<br />
-Set GIT_REFLOG_ACTION environment to a given string (typically the name of the program) unless it is already set. Whenever the script runs a <code>git</code> command that updates refs, a reflog entry is created using the value of this string to leave the record of what command updated the ref.</p>
+Set GIT_REFLOG_ACTION environment to a given string (typically the
+name of the program) unless it is already set. Whenever the script runs
+a <code>git</code> command that updates refs, a reflog entry is created using the
+value of this string to leave the record of what command updated the
+ref.</p>
 
 <p>git_editor<br />
-runs an editor of user’s choice (GIT_EDITOR, core.editor, VISUAL or EDITOR) on a given file, but error out if no editor is specified and the terminal is dumb.</p>
+runs an editor of user’s choice (GIT_EDITOR, core.editor, VISUAL or
+EDITOR) on a given file, but error out if no editor is specified and the
+terminal is dumb.</p>
 
 <p>is_bare_repository<br />
-outputs <code>true</code> or <code>false</code> to the standard output stream to indicate if the repository is a bare repository (i.e. without an associated working tree).</p>
+outputs <code>true</code> or <code>false</code> to the standard output stream to indicate if
+the repository is a bare repository (i.e. without an associated working
+tree).</p>
 
 <p>cd_to_toplevel<br />
 runs chdir to the toplevel of the working tree.</p>
 
 <p>require_work_tree<br />
-checks if the current directory is within the working tree of the repository, and otherwise dies.</p>
+checks if the current directory is within the working tree of the
+repository, and otherwise dies.</p>
 
 <p>require_work_tree_exists<br />
-checks if the working tree associated with the repository exists, and otherwise dies. Often done before calling cd_to_toplevel, which is impossible to do if there is no working tree.</p>
+checks if the working tree associated with the repository exists, and
+otherwise dies. Often done before calling cd_to_toplevel, which is
+impossible to do if there is no working tree.</p>
 
 <p>require_clean_work_tree &lt;action&gt; [&lt;hint&gt;]<br />
-checks that the working tree and index associated with the repository have no uncommitted changes to tracked files. Otherwise it emits an error message of the form <code>Cannot &lt;action&gt;:                   &lt;reason&gt;. &lt;hint&gt;</code>, and dies. Example:</p>
+checks that the working tree and index associated with the repository
+have no uncommitted changes to tracked files. Otherwise it emits an
+error message of the form
+<code>Cannot &lt;action&gt;:                   &lt;reason&gt;. &lt;hint&gt;</code>, and dies.
+Example:</p>
 
 <pre><code>require_clean_work_tree rebase &quot;Please commit or stash them.&quot;
 </code></pre>
 
 <p>get_author_ident_from_commit<br />
-outputs code for use with eval to set the GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL and GIT_AUTHOR_DATE variables for a given commit.</p>
+outputs code for use with eval to set the GIT_AUTHOR_NAME,
+GIT_AUTHOR_EMAIL and GIT_AUTHOR_DATE variables for a given commit.</p>
 
 <p>create_virtual_base<br />
-modifies the first file so only lines in common with the second file remain. If there is insufficient common material, then the first file is left empty. The result is suitable as a virtual base input for a 3-way merge.</p>
+modifies the first file so only lines in common with the second file
+remain. If there is insufficient common material, then the first file is
+left empty. The result is suitable as a virtual base input for a 3-way
+merge.</p>
 
 <h2 id="git">GIT</h2>
 

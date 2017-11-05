@@ -112,22 +112,36 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>A Tcl/Tk based graphical user interface to Git. <em>git gui</em> focuses on allowing users to make changes to their repository by making new commits, amending existing ones, creating branches, performing local merges, and fetching/pushing to remote repositories.</p>
+<p>A Tcl/Tk based graphical user interface to Git. <em>git gui</em> focuses on
+allowing users to make changes to their repository by making new
+commits, amending existing ones, creating branches, performing local
+merges, and fetching/pushing to remote repositories.</p>
 
-<p>Unlike <em>gitk</em>, <em>git gui</em> focuses on commit generation and single file annotation and does not show project history. It does however supply menu actions to start a <em>gitk</em> session from within <em>git gui</em>.</p>
+<p>Unlike <em>gitk</em>, <em>git gui</em> focuses on commit generation and single file
+annotation and does not show project history. It does however supply
+menu actions to start a <em>gitk</em> session from within <em>git gui</em>.</p>
 
-<p><em>git gui</em> is known to work on all popular UNIX systems, Mac OS X, and Windows (under both Cygwin and MSYS). To the extent possible OS specific user interface guidelines are followed, making <em>git gui</em> a fairly native interface for users.</p>
+<p><em>git gui</em> is known to work on all popular UNIX systems, Mac OS X, and
+Windows (under both Cygwin and MSYS). To the extent possible OS specific
+user interface guidelines are followed, making <em>git gui</em> a fairly native
+interface for users.</p>
 
 <h2 id="commands">COMMANDS</h2>
 
 <p>blame<br />
-Start a blame viewer on the specified file on the given version (or working directory if not specified).</p>
+Start a blame viewer on the specified file on the given version (or
+working directory if not specified).</p>
 
 <p>browser<br />
-Start a tree browser showing all files in the specified commit (or <em>HEAD</em> by default). Files selected through the browser are opened in the blame viewer.</p>
+Start a tree browser showing all files in the specified commit (or
+<em>HEAD</em> by default). Files selected through the browser are opened in the
+blame viewer.</p>
 
 <p>citool<br />
-Start <em>git gui</em> and arrange to make exactly one commit before exiting and returning to the shell. The interface is limited to only commit actions, slightly reducing the application’s startup time and simplifying the menubar.</p>
+Start <em>git gui</em> and arrange to make exactly one commit before exiting
+and returning to the shell. The interface is limited to only commit
+actions, slightly reducing the application’s startup time and
+simplifying the menubar.</p>
 
 <p>version<br />
 Display the currently running version of <em>git gui</em>.</p>
@@ -135,37 +149,54 @@ Display the currently running version of <em>git gui</em>.</p>
 <h2 id="examples">Examples</h2>
 
 <p><code>git gui blame Makefile</code><br />
-Show the contents of the file <em>Makefile</em> in the current working directory, and provide annotations for both the original author of each line, and who moved the line to its current location. The uncommitted file is annotated, and uncommitted changes (if any) are explicitly attributed to <em>Not Yet Committed</em>.</p>
+Show the contents of the file <em>Makefile</em> in the current working
+directory, and provide annotations for both the original author of each
+line, and who moved the line to its current location. The uncommitted
+file is annotated, and uncommitted changes (if any) are explicitly
+attributed to <em>Not Yet Committed</em>.</p>
 
 <p><code>git gui blame v0.99.8                 Makefile</code><br />
-Show the contents of <em>Makefile</em> in revision <em>v0.99.8</em> and provide annotations for each line. Unlike the above example the file is read from the object database and not the working directory.</p>
+Show the contents of <em>Makefile</em> in revision <em>v0.99.8</em> and provide
+annotations for each line. Unlike the above example the file is read
+from the object database and not the working directory.</p>
 
 <p><code>git gui blame --line=100                 Makefile</code><br />
-Loads annotations as described above and automatically scrolls the view to center on line <em>100</em>.</p>
+Loads annotations as described above and automatically scrolls the view
+to center on line <em>100</em>.</p>
 
 <p><code>git gui citool</code><br />
-Make one commit and return to the shell when it is complete. This command returns a non-zero exit code if the window was closed in any way other than by making a commit.</p>
+Make one commit and return to the shell when it is complete. This
+command returns a non-zero exit code if the window was closed in any way
+other than by making a commit.</p>
 
 <p><code>git gui citool --amend</code><br />
 Automatically enter the <em>Amend Last Commit</em> mode of the interface.</p>
 
 <p><code>git gui citool --nocommit</code><br />
-Behave as normal citool, but instead of making a commit simply terminate with a zero exit code. It still checks that the index does not contain any unmerged entries, so you can use it as a GUI version of <a href="../git-mergetool">git-mergetool(1)</a></p>
+Behave as normal citool, but instead of making a commit simply terminate
+with a zero exit code. It still checks that the index does not contain
+any unmerged entries, so you can use it as a GUI version of
+<a href="../git-mergetool">git-mergetool(1)</a></p>
 
 <p><code>git citool</code><br />
 Same as <code>git gui citool</code> (above).</p>
 
 <p><code>git gui browser maint</code><br />
-Show a browser for the tree of the <em>maint</em> branch. Files selected in the browser can be viewed with the internal blame viewer.</p>
+Show a browser for the tree of the <em>maint</em> branch. Files selected in the
+browser can be viewed with the internal blame viewer.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
 <p><a href="../gitk">gitk(1)</a><br />
-The Git repository browser. Shows branches, commit history and file differences. gitk is the utility started by <em>git gui</em>&rsquo;s Repository Visualize actions.</p>
+The Git repository browser. Shows branches, commit history and file
+differences. gitk is the utility started by <em>git gui</em>&rsquo;s Repository
+Visualize actions.</p>
 
 <h2 id="other">Other</h2>
 
-<p><em>git gui</em> is actually maintained as an independent project, but stable versions are distributed as part of the Git suite for the convenience of end users.</p>
+<p><em>git gui</em> is actually maintained as an independent project, but stable
+versions are distributed as part of the Git suite for the convenience of
+end users.</p>
 
 <p>A <em>git gui</em> development repository can be obtained from:</p>
 

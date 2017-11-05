@@ -112,7 +112,8 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Reads a tag contents on standard input and creates a tag object that can also be used to sign other objects.</p>
+<p>Reads a tag contents on standard input and creates a tag object that can
+also be used to sign other objects.</p>
 
 <p>The output is the new tag’s &lt;object&gt; identifier.</p>
 
@@ -126,7 +127,11 @@ tag &lt;tagname&gt;
 tagger &lt;tagger&gt;
 </code></pre>
 
-<p>followed by some <em>optional</em> free-form message (some tags created by older Git may not have <code>tagger</code> line). The message, when exists, is separated by a blank line from the header. The message part may contain a signature that Git itself doesn’t care about, but that can be verified with gpg.</p>
+<p>followed by some <em>optional</em> free-form message (some tags created by
+older Git may not have <code>tagger</code> line). The message, when exists, is
+separated by a blank line from the header. The message part may contain
+a signature that Git itself doesn’t care about, but that can be verified
+with gpg.</p>
 
 <h2 id="git">GIT</h2>
 

@@ -112,11 +112,17 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Determine whether there are commits in <code>&lt;head&gt;..&lt;upstream&gt;</code> that are equivalent to those in the range <code>&lt;limit&gt;..&lt;head&gt;</code>.</p>
+<p>Determine whether there are commits in <code>&lt;head&gt;..&lt;upstream&gt;</code> that are
+equivalent to those in the range <code>&lt;limit&gt;..&lt;head&gt;</code>.</p>
 
-<p>The equivalence test is based on the diff, after removing whitespace and line numbers. git-cherry therefore detects when commits have been &ldquo;copied&rdquo; by means of <a href="../git-cherry-pick">git-cherry-pick(1)</a>, <a href="../git-am">git-am(1)</a> or <a href="../git-rebase">git-rebase(1)</a>.</p>
+<p>The equivalence test is based on the diff, after removing whitespace and
+line numbers. git-cherry therefore detects when commits have been
+&ldquo;copied&rdquo; by means of <a href="../git-cherry-pick">git-cherry-pick(1)</a>,
+<a href="../git-am">git-am(1)</a> or <a href="../git-rebase">git-rebase(1)</a>.</p>
 
-<p>Outputs the SHA1 of every commit in <code>&lt;limit&gt;..&lt;head&gt;</code>, prefixed with <code>-</code> for commits that have an equivalent in &lt;upstream&gt;, and <code>+</code> for commits that do not.</p>
+<p>Outputs the SHA1 of every commit in <code>&lt;limit&gt;..&lt;head&gt;</code>, prefixed with <code>-</code>
+for commits that have an equivalent in &lt;upstream&gt;, and <code>+</code> for
+commits that do not.</p>
 
 <h2 id="options">OPTIONS</h2>
 
@@ -124,7 +130,8 @@
 Show the commit subjects next to the SHA1s.</p>
 
 <p>&lt;upstream&gt;<br />
-Upstream branch to search for equivalent commits. Defaults to the upstream branch of HEAD.</p>
+Upstream branch to search for equivalent commits. Defaults to the
+upstream branch of HEAD.</p>
 
 <p>&lt;head&gt;<br />
 Working branch; defaults to HEAD.</p>
@@ -136,7 +143,10 @@ Do not report commits up to (and including) limit.</p>
 
 <h3 id="patch-workflows">Patch workflows</h3>
 
-<p>git-cherry is frequently used in patch-based workflows (see <a href="../gitworkflows">gitworkflows(7)</a>) to determine if a series of patches has been applied by the upstream maintainer. In such a workflow you might create and send a topic branch like this:</p>
+<p>git-cherry is frequently used in patch-based workflows (see
+<a href="../gitworkflows">gitworkflows(7)</a>) to determine if a series of
+patches has been applied by the upstream maintainer. In such a workflow
+you might create and send a topic branch like this:</p>
 
 <pre><code>$ git checkout -b topic origin/master
 # work and create some commits
@@ -144,7 +154,8 @@ $ git format-patch origin/master
 $ git send-email ... 00*
 </code></pre>
 
-<p>Later, you can see whether your changes have been applied by saying (still on <code>topic</code>):</p>
+<p>Later, you can see whether your changes have been applied by saying
+(still on <code>topic</code>):</p>
 
 <pre><code>$ git fetch  # update your notion of origin/master
 $ git cherry -v
@@ -152,7 +163,8 @@ $ git cherry -v
 
 <h3 id="concrete-example">Concrete example</h3>
 
-<p>In a situation where topic consisted of three commits, and the maintainer applied two of them, the situation might look like:</p>
+<p>In a situation where topic consisted of three commits, and the
+maintainer applied two of them, the situation might look like:</p>
 
 <pre><code>$ git log --graph --oneline --decorate --boundary origin/master...topic
 * 7654321 (origin/master) upstream tip commit
@@ -167,7 +179,8 @@ $ git cherry -v
 o 1234567 branch point
 </code></pre>
 
-<p>In such cases, git-cherry shows a concise summary of what has yet to be applied:</p>
+<p>In such cases, git-cherry shows a concise summary of what has yet to be
+applied:</p>
 
 <pre><code>$ git cherry origin/master topic
 - cccc000... commit C
@@ -175,11 +188,16 @@ o 1234567 branch point
 - aaaa000... commit A
 </code></pre>
 
-<p>Here, we see that the commits A and C (marked with <code>-</code>) can be dropped from your <code>topic</code> branch when you rebase it on top of <code>origin/master</code>, while the commit B (marked with <code>+</code>) still needs to be kept so that it will be sent to be applied to <code>origin/master</code>.</p>
+<p>Here, we see that the commits A and C (marked with <code>-</code>) can be dropped
+from your <code>topic</code> branch when you rebase it on top of <code>origin/master</code>,
+while the commit B (marked with <code>+</code>) still needs to be kept so that it
+will be sent to be applied to <code>origin/master</code>.</p>
 
 <h3 id="using-a-limit">Using a limit</h3>
 
-<p>The optional &lt;limit&gt; is useful in cases where your topic is based on other work that is not in upstream. Expanding on the previous example, this might look like:</p>
+<p>The optional &lt;limit&gt; is useful in cases where your topic is based
+on other work that is not in upstream. Expanding on the previous
+example, this might look like:</p>
 
 <pre><code>$ git log --graph --oneline --decorate --boundary origin/master...topic
 * 7654321 (origin/master) upstream tip commit
@@ -197,7 +215,8 @@ o 1234567 branch point
 o 1234567 merge-base between upstream and topic
 </code></pre>
 
-<p>By specifying <code>base</code> as the limit, you can avoid listing commits between <code>base</code> and <code>topic</code>:</p>
+<p>By specifying <code>base</code> as the limit, you can avoid listing commits between
+<code>base</code> and <code>topic</code>:</p>
 
 <pre><code>$ git cherry origin/master topic base
 - cccc000... commit C

@@ -112,20 +112,24 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Reads given idx file for packed Git archive created with the <em>git pack-objects</em> command and verifies idx file and the corresponding pack file.</p>
+<p>Reads given idx file for packed Git archive created with the <em>git
+pack-objects</em> command and verifies idx file and the corresponding pack
+file.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&lt;pack&gt;.idx …<br />
 The idx files to verify.</p>
 
-<p>-v
+<p>-v<br />
 &ndash;verbose<br />
-After verifying the pack, show list of objects contained in the pack and a histogram of delta chain length.</p>
+After verifying the pack, show list of objects contained in the pack and
+a histogram of delta chain length.</p>
 
-<p>-s
+<p>-s<br />
 &ndash;stat-only<br />
-Do not verify the pack contents; only show the histogram of delta chain length. With <code>--verbose</code>, list of objects is also shown.</p>
+Do not verify the pack contents; only show the histogram of delta chain
+length. With <code>--verbose</code>, list of objects is also shown.</p>
 
 <p>&ndash;<br />
 Do not interpret any more arguments as options.</p>

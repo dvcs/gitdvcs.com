@@ -112,27 +112,38 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>Sends missing objects to remote repository, and updates the remote branch.</p>
+<p>Sends missing objects to remote repository, and updates the remote
+branch.</p>
 
-<p><strong>NOTE</strong>: This command is temporarily disabled if your libcurl is older than 7.16, as the combination has been reported not to work and sometimes corrupts repository.</p>
+<p><strong>NOTE</strong>: This command is temporarily disabled if your libcurl is older
+than 7.16, as the combination has been reported not to work and
+sometimes corrupts repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
 <p>&ndash;all<br />
-Do not assume that the remote repository is complete in its current state, and verify all objects in the entire local ref’s history exist in the remote repository.</p>
+Do not assume that the remote repository is complete in its current
+state, and verify all objects in the entire local ref’s history exist in
+the remote repository.</p>
 
 <p>&ndash;force<br />
-Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. What this means is that the remote repository can lose commits; use it with care.</p>
+Usually, the command refuses to update a remote ref that is not an
+ancestor of the local ref used to overwrite it. This flag disables the
+check. What this means is that the remote repository can lose commits;
+use it with care.</p>
 
 <p>&ndash;dry-run<br />
 Do everything except actually send the updates.</p>
 
 <p>&ndash;verbose<br />
-Report the list of objects being walked locally and the list of objects successfully sent to the remote repository.</p>
+Report the list of objects being walked locally and the list of objects
+successfully sent to the remote repository.</p>
 
-<p>-d
+<p>-d<br />
 -D<br />
-Remove &lt;ref&gt; from remote repository. The specified branch cannot be the remote HEAD. If -d is specified the following other conditions must also be met:</p>
+Remove &lt;ref&gt; from remote repository. The specified branch cannot
+be the remote HEAD. If -d is specified the following other conditions
+must also be met:</p>
 
 <ul>
 <li><p>Remote HEAD must resolve to an object that exists locally</p></li>
@@ -147,27 +158,43 @@ The remote refs to update.</p>
 
 <h2 id="specifying-the-refs">Specifying the Refs</h2>
 
-<p>A <em>&lt;ref&gt;</em> specification can be either a single pattern, or a pair of such patterns separated by a colon &ldquo;:&rdquo; (this means that a ref name cannot have a colon in it). A single pattern <em>&lt;name&gt;</em> is just a shorthand for <em>&lt;name&gt;:&lt;name&gt;</em>.</p>
+<p>A <em>&lt;ref&gt;</em> specification can be either a single pattern, or a pair
+of such patterns separated by a colon &ldquo;:&rdquo; (this means that a ref name
+cannot have a colon in it). A single pattern <em>&lt;name&gt;</em> is just a
+shorthand for <em>&lt;name&gt;:&lt;name&gt;</em>.</p>
 
-<p>Each pattern pair consists of the source side (before the colon) and the destination side (after the colon). The ref to be pushed is determined by finding a match that matches the source side, and where it is pushed is determined by using the destination side.</p>
+<p>Each pattern pair consists of the source side (before the colon) and the
+destination side (after the colon). The ref to be pushed is determined
+by finding a match that matches the source side, and where it is pushed
+is determined by using the destination side.</p>
 
 <ul>
-<li><p>It is an error if &lt;src&gt; does not match exactly one of the local refs.</p></li>
+<li><p>It is an error if &lt;src&gt; does not match exactly one of the
+local refs.</p></li>
 
 <li><p>If &lt;dst&gt; does not match any remote ref, either</p>
 
 <ul>
-<li><p>it has to start with &ldquo;refs/&rdquo;; &lt;dst&gt; is used as the destination literally in this case.</p></li>
+<li><p>it has to start with &ldquo;refs/&rdquo;; &lt;dst&gt; is used as the
+destination literally in this case.</p></li>
 
-<li><p>&lt;src&gt; == &lt;dst&gt; and the ref that matched the &lt;src&gt; must not exist in the set of remote refs; the ref matched &lt;src&gt; locally is used as the name of the destination.</p></li>
+<li><p>&lt;src&gt; == &lt;dst&gt; and the ref that matched the
+&lt;src&gt; must not exist in the set of remote refs; the ref
+matched &lt;src&gt; locally is used as the name of the
+destination.</p></li>
 </ul></li>
 </ul>
 
-<p>Without ‘&ndash;force`, the &lt;src&gt; ref is stored at the remote only if &lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an ancestor) of &lt;src&gt;. This check, known as &ldquo;fast-forward check&rdquo;, is performed in order to avoid accidentally overwriting the remote ref and lose other peoples’ commits from there.</p>
+<p>Without ‘&ndash;force`, the &lt;src&gt; ref is stored at the remote only if
+&lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an
+ancestor) of &lt;src&gt;. This check, known as &ldquo;fast-forward check&rdquo;, is
+performed in order to avoid accidentally overwriting the remote ref and
+lose other peoples’ commits from there.</p>
 
 <p>With <code>--force</code>, the fast-forward check is disabled for all refs.</p>
 
-<p>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <em>+</em> sign to disable the fast-forward check only on that ref.</p>
+<p>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <em>+</em> sign
+to disable the fast-forward check only on that ref.</p>
 
 <h2 id="git">GIT</h2>
 

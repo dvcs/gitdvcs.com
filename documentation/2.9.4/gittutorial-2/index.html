@@ -1,0 +1,583 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> gittutorial-2 </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gittutorial-2</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.9.4'>2.9.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.9.4/gittutorial-2'>gittutorial-2</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git *
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>You should work through <a href="../gittutorial">gittutorial(7)</a> before
+reading this tutorial.</p>
+
+<p>The goal of this tutorial is to introduce two fundamental pieces of
+Git’s architecture—the object database and the index file—and to provide
+the reader with everything necessary to understand the rest of the Git
+documentation.</p>
+
+<h2 id="the-git-object-database">The Git object database</h2>
+
+<p>Let’s start a new project and create a small amount of history:</p>
+
+<pre><code>$ mkdir test-project
+$ cd test-project
+$ git init
+Initialized empty Git repository in .git/
+$ echo 'hello world' &gt; file.txt
+$ git add .
+$ git commit -a -m &quot;initial commit&quot;
+[master (root-commit) 54196cc] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+$ echo 'hello world!' &gt;file.txt
+$ git commit -a -m &quot;add emphasis&quot;
+[master c4d59f3] add emphasis
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+</code></pre>
+
+<p>What are the 7 digits of hex that Git responded to the commit with?</p>
+
+<p>We saw in part one of the tutorial that commits have names like this. It
+turns out that every object in the Git history is stored under a
+40-digit hex name. That name is the SHA-1 hash of the object’s contents;
+among other things, this ensures that Git will never store the same data
+twice (since identical data is given an identical SHA-1 name), and that
+the contents of a Git object will never change (since that would change
+the object’s name as well). The 7 char hex strings here are simply the
+abbreviation of such 40 character long strings. Abbreviations can be
+used everywhere where the 40 character strings can be used, so long as
+they are unambiguous.</p>
+
+<p>It is expected that the content of the commit object you created while
+following the example above generates a different SHA-1 hash than the
+one shown above because the commit object records the time when it was
+created and the name of the person performing the commit.</p>
+
+<p>We can ask Git about this particular object with the <code>cat-file</code> command.
+Don’t copy the 40 hex digits from this example but use those from your
+own version. Note that you can shorten it to only a few characters to
+save yourself typing all 40 hex digits:</p>
+
+<pre><code>$ git cat-file -t 54196cc2
+commit
+$ git cat-file commit 54196cc2
+tree 92b8b694ffb1675e5975148e1121810081dbdffe
+author J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143414668 -0500
+committer J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143414668 -0500
+
+initial commit
+</code></pre>
+
+<p>A tree can refer to one or more &ldquo;blob&rdquo; objects, each corresponding to a
+file. In addition, a tree can also refer to other tree objects, thus
+creating a directory hierarchy. You can examine the contents of any tree
+using ls-tree (remember that a long enough initial portion of the SHA-1
+will also work):</p>
+
+<pre><code>$ git ls-tree 92b8b694
+100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    file.txt
+</code></pre>
+
+<p>Thus we see that this tree has one file in it. The SHA-1 hash is a
+reference to that file’s data:</p>
+
+<pre><code>$ git cat-file -t 3b18e512
+blob
+</code></pre>
+
+<p>A &ldquo;blob&rdquo; is just file data, which we can also examine with cat-file:</p>
+
+<pre><code>$ git cat-file blob 3b18e512
+hello world
+</code></pre>
+
+<p>Note that this is the old file data; so the object that Git named in its
+response to the initial tree was a tree with a snapshot of the directory
+state that was recorded by the first commit.</p>
+
+<p>All of these objects are stored under their SHA-1 names inside the Git
+directory:</p>
+
+<pre><code>$ find .git/objects/
+.git/objects/
+.git/objects/pack
+.git/objects/info
+.git/objects/3b
+.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad
+.git/objects/92
+.git/objects/92/b8b694ffb1675e5975148e1121810081dbdffe
+.git/objects/54
+.git/objects/54/196cc2703dc165cbd373a65a4dcf22d50ae7f7
+.git/objects/a0
+.git/objects/a0/423896973644771497bdc03eb99d5281615b51
+.git/objects/d0
+.git/objects/d0/492b368b66bdabf2ac1fd8c92b39d3db916e59
+.git/objects/c4
+.git/objects/c4/d59f390b9cfd4318117afde11d601c1085f241
+</code></pre>
+
+<p>and the contents of these files is just the compressed data plus a
+header identifying their length and their type. The type is either a
+blob, a tree, a commit, or a tag.</p>
+
+<p>The simplest commit to find is the HEAD commit, which we can find from
+.git/HEAD:</p>
+
+<pre><code>$ cat .git/HEAD
+ref: refs/heads/master
+</code></pre>
+
+<p>As you can see, this tells us which branch we’re currently on, and it
+tells us this by naming a file under the .git directory, which itself
+contains a SHA-1 name referring to a commit object, which we can examine
+with cat-file:</p>
+
+<pre><code>$ cat .git/refs/heads/master
+c4d59f390b9cfd4318117afde11d601c1085f241
+$ git cat-file -t c4d59f39
+commit
+$ git cat-file commit c4d59f39
+tree d0492b368b66bdabf2ac1fd8c92b39d3db916e59
+parent 54196cc2703dc165cbd373a65a4dcf22d50ae7f7
+author J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143418702 -0500
+committer J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143418702 -0500
+
+add emphasis
+</code></pre>
+
+<p>The &ldquo;tree&rdquo; object here refers to the new state of the tree:</p>
+
+<pre><code>$ git ls-tree d0492b36
+100644 blob a0423896973644771497bdc03eb99d5281615b51    file.txt
+$ git cat-file blob a0423896
+hello world!
+</code></pre>
+
+<p>and the &ldquo;parent&rdquo; object refers to the previous commit:</p>
+
+<pre><code>$ git cat-file commit 54196cc2
+tree 92b8b694ffb1675e5975148e1121810081dbdffe
+author J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143414668 -0500
+committer J. Bruce Fields &lt;bfields@puzzle.fieldses.org&gt; 1143414668 -0500
+
+initial commit
+</code></pre>
+
+<p>The tree object is the tree we examined first, and this commit is
+unusual in that it lacks any parent.</p>
+
+<p>Most commits have only one parent, but it is also common for a commit to
+have multiple parents. In that case the commit represents a merge, with
+the parent references pointing to the heads of the merged branches.</p>
+
+<p>Besides blobs, trees, and commits, the only remaining type of object is
+a &ldquo;tag&rdquo;, which we won’t discuss here; refer to
+<a href="../git-tag">git-tag(1)</a> for details.</p>
+
+<p>So now we know how Git uses the object database to represent a project’s
+history:</p>
+
+<ul>
+<li><p>&ldquo;commit&rdquo; objects refer to &ldquo;tree&rdquo; objects representing the snapshot
+of a directory tree at a particular point in the history, and refer
+to &ldquo;parent&rdquo; commits to show how they’re connected into the project
+history.</p></li>
+
+<li><p>&ldquo;tree&rdquo; objects represent the state of a single directory,
+associating directory names to &ldquo;blob&rdquo; objects containing file data
+and &ldquo;tree&rdquo; objects containing subdirectory information.</p></li>
+
+<li><p>&ldquo;blob&rdquo; objects contain file data without any other structure.</p></li>
+
+<li><p>References to commit objects at the head of each branch are stored
+in files under .git/refs/heads/.</p></li>
+
+<li><p>The name of the current branch is stored in .git/HEAD.</p></li>
+</ul>
+
+<p>Note, by the way, that lots of commands take a tree as an argument. But
+as we can see above, a tree can be referred to in many different ways—by
+the SHA-1 name for that tree, by the name of a commit that refers to the
+tree, by the name of a branch whose head refers to that tree, etc.&ndash;and
+most such commands can accept any of these names.</p>
+
+<p>In command synopses, the word &ldquo;tree-ish&rdquo; is sometimes used to designate
+such an argument.</p>
+
+<h2 id="the-index-file">The index file</h2>
+
+<p>The primary tool we’ve been using to create commits is <code>git-commit -a</code>,
+which creates a commit including every change you’ve made to your
+working tree. But what if you want to commit changes only to certain
+files? Or only certain changes to certain files?</p>
+
+<p>If we look at the way commits are created under the cover, we’ll see
+that there are more flexible ways creating commits.</p>
+
+<p>Continuing with our test-project, let’s modify file.txt again:</p>
+
+<pre><code>$ echo &quot;hello world, again&quot; &gt;&gt;file.txt
+</code></pre>
+
+<p>but this time instead of immediately making the commit, let’s take an
+intermediate step, and ask for diffs along the way to keep track of
+what’s happening:</p>
+
+<pre><code>$ git diff
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ hello world!
++hello world, again
+$ git add file.txt
+$ git diff
+</code></pre>
+
+<p>The last diff is empty, but no new commits have been made, and the head
+still doesn’t contain the new line:</p>
+
+<pre><code>$ git diff HEAD
+diff --git a/file.txt b/file.txt
+index a042389..513feba 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ hello world!
++hello world, again
+</code></pre>
+
+<p>So <em>git diff</em> is comparing against something other than the head. The
+thing that it’s comparing against is actually the index file, which is
+stored in .git/index in a binary format, but whose contents we can
+examine with ls-files:</p>
+
+<pre><code>$ git ls-files --stage
+100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
+$ git cat-file -t 513feba2
+blob
+$ git cat-file blob 513feba2
+hello world!
+hello world, again
+</code></pre>
+
+<p>So what our <em>git add</em> did was store a new blob and then put a reference
+to it in the index file. If we modify the file again, we’ll see that the
+new modifications are reflected in the <em>git diff</em> output:</p>
+
+<pre><code>$ echo 'again?' &gt;&gt;file.txt
+$ git diff
+index 513feba..ba3da7b 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1,2 +1,3 @@
+ hello world!
+ hello world, again
++again?
+</code></pre>
+
+<p>With the right arguments, <em>git diff</em> can also show us the difference
+between the working directory and the last commit, or between the index
+and the last commit:</p>
+
+<pre><code>$ git diff HEAD
+diff --git a/file.txt b/file.txt
+index a042389..ba3da7b 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,3 @@
+ hello world!
++hello world, again
++again?
+$ git diff --cached
+diff --git a/file.txt b/file.txt
+index a042389..513feba 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ hello world!
++hello world, again
+</code></pre>
+
+<p>At any time, we can create a new commit using <em>git commit</em> (without the
+&ldquo;-a&rdquo; option), and verify that the state committed only includes the
+changes stored in the index file, not the additional change that is
+still only in our working tree:</p>
+
+<pre><code>$ git commit -m &quot;repeat&quot;
+$ git diff HEAD
+diff --git a/file.txt b/file.txt
+index 513feba..ba3da7b 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1,2 +1,3 @@
+ hello world!
+ hello world, again
++again?
+</code></pre>
+
+<p>So by default <em>git commit</em> uses the index to create the commit, not the
+working tree; the &ldquo;-a&rdquo; option to commit tells it to first update the
+index with all changes in the working tree.</p>
+
+<p>Finally, it’s worth looking at the effect of <em>git add</em> on the index
+file:</p>
+
+<pre><code>$ echo &quot;goodbye, world&quot; &gt;closing.txt
+$ git add closing.txt
+</code></pre>
+
+<p>The effect of the <em>git add</em> was to add one entry to the index file:</p>
+
+<pre><code>$ git ls-files --stage
+100644 8b9743b20d4b15be3955fc8d5cd2b09cd2336138 0       closing.txt
+100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
+</code></pre>
+
+<p>And, as you can see with cat-file, this new entry refers to the current
+contents of the file:</p>
+
+<pre><code>$ git cat-file blob 8b9743b2
+goodbye, world
+</code></pre>
+
+<p>The &ldquo;status&rdquo; command is a useful way to get a quick summary of the
+situation:</p>
+
+<pre><code>$ git status
+On branch master
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+        new file:   closing.txt
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+        modified:   file.txt
+</code></pre>
+
+<p>Since the current state of closing.txt is cached in the index file, it
+is listed as &ldquo;Changes to be committed&rdquo;. Since file.txt has changes in
+the working directory that aren’t reflected in the index, it is marked
+&ldquo;changed but not updated&rdquo;. At this point, running &ldquo;git commit&rdquo; would
+create a commit that added closing.txt (with its new contents), but that
+didn’t modify file.txt.</p>
+
+<p>Also, note that a bare <code>git diff</code> shows the changes to file.txt, but not
+the addition of closing.txt, because the version of closing.txt in the
+index file is identical to the one in the working directory.</p>
+
+<p>In addition to being the staging area for new commits, the index file is
+also populated from the object database when checking out a branch, and
+is used to hold the trees involved in a merge operation. See
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a> and the relevant man pages
+for details.</p>
+
+<h2 id="what-next">What next?</h2>
+
+<p>At this point you should know everything necessary to read the man pages
+for any of the git commands; one good place to start would be with the
+commands mentioned in <a href="../giteveryday">giteveryday(7)</a>. You should be
+able to find any unknown jargon in <a href="../gitglossary">gitglossary(7)</a>.</p>
+
+<p>The <a href="user-manual">Git User’s Manual</a> provides a more comprehensive
+introduction to Git.</p>
+
+<p><a href="../gitcvs-migration">gitcvs-migration(7)</a> explains how to import a
+CVS repository into Git, and shows how to use Git in a CVS-like way.</p>
+
+<p>For some interesting examples of Git use, see the
+<a href="howto-index">howtos</a>.</p>
+
+<p>For Git developers, <a href="../gitcore-tutorial">gitcore-tutorial(7)</a> goes
+into detail on the lower-level Git mechanisms involved in, for example,
+creating a new commit.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../gittutorial">gittutorial(7)</a>,
+<a href="../gitcvs-migration">gitcvs-migration(7)</a>,
+<a href="../gitcore-tutorial">gitcore-tutorial(7)</a>,
+<a href="../gitglossary">gitglossary(7)</a>, <a href="../git-help">git-help(1)</a>,
+<a href="../giteveryday">giteveryday(7)</a>, <a href="user-manual">The Git User’s
+Manual</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite.</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
