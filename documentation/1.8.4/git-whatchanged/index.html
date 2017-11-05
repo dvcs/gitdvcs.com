@@ -120,97 +120,102 @@ command line options for both of these commands.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-p<br />
-Show textual diffs, instead of the Git internal diff output format that
-is useful only to tell the changed paths and their nature of changes.</p>
+<ul>
+<li><p>-p<br />
+Show textual diffs, instead of the Git internal diff output format
+that is useful only to tell the changed paths and their nature of
+changes.</p></li>
 
-<p>-&lt;n&gt;<br />
-Limit output to &lt;n&gt; commits.</p>
+<li><p>-&lt;n&gt;<br />
+Limit output to &lt;n&gt; commits.</p></li>
 
-<p>&lt;since&gt;..&lt;until&gt;<br />
+<li><p>&lt;since&gt;..&lt;until&gt;<br />
 Limit output to between the two named commits (bottom exclusive, top
-inclusive).</p>
+inclusive).</p></li>
 
-<p>-r<br />
-Show Git internal diff output, but for the whole tree, not just the top
-level.</p>
+<li><p>-r<br />
+Show Git internal diff output, but for the whole tree, not just the
+top level.</p></li>
 
-<p>-m<br />
-By default, differences for merge commits are not shown. With this flag,
-show differences to that commit from all of its parents.</p>
+<li><p>-m<br />
+By default, differences for merge commits are not shown. With this
+flag, show differences to that commit from all of its parents.</p>
 
-<p>However, it is not very useful in general, although it <strong>is</strong> useful on
-a file-by-file basis.</p>
+<p>However, it is not very useful in general, although it <strong>is</strong> useful
+on a file-by-file basis.</p></li>
 
-<p>&ndash;pretty[=&lt;format&gt;]<br />
-&ndash;format=&lt;format&gt;<br />
-Pretty-print the contents of the commit logs in a given format, where
-<em>&lt;format&gt;</em> can be one of <em>oneline</em>, <em>short</em>, <em>medium</em>, <em>full</em>,
-<em>fuller</em>, <em>email</em>, <em>raw</em> and <em>format:&lt;string&gt;</em>. See the &ldquo;PRETTY
-FORMATS&rdquo; section for some additional details for each format. When
-omitted, the format defaults to <em>medium</em>.</p>
+<li><p>&ndash;pretty[=&lt;format&gt;]<br />
+--format=&lt;format&gt;<br />
+Pretty-print the contents of the commit logs in a given format,
+where <em>&lt;format&gt;</em> can be one of <em>oneline</em>, <em>short</em>, <em>medium</em>,
+<em>full</em>, <em>fuller</em>, <em>email</em>, <em>raw</em> and <em>format:&lt;string&gt;</em>. See the
+&ldquo;PRETTY FORMATS&rdquo; section for some additional details for each
+format. When omitted, the format defaults to <em>medium</em>.</p>
 
 <p>Note: you can specify the default pretty format in the repository
-configuration (see <a href="../git-config">git-config(1)</a>).</p>
+configuration (see <a href="../git-config">git-config(1)</a>).</p></li>
 
-<p>&ndash;abbrev-commit<br />
-Instead of showing the full 40-byte hexadecimal commit object name, show
-only a partial prefix. Non default number of digits can be specified
-with &ldquo;&ndash;abbrev=&lt;n&gt;&rdquo; (which also modifies diff output, if it is
-displayed).</p>
+<li><p>&ndash;abbrev-commit<br />
+Instead of showing the full 40-byte hexadecimal commit object name,
+show only a partial prefix. Non default number of digits can be
+specified with &ldquo;&ndash;abbrev=&lt;n&gt;&rdquo; (which also modifies diff output, if
+it is displayed).</p>
 
-<p>This should make &ldquo;&ndash;pretty=oneline&rdquo; a whole lot more readable for people
-using 80-column terminals.</p>
+<p>This should make &ldquo;&ndash;pretty=oneline&rdquo; a whole lot more readable for
+people using 80-column terminals.</p></li>
 
-<p>&ndash;no-abbrev-commit<br />
+<li><p>&ndash;no-abbrev-commit<br />
 Show the full 40-byte hexadecimal commit object name. This negates
-<code>--abbrev-commit</code> and those options which imply it such as &ldquo;&ndash;oneline&rdquo;.
-It also overrides the <em>log.abbrevCommit</em> variable.</p>
+<code>--abbrev-commit</code> and those options which imply it such as
+&ldquo;&ndash;oneline&rdquo;. It also overrides the <em>log.abbrevCommit</em> variable.</p></li>
 
-<p>&ndash;oneline<br />
+<li><p>&ndash;oneline<br />
 This is a shorthand for &ldquo;&ndash;pretty=oneline &ndash;abbrev-commit&rdquo; used
-together.</p>
+together.</p></li>
 
-<p>&ndash;encoding=&lt;encoding&gt;<br />
-The commit objects record the encoding used for the log message in their
-encoding header; this option can be used to tell the command to re-code
-the commit log message in the encoding preferred by the user. For non
-plumbing commands this defaults to UTF-8.</p>
+<li><p>&ndash;encoding=&lt;encoding&gt;<br />
+The commit objects record the encoding used for the log message in
+their encoding header; this option can be used to tell the command
+to re-code the commit log message in the encoding preferred by the
+user. For non plumbing commands this defaults to UTF-8.</p></li>
 
-<p>&ndash;notes[=&lt;ref&gt;]<br />
-Show the notes (see <a href="../git-notes">git-notes(1)</a>) that annotate the
-commit, when showing the commit log message. This is the default for
-<code>git log</code>, <code>git show</code> and <code>git whatchanged</code> commands when there is no
-<code>--pretty</code>, <code>--format</code> nor <code>--oneline</code> option given on the command line.</p>
+<li><p>&ndash;notes[=&lt;ref&gt;]<br />
+Show the notes (see <a href="../git-notes">git-notes(1)</a>) that annotate
+the commit, when showing the commit log message. This is the default
+for <code>git log</code>, <code>git show</code> and <code>git whatchanged</code> commands when there
+is no <code>--pretty</code>, <code>--format</code> nor <code>--oneline</code> option given on the
+command line.</p>
 
 <p>By default, the notes shown are from the notes refs listed in the
 <em>core.notesRef</em> and <em>notes.displayRef</em> variables (or corresponding
-environment overrides). See <a href="../git-config">git-config(1)</a> for more
-details.</p>
+environment overrides). See <a href="../git-config">git-config(1)</a> for
+more details.</p>
 
 <p>With an optional <em>&lt;ref&gt;</em> argument, show this notes ref instead of
-the default notes ref(s). The ref is taken to be in <code>refs/notes/</code> if it
-is not qualified.</p>
+the default notes ref(s). The ref is taken to be in <code>refs/notes/</code> if
+it is not qualified.</p>
 
 <p>Multiple &ndash;notes options can be combined to control which notes are
 being displayed. Examples: &ldquo;&ndash;notes=foo&rdquo; will show only notes from
 &ldquo;refs/notes/foo&rdquo;; &ldquo;&ndash;notes=foo &ndash;notes&rdquo; will show both notes from
-&ldquo;refs/notes/foo&rdquo; and from the default notes ref(s).</p>
+&ldquo;refs/notes/foo&rdquo; and from the default notes ref(s).</p></li>
 
-<p>&ndash;no-notes<br />
-Do not show notes. This negates the above <code>--notes</code> option, by resetting
-the list of notes refs from which notes are shown. Options are parsed in
-the order given on the command line, so e.g. &ldquo;&ndash;notes &ndash;notes=foo
-&ndash;no-notes &ndash;notes=bar&rdquo; will only show notes from &ldquo;refs/notes/bar&rdquo;.</p>
+<li><p>&ndash;no-notes<br />
+Do not show notes. This negates the above <code>--notes</code> option, by
+resetting the list of notes refs from which notes are shown. Options
+are parsed in the order given on the command line, so e.g. &ldquo;&ndash;notes
+&ndash;notes=foo &ndash;no-notes &ndash;notes=bar&rdquo; will only show notes from
+&ldquo;refs/notes/bar&rdquo;.</p></li>
 
-<p>&ndash;show-notes[=&lt;ref&gt;]<br />
-&ndash;[no-]standard-notes<br />
-These options are deprecated. Use the above &ndash;notes/&ndash;no-notes options
-instead.</p>
+<li><p>&ndash;show-notes[=&lt;ref&gt;]<br />
+--[no-]standard-notes<br />
+These options are deprecated. Use the above &ndash;notes/&ndash;no-notes
+options instead.</p></li>
 
-<p>&ndash;show-signature<br />
-Check the validity of a signed commit object by passing the signature to
-<code>gpg --verify</code> and show the output.</p>
+<li><p>&ndash;show-signature<br />
+Check the validity of a signed commit object by passing the
+signature to <code>gpg --verify</code> and show the output.</p></li>
+</ul>
 
 <h2 id="pretty-formats">PRETTY FORMATS</h2>
 
@@ -304,8 +309,8 @@ information you want to show. It works a little bit like printf
 format, with the notable exception that you get a newline with <em>%n</em>
 instead of <em>\n</em>.</p>
 
-<p>E.g, <em>format:&ldquo;The author of %h was %an, %ar%nThe title
-was &gt;&gt;%s&lt;&lt;%n&rdquo;</em> would show something like this:</p>
+<p>E.g, <em>format:&ldquo;The author of %h was %an, %ar%nThe title was
+&gt;&gt;%s&lt;&lt;%n&rdquo;</em> would show something like this:</p>
 
 <pre><code>The author of fe6e0ee was Junio C Hamano, 23 hours ago
 The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff input.&lt;&lt;
@@ -436,32 +441,30 @@ until the color is switched again.</p></li>
 
 <li><p><em>%x00</em>: print a byte from a hex code</p></li>
 
-<li><p><em>%w([&lt;w&gt;[,&lt;i1&gt;[,&lt;i2&gt;]]])</em>: switch line
-wrapping, like the -w option of
-<a href="../git-shortlog">git-shortlog(1)</a>.</p></li>
+<li><p><em>%w([&lt;w&gt;[,&lt;i1&gt;[,&lt;i2&gt;]]])</em>: switch line wrapping,
+like the -w option of <a href="../git-shortlog">git-shortlog(1)</a>.</p></li>
 
-<li><p><em>%&lt;(&lt;N&gt;[,trunc|ltrunc|mtrunc])</em>: make the next
-placeholder take at least N columns, padding spaces on the right
-if necessary. Optionally truncate at the beginning (ltrunc), the
+<li><p><em>%&lt;(&lt;N&gt;[,trunc|ltrunc|mtrunc])</em>: make the next placeholder
+take at least N columns, padding spaces on the right if
+necessary. Optionally truncate at the beginning (ltrunc), the
 middle (mtrunc) or the end (trunc) if the output is longer than
-N columns. Note that truncating only works correctly with
-N &gt;= 2.</p></li>
+N columns. Note that truncating only works correctly with N &gt;=
+2.</p></li>
 
-<li><p><em>%&lt;|(&lt;N&gt;)</em>: make the next placeholder take at least
-until Nth columns, padding spaces on the right if necessary</p></li>
+<li><p><em>%&lt;|(&lt;N&gt;)</em>: make the next placeholder take at least until Nth
+columns, padding spaces on the right if necessary</p></li>
 
-<li><p><em>%&gt;(&lt;N&gt;)</em>, <em>%&gt;|(&lt;N&gt;)</em>: similar to
-<em>%&lt;(&lt;N&gt;)</em>, <em>%&lt;|(&lt;N&gt;)</em> respectively, but
-padding spaces on the left</p></li>
+<li><p><em>%&gt;(&lt;N&gt;)</em>, <em>%&gt;|(&lt;N&gt;)</em>: similar to <em>%&lt;(&lt;N&gt;)</em>,
+<em>%&lt;|(&lt;N&gt;)</em> respectively, but padding spaces on the left</p></li>
 
-<li><p><em>%&gt;&gt;(&lt;N&gt;)</em>, <em>%&gt;&gt;|(&lt;N&gt;)</em>: similar to
-<em>%&gt;(&lt;N&gt;)</em>, <em>%&gt;|(&lt;N&gt;)</em> respectively, except
-that if the next placeholder takes more spaces than given and
-there are spaces on its left, use those spaces</p></li>
+<li><p><em>%&gt;&gt;(&lt;N&gt;)</em>, <em>%&gt;&gt;|(&lt;N&gt;)</em>: similar to <em>%&gt;(&lt;N&gt;)</em>,
+<em>%&gt;|(&lt;N&gt;)</em> respectively, except that if the next placeholder
+takes more spaces than given and there are spaces on its left,
+use those spaces</p></li>
 
-<li><p><em>%&gt;&lt;(&lt;N&gt;)</em>, <em>%&gt;&lt;|(&lt;N&gt;)</em>: similar to <em>%
-&lt;(&lt;N&gt;)</em>, <em>%&lt;|(&lt;N&gt;)</em> respectively, but padding
-both sides (i.e. the text is centered)</p></li>
+<li><p><em>%&gt;&lt;(&lt;N&gt;)</em>, <em>%&gt;&lt;|(&lt;N&gt;)</em>: similar to <em>% &lt;(&lt;N&gt;)</em>,
+<em>%&lt;|(&lt;N&gt;)</em> respectively, but padding both sides (i.e. the
+text is centered)</p></li>
 </ul></li>
 </ul>
 
@@ -525,13 +528,16 @@ $ git log -2 --pretty=%h 4da45bef
 
 <h2 id="examples">Examples</h2>
 
-<p><code>git whatchanged -p v2.6.12..                 include/scsi drivers/scsi</code><br />
+<ul>
+<li><p><code>git whatchanged -p v2.6.12.. include/scsi drivers/scsi</code><br />
 Show as patches the commits since version <em>v2.6.12</em> that changed any
-file in the include/scsi or drivers/scsi subdirectories</p>
+file in the include/scsi or drivers/scsi subdirectories</p></li>
 
-<p><code>git whatchanged --since=&quot;2                 weeks ago&quot; -- gitk</code><br />
-Show the changes during the last two weeks to the file <em>gitk</em>. The &ldquo;&ndash;&rdquo;
-is necessary to avoid confusion with the <strong>branch</strong> named <em>gitk</em></p>
+<li><p><code>git whatchanged --since=&quot;2 weeks ago&quot; -- gitk</code><br />
+Show the changes during the last two weeks to the file <em>gitk</em>. The
+&ldquo;&ndash;&rdquo; is necessary to avoid confusion with the <strong>branch</strong> named
+<em>gitk</em></p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

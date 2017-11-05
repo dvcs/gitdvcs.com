@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-am </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-am</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.4'>2.12.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.4/git-am'>git-am</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git am [--signoff] [--keep] [--[no-]keep-cr] [--[no-]utf8]
+         [--[no-]3way] [--interactive] [--committer-date-is-author-date]
+         [--ignore-date] [--ignore-space-change | --ignore-whitespace]
+         [--whitespace=&lt;option&gt;] [-C&lt;n&gt;] [-p&lt;n&gt;] [--directory=&lt;dir&gt;]
+         [--exclude=&lt;path&gt;] [--include=&lt;path&gt;] [--reject] [-q | --quiet]
+         [--[no-]scissors] [-S[&lt;keyid&gt;]] [--patch-format=&lt;format&gt;]
+         [(&lt;mbox&gt; | &lt;Maildir&gt;)…]
+git am (--continue | --skip | --abort)
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Splits mail messages in a mailbox into commit log message, authorship
+information and patches, and applies them to the current branch.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>(&lt;mbox&gt;|&lt;Maildir&gt;)…<br />
+The list of mailbox files to read patches from. If you do not supply
+this argument, the command reads from the standard input. If you
+supply directories, they will be treated as Maildirs.</p></li>
+
+<li><p>-s<br />
+--signoff<br />
+Add a <code>Signed-off-by:</code> line to the commit message, using the
+committer identity of yourself. See the signoff option in
+<a href="../git-commit">git-commit(1)</a> for more information.</p></li>
+
+<li><p>-k<br />
+--keep<br />
+Pass <code>-k</code> flag to <em>git mailinfo</em> (see
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
+
+<li><p>&ndash;keep-non-patch<br />
+Pass <code>-b</code> flag to <em>git mailinfo</em> (see
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
+
+<li><p>&ndash;[no-]keep-cr<br />
+With <code>--keep-cr</code>, call <em>git mailsplit</em> (see
+<a href="../git-mailsplit">git-mailsplit(1)</a>) with the same option, to
+prevent it from stripping CR at the end of lines. <code>am.keepcr</code>
+configuration variable can be used to specify the default behaviour.
+<code>--no-keep-cr</code> is useful to override <code>am.keepcr</code>.</p></li>
+
+<li><p>-c<br />
+--scissors<br />
+Remove everything in body before a scissors line (see
+<a href="../git-mailinfo">git-mailinfo(1)</a>). Can be activated by default
+using the <code>mailinfo.scissors</code> configuration variable.</p></li>
+
+<li><p>&ndash;no-scissors<br />
+Ignore scissors lines (see <a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
+
+<li><p>-m<br />
+--message-id<br />
+Pass the <code>-m</code> flag to <em>git mailinfo</em> (see
+<a href="../git-mailinfo">git-mailinfo(1)</a>), so that the Message-ID header
+is added to the commit message. The <code>am.messageid</code> configuration
+variable can be used to specify the default behaviour.</p></li>
+
+<li><p>&ndash;no-message-id<br />
+Do not add the Message-ID header to the commit message.
+<code>no-message-id</code> is useful to override <code>am.messageid</code>.</p></li>
+
+<li><p>-q<br />
+--quiet<br />
+Be quiet. Only print error messages.</p></li>
+
+<li><p>-u<br />
+--utf8<br />
+Pass <code>-u</code> flag to <em>git mailinfo</em> (see
+<a href="../git-mailinfo">git-mailinfo(1)</a>). The proposed commit log
+message taken from the e-mail is re-coded into UTF-8 encoding
+(configuration variable <code>i18n.commitencoding</code> can be used to specify
+project’s preferred encoding if it is not UTF-8).</p>
+
+<p>This was optional in prior versions of git, but now it is the
+default. You can use <code>--no-utf8</code> to override this.</p></li>
+
+<li><p>&ndash;no-utf8<br />
+Pass <code>-n</code> flag to <em>git mailinfo</em> (see
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
+
+<li><p>-3<br />
+--3way<br />
+--no-3way<br />
+When the patch does not apply cleanly, fall back on 3-way merge if
+the patch records the identity of blobs it is supposed to apply to
+and we have those blobs available locally. <code>--no-3way</code> can be used
+to override am.threeWay configuration variable. For more
+information, see am.threeWay in <a href="../git-config">git-config(1)</a>.</p></li>
+
+<li><p>&ndash;ignore-space-change<br />
+--ignore-whitespace<br />
+--whitespace=&lt;option&gt;<br />
+-C&lt;n&gt;<br />
+-p&lt;n&gt;<br />
+--directory=&lt;dir&gt;<br />
+--exclude=&lt;path&gt;<br />
+--include=&lt;path&gt;<br />
+--reject<br />
+These flags are passed to the <em>git apply</em> (see
+<a href="../git-apply">git-apply(1)</a>) program that applies the patch.</p></li>
+
+<li><p>&ndash;patch-format<br />
+By default the command will try to detect the patch format
+automatically. This option allows the user to bypass the automatic
+detection and specify the patch format that the patch(es) should be
+interpreted as. Valid formats are mbox, mboxrd, stgit, stgit-series
+and hg.</p></li>
+
+<li><p>-i<br />
+--interactive<br />
+Run interactively.</p></li>
+
+<li><p>&ndash;committer-date-is-author-date<br />
+By default the command records the date from the e-mail message as
+the commit author date, and uses the time of commit creation as the
+committer date. This allows the user to lie about the committer date
+by using the same value as the author date.</p></li>
+
+<li><p>&ndash;ignore-date<br />
+By default the command records the date from the e-mail message as
+the commit author date, and uses the time of commit creation as the
+committer date. This allows the user to lie about the author date by
+using the same value as the committer date.</p></li>
+
+<li><p>&ndash;skip<br />
+Skip the current patch. This is only meaningful when restarting an
+aborted patch.</p></li>
+
+<li><p>-S[&lt;keyid&gt;]<br />
+--gpg-sign[=&lt;keyid&gt;]<br />
+GPG-sign commits. The <code>keyid</code> argument is optional and defaults to
+the committer identity; if specified, it must be stuck to the option
+without a space.</p></li>
+
+<li><p>&ndash;continue<br />
+-r<br />
+--resolved<br />
+After a patch failure (e.g. attempting to apply conflicting patch),
+the user has applied it by hand and the index file stores the result
+of the application. Make a commit using the authorship and commit
+log extracted from the e-mail message and the current index file,
+and continue.</p></li>
+
+<li><p>&ndash;resolvemsg=&lt;msg&gt;<br />
+When a patch failure occurs, &lt;msg&gt; will be printed to the screen
+before exiting. This overrides the standard message informing you to
+use <code>--continue</code> or <code>--skip</code> to handle the failure. This is solely
+for internal use between <em>git rebase</em> and <em>git am</em>.</p></li>
+
+<li><p>&ndash;abort<br />
+Restore the original branch and abort the patching operation.</p></li>
+</ul>
+
+<h2 id="discussion">DISCUSSION</h2>
+
+<p>The commit author name is taken from the &ldquo;From: &ldquo; line of the message,
+and commit author date is taken from the &ldquo;Date: &ldquo; line of the message.
+The &ldquo;Subject: &ldquo; line is used as the title of the commit, after stripping
+common prefix &ldquo;[PATCH &lt;anything&gt;]&rdquo;. The &ldquo;Subject: &ldquo; line is supposed
+to concisely describe what the commit is about in one line of text.</p>
+
+<p>&ldquo;From: &ldquo; and &ldquo;Subject: &ldquo; lines starting the body override the respective
+commit author name and title values taken from the headers.</p>
+
+<p>The commit message is formed by the title taken from the &ldquo;Subject: &ldquo;, a
+blank line and the body of the message up to where the patch begins.
+Excess whitespace at the end of each line is automatically stripped.</p>
+
+<p>The patch is expected to be inline, directly following the message. Any
+line that is of the form:</p>
+
+<ul>
+<li><p>three-dashes and end-of-line, or</p></li>
+
+<li><p>a line that begins with &ldquo;diff -&rdquo;, or</p></li>
+
+<li><p>a line that begins with &ldquo;Index: &ldquo;</p></li>
+</ul>
+
+<p>is taken as the beginning of a patch, and the commit log message is
+terminated before the first occurrence of such a line.</p>
+
+<p>When initially invoking <code>git am</code>, you give it the names of the mailboxes
+to process. Upon seeing the first patch that does not apply, it aborts
+in the middle. You can recover from this in one of two ways:</p>
+
+<ol>
+<li><p>skip the current patch by re-running the command with the <code>--skip</code>
+option.</p></li>
+
+<li><p>hand resolve the conflict in the working directory, and update the
+index file to bring it into a state that the patch should have
+produced. Then run the command with the <code>--continue</code> option.</p></li>
+</ol>
+
+<p>The command refuses to process new mailboxes until the current operation
+is finished, so if you decide to start over from scratch, run <code>git am
+--abort</code> before running the command with mailbox names.</p>
+
+<p>Before any patches are applied, ORIG_HEAD is set to the tip of the
+current branch. This is useful if you have problems with multiple
+commits, like running <em>git am</em> on the wrong branch or an error in the
+commits that is more easily fixed by changing the mailbox (e.g. errors
+in the &ldquo;From:&rdquo; lines).</p>
+
+<h2 id="hooks">HOOKS</h2>
+
+<p>This command can run <code>applypatch-msg</code>, <code>pre-applypatch</code>, and
+<code>post-applypatch</code> hooks. See <a href="../githooks">githooks(5)</a> for more
+information.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-apply">git-apply(1)</a>.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

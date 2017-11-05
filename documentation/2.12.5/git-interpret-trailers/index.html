@@ -1,0 +1,507 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-interpret-trailers </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-interpret-trailers</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.5'>2.12.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.5/git-interpret-trailers'>git-interpret-trailers</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git interpret-trailers [--in-place] [--trim-empty] [(--trailer &lt;token&gt;[(=|:)&lt;value&gt;])…] [&lt;file&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Help adding <em>trailers</em> lines, that look similar to RFC 822 e-mail
+headers, at the end of the otherwise free-form part of a commit message.</p>
+
+<p>This command reads some patches or commit messages from either the
+&lt;file&gt; arguments or the standard input if no &lt;file&gt; is specified.
+Then this command applies the arguments passed using the <code>--trailer</code>
+option, if any, to the commit message part of each input file. The
+result is emitted on the standard output.</p>
+
+<p>Some configuration variables control the way the <code>--trailer</code> arguments
+are applied to each commit message and the way any existing trailer in
+the commit message is changed. They also make it possible to
+automatically add some trailers.</p>
+
+<p>By default, a <em>&lt;token&gt;=&lt;value&gt;</em> or <em>&lt;token&gt;:&lt;value&gt;</em> argument
+given using <code>--trailer</code> will be appended after the existing trailers
+only if the last trailer has a different (&lt;token&gt;, &lt;value&gt;) pair (or
+if there is no existing trailer). The &lt;token&gt; and &lt;value&gt; parts will
+be trimmed to remove starting and trailing whitespace, and the resulting
+trimmed &lt;token&gt; and &lt;value&gt; will appear in the message like this:</p>
+
+<pre><code>token: value
+</code></pre>
+
+<p>This means that the trimmed &lt;token&gt; and &lt;value&gt; will be separated by
+<code>': '</code> (one colon followed by one space).</p>
+
+<p>By default the new trailer will appear at the end of all the existing
+trailers. If there is no existing trailer, the new trailer will appear
+after the commit message part of the output, and, if there is no line
+with only spaces at the end of the commit message part, one blank line
+will be added before the new trailer.</p>
+
+<p>Existing trailers are extracted from the input message by looking for a
+group of one or more lines that (i) are all trailers, or (ii) contains
+at least one Git-generated or user-configured trailer and consists of at
+least 25% trailers. The group must be preceded by one or more empty (or
+whitespace-only) lines. The group must either be at the end of the
+message or be the last non-whitespace lines before a line that starts
+with <em>&mdash;</em>. Such three minus signs start the patch part of the message.</p>
+
+<p>When reading trailers, there can be whitespaces after the token, the
+separator and the value. There can also be whitespaces inside the token
+and the value. The value may be split over multiple lines with each
+subsequent line starting with whitespace, like the &ldquo;folding&rdquo; in RFC 822.</p>
+
+<p>Note that <em>trailers</em> do not follow and are not intended to follow many
+rules for RFC 822 headers. For example they do not follow the encoding
+rules and probably many other rules.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>&ndash;in-place<br />
+Edit the files in place.</p></li>
+
+<li><p>&ndash;trim-empty<br />
+If the &lt;value&gt; part of any trailer contains only whitespace, the
+whole trailer will be removed from the resulting message. This
+applies to existing trailers as well as new trailers.</p></li>
+
+<li><p>&ndash;trailer &lt;token&gt;[(=|:)&lt;value&gt;]<br />
+Specify a (&lt;token&gt;, &lt;value&gt;) pair that should be applied as a
+trailer to the input messages. See the description of this command.</p></li>
+</ul>
+
+<h2 id="configuration-variables">CONFIGURATION VARIABLES</h2>
+
+<ul>
+<li><p>trailer.separators<br />
+This option tells which characters are recognized as trailer
+separators. By default only <em>:</em> is recognized as a trailer
+separator, except that <em>=</em> is always accepted on the command line
+for compatibility with other git commands.</p>
+
+<p>The first character given by this option will be the default
+character used when another separator is not specified in the config
+for this trailer.</p>
+
+<p>For example, if the value for this option is &ldquo;%=$&rdquo;, then only lines
+using the format <em>&lt;token&gt;&lt;sep&gt;&lt;value&gt;</em> with &lt;sep&gt; containing
+<em>%</em>, <em>=</em> or <em>$</em> and then spaces will be considered trailers. And <em>%</em>
+will be the default separator used, so by default trailers will
+appear like: <em>&lt;token&gt;% &lt;value&gt;</em> (one percent sign and one space
+will appear between the token and the value).</p></li>
+
+<li><p>trailer.where<br />
+This option tells where a new trailer will be added.</p>
+
+<p>This can be <code>end</code>, which is the default, <code>start</code>, <code>after</code> or
+<code>before</code>.</p>
+
+<p>If it is <code>end</code>, then each new trailer will appear at the end of the
+existing trailers.</p>
+
+<p>If it is <code>start</code>, then each new trailer will appear at the start,
+instead of the end, of the existing trailers.</p>
+
+<p>If it is <code>after</code>, then each new trailer will appear just after the
+last trailer with the same &lt;token&gt;.</p>
+
+<p>If it is <code>before</code>, then each new trailer will appear just before the
+first trailer with the same &lt;token&gt;.</p></li>
+
+<li><p>trailer.ifexists<br />
+This option makes it possible to choose what action will be
+performed when there is already at least one trailer with the same
+&lt;token&gt; in the message.</p>
+
+<p>The valid values for this option are: <code>addIfDifferentNeighbor</code> (this
+is the default), <code>addIfDifferent</code>, <code>add</code>, <code>overwrite</code> or
+<code>doNothing</code>.</p>
+
+<p>With <code>addIfDifferentNeighbor</code>, a new trailer will be added only if
+no trailer with the same (&lt;token&gt;, &lt;value&gt;) pair is above or
+below the line where the new trailer will be added.</p>
+
+<p>With <code>addIfDifferent</code>, a new trailer will be added only if no
+trailer with the same (&lt;token&gt;, &lt;value&gt;) pair is already in the
+message.</p>
+
+<p>With <code>add</code>, a new trailer will be added, even if some trailers with
+the same (&lt;token&gt;, &lt;value&gt;) pair are already in the message.</p>
+
+<p>With <code>replace</code>, an existing trailer with the same &lt;token&gt; will be
+deleted and the new trailer will be added. The deleted trailer will
+be the closest one (with the same &lt;token&gt;) to the place where the
+new one will be added.</p>
+
+<p>With <code>doNothing</code>, nothing will be done; that is no new trailer will
+be added if there is already one with the same &lt;token&gt; in the
+message.</p></li>
+
+<li><p>trailer.ifmissing<br />
+This option makes it possible to choose what action will be
+performed when there is not yet any trailer with the same &lt;token&gt;
+in the message.</p>
+
+<p>The valid values for this option are: <code>add</code> (this is the default)
+and <code>doNothing</code>.</p>
+
+<p>With <code>add</code>, a new trailer will be added.</p>
+
+<p>With <code>doNothing</code>, nothing will be done.</p></li>
+
+<li><p>trailer.&lt;token&gt;.key<br />
+This <code>key</code> will be used instead of &lt;token&gt; in the trailer. At the
+end of this key, a separator can appear and then some space
+characters. By default the only valid separator is <em>:</em>, but this can
+be changed using the <code>trailer.separators</code> config variable.</p>
+
+<p>If there is a separator, then the key will be used instead of both
+the &lt;token&gt; and the default separator when adding the trailer.</p></li>
+
+<li><p>trailer.&lt;token&gt;.where<br />
+This option takes the same values as the <em>trailer.where</em>
+configuration variable and it overrides what is specified by that
+option for trailers with the specified &lt;token&gt;.</p></li>
+
+<li><p>trailer.&lt;token&gt;.ifexist<br />
+This option takes the same values as the <em>trailer.ifexist</em>
+configuration variable and it overrides what is specified by that
+option for trailers with the specified &lt;token&gt;.</p></li>
+
+<li><p>trailer.&lt;token&gt;.ifmissing<br />
+This option takes the same values as the <em>trailer.ifmissing</em>
+configuration variable and it overrides what is specified by that
+option for trailers with the specified &lt;token&gt;.</p></li>
+
+<li><p>trailer.&lt;token&gt;.command<br />
+This option can be used to specify a shell command that will be
+called to automatically add or modify a trailer with the specified
+&lt;token&gt;.</p>
+
+<p>When this option is specified, the behavior is as if a special
+<em>&lt;token&gt;=&lt;value&gt;</em> argument were added at the beginning of the
+command line, where &lt;value&gt; is taken to be the standard output of
+the specified command with any leading and trailing whitespace
+trimmed off.</p>
+
+<p>If the command contains the <code>$ARG</code> string, this string will be
+replaced with the &lt;value&gt; part of an existing trailer with the
+same &lt;token&gt;, if any, before the command is launched.</p>
+
+<p>If some <em>&lt;token&gt;=&lt;value&gt;</em> arguments are also passed on the
+command line, when a <em>trailer.&lt;token&gt;.command</em> is configured, the
+command will also be executed for each of these arguments. And the
+&lt;value&gt; part of these arguments, if any, will be used to replace
+the <code>$ARG</code> string in the command.</p></li>
+</ul>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Configure a <em>sign</em> trailer with a <em>Signed-off-by</em> key, and then add
+two of these trailers to a message:</p>
+
+<pre><code>$ git config trailer.sign.key &quot;Signed-off-by&quot;
+$ cat msg.txt
+subject
+
+message
+$ cat msg.txt | git interpret-trailers --trailer 'sign: Alice &lt;alice@example.com&gt;' --trailer 'sign: Bob &lt;bob@example.com&gt;'
+subject
+
+message
+
+Signed-off-by: Alice &lt;alice@example.com&gt;
+Signed-off-by: Bob &lt;bob@example.com&gt;
+</code></pre></li>
+
+<li><p>Use the <code>--in-place</code> option to edit a message file in place:</p>
+
+<pre><code>$ cat msg.txt
+subject
+
+message
+
+Signed-off-by: Bob &lt;bob@example.com&gt;
+$ git interpret-trailers --trailer 'Acked-by: Alice &lt;alice@example.com&gt;' --in-place msg.txt
+$ cat msg.txt
+subject
+
+message
+
+Signed-off-by: Bob &lt;bob@example.com&gt;
+Acked-by: Alice &lt;alice@example.com&gt;
+</code></pre></li>
+
+<li><p>Extract the last commit as a patch, and add a <em>Cc</em> and a
+<em>Reviewed-by</em> trailer to it:</p>
+
+<pre><code>$ git format-patch -1
+0001-foo.patch
+$ git interpret-trailers --trailer 'Cc: Alice &lt;alice@example.com&gt;' --trailer 'Reviewed-by: Bob &lt;bob@example.com&gt;' 0001-foo.patch &gt;0001-bar.patch
+</code></pre></li>
+
+<li><p>Configure a <em>sign</em> trailer with a command to automatically add a
+&lsquo;Signed-off-by: &lsquo; with the author information only if there is no
+&lsquo;Signed-off-by: &lsquo; already, and show how it works:</p>
+
+<pre><code>$ git config trailer.sign.key &quot;Signed-off-by: &quot;
+$ git config trailer.sign.ifmissing add
+$ git config trailer.sign.ifexists doNothing
+$ git config trailer.sign.command 'echo &quot;$(git config user.name) &lt;$(git config user.email)&gt;&quot;'
+$ git interpret-trailers &lt;&lt;EOF
+&gt; EOF
+
+Signed-off-by: Bob &lt;bob@example.com&gt;
+$ git interpret-trailers &lt;&lt;EOF
+&gt; Signed-off-by: Alice &lt;alice@example.com&gt;
+&gt; EOF
+
+Signed-off-by: Alice &lt;alice@example.com&gt;
+</code></pre></li>
+
+<li><p>Configure a <em>fix</em> trailer with a key that contains a <em>#</em> and no
+space after this character, and show how it works:</p>
+
+<pre><code>$ git config trailer.separators &quot;:#&quot;
+$ git config trailer.fix.key &quot;Fix #&quot;
+$ echo &quot;subject&quot; | git interpret-trailers --trailer fix=42
+subject
+
+Fix #42
+</code></pre></li>
+
+<li><p>Configure a <em>see</em> trailer with a command to show the subject of a
+commit that is related, and show how it works:</p>
+
+<pre><code>$ git config trailer.see.key &quot;See-also: &quot;
+$ git config trailer.see.ifExists &quot;replace&quot;
+$ git config trailer.see.ifMissing &quot;doNothing&quot;
+$ git config trailer.see.command &quot;git log -1 --oneline --format=\&quot;%h (%s)\&quot; --abbrev-commit --abbrev=14 \$ARG&quot;
+$ git interpret-trailers &lt;&lt;EOF
+&gt; subject
+&gt;
+&gt; message
+&gt;
+&gt; see: HEAD~2
+&gt; EOF
+subject
+
+message
+
+See-also: fe3187489d69c4 (subject of related commit)
+</code></pre></li>
+
+<li><p>Configure a commit template with some trailers with empty values
+(using sed to show and keep the trailing spaces at the end of the
+trailers), then configure a commit-msg hook that uses <em>git
+interpret-trailers</em> to remove trailers with empty values and to add
+a <em>git-version</em> trailer:</p>
+
+<pre><code>$ sed -e 's/ Z$/ /' &gt;commit_template.txt &lt;&lt;EOF
+&gt; ***subject***
+&gt;
+&gt; ***message***
+&gt;
+&gt; Fixes: Z
+&gt; Cc: Z
+&gt; Reviewed-by: Z
+&gt; Signed-off-by: Z
+&gt; EOF
+$ git config commit.template commit_template.txt
+$ cat &gt;.git/hooks/commit-msg &lt;&lt;EOF
+&gt; #!/bin/sh
+&gt; git interpret-trailers --trim-empty --trailer &quot;git-version: \$(git describe)&quot; &quot;\$1&quot; &gt; &quot;\$1.new&quot;
+&gt; mv &quot;\$1.new&quot; &quot;\$1&quot;
+&gt; EOF
+$ chmod +x .git/hooks/commit-msg
+</code></pre></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-commit">git-commit(1)</a>,
+<a href="../git-format-patch">git-format-patch(1)</a>,
+<a href="../git-config">git-config(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

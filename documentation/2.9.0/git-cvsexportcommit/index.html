@@ -131,74 +131,89 @@ what parent the changeset should be done against.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-c<br />
-Commit automatically if the patch applied cleanly. It will not commit if
-any hunks fail to apply or there were other problems.</p>
+<ul>
+<li><p>-c<br />
+Commit automatically if the patch applied cleanly. It will not
+commit if any hunks fail to apply or there were other problems.</p></li>
 
-<p>-p<br />
+<li><p>-p<br />
 Be pedantic (paranoid) when applying patches. Invokes patch with
-&ndash;fuzz=0</p>
+&ndash;fuzz=0</p></li>
 
-<p>-a<br />
+<li><p>-a<br />
 Add authorship information. Adds Author line, and Committer (if
-different from Author) to the message.</p>
+different from Author) to the message.</p></li>
 
-<p>-d<br />
+<li><p>-d<br />
 Set an alternative CVSROOT to use. This corresponds to the CVS -d
-parameter. Usually users will not want to set this, except if using CVS
-in an asymmetric fashion.</p>
+parameter. Usually users will not want to set this, except if using
+CVS in an asymmetric fashion.</p></li>
 
-<p>-f<br />
-Force the merge even if the files are not up to date.</p>
+<li><p>-f<br />
+Force the merge even if the files are not up to date.</p></li>
 
-<p>-P<br />
-Force the parent commit, even if it is not a direct parent.</p>
+<li><p>-P<br />
+Force the parent commit, even if it is not a direct parent.</p></li>
 
-<p>-m<br />
-Prepend the commit message with the provided prefix. Useful for patch
-series and the like.</p>
+<li><p>-m<br />
+Prepend the commit message with the provided prefix. Useful for
+patch series and the like.</p></li>
 
-<p>-u<br />
-Update affected files from CVS repository before attempting export.</p>
+<li><p>-u<br />
+Update affected files from CVS repository before attempting export.</p></li>
 
-<p>-k<br />
+<li><p>-k<br />
 Reverse CVS keyword expansion (e.g. $Revision: 1.2.3.4$ becomes
-$Revision$) in working CVS checkout before applying patch.</p>
+$Revision$) in working CVS checkout before applying patch.</p></li>
 
-<p>-w<br />
+<li><p>-w<br />
 Specify the location of the CVS checkout to use for the export. This
 option does not require GIT_DIR to be set before execution if the
-current directory is within a Git repository. The default is the value
-of <em>cvsexportcommit.cvsdir</em>.</p>
+current directory is within a Git repository. The default is the
+value of <em>cvsexportcommit.cvsdir</em>.</p></li>
 
-<p>-W<br />
-Tell cvsexportcommit that the current working directory is not only a
-Git checkout, but also the CVS checkout. Therefore, Git will reset the
-working directory to the parent commit before proceeding.</p>
+<li><p>-W<br />
+Tell cvsexportcommit that the current working directory is not only
+a Git checkout, but also the CVS checkout. Therefore, Git will reset
+the working directory to the parent commit before proceeding.</p></li>
 
-<p>-v<br />
-Verbose.</p>
+<li><p>-v<br />
+Verbose.</p></li>
+</ul>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
-<p>cvsexportcommit.cvsdir<br />
-The default location of the CVS checkout to use for the export.</p>
+<ul>
+<li>cvsexportcommit.cvsdir<br />
+The default location of the CVS checkout to use for the export.</li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<p>Merge one patch into CVS<br />
-    $ export GIT_DIR=~/project/.git
-    $ cd ~/project_cvs_checkout
-    $ git cvsexportcommit -v <commit-sha1>
-    $ cvs commit -F .msg <files></p>
+<ul>
+<li><p>Merge one patch into CVS</p>
 
-<p>Merge one patch into CVS (-c and -w options). The working directory is within the Git Repo<br />
-            $ git cvsexportcommit -v -c -w ~/project_cvs_checkout <commit-sha1></p>
+<pre><code>$ export GIT_DIR=~/project/.git
+$ cd ~/project_cvs_checkout
+$ git cvsexportcommit -v &lt;commit-sha1&gt;
+$ cvs commit -F .msg &lt;files&gt;
+</code></pre></li>
 
-<p>Merge pending patches into CVS automatically — only if you really know what you are doing<br />
-    $ export GIT_DIR=~/project/.git
-    $ cd ~/project_cvs_checkout
-    $ git cherry cvshead myhead | sed -n &rsquo;s/^+ //p&rsquo; | xargs -l1 git cvsexportcommit -c -p -v</p>
+<li><p>Merge one patch into CVS (-c and -w options). The working directory
+is within the Git
+Repo</p>
+
+<pre><code>        $ git cvsexportcommit -v -c -w ~/project_cvs_checkout &lt;commit-sha1&gt;
+</code></pre></li>
+
+<li><p>Merge pending patches into CVS automatically — only if you really
+know what you are doing</p>
+
+<pre><code>$ export GIT_DIR=~/project/.git
+$ cd ~/project_cvs_checkout
+$ git cherry cvshead myhead | sed -n 's/^+ //p' | xargs -l1 git cvsexportcommit -c -p -v
+</code></pre></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

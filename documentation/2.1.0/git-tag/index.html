@@ -123,13 +123,13 @@ delete, list or verify tags.</p>
 
 <p>Unless <code>-f</code> is given, the named tag must not yet exist.</p>
 
-<p>If one of <code>-a</code>, <code>-s</code>, or <code>-u               &lt;key-id&gt;</code> is passed, the
-command creates a <em>tag</em> object, and requires a tag message. Unless
-<code>-m &lt;msg&gt;</code> or <code>-F &lt;file&gt;</code> is given, an editor is started for the user to
-type in the tag message.</p>
+<p>If one of <code>-a</code>, <code>-s</code>, or <code>-u &lt;key-id&gt;</code> is passed, the command creates a
+<em>tag</em> object, and requires a tag message. Unless <code>-m &lt;msg&gt;</code> or <code>-F
+&lt;file&gt;</code> is given, an editor is started for the user to type in the tag
+message.</p>
 
-<p>If <code>-m &lt;msg&gt;</code> or <code>-F               &lt;file&gt;</code> is given and <code>-a</code>, <code>-s</code>, and
-<code>-u &lt;key-id&gt;</code> are absent, <code>-a</code> is implied.</p>
+<p>If <code>-m &lt;msg&gt;</code> or <code>-F &lt;file&gt;</code> is given and <code>-a</code>, <code>-s</code>, and <code>-u &lt;key-id&gt;</code>
+are absent, <code>-a</code> is implied.</p>
 
 <p>Otherwise just a tag reference for the SHA-1 object name of the commit
 object is created (i.e. a lightweight tag).</p>
@@ -153,103 +153,108 @@ lightweight tags by default.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-a<br />
-&ndash;annotate<br />
-Make an unsigned, annotated tag object</p>
+<ul>
+<li><p>-a<br />
+--annotate<br />
+Make an unsigned, annotated tag object</p></li>
 
-<p>-s<br />
-&ndash;sign<br />
-Make a GPG-signed tag, using the default e-mail address’s key.</p>
+<li><p>-s<br />
+--sign<br />
+Make a GPG-signed tag, using the default e-mail address’s key.</p></li>
 
-<p>-u &lt;key-id&gt;<br />
-&ndash;local-user=&lt;key-id&gt;<br />
-Make a GPG-signed tag, using the given key.</p>
+<li><p>-u &lt;key-id&gt;<br />
+--local-user=&lt;key-id&gt;<br />
+Make a GPG-signed tag, using the given key.</p></li>
 
-<p>-f<br />
-&ndash;force<br />
-Replace an existing tag with the given name (instead of failing)</p>
+<li><p>-f<br />
+--force<br />
+Replace an existing tag with the given name (instead of failing)</p></li>
 
-<p>-d<br />
-&ndash;delete<br />
-Delete existing tags with the given names.</p>
+<li><p>-d<br />
+--delete<br />
+Delete existing tags with the given names.</p></li>
 
-<p>-v<br />
-&ndash;verify<br />
-Verify the gpg signature of the given tag names.</p>
+<li><p>-v<br />
+--verify<br />
+Verify the gpg signature of the given tag names.</p></li>
 
-<p>-n&lt;num&gt;<br />
+<li><p>-n&lt;num&gt;<br />
 &lt;num&gt; specifies how many lines from the annotation, if any, are
-printed when using -l. The default is not to print any annotation lines.
-If no number is given to <code>-n</code>, only the first line is printed. If the
-tag is not annotated, the commit message is displayed instead.</p>
+printed when using -l. The default is not to print any annotation
+lines. If no number is given to <code>-n</code>, only the first line is
+printed. If the tag is not annotated, the commit message is
+displayed instead.</p></li>
 
-<p>-l &lt;pattern&gt;<br />
-&ndash;list &lt;pattern&gt;<br />
-List tags with names that match the given pattern (or all if no pattern
-is given). Running &ldquo;git tag&rdquo; without arguments also lists all tags. The
-pattern is a shell wildcard (i.e., matched using fnmatch(3)). Multiple
-patterns may be given; if any of them matches, the tag is shown.</p>
+<li><p>-l &lt;pattern&gt;<br />
+--list &lt;pattern&gt;<br />
+List tags with names that match the given pattern (or all if no
+pattern is given). Running &ldquo;git tag&rdquo; without arguments also lists
+all tags. The pattern is a shell wildcard (i.e., matched using
+fnmatch(3)). Multiple patterns may be given; if any of them matches,
+the tag is shown.</p></li>
 
-<p>&ndash;sort=&lt;type&gt;<br />
+<li><p>&ndash;sort=&lt;type&gt;<br />
 Sort in a specific order. Supported type is &ldquo;refname&rdquo; (lexicographic
 order), &ldquo;version:refname&rdquo; or &ldquo;v:refname&rdquo; (tag names are treated as
-versions). Prepend &ldquo;-&rdquo; to reverse sort order. When this option is not
-given, the sort order defaults to the value configured for the
-<em>tag.sort</em> variable if it exists, or lexicographic order otherwise. See
-<a href="../git-config">git-config(1)</a>.</p>
+versions). Prepend &ldquo;-&rdquo; to reverse sort order. When this option is
+not given, the sort order defaults to the value configured for the
+<em>tag.sort</em> variable if it exists, or lexicographic order otherwise.
+See <a href="../git-config">git-config(1)</a>.</p></li>
 
-<p>&ndash;column[=&lt;options&gt;]<br />
-&ndash;no-column<br />
-Display tag listing in columns. See configuration variable column.tag
-for option syntax.<code>--column</code> and <code>--no-column</code> without options are
-equivalent to <em>always</em> and <em>never</em> respectively.</p>
+<li><p>&ndash;column[=&lt;options&gt;]<br />
+--no-column<br />
+Display tag listing in columns. See configuration variable
+column.tag for option syntax.<code>--column</code> and <code>--no-column</code> without
+options are equivalent to <em>always</em> and <em>never</em> respectively.</p>
 
 <p>This option is only applicable when listing tags without annotation
-lines.</p>
+lines.</p></li>
 
-<p>&ndash;contains [&lt;commit&gt;]<br />
+<li><p>&ndash;contains [&lt;commit&gt;]<br />
 Only list tags which contain the specified commit (HEAD if not
-specified).</p>
+specified).</p></li>
 
-<p>&ndash;points-at &lt;object&gt;<br />
-Only list tags of the given object.</p>
+<li><p>&ndash;points-at &lt;object&gt;<br />
+Only list tags of the given object.</p></li>
 
-<p>-m &lt;msg&gt;<br />
-&ndash;message=&lt;msg&gt;<br />
+<li><p>-m &lt;msg&gt;<br />
+--message=&lt;msg&gt;<br />
 Use the given tag message (instead of prompting). If multiple <code>-m</code>
-options are given, their values are concatenated as separate paragraphs.
-Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or <code>-u &lt;key-id&gt;</code> is given.</p>
+options are given, their values are concatenated as separate
+paragraphs. Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or <code>-u &lt;key-id&gt;</code> is
+given.</p></li>
 
-<p>-F &lt;file&gt;<br />
-&ndash;file=&lt;file&gt;<br />
-Take the tag message from the given file. Use <em>-</em> to read the message
-from the standard input. Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>, or
-<code>-u &lt;key-id&gt;</code> is given.</p>
+<li><p>-F &lt;file&gt;<br />
+--file=&lt;file&gt;<br />
+Take the tag message from the given file. Use <em>-</em> to read the
+message from the standard input. Implies <code>-a</code> if none of <code>-a</code>, <code>-s</code>,
+or <code>-u &lt;key-id&gt;</code> is given.</p></li>
 
-<p>&ndash;cleanup=&lt;mode&gt;<br />
+<li><p>&ndash;cleanup=&lt;mode&gt;<br />
 This option sets how the tag message is cleaned up. The <em>&lt;mode&gt;</em>
-can be one of <em>verbatim</em>, <em>whitespace</em> and <em>strip</em>. The <em>strip</em> mode is
-default. The <em>verbatim</em> mode does not change message at all,
-<em>whitespace</em> removes just leading/trailing whitespace lines and <em>strip</em>
-removes both whitespace and commentary.</p>
+can be one of <em>verbatim</em>, <em>whitespace</em> and <em>strip</em>. The <em>strip</em> mode
+is default. The <em>verbatim</em> mode does not change message at all,
+<em>whitespace</em> removes just leading/trailing whitespace lines and
+<em>strip</em> removes both whitespace and commentary.</p></li>
 
-<p>&lt;tagname&gt;<br />
+<li><p>&lt;tagname&gt;<br />
 The name of the tag to create, delete, or describe. The new tag name
 must pass all checks defined by
 <a href="../git-check-ref-format">git-check-ref-format(1)</a>. Some of these
-checks may restrict the characters allowed in a tag name.</p>
+checks may restrict the characters allowed in a tag name.</p></li>
 
-<p>&lt;commit&gt;<br />
+<li><p>&lt;commit&gt;<br />
 &lt;object&gt;<br />
-The object that the new tag will refer to, usually a commit. Defaults to
-HEAD.</p>
+The object that the new tag will refer to, usually a commit.
+Defaults to HEAD.</p></li>
+</ul>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
 <p>By default, <em>git tag</em> in sign-with-default mode (-s) will use your
-committer identity (of the form &ldquo;Your Name &lt;your@email.address&gt;&rdquo;)
-to find a key. If you want to use a different default key, you can
-specify it in the repository configuration as follows:</p>
+committer identity (of the form &ldquo;Your Name &lt;your@email.address&gt;&rdquo;) to
+find a key. If you want to use a different default key, you can specify
+it in the repository configuration as follows:</p>
 
 <pre><code>[user]
     signingkey = &lt;gpg-key-id&gt;
@@ -394,17 +399,18 @@ most common form is &ldquo;YYYY-MM-DD HH:MM&rdquo;).</p>
 <p>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables
 support the following date formats:</p>
 
-<p>Git internal format<br />
-It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where
-<code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the
-UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from
-UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
+<ul>
+<li><p>Git internal format<br />
+It is <code>&lt;unix timestamp&gt; &lt;time zone offset&gt;</code>, where <code>&lt;unix
+timestamp&gt;</code> is the number of seconds since the UNIX epoch. <code>&lt;time
+zone offset&gt;</code> is a positive or negative offset from UTC. For example
+CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p></li>
 
-<p>RFC 2822<br />
+<li><p>RFC 2822<br />
 The standard email format as described by RFC 2822, for example
-<code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
+<code>Thu, 07 Apr 2005 22:13:13 +0200</code>.</p></li>
 
-<p>ISO 8601<br />
+<li><p>ISO 8601<br />
 Time and date specified by the ISO 8601 standard, for example
 <code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code>
 character as well.</p>
@@ -422,7 +428,8 @@ Note
 <td>In addition, the date part is accepted in the following formats: <code>YYYY.MM.DD</code>, <code>MM/DD/YYYY</code> and <code>DD.MM.YYYY</code>.</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ul>
 
 <h2 id="see-also">SEE ALSO</h2>
 

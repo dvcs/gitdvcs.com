@@ -121,58 +121,63 @@ overwriting existing files).</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-u<br />
-&ndash;index<br />
-update stat information for the checked out entries in the index file.</p>
+<ul>
+<li><p>-u<br />
+--index<br />
+update stat information for the checked out entries in the index
+file.</p></li>
 
-<p>-q<br />
-&ndash;quiet<br />
-be quiet if files exist or are not in the index</p>
+<li><p>-q<br />
+--quiet<br />
+be quiet if files exist or are not in the index</p></li>
 
-<p>-f<br />
-&ndash;force<br />
-forces overwrite of existing files</p>
+<li><p>-f<br />
+--force<br />
+forces overwrite of existing files</p></li>
 
-<p>-a<br />
-&ndash;all<br />
-checks out all files in the index. Cannot be used together with explicit
-filenames.</p>
+<li><p>-a<br />
+--all<br />
+checks out all files in the index. Cannot be used together with
+explicit filenames.</p></li>
 
-<p>-n<br />
-&ndash;no-create<br />
-Don’t checkout new files, only refresh files already checked out.</p>
+<li><p>-n<br />
+--no-create<br />
+Don’t checkout new files, only refresh files already checked out.</p></li>
 
-<p>&ndash;prefix=&lt;string&gt;<br />
+<li><p>&ndash;prefix=&lt;string&gt;<br />
 When creating files, prepend &lt;string&gt; (usually a directory
-including a trailing /)</p>
+including a trailing /)</p></li>
 
-<p>&ndash;stage=&lt;number&gt;|all<br />
-Instead of checking out unmerged entries, copy out the files from named
-stage. &lt;number&gt; must be between 1 and 3. Note: &ndash;stage=all
-automatically implies &ndash;temp.</p>
+<li><p>&ndash;stage=&lt;number&gt;|all<br />
+Instead of checking out unmerged entries, copy out the files from
+named stage. &lt;number&gt; must be between 1 and 3. Note: &ndash;stage=all
+automatically implies &ndash;temp.</p></li>
 
-<p>&ndash;temp<br />
-Instead of copying the files to the working directory write the content
-to temporary files. The temporary name associations will be written to
-stdout.</p>
+<li><p>&ndash;temp<br />
+Instead of copying the files to the working directory write the
+content to temporary files. The temporary name associations will be
+written to stdout.</p></li>
 
-<p>&ndash;stdin<br />
+<li><p>&ndash;stdin<br />
 Instead of taking list of paths from the command line, read list of
-paths from the standard input. Paths are separated by LF (i.e. one path
-per line) by default.</p>
+paths from the standard input. Paths are separated by LF (i.e. one
+path per line) by default.</p></li>
 
-<p>-z<br />
-Only meaningful with <code>--stdin</code>; paths are separated with NUL character
-instead of LF.</p>
+<li><p>-z<br />
+Only meaningful with <code>--stdin</code>; paths are separated with NUL
+character instead of LF.</p></li>
+</ul>
 
-<p>&ndash;<br />
-Do not interpret any more arguments as options.</p>
+<hr />
+
+<pre><code>Do not interpret any more arguments as options.
+</code></pre>
 
 <p>The order of the flags used to matter, but not anymore.</p>
 
-<p>Just doing <code>git checkout-index</code> does nothing. You probably meant
-<code>git checkout-index               -a</code>. And if you want to force it, you
-want <code>git checkout-index -f -a</code>.</p>
+<p>Just doing <code>git checkout-index</code> does nothing. You probably meant <code>git
+checkout-index -a</code>. And if you want to force it, you want <code>git
+checkout-index -f -a</code>.</p>
 
 <p>Intuitiveness is not the goal here. Repeatability is. The reason for the
 &ldquo;no arguments means no work&rdquo; behavior is that from scripts you are
@@ -235,13 +240,17 @@ the end-user or the Porcelain to make use of this information.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<p>To update and refresh only the files already checked out<br />
-    $ git checkout-index -n -f -a &amp;&amp; git update-index &ndash;ignore-missing &ndash;refresh</p>
+<ul>
+<li><p>To update and refresh only the files already checked
+    out</p>
 
-<p>Using <em>git checkout-index</em> to &ldquo;export an entire tree&rdquo;<br />
+<pre><code>$ git checkout-index -n -f -a &amp;&amp; git update-index --ignore-missing --refresh
+</code></pre></li>
+
+<li><p>Using <em>git checkout-index</em> to &ldquo;export an entire tree&rdquo;<br />
 The prefix ability basically makes it trivial to use <em>git
-checkout-index</em> as an &ldquo;export as tree&rdquo; function. Just read the desired
-tree into the index, and do:</p>
+checkout-index</em> as an &ldquo;export as tree&rdquo; function. Just read the
+desired tree into the index, and do:</p>
 
 <pre><code>$ git checkout-index --prefix=git-export-dir/ -a
 </code></pre>
@@ -249,14 +258,18 @@ tree into the index, and do:</p>
 <p><code>git checkout-index</code> will &ldquo;export&rdquo; the index into the specified
 directory.</p>
 
-<p>The final &ldquo;/&rdquo; is important. The exported name is literally just prefixed
-with the specified string. Contrast this with the following example.</p>
+<p>The final &ldquo;/&rdquo; is important. The exported name is literally just
+prefixed with the specified string. Contrast this with the following
+example.</p></li>
 
-<p>Export files with a prefix<br />
-    $ git checkout-index &ndash;prefix=.merged- Makefile</p>
+<li><p>Export files with a prefix</p>
+
+<pre><code>$ git checkout-index --prefix=.merged- Makefile
+</code></pre>
 
 <p>This will check out the currently cached copy of <code>Makefile</code> into the
-file <code>.merged-Makefile</code>.</p>
+file <code>.merged-Makefile</code>.</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

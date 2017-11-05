@@ -138,29 +138,31 @@ was.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;tree&gt;<br />
-An existing tree object</p>
+<ul>
+<li><p>&lt;tree&gt;<br />
+An existing tree object</p></li>
 
-<p>-p &lt;parent&gt;<br />
-Each <em>-p</em> indicates the id of a parent commit object.</p>
+<li><p>-p &lt;parent&gt;<br />
+Each <em>-p</em> indicates the id of a parent commit object.</p></li>
 
-<p>-m &lt;message&gt;<br />
-A paragraph in the commit log message. This can be given more than once
-and each &lt;message&gt; becomes its own paragraph.</p>
+<li><p>-m &lt;message&gt;<br />
+A paragraph in the commit log message. This can be given more than
+once and each &lt;message&gt; becomes its own paragraph.</p></li>
 
-<p>-F &lt;file&gt;<br />
-Read the commit log message from the given file. Use <code>-</code> to read from
-the standard input.</p>
+<li><p>-F &lt;file&gt;<br />
+Read the commit log message from the given file. Use <code>-</code> to read
+from the standard input.</p></li>
 
-<p>-S[&lt;keyid&gt;]<br />
-&ndash;gpg-sign[=&lt;keyid&gt;]<br />
-GPG-sign commits. The <code>keyid</code> argument is optional and defaults to the
-committer identity; if specified, it must be stuck to the option without
-a space.</p>
+<li><p>-S[&lt;keyid&gt;]<br />
+--gpg-sign[=&lt;keyid&gt;]<br />
+GPG-sign commits. The <code>keyid</code> argument is optional and defaults to
+the committer identity; if specified, it must be stuck to the option
+without a space.</p></li>
 
-<p>&ndash;no-gpg-sign<br />
+<li><p>&ndash;no-gpg-sign<br />
 Do not GPG-sign commit, to countermand a <code>--gpg-sign</code> option given
-earlier on the command line.</p>
+earlier on the command line.</p></li>
+</ul>
 
 <h2 id="commit-information">Commit Information</h2>
 
@@ -196,25 +198,26 @@ mail (taken from <code>/etc/mailname</code> and falling back to the fully qualif
 hostname when that file does not exist).</p>
 
 <p>A commit comment is read from stdin. If a changelog entry is not
-provided via &ldquo;&lt;&rdquo; redirection, <em>git commit-tree</em> will just wait for
-one to be entered and terminated with ^D.</p>
+provided via &ldquo;&lt;&rdquo; redirection, <em>git commit-tree</em> will just wait for one
+to be entered and terminated with ^D.</p>
 
 <h2 id="date-formats">DATE FORMATS</h2>
 
 <p>The <code>GIT_AUTHOR_DATE</code>, <code>GIT_COMMITTER_DATE</code> environment variables
 support the following date formats:</p>
 
-<p>Git internal format<br />
-It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where
-<code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the
-UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from
-UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
+<ul>
+<li><p>Git internal format<br />
+It is <code>&lt;unix timestamp&gt; &lt;time zone offset&gt;</code>, where <code>&lt;unix
+timestamp&gt;</code> is the number of seconds since the UNIX epoch. <code>&lt;time
+zone offset&gt;</code> is a positive or negative offset from UTC. For example
+CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p></li>
 
-<p>RFC 2822<br />
+<li><p>RFC 2822<br />
 The standard email format as described by RFC 2822, for example
-<code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
+<code>Thu, 07 Apr 2005 22:13:13 +0200</code>.</p></li>
 
-<p>ISO 8601<br />
+<li><p>ISO 8601<br />
 Time and date specified by the ISO 8601 standard, for example
 <code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code>
 character as well.</p>
@@ -232,7 +235,8 @@ Note
 <td>In addition, the date part is accepted in the following formats: <code>YYYY.MM.DD</code>, <code>MM/DD/YYYY</code> and <code>DD.MM.YYYY</code>.</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ul>
 
 <h2 id="discussion">Discussion</h2>
 

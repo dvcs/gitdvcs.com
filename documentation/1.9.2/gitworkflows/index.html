@@ -135,10 +135,10 @@ useful for later inspection and analysis, for example with
 beginning. It is always easier to squash a few commits together than to
 split one big commit into several. Don’t be afraid of making too small
 or imperfect steps along the way. You can always go back later and edit
-the commits with <code>git rebase               --interactive</code> before you
-publish them. You can use <code>git stash save --keep-index</code> to run the test
-suite independent of other uncommitted changes; see the EXAMPLES section
-of <a href="../git-stash">git-stash(1)</a>.</p>
+the commits with <code>git rebase --interactive</code> before you publish them. You
+can use <code>git stash save --keep-index</code> to run the test suite independent
+of other uncommitted changes; see the EXAMPLES section of
+<a href="../git-stash">git-stash(1)</a>.</p>
 
 <h2 id="managing-branches">MANAGING BRANCHES</h2>
 
@@ -496,7 +496,7 @@ because it makes the maintainer’s life easier).</p>
 <li><p><code>git format-patch -M upstream..topic</code> to turn them into preformatted
 patch files</p></li>
 
-<li><p><code>git send-email --to=&lt;recipient&gt;                         &lt;patches&gt;</code></p></li>
+<li><p><code>git send-email --to=&lt;recipient&gt; &lt;patches&gt;</code></p></li>
 </ul>
 
 <p>See the <a href="../git-format-patch">git-format-patch(1)</a> and
@@ -509,7 +509,7 @@ merge because you cannot format-patch merges):</p>
 
 <p>Recipe: format-patch/am: Keeping topics up to date</p>
 
-<p><code>git pull --rebase &lt;url&gt;                     &lt;branch&gt;</code></p>
+<p><code>git pull --rebase &lt;url&gt; &lt;branch&gt;</code></p>
 
 <p>You can then fix the conflicts during the rebase. Presumably you have
 not published your topic other than by mail, so rebasing it is not a
@@ -524,9 +524,9 @@ create a new topic branch and use <em>git am</em> to import the commits:</p>
 <p><code>git am &lt; patch</code></p>
 
 <p>One feature worth pointing out is the three-way merge, which can help if
-you get conflicts: <code>git am                 -3</code> will use index
-information contained in patches to figure out the merge base. See
-<a href="../git-am">git-am(1)</a> for other options.</p>
+you get conflicts: <code>git am -3</code> will use index information contained in
+patches to figure out the merge base. See <a href="../git-am">git-am(1)</a> for
+other options.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 

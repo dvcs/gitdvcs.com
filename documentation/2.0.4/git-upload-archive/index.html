@@ -130,11 +130,11 @@ but easier-to-check set of rules:</p>
 
 <ol>
 <li><p>Clients may request a commit or tree that is pointed to directly by
-a ref. E.g., <code>git archive                   --remote=origin v1.0</code>.</p></li>
+a ref. E.g., <code>git archive --remote=origin v1.0</code>.</p></li>
 
 <li><p>Clients may request a sub-tree within a commit or tree using the
-<code>ref:path</code> syntax. E.g.,
-<code>git archive --remote=origin v1.0:Documentation</code>.</p></li>
+<code>ref:path</code> syntax. E.g., <code>git archive --remote=origin
+v1.0:Documentation</code>.</p></li>
 
 <li><p>Clients may <em>not</em> use other sha1 expressions, even if the end result
 is reachable. E.g., neither a relative commit like <code>master^</code> nor a
@@ -155,8 +155,10 @@ non-smart-http.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;directory&gt;<br />
-The repository to get a tar archive from.</p>
+<ul>
+<li>&lt;directory&gt;<br />
+The repository to get a tar archive from.</li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

@@ -124,9 +124,8 @@ of <code>&lt;base-file&gt;</code>, then <em>git merge-file</em> combines both ch
 <p>A conflict occurs if both <code>&lt;current-file&gt;</code> and <code>&lt;other-file&gt;</code> have
 changes in a common segment of lines. If a conflict is found, <em>git
 merge-file</em> normally outputs a warning and brackets the conflict with
-lines containing &lt;&lt;&lt;&lt;&lt;&lt;&lt; and
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; markers. A typical conflict will look like
-this:</p>
+lines containing &lt;&lt;&lt;&lt;&lt;&lt;&lt; and &gt;&gt;&gt;&gt;&gt;&gt;&gt; markers. A typical
+conflict will look like this:</p>
 
 <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; A
 lines in file A
@@ -151,33 +150,39 @@ is, it implements all of RCS <em>merge</em>&rsquo;s functionality which is neede
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-L &lt;label&gt;<br />
-This option may be given up to three times, and specifies labels to be
-used in place of the corresponding file names in conflict reports. That
-is, <code>git merge-file -L x -L y -L z a b c</code> generates output that looks
-like it came from files x, y and z instead of from files a, b and c.</p>
+<ul>
+<li><p>-L &lt;label&gt;<br />
+This option may be given up to three times, and specifies labels to
+be used in place of the corresponding file names in conflict
+reports. That is, <code>git merge-file -L x -L y -L z a b c</code> generates
+output that looks like it came from files x, y and z instead of from
+files a, b and c.</p></li>
 
-<p>-p<br />
-Send results to standard output instead of overwriting <code>&lt;current-file&gt;</code>.</p>
+<li><p>-p<br />
+Send results to standard output instead of overwriting
+<code>&lt;current-file&gt;</code>.</p></li>
 
-<p>-q<br />
-Quiet; do not warn about conflicts.</p>
+<li><p>-q<br />
+Quiet; do not warn about conflicts.</p></li>
 
-<p>&ndash;ours<br />
-&ndash;theirs<br />
-&ndash;union<br />
-Instead of leaving conflicts in the file, resolve conflicts favouring
-our (or their or both) side of the lines.</p>
+<li><p>&ndash;ours<br />
+--theirs<br />
+--union<br />
+Instead of leaving conflicts in the file, resolve conflicts
+favouring our (or their or both) side of the lines.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<p><code>git merge-file README.my                 README README.upstream</code><br />
+<ul>
+<li><p><code>git merge-file README.my README README.upstream</code><br />
 combines the changes of README.my and README.upstream since README,
-tries to merge them and writes the result into README.my.</p>
+tries to merge them and writes the result into README.my.</p></li>
 
-<p><code>git merge-file -L a -L b -L                 c tmp/a123 tmp/b234 tmp/c345</code><br />
-merges tmp/a123 and tmp/c345 with the base tmp/b234, but uses labels <code>a</code>
-and <code>c</code> instead of <code>tmp/a123</code> and <code>tmp/c345</code>.</p>
+<li><p><code>git merge-file -L a -L b -L c tmp/a123 tmp/b234 tmp/c345</code><br />
+merges tmp/a123 and tmp/c345 with the base tmp/b234, but uses labels
+<code>a</code> and <code>c</code> instead of <code>tmp/a123</code> and <code>tmp/c345</code>.</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

@@ -155,9 +155,9 @@ $ git bisect bad                 # Current version is bad
 $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 is known to be good
 </code></pre>
 
-<p>Once you have specified at least one bad and one good commit,
-<code>git bisect</code> selects a commit in the middle of that range of history,
-checks it out, and outputs something similar to the following:</p>
+<p>Once you have specified at least one bad and one good commit, <code>git
+bisect</code> selects a commit in the middle of that range of history, checks
+it out, and outputs something similar to the following:</p>
 
 <pre><code>Bisecting: 675 revisions left to test after this (roughly 10 steps)
 </code></pre>
@@ -179,9 +179,8 @@ version works correctly, type</p>
 </code></pre>
 
 <p>Keep repeating the process: compile the tree, test it, and depending on
-whether it is good or bad run <code>git bisect good</code> or
-<code>git bisect                 bad</code> to ask for the next commit that needs
-testing.</p>
+whether it is good or bad run <code>git bisect good</code> or <code>git bisect bad</code> to
+ask for the next commit that needs testing.</p>
 
 <p>Eventually there will be no more revisions left to inspect, and the
 command will print out a description of the first bad commit. The
@@ -196,8 +195,8 @@ the original HEAD, issue the following command:</p>
 </code></pre>
 
 <p>By default, this will return your tree to the commit that was checked
-out before <code>git bisect                 start</code>. (A new <code>git bisect start</code>
-will also do that, as it cleans up the old bisection state.)</p>
+out before <code>git bisect start</code>. (A new <code>git bisect start</code> will also do
+that, as it cleans up the old bisection state.)</p>
 
 <p>With an optional argument, you can return to a different commit instead:</p>
 
@@ -223,17 +222,16 @@ change&rdquo;. So instead, you can use the terms &ldquo;old&rdquo; and &ldquo;ne
 respectively, in place of &ldquo;good&rdquo; and &ldquo;bad&rdquo;. (But note that you cannot
 mix &ldquo;good&rdquo; and &ldquo;bad&rdquo; with &ldquo;old&rdquo; and &ldquo;new&rdquo; in a single session.)</p>
 
-<p>In this more general usage, you provide <code>git                 bisect</code>
-with a &ldquo;new&rdquo; commit has some property and an &ldquo;old&rdquo; commit that doesn’t
-have that property. Each time <code>git bisect</code> checks out a commit, you test
-if that commit has the property. If it does, mark the commit as &ldquo;new&rdquo;;
-otherwise, mark it as &ldquo;old&rdquo;. When the bisection is done,
-<code>git                 bisect</code> will report which commit introduced the
-property.</p>
+<p>In this more general usage, you provide <code>git bisect</code> with a &ldquo;new&rdquo; commit
+has some property and an &ldquo;old&rdquo; commit that doesn’t have that property.
+Each time <code>git bisect</code> checks out a commit, you test if that commit has
+the property. If it does, mark the commit as &ldquo;new&rdquo;; otherwise, mark it
+as &ldquo;old&rdquo;. When the bisection is done, <code>git bisect</code> will report which
+commit introduced the property.</p>
 
-<p>To use &ldquo;old&rdquo; and &ldquo;new&rdquo; instead of &ldquo;good&rdquo; and bad, you must run
-<code>git bisect start</code> without commits as argument and then run the
-following commands to add the commits:</p>
+<p>To use &ldquo;old&rdquo; and &ldquo;new&rdquo; instead of &ldquo;good&rdquo; and bad, you must run <code>git
+bisect start</code> without commits as argument and then run the following
+commands to add the commits:</p>
 
 <pre><code>git bisect old [&lt;rev&gt;]
 </code></pre>
@@ -250,9 +248,8 @@ following commands to add the commits:</p>
 <pre><code>git bisect terms
 </code></pre>
 
-<p>You can get just the old (respectively new) term with
-<code>git bisect term --term-old</code> or
-<code>git                 bisect term --term-good</code>.</p>
+<p>You can get just the old (respectively new) term with <code>git bisect term
+--term-old</code> or <code>git bisect term --term-good</code>.</p>
 
 <p>If you would like to use your own terms instead of &ldquo;bad&rdquo;/&ldquo;good&rdquo; or
 &ldquo;new&rdquo;/&ldquo;old&rdquo;, you can choose any names you like (except existing bisect
@@ -273,7 +270,7 @@ performance regression, you might use</p>
 </code></pre>
 
 <p>Then, use <code>git bisect &lt;term-old&gt;</code> and <code>git bisect &lt;term-new&gt;</code> instead of
-<code>git bisect good</code> and <code>git bisect                 bad</code> to mark commits.</p>
+<code>git bisect good</code> and <code>git bisect bad</code> to mark commits.</p>
 
 <h3 id="bisect-visualize">Bisect visualize</h3>
 
@@ -317,7 +314,8 @@ that the failure does not have anything to do with the bug you are
 chasing), you can manually select a nearby commit and test that one
 instead.</p>
 
-<p>For example:</p>
+<p>For
+    example:</p>
 
 <pre><code>$ git bisect good/bad                   # previous round was good or bad.
 Bisecting: 337 revisions left to test after this (roughly 9 steps)
@@ -419,15 +417,18 @@ eventual outcome of the bisect session.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;no-checkout<br />
-Do not checkout the new working tree at each iteration of the bisection
-process. Instead just update a special reference named <em>BISECT_HEAD</em> to
-make it point to the commit that should be tested.</p>
+<ul>
+<li><p>&ndash;no-checkout</p>
 
-<p>This option may be useful when the test you would perform in each step
-does not require a checked out tree.</p>
+<p>Do not checkout the new working tree at each iteration of the
+bisection process. Instead just update a special reference named
+<em>BISECT_HEAD</em> to make it point to the commit that should be tested.</p>
 
-<p>If the repository is bare, <code>--no-checkout</code> is assumed.</p>
+<p>This option may be useful when the test you would perform in each
+step does not require a checked out tree.</p>
+
+<p>If the repository is bare, <code>--no-checkout</code> is assumed.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -439,7 +440,8 @@ $ git bisect run make                # &quot;make&quot; builds the app
 $ git bisect reset                   # quit the bisect session
 </code></pre></li>
 
-<li><p>Automatically bisect a test failure between origin and HEAD:</p>
+<li><p>Automatically bisect a test failure between origin and
+    HEAD:</p>
 
 <pre><code>$ git bisect start HEAD origin --    # HEAD is bad, origin is good
 $ git bisect run make test           # &quot;make test&quot; builds and tests
@@ -459,8 +461,7 @@ $ git bisect reset                   # quit the bisect session
 
 <p>Here we use a <code>test.sh</code> custom script. In this script, if <code>make</code>
 fails, we skip the current commit. <code>check_test_case.sh</code> should
-<code>exit                     0</code> if the test case passes, and
-<code>exit                     1</code> otherwise.</p>
+<code>exit 0</code> if the test case passes, and <code>exit 1</code> otherwise.</p>
 
 <p>It is safer if both <code>test.sh</code> and <code>check_test_case.sh</code> are outside
 the repository to prevent interactions between the bisect, make and
@@ -498,7 +499,8 @@ sure the hot-fix branch is based off a commit which is contained in
 all revisions which you are bisecting, so that the merge does not
 pull in too much, or use <code>git cherry-pick</code> instead of <code>git merge</code>.)</p></li>
 
-<li><p>Automatically bisect a broken test case:</p>
+<li><p>Automatically bisect a broken test
+    case:</p>
 
 <pre><code>$ git bisect start HEAD HEAD~10 --   # culprit is among the last 10
 $ git bisect run sh -c &quot;make || exit 125; ~/check_test_case.sh&quot;
@@ -508,7 +510,8 @@ $ git bisect reset                   # quit the bisect session
 <p>This shows that you can do without a run script if you write the
 test on a single line.</p></li>
 
-<li><p>Locate a good region of the object graph in a damaged repository</p>
+<li><p>Locate a good region of the object graph in a damaged
+    repository</p>
 
 <pre><code>$ git bisect start HEAD &lt;known-good-commit&gt; [ &lt;boundary-commit&gt; ... ] --no-checkout
 $ git bisect run sh -c '
@@ -533,12 +536,15 @@ $ git bisect new HEAD    # current commit is marked as new
 $ git bisect old HEAD~10 # the tenth commit from now is marked as old
 </code></pre>
 
-<p>or:</p>
-
-<p>$ git bisect start &ndash;term-old broken &ndash;term-new fixed
-$ git bisect fixed
-$ git bisect broken HEAD~10</p></li>
+<p>or:</p></li>
 </ul>
+
+<!-- end list -->
+
+<pre><code>$ git bisect start --term-old broken --term-new fixed
+$ git bisect fixed
+$ git bisect broken HEAD~10
+</code></pre>
 
 <h3 id="getting-help">Getting help</h3>
 

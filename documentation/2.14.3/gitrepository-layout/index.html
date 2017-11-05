@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> gitrepository-layout </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitrepository-layout</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.14.3'>2.14.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.14.3/gitrepository-layout'>gitrepository-layout</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>$GIT_DIR/*</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>A Git repository comes in two different flavours:</p>
+
+<ul>
+<li><p>a <code>.git</code> directory at the root of the working tree;</p></li>
+
+<li><p>a <code>&lt;project&gt;.git</code> directory that is a <em>bare</em> repository (i.e.
+without its own working tree), that is typically used for exchanging
+histories with others by pushing into it and fetching from it.</p></li>
+</ul>
+
+<p><strong>Note</strong>: Also you can have a plain text file <code>.git</code> at the root of your
+working tree, containing <code>gitdir: &lt;path&gt;</code> to point at the real directory
+that has the repository. This mechanism is often used for a working tree
+of a submodule checkout, to allow you in the containing superproject to
+<code>git checkout</code> a branch that does not have the submodule. The <code>checkout</code>
+has to remove the entire submodule working tree, without losing the
+submodule repository.</p>
+
+<p>These things may exist in a Git repository.</p>
+
+<ul>
+<li><p>objects<br />
+Object store associated with this repository. Usually an object
+store is self sufficient (i.e. all the objects that are referred to
+by an object found in it are also found in it), but there are a few
+ways to violate it.</p>
+
+<ol>
+<li><p>You could have an incomplete but locally usable repository by
+creating a shallow clone. See <a href="../git-clone">git-clone(1)</a>.</p></li>
+
+<li><p>You could be using the <code>objects/info/alternates</code> or
+<code>$GIT_ALTERNATE_OBJECT_DIRECTORIES</code> mechanisms to <em>borrow</em>
+objects from other object stores. A repository with this kind of
+incomplete object store is not suitable to be published for use
+with dumb transports but otherwise is OK as long as
+<code>objects/info/alternates</code> points at the object stores it borrows
+from.</p>
+
+<p>This directory is ignored if $GIT_COMMON_DIR is set and
+&ldquo;$GIT_COMMON_DIR/objects&rdquo; will be used instead.</p></li>
+</ol></li>
+
+<li><p>objects/[0-9a-f][0-9a-f]<br />
+A newly created object is stored in its own file. The objects are
+splayed over 256 subdirectories using the first two characters of
+the sha1 object name to keep the number of directory entries in
+<code>objects</code> itself to a manageable number. Objects found here are
+often called <em>unpacked</em> (or <em>loose</em>) objects.</p></li>
+
+<li><p>objects/pack<br />
+Packs (files that store many object in compressed form, along with
+index files to allow them to be randomly accessed) are found in this
+directory.</p></li>
+
+<li><p>objects/info<br />
+Additional information about the object store is recorded in this
+directory.</p></li>
+
+<li><p>objects/info/packs<br />
+This file is to help dumb transports discover what packs are
+available in this object store. Whenever a pack is added or removed,
+<code>git update-server-info</code> should be run to keep this file up-to-date
+if the repository is published for dumb transports. <em>git repack</em>
+does this by default.</p></li>
+
+<li><p>objects/info/alternates<br />
+This file records paths to alternate object stores that this object
+store borrows objects from, one pathname per line. Note that not
+only native Git tools use it locally, but the HTTP fetcher also
+tries to use it remotely; this will usually work if you have
+relative paths (relative to the object database, not to the
+repository!) in your alternates file, but it will not work if you
+use absolute paths unless the absolute path in filesystem and web
+URL is the same. See also <em>objects/info/http-alternates</em>.</p></li>
+
+<li><p>objects/info/http-alternates<br />
+This file records URLs to alternate object stores that this object
+store borrows objects from, to be used when the repository is
+fetched over HTTP.</p></li>
+
+<li><p>refs<br />
+References are stored in subdirectories of this directory. The <em>git
+prune</em> command knows to preserve objects reachable from refs found
+in this directory and its subdirectories. This directory is ignored
+if $GIT_COMMON_DIR is set and &ldquo;$GIT_COMMON_DIR/refs&rdquo; will be
+used instead.</p></li>
+
+<li><p>refs/heads/<code>name</code><br />
+records tip-of-the-tree commit objects of branch <code>name</code></p></li>
+
+<li><p>refs/tags/<code>name</code><br />
+records any object name (not necessarily a commit object, or a tag
+object that points at a commit object).</p></li>
+
+<li><p>refs/remotes/<code>name</code><br />
+records tip-of-the-tree commit objects of branches copied from a
+remote repository.</p></li>
+
+<li><p>refs/replace/<code>&lt;obj-sha1&gt;</code><br />
+records the SHA-1 of the object that replaces <code>&lt;obj-sha1&gt;</code>. This is
+similar to info/grafts and is internally used and maintained by
+<a href="../git-replace">git-replace(1)</a>. Such refs can be exchanged
+between repositories while grafts are not.</p></li>
+
+<li><p>packed-refs<br />
+records the same information as refs/heads/, refs/tags/, and friends
+record in a more efficient way. See
+<a href="../git-pack-refs">git-pack-refs(1)</a>. This file is ignored if
+$GIT_COMMON_DIR is set and &ldquo;$GIT_COMMON_DIR/packed-refs&rdquo; will be
+used instead.</p></li>
+
+<li><p>HEAD<br />
+A symref (see glossary) to the <code>refs/heads/</code> namespace describing
+the currently active branch. It does not mean much if the repository
+is not associated with any working tree (i.e. a <em>bare</em> repository),
+but a valid Git repository <strong>must</strong> have the HEAD file; some
+porcelains may use it to guess the designated &ldquo;default&rdquo; branch of
+the repository (usually <em>master</em>). It is legal if the named branch
+<em>name</em> does not (yet) exist. In some legacy setups, it is a symbolic
+link instead of a symref that points at the current branch.</p>
+
+<p>HEAD can also record a specific commit directly, instead of being a
+symref to point at the current branch. Such a state is often called
+<em>detached HEAD.</em> See <a href="../git-checkout">git-checkout(1)</a> for
+details.</p></li>
+
+<li><p>config<br />
+Repository specific configuration file. This file is ignored if
+$GIT_COMMON_DIR is set and &ldquo;$GIT_COMMON_DIR/config&rdquo; will be used
+instead.</p></li>
+
+<li><p>branches<br />
+A slightly deprecated way to store shorthands to be used to specify
+a URL to <em>git fetch</em>, <em>git pull</em> and <em>git push</em>. A file can be
+stored as <code>branches/&lt;name&gt;</code> and then <em>name</em> can be given to these
+commands in place of <em>repository</em> argument. See the REMOTES section
+in <a href="../git-fetch">git-fetch(1)</a> for details. This mechanism is
+legacy and not likely to be found in modern repositories. This
+directory is ignored if $GIT_COMMON_DIR is set and
+&ldquo;$GIT_COMMON_DIR/branches&rdquo; will be used instead.</p></li>
+
+<li><p>hooks<br />
+Hooks are customization scripts used by various Git commands. A
+handful of sample hooks are installed when <em>git init</em> is run, but
+all of them are disabled by default. To enable, the <code>.sample</code> suffix
+has to be removed from the filename by renaming. Read
+<a href="../githooks">githooks(5)</a> for more details about each hook. This
+directory is ignored if $GIT_COMMON_DIR is set and
+&ldquo;$GIT_COMMON_DIR/hooks&rdquo; will be used instead.</p></li>
+
+<li><p>index<br />
+The current index file for the repository. It is usually not found
+in a bare repository.</p></li>
+
+<li><p>sharedindex.&lt;SHA-1&gt;<br />
+The shared index part, to be referenced by $GIT_DIR/index and other
+temporary index files. Only valid in split index mode.</p></li>
+
+<li><p>info<br />
+Additional information about the repository is recorded in this
+directory. This directory is ignored if $GIT_COMMON_DIR is set and
+&ldquo;$GIT_COMMON_DIR/info&rdquo; will be used instead.</p></li>
+
+<li><p>info/refs<br />
+This file helps dumb transports discover what refs are available in
+this repository. If the repository is published for dumb transports,
+this file should be regenerated by <em>git update-server-info</em> every
+time a tag or branch is created or modified. This is normally done
+from the <code>hooks/update</code> hook, which is run by the <em>git-receive-pack</em>
+command when you <em>git push</em> into the repository.</p></li>
+
+<li><p>info/grafts<br />
+This file records fake commit ancestry information, to pretend the
+set of parents a commit has is different from how the commit was
+actually created. One record per line describes a commit and its
+fake parents by listing their 40-byte hexadecimal object names
+separated by a space and terminated by a newline.</p>
+
+<p>Note that the grafts mechanism is outdated and can lead to problems
+transferring objects between repositories; see
+<a href="../git-replace">git-replace(1)</a> for a more flexible and robust
+system to do the same thing.</p></li>
+
+<li><p>info/exclude<br />
+This file, by convention among Porcelains, stores the exclude
+pattern list. <code>.gitignore</code> is the per-directory ignore file. <em>git
+status</em>, <em>git add</em>, <em>git rm</em> and <em>git clean</em> look at it but the core
+Git commands do not look at it. See also:
+<a href="../gitignore">gitignore(5)</a>.</p></li>
+
+<li><p>info/sparse-checkout<br />
+This file stores sparse checkout patterns. See also:
+<a href="../git-read-tree">git-read-tree(1)</a>.</p></li>
+
+<li><p>remotes<br />
+Stores shorthands for URL and default refnames for use when
+interacting with remote repositories via <em>git fetch</em>, <em>git pull</em> and
+<em>git push</em> commands. See the REMOTES section in
+<a href="../git-fetch">git-fetch(1)</a> for details. This mechanism is legacy
+and not likely to be found in modern repositories. This directory is
+ignored if $GIT_COMMON_DIR is set and &ldquo;$GIT_COMMON_DIR/remotes&rdquo;
+will be used instead.</p></li>
+
+<li><p>logs<br />
+Records of changes made to refs are stored in this directory. See
+<a href="../git-update-ref">git-update-ref(1)</a> for more information. This
+directory is ignored if $GIT_COMMON_DIR is set and
+&ldquo;$GIT_COMMON_DIR/logs&rdquo; will be used instead.</p></li>
+
+<li><p>logs/refs/heads/<code>name</code><br />
+Records all changes made to the branch tip named <code>name</code>.</p></li>
+
+<li><p>logs/refs/tags/<code>name</code><br />
+Records all changes made to the tag named <code>name</code>.</p></li>
+
+<li><p>shallow<br />
+This is similar to <code>info/grafts</code> but is internally used and
+maintained by shallow clone mechanism. See <code>--depth</code> option to
+<a href="../git-clone">git-clone(1)</a> and <a href="../git-fetch">git-fetch(1)</a>.
+This file is ignored if $GIT_COMMON_DIR is set and
+&ldquo;$GIT_COMMON_DIR/shallow&rdquo; will be used instead.</p></li>
+
+<li><p>commondir<br />
+If this file exists, $GIT_COMMON_DIR (see <a href="../git">git(1)</a>) will
+be set to the path specified in this file if it is not explicitly
+set. If the specified path is relative, it is relative to $GIT_DIR.
+The repository with commondir is incomplete without the repository
+pointed by &ldquo;commondir&rdquo;.</p></li>
+
+<li><p>modules<br />
+Contains the git-repositories of the submodules.</p></li>
+
+<li><p>worktrees<br />
+Contains administrative data for linked working trees. Each
+subdirectory contains the working tree-related part of a linked
+working tree. This directory is ignored if $GIT_COMMON_DIR is set,
+in which case &ldquo;$GIT_COMMON_DIR/worktrees&rdquo; will be used instead.</p></li>
+
+<li><p>worktrees/&lt;id&gt;/gitdir<br />
+A text file containing the absolute path back to the .git file that
+points to here. This is used to check if the linked repository has
+been manually removed and there is no need to keep this directory
+any more. The mtime of this file should be updated every time the
+linked repository is accessed.</p></li>
+
+<li><p>worktrees/&lt;id&gt;/locked<br />
+If this file exists, the linked working tree may be on a portable
+device and not available. The presence of this file prevents
+<code>worktrees/&lt;id&gt;</code> from being pruned either automatically or manually
+by <code>git worktree prune</code>. The file may contain a string explaining
+why the repository is locked.</p></li>
+
+<li><p>worktrees/&lt;id&gt;/link<br />
+If this file exists, it is a hard link to the linked .git file. It
+is used to detect if the linked repository is manually removed.</p></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-init">git-init(1)</a>, <a href="../git-clone">git-clone(1)</a>,
+<a href="../git-fetch">git-fetch(1)</a>, <a href="../git-pack-refs">git-pack-refs(1)</a>,
+<a href="../git-gc">git-gc(1)</a>, <a href="../git-checkout">git-checkout(1)</a>,
+<a href="../gitglossary">gitglossary(7)</a>, <a href="user-manual">The Git User’s
+Manual</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

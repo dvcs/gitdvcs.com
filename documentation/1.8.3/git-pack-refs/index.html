@@ -128,31 +128,34 @@ looked up in this file and used if found.</p>
 <code>$GIT_DIR/refs</code> directory hierarchy.</p>
 
 <p>A recommended practice to deal with a repository with too many refs is
-to pack its refs with <code>--all               --prune</code> once, and
-occasionally run <code>git               pack-refs --prune</code>. Tags are by
-definition stationary and are not expected to change. Branch heads will
-be packed with the initial <code>pack-refs               --all</code>, but only the
-currently active branch heads will become unpacked, and the next
-<code>pack-refs</code> (without <code>--all</code>) will leave them unpacked.</p>
+to pack its refs with <code>--all --prune</code> once, and occasionally run <code>git
+pack-refs --prune</code>. Tags are by definition stationary and are not
+expected to change. Branch heads will be packed with the initial
+<code>pack-refs --all</code>, but only the currently active branch heads will
+become unpacked, and the next <code>pack-refs</code> (without <code>--all</code>) will leave
+them unpacked.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;all<br />
-The command by default packs all tags and refs that are already packed,
-and leaves other refs alone. This is because branches are expected to be
-actively developed and packing their tips does not help performance.
-This option causes branch tips to be packed as well. Useful for a
-repository with many branches of historical interests.</p>
+<ul>
+<li><p>&ndash;all<br />
+The command by default packs all tags and refs that are already
+packed, and leaves other refs alone. This is because branches are
+expected to be actively developed and packing their tips does not
+help performance. This option causes branch tips to be packed as
+well. Useful for a repository with many branches of historical
+interests.</p></li>
 
-<p>&ndash;no-prune<br />
-The command usually removes loose refs under <code>$GIT_DIR/refs</code> hierarchy
-after packing them. This option tells it not to.</p>
+<li><p>&ndash;no-prune<br />
+The command usually removes loose refs under <code>$GIT_DIR/refs</code>
+hierarchy after packing them. This option tells it not to.</p></li>
+</ul>
 
 <h2 id="bugs">BUGS</h2>
 
 <p>Older documentation written before the packed-refs mechanism was
-introduced may still say things like &ldquo;.git/refs/heads/&lt;branch&gt;
-file exists&rdquo; when it means &ldquo;branch &lt;branch&gt; exists&rdquo;.</p>
+introduced may still say things like &ldquo;.git/refs/heads/&lt;branch&gt; file
+exists&rdquo; when it means &ldquo;branch &lt;branch&gt; exists&rdquo;.</p>
 
 <h2 id="git">GIT</h2>
 

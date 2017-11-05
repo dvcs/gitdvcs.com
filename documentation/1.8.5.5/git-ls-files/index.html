@@ -1,0 +1,399 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-ls-files </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-ls-files</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.5.5'>1.8.5.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.5.5/git-ls-files'>git-ls-files</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git ls-files [-z] [-t] [-v]
+                (--[cached|deleted|others|ignored|stage|unmerged|killed|modified])*
+                (-[c|d|o|i|s|u|k|m])*
+                [-x &lt;pattern&gt;|--exclude=&lt;pattern&gt;]
+                [-X &lt;file&gt;|--exclude-from=&lt;file&gt;]
+                [--exclude-per-directory=&lt;file&gt;]
+                [--exclude-standard]
+                [--error-unmatch] [--with-tree=&lt;tree-ish&gt;]
+                [--full-name] [--abbrev] [--] [&lt;file&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This merges the file listing in the directory cache index with the
+actual working directory list, and shows different combinations of the
+two.</p>
+
+<p>One or more of the options below may be used to determine the files
+shown:</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>-c<br />
+--cached<br />
+Show cached files in the output (default)</p></li>
+
+<li><p>-d<br />
+--deleted<br />
+Show deleted files in the output</p></li>
+
+<li><p>-m<br />
+--modified<br />
+Show modified files in the output</p></li>
+
+<li><p>-o<br />
+--others<br />
+Show other (i.e. untracked) files in the output</p></li>
+
+<li><p>-i<br />
+--ignored<br />
+Show only ignored files in the output. When showing files in the
+index, print only those matched by an exclude pattern. When showing
+&ldquo;other&rdquo; files, show only those matched by an exclude pattern.</p></li>
+
+<li><p>-s<br />
+--stage<br />
+Show staged contents&rsquo; object name, mode bits and stage number in the
+output.</p></li>
+
+<li><p>&ndash;directory<br />
+If a whole directory is classified as &ldquo;other&rdquo;, show just its name
+(with a trailing slash) and not its whole contents.</p></li>
+
+<li><p>&ndash;no-empty-directory<br />
+Do not list empty directories. Has no effect without &ndash;directory.</p></li>
+
+<li><p>-u<br />
+--unmerged<br />
+Show unmerged files in the output (forces &ndash;stage)</p></li>
+
+<li><p>-k<br />
+--killed<br />
+Show files on the filesystem that need to be removed due to
+file/directory conflicts for checkout-index to succeed.</p></li>
+
+<li><p>-z<br />
+\0 line termination on output.</p></li>
+
+<li><p>-x &lt;pattern&gt;<br />
+--exclude=&lt;pattern&gt;<br />
+Skip untracked files matching pattern. Note that pattern is a shell
+wildcard pattern. See EXCLUDE PATTERNS below for more information.</p></li>
+
+<li><p>-X &lt;file&gt;<br />
+--exclude-from=&lt;file&gt;<br />
+Read exclude patterns from &lt;file&gt;; 1 per line.</p></li>
+
+<li><p>&ndash;exclude-per-directory=&lt;file&gt;<br />
+Read additional exclude patterns that apply only to the directory
+and its subdirectories in &lt;file&gt;.</p></li>
+
+<li><p>&ndash;exclude-standard<br />
+Add the standard Git exclusions: .git/info/exclude, .gitignore in
+each directory, and the user’s global exclusion file.</p></li>
+
+<li><p>&ndash;error-unmatch<br />
+If any &lt;file&gt; does not appear in the index, treat this as an error
+(return 1).</p></li>
+
+<li><p>&ndash;with-tree=&lt;tree-ish&gt;<br />
+When using &ndash;error-unmatch to expand the user supplied &lt;file&gt;
+(i.e. path pattern) arguments to paths, pretend that paths which
+were removed in the index since the named &lt;tree-ish&gt; are still
+present. Using this option with <code>-s</code> or <code>-u</code> options does not make
+any sense.</p></li>
+
+<li><p>-t<br />
+This feature is semi-deprecated. For scripting purpose,
+<a href="../git-status">git-status(1)</a> <code>--porcelain</code> and
+<a href="../git-diff-files">git-diff-files(1)</a> <code>--name-status</code> are almost
+always superior alternatives, and users should look at
+<a href="../git-status">git-status(1)</a> <code>--short</code> or
+<a href="../git-diff">git-diff(1)</a> <code>--name-status</code> for more user-friendly
+alternatives.</p>
+
+<p>This option identifies the file status with the following tags
+(followed by a space) at the start of each line:</p></li>
+
+<li><p>H<br />
+cached</p></li>
+
+<li><p>S<br />
+skip-worktree</p></li>
+
+<li><p>M<br />
+unmerged</p></li>
+
+<li><p>R<br />
+removed/deleted</p></li>
+
+<li><p>C<br />
+modified/changed</p></li>
+
+<li><p>K<br />
+to be killed</p></li>
+
+<li><p>?<br />
+other</p></li>
+
+<li><p>-v<br />
+Similar to <code>-t</code>, but use lowercase letters for files that are marked
+as <em>assume unchanged</em> (see
+<a href="../git-update-index">git-update-index(1)</a>).</p></li>
+
+<li><p>&ndash;full-name<br />
+When run from a subdirectory, the command usually outputs paths
+relative to the current directory. This option forces paths to be
+output relative to the project top directory.</p></li>
+
+<li><p>&ndash;abbrev[=&lt;n&gt;]<br />
+Instead of showing the full 40-byte hexadecimal object lines, show
+only a partial prefix. Non default number of digits can be specified
+with &ndash;abbrev=&lt;n&gt;.</p></li>
+
+<li><p>&ndash;debug<br />
+After each line that describes a file, add more data about its cache
+entry. This is intended to show as much information as possible for
+manual inspection; the exact format may change at any time.</p></li>
+</ul>
+
+<hr />
+
+<pre><code>Do not interpret any more arguments as options.
+</code></pre>
+
+<ul>
+<li>&lt;file&gt;<br />
+Files to show. If no files are given all files which match the other
+specified criteria are shown.</li>
+</ul>
+
+<h2 id="output">Output</h2>
+
+<p><em>git ls-files</em> just outputs the filenames unless <em>&ndash;stage</em> is specified
+in which case it outputs:</p>
+
+<pre><code>[&lt;tag&gt; ]&lt;mode&gt; &lt;object&gt; &lt;stage&gt; &lt;file&gt;
+</code></pre>
+
+<p><em>git ls-files &ndash;unmerged</em> and <em>git ls-files &ndash;stage</em> can be used to
+examine detailed information on unmerged paths.</p>
+
+<p>For an unmerged path, instead of recording a single mode/SHA-1 pair, the
+index records up to three such pairs; one from tree O in stage 1, A in
+stage 2, and B in stage 3. This information can be used by the user (or
+the porcelain) to see what should eventually be recorded at the path.
+(see <a href="../git-read-tree">git-read-tree(1)</a> for more information on
+state)</p>
+
+<p>When <code>-z</code> option is not used, TAB, LF, and backslash characters in
+pathnames are represented as <code>\t</code>, <code>\n</code>, and <code>\\</code>, respectively.</p>
+
+<h2 id="exclude-patterns">Exclude Patterns</h2>
+
+<p><em>git ls-files</em> can use a list of &ldquo;exclude patterns&rdquo; when traversing the
+directory tree and finding files to show when the flags &ndash;others or
+&ndash;ignored are specified. <a href="../gitignore">gitignore(5)</a> specifies the
+format of exclude patterns.</p>
+
+<p>These exclude patterns come from these places, in order:</p>
+
+<ol>
+<li><p>The command line flag &ndash;exclude=&lt;pattern&gt; specifies a single
+pattern. Patterns are ordered in the same order they appear in the
+command line.</p></li>
+
+<li><p>The command line flag &ndash;exclude-from=&lt;file&gt; specifies a file
+containing a list of patterns. Patterns are ordered in the same
+order they appear in the file.</p></li>
+
+<li><p>The command line flag &ndash;exclude-per-directory=&lt;name&gt; specifies a
+name of the file in each directory <em>git ls-files</em> examines, normally
+<code>.gitignore</code>. Files in deeper directories take precedence. Patterns
+are ordered in the same order they appear in the files.</p></li>
+</ol>
+
+<p>A pattern specified on the command line with &ndash;exclude or read from the
+file specified with &ndash;exclude-from is relative to the top of the
+directory tree. A pattern read from a file specified by
+&ndash;exclude-per-directory is relative to the directory that the pattern
+file appears in.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-read-tree">git-read-tree(1)</a>, <a href="../gitignore">gitignore(5)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

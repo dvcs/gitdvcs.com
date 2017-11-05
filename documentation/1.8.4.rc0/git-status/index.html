@@ -1,0 +1,404 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-status </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-status</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.4.rc0'>1.8.4.rc0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.4.rc0/git-status'>git-status</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git status [&lt;options&gt;…] [--] [&lt;pathspec&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Displays paths that have differences between the index file and the
+current HEAD commit, paths that have differences between the working
+tree and the index file, and paths in the working tree that are not
+tracked by Git (and are not ignored by <a href="../gitignore">gitignore(5)</a>).
+The first are what you <em>would</em> commit by running <code>git commit</code>; the
+second and third are what you <em>could</em> commit by running <em>git add</em> before
+running <code>git commit</code>.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>-s<br />
+--short<br />
+Give the output in the short-format.</p></li>
+
+<li><p>-b<br />
+--branch<br />
+Show the branch and tracking info even in short-format.</p></li>
+
+<li><p>&ndash;porcelain<br />
+Give the output in an easy-to-parse format for scripts. This is
+similar to the short output, but will remain stable across Git
+versions and regardless of user configuration. See below for
+details.</p></li>
+
+<li><p>&ndash;long<br />
+Give the output in the long-format. This is the default.</p></li>
+
+<li><p>-u[&lt;mode&gt;]<br />
+--untracked-files[=&lt;mode&gt;]<br />
+Show untracked files.</p>
+
+<p>The mode parameter is optional (defaults to <em>all</em>), and is used to
+specify the handling of untracked files.</p>
+
+<p>The possible options are:</p>
+
+<ul>
+<li><p><em>no</em> - Show no untracked files.</p></li>
+
+<li><p><em>normal</em> - Shows untracked files and directories.</p></li>
+
+<li><p><em>all</em> - Also shows individual files in untracked directories.</p>
+
+<p>When <code>-u</code> option is not used, untracked files and directories
+are shown (i.e. the same as specifying <code>normal</code>), to help you
+avoid forgetting to add newly created files. Because it takes
+extra work to find untracked files in the filesystem, this mode
+may take some time in a large working tree. You can use <code>no</code> to
+have <code>git status</code> return more quickly without showing untracked
+files.</p>
+
+<p>The default can be changed using the status.showUntrackedFiles
+configuration variable documented in
+<a href="../git-config">git-config(1)</a>.</p></li>
+</ul></li>
+
+<li><p>&ndash;ignore-submodules[=&lt;when&gt;]<br />
+Ignore changes to submodules when looking for changes. &lt;when&gt; can
+be either &ldquo;none&rdquo;, &ldquo;untracked&rdquo;, &ldquo;dirty&rdquo; or &ldquo;all&rdquo;, which is the
+default. Using &ldquo;none&rdquo; will consider the submodule modified when it
+either contains untracked or modified files or its HEAD differs from
+the commit recorded in the superproject and can be used to override
+any settings of the <em>ignore</em> option in
+<a href="../git-config">git-config(1)</a> or
+<a href="../gitmodules">gitmodules(5)</a>. When &ldquo;untracked&rdquo; is used
+submodules are not considered dirty when they only contain untracked
+content (but they are still scanned for modified content). Using
+&ldquo;dirty&rdquo; ignores all changes to the work tree of submodules, only
+changes to the commits stored in the superproject are shown (this
+was the behavior before 1.7.0). Using &ldquo;all&rdquo; hides all changes to
+submodules (and suppresses the output of submodule summaries when
+the config option <code>status.submodulesummary</code> is set).</p></li>
+
+<li><p>&ndash;ignored<br />
+Show ignored files as well.</p></li>
+
+<li><p>-z<br />
+Terminate entries with NUL, instead of LF. This implies the
+<code>--porcelain</code> output format if no other format is given.</p></li>
+
+<li><p>&ndash;column[=&lt;options&gt;]<br />
+--no-column<br />
+Display untracked files in columns. See configuration variable
+column.status for option syntax.<code>--column</code> and <code>--no-column</code> without
+options are equivalent to <em>always</em> and <em>never</em> respectively.</p></li>
+</ul>
+
+<h2 id="output">OUTPUT</h2>
+
+<p>The output from this command is designed to be used as a commit template
+comment, and all the output lines are prefixed with <em>#</em>. The default,
+long format, is designed to be human readable, verbose and descriptive.
+Its contents and format are subject to change at any time.</p>
+
+<p>The paths mentioned in the output, unlike many other Git commands, are
+made relative to the current directory if you are working in a
+subdirectory (this is on purpose, to help cutting and pasting). See the
+status.relativePaths config option below.</p>
+
+<h3 id="short-format">Short Format</h3>
+
+<p>In the short-format, the status of each path is shown as</p>
+
+<pre><code>XY PATH1 -&gt; PATH2
+</code></pre>
+
+<p>where <code>PATH1</code> is the path in the <code>HEAD</code>, and the &ldquo; <code>-&gt; PATH2</code>&rdquo; part is
+shown only when <code>PATH1</code> corresponds to a different path in the
+index/worktree (i.e. the file is renamed). The <em>XY</em> is a two-letter
+status code.</p>
+
+<p>The fields (including the <code>-&gt;</code>) are separated from each other by a
+single space. If a filename contains whitespace or other nonprintable
+characters, that field will be quoted in the manner of a C string
+literal: surrounded by ASCII double quote (34) characters, and with
+interior special characters backslash-escaped.</p>
+
+<p>For paths with merge conflicts, <code>X</code> and <em>Y</em> show the modification states
+of each side of the merge. For paths that do not have merge conflicts,
+<code>X</code> shows the status of the index, and <code>Y</code> shows the status of the work
+tree. For untracked paths, <code>XY</code> are <code>??</code>. Other status codes can be
+interpreted as follows:</p>
+
+<ul>
+<li><p>&rsquo; &lsquo; = unmodified</p></li>
+
+<li><p><em>M</em> = modified</p></li>
+
+<li><p><em>A</em> = added</p></li>
+
+<li><p><em>D</em> = deleted</p></li>
+
+<li><p><em>R</em> = renamed</p></li>
+
+<li><p><em>C</em> = copied</p></li>
+
+<li><p><em>U</em> = updated but unmerged</p></li>
+</ul>
+
+<p>Ignored files are not listed, unless <code>--ignored</code> option is in effect, in
+which case <code>XY</code> are <code>!!</code>.</p>
+
+<pre><code>X          Y     Meaning
+-------------------------------------------------
+          [MD]   not updated
+M        [ MD]   updated in index
+A        [ MD]   added to index
+D         [ M]   deleted from index
+R        [ MD]   renamed in index
+C        [ MD]   copied in index
+[MARC]           index and work tree matches
+[ MARC]     M    work tree changed since index
+[ MARC]     D    deleted in work tree
+-------------------------------------------------
+D           D    unmerged, both deleted
+A           U    unmerged, added by us
+U           D    unmerged, deleted by them
+U           A    unmerged, added by them
+D           U    unmerged, deleted by us
+A           A    unmerged, both added
+U           U    unmerged, both modified
+-------------------------------------------------
+?           ?    untracked
+!           !    ignored
+-------------------------------------------------
+</code></pre>
+
+<p>If -b is used the short-format status is preceded by a line</p>
+
+<p>## branchname tracking info</p>
+
+<h3 id="porcelain-format">Porcelain Format</h3>
+
+<p>The porcelain format is similar to the short format, but is guaranteed
+not to change in a backwards-incompatible way between Git versions or
+based on user configuration. This makes it ideal for parsing by scripts.
+The description of the short format above also describes the porcelain
+format, with a few exceptions:</p>
+
+<ol>
+<li><p>The user’s color.status configuration is not respected; color will
+always be off.</p></li>
+
+<li><p>The user’s status.relativePaths configuration is not respected;
+paths shown will always be relative to the repository root.</p></li>
+</ol>
+
+<p>There is also an alternate -z format recommended for machine parsing. In
+that format, the status field is the same, but some other things change.
+First, the <em>-&gt;</em> is omitted from rename entries and the field order is
+reversed (e.g <em>from -&gt; to</em> becomes <em>to from</em>). Second, a NUL (ASCII 0)
+follows each filename, replacing space as a field separator and the
+terminating newline (but a space still separates the status field from
+the first filename). Third, filenames containing special characters are
+not specially formatted; no quoting or backslash-escaping is performed.</p>
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<p>The command honors <code>color.status</code> (or <code>status.color</code> — they mean the
+same thing and the latter is kept for backward compatibility) and
+<code>color.status.&lt;slot&gt;</code> configuration variables to colorize its output.</p>
+
+<p>If the config variable <code>status.relativePaths</code> is set to false, then all
+paths shown are relative to the repository root, not to the current
+directory.</p>
+
+<p>If <code>status.submodulesummary</code> is set to a non zero number or true
+(identical to -1 or an unlimited number), the submodule summary will be
+enabled for the long format and a summary of commits for modified
+submodules will be shown (see &ndash;summary-limit option of
+<a href="../git-submodule">git-submodule(1)</a>).</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../gitignore">gitignore(5)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -119,25 +119,27 @@ frontend to <em>git diff</em> and accepts the same options and arguments. See
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-d<br />
-&ndash;dir-diff<br />
-Copy the modified files to a temporary location and perform a directory
-diff on them. This mode never prompts before launching the diff tool.</p>
+<ul>
+<li><p>-d<br />
+--dir-diff<br />
+Copy the modified files to a temporary location and perform a
+directory diff on them. This mode never prompts before launching the
+diff tool.</p></li>
 
-<p>-y<br />
-&ndash;no-prompt<br />
-Do not prompt before launching a diff tool.</p>
+<li><p>-y<br />
+--no-prompt<br />
+Do not prompt before launching a diff tool.</p></li>
 
-<p>&ndash;prompt<br />
+<li><p>&ndash;prompt<br />
 Prompt before each invocation of the diff tool. This is the default
 behaviour; the option is provided to override any configuration
-settings.</p>
+settings.</p></li>
 
-<p>-t &lt;tool&gt;<br />
-&ndash;tool=&lt;tool&gt;<br />
+<li><p>-t &lt;tool&gt;<br />
+--tool=&lt;tool&gt;<br />
 Use the diff tool specified by &lt;tool&gt;. Valid values include
-emerge, kompare, meld, and vimdiff. Run <code>git difftool --tool-help</code> for
-the list of valid &lt;tool&gt; settings.</p>
+emerge, kompare, meld, and vimdiff. Run <code>git difftool --tool-help</code>
+for the list of valid &lt;tool&gt; settings.</p>
 
 <p>If a diff tool is not specified, <em>git difftool</em> will use the
 configuration variable <code>diff.tool</code>. If the configuration variable
@@ -145,54 +147,58 @@ configuration variable <code>diff.tool</code>. If the configuration variable
 
 <p>You can explicitly provide a full path to the tool by setting the
 configuration variable <code>difftool.&lt;tool&gt;.path</code>. For example, you can
-configure the absolute path to kdiff3 by setting <code>difftool.kdiff3.path</code>.
-Otherwise, <em>git difftool</em> assumes the tool is available in PATH.</p>
+configure the absolute path to kdiff3 by setting
+<code>difftool.kdiff3.path</code>. Otherwise, <em>git difftool</em> assumes the tool
+is available in PATH.</p>
 
-<p>Instead of running one of the known diff tools, <em>git difftool</em> can be
-customized to run an alternative program by specifying the command line
-to invoke in a configuration variable <code>difftool.&lt;tool&gt;.cmd</code>.</p>
+<p>Instead of running one of the known diff tools, <em>git difftool</em> can
+be customized to run an alternative program by specifying the
+command line to invoke in a configuration variable
+<code>difftool.&lt;tool&gt;.cmd</code>.</p>
 
-<p>When <em>git difftool</em> is invoked with this tool (either through the <code>-t</code>
-or <code>--tool</code> option or the <code>diff.tool</code> configuration variable) the
-configured command line will be invoked with the following variables
-available: <code>$LOCAL</code> is set to the name of the temporary file containing
-the contents of the diff pre-image and <code>$REMOTE</code> is set to the name of
-the temporary file containing the contents of the diff post-image.
-<code>$MERGED</code> is the name of the file which is being compared. <code>$BASE</code> is
-provided for compatibility with custom merge tool commands and has the
-same value as <code>$MERGED</code>.</p>
+<p>When <em>git difftool</em> is invoked with this tool (either through the
+<code>-t</code> or <code>--tool</code> option or the <code>diff.tool</code> configuration variable)
+the configured command line will be invoked with the following
+variables available: <code>$LOCAL</code> is set to the name of the temporary
+file containing the contents of the diff pre-image and <code>$REMOTE</code> is
+set to the name of the temporary file containing the contents of the
+diff post-image. <code>$MERGED</code> is the name of the file which is being
+compared. <code>$BASE</code> is provided for compatibility with custom merge
+tool commands and has the same value as <code>$MERGED</code>.</p></li>
 
-<p>&ndash;tool-help<br />
-Print a list of diff tools that may be used with <code>--tool</code>.</p>
+<li><p>&ndash;tool-help<br />
+Print a list of diff tools that may be used with <code>--tool</code>.</p></li>
 
-<p>&ndash;[no-]symlinks<br />
-<em>git difftool</em>&rsquo;s default behavior is create symlinks to the working tree
-when run in <code>--dir-diff</code> mode and the right-hand side of the comparison
-yields the same content as the file in the working tree.</p>
+<li><p>&ndash;[no-]symlinks<br />
+<em>git difftool</em>&rsquo;s default behavior is create symlinks to the working
+tree when run in <code>--dir-diff</code> mode and the right-hand side of the
+comparison yields the same content as the file in the working tree.</p>
 
 <p>Specifying <code>--no-symlinks</code> instructs <em>git difftool</em> to create copies
-instead. <code>--no-symlinks</code> is the default on Windows.</p>
+instead. <code>--no-symlinks</code> is the default on Windows.</p></li>
 
-<p>-x &lt;command&gt;<br />
-&ndash;extcmd=&lt;command&gt;<br />
-Specify a custom command for viewing diffs. <em>git-difftool</em> ignores the
-configured defaults and runs <code>$command $LOCAL $REMOTE</code> when this option
-is specified. Additionally, <code>$BASE</code> is set in the environment.</p>
+<li><p>-x &lt;command&gt;<br />
+--extcmd=&lt;command&gt;<br />
+Specify a custom command for viewing diffs. <em>git-difftool</em> ignores
+the configured defaults and runs <code>$command $LOCAL $REMOTE</code> when this
+option is specified. Additionally, <code>$BASE</code> is set in the
+environment.</p></li>
 
-<p>-g<br />
-&ndash;gui<br />
+<li><p>-g<br />
+--gui<br />
 When <em>git-difftool</em> is invoked with the <code>-g</code> or <code>--gui</code> option the
 default diff tool will be read from the configured <code>diff.guitool</code>
-variable instead of <code>diff.tool</code>.</p>
+variable instead of <code>diff.tool</code>.</p></li>
 
-<p>&ndash;[no-]trust-exit-code<br />
+<li><p>&ndash;[no-]trust-exit-code<br />
 <em>git-difftool</em> invokes a diff tool individually on each file. Errors
 reported by the diff tool are ignored by default. Use
 <code>--trust-exit-code</code> to make <em>git-difftool</em> exit when an invoked diff
 tool returns a non-zero exit code.</p>
 
 <p><em>git-difftool</em> will forward the exit code of the invoked tool when
-<em>&ndash;trust-exit-code</em> is used.</p>
+<em>&ndash;trust-exit-code</em> is used.</p></li>
+</ul>
 
 <p>See <a href="../git-diff">git-diff(1)</a> for the full list of supported options.</p>
 
@@ -201,39 +207,44 @@ tool returns a non-zero exit code.</p>
 <p><em>git difftool</em> falls back to <em>git mergetool</em> config variables when the
 difftool equivalents have not been defined.</p>
 
-<p>diff.tool<br />
-The default diff tool to use.</p>
+<ul>
+<li><p>diff.tool<br />
+The default diff tool to use.</p></li>
 
-<p>diff.guitool<br />
-The default diff tool to use when <code>--gui</code> is specified.</p>
+<li><p>diff.guitool<br />
+The default diff tool to use when <code>--gui</code> is specified.</p></li>
 
-<p>difftool.&lt;tool&gt;.path<br />
-Override the path for the given tool. This is useful in case your tool
-is not in the PATH.</p>
+<li><p>difftool.&lt;tool&gt;.path<br />
+Override the path for the given tool. This is useful in case your
+tool is not in the PATH.</p></li>
 
-<p>difftool.&lt;tool&gt;.cmd<br />
+<li><p>difftool.&lt;tool&gt;.cmd<br />
 Specify the command to invoke the specified diff tool.</p>
 
-<p>See the <code>--tool=&lt;tool&gt;</code> option above for more details.</p>
+<p>See the <code>--tool=&lt;tool&gt;</code> option above for more details.</p></li>
 
-<p>difftool.prompt<br />
-Prompt before each invocation of the diff tool.</p>
+<li><p>difftool.prompt<br />
+Prompt before each invocation of the diff tool.</p></li>
 
-<p>difftool.trustExitCode<br />
-Exit difftool if the invoked diff tool returns a non-zero exit status.</p>
+<li><p>difftool.trustExitCode<br />
+Exit difftool if the invoked diff tool returns a non-zero exit
+status.</p>
 
-<p>See the <code>--trust-exit-code</code> option above for more details.</p>
+<p>See the <code>--trust-exit-code</code> option above for more details.</p></li>
+</ul>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><a href="../git-diff">git-diff(1)</a><br />
-Show changes between commits, commit and working tree, etc</p>
+<ul>
+<li><p><a href="../git-diff">git-diff(1)</a><br />
+Show changes between commits, commit and working tree, etc</p></li>
 
-<p><a href="../git-mergetool">git-mergetool(1)</a><br />
-Run merge conflict resolution tools to resolve merge conflicts</p>
+<li><p><a href="../git-mergetool">git-mergetool(1)</a><br />
+Run merge conflict resolution tools to resolve merge conflicts</p></li>
 
-<p><a href="../git-config">git-config(1)</a><br />
-Get and set repository or global options</p>
+<li><p><a href="../git-config">git-config(1)</a><br />
+Get and set repository or global options</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

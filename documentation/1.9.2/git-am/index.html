@@ -124,123 +124,125 @@ information and patches, and applies them to the current branch.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>(&lt;mbox&gt;|&lt;Maildir&gt;)…<br />
+<ul>
+<li><p>(&lt;mbox&gt;|&lt;Maildir&gt;)…<br />
 The list of mailbox files to read patches from. If you do not supply
-this argument, the command reads from the standard input. If you supply
-directories, they will be treated as Maildirs.</p>
+this argument, the command reads from the standard input. If you
+supply directories, they will be treated as Maildirs.</p></li>
 
-<p>-s<br />
-&ndash;signoff<br />
-Add a <code>Signed-off-by:</code> line to the commit message, using the committer
-identity of yourself.</p>
+<li><p>-s<br />
+--signoff<br />
+Add a <code>Signed-off-by:</code> line to the commit message, using the
+committer identity of yourself.</p></li>
 
-<p>-k<br />
-&ndash;keep<br />
+<li><p>-k<br />
+--keep<br />
 Pass <code>-k</code> flag to <em>git mailinfo</em> (see
-<a href="../git-mailinfo">git-mailinfo(1)</a>).</p>
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
 
-<p>&ndash;keep-non-patch<br />
+<li><p>&ndash;keep-non-patch<br />
 Pass <code>-b</code> flag to <em>git mailinfo</em> (see
-<a href="../git-mailinfo">git-mailinfo(1)</a>).</p>
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
 
-<p>&ndash;[no-]keep-cr<br />
+<li><p>&ndash;[no-]keep-cr<br />
 With <code>--keep-cr</code>, call <em>git mailsplit</em> (see
-<a href="../git-mailsplit">git-mailsplit(1)</a>) with the same option, to prevent
-it from stripping CR at the end of lines. <code>am.keepcr</code> configuration
-variable can be used to specify the default behaviour. <code>--no-keep-cr</code> is
-useful to override <code>am.keepcr</code>.</p>
+<a href="../git-mailsplit">git-mailsplit(1)</a>) with the same option, to
+prevent it from stripping CR at the end of lines. <code>am.keepcr</code>
+configuration variable can be used to specify the default behaviour.
+<code>--no-keep-cr</code> is useful to override <code>am.keepcr</code>.</p></li>
 
-<p>-c<br />
-&ndash;scissors<br />
+<li><p>-c<br />
+--scissors<br />
 Remove everything in body before a scissors line (see
-<a href="../git-mailinfo">git-mailinfo(1)</a>).</p>
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
 
-<p>&ndash;no-scissors<br />
-Ignore scissors lines (see <a href="../git-mailinfo">git-mailinfo(1)</a>).</p>
+<li><p>&ndash;no-scissors<br />
+Ignore scissors lines (see <a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
 
-<p>-q<br />
-&ndash;quiet<br />
-Be quiet. Only print error messages.</p>
+<li><p>-q<br />
+--quiet<br />
+Be quiet. Only print error messages.</p></li>
 
-<p>-u<br />
-&ndash;utf8<br />
+<li><p>-u<br />
+--utf8<br />
 Pass <code>-u</code> flag to <em>git mailinfo</em> (see
-<a href="../git-mailinfo">git-mailinfo(1)</a>). The proposed commit log message
-taken from the e-mail is re-coded into UTF-8 encoding (configuration
-variable <code>i18n.commitencoding</code> can be used to specify project’s
-preferred encoding if it is not UTF-8).</p>
+<a href="../git-mailinfo">git-mailinfo(1)</a>). The proposed commit log
+message taken from the e-mail is re-coded into UTF-8 encoding
+(configuration variable <code>i18n.commitencoding</code> can be used to specify
+project’s preferred encoding if it is not UTF-8).</p>
 
-<p>This was optional in prior versions of git, but now it is the default.
-You can use <code>--no-utf8</code> to override this.</p>
+<p>This was optional in prior versions of git, but now it is the
+default. You can use <code>--no-utf8</code> to override this.</p></li>
 
-<p>&ndash;no-utf8<br />
+<li><p>&ndash;no-utf8<br />
 Pass <code>-n</code> flag to <em>git mailinfo</em> (see
-<a href="../git-mailinfo">git-mailinfo(1)</a>).</p>
+<a href="../git-mailinfo">git-mailinfo(1)</a>).</p></li>
 
-<p>-3<br />
-&ndash;3way<br />
-When the patch does not apply cleanly, fall back on 3-way merge if the
-patch records the identity of blobs it is supposed to apply to and we
-have those blobs available locally.</p>
+<li><p>-3<br />
+--3way<br />
+When the patch does not apply cleanly, fall back on 3-way merge if
+the patch records the identity of blobs it is supposed to apply to
+and we have those blobs available locally.</p></li>
 
-<p>&ndash;ignore-date<br />
-&ndash;ignore-space-change<br />
-&ndash;ignore-whitespace<br />
-&ndash;whitespace=&lt;option&gt;<br />
+<li><p>&ndash;ignore-date<br />
+--ignore-space-change<br />
+--ignore-whitespace<br />
+--whitespace=&lt;option&gt;<br />
 -C&lt;n&gt;<br />
 -p&lt;n&gt;<br />
-&ndash;directory=&lt;dir&gt;<br />
-&ndash;exclude=&lt;path&gt;<br />
-&ndash;include=&lt;path&gt;<br />
-&ndash;reject<br />
+--directory=&lt;dir&gt;<br />
+--exclude=&lt;path&gt;<br />
+--include=&lt;path&gt;<br />
+--reject<br />
 These flags are passed to the <em>git apply</em> (see
-<a href="../git-apply">git-apply(1)</a>) program that applies the patch.</p>
+<a href="../git-apply">git-apply(1)</a>) program that applies the patch.</p></li>
 
-<p>-i<br />
-&ndash;interactive<br />
-Run interactively.</p>
+<li><p>-i<br />
+--interactive<br />
+Run interactively.</p></li>
 
-<p>&ndash;committer-date-is-author-date<br />
-By default the command records the date from the e-mail message as the
-commit author date, and uses the time of commit creation as the
-committer date. This allows the user to lie about the committer date by
-using the same value as the author date.</p>
+<li><p>&ndash;committer-date-is-author-date<br />
+By default the command records the date from the e-mail message as
+the commit author date, and uses the time of commit creation as the
+committer date. This allows the user to lie about the committer date
+by using the same value as the author date.</p></li>
 
-<p>&ndash;ignore-date<br />
-By default the command records the date from the e-mail message as the
-commit author date, and uses the time of commit creation as the
+<li><p>&ndash;ignore-date<br />
+By default the command records the date from the e-mail message as
+the commit author date, and uses the time of commit creation as the
 committer date. This allows the user to lie about the author date by
-using the same value as the committer date.</p>
+using the same value as the committer date.</p></li>
 
-<p>&ndash;skip<br />
+<li><p>&ndash;skip<br />
 Skip the current patch. This is only meaningful when restarting an
-aborted patch.</p>
+aborted patch.</p></li>
 
-<p>&ndash;continue<br />
+<li><p>&ndash;continue<br />
 -r<br />
-&ndash;resolved<br />
-After a patch failure (e.g. attempting to apply conflicting patch), the
-user has applied it by hand and the index file stores the result of the
-application. Make a commit using the authorship and commit log extracted
-from the e-mail message and the current index file, and continue.</p>
+--resolved<br />
+After a patch failure (e.g. attempting to apply conflicting patch),
+the user has applied it by hand and the index file stores the result
+of the application. Make a commit using the authorship and commit
+log extracted from the e-mail message and the current index file,
+and continue.</p></li>
 
-<p>&ndash;resolvemsg=&lt;msg&gt;<br />
+<li><p>&ndash;resolvemsg=&lt;msg&gt;<br />
 When a patch failure occurs, &lt;msg&gt; will be printed to the screen
-before exiting. This overrides the standard message informing you to use
-<code>--continue</code> or <code>--skip</code> to handle the failure. This is solely for
-internal use between <em>git rebase</em> and <em>git am</em>.</p>
+before exiting. This overrides the standard message informing you to
+use <code>--continue</code> or <code>--skip</code> to handle the failure. This is solely
+for internal use between <em>git rebase</em> and <em>git am</em>.</p></li>
 
-<p>&ndash;abort<br />
-Restore the original branch and abort the patching operation.</p>
+<li><p>&ndash;abort<br />
+Restore the original branch and abort the patching operation.</p></li>
+</ul>
 
 <h2 id="discussion">DISCUSSION</h2>
 
 <p>The commit author name is taken from the &ldquo;From: &ldquo; line of the message,
 and commit author date is taken from the &ldquo;Date: &ldquo; line of the message.
 The &ldquo;Subject: &ldquo; line is used as the title of the commit, after stripping
-common prefix &ldquo;[PATCH &lt;anything&gt;]&rdquo;. The &ldquo;Subject: &ldquo; line is
-supposed to concisely describe what the commit is about in one line of
-text.</p>
+common prefix &ldquo;[PATCH &lt;anything&gt;]&rdquo;. The &ldquo;Subject: &ldquo; line is supposed
+to concisely describe what the commit is about in one line of text.</p>
 
 <p>&ldquo;From: &ldquo; and &ldquo;Subject: &ldquo; lines starting the body override the respective
 commit author name and title values taken from the headers.</p>
@@ -277,8 +279,8 @@ produced. Then run the command with the <em>&ndash;continue</em> option.</p></li
 </ol>
 
 <p>The command refuses to process new mailboxes until the current operation
-is finished, so if you decide to start over from scratch, run
-<code>git am --abort</code> before running the command with mailbox names.</p>
+is finished, so if you decide to start over from scratch, run <code>git am
+--abort</code> before running the command with mailbox names.</p>
 
 <p>Before any patches are applied, ORIG_HEAD is set to the tip of the
 current branch. This is useful if you have problems with multiple

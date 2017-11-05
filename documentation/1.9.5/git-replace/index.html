@@ -152,25 +152,27 @@ achieve the same effect as the <code>--no-replace-objects</code> option.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-f<br />
-&ndash;force<br />
+<ul>
+<li><p>-f<br />
+--force<br />
 If an existing replace ref for the same object exists, it will be
-overwritten (instead of failing).</p>
+overwritten (instead of failing).</p></li>
 
-<p>-d<br />
-&ndash;delete<br />
-Delete existing replace refs for the given objects.</p>
+<li><p>-d<br />
+--delete<br />
+Delete existing replace refs for the given objects.</p></li>
 
-<p>-l &lt;pattern&gt;<br />
-&ndash;list &lt;pattern&gt;<br />
-List replace refs for objects that match the given pattern (or all if no
-pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists
-all replace refs.</p>
+<li><p>-l &lt;pattern&gt;<br />
+--list &lt;pattern&gt;<br />
+List replace refs for objects that match the given pattern (or all
+if no pattern is given). Typing &ldquo;git replace&rdquo; without arguments,
+also lists all replace refs.</p></li>
 
-<p>&ndash;format=&lt;format&gt;<br />
+<li><p>&ndash;format=&lt;format&gt;<br />
 When listing, use the specified &lt;format&gt;, which can be one of
 <em>short</em>, <em>medium</em> and <em>long</em>. When omitted, the format defaults to
-<em>short</em>.</p>
+<em>short</em>.</p></li>
+</ul>
 
 <h2 id="formats">FORMATS</h2>
 
@@ -181,8 +183,8 @@ When listing, use the specified &lt;format&gt;, which can be one of
 
 <li><p><em>medium</em>: &lt;replaced sha1&gt; → &lt;replacement sha1&gt;</p></li>
 
-<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) →
-&lt;replacement sha1&gt; (&lt;replacement type&gt;)</p></li>
+<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) → &lt;replacement sha1&gt;
+(&lt;replacement type&gt;)</p></li>
 </ul>
 
 <h2 id="creating-replacement-objects">CREATING REPLACEMENT OBJECTS</h2>

@@ -118,65 +118,70 @@ merge conflicts. It is typically run after <em>git merge</em>.</p>
 <p>If one or more &lt;file&gt; parameters are given, the merge tool program
 will be run to resolve differences on each file (skipping those without
 conflicts). Specifying a directory will include all unresolved files in
-that path. If no &lt;file&gt; names are specified, <em>git mergetool</em> will
-run the merge tool program on every file with merge conflicts.</p>
+that path. If no &lt;file&gt; names are specified, <em>git mergetool</em> will run
+the merge tool program on every file with merge conflicts.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-t &lt;tool&gt;<br />
-&ndash;tool=&lt;tool&gt;<br />
+<ul>
+<li><p>-t &lt;tool&gt;<br />
+--tool=&lt;tool&gt;<br />
 Use the merge resolution program specified by &lt;tool&gt;. Valid values
-include emerge, gvimdiff, kdiff3, meld, vimdiff, and tortoisemerge. Run
-<code>git mergetool --tool-help</code> for the list of valid &lt;tool&gt; settings.</p>
+include emerge, gvimdiff, kdiff3, meld, vimdiff, and tortoisemerge.
+Run <code>git mergetool --tool-help</code> for the list of valid &lt;tool&gt;
+settings.</p>
 
-<p>If a merge resolution program is not specified, <em>git mergetool</em> will use
-the configuration variable <code>merge.tool</code>. If the configuration variable
-<code>merge.tool</code> is not set, <em>git mergetool</em> will pick a suitable default.</p>
+<p>If a merge resolution program is not specified, <em>git mergetool</em> will
+use the configuration variable <code>merge.tool</code>. If the configuration
+variable <code>merge.tool</code> is not set, <em>git mergetool</em> will pick a
+suitable default.</p>
 
 <p>You can explicitly provide a full path to the tool by setting the
 configuration variable <code>mergetool.&lt;tool&gt;.path</code>. For example, you can
 configure the absolute path to kdiff3 by setting
-<code>mergetool.kdiff3.path</code>. Otherwise, <em>git mergetool</em> assumes the tool is
-available in PATH.</p>
+<code>mergetool.kdiff3.path</code>. Otherwise, <em>git mergetool</em> assumes the tool
+is available in PATH.</p>
 
-<p>Instead of running one of the known merge tool programs, <em>git mergetool</em>
-can be customized to run an alternative program by specifying the
-command line to invoke in a configuration variable
+<p>Instead of running one of the known merge tool programs, <em>git
+mergetool</em> can be customized to run an alternative program by
+specifying the command line to invoke in a configuration variable
 <code>mergetool.&lt;tool&gt;.cmd</code>.</p>
 
-<p>When <em>git mergetool</em> is invoked with this tool (either through the <code>-t</code>
-or <code>--tool</code> option or the <code>merge.tool</code> configuration variable) the
-configured command line will be invoked with <code>$BASE</code> set to the name of
-a temporary file containing the common base for the merge, if available;
-<code>$LOCAL</code> set to the name of a temporary file containing the contents of
-the file on the current branch; <code>$REMOTE</code> set to the name of a temporary
-file containing the contents of the file to be merged, and <code>$MERGED</code> set
-to the name of the file to which the merge tool should write the result
-of the merge resolution.</p>
+<p>When <em>git mergetool</em> is invoked with this tool (either through the
+<code>-t</code> or <code>--tool</code> option or the <code>merge.tool</code> configuration variable)
+the configured command line will be invoked with <code>$BASE</code> set to the
+name of a temporary file containing the common base for the merge,
+if available; <code>$LOCAL</code> set to the name of a temporary file
+containing the contents of the file on the current branch; <code>$REMOTE</code>
+set to the name of a temporary file containing the contents of the
+file to be merged, and <code>$MERGED</code> set to the name of the file to
+which the merge tool should write the result of the merge
+resolution.</p>
 
 <p>If the custom merge tool correctly indicates the success of a merge
 resolution with its exit code, then the configuration variable
-<code>mergetool.&lt;tool&gt;.trustExitCode</code> can be set to <code>true</code>. Otherwise, <em>git
-mergetool</em> will prompt the user to indicate the success of the
-resolution after the custom tool has exited.</p>
+<code>mergetool.&lt;tool&gt;.trustExitCode</code> can be set to <code>true</code>. Otherwise,
+<em>git mergetool</em> will prompt the user to indicate the success of the
+resolution after the custom tool has exited.</p></li>
 
-<p>&ndash;tool-help<br />
-Print a list of merge tools that may be used with <code>--tool</code>.</p>
+<li><p>&ndash;tool-help<br />
+Print a list of merge tools that may be used with <code>--tool</code>.</p></li>
 
-<p>-y<br />
-&ndash;no-prompt<br />
-Don’t prompt before each invocation of the merge resolution program.</p>
+<li><p>-y<br />
+--no-prompt<br />
+Don’t prompt before each invocation of the merge resolution program.</p></li>
 
-<p>&ndash;prompt<br />
-Prompt before each invocation of the merge resolution program. This is
-the default behaviour; the option is provided to override any
-configuration settings.</p>
+<li><p>&ndash;prompt<br />
+Prompt before each invocation of the merge resolution program. This
+is the default behaviour; the option is provided to override any
+configuration settings.</p></li>
+</ul>
 
 <h2 id="temporary-files">TEMPORARY FILES</h2>
 
 <p><code>git mergetool</code> creates <code>*.orig</code> backup files while resolving merges.
-These are safe to remove once a file has been merged and its
-<code>git mergetool</code> session has completed.</p>
+These are safe to remove once a file has been merged and its <code>git
+mergetool</code> session has completed.</p>
 
 <p>Setting the <code>mergetool.keepBackup</code> configuration variable to <code>false</code>
 causes <code>git mergetool</code> to automatically remove the backup as files are

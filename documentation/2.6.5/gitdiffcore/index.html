@@ -145,9 +145,9 @@ set of filepairs included:</p>
 <pre><code>:100644 100644 bcd1234... 0123456... M junkfile
 </code></pre>
 
-<p>but the command invocation was <code>git diff-files               myfile</code>,
-then the junkfile entry would be removed from the list because only
-&ldquo;myfile&rdquo; is under consideration.</p>
+<p>but the command invocation was <code>git diff-files myfile</code>, then the
+junkfile entry would be removed from the list because only &ldquo;myfile&rdquo; is
+under consideration.</p>
 
 <p>The result of comparison is passed from these commands to what is
 internally called &ldquo;diffcore&rdquo;, in a format similar to what is output when
@@ -304,8 +304,8 @@ contents of new version prefixed with <em>+</em>.</p>
 
 <p>This transformation limits the set of filepairs to those that change
 specified strings between the preimage and the postimage in a certain
-way. -S&lt;block of text&gt; and -G&lt;regular expression&gt; options
-are used to specify different ways these strings are sought.</p>
+way. -S&lt;block of text&gt; and -G&lt;regular expression&gt; options are used
+to specify different ways these strings are sought.</p>
 
 <p>&rdquo;-S&lt;block of text&gt;&rdquo; detects filepairs whose preimage and postimage
 have different number of occurrences of the specified block of text. By

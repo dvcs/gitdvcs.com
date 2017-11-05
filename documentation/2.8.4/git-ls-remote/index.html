@@ -119,52 +119,55 @@ associated commit IDs.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-h<br />
-&ndash;heads<br />
+<ul>
+<li><p>-h<br />
+--heads<br />
 -t<br />
-&ndash;tags<br />
-Limit to only refs/heads and refs/tags, respectively. These options are
-<em>not</em> mutually exclusive; when given both, references stored in
-refs/heads and refs/tags are displayed.</p>
+--tags<br />
+Limit to only refs/heads and refs/tags, respectively. These options
+are <em>not</em> mutually exclusive; when given both, references stored in
+refs/heads and refs/tags are displayed.</p></li>
 
-<p>&ndash;refs<br />
-Do not show peeled tags or pseudorefs like HEAD in the output.</p>
+<li><p>&ndash;refs<br />
+Do not show peeled tags or pseudorefs like HEAD in the output.</p></li>
 
-<p>-q<br />
-&ndash;quiet<br />
-Do not print remote URL to stderr.</p>
+<li><p>-q<br />
+--quiet<br />
+Do not print remote URL to stderr.</p></li>
 
-<p>&ndash;upload-pack=&lt;exec&gt;<br />
+<li><p>&ndash;upload-pack=&lt;exec&gt;<br />
 Specify the full path of <em>git-upload-pack</em> on the remote host. This
-allows listing references from repositories accessed via SSH and where
-the SSH daemon does not use the PATH configured by the user.</p>
+allows listing references from repositories accessed via SSH and
+where the SSH daemon does not use the PATH configured by the user.</p></li>
 
-<p>&ndash;exit-code<br />
+<li><p>&ndash;exit-code<br />
 Exit with status &ldquo;2&rdquo; when no matching refs are found in the remote
 repository. Usually the command exits with status &ldquo;0&rdquo; to indicate it
 successfully talked with the remote repository, whether it found any
-matching refs.</p>
+matching refs.</p></li>
 
-<p>&ndash;get-url<br />
-Expand the URL of the given remote repository taking into account any
-&ldquo;url.&lt;base&gt;.insteadOf&rdquo; config setting (See
+<li><p>&ndash;get-url<br />
+Expand the URL of the given remote repository taking into account
+any &ldquo;url.&lt;base&gt;.insteadOf&rdquo; config setting (See
 <a href="../git-config">git-config(1)</a>) and exit without talking to the
-remote.</p>
+remote.</p></li>
 
-<p>&ndash;symref<br />
-In addition to the object pointed by it, show the underlying ref pointed
-by it when showing a symbolic ref. Currently, upload-pack only shows the
-symref HEAD, so it will be the only one shown by ls-remote.</p>
+<li><p>&ndash;symref<br />
+In addition to the object pointed by it, show the underlying ref
+pointed by it when showing a symbolic ref. Currently, upload-pack
+only shows the symref HEAD, so it will be the only one shown by
+ls-remote.</p></li>
 
-<p>&lt;repository&gt;<br />
-The &ldquo;remote&rdquo; repository to query. This parameter can be either a URL or
-the name of a remote (see the GIT URLS and REMOTES sections of
-<a href="../git-fetch">git-fetch(1)</a>).</p>
+<li><p>&lt;repository&gt;<br />
+The &ldquo;remote&rdquo; repository to query. This parameter can be either a URL
+or the name of a remote (see the GIT URLS and REMOTES sections of
+<a href="../git-fetch">git-fetch(1)</a>).</p></li>
 
-<p>&lt;refs&gt;…<br />
-When unspecified, all references, after filtering done with &ndash;heads and
-&ndash;tags, are shown. When &lt;refs&gt;… are specified, only references
-matching the given patterns are displayed.</p>
+<li><p>&lt;refs&gt;…<br />
+When unspecified, all references, after filtering done with &ndash;heads
+and &ndash;tags, are shown. When &lt;refs&gt;… are specified, only references
+matching the given patterns are displayed.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 

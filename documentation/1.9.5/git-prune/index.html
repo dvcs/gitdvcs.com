@@ -140,23 +140,29 @@ desired, see <a href="../git-repack">git-repack(1)</a>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-n<br />
-&ndash;dry-run<br />
-Do not remove anything; just report what it would remove.</p>
+<ul>
+<li><p>-n<br />
+--dry-run<br />
+Do not remove anything; just report what it would remove.</p></li>
 
-<p>-v<br />
-&ndash;verbose<br />
-Report all removed objects.</p>
+<li><p>-v<br />
+--verbose<br />
+Report all removed objects.</p></li>
+</ul>
 
-<p>&ndash;<br />
-Do not interpret any more arguments as options.</p>
+<hr />
 
-<p>&ndash;expire &lt;time&gt;<br />
-Only expire loose objects older than &lt;time&gt;.</p>
+<pre><code>Do not interpret any more arguments as options.
+</code></pre>
 
-<p>&lt;head&gt;…<br />
+<ul>
+<li><p>&ndash;expire &lt;time&gt;<br />
+Only expire loose objects older than &lt;time&gt;.</p></li>
+
+<li><p>&lt;head&gt;…<br />
 In addition to objects reachable from any of our references, keep
-objects reachable from listed &lt;head&gt;s.</p>
+objects reachable from listed &lt;head&gt;s.</p></li>
+</ul>
 
 <h2 id="example">EXAMPLE</h2>
 

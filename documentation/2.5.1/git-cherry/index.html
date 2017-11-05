@@ -121,23 +121,25 @@ line numbers. git-cherry therefore detects when commits have been
 <a href="../git-am">git-am(1)</a> or <a href="../git-rebase">git-rebase(1)</a>.</p>
 
 <p>Outputs the SHA1 of every commit in <code>&lt;limit&gt;..&lt;head&gt;</code>, prefixed with <code>-</code>
-for commits that have an equivalent in &lt;upstream&gt;, and <code>+</code> for
-commits that do not.</p>
+for commits that have an equivalent in &lt;upstream&gt;, and <code>+</code> for commits
+that do not.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-v<br />
-Show the commit subjects next to the SHA1s.</p>
+<ul>
+<li><p>-v<br />
+Show the commit subjects next to the SHA1s.</p></li>
 
-<p>&lt;upstream&gt;<br />
+<li><p>&lt;upstream&gt;<br />
 Upstream branch to search for equivalent commits. Defaults to the
-upstream branch of HEAD.</p>
+upstream branch of HEAD.</p></li>
 
-<p>&lt;head&gt;<br />
-Working branch; defaults to HEAD.</p>
+<li><p>&lt;head&gt;<br />
+Working branch; defaults to HEAD.</p></li>
 
-<p>&lt;limit&gt;<br />
-Do not report commits up to (and including) limit.</p>
+<li><p>&lt;limit&gt;<br />
+Do not report commits up to (and including) limit.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -164,7 +166,8 @@ $ git cherry -v
 <h3 id="concrete-example">Concrete example</h3>
 
 <p>In a situation where topic consisted of three commits, and the
-maintainer applied two of them, the situation might look like:</p>
+maintainer applied two of them, the situation might look
+    like:</p>
 
 <pre><code>$ git log --graph --oneline --decorate --boundary origin/master...topic
 * 7654321 (origin/master) upstream tip commit
@@ -195,9 +198,10 @@ will be sent to be applied to <code>origin/master</code>.</p>
 
 <h3 id="using-a-limit">Using a limit</h3>
 
-<p>The optional &lt;limit&gt; is useful in cases where your topic is based
-on other work that is not in upstream. Expanding on the previous
-example, this might look like:</p>
+<p>The optional &lt;limit&gt; is useful in cases where your topic is based on
+other work that is not in upstream. Expanding on the previous example,
+this might look
+    like:</p>
 
 <pre><code>$ git log --graph --oneline --decorate --boundary origin/master...topic
 * 7654321 (origin/master) upstream tip commit

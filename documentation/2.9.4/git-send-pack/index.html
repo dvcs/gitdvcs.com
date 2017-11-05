@@ -123,68 +123,71 @@ it from the current repository, sending named refs.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;receive-pack=&lt;git-receive-pack&gt;<br />
+<ul>
+<li><p>&ndash;receive-pack=&lt;git-receive-pack&gt;<br />
 Path to the <em>git-receive-pack</em> program on the remote end. Sometimes
-useful when pushing to a remote repository over ssh, and you do not have
-the program in a directory on the default $PATH.</p>
+useful when pushing to a remote repository over ssh, and you do not
+have the program in a directory on the default $PATH.</p></li>
 
-<p>&ndash;exec=&lt;git-receive-pack&gt;<br />
-Same as &ndash;receive-pack=&lt;git-receive-pack&gt;.</p>
+<li><p>&ndash;exec=&lt;git-receive-pack&gt;<br />
+Same as &ndash;receive-pack=&lt;git-receive-pack&gt;.</p></li>
 
-<p>&ndash;all<br />
-Instead of explicitly specifying which refs to update, update all heads
-that locally exist.</p>
+<li><p>&ndash;all<br />
+Instead of explicitly specifying which refs to update, update all
+heads that locally exist.</p></li>
 
-<p>&ndash;stdin<br />
+<li><p>&ndash;stdin<br />
 Take the list of refs from stdin, one per line. If there are refs
-specified on the command line in addition to this option, then the refs
-from stdin are processed after those on the command line.</p>
+specified on the command line in addition to this option, then the
+refs from stdin are processed after those on the command line.</p>
 
 <p>If <code>--stateless-rpc</code> is specified together with this option then the
-list of refs must be in packet format (pkt-line). Each ref must be in a
-separate packet, and the list must end with a flush packet.</p>
+list of refs must be in packet format (pkt-line). Each ref must be
+in a separate packet, and the list must end with a flush packet.</p></li>
 
-<p>&ndash;dry-run<br />
-Do everything except actually send the updates.</p>
+<li><p>&ndash;dry-run<br />
+Do everything except actually send the updates.</p></li>
 
-<p>&ndash;force<br />
+<li><p>&ndash;force<br />
 Usually, the command refuses to update a remote ref that is not an
-ancestor of the local ref used to overwrite it. This flag disables the
-check. What this means is that the remote repository can lose commits;
-use it with care.</p>
+ancestor of the local ref used to overwrite it. This flag disables
+the check. What this means is that the remote repository can lose
+commits; use it with care.</p></li>
 
-<p>&ndash;verbose<br />
-Run verbosely.</p>
+<li><p>&ndash;verbose<br />
+Run verbosely.</p></li>
 
-<p>&ndash;thin<br />
+<li><p>&ndash;thin<br />
 Send a &ldquo;thin&rdquo; pack, which records objects in deltified form based on
-objects not included in the pack to reduce network traffic.</p>
+objects not included in the pack to reduce network traffic.</p></li>
 
-<p>&ndash;atomic<br />
+<li><p>&ndash;atomic<br />
 Use an atomic transaction for updating the refs. If any of the refs
 fails to update then the entire push will fail without changing any
-refs.</p>
+refs.</p></li>
 
-<p>&ndash;[no-]signed<br />
-&ndash;sign=(true|false|if-asked)<br />
-GPG-sign the push request to update refs on the receiving side, to allow
-it to be checked by the hooks and/or be logged. If <code>false</code> or
-<code>--no-signed</code>, no signing will be attempted. If <code>true</code> or <code>--signed</code>,
-the push will fail if the server does not support signed pushes. If set
-to <code>if-asked</code>, sign if and only if the server supports signed pushes.
-The push will also fail if the actual call to <code>gpg --sign</code> fails. See
+<li><p>&ndash;[no-]signed<br />
+--sign=(true|false|if-asked)<br />
+GPG-sign the push request to update refs on the receiving side, to
+allow it to be checked by the hooks and/or be logged. If <code>false</code> or
+<code>--no-signed</code>, no signing will be attempted. If <code>true</code> or
+<code>--signed</code>, the push will fail if the server does not support signed
+pushes. If set to <code>if-asked</code>, sign if and only if the server
+supports signed pushes. The push will also fail if the actual call
+to <code>gpg --sign</code> fails. See
 <a href="../git-receive-pack">git-receive-pack(1)</a> for the details on the
-receiving end.</p>
+receiving end.</p></li>
 
-<p>&lt;host&gt;<br />
+<li><p>&lt;host&gt;<br />
 A remote host to house the repository. When this part is specified,
-<em>git-receive-pack</em> is invoked via ssh.</p>
+<em>git-receive-pack</em> is invoked via ssh.</p></li>
 
-<p>&lt;directory&gt;<br />
-The repository to update.</p>
+<li><p>&lt;directory&gt;<br />
+The repository to update.</p></li>
 
-<p>&lt;ref&gt;…<br />
-The remote refs to update.</p>
+<li><p>&lt;ref&gt;…<br />
+The remote refs to update.</p></li>
+</ul>
 
 <h2 id="specifying-the-refs">Specifying the Refs</h2>
 
@@ -193,14 +196,14 @@ The remote refs to update.</p>
 <p>With <code>--all</code> flag, all refs that exist locally are transferred to the
 remote side. You cannot specify any <em>&lt;ref&gt;</em> if you use this flag.</p>
 
-<p>Without <code>--all</code> and without any <em>&lt;ref&gt;</em>, the heads that exist both
-on the local side and on the remote side are updated.</p>
+<p>Without <code>--all</code> and without any <em>&lt;ref&gt;</em>, the heads that exist both on
+the local side and on the remote side are updated.</p>
 
 <p>When one or more <em>&lt;ref&gt;</em> are specified explicitly (whether on the
 command line or via <code>--stdin</code>), it can be either a single pattern, or a
 pair of such pattern separated by a colon &ldquo;:&rdquo; (this means that a ref
-name cannot have a colon in it). A single pattern <em>&lt;name&gt;</em> is just
-a shorthand for <em>&lt;name&gt;:&lt;name&gt;</em>.</p>
+name cannot have a colon in it). A single pattern <em>&lt;name&gt;</em> is just a
+shorthand for <em>&lt;name&gt;:&lt;name&gt;</em>.</p>
 
 <p>Each pattern pair consists of the source side (before the colon) and the
 destination side (after the colon). The ref to be pushed is determined
@@ -210,34 +213,33 @@ ref are the same rules used by <em>git rev-parse</em> to resolve a symbolic ref
 name. See <a href="../git-rev-parse">git-rev-parse(1)</a>.</p>
 
 <ul>
-<li><p>It is an error if &lt;src&gt; does not match exactly one of the
-local refs.</p></li>
+<li><p>It is an error if &lt;src&gt; does not match exactly one of the local
+refs.</p></li>
 
 <li><p>It is an error if &lt;dst&gt; matches more than one remote refs.</p></li>
 
 <li><p>If &lt;dst&gt; does not match any remote ref, either</p>
 
 <ul>
-<li><p>it has to start with &ldquo;refs/&rdquo;; &lt;dst&gt; is used as the
-destination literally in this case.</p></li>
+<li><p>it has to start with &ldquo;refs/&rdquo;; &lt;dst&gt; is used as the destination
+literally in this case.</p></li>
 
-<li><p>&lt;src&gt; == &lt;dst&gt; and the ref that matched the
-&lt;src&gt; must not exist in the set of remote refs; the ref
-matched &lt;src&gt; locally is used as the name of the
-destination.</p></li>
+<li><p>&lt;src&gt; == &lt;dst&gt; and the ref that matched the &lt;src&gt; must not
+exist in the set of remote refs; the ref matched &lt;src&gt; locally
+is used as the name of the destination.</p></li>
 </ul></li>
 </ul>
 
 <p>Without ‘&ndash;force`, the &lt;src&gt; ref is stored at the remote only if
-&lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an
-ancestor) of &lt;src&gt;. This check, known as &ldquo;fast-forward check&rdquo;, is
-performed in order to avoid accidentally overwriting the remote ref and
-lose other peoples’ commits from there.</p>
+&lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an ancestor)
+of &lt;src&gt;. This check, known as &ldquo;fast-forward check&rdquo;, is performed in
+order to avoid accidentally overwriting the remote ref and lose other
+peoples’ commits from there.</p>
 
 <p>With <code>--force</code>, the fast-forward check is disabled for all refs.</p>
 
-<p>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <em>+</em> sign
-to disable the fast-forward check only on that ref.</p>
+<p>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <em>+</em> sign to
+disable the fast-forward check only on that ref.</p>
 
 <h2 id="git">GIT</h2>
 

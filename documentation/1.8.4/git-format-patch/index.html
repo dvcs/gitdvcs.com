@@ -132,21 +132,20 @@ for e-mail submission or for use with <em>git am</em>.</p>
 <p>There are two ways to specify which commits to operate on.</p>
 
 <ol>
-<li><p>A single commit, &lt;since&gt;, specifies that the commits leading
-to the tip of the current branch that are not in the history that
-leads to the &lt;since&gt; to be output.</p></li>
+<li><p>A single commit, &lt;since&gt;, specifies that the commits leading to
+the tip of the current branch that are not in the history that leads
+to the &lt;since&gt; to be output.</p></li>
 
-<li><p>Generic &lt;revision range&gt; expression (see &ldquo;SPECIFYING
-REVISIONS&rdquo; section in <a href="../gitrevisions">gitrevisions(7)</a>) means
-the commits in the specified range.</p></li>
+<li><p>Generic &lt;revision range&gt; expression (see &ldquo;SPECIFYING REVISIONS&rdquo;
+section in <a href="../gitrevisions">gitrevisions(7)</a>) means the commits
+in the specified range.</p></li>
 </ol>
 
-<p>The first rule takes precedence in the case of a single &lt;commit&gt;.
-To apply the second rule, i.e., format everything since the beginning of
-history up until &lt;commit&gt;, use the <em>&ndash;root</em> option:
-<code>git format-patch --root &lt;commit&gt;</code>. If you want to format only
-&lt;commit&gt; itself, you can do this with
-<code>git format-patch -1 &lt;commit&gt;</code>.</p>
+<p>The first rule takes precedence in the case of a single &lt;commit&gt;. To
+apply the second rule, i.e., format everything since the beginning of
+history up until &lt;commit&gt;, use the <em>&ndash;root</em> option: <code>git format-patch
+--root &lt;commit&gt;</code>. If you want to format only &lt;commit&gt; itself, you can
+do this with <code>git format-patch -1 &lt;commit&gt;</code>.</p>
 
 <p>By default, each output file is numbered sequentially from 1, and uses
 the first line of the commit message (massaged for pathname safety) as
@@ -173,56 +172,61 @@ header to reference.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-p<br />
-&ndash;no-stat<br />
-Generate plain patches without any diffstats.</p>
+<ul>
+<li><p>-p<br />
+--no-stat<br />
+Generate plain patches without any diffstats.</p></li>
 
-<p>-s<br />
-&ndash;no-patch<br />
-Suppress diff output. Useful for commands like <code>git show</code> that show the
-patch by default, or to cancel the effect of <code>--patch</code>.</p>
+<li><p>-s<br />
+--no-patch<br />
+Suppress diff output. Useful for commands like <code>git show</code> that show
+the patch by default, or to cancel the effect of <code>--patch</code>.</p></li>
 
-<p>-U&lt;n&gt;<br />
-&ndash;unified=&lt;n&gt;<br />
+<li><p>-U&lt;n&gt;<br />
+--unified=&lt;n&gt;<br />
 Generate diffs with &lt;n&gt; lines of context instead of the usual
-three.</p>
+three.</p></li>
 
-<p>&ndash;minimal<br />
-Spend extra time to make sure the smallest possible diff is produced.</p>
+<li><p>&ndash;minimal<br />
+Spend extra time to make sure the smallest possible diff is
+produced.</p></li>
 
-<p>&ndash;patience<br />
-Generate a diff using the &ldquo;patience diff&rdquo; algorithm.</p>
+<li><p>&ndash;patience<br />
+Generate a diff using the &ldquo;patience diff&rdquo; algorithm.</p></li>
 
-<p>&ndash;histogram<br />
-Generate a diff using the &ldquo;histogram diff&rdquo; algorithm.</p>
+<li><p>&ndash;histogram<br />
+Generate a diff using the &ldquo;histogram diff&rdquo; algorithm.</p></li>
 
-<p>&ndash;diff-algorithm={patience|minimal|histogram|myers}<br />
+<li><p>&ndash;diff-algorithm={patience|minimal|histogram|myers}<br />
 Choose a diff algorithm. The variants are as follows:</p>
 
-<p><code>default</code>, <code>myers</code><br />
-The basic greedy diff algorithm. Currently, this is the default.</p>
+<ul>
+<li><p><code>default</code>, <code>myers</code><br />
+The basic greedy diff algorithm. Currently, this is the default.</p></li>
 
-<p><code>minimal</code><br />
-Spend extra time to make sure the smallest possible diff is produced.</p>
+<li><p><code>minimal</code><br />
+Spend extra time to make sure the smallest possible diff is
+produced.</p></li>
 
-<p><code>patience</code><br />
-Use &ldquo;patience diff&rdquo; algorithm when generating patches.</p>
+<li><p><code>patience</code><br />
+Use &ldquo;patience diff&rdquo; algorithm when generating patches.</p></li>
 
-<p><code>histogram</code><br />
-This algorithm extends the patience algorithm to &ldquo;support low-occurrence
-common elements&rdquo;.</p>
+<li><p><code>histogram</code><br />
+This algorithm extends the patience algorithm to &ldquo;support
+low-occurrence common elements&rdquo;.</p></li>
+</ul>
 
-<p>For instance, if you configured diff.algorithm variable to a non-default
-value and want to use the default one, then you have to use
-<code>--diff-algorithm=default</code> option.</p>
+<p>For instance, if you configured diff.algorithm variable to a
+non-default value and want to use the default one, then you have to
+use <code>--diff-algorithm=default</code> option.</p></li>
 
-<p>&ndash;stat[=&lt;width&gt;[,&lt;name-width&gt;[,&lt;count&gt;]]]<br />
-Generate a diffstat. By default, as much space as necessary will be used
-for the filename part, and the rest for the graph part. Maximum width
-defaults to terminal width, or 80 columns if not connected to a
-terminal, and can be overridden by <code>&lt;width&gt;</code>. The width of the filename
-part can be limited by giving another width <code>&lt;name-width&gt;</code> after a
-comma. The width of the graph part can be limited by using
+<li><p>&ndash;stat[=&lt;width&gt;[,&lt;name-width&gt;[,&lt;count&gt;]]]<br />
+Generate a diffstat. By default, as much space as necessary will be
+used for the filename part, and the rest for the graph part. Maximum
+width defaults to terminal width, or 80 columns if not connected to
+a terminal, and can be overridden by <code>&lt;width&gt;</code>. The width of the
+filename part can be limited by giving another width <code>&lt;name-width&gt;</code>
+after a comma. The width of the graph part can be limited by using
 <code>--stat-graph-width=&lt;width&gt;</code> (affects all commands generating a stat
 graph) or by setting <code>diff.statGraphWidth=&lt;width&gt;</code> (does not affect
 <code>git format-patch</code>). By giving a third parameter <code>&lt;count&gt;</code>, you can
@@ -231,407 +235,425 @@ there are more.</p>
 
 <p>These parameters can also be set individually with
 <code>--stat-width=&lt;width&gt;</code>, <code>--stat-name-width=&lt;name-width&gt;</code> and
-<code>--stat-count=&lt;count&gt;</code>.</p>
+<code>--stat-count=&lt;count&gt;</code>.</p></li>
 
-<p>&ndash;numstat<br />
+<li><p>&ndash;numstat<br />
 Similar to <code>--stat</code>, but shows number of added and deleted lines in
 decimal notation and pathname without abbreviation, to make it more
-machine friendly. For binary files, outputs two <code>-</code> instead of saying
-<code>0 0</code>.</p>
+machine friendly. For binary files, outputs two <code>-</code> instead of
+saying <code>0 0</code>.</p></li>
 
-<p>&ndash;shortstat<br />
-Output only the last line of the <code>--stat</code> format containing total number
-of modified files, as well as number of added and deleted lines.</p>
+<li><p>&ndash;shortstat<br />
+Output only the last line of the <code>--stat</code> format containing total
+number of modified files, as well as number of added and deleted
+lines.</p></li>
 
-<p>&ndash;dirstat[=&lt;param1,param2,…&gt;]<br />
+<li><p>&ndash;dirstat[=&lt;param1,param2,…&gt;]<br />
 Output the distribution of relative amount of changes for each
-sub-directory. The behavior of <code>--dirstat</code> can be customized by passing
-it a comma separated list of parameters. The defaults are controlled by
-the <code>diff.dirstat</code> configuration variable (see
+sub-directory. The behavior of <code>--dirstat</code> can be customized by
+passing it a comma separated list of parameters. The defaults are
+controlled by the <code>diff.dirstat</code> configuration variable (see
 <a href="../git-config">git-config(1)</a>). The following parameters are
 available:</p>
 
-<p><code>changes</code><br />
-Compute the dirstat numbers by counting the lines that have been removed
-from the source, or added to the destination. This ignores the amount of
-pure code movements within a file. In other words, rearranging lines in
-a file is not counted as much as other changes. This is the default
-behavior when no parameter is given.</p>
+<ul>
+<li><p><code>changes</code><br />
+Compute the dirstat numbers by counting the lines that have been
+removed from the source, or added to the destination. This
+ignores the amount of pure code movements within a file. In
+other words, rearranging lines in a file is not counted as much
+as other changes. This is the default behavior when no parameter
+is given.</p></li>
 
-<p><code>lines</code><br />
+<li><p><code>lines</code><br />
 Compute the dirstat numbers by doing the regular line-based diff
-analysis, and summing the removed/added line counts. (For binary files,
-count 64-byte chunks instead, since binary files have no natural concept
-of lines). This is a more expensive <code>--dirstat</code> behavior than the
-<code>changes</code> behavior, but it does count rearranged lines within a file as
-much as other changes. The resulting output is consistent with what you
-get from the other <code>--*stat</code> options.</p>
+analysis, and summing the removed/added line counts. (For binary
+files, count 64-byte chunks instead, since binary files have no
+natural concept of lines). This is a more expensive <code>--dirstat</code>
+behavior than the <code>changes</code> behavior, but it does count
+rearranged lines within a file as much as other changes. The
+resulting output is consistent with what you get from the other
+<code>--*stat</code> options.</p></li>
 
-<p><code>files</code><br />
-Compute the dirstat numbers by counting the number of files changed.
-Each changed file counts equally in the dirstat analysis. This is the
-computationally cheapest <code>--dirstat</code> behavior, since it does not have to
-look at the file contents at all.</p>
+<li><p><code>files</code><br />
+Compute the dirstat numbers by counting the number of files
+changed. Each changed file counts equally in the dirstat
+analysis. This is the computationally cheapest <code>--dirstat</code>
+behavior, since it does not have to look at the file contents at
+all.</p></li>
 
-<p><code>cumulative</code><br />
-Count changes in a child directory for the parent directory as well.
-Note that when using <code>cumulative</code>, the sum of the percentages reported
-may exceed 100%. The default (non-cumulative) behavior can be specified
-with the <code>noncumulative</code> parameter.</p>
+<li><p><code>cumulative</code><br />
+Count changes in a child directory for the parent directory as
+well. Note that when using <code>cumulative</code>, the sum of the
+percentages reported may exceed 100%. The default
+(non-cumulative) behavior can be specified with the
+<code>noncumulative</code> parameter.</p></li>
 
-<p>&lt;limit&gt;<br />
-An integer parameter specifies a cut-off percent (3% by default).
-Directories contributing less than this percentage of the changes are
-not shown in the output.</p>
+<li><p>&lt;limit&gt;<br />
+An integer parameter specifies a cut-off percent (3% by
+default). Directories contributing less than this percentage of
+the changes are not shown in the output.</p></li>
+</ul>
 
 <p>Example: The following will count changed files, while ignoring
-directories with less than 10% of the total amount of changed files, and
-accumulating child directory counts in the parent directories:
-<code>--dirstat=files,10,cumulative</code>.</p>
+directories with less than 10% of the total amount of changed files,
+and accumulating child directory counts in the parent directories:
+<code>--dirstat=files,10,cumulative</code>.</p></li>
 
-<p>&ndash;summary<br />
+<li><p>&ndash;summary<br />
 Output a condensed summary of extended header information such as
-creations, renames and mode changes.</p>
+creations, renames and mode changes.</p></li>
 
-<p>&ndash;no-renames<br />
-Turn off rename detection, even when the configuration file gives the
-default to do so.</p>
+<li><p>&ndash;no-renames<br />
+Turn off rename detection, even when the configuration file gives
+the default to do so.</p></li>
 
-<p>&ndash;full-index<br />
+<li><p>&ndash;full-index<br />
 Instead of the first handful of characters, show the full pre- and
-post-image blob object names on the &ldquo;index&rdquo; line when generating patch
-format output.</p>
+post-image blob object names on the &ldquo;index&rdquo; line when generating
+patch format output.</p></li>
 
-<p>&ndash;binary<br />
-In addition to <code>--full-index</code>, output a binary diff that can be applied
-with <code>git-apply</code>.</p>
+<li><p>&ndash;binary<br />
+In addition to <code>--full-index</code>, output a binary diff that can be
+applied with <code>git-apply</code>.</p></li>
 
-<p>&ndash;abbrev[=&lt;n&gt;]<br />
-Instead of showing the full 40-byte hexadecimal object name in diff-raw
-format output and diff-tree header lines, show only a partial prefix.
-This is independent of the <code>--full-index</code> option above, which controls
-the diff-patch output format. Non default number of digits can be
-specified with <code>--abbrev=&lt;n&gt;</code>.</p>
+<li><p>&ndash;abbrev[=&lt;n&gt;]<br />
+Instead of showing the full 40-byte hexadecimal object name in
+diff-raw format output and diff-tree header lines, show only a
+partial prefix. This is independent of the <code>--full-index</code> option
+above, which controls the diff-patch output format. Non default
+number of digits can be specified with <code>--abbrev=&lt;n&gt;</code>.</p></li>
 
-<p>-B[&lt;n&gt;][/&lt;m&gt;]<br />
-&ndash;break-rewrites[=[&lt;n&gt;][/&lt;m&gt;]]<br />
+<li><p>-B[&lt;n&gt;][/&lt;m&gt;]<br />
+--break-rewrites[=[&lt;n&gt;][/&lt;m&gt;]]<br />
 Break complete rewrite changes into pairs of delete and create. This
 serves two purposes:</p>
 
-<p>It affects the way a change that amounts to a total rewrite of a file
-not as a series of deletion and insertion mixed together with a very few
-lines that happen to match textually as the context, but as a single
-deletion of everything old followed by a single insertion of everything
-new, and the number <code>m</code> controls this aspect of the -B option (defaults
-to 60%). <code>-B/70%</code> specifies that less than 30% of the original should
-remain in the result for Git to consider it a total rewrite (i.e.
-otherwise the resulting patch will be a series of deletion and insertion
-mixed together with context lines).</p>
+<p>It affects the way a change that amounts to a total rewrite of a
+file not as a series of deletion and insertion mixed together with a
+very few lines that happen to match textually as the context, but as
+a single deletion of everything old followed by a single insertion
+of everything new, and the number <code>m</code> controls this aspect of the -B
+option (defaults to 60%). <code>-B/70%</code> specifies that less than 30% of
+the original should remain in the result for Git to consider it a
+total rewrite (i.e. otherwise the resulting patch will be a series
+of deletion and insertion mixed together with context lines).</p>
 
-<p>When used with -M, a totally-rewritten file is also considered as the
-source of a rename (usually -M only considers a file that disappeared as
-the source of a rename), and the number <code>n</code> controls this aspect of the
--B option (defaults to 50%). <code>-B20%</code> specifies that a change with
-addition and deletion compared to 20% or more of the file’s size are
-eligible for being picked up as a possible source of a rename to another
-file.</p>
+<p>When used with -M, a totally-rewritten file is also considered as
+the source of a rename (usually -M only considers a file that
+disappeared as the source of a rename), and the number <code>n</code> controls
+this aspect of the -B option (defaults to 50%). <code>-B20%</code> specifies
+that a change with addition and deletion compared to 20% or more of
+the file’s size are eligible for being picked up as a possible
+source of a rename to another file.</p></li>
 
-<p>-M[&lt;n&gt;]<br />
-&ndash;find-renames[=&lt;n&gt;]<br />
-Detect renames. If <code>n</code> is specified, it is a threshold on the similarity
-index (i.e. amount of addition/deletions compared to the file’s size).
-For example, <code>-M90%</code> means Git should consider a delete/add pair to be a
-rename if more than 90% of the file hasn’t changed. Without a <code>%</code> sign,
-the number is to be read as a fraction, with a decimal point before it.
-I.e., <code>-M5</code> becomes 0.5, and is thus the same as <code>-M50%</code>. Similarly,
-<code>-M05</code> is the same as <code>-M5%</code>. To limit detection to exact renames, use
-<code>-M100%</code>. The default similarity index is 50%.</p>
+<li><p>-M[&lt;n&gt;]<br />
+--find-renames[=&lt;n&gt;]<br />
+Detect renames. If <code>n</code> is specified, it is a threshold on the
+similarity index (i.e. amount of addition/deletions compared to the
+file’s size). For example, <code>-M90%</code> means Git should consider a
+delete/add pair to be a rename if more than 90% of the file hasn’t
+changed. Without a <code>%</code> sign, the number is to be read as a fraction,
+with a decimal point before it. I.e., <code>-M5</code> becomes 0.5, and is thus
+the same as <code>-M50%</code>. Similarly, <code>-M05</code> is the same as <code>-M5%</code>. To
+limit detection to exact renames, use <code>-M100%</code>. The default
+similarity index is 50%.</p></li>
 
-<p>-C[&lt;n&gt;]<br />
-&ndash;find-copies[=&lt;n&gt;]<br />
-Detect copies as well as renames. See also <code>--find-copies-harder</code>. If
-<code>n</code> is specified, it has the same meaning as for <code>-M&lt;n&gt;</code>.</p>
+<li><p>-C[&lt;n&gt;]<br />
+--find-copies[=&lt;n&gt;]<br />
+Detect copies as well as renames. See also <code>--find-copies-harder</code>.
+If <code>n</code> is specified, it has the same meaning as for <code>-M&lt;n&gt;</code>.</p></li>
 
-<p>&ndash;find-copies-harder<br />
-For performance reasons, by default, <code>-C</code> option finds copies only if
-the original file of the copy was modified in the same changeset. This
-flag makes the command inspect unmodified files as candidates for the
-source of copy. This is a very expensive operation for large projects,
-so use it with caution. Giving more than one <code>-C</code> option has the same
-effect.</p>
+<li><p>&ndash;find-copies-harder<br />
+For performance reasons, by default, <code>-C</code> option finds copies only
+if the original file of the copy was modified in the same changeset.
+This flag makes the command inspect unmodified files as candidates
+for the source of copy. This is a very expensive operation for large
+projects, so use it with caution. Giving more than one <code>-C</code> option
+has the same effect.</p></li>
 
-<p>-D<br />
-&ndash;irreversible-delete<br />
-Omit the preimage for deletes, i.e. print only the header but not the
-diff between the preimage and <code>/dev/null</code>. The resulting patch is not
-meant to be applied with <code>patch</code> nor <code>git apply</code>; this is solely for
-people who want to just concentrate on reviewing the text after the
-change. In addition, the output obviously lack enough information to
-apply such a patch in reverse, even manually, hence the name of the
-option.</p>
+<li><p>-D<br />
+--irreversible-delete<br />
+Omit the preimage for deletes, i.e. print only the header but not
+the diff between the preimage and <code>/dev/null</code>. The resulting patch
+is not meant to be applied with <code>patch</code> nor <code>git apply</code>; this is
+solely for people who want to just concentrate on reviewing the text
+after the change. In addition, the output obviously lack enough
+information to apply such a patch in reverse, even manually, hence
+the name of the option.</p>
 
 <p>When used together with <code>-B</code>, omit also the preimage in the deletion
-part of a delete/create pair.</p>
+part of a delete/create pair.</p></li>
 
-<p>-l&lt;num&gt;<br />
-The <code>-M</code> and <code>-C</code> options require O(n^2) processing time where n is the
-number of potential rename/copy targets. This option prevents
-rename/copy detection from running if the number of rename/copy targets
-exceeds the specified number.</p>
+<li><p>-l&lt;num&gt;<br />
+The <code>-M</code> and <code>-C</code> options require O(n^2) processing time where n is
+the number of potential rename/copy targets. This option prevents
+rename/copy detection from running if the number of rename/copy
+targets exceeds the specified number.</p></li>
 
-<p>-O&lt;orderfile&gt;<br />
+<li><p>-O&lt;orderfile&gt;<br />
 Output the patch in the order specified in the &lt;orderfile&gt;, which
-has one shell glob pattern per line.</p>
+has one shell glob pattern per line.</p></li>
 
-<p>-a<br />
-&ndash;text<br />
-Treat all files as text.</p>
+<li><p>-a<br />
+--text<br />
+Treat all files as text.</p></li>
 
-<p>&ndash;ignore-space-at-eol<br />
-Ignore changes in whitespace at EOL.</p>
+<li><p>&ndash;ignore-space-at-eol<br />
+Ignore changes in whitespace at EOL.</p></li>
 
-<p>-b<br />
-&ndash;ignore-space-change<br />
-Ignore changes in amount of whitespace. This ignores whitespace at line
-end, and considers all other sequences of one or more whitespace
-characters to be equivalent.</p>
+<li><p>-b<br />
+--ignore-space-change<br />
+Ignore changes in amount of whitespace. This ignores whitespace at
+line end, and considers all other sequences of one or more
+whitespace characters to be equivalent.</p></li>
 
-<p>-w<br />
-&ndash;ignore-all-space<br />
-Ignore whitespace when comparing lines. This ignores differences even if
-one line has whitespace where the other line has none.</p>
+<li><p>-w<br />
+--ignore-all-space<br />
+Ignore whitespace when comparing lines. This ignores differences
+even if one line has whitespace where the other line has none.</p></li>
 
-<p>&ndash;ignore-blank-lines<br />
-Ignore changes whose lines are all blank.</p>
+<li><p>&ndash;ignore-blank-lines<br />
+Ignore changes whose lines are all blank.</p></li>
 
-<p>&ndash;inter-hunk-context=&lt;lines&gt;<br />
+<li><p>&ndash;inter-hunk-context=&lt;lines&gt;<br />
 Show the context between diff hunks, up to the specified number of
-lines, thereby fusing hunks that are close to each other.</p>
+lines, thereby fusing hunks that are close to each other.</p></li>
 
-<p>-W<br />
-&ndash;function-context<br />
-Show whole surrounding functions of changes.</p>
+<li><p>-W<br />
+--function-context<br />
+Show whole surrounding functions of changes.</p></li>
 
-<p>&ndash;ext-diff<br />
+<li><p>&ndash;ext-diff<br />
 Allow an external diff helper to be executed. If you set an external
-diff driver with <a href="../gitattributes">gitattributes(5)</a>, you need to use
-this option with <a href="../git-log">git-log(1)</a> and friends.</p>
+diff driver with <a href="../gitattributes">gitattributes(5)</a>, you need to
+use this option with <a href="../git-log">git-log(1)</a> and friends.</p></li>
 
-<p>&ndash;no-ext-diff<br />
-Disallow external diff drivers.</p>
+<li><p>&ndash;no-ext-diff<br />
+Disallow external diff drivers.</p></li>
 
-<p>&ndash;textconv<br />
-&ndash;no-textconv<br />
+<li><p>&ndash;textconv<br />
+--no-textconv<br />
 Allow (or disallow) external text conversion filters to be run when
-comparing binary files. See <a href="../gitattributes">gitattributes(5)</a> for
-details. Because textconv filters are typically a one-way conversion,
-the resulting diff is suitable for human consumption, but cannot be
-applied. For this reason, textconv filters are enabled by default only
-for <a href="../git-diff">git-diff(1)</a> and <a href="../git-log">git-log(1)</a>, but not
-for <a href="../git-format-patch">git-format-patch(1)</a> or diff plumbing
-commands.</p>
+comparing binary files. See <a href="../gitattributes">gitattributes(5)</a>
+for details. Because textconv filters are typically a one-way
+conversion, the resulting diff is suitable for human consumption,
+but cannot be applied. For this reason, textconv filters are enabled
+by default only for <a href="../git-diff">git-diff(1)</a> and
+<a href="../git-log">git-log(1)</a>, but not for
+<a href="../git-format-patch">git-format-patch(1)</a> or diff plumbing
+commands.</p></li>
 
-<p>&ndash;ignore-submodules[=&lt;when&gt;]<br />
+<li><p>&ndash;ignore-submodules[=&lt;when&gt;]<br />
 Ignore changes to submodules in the diff generation. &lt;when&gt; can be
 either &ldquo;none&rdquo;, &ldquo;untracked&rdquo;, &ldquo;dirty&rdquo; or &ldquo;all&rdquo;, which is the default.
 Using &ldquo;none&rdquo; will consider the submodule modified when it either
-contains untracked or modified files or its HEAD differs from the commit
-recorded in the superproject and can be used to override any settings of
-the <em>ignore</em> option in <a href="../git-config">git-config(1)</a> or
-<a href="../gitmodules">gitmodules(5)</a>. When &ldquo;untracked&rdquo; is used submodules
-are not considered dirty when they only contain untracked content (but
-they are still scanned for modified content). Using &ldquo;dirty&rdquo; ignores all
-changes to the work tree of submodules, only changes to the commits
-stored in the superproject are shown (this was the behavior until
-1.7.0). Using &ldquo;all&rdquo; hides all changes to submodules.</p>
+contains untracked or modified files or its HEAD differs from the
+commit recorded in the superproject and can be used to override any
+settings of the <em>ignore</em> option in <a href="../git-config">git-config(1)</a>
+or <a href="../gitmodules">gitmodules(5)</a>. When &ldquo;untracked&rdquo; is used
+submodules are not considered dirty when they only contain untracked
+content (but they are still scanned for modified content). Using
+&ldquo;dirty&rdquo; ignores all changes to the work tree of submodules, only
+changes to the commits stored in the superproject are shown (this
+was the behavior until 1.7.0). Using &ldquo;all&rdquo; hides all changes to
+submodules.</p></li>
 
-<p>&ndash;src-prefix=&lt;prefix&gt;<br />
-Show the given source prefix instead of &ldquo;a/&rdquo;.</p>
+<li><p>&ndash;src-prefix=&lt;prefix&gt;<br />
+Show the given source prefix instead of &ldquo;a/&rdquo;.</p></li>
 
-<p>&ndash;dst-prefix=&lt;prefix&gt;<br />
-Show the given destination prefix instead of &ldquo;b/&rdquo;.</p>
+<li><p>&ndash;dst-prefix=&lt;prefix&gt;<br />
+Show the given destination prefix instead of &ldquo;b/&rdquo;.</p></li>
 
-<p>&ndash;no-prefix<br />
-Do not show any source or destination prefix.</p>
+<li><p>&ndash;no-prefix<br />
+Do not show any source or destination prefix.</p></li>
+</ul>
 
 <p>For more detailed explanation on these common options, see also
 <a href="../gitdiffcore">gitdiffcore(7)</a>.</p>
 
-<p>-&lt;n&gt;<br />
-Prepare patches from the topmost &lt;n&gt; commits.</p>
+<ul>
+<li><p>-&lt;n&gt;<br />
+Prepare patches from the topmost &lt;n&gt; commits.</p></li>
 
-<p>-o &lt;dir&gt;<br />
-&ndash;output-directory &lt;dir&gt;<br />
+<li><p>-o &lt;dir&gt;<br />
+--output-directory &lt;dir&gt;<br />
 Use &lt;dir&gt; to store the resulting files, instead of the current
-working directory.</p>
+working directory.</p></li>
 
-<p>-n<br />
-&ndash;numbered<br />
-Name output in <em>[PATCH n/m]</em> format, even with a single patch.</p>
+<li><p>-n<br />
+--numbered<br />
+Name output in <em>[PATCH n/m]</em> format, even with a single patch.</p></li>
 
-<p>-N<br />
-&ndash;no-numbered<br />
-Name output in <em>[PATCH]</em> format.</p>
+<li><p>-N<br />
+--no-numbered<br />
+Name output in <em>[PATCH]</em> format.</p></li>
 
-<p>&ndash;start-number &lt;n&gt;<br />
-Start numbering the patches at &lt;n&gt; instead of 1.</p>
+<li><p>&ndash;start-number &lt;n&gt;<br />
+Start numbering the patches at &lt;n&gt; instead of 1.</p></li>
 
-<p>&ndash;numbered-files<br />
-Output file names will be a simple number sequence without the default
-first line of the commit appended.</p>
+<li><p>&ndash;numbered-files<br />
+Output file names will be a simple number sequence without the
+default first line of the commit appended.</p></li>
 
-<p>-k<br />
-&ndash;keep-subject<br />
+<li><p>-k<br />
+--keep-subject<br />
 Do not strip/add <em>[PATCH]</em> from the first line of the commit log
-message.</p>
+message.</p></li>
 
-<p>-s<br />
-&ndash;signoff<br />
+<li><p>-s<br />
+--signoff<br />
 Add <code>Signed-off-by:</code> line to the commit message, using the committer
-identity of yourself.</p>
+identity of yourself.</p></li>
 
-<p>&ndash;stdout<br />
+<li><p>&ndash;stdout<br />
 Print all commits to the standard output in mbox format, instead of
-creating a file for each one.</p>
+creating a file for each one.</p></li>
 
-<p>&ndash;attach[=&lt;boundary&gt;]<br />
-Create multipart/mixed attachment, the first part of which is the commit
-message and the patch itself in the second part, with
-<code>Content-Disposition:                   attachment</code>.</p>
+<li><p>&ndash;attach[=&lt;boundary&gt;]<br />
+Create multipart/mixed attachment, the first part of which is the
+commit message and the patch itself in the second part, with
+<code>Content-Disposition: attachment</code>.</p></li>
 
-<p>&ndash;no-attach<br />
+<li><p>&ndash;no-attach<br />
 Disable the creation of an attachment, overriding the configuration
-setting.</p>
+setting.</p></li>
 
-<p>&ndash;inline[=&lt;boundary&gt;]<br />
-Create multipart/mixed attachment, the first part of which is the commit
-message and the patch itself in the second part, with
-<code>Content-Disposition:                   inline</code>.</p>
+<li><p>&ndash;inline[=&lt;boundary&gt;]<br />
+Create multipart/mixed attachment, the first part of which is the
+commit message and the patch itself in the second part, with
+<code>Content-Disposition: inline</code>.</p></li>
 
-<p>&ndash;thread[=&lt;style&gt;]<br />
-&ndash;no-thread<br />
-Controls addition of <code>In-Reply-To</code> and <code>References</code> headers to make the
-second and subsequent mails appear as replies to the first. Also
+<li><p>&ndash;thread[=&lt;style&gt;]<br />
+--no-thread<br />
+Controls addition of <code>In-Reply-To</code> and <code>References</code> headers to make
+the second and subsequent mails appear as replies to the first. Also
 controls generation of the <code>Message-Id</code> header to reference.</p>
 
 <p>The optional &lt;style&gt; argument can be either <code>shallow</code> or <code>deep</code>.
-<em>shallow</em> threading makes every mail a reply to the head of the series,
-where the head is chosen from the cover letter, the <code>--in-reply-to</code>, and
-the first patch mail, in this order. <em>deep</em> threading makes every mail a
-reply to the previous one.</p>
+<em>shallow</em> threading makes every mail a reply to the head of the
+series, where the head is chosen from the cover letter, the
+<code>--in-reply-to</code>, and the first patch mail, in this order. <em>deep</em>
+threading makes every mail a reply to the previous one.</p>
 
-<p>The default is <code>--no-thread</code>, unless the <em>format.thread</em> configuration
-is set. If <code>--thread</code> is specified without a style, it defaults to the
-style specified by <em>format.thread</em> if any, or else <code>shallow</code>.</p>
+<p>The default is <code>--no-thread</code>, unless the <em>format.thread</em>
+configuration is set. If <code>--thread</code> is specified without a style, it
+defaults to the style specified by <em>format.thread</em> if any, or else
+<code>shallow</code>.</p>
 
-<p>Beware that the default for <em>git send-email</em> is to thread emails itself.
-If you want <code>git format-patch</code> to take care of threading, you will want
-to ensure that threading is disabled for
-<code>git                     send-email</code>.</p>
+<p>Beware that the default for <em>git send-email</em> is to thread emails
+itself. If you want <code>git format-patch</code> to take care of threading,
+you will want to ensure that threading is disabled for <code>git
+send-email</code>.</p></li>
 
-<p>&ndash;in-reply-to=Message-Id<br />
-Make the first mail (or all the mails with <code>--no-thread</code>) appear as a
-reply to the given Message-Id, which avoids breaking threads to provide
-a new patch series.</p>
+<li><p>&ndash;in-reply-to=Message-Id<br />
+Make the first mail (or all the mails with <code>--no-thread</code>) appear as
+a reply to the given Message-Id, which avoids breaking threads to
+provide a new patch series.</p></li>
 
-<p>&ndash;ignore-if-in-upstream<br />
+<li><p>&ndash;ignore-if-in-upstream<br />
 Do not include a patch that matches a commit in
-&lt;until&gt;..&lt;since&gt;. This will examine all patches reachable
-from &lt;since&gt; but not from &lt;until&gt; and compare them with the
-patches being generated, and any patch that matches is ignored.</p>
+&lt;until&gt;..&lt;since&gt;. This will examine all patches reachable from
+&lt;since&gt; but not from &lt;until&gt; and compare them with the patches
+being generated, and any patch that matches is ignored.</p></li>
 
-<p>&ndash;subject-prefix=&lt;Subject-Prefix&gt;<br />
-Instead of the standard <em>[PATCH]</em> prefix in the subject line, instead
-use <em>[&lt;Subject-Prefix&gt;]</em>. This allows for useful naming of a
-patch series, and can be combined with the <code>--numbered</code> option.</p>
+<li><p>&ndash;subject-prefix=&lt;Subject-Prefix&gt;<br />
+Instead of the standard <em>[PATCH]</em> prefix in the subject line,
+instead use <em>[&lt;Subject-Prefix&gt;]</em>. This allows for useful naming
+of a patch series, and can be combined with the <code>--numbered</code> option.</p></li>
 
-<p>-v &lt;n&gt;<br />
-&ndash;reroll-count=&lt;n&gt;<br />
+<li><p>-v &lt;n&gt;<br />
+--reroll-count=&lt;n&gt;<br />
 Mark the series as the &lt;n&gt;-th iteration of the topic. The output
-filenames have <code>v&lt;n&gt;</code> pretended to them, and the subject prefix (&ldquo;PATCH&rdquo;
-by default, but configurable via the <code>--subject-prefix</code> option) has `
-v&lt;n&gt;` appended to it. E.g. <code>--reroll-count=4</code> may produce
-<code>v4-0001-add-makefile.patch</code> file that has &ldquo;Subject: [PATCH v4 <sup>1</sup>&frasl;<sub>20</sub>]
-Add makefile&rdquo; in it.</p>
+filenames have <code>v&lt;n&gt;</code> pretended to them, and the subject prefix
+(&ldquo;PATCH&rdquo; by default, but configurable via the <code>--subject-prefix</code>
+option) has ` v&lt;n&gt;` appended to it. E.g. <code>--reroll-count=4</code> may
+produce <code>v4-0001-add-makefile.patch</code> file that has &ldquo;Subject: [PATCH
+v4 <sup>1</sup>&frasl;<sub>20</sub>] Add makefile&rdquo; in it.</p></li>
 
-<p>&ndash;to=&lt;email&gt;<br />
+<li><p>&ndash;to=&lt;email&gt;<br />
 Add a <code>To:</code> header to the email headers. This is in addition to any
 configured headers, and may be used multiple times. The negated form
 <code>--no-to</code> discards all <code>To:</code> headers added so far (from config or
-command line).</p>
+command line).</p></li>
 
-<p>&ndash;cc=&lt;email&gt;<br />
+<li><p>&ndash;cc=&lt;email&gt;<br />
 Add a <code>Cc:</code> header to the email headers. This is in addition to any
 configured headers, and may be used multiple times. The negated form
 <code>--no-cc</code> discards all <code>Cc:</code> headers added so far (from config or
-command line).</p>
+command line).</p></li>
 
-<p>&ndash;from<br />
-&ndash;from=&lt;ident&gt;<br />
-Use <code>ident</code> in the <code>From:</code> header of each commit email. If the author
-ident of the commit is not textually identical to the provided <code>ident</code>,
-place a <code>From:</code> header in the body of the message with the original
-author. If no <code>ident</code> is given, use the committer ident.</p>
+<li><p>&ndash;from<br />
+--from=&lt;ident&gt;<br />
+Use <code>ident</code> in the <code>From:</code> header of each commit email. If the
+author ident of the commit is not textually identical to the
+provided <code>ident</code>, place a <code>From:</code> header in the body of the message
+with the original author. If no <code>ident</code> is given, use the committer
+ident.</p>
 
 <p>Note that this option is only useful if you are actually sending the
 emails and want to identify yourself as the sender, but retain the
 original author (and <code>git am</code> will correctly pick up the in-body
 header). Note also that <code>git send-email</code> already handles this
-transformation for you, and this option should not be used if you are
-feeding the result to <code>git                     send-email</code>.</p>
+transformation for you, and this option should not be used if you
+are feeding the result to <code>git send-email</code>.</p></li>
 
-<p>&ndash;add-header=&lt;header&gt;<br />
-Add an arbitrary header to the email headers. This is in addition to any
-configured headers, and may be used multiple times. For example,
+<li><p>&ndash;add-header=&lt;header&gt;<br />
+Add an arbitrary header to the email headers. This is in addition to
+any configured headers, and may be used multiple times. For example,
 <code>--add-header=&quot;Organization: git-foo&quot;</code>. The negated form
-<code>--no-add-header</code> discards <strong>all</strong> (<code>To:</code>, <code>Cc:</code>, and custom) headers
-added so far from config or command line.</p>
+<code>--no-add-header</code> discards <strong>all</strong> (<code>To:</code>, <code>Cc:</code>, and custom)
+headers added so far from config or command line.</p></li>
 
-<p>&ndash;[no-]cover-letter<br />
-In addition to the patches, generate a cover letter file containing the
-shortlog and the overall diffstat. You can fill in a description in the
-file before sending it out.</p>
+<li><p>&ndash;[no-]cover-letter<br />
+In addition to the patches, generate a cover letter file containing
+the shortlog and the overall diffstat. You can fill in a description
+in the file before sending it out.</p></li>
 
-<p>&ndash;notes[=&lt;ref&gt;]<br />
+<li><p>&ndash;notes[=&lt;ref&gt;]<br />
 Append the notes (see <a href="../git-notes">git-notes(1)</a>) for the commit
 after the three-dash line.</p>
 
-<p>The expected use case of this is to write supporting explanation for the
-commit that does not belong to the commit log message proper, and
-include it with the patch submission. While one can simply write these
-explanations after <code>format-patch</code> has run but before sending, keeping
-them as Git notes allows them to be maintained between versions of the
-patch series (but see the discussion of the <code>notes.rewrite</code>
-configuration options in <a href="../git-notes">git-notes(1)</a> to use this
-workflow).</p>
+<p>The expected use case of this is to write supporting explanation for
+the commit that does not belong to the commit log message proper,
+and include it with the patch submission. While one can simply write
+these explanations after <code>format-patch</code> has run but before sending,
+keeping them as Git notes allows them to be maintained between
+versions of the patch series (but see the discussion of the
+<code>notes.rewrite</code> configuration options in
+<a href="../git-notes">git-notes(1)</a> to use this workflow).</p></li>
 
-<p>&ndash;[no]-signature=&lt;signature&gt;<br />
-Add a signature to each message produced. Per RFC 3676 the signature is
-separated from the body by a line with &lsquo;&ndash; &rsquo; on it. If the signature
-option is omitted the signature defaults to the Git version number.</p>
+<li><p>&ndash;[no]-signature=&lt;signature&gt;<br />
+Add a signature to each message produced. Per RFC 3676 the signature
+is separated from the body by a line with &lsquo;&ndash; &rsquo; on it. If the
+signature option is omitted the signature defaults to the Git
+version number.</p></li>
 
-<p>&ndash;suffix=.&lt;sfx&gt;<br />
+<li><p>&ndash;suffix=.&lt;sfx&gt;<br />
 Instead of using <code>.patch</code> as the suffix for generated filenames, use
-specified suffix. A common alternative is <code>--suffix=.txt</code>. Leaving this
-empty will remove the <code>.patch</code> suffix.</p>
+specified suffix. A common alternative is <code>--suffix=.txt</code>. Leaving
+this empty will remove the <code>.patch</code> suffix.</p>
 
-<p>Note that the leading character does not have to be a dot; for example,
-you can use <code>--suffix=-patch</code> to get
-<code>0001-description-of-my-change-patch</code>.</p>
+<p>Note that the leading character does not have to be a dot; for
+example, you can use <code>--suffix=-patch</code> to get
+<code>0001-description-of-my-change-patch</code>.</p></li>
 
-<p>&ndash;quiet<br />
-Do not print the names of the generated files to standard output.</p>
+<li><p>&ndash;quiet<br />
+Do not print the names of the generated files to standard output.</p></li>
 
-<p>&ndash;no-binary<br />
+<li><p>&ndash;no-binary<br />
 Do not output contents of changes in binary files, instead display a
 notice that those files changed. Patches generated using this option
-cannot be applied properly, but they are still useful for code review.</p>
+cannot be applied properly, but they are still useful for code
+review.</p></li>
 
-<p>&ndash;root<br />
+<li><p>&ndash;root<br />
 Treat the revision argument as a &lt;revision range&gt;, even if it is
 just a single commit (that would normally be treated as a
 &lt;since&gt;). Note that root commits included in the specified range
-are always formatted as creation patches, independently of this flag.</p>
+are always formatted as creation patches, independently of this
+flag.</p></li>
+</ul>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
@@ -656,7 +678,8 @@ attachments, and sign off patches with configuration variables.</p>
 
 <p>The patch produced by <em>git format-patch</em> is in UNIX mailbox format, with
 a fixed &ldquo;magic&rdquo; time stamp to indicate that the file is output from
-format-patch rather than a real mailbox, like so:</p>
+format-patch rather than a real mailbox, like
+    so:</p>
 
 <pre><code>From 8f72bad1baf19a53459661343e21d6491c3908d3 Mon Sep 17 00:00:00 2001
 From: Tony Luck &lt;tony.luck@intel.com&gt;

@@ -123,15 +123,17 @@ be used as a credential helper by other parts of Git. See
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;timeout &lt;seconds&gt;<br />
-Number of seconds to cache credentials (default: 900).</p>
+<ul>
+<li><p>&ndash;timeout &lt;seconds&gt;<br />
+Number of seconds to cache credentials (default: 900).</p></li>
 
-<p>&ndash;socket &lt;path&gt;<br />
+<li><p>&ndash;socket &lt;path&gt;<br />
 Use <code>&lt;path&gt;</code> to contact a running cache daemon (or start a new cache
 daemon if one is not started). Defaults to
 <code>~/.git-credential-cache/socket</code>. If your home directory is on a
 network-mounted filesystem, you may need to change this to a local
-filesystem.</p>
+filesystem.</p></li>
+</ul>
 
 <h2 id="controlling-the-daemon">CONTROLLING THE DAEMON</h2>
 

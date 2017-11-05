@@ -112,31 +112,35 @@
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This looks up the &lt;file&gt;(s) in the index and, if there are any
-merge entries, passes the SHA-1 hash for those files as arguments 1, 2,
-3 (empty argument if no file), and &lt;file&gt; as argument 4. File
-modes for the three files are passed as arguments 5, 6 and 7.</p>
+<p>This looks up the &lt;file&gt;(s) in the index and, if there are any merge
+entries, passes the SHA-1 hash for those files as arguments 1, 2, 3
+(empty argument if no file), and &lt;file&gt; as argument 4. File modes for
+the three files are passed as arguments 5, 6 and 7.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;<br />
-Do not interpret any more arguments as options.</p>
+<hr />
 
-<p>-a<br />
-Run merge against all files in the index that need merging.</p>
+<pre><code>Do not interpret any more arguments as options.
+</code></pre>
 
-<p>-o<br />
+<ul>
+<li><p>-a<br />
+Run merge against all files in the index that need merging.</p></li>
+
+<li><p>-o<br />
 Instead of stopping at the first failed merge, do all of them in one
-shot - continue with merging even when previous merges returned errors,
-and only return the error code after all the merges.</p>
+shot - continue with merging even when previous merges returned
+errors, and only return the error code after all the merges.</p></li>
 
-<p>-q<br />
-Do not complain about a failed merge program (a merge program failure
-usually indicates conflicts during the merge). This is for porcelains
-which might want to emit custom messages.</p>
+<li><p>-q<br />
+Do not complain about a failed merge program (a merge program
+failure usually indicates conflicts during the merge). This is for
+porcelains which might want to emit custom messages.</p></li>
+</ul>
 
-<p>If <em>git merge-index</em> is called with multiple &lt;file&gt;s (or -a) then
-it processes them in turn only stopping if merge returns a non-zero exit
+<p>If <em>git merge-index</em> is called with multiple &lt;file&gt;s (or -a) then it
+processes them in turn only stopping if merge returns a non-zero exit
 code.</p>
 
 <p>Typically this is run with a script calling Git’s imitation of the

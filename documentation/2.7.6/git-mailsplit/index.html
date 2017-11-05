@@ -132,31 +132,33 @@ Important
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;mbox&gt;<br />
+<ul>
+<li><p>&lt;mbox&gt;<br />
 Mbox file to split. If not given, the mbox is read from the standard
-input.</p>
+input.</p></li>
 
-<p>&lt;Maildir&gt;<br />
-Root of the Maildir to split. This directory should contain the cur, tmp
-and new subdirectories.</p>
+<li><p>&lt;Maildir&gt;<br />
+Root of the Maildir to split. This directory should contain the cur,
+tmp and new subdirectories.</p></li>
 
-<p>-o&lt;directory&gt;<br />
-Directory in which to place the individual messages.</p>
+<li><p>-o&lt;directory&gt;<br />
+Directory in which to place the individual messages.</p></li>
 
-<p>-b<br />
-If any file doesn’t begin with a From line, assume it is a single mail
-message instead of signaling error.</p>
+<li><p>-b<br />
+If any file doesn’t begin with a From line, assume it is a single
+mail message instead of signaling error.</p></li>
 
-<p>-d&lt;prec&gt;<br />
-Instead of the default 4 digits with leading zeros, different precision
-can be specified for the generated filenames.</p>
+<li><p>-d&lt;prec&gt;<br />
+Instead of the default 4 digits with leading zeros, different
+precision can be specified for the generated filenames.</p></li>
 
-<p>-f&lt;nn&gt;<br />
+<li><p>-f&lt;nn&gt;<br />
 Skip the first &lt;nn&gt; numbers, for example if -f3 is specified,
-start the numbering with 0004.</p>
+start the numbering with 0004.</p></li>
 
-<p>&ndash;keep-cr<br />
-Do not remove <code>\r</code> from lines ending with <code>\r\n</code>.</p>
+<li><p>&ndash;keep-cr<br />
+Do not remove <code>\r</code> from lines ending with <code>\r\n</code>.</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

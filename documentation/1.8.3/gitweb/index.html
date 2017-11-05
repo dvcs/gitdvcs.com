@@ -202,12 +202,14 @@ including SP, TAB and LF, (used to separate fields in a record).</p></li>
 
 <li><p>Currently recognized fields are:</p>
 
-<p>&lt;repository path&gt;<br />
-path to repository GIT_DIR, relative to <code>$projectroot</code></p>
+<ul>
+<li><p>&lt;repository path&gt;<br />
+path to repository GIT_DIR, relative to <code>$projectroot</code></p></li>
 
-<p>&lt;repository owner&gt;<br />
-displayed as repository owner, preferably full name, or email, or
-both</p></li>
+<li><p>&lt;repository owner&gt;<br />
+displayed as repository owner, preferably full name, or email,
+or both</p></li>
+</ul></li>
 </ul>
 
 <p>You can generate the projects list index file using the project_index
@@ -321,66 +323,70 @@ configuration variable (in <em>GIT_DIR/config</em>, see
 
 <p>You can use the following files in repository:</p>
 
-<p>README.html<br />
+<ul>
+<li><p>README.html<br />
 A html file (HTML fragment) which is included on the gitweb project
-&ldquo;summary&rdquo; page inside <code>&lt;div&gt;</code> block element. You can use it for longer
-description of a project, to provide links (for example to project’s
-homepage), etc. This is recognized only if XSS prevention is off
-(<code>$prevent_xss</code> is false, see <a href="../gitweb.conf">gitweb.conf(5)</a>); a way
-to include a README safely when XSS prevention is on may be worked out
-in the future.</p>
+&ldquo;summary&rdquo; page inside <code>&lt;div&gt;</code> block element. You can use it for
+longer description of a project, to provide links (for example to
+project’s homepage), etc. This is recognized only if XSS prevention
+is off (<code>$prevent_xss</code> is false, see
+<a href="../gitweb.conf">gitweb.conf(5)</a>); a way to include a README
+safely when XSS prevention is on may be worked out in the future.</p></li>
 
-<p>description (or <code>gitweb.description</code>)<br />
-Short (shortened to <code>$projects_list_description_width</code> in the projects
-list page, which is 25 characters by default; see
-<a href="../gitweb.conf">gitweb.conf(5)</a>) single line description of a project
-(of a repository). Plain text file; HTML will be escaped. By default set
-to</p>
+<li><p>description (or <code>gitweb.description</code>)<br />
+Short (shortened to <code>$projects_list_description_width</code> in the
+projects list page, which is 25 characters by default; see
+<a href="../gitweb.conf">gitweb.conf(5)</a>) single line description of a
+project (of a repository). Plain text file; HTML will be escaped. By
+default set to</p>
 
 <pre><code>Unnamed repository; edit this file to name it for gitweb.
 </code></pre>
 
 <p>from the template during repository creation, usually installed in
-<em>/usr/share/git-core/templates/</em>. You can use the <code>gitweb.description</code>
-repo configuration variable, but the file takes precedence.</p>
+<em>/usr/share/git-core/templates/</em>. You can use the
+<code>gitweb.description</code> repo configuration variable, but the file takes
+precedence.</p></li>
 
-<p>category (or <code>gitweb.category</code>)<br />
+<li><p>category (or <code>gitweb.category</code>)<br />
 Singe line category of a project, used to group projects if
 <code>$projects_list_group_categories</code> is enabled. By default (file and
-configuration variable absent), uncategorized projects are put in the
-<code>$project_list_default_category</code> category. You can use the
+configuration variable absent), uncategorized projects are put in
+the <code>$project_list_default_category</code> category. You can use the
 <code>gitweb.category</code> repo configuration variable, but the file takes
 precedence.</p>
 
 <p>The configuration variables <code>$projects_list_group_categories</code> and
 <code>$project_list_default_category</code> are described in
-<a href="../gitweb.conf">gitweb.conf(5)</a></p>
+<a href="../gitweb.conf">gitweb.conf(5)</a></p></li>
 
-<p>cloneurl (or multiple-valued <code>gitweb.url</code>)<br />
+<li><p>cloneurl (or multiple-valued <code>gitweb.url</code>)<br />
 File with repository URL (used for clone and fetch), one per line.
 Displayed in the project summary page. You can use multiple-valued
-<code>gitweb.url</code> repository configuration variable for that, but the file
-takes precedence.</p>
+<code>gitweb.url</code> repository configuration variable for that, but the
+file takes precedence.</p>
 
 <p>This is per-repository enhancement / version of global prefix-based
 <code>@git_base_url_list</code> gitweb configuration variable (see
-<a href="../gitweb.conf">gitweb.conf(5)</a>).</p>
+<a href="../gitweb.conf">gitweb.conf(5)</a>).</p></li>
 
-<p>gitweb.owner<br />
-You can use the <code>gitweb.owner</code> repository configuration variable to set
-repository’s owner. It is displayed in the project list and summary
-page.</p>
+<li><p>gitweb.owner<br />
+You can use the <code>gitweb.owner</code> repository configuration variable to
+set repository’s owner. It is displayed in the project list and
+summary page.</p>
 
-<p>If it’s not set, filesystem directory’s owner is used (via GECOS field,
-i.e. real name field from <strong>getpwuid</strong>(3)) if <code>$projects_list</code> is unset
-(gitweb scans <code>$projectroot</code> for repositories); if <code>$projects_list</code>
-points to file with list of repositories, then project owner defaults to
-value from this file for given repository.</p>
+<p>If it’s not set, filesystem directory’s owner is used (via GECOS
+field, i.e. real name field from <strong>getpwuid</strong>(3)) if
+<code>$projects_list</code> is unset (gitweb scans <code>$projectroot</code> for
+repositories); if <code>$projects_list</code> points to file with list of
+repositories, then project owner defaults to value from this file
+for given repository.</p></li>
 
-<p>various <code>gitweb.*</code> config variables (in config)<br />
-Read description of <code>%feature</code> hash for detailed list, and descriptions.
-See also &ldquo;Configuring gitweb features&rdquo; section in
-<a href="../gitweb.conf">gitweb.conf(5)</a></p>
+<li><p>various <code>gitweb.*</code> config variables (in config)<br />
+Read description of <code>%feature</code> hash for detailed list, and
+descriptions. See also &ldquo;Configuring gitweb features&rdquo; section in
+<a href="../gitweb.conf">gitweb.conf(5)</a></p></li>
+</ul>
 
 <h2 id="actions-and-urls">ACTIONS, AND URLS</h2>
 
@@ -391,29 +397,32 @@ broken down in to five components:</p>
 <pre><code>.../gitweb.cgi/&lt;repo&gt;/&lt;action&gt;/&lt;revision&gt;:/&lt;path&gt;?&lt;arguments&gt;
 </code></pre>
 
-<p>repo<br />
+<ul>
+<li><p>repo<br />
 The repository the action will be performed on.</p>
 
 <p>All actions except for those that list all available projects, in
-whatever form, require this parameter.</p>
+whatever form, require this parameter.</p></li>
 
-<p>action<br />
-The action that will be run. Defaults to <em>projects_list</em> if repo is not
-set, and to <em>summary</em> otherwise.</p>
+<li><p>action<br />
+The action that will be run. Defaults to <em>projects_list</em> if repo is
+not set, and to <em>summary</em> otherwise.</p></li>
 
-<p>revision<br />
-Revision shown. Defaults to HEAD.</p>
+<li><p>revision<br />
+Revision shown. Defaults to HEAD.</p></li>
 
-<p>path<br />
+<li><p>path<br />
 The path within the &lt;repository&gt; that the action is performed on,
-for those actions that require it.</p>
+for those actions that require it.</p></li>
 
-<p>arguments<br />
-Any arguments that control the behaviour of the action.</p>
+<li><p>arguments<br />
+Any arguments that control the behaviour of the action.</p></li>
+</ul>
 
 <p>Some actions require or allow to specify two revisions, and sometimes
 even two pathnames. In most general form such path_info (component)
-based gitweb URL looks like this:</p>
+based gitweb URL looks like
+    this:</p>
 
 <pre><code>.../gitweb.cgi/&lt;repo&gt;/&lt;action&gt;/&lt;revision_from&gt;:/&lt;path_from&gt;..&lt;revision_to&gt;:/&lt;path_to&gt;?&lt;arguments&gt;
 </code></pre>
@@ -430,75 +439,79 @@ following to gitweb configuration file:</p>
 
 <p>The standard actions are:</p>
 
-<p>project_list<br />
-Lists the available Git repositories. This is the default command if no
-repository is specified in the URL.</p>
+<ul>
+<li><p>project_list<br />
+Lists the available Git repositories. This is the default command if
+no repository is specified in the URL.</p></li>
 
-<p>summary<br />
-Displays summary about given repository. This is the default command if
-no action is specified in URL, and only repository is specified.</p>
+<li><p>summary<br />
+Displays summary about given repository. This is the default command
+if no action is specified in URL, and only repository is specified.</p></li>
 
-<p>heads<br />
+<li><p>heads<br />
 remotes<br />
 Lists all local or all remote-tracking branches in given repository.</p>
 
-<p>The latter is not available by default, unless configured.</p>
+<p>The latter is not available by default, unless configured.</p></li>
 
-<p>tags<br />
-List all tags (lightweight and annotated) in given repository.</p>
+<li><p>tags<br />
+List all tags (lightweight and annotated) in given repository.</p></li>
 
-<p>blob<br />
+<li><p>blob<br />
 tree<br />
 Shows the files and directories in a given repository path, at given
-revision. This is default command if no action is specified in the URL,
-and path is given.</p>
+revision. This is default command if no action is specified in the
+URL, and path is given.</p></li>
 
-<p>blob_plain<br />
-Returns the raw data for the file in given repository, at given path and
-revision. Links to this action are marked <em>raw</em>.</p>
+<li><p>blob_plain<br />
+Returns the raw data for the file in given repository, at given path
+and revision. Links to this action are marked <em>raw</em>.</p></li>
 
-<p>blobdiff<br />
-Shows the difference between two revisions of the same file.</p>
+<li><p>blobdiff<br />
+Shows the difference between two revisions of the same file.</p></li>
 
-<p>blame<br />
+<li><p>blame<br />
 blame_incremental<br />
-Shows the blame (also called annotation) information for a file. On a
-per line basis it shows the revision in which that line was last changed
-and the user that committed the change. The incremental version (which
-if configured is used automatically when JavaScript is enabled) uses
-Ajax to incrementally add blame info to the contents of given file.</p>
+Shows the blame (also called annotation) information for a file. On
+a per line basis it shows the revision in which that line was last
+changed and the user that committed the change. The incremental
+version (which if configured is used automatically when JavaScript
+is enabled) uses Ajax to incrementally add blame info to the
+contents of given file.</p>
 
-<p>This action is disabled by default for performance reasons.</p>
+<p>This action is disabled by default for performance reasons.</p></li>
 
-<p>commit<br />
+<li><p>commit<br />
 commitdiff<br />
-Shows information about a specific commit in a repository. The <em>commit</em>
-view shows information about commit in more detail, the <em>commitdiff</em>
-action shows changeset for given commit.</p>
+Shows information about a specific commit in a repository. The
+<em>commit</em> view shows information about commit in more detail, the
+<em>commitdiff</em> action shows changeset for given commit.</p></li>
 
-<p>patch<br />
-Returns the commit in plain text mail format, suitable for applying with
-<a href="../git-am">git-am(1)</a>.</p>
+<li><p>patch<br />
+Returns the commit in plain text mail format, suitable for applying
+with <a href="../git-am">git-am(1)</a>.</p></li>
 
-<p>tag<br />
-Display specific annotated tag (tag object).</p>
+<li><p>tag<br />
+Display specific annotated tag (tag object).</p></li>
 
-<p>log<br />
+<li><p>log<br />
 shortlog<br />
 Shows log information (commit message or just commit subject) for a
 given branch (starting from given revision).</p>
 
-<p>The <em>shortlog</em> view is more compact; it shows one commit per line.</p>
+<p>The <em>shortlog</em> view is more compact; it shows one commit per line.</p></li>
 
-<p>history<br />
+<li><p>history<br />
 Shows history of the file or directory in a given repository path,
-starting from given revision (defaults to HEAD, i.e. default branch).</p>
+starting from given revision (defaults to HEAD, i.e. default
+branch).</p>
 
-<p>This view is similar to <em>shortlog</em> view.</p>
+<p>This view is similar to <em>shortlog</em> view.</p></li>
 
-<p>rss<br />
+<li><p>rss<br />
 atom<br />
-Generates an RSS (or Atom) feed of changes to repository.</p>
+Generates an RSS (or Atom) feed of changes to repository.</p></li>
+</ul>
 
 <h2 id="webserver-configuration">WEBSERVER CONFIGURATION</h2>
 
@@ -610,9 +623,9 @@ repositories, you can configure Apache like this:</p>
 <em>/pub/git</em> and will serve them as
 <code>http://git.domain.org/dir-under-pub-git</code>, both as cloneable Git URL and
 as browseable gitweb interface. If you then start your
-<a href="../git-daemon">git-daemon(1)</a> with
-<code>--base-path=/pub/git --export-all</code> then you can even use the <code>git://</code>
-URL with exactly the same path.</p>
+<a href="../git-daemon">git-daemon(1)</a> with <code>--base-path=/pub/git
+--export-all</code> then you can even use the <code>git://</code> URL with exactly the
+same path.</p>
 
 <p>Setting the environment variable <code>GITWEB_CONFIG</code> will tell gitweb to use
 the named file (i.e. in this example <em>/etc/gitweb.conf</em>) as a

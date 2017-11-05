@@ -124,49 +124,52 @@ affected.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-d<br />
+<ul>
+<li><p>-d<br />
 Remove untracked directories in addition to untracked files. If an
-untracked directory is managed by a different Git repository, it is not
-removed by default. Use -f option twice if you really want to remove
-such a directory.</p>
+untracked directory is managed by a different Git repository, it is
+not removed by default. Use -f option twice if you really want to
+remove such a directory.</p></li>
 
-<p>-f<br />
-&ndash;force<br />
+<li><p>-f<br />
+--force<br />
 If the Git configuration variable clean.requireForce is not set to
 false, <em>git clean</em> will refuse to delete files or directories unless
-given -f, -n or -i. Git will refuse to delete directories with .git sub
-directory or file unless a second -f is given.</p>
+given -f, -n or -i. Git will refuse to delete directories with .git
+sub directory or file unless a second -f is given.</p></li>
 
-<p>-i<br />
-&ndash;interactive<br />
-Show what would be done and clean files interactively. See “Interactive
-mode” for details.</p>
+<li><p>-i<br />
+--interactive<br />
+Show what would be done and clean files interactively. See
+“Interactive mode” for details.</p></li>
 
-<p>-n<br />
-&ndash;dry-run<br />
-Don’t actually remove anything, just show what would be done.</p>
+<li><p>-n<br />
+--dry-run<br />
+Don’t actually remove anything, just show what would be done.</p></li>
 
-<p>-q<br />
-&ndash;quiet<br />
-Be quiet, only report errors, but not the files that are successfully
-removed.</p>
+<li><p>-q<br />
+--quiet<br />
+Be quiet, only report errors, but not the files that are
+successfully removed.</p></li>
 
-<p>-e &lt;pattern&gt;<br />
-&ndash;exclude=&lt;pattern&gt;<br />
+<li><p>-e &lt;pattern&gt;<br />
+--exclude=&lt;pattern&gt;<br />
 In addition to those found in .gitignore (per directory) and
-$GIT_DIR/info/exclude, also consider these patterns to be in the set of
-the ignore rules in effect.</p>
+$GIT_DIR/info/exclude, also consider these patterns to be in the
+set of the ignore rules in effect.</p></li>
 
-<p>-x<br />
-Don’t use the standard ignore rules read from .gitignore (per directory)
-and $GIT_DIR/info/exclude, but do still use the ignore rules given with
-<code>-e</code> options. This allows removing all untracked files, including build
-products. This can be used (possibly in conjunction with <em>git reset</em>) to
-create a pristine working directory to test a clean build.</p>
+<li><p>-x<br />
+Don’t use the standard ignore rules read from .gitignore (per
+directory) and $GIT_DIR/info/exclude, but do still use the ignore
+rules given with <code>-e</code> options. This allows removing all untracked
+files, including build products. This can be used (possibly in
+conjunction with <em>git reset</em>) to create a pristine working directory
+to test a clean build.</p></li>
 
-<p>-X<br />
+<li><p>-X<br />
 Remove only files ignored by Git. This may be useful to rebuild
-everything from scratch, but keep manually created files.</p>
+everything from scratch, but keep manually created files.</p></li>
+</ul>
 
 <h2 id="interactive-mode">Interactive mode</h2>
 
@@ -188,38 +191,40 @@ this:</p>
 
 <p>The main command loop has 6 subcommands.</p>
 
-<p>clean<br />
-Start cleaning files and directories, and then quit.</p>
+<ul>
+<li><p>clean<br />
+Start cleaning files and directories, and then quit.</p></li>
 
-<p>filter by pattern<br />
-This shows the files and directories to be deleted and issues an &ldquo;Input
-ignore patterns&gt;&gt;&rdquo; prompt. You can input space-separated patterns
-to exclude files and directories from deletion. E.g. &ldquo;*.c *.h&rdquo; will
-excludes files end with &ldquo;.c&rdquo; and &ldquo;.h&rdquo; from deletion. When you are
-satisfied with the filtered result, press ENTER (empty) back to the main
-menu.</p>
+<li><p>filter by pattern<br />
+This shows the files and directories to be deleted and issues an
+&ldquo;Input ignore patterns&gt;&gt;&rdquo; prompt. You can input space-separated
+patterns to exclude files and directories from deletion. E.g. &ldquo;*.c
+*.h&rdquo; will excludes files end with &ldquo;.c&rdquo; and &ldquo;.h&rdquo; from deletion. When
+you are satisfied with the filtered result, press ENTER (empty) back
+to the main menu.</p></li>
 
-<p>select by numbers<br />
-This shows the files and directories to be deleted and issues an &ldquo;Select
-items to delete&gt;&gt;&rdquo; prompt. When the prompt ends with double
-<em>&gt;&gt;</em> like this, you can make more than one selection, concatenated
-with whitespace or comma. Also you can say ranges. E.g. &ldquo;2-5 7,9&rdquo; to
-choose 2,3,4,5,7,9 from the list. If the second number in a range is
-omitted, all remaining items are selected. E.g. &ldquo;7-&rdquo; to choose 7,8,9
-from the list. You can say <em>*</em> to choose everything. Also when you are
-satisfied with the filtered result, press ENTER (empty) back to the main
-menu.</p>
+<li><p>select by numbers<br />
+This shows the files and directories to be deleted and issues an
+&ldquo;Select items to delete&gt;&gt;&rdquo; prompt. When the prompt ends with
+double <em>&gt;&gt;</em> like this, you can make more than one selection,
+concatenated with whitespace or comma. Also you can say ranges. E.g.
+&ldquo;2-5 7,9&rdquo; to choose 2,3,4,5,7,9 from the list. If the second number
+in a range is omitted, all remaining items are selected. E.g. &ldquo;7-&rdquo;
+to choose 7,8,9 from the list. You can say <em>*</em> to choose
+everything. Also when you are satisfied with the filtered result,
+press ENTER (empty) back to the main menu.</p></li>
 
-<p>ask each<br />
-This will start to clean, and you must confirm one by one in order to
-delete items. Please note that this action is not as efficient as the
-above two actions.</p>
+<li><p>ask each<br />
+This will start to clean, and you must confirm one by one in order
+to delete items. Please note that this action is not as efficient as
+the above two actions.</p></li>
 
-<p>quit<br />
-This lets you quit without do cleaning.</p>
+<li><p>quit<br />
+This lets you quit without do cleaning.</p></li>
 
-<p>help<br />
-Show brief usage of interactive git-clean.</p>
+<li><p>help<br />
+Show brief usage of interactive git-clean.</p></li>
+</ul>
 
 <h2 id="see-also">SEE ALSO</h2>
 

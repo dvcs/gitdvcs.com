@@ -116,42 +116,41 @@ git rebase --continue | --skip | --abort | --edit-todo
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>If &lt;branch&gt; is specified, <em>git rebase</em> will perform an automatic
-<code>git checkout               &lt;branch&gt;</code> before doing anything else.
-Otherwise it remains on the current branch.</p>
+<p>If &lt;branch&gt; is specified, <em>git rebase</em> will perform an automatic <code>git
+checkout &lt;branch&gt;</code> before doing anything else. Otherwise it remains on
+the current branch.</p>
 
 <p>If &lt;upstream&gt; is not specified, the upstream configured in
-branch.&lt;name&gt;.remote and branch.&lt;name&gt;.merge options will be
-used (see <a href="../git-config">git-config(1)</a> for details) and the
+branch.&lt;name&gt;.remote and branch.&lt;name&gt;.merge options will be used
+(see <a href="../git-config">git-config(1)</a> for details) and the
 <code>--fork-point</code> option is assumed. If you are currently not on any branch
 or if the current branch does not have a configured upstream, the rebase
 will abort.</p>
 
 <p>All changes made by commits in the current branch but that are not in
 &lt;upstream&gt; are saved to a temporary area. This is the same set of
-commits that would be shown by <code>git log &lt;upstream&gt;..HEAD</code>; or by
-<code>git log 'fork_point'..HEAD</code>, if <code>--fork-point</code> is active (see the
-description on <code>--fork-point</code> below); or by
-<code>git log               HEAD</code>, if the <code>--root</code> option is specified.</p>
+commits that would be shown by <code>git log &lt;upstream&gt;..HEAD</code>; or by <code>git
+log 'fork_point'..HEAD</code>, if <code>--fork-point</code> is active (see the
+description on <code>--fork-point</code> below); or by <code>git log HEAD</code>, if the
+<code>--root</code> option is specified.</p>
 
-<p>The current branch is reset to &lt;upstream&gt;, or &lt;newbase&gt; if
-the &ndash;onto option was supplied. This has the exact same effect as
-<code>git reset --hard               &lt;upstream&gt;</code> (or &lt;newbase&gt;).
-ORIG_HEAD is set to point at the tip of the branch before the reset.</p>
+<p>The current branch is reset to &lt;upstream&gt;, or &lt;newbase&gt; if the
+&ndash;onto option was supplied. This has the exact same effect as <code>git reset
+--hard &lt;upstream&gt;</code> (or &lt;newbase&gt;). ORIG_HEAD is set to point at the
+tip of the branch before the reset.</p>
 
 <p>The commits that were previously saved into the temporary area are then
 reapplied to the current branch, one by one, in order. Note that any
 commits in HEAD which introduce the same textual changes as a commit in
-HEAD..&lt;upstream&gt; are omitted (i.e., a patch already accepted
-upstream with a different commit message or timestamp will be skipped).</p>
+HEAD..&lt;upstream&gt; are omitted (i.e., a patch already accepted upstream
+with a different commit message or timestamp will be skipped).</p>
 
 <p>It is possible that a merge failure will prevent this process from being
 completely automatic. You will have to resolve any such merge failure
-and run <code>git rebase               --continue</code>. Another option is to
-bypass the commit that caused the merge failure with
-<code>git               rebase --skip</code>. To check out the original
-&lt;branch&gt; and remove the .git/rebase-apply working files, use the
-command <code>git rebase --abort</code> instead.</p>
+and run <code>git rebase --continue</code>. Another option is to bypass the commit
+that caused the merge failure with <code>git rebase --skip</code>. To check out the
+original &lt;branch&gt; and remove the .git/rebase-apply working files, use
+the command <code>git rebase --abort</code> instead.</p>
 
 <p>Assume the following history exists and the current branch is &ldquo;topic&rdquo;:</p>
 
@@ -197,7 +196,7 @@ but have different committer information):</p>
 
 <p>Here is how you would transplant a topic branch based on one branch to
 another, to pretend that you forked the topic branch from the latter
-branch, using <code>rebase               --onto</code>.</p>
+branch, using <code>rebase --onto</code>.</p>
 
 <p>First let’s assume your <em>topic</em> is based on branch <em>next</em>. For example,
 a feature developed in <em>topic</em> depends on some functionality which is
@@ -274,9 +273,9 @@ parameter can be any valid commit-ish.</p>
 
 <p>In case of conflict, <em>git rebase</em> will stop at the first problematic
 commit and leave conflict markers in the tree. You can use <em>git diff</em> to
-locate the markers (&lt;&lt;&lt;&lt;&lt;&lt;) and make edits to resolve
-the conflict. For each file you edit, you need to tell Git that the
-conflict has been resolved, typically this would be done with</p>
+locate the markers (&lt;&lt;&lt;&lt;&lt;&lt;) and make edits to resolve the
+conflict. For each file you edit, you need to tell Git that the conflict
+has been resolved, typically this would be done with</p>
 
 <pre><code>git add &lt;filename&gt;
 </code></pre>
@@ -294,174 +293,179 @@ desired resolution, you can continue the rebasing process with</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
-<p>rebase.stat<br />
+<ul>
+<li><p>rebase.stat<br />
 Whether to show a diffstat of what changed upstream since the last
-rebase. False by default.</p>
+rebase. False by default.</p></li>
 
-<p>rebase.autoSquash<br />
-If set to true enable <em>&ndash;autosquash</em> option by default.</p>
+<li><p>rebase.autoSquash<br />
+If set to true enable <em>&ndash;autosquash</em> option by default.</p></li>
 
-<p>rebase.autoStash<br />
-If set to true enable <em>&ndash;autostash</em> option by default.</p>
+<li><p>rebase.autoStash<br />
+If set to true enable <em>&ndash;autostash</em> option by default.</p></li>
+</ul>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;onto &lt;newbase&gt;<br />
-Starting point at which to create the new commits. If the &ndash;onto option
-is not specified, the starting point is &lt;upstream&gt;. May be any
-valid commit, and not just an existing branch name.</p>
+<ul>
+<li><p>&ndash;onto &lt;newbase&gt;<br />
+Starting point at which to create the new commits. If the &ndash;onto
+option is not specified, the starting point is &lt;upstream&gt;. May be
+any valid commit, and not just an existing branch name.</p>
 
-<p>As a special case, you may use &ldquo;A&hellip;B&rdquo; as a shortcut for the merge base
-of A and B if there is exactly one merge base. You can leave out at most
-one of A and B, in which case it defaults to HEAD.</p>
+<p>As a special case, you may use &ldquo;A&hellip;B&rdquo; as a shortcut for the merge
+base of A and B if there is exactly one merge base. You can leave
+out at most one of A and B, in which case it defaults to HEAD.</p></li>
 
-<p>&lt;upstream&gt;<br />
-Upstream branch to compare against. May be any valid commit, not just an
-existing branch name. Defaults to the configured upstream for the
-current branch.</p>
+<li><p>&lt;upstream&gt;<br />
+Upstream branch to compare against. May be any valid commit, not
+just an existing branch name. Defaults to the configured upstream
+for the current branch.</p></li>
 
-<p>&lt;branch&gt;<br />
-Working branch; defaults to HEAD.</p>
+<li><p>&lt;branch&gt;<br />
+Working branch; defaults to HEAD.</p></li>
 
-<p>&ndash;continue<br />
-Restart the rebasing process after having resolved a merge conflict.</p>
+<li><p>&ndash;continue<br />
+Restart the rebasing process after having resolved a merge conflict.</p></li>
 
-<p>&ndash;abort<br />
+<li><p>&ndash;abort<br />
 Abort the rebase operation and reset HEAD to the original branch. If
 &lt;branch&gt; was provided when the rebase operation was started, then
 HEAD will be reset to &lt;branch&gt;. Otherwise HEAD will be reset to
-where it was when the rebase operation was started.</p>
+where it was when the rebase operation was started.</p></li>
 
-<p>&ndash;keep-empty<br />
+<li><p>&ndash;keep-empty<br />
 Keep the commits that do not change anything from its parents in the
-result.</p>
+result.</p></li>
 
-<p>&ndash;skip<br />
-Restart the rebasing process by skipping the current patch.</p>
+<li><p>&ndash;skip<br />
+Restart the rebasing process by skipping the current patch.</p></li>
 
-<p>&ndash;edit-todo<br />
-Edit the todo list during an interactive rebase.</p>
+<li><p>&ndash;edit-todo<br />
+Edit the todo list during an interactive rebase.</p></li>
 
-<p>-m<br />
-&ndash;merge<br />
+<li><p>-m<br />
+--merge<br />
 Use merging strategies to rebase. When the recursive (default) merge
 strategy is used, this allows rebase to be aware of renames on the
 upstream side.</p>
 
-<p>Note that a rebase merge works by replaying each commit from the working
-branch on top of the &lt;upstream&gt; branch. Because of this, when a
-merge conflict happens, the side reported as <em>ours</em> is the so-far
-rebased series, starting with &lt;upstream&gt;, and <em>theirs</em> is the
-working branch. In other words, the sides are swapped.</p>
+<p>Note that a rebase merge works by replaying each commit from the
+working branch on top of the &lt;upstream&gt; branch. Because of this,
+when a merge conflict happens, the side reported as <em>ours</em> is the
+so-far rebased series, starting with &lt;upstream&gt;, and <em>theirs</em> is
+the working branch. In other words, the sides are swapped.</p></li>
 
-<p>-s &lt;strategy&gt;<br />
-&ndash;strategy=&lt;strategy&gt;<br />
+<li><p>-s &lt;strategy&gt;<br />
+--strategy=&lt;strategy&gt;<br />
 Use the given merge strategy. If there is no <code>-s</code> option <em>git
 merge-recursive</em> is used instead. This implies &ndash;merge.</p>
 
-<p>Because <em>git rebase</em> replays each commit from the working branch on top
-of the &lt;upstream&gt; branch using the given strategy, using the
+<p>Because <em>git rebase</em> replays each commit from the working branch on
+top of the &lt;upstream&gt; branch using the given strategy, using the
 <em>ours</em> strategy simply discards all patches from the &lt;branch&gt;,
-which makes little sense.</p>
+which makes little sense.</p></li>
 
-<p>-X &lt;strategy-option&gt;<br />
-&ndash;strategy-option=&lt;strategy-option&gt;<br />
+<li><p>-X &lt;strategy-option&gt;<br />
+--strategy-option=&lt;strategy-option&gt;<br />
 Pass the &lt;strategy-option&gt; through to the merge strategy. This
-implies <code>--merge</code> and, if no strategy has been specified,
-<code>-s                   recursive</code>. Note the reversal of <em>ours</em> and
-<em>theirs</em> as noted above for the <code>-m</code> option.</p>
+implies <code>--merge</code> and, if no strategy has been specified, <code>-s
+recursive</code>. Note the reversal of <em>ours</em> and <em>theirs</em> as noted above
+for the <code>-m</code> option.</p></li>
 
-<p>-S[&lt;keyid&gt;]<br />
-&ndash;gpg-sign[=&lt;keyid&gt;]<br />
-GPG-sign commits.</p>
+<li><p>-S[&lt;keyid&gt;]<br />
+--gpg-sign[=&lt;keyid&gt;]<br />
+GPG-sign commits.</p></li>
 
-<p>-q<br />
-&ndash;quiet<br />
-Be quiet. Implies &ndash;no-stat.</p>
+<li><p>-q<br />
+--quiet<br />
+Be quiet. Implies &ndash;no-stat.</p></li>
 
-<p>-v<br />
-&ndash;verbose<br />
-Be verbose. Implies &ndash;stat.</p>
+<li><p>-v<br />
+--verbose<br />
+Be verbose. Implies &ndash;stat.</p></li>
 
-<p>&ndash;stat<br />
+<li><p>&ndash;stat<br />
 Show a diffstat of what changed upstream since the last rebase. The
-diffstat is also controlled by the configuration option rebase.stat.</p>
+diffstat is also controlled by the configuration option rebase.stat.</p></li>
 
-<p>-n<br />
-&ndash;no-stat<br />
-Do not show a diffstat as part of the rebase process.</p>
+<li><p>-n<br />
+--no-stat<br />
+Do not show a diffstat as part of the rebase process.</p></li>
 
-<p>&ndash;no-verify<br />
+<li><p>&ndash;no-verify<br />
 This option bypasses the pre-rebase hook. See also
-<a href="../githooks">githooks(5)</a>.</p>
+<a href="../githooks">githooks(5)</a>.</p></li>
 
-<p>&ndash;verify<br />
-Allows the pre-rebase hook to run, which is the default. This option can
-be used to override &ndash;no-verify. See also <a href="../githooks">githooks(5)</a>.</p>
+<li><p>&ndash;verify<br />
+Allows the pre-rebase hook to run, which is the default. This option
+can be used to override &ndash;no-verify. See also
+<a href="../githooks">githooks(5)</a>.</p></li>
 
-<p>-C&lt;n&gt;<br />
+<li><p>-C&lt;n&gt;<br />
 Ensure at least &lt;n&gt; lines of surrounding context match before and
-after each change. When fewer lines of surrounding context exist they
-all must match. By default no context is ever ignored.</p>
+after each change. When fewer lines of surrounding context exist
+they all must match. By default no context is ever ignored.</p></li>
 
-<p>-f<br />
-&ndash;force-rebase<br />
-Force a rebase even if the current branch is up-to-date and the command
-without <code>--force</code> would return without doing anything.</p>
+<li><p>-f<br />
+--force-rebase<br />
+Force a rebase even if the current branch is up-to-date and the
+command without <code>--force</code> would return without doing anything.</p>
 
-<p>You may find this (or &ndash;no-ff with an interactive rebase) helpful after
-reverting a topic branch merge, as this option recreates the topic
-branch with fresh commits so it can be remerged successfully without
-needing to &ldquo;revert the reversion&rdquo; (see the <a href="howto/revert-a-faulty-merge">revert-a-faulty-merge
-How-To</a> for details).</p>
+<p>You may find this (or &ndash;no-ff with an interactive rebase) helpful
+after reverting a topic branch merge, as this option recreates the
+topic branch with fresh commits so it can be remerged successfully
+without needing to &ldquo;revert the reversion&rdquo; (see the
+<a href="howto/revert-a-faulty-merge">revert-a-faulty-merge How-To</a> for
+details).</p></li>
 
-<p>&ndash;fork-point<br />
-&ndash;no-fork-point<br />
+<li><p>&ndash;fork-point<br />
+--no-fork-point<br />
 Use reflog to find a better common ancestor between &lt;upstream&gt; and
 &lt;branch&gt; when calculating which commits have been introduced by
 &lt;branch&gt;.</p>
 
 <p>When &ndash;fork-point is active, <em>fork_point</em> will be used instead of
 &lt;upstream&gt; to calculate the set of commits to rebase, where
-<em>fork_point</em> is the result of
-<code>git                     merge-base --fork-point &lt;upstream&gt;                     &lt;branch&gt;</code>
-command (see <a href="../git-merge-base">git-merge-base(1)</a>). If <em>fork_point</em>
-ends up being empty, the &lt;upstream&gt; will be used as a fallback.</p>
+<em>fork_point</em> is the result of <code>git merge-base --fork-point
+&lt;upstream&gt; &lt;branch&gt;</code> command (see
+<a href="../git-merge-base">git-merge-base(1)</a>). If <em>fork_point</em> ends up
+being empty, the &lt;upstream&gt; will be used as a fallback.</p>
 
 <p>If either &lt;upstream&gt; or &ndash;root is given on the command line, then
 the default is <code>--no-fork-point</code>, otherwise the default is
-<code>--fork-point</code>.</p>
+<code>--fork-point</code>.</p></li>
 
-<p>&ndash;ignore-whitespace<br />
-&ndash;whitespace=&lt;option&gt;<br />
+<li><p>&ndash;ignore-whitespace<br />
+--whitespace=&lt;option&gt;<br />
 These flag are passed to the <em>git apply</em> program (see
 <a href="../git-apply">git-apply(1)</a>) that applies the patch. Incompatible
-with the &ndash;interactive option.</p>
+with the &ndash;interactive option.</p></li>
 
-<p>&ndash;committer-date-is-author-date<br />
-&ndash;ignore-date<br />
+<li><p>&ndash;committer-date-is-author-date<br />
+--ignore-date<br />
 These flags are passed to <em>git am</em> to easily change the dates of the
-rebased commits (see <a href="../git-am">git-am(1)</a>). Incompatible with the
-&ndash;interactive option.</p>
+rebased commits (see <a href="../git-am">git-am(1)</a>). Incompatible with
+the &ndash;interactive option.</p></li>
 
-<p>-i<br />
-&ndash;interactive<br />
-Make a list of the commits which are about to be rebased. Let the user
-edit that list before rebasing. This mode can also be used to split
-commits (see SPLITTING COMMITS below).</p>
+<li><p>-i<br />
+--interactive<br />
+Make a list of the commits which are about to be rebased. Let the
+user edit that list before rebasing. This mode can also be used to
+split commits (see SPLITTING COMMITS below).</p></li>
 
-<p>-p<br />
-&ndash;preserve-merges<br />
-Recreate merge commits instead of flattening the history by replaying
-commits a merge commit introduces. Merge conflict resolutions or manual
-amendments to merge commits are not preserved.</p>
+<li><p>-p<br />
+--preserve-merges<br />
+Recreate merge commits instead of flattening the history by
+replaying commits a merge commit introduces. Merge conflict
+resolutions or manual amendments to merge commits are not preserved.</p>
 
 <p>This uses the <code>--interactive</code> machinery internally, but combining it
-with the <code>--interactive</code> option explicitly is generally not a good idea
-unless you know what you are doing (see BUGS below).</p>
+with the <code>--interactive</code> option explicitly is generally not a good
+idea unless you know what you are doing (see BUGS below).</p></li>
 
-<p>-x &lt;cmd&gt;<br />
-&ndash;exec &lt;cmd&gt;<br />
+<li><p>-x &lt;cmd&gt;<br />
+--exec &lt;cmd&gt;<br />
 Append &ldquo;exec &lt;cmd&gt;&rdquo; after each line creating a commit in the final
 history. &lt;cmd&gt; will be interpreted as one or more shell commands.</p>
 
@@ -481,164 +485,174 @@ INTERACTIVE MODE below).</p>
 
 <p>If <code>--autosquash</code> is used, &ldquo;exec&rdquo; lines will not be appended for the
 intermediate commits, and will only appear at the end of each
-squash/fixup series.</p>
+squash/fixup series.</p></li>
 
-<p>&ndash;root<br />
+<li><p>&ndash;root<br />
 Rebase all commits reachable from &lt;branch&gt;, instead of limiting
 them with an &lt;upstream&gt;. This allows you to rebase the root
 commit(s) on a branch. When used with &ndash;onto, it will skip changes
-already contained in &lt;newbase&gt; (instead of &lt;upstream&gt;)
-whereas without &ndash;onto it will operate on every change. When used
-together with both &ndash;onto and &ndash;preserve-merges, <em>all</em> root commits will
-be rewritten to have &lt;newbase&gt; as parent instead.</p>
+already contained in &lt;newbase&gt; (instead of &lt;upstream&gt;) whereas
+without &ndash;onto it will operate on every change. When used together
+with both &ndash;onto and &ndash;preserve-merges, <em>all</em> root commits will be
+rewritten to have &lt;newbase&gt; as parent instead.</p></li>
 
-<p>&ndash;autosquash<br />
-&ndash;no-autosquash<br />
-When the commit log message begins with &ldquo;squash! …&rdquo; (or &ldquo;fixup! …&rdquo;), and
-there is a commit whose title begins with the same …, automatically
-modify the todo list of rebase -i so that the commit marked for
-squashing comes right after the commit to be modified, and change the
-action of the moved commit from <code>pick</code> to <code>squash</code> (or <code>fixup</code>). Ignores
-subsequent &ldquo;fixup! &rdquo; or &ldquo;squash! &rdquo; after the first, in case you referred
-to an earlier fixup/squash with
-<code>git commit                   --fixup/--squash</code>.</p>
+<li><p>&ndash;autosquash<br />
+--no-autosquash<br />
+When the commit log message begins with &ldquo;squash! …&rdquo; (or &ldquo;fixup!
+…&rdquo;), and there is a commit whose title begins with the same …,
+automatically modify the todo list of rebase -i so that the commit
+marked for squashing comes right after the commit to be modified,
+and change the action of the moved commit from <code>pick</code> to <code>squash</code>
+(or <code>fixup</code>). Ignores subsequent &ldquo;fixup! &ldquo; or &ldquo;squash! &ldquo; after the
+first, in case you referred to an earlier fixup/squash with <code>git
+commit --fixup/--squash</code>.</p>
 
 <p>This option is only valid when the <em>&ndash;interactive</em> option is used.</p>
 
 <p>If the <em>&ndash;autosquash</em> option is enabled by default using the
-configuration variable <code>rebase.autoSquash</code>, this option can be used to
-override and disable this setting.</p>
+configuration variable <code>rebase.autoSquash</code>, this option can be used
+to override and disable this setting.</p></li>
 
-<p>&ndash;[no-]autostash<br />
-Automatically create a temporary stash before the operation begins, and
-apply it after the operation ends. This means that you can run rebase on
-a dirty worktree. However, use with care: the final stash application
-after a successful rebase might result in non-trivial conflicts.</p>
+<li><p>&ndash;[no-]autostash<br />
+Automatically create a temporary stash before the operation begins,
+and apply it after the operation ends. This means that you can run
+rebase on a dirty worktree. However, use with care: the final stash
+application after a successful rebase might result in non-trivial
+conflicts.</p></li>
 
-<p>&ndash;no-ff<br />
+<li><p>&ndash;no-ff<br />
 With &ndash;interactive, cherry-pick all rebased commits instead of
-fast-forwarding over the unchanged ones. This ensures that the entire
-history of the rebased branch is composed of new commits.</p>
+fast-forwarding over the unchanged ones. This ensures that the
+entire history of the rebased branch is composed of new commits.</p>
 
 <p>Without &ndash;interactive, this is a synonym for &ndash;force-rebase.</p>
 
-<p>You may find this helpful after reverting a topic branch merge, as this
-option recreates the topic branch with fresh commits so it can be
-remerged successfully without needing to &ldquo;revert the reversion&rdquo; (see the
-<a href="howto/revert-a-faulty-merge">revert-a-faulty-merge How-To</a> for
-details).</p>
+<p>You may find this helpful after reverting a topic branch merge, as
+this option recreates the topic branch with fresh commits so it can
+be remerged successfully without needing to &ldquo;revert the reversion&rdquo;
+(see the <a href="howto/revert-a-faulty-merge">revert-a-faulty-merge
+How-To</a> for details).</p></li>
+</ul>
 
 <h2 id="merge-strategies">MERGE STRATEGIES</h2>
 
 <p>The merge mechanism (<code>git merge</code> and <code>git pull</code> commands) allows the
 backend <em>merge strategies</em> to be chosen with <code>-s</code> option. Some
 strategies can also take their own options, which can be passed by
-giving <code>-X&lt;option&gt;</code> arguments to <code>git               merge</code> and/or
-<code>git pull</code>.</p>
+giving <code>-X&lt;option&gt;</code> arguments to <code>git merge</code> and/or <code>git pull</code>.</p>
 
-<p>resolve<br />
+<ul>
+<li><p>resolve<br />
 This can only resolve two heads (i.e. the current branch and another
 branch you pulled from) using a 3-way merge algorithm. It tries to
 carefully detect criss-cross merge ambiguities and is considered
-generally safe and fast.</p>
+generally safe and fast.</p></li>
 
-<p>recursive<br />
+<li><p>recursive<br />
 This can only resolve two heads using a 3-way merge algorithm. When
-there is more than one common ancestor that can be used for 3-way merge,
-it creates a merged tree of the common ancestors and uses that as the
-reference tree for the 3-way merge. This has been reported to result in
-fewer merge conflicts without causing mismerges by tests done on actual
-merge commits taken from Linux 2.6 kernel development history.
-Additionally this can detect and handle merges involving renames. This
-is the default merge strategy when pulling or merging one branch.</p>
+there is more than one common ancestor that can be used for 3-way
+merge, it creates a merged tree of the common ancestors and uses
+that as the reference tree for the 3-way merge. This has been
+reported to result in fewer merge conflicts without causing
+mismerges by tests done on actual merge commits taken from Linux 2.6
+kernel development history. Additionally this can detect and handle
+merges involving renames. This is the default merge strategy when
+pulling or merging one branch.</p>
 
 <p>The <em>recursive</em> strategy can take the following options:</p>
 
-<p>ours<br />
-This option forces conflicting hunks to be auto-resolved cleanly by
-favoring <em>our</em> version. Changes from the other tree that do not conflict
-with our side are reflected to the merge result. For a binary file, the
-entire contents are taken from our side.</p>
+<ul>
+<li><p>ours<br />
+This option forces conflicting hunks to be auto-resolved cleanly
+by favoring <em>our</em> version. Changes from the other tree that do
+not conflict with our side are reflected to the merge result.
+For a binary file, the entire contents are taken from our side.</p>
 
-<p>This should not be confused with the <em>ours</em> merge strategy, which does
-not even look at what the other tree contains at all. It discards
-everything the other tree did, declaring <em>our</em> history contains all that
-happened in it.</p>
+<p>This should not be confused with the <em>ours</em> merge strategy,
+which does not even look at what the other tree contains at all.
+It discards everything the other tree did, declaring <em>our</em>
+history contains all that happened in it.</p></li>
 
-<p>theirs<br />
-This is the opposite of <em>ours</em>.</p>
+<li><p>theirs<br />
+This is the opposite of <em>ours</em>.</p></li>
 
-<p>patience<br />
-With this option, <em>merge-recursive</em> spends a little extra time to avoid
-mismerges that sometimes occur due to unimportant matching lines (e.g.,
-braces from distinct functions). Use this when the branches to be merged
-have diverged wildly. See also <a href="../git-diff">git-diff(1)</a>
-<code>--patience</code>.</p>
+<li><p>patience<br />
+With this option, <em>merge-recursive</em> spends a little extra time
+to avoid mismerges that sometimes occur due to unimportant
+matching lines (e.g., braces from distinct functions). Use this
+when the branches to be merged have diverged wildly. See also
+<a href="../git-diff">git-diff(1)</a> <code>--patience</code>.</p></li>
 
-<p>diff-algorithm=[patience|minimal|histogram|myers]<br />
-Tells <em>merge-recursive</em> to use a different diff algorithm, which can
-help avoid mismerges that occur due to unimportant matching lines (such
-as braces from distinct functions). See also
-<a href="../git-diff">git-diff(1)</a> <code>--diff-algorithm</code>.</p>
+<li><p>diff-algorithm=[patience|minimal|histogram|myers]<br />
+Tells <em>merge-recursive</em> to use a different diff algorithm, which
+can help avoid mismerges that occur due to unimportant matching
+lines (such as braces from distinct functions). See also
+<a href="../git-diff">git-diff(1)</a> <code>--diff-algorithm</code>.</p></li>
 
-<p>ignore-space-change<br />
+<li><p>ignore-space-change<br />
 ignore-all-space<br />
 ignore-space-at-eol<br />
-Treats lines with the indicated type of whitespace change as unchanged
-for the sake of a three-way merge. Whitespace changes mixed with other
-changes to a line are not ignored. See also <a href="../git-diff">git-diff(1)</a>
-<code>-b</code>, <code>-w</code>, and <code>--ignore-space-at-eol</code>.</p>
+Treats lines with the indicated type of whitespace change as
+unchanged for the sake of a three-way merge. Whitespace changes
+mixed with other changes to a line are not ignored. See also
+<a href="../git-diff">git-diff(1)</a> <code>-b</code>, <code>-w</code>, and
+<code>--ignore-space-at-eol</code>.</p>
 
 <ul>
-<li><p>If <em>their</em> version only introduces whitespace changes to a line,
-<em>our</em> version is used;</p></li>
+<li><p>If <em>their</em> version only introduces whitespace changes to a
+line, <em>our</em> version is used;</p></li>
 
-<li><p>If <em>our</em> version introduces whitespace changes but <em>their</em> version
-includes a substantial change, <em>their</em> version is used;</p></li>
+<li><p>If <em>our</em> version introduces whitespace changes but <em>their</em>
+version includes a substantial change, <em>their</em> version is
+used;</p></li>
 
 <li><p>Otherwise, the merge proceeds in the usual way.</p></li>
-</ul>
+</ul></li>
 
-<p>renormalize<br />
-This runs a virtual check-out and check-in of all three stages of a file
-when resolving a three-way merge. This option is meant to be used when
-merging branches with different clean filters or end-of-line
-normalization rules. See &ldquo;Merging branches with differing
-checkin/checkout attributes&rdquo; in <a href="../gitattributes">gitattributes(5)</a>
-for details.</p>
+<li><p>renormalize<br />
+This runs a virtual check-out and check-in of all three stages
+of a file when resolving a three-way merge. This option is meant
+to be used when merging branches with different clean filters or
+end-of-line normalization rules. See &ldquo;Merging branches with
+differing checkin/checkout attributes&rdquo; in
+<a href="../gitattributes">gitattributes(5)</a> for details.</p></li>
 
-<p>no-renormalize<br />
+<li><p>no-renormalize<br />
 Disables the <code>renormalize</code> option. This overrides the
-<code>merge.renormalize</code> configuration variable.</p>
+<code>merge.renormalize</code> configuration variable.</p></li>
 
-<p>rename-threshold=&lt;n&gt;<br />
-Controls the similarity threshold used for rename detection. See also
-<a href="../git-diff">git-diff(1)</a> <code>-M</code>.</p>
+<li><p>rename-threshold=&lt;n&gt;<br />
+Controls the similarity threshold used for rename detection. See
+also <a href="../git-diff">git-diff(1)</a> <code>-M</code>.</p></li>
 
-<p>subtree[=&lt;path&gt;]<br />
-This option is a more advanced form of <em>subtree</em> strategy, where the
-strategy makes a guess on how two trees must be shifted to match with
-each other when merging. Instead, the specified path is prefixed (or
-stripped from the beginning) to make the shape of two trees to match.</p>
+<li><p>subtree[=&lt;path&gt;]<br />
+This option is a more advanced form of <em>subtree</em> strategy, where
+the strategy makes a guess on how two trees must be shifted to
+match with each other when merging. Instead, the specified path
+is prefixed (or stripped from the beginning) to make the shape
+of two trees to match.</p></li>
+</ul></li>
 
-<p>octopus<br />
+<li><p>octopus<br />
 This resolves cases with more than two heads, but refuses to do a
-complex merge that needs manual resolution. It is primarily meant to be
-used for bundling topic branch heads together. This is the default merge
-strategy when pulling or merging more than one branch.</p>
+complex merge that needs manual resolution. It is primarily meant to
+be used for bundling topic branch heads together. This is the
+default merge strategy when pulling or merging more than one branch.</p></li>
 
-<p>ours<br />
-This resolves any number of heads, but the resulting tree of the merge
-is always that of the current branch head, effectively ignoring all
-changes from all other branches. It is meant to be used to supersede old
-development history of side branches. Note that this is different from
-the -Xours option to the <em>recursive</em> merge strategy.</p>
+<li><p>ours<br />
+This resolves any number of heads, but the resulting tree of the
+merge is always that of the current branch head, effectively
+ignoring all changes from all other branches. It is meant to be used
+to supersede old development history of side branches. Note that
+this is different from the -Xours option to the <em>recursive</em> merge
+strategy.</p></li>
 
-<p>subtree<br />
-This is a modified recursive strategy. When merging trees A and B, if B
-corresponds to a subtree of A, B is first adjusted to match the tree
-structure of A, instead of reading the trees at the same level. This
-adjustment is also done to the common ancestor tree.</p>
+<li><p>subtree<br />
+This is a modified recursive strategy. When merging trees A and B,
+if B corresponds to a subtree of A, B is first adjusted to match the
+tree structure of A, instead of reading the trees at the same level.
+This adjustment is also done to the common ancestor tree.</p></li>
+</ul>
 
 <p>With the strategies that use 3-way merge (including the default,
 <em>recursive</em>), if a change is made on both branches, but later reverted
@@ -743,8 +757,7 @@ omits the commit messages of commits with the &ldquo;fixup&rdquo; command.</p>
 
 <p><em>git rebase</em> will stop when &ldquo;pick&rdquo; has been replaced with &ldquo;edit&rdquo; or when
 a command fails due to merge errors. When you are done editing and/or
-resolving conflicts you can continue with
-<code>git rebase               --continue</code>.</p>
+resolving conflicts you can continue with <code>git rebase --continue</code>.</p>
 
 <p>For example, if you want to reorder the last 5 commits, such that what
 was HEAD~4 becomes the new HEAD. To achieve that, you would call <em>git
@@ -787,7 +800,7 @@ exec cd subdir; make test
 
 <p>The interactive rebase will stop when a command fails (i.e. exits with
 non-0 status) to give you an opportunity to fix the problem. You can
-continue with <code>git               rebase --continue</code>.</p>
+continue with <code>git rebase --continue</code>.</p>
 
 <p>The &ldquo;exec&rdquo; command launches the command in a shell (the one specified in
 <code>$SHELL</code>, or the default shell if <code>$SHELL</code> is not set), so you can use
@@ -819,10 +832,9 @@ commit, or you can add other commits. This can be used to split a commit
 into two:</p>
 
 <ul>
-<li><p>Start an interactive rebase with
-<code>git rebase                   -i &lt;commit&gt;^</code>, where &lt;commit&gt; is
-the commit you want to split. In fact, any commit range will do, as
-long as it contains that commit.</p></li>
+<li><p>Start an interactive rebase with <code>git rebase -i &lt;commit&gt;^</code>, where
+&lt;commit&gt; is the commit you want to split. In fact, any commit
+range will do, as long as it contains that commit.</p></li>
 
 <li><p>Mark the commit you want to split with the action &ldquo;edit&rdquo;.</p></li>
 
@@ -831,15 +843,15 @@ effect is that the HEAD is rewound by one, and the index follows
 suit. However, the working tree stays the same.</p></li>
 
 <li><p>Now add the changes to the index that you want to have in the first
-commit. You can use <code>git                   add</code> (possibly
-interactively) or <em>git gui</em> (or both) to do that.</p></li>
+commit. You can use <code>git add</code> (possibly interactively) or <em>git gui</em>
+(or both) to do that.</p></li>
 
 <li><p>Commit the now-current index with whatever commit message is
 appropriate now.</p></li>
 
 <li><p>Repeat the last two steps until your working tree is clean.</p></li>
 
-<li><p>Continue the rebase with <code>git rebase                   --continue</code>.</p></li>
+<li><p>Continue the rebase with <code>git rebase --continue</code>.</p></li>
 </ul>
 
 <p>If you are not absolutely sure that the intermediate revisions are
@@ -894,14 +906,16 @@ rebase <em>topic</em>. This becomes a ripple effect: anyone downstream from
 
 <p>There are two kinds of fixes, discussed in the following subsections:</p>
 
-<p>Easy case: The changes are literally the same.<br />
-This happens if the <em>subsystem</em> rebase was a simple rebase and had no
-conflicts.</p>
+<ul>
+<li><p>Easy case: The changes are literally the same.<br />
+This happens if the <em>subsystem</em> rebase was a simple rebase and had
+no conflicts.</p></li>
 
-<p>Hard case: The changes are not the same.<br />
+<li><p>Hard case: The changes are not the same.<br />
 This happens if the <em>subsystem</em> rebase had conflicts, or used
 <code>--interactive</code> to omit, edit, squash, or fixup commits; or if the
-upstream used one of <code>commit --amend</code>, <code>reset</code>, or <code>filter-branch</code>.</p>
+upstream used one of <code>commit --amend</code>, <code>reset</code>, or <code>filter-branch</code>.</p></li>
+</ul>
 
 <h3 id="the-easy-case">The easy case</h3>
 
@@ -971,11 +985,10 @@ case&rdquo; recovery too!</p>
 
 <h2 id="bugs">BUGS</h2>
 
-<p>The todo list presented by
-<code>--preserve-merges               --interactive</code> does not represent the
-topology of the revision graph. Editing commits and rewording their
-commit messages should work fine, but attempts to reorder commits tend
-to produce counterintuitive results.</p>
+<p>The todo list presented by <code>--preserve-merges --interactive</code> does not
+represent the topology of the revision graph. Editing commits and
+rewording their commit messages should work fine, but attempts to
+reorder commits tend to produce counterintuitive results.</p>
 
 <p>For example, an attempt to rearrange</p>
 

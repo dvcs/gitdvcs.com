@@ -119,36 +119,38 @@ will become the default in a future release.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>commit-id<br />
-Either the hash or the filename under [URL]/refs/ to pull.</p>
+<ul>
+<li><p>commit-id<br />
+Either the hash or the filename under [URL]/refs/ to pull.</p></li>
 
-<p>-c<br />
-Get the commit objects.</p>
+<li><p>-c<br />
+Get the commit objects.</p></li>
 
-<p>-t<br />
-Get trees associated with the commit objects.</p>
+<li><p>-t<br />
+Get trees associated with the commit objects.</p></li>
 
-<p>-a<br />
-Get all the objects.</p>
+<li><p>-a<br />
+Get all the objects.</p></li>
 
-<p>-v<br />
-Report what is downloaded.</p>
+<li><p>-v<br />
+Report what is downloaded.</p></li>
 
-<p>-w &lt;filename&gt;<br />
+<li><p>-w &lt;filename&gt;<br />
 Writes the commit-id into the filename under
 $GIT_DIR/refs/&lt;filename&gt; on the local end after the transfer is
-complete.</p>
+complete.</p></li>
 
-<p>&ndash;stdin<br />
+<li><p>&ndash;stdin<br />
 Instead of a commit id on the command line (which is not expected in
 this case), <em>git http-fetch</em> expects lines on stdin in the format</p>
 
 <pre><code>&lt;commit-id&gt;['\t'&lt;filename-as-in--w&gt;]
-</code></pre>
+</code></pre></li>
 
-<p>&ndash;recover<br />
-Verify that everything reachable from target is fetched. Used after an
-earlier fetch is interrupted.</p>
+<li><p>&ndash;recover<br />
+Verify that everything reachable from target is fetched. Used after
+an earlier fetch is interrupted.</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

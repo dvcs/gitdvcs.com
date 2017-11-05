@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-stash </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-stash</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.4.3'>1.8.4.3</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.4.3/git-stash'>git-stash</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git stash list [&lt;options&gt;]
+git stash show [&lt;stash&gt;]
+git stash drop [-q|--quiet] [&lt;stash&gt;]
+git stash ( pop | apply ) [--index] [-q|--quiet] [&lt;stash&gt;]
+git stash branch &lt;branchname&gt; [&lt;stash&gt;]
+git stash [save [-p|--patch] [-k|--[no-]keep-index] [-q|--quiet]
+             [-u|--include-untracked] [-a|--all] [&lt;message&gt;]]
+git stash clear
+git stash create [&lt;message&gt;]
+git stash store [-m|--message &lt;message&gt;] [-q|--quiet] &lt;commit&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Use <code>git stash</code> when you want to record the current state of the working
+directory and the index, but want to go back to a clean working
+directory. The command saves your local modifications away and reverts
+the working directory to match the <code>HEAD</code> commit.</p>
+
+<p>The modifications stashed away by this command can be listed with <code>git
+stash list</code>, inspected with <code>git stash show</code>, and restored (potentially
+on top of a different commit) with <code>git stash apply</code>. Calling <code>git
+stash</code> without any arguments is equivalent to <code>git stash save</code>. A stash
+is by default listed as &ldquo;WIP on <em>branchname</em> …&rdquo;, but you can give a more
+descriptive message on the command line when you create one.</p>
+
+<p>The latest stash you created is stored in <code>refs/stash</code>; older stashes
+are found in the reflog of this reference and can be named using the
+usual reflog syntax (e.g. <code>stash@{0}</code> is the most recently created
+stash, <code>stash@{1}</code> is the one before it, <code>stash@{2.hours.ago}</code> is also
+possible).</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>save [-p|&ndash;patch] [&ndash;[no-]keep-index]
+[-u|&ndash;include-untracked] [-a|&ndash;all] [-q|&ndash;quiet]
+[&lt;message&gt;]<br />
+Save your local modifications to a new <em>stash</em>, and run <code>git reset
+--hard</code> to revert them. The &lt;message&gt; part is optional and gives
+the description along with the stashed state. For quickly making a
+snapshot, you can omit <em>both</em> &ldquo;save&rdquo; and &lt;message&gt;, but giving
+only &lt;message&gt; does not trigger this action to prevent a
+misspelled subcommand from making an unwanted stash.</p>
+
+<p>If the <code>--keep-index</code> option is used, all changes already added to
+the index are left intact.</p>
+
+<p>If the <code>--include-untracked</code> option is used, all untracked files are
+also stashed and then cleaned up with <code>git clean</code>, leaving the
+working directory in a very clean state. If the <code>--all</code> option is
+used instead then the ignored files are stashed and cleaned in
+addition to the untracked files.</p>
+
+<p>With <code>--patch</code>, you can interactively select hunks from the diff
+between HEAD and the working tree to be stashed. The stash entry is
+constructed such that its index state is the same as the index state
+of your repository, and its worktree contains only the changes you
+selected interactively. The selected changes are then rolled back
+from your worktree. See the “Interactive Mode” section of
+<a href="../git-add">git-add(1)</a> to learn how to operate the <code>--patch</code>
+mode.</p>
+
+<p>The <code>--patch</code> option implies <code>--keep-index</code>. You can use
+<code>--no-keep-index</code> to override this.</p></li>
+
+<li><p>list [&lt;options&gt;]<br />
+List the stashes that you currently have. Each <em>stash</em> is listed
+with its name (e.g. <code>stash@{0}</code> is the latest stash, <code>stash@{1}</code> is
+the one before, etc.), the name of the branch that was current when
+the stash was made, and a short description of the commit the stash
+was based
+    on.</p>
+
+<pre><code>stash@{0}: WIP on submit: 6ebd0e2... Update git-stash documentation
+stash@{1}: On master: 9cc0589... Add git-stash
+</code></pre>
+
+<p>The command takes options applicable to the <em>git log</em> command to
+control what is shown and how. See <a href="../git-log">git-log(1)</a>.</p></li>
+
+<li><p>show [&lt;stash&gt;]<br />
+Show the changes recorded in the stash as a diff between the stashed
+state and its original parent. When no <code>&lt;stash&gt;</code> is given, shows the
+latest one. By default, the command shows the diffstat, but it will
+accept any format known to <em>git diff</em> (e.g., <code>git stash show -p
+stash@{1}</code> to view the second most recent stash in patch form).</p></li>
+
+<li><p>pop [&ndash;index] [-q|&ndash;quiet] [&lt;stash&gt;]<br />
+Remove a single stashed state from the stash list and apply it on
+top of the current working tree state, i.e., do the inverse
+operation of <code>git stash save</code>. The working directory must match the
+index.</p>
+
+<p>Applying the state can fail with conflicts; in this case, it is not
+removed from the stash list. You need to resolve the conflicts by
+hand and call <code>git stash drop</code> manually afterwards.</p>
+
+<p>If the <code>--index</code> option is used, then tries to reinstate not only
+the working tree’s changes, but also the index’s ones. However, this
+can fail, when you have conflicts (which are stored in the index,
+where you therefore can no longer apply the changes as they were
+originally).</p>
+
+<p>When no <code>&lt;stash&gt;</code> is given, <code>stash@{0}</code> is assumed, otherwise
+<code>&lt;stash&gt;</code> must be a reference of the form <code>stash@{&lt;revision&gt;}</code>.</p></li>
+
+<li><p>apply [&ndash;index] [-q|&ndash;quiet] [&lt;stash&gt;]<br />
+Like <code>pop</code>, but do not remove the state from the stash list. Unlike
+<code>pop</code>, <code>&lt;stash&gt;</code> may be any commit that looks like a commit created
+by <code>stash save</code> or <code>stash create</code>.</p></li>
+
+<li><p>branch &lt;branchname&gt; [&lt;stash&gt;]<br />
+Creates and checks out a new branch named <code>&lt;branchname&gt;</code> starting
+from the commit at which the <code>&lt;stash&gt;</code> was originally created,
+applies the changes recorded in <code>&lt;stash&gt;</code> to the new working tree
+and index. If that succeeds, and <code>&lt;stash&gt;</code> is a reference of the
+form <code>stash@{&lt;revision&gt;}</code>, it then drops the <code>&lt;stash&gt;</code>. When no
+<code>&lt;stash&gt;</code> is given, applies the latest one.</p>
+
+<p>This is useful if the branch on which you ran <code>git stash save</code> has
+changed enough that <code>git stash apply</code> fails due to conflicts. Since
+the stash is applied on top of the commit that was HEAD at the time
+<code>git stash</code> was run, it restores the originally stashed state with
+no conflicts.</p></li>
+
+<li><p>clear<br />
+Remove all the stashed states. Note that those states will then be
+subject to pruning, and may be impossible to recover (see <em>Examples</em>
+below for a possible strategy).</p></li>
+
+<li><p>drop [-q|&ndash;quiet] [&lt;stash&gt;]<br />
+Remove a single stashed state from the stash list. When no <code>&lt;stash&gt;</code>
+is given, it removes the latest one. i.e. <code>stash@{0}</code>, otherwise
+<code>&lt;stash&gt;</code> must be a valid stash log reference of the form
+<code>stash@{&lt;revision&gt;}</code>.</p></li>
+
+<li><p>create<br />
+Create a stash (which is a regular commit object) and return its
+object name, without storing it anywhere in the ref namespace. This
+is intended to be useful for scripts. It is probably not the command
+you want to use; see &ldquo;save&rdquo; above.</p></li>
+
+<li><p>store<br />
+Store a given stash created via <em>git stash create</em> (which is a
+dangling merge commit) in the stash ref, updating the stash reflog.
+This is intended to be useful for scripts. It is probably not the
+command you want to use; see &ldquo;save&rdquo; above.</p></li>
+</ul>
+
+<h2 id="discussion">DISCUSSION</h2>
+
+<p>A stash is represented as a commit whose tree records the state of the
+working directory, and its first parent is the commit at <code>HEAD</code> when the
+stash was created. The tree of the second parent records the state of
+the index when the stash is made, and it is made a child of the <code>HEAD</code>
+commit. The ancestry graph looks like this:</p>
+
+<pre><code>       .----W
+      /    /
+-----H----I
+</code></pre>
+
+<p>where <code>H</code> is the <code>HEAD</code> commit, <code>I</code> is a commit that records the state
+of the index, and <code>W</code> is a commit that records the state of the working
+tree.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Pulling into a dirty tree<br />
+When you are in the middle of something, you learn that there are
+upstream changes that are possibly relevant to what you are doing.
+When your local changes do not conflict with the changes in the
+upstream, a simple <code>git pull</code> will let you move forward.</p>
+
+<p>However, there are cases in which your local changes do conflict
+with the upstream changes, and <code>git pull</code> refuses to overwrite your
+changes. In such a case, you can stash your changes away, perform a
+pull, and then unstash, like this:</p>
+
+<pre><code>$ git pull
+ ...
+file foobar not up to date, cannot merge.
+$ git stash
+$ git pull
+$ git stash pop
+</code></pre></li>
+
+<li><p>Interrupted workflow<br />
+When you are in the middle of something, your boss comes in and
+demands that you fix something immediately. Traditionally, you would
+make a commit to a temporary branch to store your changes away, and
+return to your original branch to make the emergency fix, like this:</p>
+
+<pre><code># ... hack hack hack ...
+$ git checkout -b my_wip
+$ git commit -a -m &quot;WIP&quot;
+$ git checkout master
+$ edit emergency fix
+$ git commit -a -m &quot;Fix in a hurry&quot;
+$ git checkout my_wip
+$ git reset --soft HEAD^
+# ... continue hacking ...
+</code></pre>
+
+<p>You can use <em>git stash</em> to simplify the above, like this:</p>
+
+<pre><code># ... hack hack hack ...
+$ git stash
+$ edit emergency fix
+$ git commit -a -m &quot;Fix in a hurry&quot;
+$ git stash pop
+# ... continue hacking ...
+</code></pre></li>
+
+<li><p>Testing partial commits<br />
+You can use <code>git stash save --keep-index</code> when you want to make two
+or more commits out of the changes in the work tree, and you want to
+test each change before committing:</p>
+
+<pre><code># ... hack hack hack ...
+$ git add --patch foo            # add just first part to the index
+$ git stash save --keep-index    # save all other changes to the stash
+$ edit/build/test first part
+$ git commit -m 'First part'     # commit fully tested change
+$ git stash pop                  # prepare to work on all other changes
+# ... repeat above five steps until one commit remains ...
+$ edit/build/test remaining parts
+$ git commit foo -m 'Remaining parts'
+</code></pre></li>
+
+<li><p>Recovering stashes that were cleared/dropped erroneously<br />
+If you mistakenly drop or clear stashes, they cannot be recovered
+through the normal safety mechanisms. However, you can try the
+following incantation to get a list of stashes that are still in
+your repository, but not reachable any more:</p>
+
+<pre><code>git fsck --unreachable |
+grep commit | cut -d\  -f3 |
+xargs git log --merges --no-walk --grep=WIP
+</code></pre></li>
+</ul>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-checkout">git-checkout(1)</a>, <a href="../git-commit">git-commit(1)</a>,
+<a href="../git-reflog">git-reflog(1)</a>, <a href="../git-reset">git-reset(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

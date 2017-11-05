@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-cherry-pick </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-cherry-pick</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.5'>2.12.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.5/git-cherry-pick'>git-cherry-pick</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git cherry-pick [--edit] [-n] [-m parent-number] [-s] [-x] [--ff]
+                  [-S[&lt;keyid&gt;]] &lt;commit&gt;…
+git cherry-pick --continue
+git cherry-pick --quit
+git cherry-pick --abort
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Given one or more existing commits, apply the change each one
+introduces, recording a new commit for each. This requires your working
+tree to be clean (no modifications from the HEAD commit).</p>
+
+<p>When it is not obvious how to apply a change, the following happens:</p>
+
+<ol>
+<li><p>The current branch and <code>HEAD</code> pointer stay at the last commit
+successfully made.</p></li>
+
+<li><p>The <code>CHERRY_PICK_HEAD</code> ref is set to point at the commit that
+introduced the change that is difficult to apply.</p></li>
+
+<li><p>Paths in which the change applied cleanly are updated both in the
+index file and in your working tree.</p></li>
+
+<li><p>For conflicting paths, the index file records up to three versions,
+as described in the &ldquo;TRUE MERGE&rdquo; section of
+<a href="../git-merge">git-merge(1)</a>. The working tree files will include
+a description of the conflict bracketed by the usual conflict
+markers <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.</p></li>
+
+<li><p>No other modifications are made.</p></li>
+</ol>
+
+<p>See <a href="../git-merge">git-merge(1)</a> for some hints on resolving such
+conflicts.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>&lt;commit&gt;…<br />
+Commits to cherry-pick. For a more complete list of ways to spell
+commits, see <a href="../gitrevisions">gitrevisions(7)</a>. Sets of commits
+can be passed but no traversal is done by default, as if the
+<code>--no-walk</code> option was specified, see
+<a href="../git-rev-list">git-rev-list(1)</a>. Note that specifying a range
+will feed all &lt;commit&gt;… arguments to a single revision walk (see a
+later example that uses <em>maint master..next</em>).</p></li>
+
+<li><p>-e<br />
+--edit<br />
+With this option, <em>git cherry-pick</em> will let you edit the commit
+message prior to committing.</p></li>
+
+<li><p>-x<br />
+When recording the commit, append a line that says &ldquo;(cherry picked
+from commit …)&rdquo; to the original commit message in order to indicate
+which commit this change was cherry-picked from. This is done only
+for cherry picks without conflicts. Do not use this option if you
+are cherry-picking from your private branch because the information
+is useless to the recipient. If on the other hand you are
+cherry-picking between two publicly visible branches (e.g.
+backporting a fix to a maintenance branch for an older release from
+a development branch), adding this information can be useful.</p></li>
+
+<li><p>-r<br />
+It used to be that the command defaulted to do <code>-x</code> described above,
+and <code>-r</code> was to disable it. Now the default is not to do <code>-x</code> so
+this option is a no-op.</p></li>
+
+<li><p>-m parent-number<br />
+--mainline parent-number<br />
+Usually you cannot cherry-pick a merge because you do not know which
+side of the merge should be considered the mainline. This option
+specifies the parent number (starting from 1) of the mainline and
+allows cherry-pick to replay the change relative to the specified
+parent.</p></li>
+
+<li><p>-n<br />
+--no-commit<br />
+Usually the command automatically creates a sequence of commits.
+This flag applies the changes necessary to cherry-pick each named
+commit to your working tree and the index, without making any
+commit. In addition, when this option is used, your index does not
+have to match the HEAD commit. The cherry-pick is done against the
+beginning state of your index.</p>
+
+<p>This is useful when cherry-picking more than one commits&rsquo; effect to
+your index in a row.</p></li>
+
+<li><p>-s<br />
+--signoff<br />
+Add Signed-off-by line at the end of the commit message. See the
+signoff option in <a href="../git-commit">git-commit(1)</a> for more
+information.</p></li>
+
+<li><p>-S[&lt;keyid&gt;]<br />
+--gpg-sign[=&lt;keyid&gt;]<br />
+GPG-sign commits. The <code>keyid</code> argument is optional and defaults to
+the committer identity; if specified, it must be stuck to the option
+without a space.</p></li>
+
+<li><p>&ndash;ff<br />
+If the current HEAD is the same as the parent of the cherry-pick’ed
+commit, then a fast forward to this commit will be performed.</p></li>
+
+<li><p>&ndash;allow-empty<br />
+By default, cherry-picking an empty commit will fail, indicating
+that an explicit invocation of <code>git commit --allow-empty</code> is
+required. This option overrides that behavior, allowing empty
+commits to be preserved automatically in a cherry-pick. Note that
+when &ldquo;&ndash;ff&rdquo; is in effect, empty commits that meet the &ldquo;fast-forward&rdquo;
+requirement will be kept even without this option. Note also, that
+use of this option only keeps commits that were initially empty
+(i.e. the commit recorded the same tree as its parent). Commits
+which are made empty due to a previous commit are dropped. To force
+the inclusion of those commits use <code>--keep-redundant-commits</code>.</p></li>
+
+<li><p>&ndash;allow-empty-message<br />
+By default, cherry-picking a commit with an empty message will fail.
+This option overrides that behavior, allowing commits with empty
+messages to be cherry picked.</p></li>
+
+<li><p>&ndash;keep-redundant-commits<br />
+If a commit being cherry picked duplicates a commit already in the
+current history, it will become empty. By default these redundant
+commits cause <code>cherry-pick</code> to stop so the user can examine the
+commit. This option overrides that behavior and creates an empty
+commit object. Implies <code>--allow-empty</code>.</p></li>
+
+<li><p>&ndash;strategy=&lt;strategy&gt;<br />
+Use the given merge strategy. Should only be used once. See the
+MERGE STRATEGIES section in <a href="../git-merge">git-merge(1)</a> for
+details.</p></li>
+
+<li><p>-X&lt;option&gt;<br />
+--strategy-option=&lt;option&gt;<br />
+Pass the merge strategy-specific option through to the merge
+strategy. See <a href="../git-merge">git-merge(1)</a> for details.</p></li>
+</ul>
+
+<h2 id="sequencer-subcommands">SEQUENCER SUBCOMMANDS</h2>
+
+<ul>
+<li><p>&ndash;continue<br />
+Continue the operation in progress using the information in
+<em>.git/sequencer</em>. Can be used to continue after resolving conflicts
+in a failed cherry-pick or revert.</p></li>
+
+<li><p>&ndash;quit<br />
+Forget about the current operation in progress. Can be used to clear
+the sequencer state after a failed cherry-pick or revert.</p></li>
+
+<li><p>&ndash;abort<br />
+Cancel the operation and return to the pre-sequence state.</p></li>
+</ul>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p><code>git cherry-pick master</code><br />
+Apply the change introduced by the commit at the tip of the master
+branch and create a new commit with this change.</p></li>
+
+<li><p><code>git cherry-pick ..master</code><br />
+<code>git cherry-pick ^HEAD master</code><br />
+Apply the changes introduced by all commits that are ancestors of
+master but not of HEAD to produce new commits.</p></li>
+
+<li><p><code>git cherry-pick maint next ^master</code><br />
+<code>git cherry-pick maint master..next</code><br />
+Apply the changes introduced by all commits that are ancestors of
+maint or next, but not master or any of its ancestors. Note that the
+latter does not mean <code>maint</code> and everything between <code>master</code> and
+<code>next</code>; specifically, <code>maint</code> will not be used if it is included in
+<code>master</code>.</p></li>
+
+<li><p><code>git cherry-pick master~4 master~2</code><br />
+Apply the changes introduced by the fifth and third last commits
+pointed to by master and create 2 new commits with these changes.</p></li>
+
+<li><p><code>git cherry-pick -n master~1 next</code><br />
+Apply to the working tree and the index the changes introduced by
+the second last commit pointed to by master and by the last commit
+pointed to by next, but do not create any commit with these changes.</p></li>
+
+<li><p><code>git cherry-pick --ff ..next</code><br />
+If history is linear and HEAD is an ancestor of next, update the
+working tree and advance the HEAD pointer to match next. Otherwise,
+apply the changes introduced by those commits that are in next but
+not HEAD to the current branch, creating a new commit for each new
+change.</p></li>
+
+<li><p><code>git rev-list --reverse master -- README | git cherry-pick -n
+--stdin</code><br />
+Apply the changes introduced by all commits on the master branch
+that touched README to the working tree and index, so the result can
+be inspected and made into a single new commit if suitable.</p></li>
+</ul>
+
+<p>The following sequence attempts to backport a patch, bails out because
+the code the patch applies to has changed too much, and then tries
+again, this time exercising more care about matching up context lines.</p>
+
+<pre><code>$ git cherry-pick topic^             &lt;1&gt;
+$ git diff                           &lt;2&gt;
+$ git reset --merge ORIG_HEAD        &lt;3&gt;
+$ git cherry-pick -Xpatience topic^  &lt;4&gt;
+</code></pre>
+
+<ol>
+<li><p>apply the change that would be shown by <code>git show topic^</code>. In this
+example, the patch does not apply cleanly, so information about the
+conflict is written to the index and working tree and no new commit
+results.</p></li>
+
+<li><p>summarize changes to be reconciled</p></li>
+
+<li><p>cancel the cherry-pick. In other words, return to the
+pre-cherry-pick state, preserving any local modifications you had in
+the working tree.</p></li>
+
+<li><p>try to apply the change introduced by <code>topic^</code> again, spending extra
+time to avoid mistakes based on incorrectly matching context lines.</p></li>
+</ol>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-revert">git-revert(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

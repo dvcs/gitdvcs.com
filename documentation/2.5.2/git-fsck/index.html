@@ -118,66 +118,69 @@
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;object&gt;<br />
+<ul>
+<li><p>&lt;object&gt;<br />
 An object to treat as the head of an unreachability trace.</p>
 
-<p>If no objects are given, <em>git fsck</em> defaults to using the index file,
-all SHA-1 references in <code>refs</code> namespace, and all reflogs (unless
-&ndash;no-reflogs is given) as heads.</p>
+<p>If no objects are given, <em>git fsck</em> defaults to using the index
+file, all SHA-1 references in <code>refs</code> namespace, and all reflogs
+(unless &ndash;no-reflogs is given) as heads.</p></li>
 
-<p>&ndash;unreachable<br />
-Print out objects that exist but that aren’t reachable from any of the
-reference nodes.</p>
+<li><p>&ndash;unreachable<br />
+Print out objects that exist but that aren’t reachable from any of
+the reference nodes.</p></li>
 
-<p>&ndash;[no-]dangling<br />
-Print objects that exist but that are never <em>directly</em> used (default).
-<code>--no-dangling</code> can be used to omit this information from the output.</p>
+<li><p>&ndash;[no-]dangling<br />
+Print objects that exist but that are never <em>directly</em> used
+(default). <code>--no-dangling</code> can be used to omit this information from
+the output.</p></li>
 
-<p>&ndash;root<br />
-Report root nodes.</p>
+<li><p>&ndash;root<br />
+Report root nodes.</p></li>
 
-<p>&ndash;tags<br />
-Report tags.</p>
+<li><p>&ndash;tags<br />
+Report tags.</p></li>
 
-<p>&ndash;cache<br />
+<li><p>&ndash;cache<br />
 Consider any object recorded in the index also as a head node for an
-unreachability trace.</p>
+unreachability trace.</p></li>
 
-<p>&ndash;no-reflogs<br />
-Do not consider commits that are referenced only by an entry in a reflog
-to be reachable. This option is meant only to search for commits that
-used to be in a ref, but now aren’t, but are still in that corresponding
-reflog.</p>
+<li><p>&ndash;no-reflogs<br />
+Do not consider commits that are referenced only by an entry in a
+reflog to be reachable. This option is meant only to search for
+commits that used to be in a ref, but now aren’t, but are still in
+that corresponding reflog.</p></li>
 
-<p>&ndash;full<br />
-Check not just objects in GIT_OBJECT_DIRECTORY ($GIT_DIR/objects),
-but also the ones found in alternate object pools listed in
-GIT_ALTERNATE_OBJECT_DIRECTORIES or
-$GIT_DIR/objects/info/alternates, and in packed Git archives found in
-$GIT_DIR/objects/pack and corresponding pack subdirectories in
-alternate object pools. This is now default; you can turn it off with
-&ndash;no-full.</p>
+<li><p>&ndash;full<br />
+Check not just objects in GIT_OBJECT_DIRECTORY
+($GIT_DIR/objects), but also the ones found in alternate object
+pools listed in GIT_ALTERNATE_OBJECT_DIRECTORIES or
+$GIT_DIR/objects/info/alternates, and in packed Git archives found
+in $GIT_DIR/objects/pack and corresponding pack subdirectories in
+alternate object pools. This is now default; you can turn it off
+with &ndash;no-full.</p></li>
 
-<p>&ndash;strict<br />
-Enable more strict checking, namely to catch a file mode recorded with
-g+w bit set, which was created by older versions of Git. Existing
-repositories, including the Linux kernel, Git itself, and sparse
-repository have old objects that triggers this check, but it is
-recommended to check new projects with this flag.</p>
+<li><p>&ndash;strict<br />
+Enable more strict checking, namely to catch a file mode recorded
+with g+w bit set, which was created by older versions of Git.
+Existing repositories, including the Linux kernel, Git itself, and
+sparse repository have old objects that triggers this check, but it
+is recommended to check new projects with this flag.</p></li>
 
-<p>&ndash;verbose<br />
-Be chatty.</p>
+<li><p>&ndash;verbose<br />
+Be chatty.</p></li>
 
-<p>&ndash;lost-found<br />
+<li><p>&ndash;lost-found<br />
 Write dangling objects into .git/lost-found/commit/ or
-.git/lost-found/other/, depending on type. If the object is a blob, the
-contents are written into the file, rather than its object name.</p>
+.git/lost-found/other/, depending on type. If the object is a blob,
+the contents are written into the file, rather than its object name.</p></li>
 
-<p>&ndash;[no-]progress<br />
-Progress status is reported on the standard error stream by default when
-it is attached to a terminal, unless &ndash;no-progress or &ndash;verbose is
-specified. &ndash;progress forces progress status even if the standard error
-stream is not directed to a terminal.</p>
+<li><p>&ndash;[no-]progress<br />
+Progress status is reported on the standard error stream by default
+when it is attached to a terminal, unless &ndash;no-progress or &ndash;verbose
+is specified. &ndash;progress forces progress status even if the standard
+error stream is not directed to a terminal.</p></li>
+</ul>
 
 <h2 id="discussion">DISCUSSION</h2>
 
@@ -194,42 +197,47 @@ in the hopes that somebody else has the object you have corrupted).</p>
 
 <h2 id="extracted-diagnostics">Extracted Diagnostics</h2>
 
-<p>expect dangling commits - potential heads - due to lack of head information<br />
+<ul>
+<li><p>expect dangling commits - potential heads - due to lack of head
+information<br />
 You haven’t specified any nodes as heads so it won’t be possible to
-differentiate between un-parented commits and root nodes.</p>
+differentiate between un-parented commits and root nodes.</p></li>
 
-<p>missing sha1 directory <em>&lt;dir&gt;</em><br />
-The directory holding the sha1 objects is missing.</p>
+<li><p>missing sha1 directory <em>&lt;dir&gt;</em><br />
+The directory holding the sha1 objects is missing.</p></li>
 
-<p>unreachable &lt;type&gt; &lt;object&gt;<br />
-The &lt;type&gt; object &lt;object&gt;, isn’t actually referred to
-directly or indirectly in any of the trees or commits seen. This can
-mean that there’s another root node that you’re not specifying or that
-the tree is corrupt. If you haven’t missed a root node then you might as
-well delete unreachable nodes since they can’t be used.</p>
+<li><p>unreachable &lt;type&gt; &lt;object&gt;<br />
+The &lt;type&gt; object &lt;object&gt;, isn’t actually referred to directly
+or indirectly in any of the trees or commits seen. This can mean
+that there’s another root node that you’re not specifying or that
+the tree is corrupt. If you haven’t missed a root node then you
+might as well delete unreachable nodes since they can’t be used.</p></li>
 
-<p>missing &lt;type&gt; &lt;object&gt;<br />
-The &lt;type&gt; object &lt;object&gt;, is referred to but isn’t present
-in the database.</p>
+<li><p>missing &lt;type&gt; &lt;object&gt;<br />
+The &lt;type&gt; object &lt;object&gt;, is referred to but isn’t present in
+the database.</p></li>
 
-<p>dangling &lt;type&gt; &lt;object&gt;<br />
-The &lt;type&gt; object &lt;object&gt;, is present in the database but
-never <em>directly</em> used. A dangling commit could be a root node.</p>
+<li><p>dangling &lt;type&gt; &lt;object&gt;<br />
+The &lt;type&gt; object &lt;object&gt;, is present in the database but never
+<em>directly</em> used. A dangling commit could be a root node.</p></li>
 
-<p>sha1 mismatch &lt;object&gt;<br />
-The database has an object who’s sha1 doesn’t match the database value.
-This indicates a serious data integrity problem.</p>
+<li><p>sha1 mismatch &lt;object&gt;<br />
+The database has an object who’s sha1 doesn’t match the database
+value. This indicates a serious data integrity problem.</p></li>
+</ul>
 
 <h2 id="environment-variables">Environment Variables</h2>
 
-<p>GIT_OBJECT_DIRECTORY<br />
-used to specify the object database root (usually $GIT_DIR/objects)</p>
+<ul>
+<li><p>GIT_OBJECT_DIRECTORY<br />
+used to specify the object database root (usually $GIT_DIR/objects)</p></li>
 
-<p>GIT_INDEX_FILE<br />
-used to specify the index file of the index</p>
+<li><p>GIT_INDEX_FILE<br />
+used to specify the index file of the index</p></li>
 
-<p>GIT_ALTERNATE_OBJECT_DIRECTORIES<br />
-used to specify additional object database roots (usually unset)</p>
+<li><p>GIT_ALTERNATE_OBJECT_DIRECTORIES<br />
+used to specify additional object database roots (usually unset)</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

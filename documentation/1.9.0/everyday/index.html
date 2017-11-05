@@ -122,7 +122,7 @@ some more commands in addition to the above.</p>
 are for system administrators who are responsible for the care and
 feeding of Git repositories.</p>
 
-<h2 id="individual-developer-standalone-span-id-individual-developer-standalone-span">Individual Developer (Standalone)<span id="Individual Developer (Standalone)"></span></h2>
+<h2 id="individual-developer-standalone">Individual Developer (Standalone)</h2>
 
 <p>A standalone individual developer does not exchange patches with other
 people, and works alone in a single repository, using the following
@@ -158,37 +158,42 @@ undo changes.</p></li>
 
 <h3 id="examples">Examples</h3>
 
-<p>Use a tarball as a starting point for a new repository.<br />
-    $ tar zxf frotz.tar.gz
-    $ cd frotz
-    $ git init
-    $ git add . <1>
-    $ git commit -m &ldquo;import of frotz source tree.&rdquo;
-    $ git tag v2.43 <2></p>
+<ul>
+<li><p>Use a tarball as a starting point for a new repository.</p>
+
+<pre><code>$ tar zxf frotz.tar.gz
+$ cd frotz
+$ git init
+$ git add . &lt;1&gt;
+$ git commit -m &quot;import of frotz source tree.&quot;
+$ git tag v2.43 &lt;2&gt;
+</code></pre>
 
 <ol>
 <li><p>add everything under the current directory.</p></li>
 
 <li><p>make a lightweight, unannotated tag.</p></li>
-</ol>
+</ol></li>
 
-<p>Create a topic branch and develop.<br />
-    $ git checkout -b alsa-audio <1>
-    $ edit/compile/test
-    $ git checkout &ndash; curses/ux_audio_oss.c <2>
-    $ git add curses/ux_audio_alsa.c <3>
-    $ edit/compile/test
-    $ git diff HEAD <4>
-    $ git commit -a -s <5>
-    $ edit/compile/test
-    $ git reset &ndash;soft HEAD^ <6>
-    $ edit/compile/test
-    $ git diff ORIG_HEAD <7>
-    $ git commit -a -c ORIG_HEAD <8>
-    $ git checkout master <9>
-    $ git merge alsa-audio <10>
-    $ git log &ndash;since=&lsquo;3 days ago&rsquo; <11>
-    $ git log v2.43.. curses/ <12></p>
+<li><p>Create a topic branch and develop.</p>
+
+<pre><code>$ git checkout -b alsa-audio &lt;1&gt;
+$ edit/compile/test
+$ git checkout -- curses/ux_audio_oss.c &lt;2&gt;
+$ git add curses/ux_audio_alsa.c &lt;3&gt;
+$ edit/compile/test
+$ git diff HEAD &lt;4&gt;
+$ git commit -a -s &lt;5&gt;
+$ edit/compile/test
+$ git reset --soft HEAD^ &lt;6&gt;
+$ edit/compile/test
+$ git diff ORIG_HEAD &lt;7&gt;
+$ git commit -a -c ORIG_HEAD &lt;8&gt;
+$ git checkout master &lt;9&gt;
+$ git merge alsa-audio &lt;10&gt;
+$ git log --since='3 days ago' &lt;11&gt;
+$ git log v2.43.. curses/ &lt;12&gt;
+</code></pre>
 
 <ol>
 <li><p>create a new topic branch.</p></li>
@@ -206,22 +211,23 @@ modification will be caught if you do <code>git commit -a</code> later.</p></li>
 
 <li><p>look at the changes since the premature commit we took back.</p></li>
 
-<li><p>redo the commit undone in the previous step, using the message you
-originally wrote.</p></li>
+<li><p>redo the commit undone in the previous step, using the message
+you originally wrote.</p></li>
 
 <li><p>switch to the master branch.</p></li>
 
 <li><p>merge a topic branch into your master branch.</p></li>
 
-<li><p>review commit logs; other forms to limit output can be combined and
-include <code>--max-count=10</code> (show 10 commits), <code>--until=2005-12-10</code>,
-etc.</p></li>
+<li><p>review commit logs; other forms to limit output can be combined
+and include <code>--max-count=10</code> (show 10 commits),
+<code>--until=2005-12-10</code>, etc.</p></li>
 
 <li><p>view only the changes that touch what’s in <code>curses/</code> directory,
 since <code>v2.43</code> tag.</p></li>
-</ol>
+</ol></li>
+</ul>
 
-<h2 id="individual-developer-participant-span-id-individual-developer-participant-span">Individual Developer (Participant)<span id="Individual Developer (Participant)"></span></h2>
+<h2 id="individual-developer-participant">Individual Developer (Participant)</h2>
 
 <p>A developer working as a participant in a group project needs to learn
 how to communicate with others, and uses these commands in addition to
@@ -243,17 +249,21 @@ submission, if you adopt Linux kernel-style public forum workflow.</p></li>
 
 <h3 id="examples-1">Examples</h3>
 
-<p>Clone the upstream and work on it. Feed changes to upstream.<br />
-    $ git clone git://git.kernel.org/pub/scm/&hellip;/torvalds/linux-2.6 my2.6
-    $ cd my2.6
-    $ edit/compile/test; git commit -a -s <1>
-    $ git format-patch origin <2>
-    $ git pull <3>
-    $ git log -p ORIG_HEAD.. arch/i386 include/asm-i386 <4>
-    $ git pull git://git.kernel.org/pub/&hellip;/jgarzik/libata-dev.git ALL <5>
-    $ git reset &ndash;hard ORIG_HEAD <6>
-    $ git gc <7>
-    $ git fetch &ndash;tags <8></p>
+<ul>
+<li><p>Clone the upstream and work on it. Feed changes to
+    upstream.</p>
+
+<pre><code>$ git clone git://git.kernel.org/pub/scm/.../torvalds/linux-2.6 my2.6
+$ cd my2.6
+$ edit/compile/test; git commit -a -s &lt;1&gt;
+$ git format-patch origin &lt;2&gt;
+$ git pull &lt;3&gt;
+$ git log -p ORIG_HEAD.. arch/i386 include/asm-i386 &lt;4&gt;
+$ git pull git://git.kernel.org/pub/.../jgarzik/libata-dev.git ALL &lt;5&gt;
+$ git reset --hard ORIG_HEAD &lt;6&gt;
+$ git gc &lt;7&gt;
+$ git fetch --tags &lt;8&gt;
+</code></pre>
 
 <ol>
 <li><p>repeat as needed.</p></li>
@@ -263,72 +273,79 @@ submission, if you adopt Linux kernel-style public forum workflow.</p></li>
 <li><p><code>git pull</code> fetches from <code>origin</code> by default and merges into the
 current branch.</p></li>
 
-<li><p>immediately after pulling, look at the changes done upstream since
-last time we checked, only in the area we are interested in.</p></li>
+<li><p>immediately after pulling, look at the changes done upstream
+since last time we checked, only in the area we are interested
+in.</p></li>
 
-<li><p>fetch from a specific branch from a specific repository and merge.</p></li>
+<li><p>fetch from a specific branch from a specific repository and
+merge.</p></li>
 
 <li><p>revert the pull.</p></li>
 
 <li><p>garbage collect leftover objects from reverted pull.</p></li>
 
-<li><p>from time to time, obtain official tags from the <code>origin</code> and store
-them under <code>.git/refs/tags/</code>.</p></li>
-</ol>
+<li><p>from time to time, obtain official tags from the <code>origin</code> and
+store them under <code>.git/refs/tags/</code>.</p></li>
+</ol></li>
 
-<p>Push into another repository.<br />
-    satellite$ git clone mothership:frotz frotz <1>
-    satellite$ cd frotz
-    satellite$ git config &ndash;get-regexp &lsquo;^(remote|branch).&rsquo; <2>
-    remote.origin.url mothership:frotz
-    remote.origin.fetch refs/heads/<em>:refs/remotes/origin/</em>
-    branch.master.remote origin
-    branch.master.merge refs/heads/master
-    satellite$ git config remote.origin.push <br />
-               master:refs/remotes/satellite/master <3>
-    satellite$ edit/compile/test/commit
-    satellite$ git push origin <4></p>
+<li><p>Push into another repository.</p>
 
-<pre><code>mothership$ cd frotz
+<pre><code>satellite$ git clone mothership:frotz frotz &lt;1&gt;
+satellite$ cd frotz
+satellite$ git config --get-regexp '^(remote|branch)\.' &lt;2&gt;
+remote.origin.url mothership:frotz
+remote.origin.fetch refs/heads/*:refs/remotes/origin/*
+branch.master.remote origin
+branch.master.merge refs/heads/master
+satellite$ git config remote.origin.push \
+           master:refs/remotes/satellite/master &lt;3&gt;
+satellite$ edit/compile/test/commit
+satellite$ git push origin &lt;4&gt;
+
+mothership$ cd frotz
 mothership$ git checkout master
 mothership$ git merge satellite/master &lt;5&gt;
 </code></pre>
 
 <ol>
-<li><p>mothership machine has a frotz repository under your home directory;
-clone from it to start a repository on the satellite machine.</p></li>
+<li><p>mothership machine has a frotz repository under your home
+directory; clone from it to start a repository on the satellite
+machine.</p></li>
 
 <li><p>clone sets these configuration variables by default. It arranges
-<code>git pull</code> to fetch and store the branches of mothership machine to
-local <code>remotes/origin/*</code> remote-tracking branches.</p></li>
+<code>git pull</code> to fetch and store the branches of mothership machine
+to local <code>remotes/origin/*</code> remote-tracking branches.</p></li>
 
 <li><p>arrange <code>git push</code> to push local <code>master</code> branch to
 <code>remotes/satellite/master</code> branch of the mothership machine.</p></li>
 
 <li><p>push will stash our work away on <code>remotes/satellite/master</code>
-remote-tracking branch on the mothership machine. You could use this
-as a back-up method.</p></li>
+remote-tracking branch on the mothership machine. You could use
+this as a back-up method.</p></li>
 
-<li><p>on mothership machine, merge the work done on the satellite machine
-into the master branch.</p></li>
-</ol>
+<li><p>on mothership machine, merge the work done on the satellite
+machine into the master branch.</p></li>
+</ol></li>
 
-<p>Branch off of a specific tag.<br />
-    $ git checkout -b private2.6.14 v2.6.14 <1>
-    $ edit/compile/test; git commit -a
-    $ git checkout master
-    $ git format-patch -k -m &ndash;stdout v2.6.14..private2.6.14 |
-      git am -3 -k <2></p>
+<li><p>Branch off of a specific tag.</p>
+
+<pre><code>$ git checkout -b private2.6.14 v2.6.14 &lt;1&gt;
+$ edit/compile/test; git commit -a
+$ git checkout master
+$ git format-patch -k -m --stdout v2.6.14..private2.6.14 |
+  git am -3 -k &lt;2&gt;
+</code></pre>
 
 <ol>
-<li><p>create a private branch based on a well known (but somewhat behind)
-tag.</p></li>
+<li><p>create a private branch based on a well known (but somewhat
+behind) tag.</p></li>
 
 <li><p>forward port all changes in <code>private2.6.14</code> branch to <code>master</code>
 branch without a formal &ldquo;merging&rdquo;.</p></li>
-</ol>
+</ol></li>
+</ul>
 
-<h2 id="integrator-span-id-integrator-span">Integrator<span id="Integrator"></span></h2>
+<h2 id="integrator">Integrator</h2>
 
 <p>A fairly central person acting as the integrator in a group project
 receives changes made by others, reviews and integrates them and
@@ -351,42 +368,47 @@ suggested alternative to contributors.</p></li>
 
 <h3 id="examples-2">Examples</h3>
 
-<p>My typical Git day.<br />
-    $ git status <1>
-    $ git show-branch <2>
-    $ mailx <3>
-    &amp; s 2 3 4 5 ./+to-apply
-    &amp; s 7 8 ./+hold-linus
-    &amp; q
-    $ git checkout -b topic/one master
-    $ git am -3 -i -s -u ./+to-apply <4>
-    $ compile/test
-    $ git checkout -b hold/linus &amp;&amp; git am -3 -i -s -u ./+hold-linus <5>
-    $ git checkout topic/one &amp;&amp; git rebase master <6>
-    $ git checkout pu &amp;&amp; git reset &ndash;hard next <7>
-    $ git merge topic/one topic/two &amp;&amp; git merge hold/linus <8>
-    $ git checkout maint
-    $ git cherry-pick master~4 <9>
-    $ compile/test
-    $ git tag -s -m &ldquo;GIT 0.99.9x&rdquo; v0.99.9x <10>
-    $ git fetch ko &amp;&amp; git show-branch master maint &lsquo;tags/ko-*&rsquo; <11>
-    $ git push ko <12>
-    $ git push ko v0.99.9x <13></p>
+<ul>
+<li><p>My typical Git day.</p>
+
+<pre><code>$ git status &lt;1&gt;
+$ git show-branch &lt;2&gt;
+$ mailx &lt;3&gt;
+&amp; s 2 3 4 5 ./+to-apply
+&amp; s 7 8 ./+hold-linus
+&amp; q
+$ git checkout -b topic/one master
+$ git am -3 -i -s -u ./+to-apply &lt;4&gt;
+$ compile/test
+$ git checkout -b hold/linus &amp;&amp; git am -3 -i -s -u ./+hold-linus &lt;5&gt;
+$ git checkout topic/one &amp;&amp; git rebase master &lt;6&gt;
+$ git checkout pu &amp;&amp; git reset --hard next &lt;7&gt;
+$ git merge topic/one topic/two &amp;&amp; git merge hold/linus &lt;8&gt;
+$ git checkout maint
+$ git cherry-pick master~4 &lt;9&gt;
+$ compile/test
+$ git tag -s -m &quot;GIT 0.99.9x&quot; v0.99.9x &lt;10&gt;
+$ git fetch ko &amp;&amp; git show-branch master maint 'tags/ko-*' &lt;11&gt;
+$ git push ko &lt;12&gt;
+$ git push ko v0.99.9x &lt;13&gt;
+</code></pre>
 
 <ol>
 <li><p>see what I was in the middle of doing, if any.</p></li>
 
-<li><p>see what topic branches I have and think about how ready they are.</p></li>
+<li><p>see what topic branches I have and think about how ready they
+are.</p></li>
 
-<li><p>read mails, save ones that are applicable, and save others that are
-not quite ready.</p></li>
+<li><p>read mails, save ones that are applicable, and save others that
+are not quite ready.</p></li>
 
 <li><p>apply them, interactively, with my sign-offs.</p></li>
 
-<li><p>create topic branch as needed and apply, again with my sign-offs.</p></li>
+<li><p>create topic branch as needed and apply, again with my
+sign-offs.</p></li>
 
-<li><p>rebase internal topic branch that has not been merged to the master,
-nor exposed as a part of a stable branch.</p></li>
+<li><p>rebase internal topic branch that has not been merged to the
+master, nor exposed as a part of a stable branch.</p></li>
 
 <li><p>restart <code>pu</code> every time from the next.</p></li>
 
@@ -396,9 +418,9 @@ nor exposed as a part of a stable branch.</p></li>
 
 <li><p>create a signed tag.</p></li>
 
-<li><p>make sure I did not accidentally rewind master beyond what I already
-pushed out. <code>ko</code> shorthand points at the repository I have at
-kernel.org, and looks like this:</p>
+<li><p>make sure I did not accidentally rewind master beyond what I
+already pushed out. <code>ko</code> shorthand points at the repository I
+have at kernel.org, and looks like this:</p>
 
 <pre><code>$ cat .git/remotes/ko
 URL: kernel.org:/pub/scm/git/git.git
@@ -411,16 +433,17 @@ Push: +pu
 Push: maint
 </code></pre>
 
-<p>In the output from <code>git                             show-branch</code>,
-<code>master</code> should have everything <code>ko-master</code> has, and <code>next</code> should
-have everything <code>ko-next</code> has.</p></li>
+<p>In the output from <code>git show-branch</code>, <code>master</code> should have
+everything <code>ko-master</code> has, and <code>next</code> should have everything
+<code>ko-next</code> has.</p></li>
 
 <li><p>push out the bleeding edge.</p></li>
 
 <li><p>push the tag out, too.</p></li>
-</ol>
+</ol></li>
+</ul>
 
-<h2 id="repository-administration-span-id-repository-administration-span">Repository Administration<span id="Repository Administration"></span></h2>
+<h2 id="repository-administration">Repository Administration</h2>
 
 <p>A repository administrator uses the following tools to set up and
 maintain access to the repository by developers.</p>
@@ -438,100 +461,114 @@ of managing a shared central repository.</p>
 
 <h3 id="examples-3">Examples</h3>
 
-<p>We assume the following in /etc/services<br />
-    $ grep 9418 /etc/services
-    git             9418/tcp                # Git Version Control System</p>
+<ul>
+<li><p>We assume the following in /etc/services</p>
 
-<p>Run git-daemon to serve /pub/scm from inetd.<br />
-    $ grep git /etc/inetd.conf
-    git     stream  tcp     nowait  nobody <br />
-      /usr/bin/git-daemon git-daemon &ndash;inetd &ndash;export-all /pub/scm</p>
+<pre><code>$ grep 9418 /etc/services
+git             9418/tcp                # Git Version Control System
+</code></pre></li>
 
-<p>The actual configuration line should be on one line.</p>
+<li><p>Run git-daemon to serve /pub/scm from inetd.</p>
 
-<p>Run git-daemon to serve /pub/scm from xinetd.<br />
-    $ cat /etc/xinetd.d/git-daemon
-    # default: off
-    # description: The Git server offers access to Git repositories
-    service git
-    {
-            disable = no
-            type            = UNLISTED
-            port            = 9418
-            socket_type     = stream
-            wait            = no
-            user            = nobody
-            server          = /usr/bin/git-daemon
-            server_args     = &ndash;inetd &ndash;export-all &ndash;base-path=/pub/scm
-            log_on_failure  += USERID
-    }</p>
+<pre><code>$ grep git /etc/inetd.conf
+git     stream  tcp     nowait  nobody \
+  /usr/bin/git-daemon git-daemon --inetd --export-all /pub/scm
+</code></pre>
+
+<p>The actual configuration line should be on one line.</p></li>
+
+<li><p>Run git-daemon to serve /pub/scm from xinetd.</p>
+
+<pre><code>$ cat /etc/xinetd.d/git-daemon
+# default: off
+# description: The Git server offers access to Git repositories
+service git
+{
+        disable = no
+        type            = UNLISTED
+        port            = 9418
+        socket_type     = stream
+        wait            = no
+        user            = nobody
+        server          = /usr/bin/git-daemon
+        server_args     = --inetd --export-all --base-path=/pub/scm
+        log_on_failure  += USERID
+}
+</code></pre>
 
 <p>Check your xinetd(8) documentation and setup, this is from a Fedora
-system. Others might be different.</p>
+system. Others might be different.</p></li>
 
-<p>Give push/pull only access to developers.<br />
-    $ grep git /etc/passwd <1>
-    alice❌1000:1000::/home/alice:/usr/bin/git-shell
-    bob❌1001:1001::/home/bob:/usr/bin/git-shell
-    cindy❌1002:1002::/home/cindy:/usr/bin/git-shell
-    david❌1003:1003::/home/david:/usr/bin/git-shell
-    $ grep git /etc/shells <2>
-    /usr/bin/git-shell</p>
+<li><p>Give push/pull only access to developers.</p>
+
+<pre><code>$ grep git /etc/passwd &lt;1&gt;
+alice❌1000:1000::/home/alice:/usr/bin/git-shell
+bob❌1001:1001::/home/bob:/usr/bin/git-shell
+cindy❌1002:1002::/home/cindy:/usr/bin/git-shell
+david❌1003:1003::/home/david:/usr/bin/git-shell
+$ grep git /etc/shells &lt;2&gt;
+/usr/bin/git-shell
+</code></pre>
 
 <ol>
 <li><p>log-in shell is set to /usr/bin/git-shell, which does not allow
-anything but <code>git                           push</code> and <code>git pull</code>.
-The users should get an ssh access to the machine.</p></li>
+anything but <code>git push</code> and <code>git pull</code>. The users should get an
+ssh access to the machine.</p></li>
 
-<li><p>in many distributions /etc/shells needs to list what is used as the
-login shell.</p></li>
-</ol>
+<li><p>in many distributions /etc/shells needs to list what is used as
+the login shell.</p></li>
+</ol></li>
 
-<p>CVS-style shared repository.<br />
-    $ grep git /etc/group <1>
-    git❌9418:alice,bob,cindy,david
-    $ cd /home/devo.git
-    $ ls -l <2>
-      lrwxrwxrwx   1 david git    17 Dec  4 22:40 HEAD -&gt; refs/heads/master
-      drwxrwsr-x   2 david git  4096 Dec  4 22:40 branches
-      -rw-rw-r&ndash;   1 david git    84 Dec  4 22:40 config
-      -rw-rw-r&ndash;   1 david git    58 Dec  4 22:40 description
-      drwxrwsr-x   2 david git  4096 Dec  4 22:40 hooks
-      -rw-rw-r&ndash;   1 david git 37504 Dec  4 22:40 index
-      drwxrwsr-x   2 david git  4096 Dec  4 22:40 info
-      drwxrwsr-x   4 david git  4096 Dec  4 22:40 objects
-      drwxrwsr-x   4 david git  4096 Nov  7 14:58 refs
-      drwxrwsr-x   2 david git  4096 Dec  4 22:40 remotes
-    $ ls -l hooks/update <3>
-      -r-xr-xr-x   1 david git  3536 Dec  4 22:40 update
-    $ cat info/allowed-users <4>
-    refs/heads/master       alice|cindy
-    refs/heads/doc-update   bob
-    refs/tags/v[0-9]*       david</p>
+<li><p>CVS-style shared repository.</p>
+
+<pre><code>$ grep git /etc/group &lt;1&gt;
+git❌9418:alice,bob,cindy,david
+$ cd /home/devo.git
+$ ls -l &lt;2&gt;
+  lrwxrwxrwx   1 david git    17 Dec  4 22:40 HEAD -&gt; refs/heads/master
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 branches
+  -rw-rw-r--   1 david git    84 Dec  4 22:40 config
+  -rw-rw-r--   1 david git    58 Dec  4 22:40 description
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 hooks
+  -rw-rw-r--   1 david git 37504 Dec  4 22:40 index
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 info
+  drwxrwsr-x   4 david git  4096 Dec  4 22:40 objects
+  drwxrwsr-x   4 david git  4096 Nov  7 14:58 refs
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 remotes
+$ ls -l hooks/update &lt;3&gt;
+  -r-xr-xr-x   1 david git  3536 Dec  4 22:40 update
+$ cat info/allowed-users &lt;4&gt;
+refs/heads/master       alice\|cindy
+refs/heads/doc-update   bob
+refs/tags/v[0-9]*       david
+</code></pre>
 
 <ol>
 <li><p>place the developers into the same git group.</p></li>
 
 <li><p>and make the shared repository writable by the group.</p></li>
 
-<li><p>use update-hook example by Carl from Documentation/howto/ for branch
-policy control.</p></li>
+<li><p>use update-hook example by Carl from Documentation/howto/ for
+branch policy control.</p></li>
 
 <li><p>alice and cindy can push into master, only bob can push into
-doc-update. david is the release manager and is the only person who
-can create and push version tags.</p></li>
-</ol>
+doc-update. david is the release manager and is the only person
+who can create and push version tags.</p></li>
+</ol></li>
 
-<p>HTTP server to support dumb protocol transfer.<br />
-    dev$ git update-server-info <1>
-    dev$ ftp user@isp.example.com <2>
-    ftp&gt; cp -r .git /home/user/myproject.git</p>
+<li><p>HTTP server to support dumb protocol transfer.</p>
+
+<pre><code>dev$ git update-server-info &lt;1&gt;
+dev$ ftp user@isp.example.com &lt;2&gt;
+ftp&gt; cp -r .git /home/user/myproject.git
+</code></pre>
 
 <ol>
 <li><p>make sure your info/refs and objects/info/packs are up-to-date</p></li>
 
 <li><p>upload to public HTTP server hosted by your ISP.</p></li>
-</ol>
+</ol></li>
+</ul>
 
 			</div>
 			<div class="col-sm-2">

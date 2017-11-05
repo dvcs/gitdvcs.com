@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-init </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-init</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.13.0'>2.13.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.13.0/git-init'>git-init</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git init [-q | --quiet] [--bare] [--template=&lt;template_directory&gt;]
+          [--separate-git-dir &lt;git dir&gt;]
+          [--shared[=&lt;permissions&gt;]] [directory]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This command creates an empty Git repository - basically a <code>.git</code>
+directory with subdirectories for <code>objects</code>, <code>refs/heads</code>, <code>refs/tags</code>,
+and template files. An initial <code>HEAD</code> file that references the HEAD of
+the master branch is also created.</p>
+
+<p>If the <code>$GIT_DIR</code> environment variable is set then it specifies a path
+to use instead of <code>./.git</code> for the base of the repository.</p>
+
+<p>If the object storage directory is specified via the
+<code>$GIT_OBJECT_DIRECTORY</code> environment variable then the sha1 directories
+are created underneath - otherwise the default <code>$GIT_DIR/objects</code>
+directory is used.</p>
+
+<p>Running <em>git init</em> in an existing repository is safe. It will not
+overwrite things that are already there. The primary reason for
+rerunning <em>git init</em> is to pick up newly added templates (or to move the
+repository to another place if &ndash;separate-git-dir is given).</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>-q<br />
+--quiet<br />
+Only print error and warning messages; all other output will be
+suppressed.</p></li>
+
+<li><p>&ndash;bare<br />
+Create a bare repository. If <code>GIT_DIR</code> environment is not set, it is
+set to the current working directory.</p></li>
+
+<li><p>&ndash;template=&lt;template_directory&gt;<br />
+Specify the directory from which templates will be used. (See the
+&ldquo;TEMPLATE DIRECTORY&rdquo; section below.)</p></li>
+
+<li><p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
+Instead of initializing the repository as a directory to either
+<code>$GIT_DIR</code> or <code>./.git/</code>, create a text file there containing the
+path to the actual repository. This file acts as filesystem-agnostic
+Git symbolic link to the repository.</p>
+
+<p>If this is reinitialization, the repository will be moved to the
+specified path.</p></li>
+
+<li><p>&ndash;shared[=(false|true|umask|group|all|world|everybody|0xxx)]<br />
+Specify that the Git repository is to be shared amongst several
+users. This allows users belonging to the same group to push into
+that repository. When specified, the config variable
+&ldquo;core.sharedRepository&rdquo; is set so that files and directories under
+<code>$GIT_DIR</code> are created with the requested permissions. When not
+specified, Git will use permissions reported by umask(2).</p>
+
+<p>The option can have the following values, defaulting to <em>group</em> if
+no value is given:</p>
+
+<ul>
+<li><p><em>umask</em> (or <em>false</em>)<br />
+Use permissions reported by umask(2). The default, when
+<code>--shared</code> is not specified.</p></li>
+
+<li><p><em>group</em> (or <em>true</em>)<br />
+Make the repository group-writable, (and g+sx, since the git
+group may be not the primary group of all users). This is used
+to loosen the permissions of an otherwise safe umask(2) value.
+Note that the umask still applies to the other permission bits
+(e.g. if umask is <em>0022</em>, using <em>group</em> will not remove read
+privileges from other (non-group) users). See <em>0xxx</em> for how to
+exactly specify the repository permissions.</p></li>
+
+<li><p><em>all</em> (or <em>world</em> or <em>everybody</em>)<br />
+Same as <em>group</em>, but make the repository readable by all users.</p></li>
+
+<li><p><em>0xxx</em><br />
+<em>0xxx</em> is an octal number and each file will have mode <em>0xxx</em>.
+<em>0xxx</em> will override users&rsquo; umask(2) value (and not only loosen
+permissions as <em>group</em> and <em>all</em> does). <em>0640</em> will create a
+repository which is group-readable, but not group-writable or
+accessible to others. <em>0660</em> will create a repo that is readable
+and writable to the current user and group, but inaccessible to
+others.</p></li>
+</ul></li>
+</ul>
+
+<p>By default, the configuration flag <code>receive.denyNonFastForwards</code> is
+enabled in shared repositories, so that you cannot force a non
+fast-forwarding push into it.</p>
+
+<p>If you provide a <em>directory</em>, the command is run inside it. If this
+directory does not exist, it will be created.</p>
+
+<h2 id="template-directory">TEMPLATE DIRECTORY</h2>
+
+<p>Files and directories in the template directory whose name do not start
+with a dot will be copied to the <code>$GIT_DIR</code> after it is created.</p>
+
+<p>The template directory will be one of the following (in order):</p>
+
+<ul>
+<li><p>the argument given with the <code>--template</code> option;</p></li>
+
+<li><p>the contents of the <code>$GIT_TEMPLATE_DIR</code> environment variable;</p></li>
+
+<li><p>the <code>init.templateDir</code> configuration variable; or</p></li>
+
+<li><p>the default template directory: <code>/usr/share/git-core/templates</code>.</p></li>
+</ul>
+
+<p>The default template directory includes some directory structure,
+suggested &ldquo;exclude patterns&rdquo; (see <a href="../gitignore">gitignore(5)</a>), and
+sample hook files.</p>
+
+<p>The sample hooks are all disabled by default, To enable one of the
+sample hooks rename it by removing its <code>.sample</code> suffix.</p>
+
+<p>See <a href="../githooks">githooks(5)</a> for more general info on hook
+execution.</p>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<ul>
+<li><p>Start a new Git repository for an existing code base</p>
+
+<pre><code>$ cd /path/to/my/codebase
+$ git init      &lt;1&gt;
+$ git add .     &lt;2&gt;
+$ git commit    &lt;3&gt;
+</code></pre>
+
+<ol>
+<li><p>Create a /path/to/my/codebase/.git directory.</p></li>
+
+<li><p>Add all existing files to the index.</p></li>
+
+<li><p>Record the pristine state as the first commit in the history.</p></li>
+</ol></li>
+</ul>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

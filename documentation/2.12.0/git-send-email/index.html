@@ -1,0 +1,688 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-send-email </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-send-email</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.0'>2.12.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.12.0/git-send-email'>git-send-email</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git send-email [options] &lt;file|directory|rev-list options&gt;…
+git send-email --dump-aliases
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Takes the patches given on the command line and emails them out. Patches
+can be specified as files, directories (which will send all files in the
+directory), or directly as a revision list. In the last case, any format
+accepted by <a href="../git-format-patch">git-format-patch(1)</a> can be passed
+to git send-email.</p>
+
+<p>The header of the email is configurable via command-line options. If not
+specified on the command line, the user will be prompted with a ReadLine
+enabled interface to provide the necessary information.</p>
+
+<p>There are two formats accepted for patch files:</p>
+
+<ol>
+<li><p>mbox format files</p>
+
+<p>This is what <a href="../git-format-patch">git-format-patch(1)</a> generates.
+Most headers and MIME formatting are ignored.</p></li>
+
+<li><p>The original format used by Greg Kroah-Hartman’s
+<em>send_lots_of_email.pl</em> script</p>
+
+<p>This format expects the first line of the file to contain the &ldquo;Cc:&rdquo;
+value and the &ldquo;Subject:&rdquo; of the message as the second line.</p></li>
+</ol>
+
+<h2 id="options">OPTIONS</h2>
+
+<h3 id="composing">Composing</h3>
+
+<ul>
+<li><p>&ndash;annotate<br />
+Review and edit each patch you’re about to send. Default is the
+value of <code>sendemail.annotate</code>. See the CONFIGURATION section for
+<code>sendemail.multiEdit</code>.</p></li>
+
+<li><p>&ndash;bcc=&lt;address&gt;,…<br />
+Specify a &ldquo;Bcc:&rdquo; value for each email. Default is the value of
+<code>sendemail.bcc</code>.</p>
+
+<p>This option may be specified multiple times.</p></li>
+
+<li><p>&ndash;cc=&lt;address&gt;,…<br />
+Specify a starting &ldquo;Cc:&rdquo; value for each email. Default is the value
+of <code>sendemail.cc</code>.</p>
+
+<p>This option may be specified multiple times.</p></li>
+
+<li><p>&ndash;compose<br />
+Invoke a text editor (see GIT_EDITOR in <a href="../git-var">git-var(1)</a>)
+to edit an introductory message for the patch series.</p>
+
+<p>When <code>--compose</code> is used, git send-email will use the From, Subject,
+and In-Reply-To headers specified in the message. If the body of the
+message (what you type after the headers and a blank line) only
+contains blank (or Git: prefixed) lines, the summary won’t be sent,
+but From, Subject, and In-Reply-To headers will be used unless they
+are removed.</p>
+
+<p>Missing From or In-Reply-To headers will be prompted for.</p>
+
+<p>See the CONFIGURATION section for <code>sendemail.multiEdit</code>.</p></li>
+
+<li><p>&ndash;from=&lt;address&gt;<br />
+Specify the sender of the emails. If not specified on the command
+line, the value of the <code>sendemail.from</code> configuration option is
+used. If neither the command-line option nor <code>sendemail.from</code> are
+set, then the user will be prompted for the value. The default for
+the prompt will be the value of GIT_AUTHOR_IDENT, or
+GIT_COMMITTER_IDENT if that is not set, as returned by &ldquo;git var
+-l&rdquo;.</p></li>
+
+<li><p>&ndash;in-reply-to=&lt;identifier&gt;<br />
+Make the first mail (or all the mails with <code>--no-thread</code>) appear as
+a reply to the given Message-Id, which avoids breaking threads to
+provide a new patch series. The second and subsequent emails will be
+sent as replies according to the <code>--[no]-chain-reply-to</code> setting.</p>
+
+<p>So for example when <code>--thread</code> and <code>--no-chain-reply-to</code> are
+specified, the second and subsequent patches will be replies to the
+first one like in the illustration below where <code>[PATCH v2 0/3]</code> is
+in reply to <code>[PATCH 0/2]</code>:</p>
+
+<pre><code>[PATCH 0/2] Here is what I did...
+  [PATCH 1/2] Clean up and tests
+  [PATCH 2/2] Implementation
+  [PATCH v2 0/3] Here is a reroll
+    [PATCH v2 1/3] Clean up
+    [PATCH v2 2/3] New tests
+    [PATCH v2 3/3] Implementation
+</code></pre>
+
+<p>Only necessary if &ndash;compose is also set. If &ndash;compose is not set,
+this will be prompted for.</p></li>
+
+<li><p>&ndash;subject=&lt;string&gt;<br />
+Specify the initial subject of the email thread. Only necessary if
+&ndash;compose is also set. If &ndash;compose is not set, this will be
+prompted for.</p></li>
+
+<li><p>&ndash;to=&lt;address&gt;,…<br />
+Specify the primary recipient of the emails generated. Generally,
+this will be the upstream maintainer of the project involved.
+Default is the value of the <code>sendemail.to</code> configuration value; if
+that is unspecified, and &ndash;to-cmd is not specified, this will be
+prompted for.</p>
+
+<p>This option may be specified multiple times.</p></li>
+
+<li><p>&ndash;8bit-encoding=&lt;encoding&gt;<br />
+When encountering a non-ASCII message or subject that does not
+declare its encoding, add headers/quoting to indicate it is encoded
+in &lt;encoding&gt;. Default is the value of the
+<em>sendemail.assume8bitEncoding</em>; if that is unspecified, this will be
+prompted for if any non-ASCII files are encountered.</p>
+
+<p>Note that no attempts whatsoever are made to validate the encoding.</p></li>
+
+<li><p>&ndash;compose-encoding=&lt;encoding&gt;<br />
+Specify encoding of compose message. Default is the value of the
+<em>sendemail.composeencoding</em>; if that is unspecified, UTF-8 is
+assumed.</p></li>
+
+<li><p>&ndash;transfer-encoding=(7bit|8bit|quoted-printable|base64)<br />
+Specify the transfer encoding to be used to send the message over
+SMTP. 7bit will fail upon encountering a non-ASCII message.
+quoted-printable can be useful when the repository contains files
+that contain carriage returns, but makes the raw patch email file
+(as saved from a MUA) much harder to inspect manually. base64 is
+even more fool proof, but also even more opaque. Default is the
+value of the <code>sendemail.transferEncoding</code> configuration value; if
+that is unspecified, git will use 8bit and not add a
+Content-Transfer-Encoding header.</p></li>
+
+<li><p>&ndash;xmailer<br />
+--no-xmailer<br />
+Add (or prevent adding) the &ldquo;X-Mailer:&rdquo; header. By default, the
+header is added, but it can be turned off by setting the
+<code>sendemail.xmailer</code> configuration variable to <code>false</code>.</p></li>
+</ul>
+
+<h3 id="sending">Sending</h3>
+
+<ul>
+<li><p>&ndash;envelope-sender=&lt;address&gt;<br />
+Specify the envelope sender used to send the emails. This is useful
+if your default address is not the address that is subscribed to a
+list. In order to use the <em>From</em> address, set the value to &ldquo;auto&rdquo;.
+If you use the sendmail binary, you must have suitable privileges
+for the -f parameter. Default is the value of the
+<code>sendemail.envelopeSender</code> configuration variable; if that is
+unspecified, choosing the envelope sender is left to your MTA.</p></li>
+
+<li><p>&ndash;smtp-encryption=&lt;encryption&gt;<br />
+Specify the encryption to use, either <em>ssl</em> or <em>tls</em>. Any other
+value reverts to plain SMTP. Default is the value of
+<code>sendemail.smtpEncryption</code>.</p></li>
+
+<li><p>&ndash;smtp-domain=&lt;FQDN&gt;<br />
+Specifies the Fully Qualified Domain Name (FQDN) used in the
+HELO/EHLO command to the SMTP server. Some servers require the FQDN
+to match your IP address. If not set, git send-email attempts to
+determine your FQDN automatically. Default is the value of
+<code>sendemail.smtpDomain</code>.</p></li>
+
+<li><p>&ndash;smtp-auth=&lt;mechanisms&gt;<br />
+Whitespace-separated list of allowed SMTP-AUTH mechanisms. This
+setting forces using only the listed mechanisms. Example:</p>
+
+<pre><code>$ git send-email --smtp-auth=&quot;PLAIN LOGIN GSSAPI&quot; ...
+</code></pre>
+
+<p>If at least one of the specified mechanisms matches the ones
+advertised by the SMTP server and if it is supported by the utilized
+SASL library, the mechanism is used for authentication. If neither
+<em>sendemail.smtpAuth</em> nor <code>--smtp-auth</code> is specified, all mechanisms
+supported by the SASL library can be used.</p></li>
+
+<li><p>&ndash;smtp-pass[=&lt;password&gt;]<br />
+Password for SMTP-AUTH. The argument is optional: If no argument is
+specified, then the empty string is used as the password. Default is
+the value of <code>sendemail.smtpPass</code>, however <code>--smtp-pass</code> always
+overrides this value.</p>
+
+<p>Furthermore, passwords need not be specified in configuration files
+or on the command line. If a username has been specified (with
+<code>--smtp-user</code> or a <code>sendemail.smtpUser</code>), but no password has been
+specified (with <code>--smtp-pass</code> or <code>sendemail.smtpPass</code>), then a
+password is obtained using <em>git-credential</em>.</p></li>
+
+<li><p>&ndash;smtp-server=&lt;host&gt;<br />
+If set, specifies the outgoing SMTP server to use (e.g.
+<code>smtp.example.com</code> or a raw IP address). Alternatively it can
+specify a full pathname of a sendmail-like program instead; the
+program must support the <code>-i</code> option. Default value can be specified
+by the <code>sendemail.smtpServer</code> configuration option; the built-in
+default is <code>/usr/sbin/sendmail</code> or <code>/usr/lib/sendmail</code> if such
+program is available, or <code>localhost</code> otherwise.</p></li>
+
+<li><p>&ndash;smtp-server-port=&lt;port&gt;<br />
+Specifies a port different from the default port (SMTP servers
+typically listen to smtp port 25, but may also listen to submission
+port 587, or the common SSL smtp port 465); symbolic port names
+(e.g. &ldquo;submission&rdquo; instead of 587) are also accepted. The port can
+also be set with the <code>sendemail.smtpServerPort</code> configuration
+variable.</p></li>
+
+<li><p>&ndash;smtp-server-option=&lt;option&gt;<br />
+If set, specifies the outgoing SMTP server option to use. Default
+value can be specified by the <code>sendemail.smtpServerOption</code>
+configuration option.</p>
+
+<p>The &ndash;smtp-server-option option must be repeated for each option you
+want to pass to the server. Likewise, different lines in the
+configuration files must be used for each option.</p></li>
+
+<li><p>&ndash;smtp-ssl<br />
+Legacy alias for <em>&ndash;smtp-encryption ssl</em>.</p></li>
+
+<li><p>&ndash;smtp-ssl-cert-path<br />
+Path to a store of trusted CA certificates for SMTP SSL/TLS
+certificate validation (either a directory that has been processed
+by <em>c_rehash</em>, or a single file containing one or more PEM format
+certificates concatenated together: see verify(1) -CAfile and
+-CApath for more information on these). Set it to an empty string to
+disable certificate verification. Defaults to the value of the
+<code>sendemail.smtpsslcertpath</code> configuration variable, if set, or the
+backing SSL library’s compiled-in default otherwise (which should be
+the best choice on most platforms).</p></li>
+
+<li><p>&ndash;smtp-user=&lt;user&gt;<br />
+Username for SMTP-AUTH. Default is the value of
+<code>sendemail.smtpUser</code>; if a username is not specified (with
+<code>--smtp-user</code> or <code>sendemail.smtpUser</code>), then authentication is not
+attempted.</p></li>
+
+<li><p>&ndash;smtp-debug=0|1<br />
+Enable (1) or disable (0) debug output. If enabled, SMTP commands
+and replies will be printed. Useful to debug TLS connection and
+authentication problems.</p></li>
+</ul>
+
+<h3 id="automating">Automating</h3>
+
+<ul>
+<li><p>&ndash;to-cmd=&lt;command&gt;<br />
+Specify a command to execute once per patch file which should
+generate patch file specific &ldquo;To:&rdquo; entries. Output of this command
+must be single email address per line. Default is the value of
+<em>sendemail.tocmd</em> configuration value.</p></li>
+
+<li><p>&ndash;cc-cmd=&lt;command&gt;<br />
+Specify a command to execute once per patch file which should
+generate patch file specific &ldquo;Cc:&rdquo; entries. Output of this command
+must be single email address per line. Default is the value of
+<code>sendemail.ccCmd</code> configuration value.</p></li>
+
+<li><p>&ndash;[no-]chain-reply-to<br />
+If this is set, each email will be sent as a reply to the previous
+email sent. If disabled with &ldquo;&ndash;no-chain-reply-to&rdquo;, all emails after
+the first will be sent as replies to the first email sent. When
+using this, it is recommended that the first file given be an
+overview of the entire patch series. Disabled by default, but the
+<code>sendemail.chainReplyTo</code> configuration variable can be used to
+enable it.</p></li>
+
+<li><p>&ndash;identity=&lt;identity&gt;<br />
+A configuration identity. When given, causes values in the
+<em>sendemail.&lt;identity&gt;</em> subsection to take precedence over values
+in the <em>sendemail</em> section. The default identity is the value of
+<code>sendemail.identity</code>.</p></li>
+
+<li><p>&ndash;[no-]signed-off-by-cc<br />
+If this is set, add emails found in Signed-off-by: or Cc: lines to
+the cc list. Default is the value of <code>sendemail.signedoffbycc</code>
+configuration value; if that is unspecified, default to
+&ndash;signed-off-by-cc.</p></li>
+
+<li><p>&ndash;[no-]cc-cover<br />
+If this is set, emails found in Cc: headers in the first patch of
+the series (typically the cover letter) are added to the cc list for
+each email set. Default is the value of <em>sendemail.cccover</em>
+configuration value; if that is unspecified, default to
+&ndash;no-cc-cover.</p></li>
+
+<li><p>&ndash;[no-]to-cover<br />
+If this is set, emails found in To: headers in the first patch of
+the series (typically the cover letter) are added to the to list for
+each email set. Default is the value of <em>sendemail.tocover</em>
+configuration value; if that is unspecified, default to
+&ndash;no-to-cover.</p></li>
+
+<li><p>&ndash;suppress-cc=&lt;category&gt;<br />
+Specify an additional category of recipients to suppress the auto-cc
+of:</p>
+
+<ul>
+<li><p><em>author</em> will avoid including the patch author</p></li>
+
+<li><p><em>self</em> will avoid including the sender</p></li>
+
+<li><p><em>cc</em> will avoid including anyone mentioned in Cc lines in the
+patch header except for self (use <em>self</em> for that).</p></li>
+
+<li><p><em>bodycc</em> will avoid including anyone mentioned in Cc lines in
+the patch body (commit message) except for self (use <em>self</em> for
+that).</p></li>
+
+<li><p><em>sob</em> will avoid including anyone mentioned in Signed-off-by
+lines except for self (use <em>self</em> for that).</p></li>
+
+<li><p><em>cccmd</em> will avoid running the &ndash;cc-cmd.</p></li>
+
+<li><p><em>body</em> is equivalent to <em>sob</em> + <em>bodycc</em></p></li>
+
+<li><p><em>all</em> will suppress all auto cc values.</p></li>
+</ul>
+
+<p>Default is the value of <code>sendemail.suppresscc</code> configuration value;
+if that is unspecified, default to <em>self</em> if &ndash;suppress-from is
+specified, as well as <em>body</em> if &ndash;no-signed-off-cc is specified.</p></li>
+
+<li><p>&ndash;[no-]suppress-from<br />
+If this is set, do not add the From: address to the cc: list.
+Default is the value of <code>sendemail.suppressFrom</code> configuration
+value; if that is unspecified, default to &ndash;no-suppress-from.</p></li>
+
+<li><p>&ndash;[no-]thread<br />
+If this is set, the In-Reply-To and References headers will be added
+to each email sent. Whether each mail refers to the previous email
+(<code>deep</code> threading per <em>git format-patch</em> wording) or to the first
+email (<code>shallow</code> threading) is governed by
+&ldquo;&ndash;[no-]chain-reply-to&rdquo;.</p>
+
+<p>If disabled with &ldquo;&ndash;no-thread&rdquo;, those headers will not be added
+(unless specified with &ndash;in-reply-to). Default is the value of the
+<code>sendemail.thread</code> configuration value; if that is unspecified,
+default to &ndash;thread.</p>
+
+<p>It is up to the user to ensure that no In-Reply-To header already
+exists when <em>git send-email</em> is asked to add it (especially note
+that <em>git format-patch</em> can be configured to do the threading
+itself). Failure to do so may not produce the expected result in the
+recipient’s MUA.</p></li>
+</ul>
+
+<h3 id="administering">Administering</h3>
+
+<ul>
+<li><p>&ndash;confirm=&lt;mode&gt;<br />
+Confirm just before sending:</p>
+
+<ul>
+<li><p><em>always</em> will always confirm before sending</p></li>
+
+<li><p><em>never</em> will never confirm before sending</p></li>
+
+<li><p><em>cc</em> will confirm before sending when send-email has
+automatically added addresses from the patch to the Cc list</p></li>
+
+<li><p><em>compose</em> will confirm before sending the first message when
+using &ndash;compose.</p></li>
+
+<li><p><em>auto</em> is equivalent to <em>cc</em> + <em>compose</em></p></li>
+</ul>
+
+<p>Default is the value of <code>sendemail.confirm</code> configuration value; if
+that is unspecified, default to <em>auto</em> unless any of the suppress
+options have been specified, in which case default to <em>compose</em>.</p></li>
+
+<li><p>&ndash;dry-run<br />
+Do everything except actually send the emails.</p></li>
+
+<li><p>&ndash;[no-]format-patch<br />
+When an argument may be understood either as a reference or as a
+file name, choose to understand it as a format-patch argument
+(<code>--format-patch</code>) or as a file name (<code>--no-format-patch</code>). By
+default, when such a conflict occurs, git send-email will fail.</p></li>
+
+<li><p>&ndash;quiet<br />
+Make git-send-email less verbose. One line per email should be all
+that is output.</p></li>
+
+<li><p>&ndash;[no-]validate<br />
+Perform sanity checks on patches. Currently, validation means the
+following:</p>
+
+<ul>
+<li>Warn of patches that contain lines longer than 998 characters;
+this is due to SMTP limits as described by
+<a href="http://www.ietf.org/rfc/rfc2821.txt">http://www.ietf.org/rfc/rfc2821.txt</a>.
+<br /></li>
+</ul>
+
+<p>Default is the value of <code>sendemail.validate</code>; if this is not set,
+default to <code>--validate</code>.</p></li>
+
+<li><p>&ndash;force<br />
+Send emails even if safety checks would prevent it.</p></li>
+</ul>
+
+<h3 id="information">Information</h3>
+
+<ul>
+<li>&ndash;dump-aliases<br />
+Instead of the normal operation, dump the shorthand alias names from
+the configured alias file(s), one per line in alphabetical order.
+Note, this only includes the alias name and not its expanded email
+addresses. See <em>sendemail.aliasesfile</em> for more information about
+aliases.</li>
+</ul>
+
+<h2 id="configuration">CONFIGURATION</h2>
+
+<ul>
+<li><p>sendemail.aliasesFile<br />
+To avoid typing long email addresses, point this to one or more
+email aliases files. You must also supply <code>sendemail.aliasFileType</code>.</p></li>
+
+<li><p>sendemail.aliasFileType<br />
+Format of the file(s) specified in sendemail.aliasesFile. Must be
+one of <em>mutt</em>, <em>mailrc</em>, <em>pine</em>, <em>elm</em>, or <em>gnus</em>, or <em>sendmail</em>.</p>
+
+<p>What an alias file in each format looks like can be found in the
+documentation of the email program of the same name. The differences
+and limitations from the standard formats are described below:</p>
+
+<ul>
+<li><p>sendmail</p>
+
+<ul>
+<li><p>Quoted aliases and quoted addresses are not supported: lines
+that contain a <code>&quot;</code> symbol are ignored.</p></li>
+
+<li><p>Redirection to a file (<code>/path/name</code>) or pipe (<code>|command</code>) is
+not supported.</p></li>
+
+<li><p>File inclusion (<code>:include: /path/name</code>) is not supported.</p></li>
+
+<li><p>Warnings are printed on the standard error output for any
+explicitly unsupported constructs, and any other lines that
+are not recognized by the parser.</p></li>
+</ul></li>
+</ul></li>
+
+<li><p>sendemail.multiEdit<br />
+If true (default), a single editor instance will be spawned to edit
+files you have to edit (patches when <code>--annotate</code> is used, and the
+summary when <code>--compose</code> is used). If false, files will be edited
+one after the other, spawning a new editor each time.</p></li>
+
+<li><p>sendemail.confirm<br />
+Sets the default for whether to confirm before sending. Must be one
+of <em>always</em>, <em>never</em>, <em>cc</em>, <em>compose</em>, or <em>auto</em>. See <code>--confirm</code> in
+the previous section for the meaning of these values.</p></li>
+</ul>
+
+<h2 id="example">EXAMPLE</h2>
+
+<h3 id="use-gmail-as-the-smtp-server">Use gmail as the smtp server</h3>
+
+<p>To use <em>git send-email</em> to send your patches through the GMail SMTP
+server, edit ~/.gitconfig to specify your account settings:</p>
+
+<pre><code>[sendemail]
+        smtpEncryption = tls
+        smtpServer = smtp.gmail.com
+        smtpUser = yourname@gmail.com
+        smtpServerPort = 587
+</code></pre>
+
+<p>If you have multifactor authentication setup on your gmail account, you
+will need to generate an app-specific password for use with <em>git
+send-email</em>. Visit
+<a href="https://security.google.com/settings/security/apppasswords">https://security.google.com/settings/security/apppasswords</a> to setup an
+app-specific password. Once setup, you can store it with the credentials
+helper:</p>
+
+<pre><code>$ git credential fill
+protocol=smtp
+host=smtp.gmail.com
+username=youname@gmail.com
+password=app-password
+</code></pre>
+
+<p>Once your commits are ready to be sent to the mailing list, run the
+following commands:</p>
+
+<pre><code>$ git format-patch --cover-letter -M origin/master -o outgoing/
+$ edit outgoing/0000-*
+$ git send-email outgoing/*
+</code></pre>
+
+<p>Note: the following perl modules are required Net::SMTP::SSL,
+MIME::Base64 and Authen::SASL</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-format-patch">git-format-patch(1)</a>,
+<a href="../git-imap-send">git-imap-send(1)</a>, mbox(5)</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

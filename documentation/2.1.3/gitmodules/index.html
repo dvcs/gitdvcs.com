@@ -121,61 +121,69 @@ submodule has been added unless it was customized with the <em>&ndash;name</em>
 option of <em>git submodule add</em>. Each submodule section also contains the
 following required keys:</p>
 
-<p>submodule.&lt;name&gt;.path<br />
-Defines the path, relative to the top-level directory of the Git working
-tree, where the submodule is expected to be checked out. The path name
-must not end with a <code>/</code>. All submodule paths must be unique within the
-.gitmodules file.</p>
+<ul>
+<li><p>submodule.&lt;name&gt;.path<br />
+Defines the path, relative to the top-level directory of the Git
+working tree, where the submodule is expected to be checked out. The
+path name must not end with a <code>/</code>. All submodule paths must be
+unique within the .gitmodules file.</p></li>
 
-<p>submodule.&lt;name&gt;.url<br />
-Defines a URL from which the submodule repository can be cloned. This
-may be either an absolute URL ready to be passed to
+<li><p>submodule.&lt;name&gt;.url<br />
+Defines a URL from which the submodule repository can be cloned.
+This may be either an absolute URL ready to be passed to
 <a href="../git-clone">git-clone(1)</a> or (if it begins with ./ or ../) a
-location relative to the superproject’s origin repository.</p>
+location relative to the superproject’s origin repository.</p></li>
+</ul>
 
 <p>In addition, there are a number of optional keys:</p>
 
-<p>submodule.&lt;name&gt;.update<br />
-Defines what to do when the submodule is updated by the superproject. If
-<em>checkout</em> (the default), the new commit specified in the superproject
-will be checked out in the submodule on a detached HEAD. If <em>rebase</em>,
-the current branch of the submodule will be rebased onto the commit
-specified in the superproject. If <em>merge</em>, the commit specified in the
-superproject will be merged into the current branch in the submodule. If
-<em>none</em>, the submodule with name <code>$name</code> will not be updated by default.</p>
+<ul>
+<li><p>submodule.&lt;name&gt;.update<br />
+Defines what to do when the submodule is updated by the
+superproject. If <em>checkout</em> (the default), the new commit specified
+in the superproject will be checked out in the submodule on a
+detached HEAD. If <em>rebase</em>, the current branch of the submodule will
+be rebased onto the commit specified in the superproject. If
+<em>merge</em>, the commit specified in the superproject will be merged
+into the current branch in the submodule. If <em>none</em>, the submodule
+with name <code>$name</code> will not be updated by
+    default.</p>
 
 <pre><code>This config option is overridden if 'git submodule update' is given
 the '--merge', '--rebase' or '--checkout' options.
-</code></pre>
+</code></pre></li>
 
-<p>submodule.&lt;name&gt;.branch<br />
-A remote branch name for tracking updates in the upstream submodule. If
-the option is not specified, it defaults to <em>master</em>. See the <code>--remote</code>
-documentation in <a href="../git-submodule">git-submodule(1)</a> for details.</p>
+<li><p>submodule.&lt;name&gt;.branch<br />
+A remote branch name for tracking updates in the upstream submodule.
+If the option is not specified, it defaults to <em>master</em>. See the
+<code>--remote</code> documentation in <a href="../git-submodule">git-submodule(1)</a>
+for details.</p></li>
 
-<p>submodule.&lt;name&gt;.fetchRecurseSubmodules<br />
-This option can be used to control recursive fetching of this submodule.
-If this option is also present in the submodules entry in .git/config of
-the superproject, the setting there will override the one found in
-.gitmodules. Both settings can be overridden on the command line by
-using the &ldquo;&ndash;[no-]recurse-submodules&rdquo; option to &ldquo;git fetch&rdquo; and &ldquo;git
-pull&rdquo;.</p>
+<li><p>submodule.&lt;name&gt;.fetchRecurseSubmodules<br />
+This option can be used to control recursive fetching of this
+submodule. If this option is also present in the submodules entry in
+.git/config of the superproject, the setting there will override the
+one found in .gitmodules. Both settings can be overridden on the
+command line by using the &ldquo;&ndash;[no-]recurse-submodules&rdquo; option to
+&ldquo;git fetch&rdquo; and &ldquo;git pull&rdquo;.</p></li>
 
-<p>submodule.&lt;name&gt;.ignore<br />
-Defines under what circumstances &ldquo;git status&rdquo; and the diff family show a
-submodule as modified. When set to &ldquo;all&rdquo;, it will never be considered
-modified (but will nonetheless show up in the output of status and
-commit when it has been staged), &ldquo;dirty&rdquo; will ignore all changes to the
-submodules work tree and takes only differences between the HEAD of the
-submodule and the commit recorded in the superproject into account.
-&ldquo;untracked&rdquo; will additionally let submodules with modified tracked files
-in their work tree show up. Using &ldquo;none&rdquo; (the default when this option
-is not set) also shows submodules that have untracked files in their
-work tree as changed. If this option is also present in the submodules
-entry in .git/config of the superproject, the setting there will
-override the one found in .gitmodules. Both settings can be overridden
-on the command line by using the &ldquo;&ndash;ignore-submodule&rdquo; option. The <em>git
-submodule</em> commands are not affected by this setting.</p>
+<li><p>submodule.&lt;name&gt;.ignore<br />
+Defines under what circumstances &ldquo;git status&rdquo; and the diff family
+show a submodule as modified. When set to &ldquo;all&rdquo;, it will never be
+considered modified (but will nonetheless show up in the output of
+status and commit when it has been staged), &ldquo;dirty&rdquo; will ignore all
+changes to the submodules work tree and takes only differences
+between the HEAD of the submodule and the commit recorded in the
+superproject into account. &ldquo;untracked&rdquo; will additionally let
+submodules with modified tracked files in their work tree show up.
+Using &ldquo;none&rdquo; (the default when this option is not set) also shows
+submodules that have untracked files in their work tree as changed.
+If this option is also present in the submodules entry in
+.git/config of the superproject, the setting there will override the
+one found in .gitmodules. Both settings can be overridden on the
+command line by using the &ldquo;&ndash;ignore-submodule&rdquo; option. The <em>git
+submodule</em> commands are not affected by this setting.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 

@@ -127,62 +127,67 @@ to the <em>git rev-list</em> command (see
 <a href="../git-rev-list">git-rev-list(1)</a>). This manual page describes only
 the most frequently used options.</p>
 
-<p>-n &lt;number&gt;<br />
-&ndash;max-count=&lt;number&gt;<br />
-Limits the number of commits to show.</p>
+<ul>
+<li><p>-n &lt;number&gt;<br />
+--max-count=&lt;number&gt;<br />
+Limits the number of commits to show.</p></li>
 
-<p>&ndash;since=&lt;date&gt;<br />
-Show commits more recent than a specific date.</p>
+<li><p>&ndash;since=&lt;date&gt;<br />
+Show commits more recent than a specific date.</p></li>
 
-<p>&ndash;until=&lt;date&gt;<br />
-Show commits older than a specific date.</p>
+<li><p>&ndash;until=&lt;date&gt;<br />
+Show commits older than a specific date.</p></li>
 
-<p>&ndash;all<br />
-Show all branches.</p>
+<li><p>&ndash;all<br />
+Show all branches.</p></li>
 
-<p>&ndash;merge<br />
-After an attempt to merge stops with conflicts, show the commits on the
-history between two branches (i.e. the HEAD and the MERGE_HEAD) that
-modify the conflicted files and do not exist on all the heads being
-merged.</p>
+<li><p>&ndash;merge<br />
+After an attempt to merge stops with conflicts, show the commits on
+the history between two branches (i.e. the HEAD and the MERGE_HEAD)
+that modify the conflicted files and do not exist on all the heads
+being merged.</p></li>
 
-<p>&ndash;argscmd=&lt;command&gt;<br />
+<li><p>&ndash;argscmd=&lt;command&gt;<br />
 Command to be run each time gitk has to determine the list of
 &lt;revs&gt; to show. The command is expected to print on its standard
 output a list of additional revs to be shown, one per line. Use this
 instead of explicitly specifying &lt;revs&gt; if the set of commits to
-show may vary between refreshes.</p>
+show may vary between refreshes.</p></li>
 
-<p>&ndash;select-commit=&lt;ref&gt;<br />
+<li><p>&ndash;select-commit=&lt;ref&gt;<br />
 Automatically select the specified commit after loading the graph.
-Default behavior is equivalent to specifying <em>&ndash;select-commit=HEAD</em>.</p>
+Default behavior is equivalent to specifying <em>&ndash;select-commit=HEAD</em>.</p></li>
 
-<p>&lt;revs&gt;<br />
+<li><p>&lt;revs&gt;<br />
 Limit the revisions to show. This can be either a single revision
-meaning show from the given revision and back, or it can be a range in
-the form &ldquo;<em>&lt;from&gt;</em>..<em>&lt;to&gt;</em>&rdquo; to show all revisions between
+meaning show from the given revision and back, or it can be a range
+in the form &ldquo;<em>&lt;from&gt;</em>..<em>&lt;to&gt;</em>&rdquo; to show all revisions between
 <em>&lt;from&gt;</em> and back to <em>&lt;to&gt;</em>. Note, more advanced revision
 selection can be applied. For a more complete list of ways to spell
-object names, see <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+object names, see <a href="../gitrevisions">gitrevisions(7)</a>.</p></li>
 
-<p>&lt;path&gt;…<br />
-Limit commits to the ones touching files in the given paths. Note, to
-avoid ambiguity with respect to revision names use &ldquo;&ndash;&rdquo; to separate the
-paths from any preceding options.</p>
+<li><p>&lt;path&gt;…<br />
+Limit commits to the ones touching files in the given paths. Note,
+to avoid ambiguity with respect to revision names use &ldquo;&ndash;&rdquo; to
+separate the paths from any preceding options.</p></li>
+</ul>
 
 <h2 id="examples">Examples</h2>
 
-<p>gitk v2.6.12.. include/scsi drivers/scsi<br />
-Show the changes since version <em>v2.6.12</em> that changed any file in the
-include/scsi or drivers/scsi subdirectories</p>
+<ul>
+<li><p>gitk v2.6.12.. include/scsi drivers/scsi<br />
+Show the changes since version <em>v2.6.12</em> that changed any file in
+the include/scsi or drivers/scsi subdirectories</p></li>
 
-<p>gitk &ndash;since=&ldquo;2 weeks ago&rdquo; &ndash; gitk<br />
-Show the changes during the last two weeks to the file <em>gitk</em>. The &ldquo;&ndash;&rdquo;
-is necessary to avoid confusion with the <strong>branch</strong> named <em>gitk</em></p>
+<li><p>gitk &ndash;since=&ldquo;2 weeks ago&rdquo; &ndash; gitk<br />
+Show the changes during the last two weeks to the file <em>gitk</em>. The
+&ldquo;&ndash;&rdquo; is necessary to avoid confusion with the <strong>branch</strong> named
+<em>gitk</em></p></li>
 
-<p>gitk &ndash;max-count=100 &ndash;all &ndash; Makefile<br />
-Show at most 100 changes made to the file <em>Makefile</em>. Instead of only
-looking for changes in the current branch look in all branches.</p>
+<li><p>gitk &ndash;max-count=100 &ndash;all &ndash; Makefile<br />
+Show at most 100 changes made to the file <em>Makefile</em>. Instead of
+only looking for changes in the current branch look in all branches.</p></li>
+</ul>
 
 <h2 id="files">Files</h2>
 
@@ -191,16 +196,18 @@ such as display options, font, and colors.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
-<p><em>qgit(1)</em><br />
-A repository browser written in C++ using Qt.</p>
+<ul>
+<li><p><em>qgit(1)</em><br />
+A repository browser written in C++ using Qt.</p></li>
 
-<p><em>gitview(1)</em><br />
+<li><p><em>gitview(1)</em><br />
 A repository browser written in Python using Gtk. It’s based on
-<em>bzrk(1)</em> and distributed in the contrib area of the Git repository.</p>
+<em>bzrk(1)</em> and distributed in the contrib area of the Git repository.</p></li>
 
-<p><em>tig(1)</em><br />
-A minimal repository browser and Git tool output highlighter written in
-C using Ncurses.</p>
+<li><p><em>tig(1)</em><br />
+A minimal repository browser and Git tool output highlighter written
+in C using Ncurses.</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

@@ -1,0 +1,677 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> giteveryday </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">giteveryday</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.13.5'>2.13.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.13.5/giteveryday'>giteveryday</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<p>Everyday Git With 20 Commands Or So</p>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Git users can broadly be grouped into four categories for the purposes
+of describing here a small set of useful command for everyday Git.</p>
+
+<ul>
+<li><p><a href="../#STANDALONE">Individual Developer (Standalone)</a> commands are
+essential for anybody who makes a commit, even for somebody who
+works alone.</p></li>
+
+<li><p>If you work with other people, you will need commands listed in the
+<a href="../#PARTICIPANT">Individual Developer (Participant)</a> section as well.</p></li>
+
+<li><p>People who play the <a href="#INTEGRATOR">Integrator</a> role need to learn
+some more commands in addition to the above.</p></li>
+
+<li><p><a href="#ADMINISTRATION">Repository Administration</a> commands are for system
+administrators who are responsible for the care and feeding of Git
+repositories.</p></li>
+</ul>
+
+<h2 id="individual-developer-standalone">Individual Developer (Standalone)</h2>
+
+<p>A standalone individual developer does not exchange patches with other
+people, and works alone in a single repository, using the following
+commands.</p>
+
+<ul>
+<li><p><a href="../git-init">git-init(1)</a> to create a new repository.</p></li>
+
+<li><p><a href="../git-log">git-log(1)</a> to see what happened.</p></li>
+
+<li><p><a href="../git-checkout">git-checkout(1)</a> and
+<a href="../git-branch">git-branch(1)</a> to switch branches.</p></li>
+
+<li><p><a href="../git-add">git-add(1)</a> to manage the index file.</p></li>
+
+<li><p><a href="../git-diff">git-diff(1)</a> and <a href="../git-status">git-status(1)</a> to
+see what you are in the middle of doing.</p></li>
+
+<li><p><a href="../git-commit">git-commit(1)</a> to advance the current branch.</p></li>
+
+<li><p><a href="../git-reset">git-reset(1)</a> and
+<a href="../git-checkout">git-checkout(1)</a> (with pathname parameters) to
+undo changes.</p></li>
+
+<li><p><a href="../git-merge">git-merge(1)</a> to merge between local branches.</p></li>
+
+<li><p><a href="../git-rebase">git-rebase(1)</a> to maintain topic branches.</p></li>
+
+<li><p><a href="../git-tag">git-tag(1)</a> to mark a known point.</p></li>
+</ul>
+
+<h3 id="examples">Examples</h3>
+
+<ul>
+<li><p>Use a tarball as a starting point for a new repository.</p>
+
+<pre><code>$ tar zxf frotz.tar.gz
+$ cd frotz
+$ git init
+$ git add . &lt;1&gt;
+$ git commit -m &quot;import of frotz source tree.&quot;
+$ git tag v2.43 &lt;2&gt;
+</code></pre>
+
+<ol>
+<li><p>add everything under the current directory.</p></li>
+
+<li><p>make a lightweight, unannotated tag.</p></li>
+</ol></li>
+
+<li><p>Create a topic branch and develop.</p>
+
+<pre><code>$ git checkout -b alsa-audio &lt;1&gt;
+$ edit/compile/test
+$ git checkout -- curses/ux_audio_oss.c &lt;2&gt;
+$ git add curses/ux_audio_alsa.c &lt;3&gt;
+$ edit/compile/test
+$ git diff HEAD &lt;4&gt;
+$ git commit -a -s &lt;5&gt;
+$ edit/compile/test
+$ git diff HEAD^ &lt;6&gt;
+$ git commit -a --amend &lt;7&gt;
+$ git checkout master &lt;8&gt;
+$ git merge alsa-audio &lt;9&gt;
+$ git log --since='3 days ago' &lt;10&gt;
+$ git log v2.43.. curses/ &lt;11&gt;
+</code></pre>
+
+<ol>
+<li><p>create a new topic branch.</p></li>
+
+<li><p>revert your botched changes in <code>curses/ux_audio_oss.c</code>.</p></li>
+
+<li><p>you need to tell Git if you added a new file; removal and
+modification will be caught if you do <code>git commit -a</code> later.</p></li>
+
+<li><p>to see what changes you are committing.</p></li>
+
+<li><p>commit everything, as you have tested, with your sign-off.</p></li>
+
+<li><p>look at all your changes including the previous commit.</p></li>
+
+<li><p>amend the previous commit, adding all your new changes, using
+your original message.</p></li>
+
+<li><p>switch to the master branch.</p></li>
+
+<li><p>merge a topic branch into your master branch.</p></li>
+
+<li><p>review commit logs; other forms to limit output can be combined
+and include <code>-10</code> (to show up to 10 commits),
+<code>--until=2005-12-10</code>, etc.</p></li>
+
+<li><p>view only the changes that touch what’s in <code>curses/</code> directory,
+since <code>v2.43</code> tag.</p></li>
+</ol></li>
+</ul>
+
+<h2 id="individual-developer-participant">Individual Developer (Participant)</h2>
+
+<p>A developer working as a participant in a group project needs to learn
+how to communicate with others, and uses these commands in addition to
+the ones needed by a standalone developer.</p>
+
+<ul>
+<li><p><a href="../git-clone">git-clone(1)</a> from the upstream to prime your local
+repository.</p></li>
+
+<li><p><a href="../git-pull">git-pull(1)</a> and <a href="../git-fetch">git-fetch(1)</a> from
+&ldquo;origin&rdquo; to keep up-to-date with the upstream.</p></li>
+
+<li><p><a href="../git-push">git-push(1)</a> to shared repository, if you adopt CVS
+style shared repository workflow.</p></li>
+
+<li><p><a href="../git-format-patch">git-format-patch(1)</a> to prepare e-mail
+submission, if you adopt Linux kernel-style public forum workflow.</p></li>
+
+<li><p><a href="../git-send-email">git-send-email(1)</a> to send your e-mail
+submission without corruption by your MUA.</p></li>
+
+<li><p><a href="../git-request-pull">git-request-pull(1)</a> to create a summary of
+changes for your upstream to pull.</p></li>
+</ul>
+
+<h3 id="examples-1">Examples</h3>
+
+<ul>
+<li><p>Clone the upstream and work on it. Feed changes to
+    upstream.</p>
+
+<pre><code>$ git clone git://git.kernel.org/pub/scm/.../torvalds/linux-2.6 my2.6
+$ cd my2.6
+$ git checkout -b mine master &lt;1&gt;
+$ edit/compile/test; git commit -a -s &lt;2&gt;
+$ git format-patch master &lt;3&gt;
+$ git send-email --to=&quot;person &lt;email@example.com&gt;&quot; 00*.patch &lt;4&gt;
+$ git checkout master &lt;5&gt;
+$ git pull &lt;6&gt;
+$ git log -p ORIG_HEAD.. arch/i386 include/asm-i386 &lt;7&gt;
+$ git ls-remote --heads http://git.kernel.org/.../jgarzik/libata-dev.git &lt;8&gt;
+$ git pull git://git.kernel.org/pub/.../jgarzik/libata-dev.git ALL &lt;9&gt;
+$ git reset --hard ORIG_HEAD &lt;10&gt;
+$ git gc &lt;11&gt;
+</code></pre>
+
+<ol>
+<li><p>checkout a new branch <code>mine</code> from master.</p></li>
+
+<li><p>repeat as needed.</p></li>
+
+<li><p>extract patches from your branch, relative to master,</p></li>
+
+<li><p>and email them.</p></li>
+
+<li><p>return to <code>master</code>, ready to see what’s new</p></li>
+
+<li><p><code>git pull</code> fetches from <code>origin</code> by default and merges into the
+current branch.</p></li>
+
+<li><p>immediately after pulling, look at the changes done upstream
+since last time we checked, only in the area we are interested
+in.</p></li>
+
+<li><p>check the branch names in an external repository (if not known).</p></li>
+
+<li><p>fetch from a specific branch <code>ALL</code> from a specific repository
+and merge it.</p></li>
+
+<li><p>revert the pull.</p></li>
+
+<li><p>garbage collect leftover objects from reverted pull.</p></li>
+</ol></li>
+
+<li><p>Push into another repository.</p>
+
+<pre><code>satellite$ git clone mothership:frotz frotz &lt;1&gt;
+satellite$ cd frotz
+satellite$ git config --get-regexp '^(remote|branch)\.' &lt;2&gt;
+remote.origin.url mothership:frotz
+remote.origin.fetch refs/heads/*:refs/remotes/origin/*
+branch.master.remote origin
+branch.master.merge refs/heads/master
+satellite$ git config remote.origin.push \
+           +refs/heads/*:refs/remotes/satellite/* &lt;3&gt;
+satellite$ edit/compile/test/commit
+satellite$ git push origin &lt;4&gt;
+
+mothership$ cd frotz
+mothership$ git checkout master
+mothership$ git merge satellite/master &lt;5&gt;
+</code></pre>
+
+<ol>
+<li><p>mothership machine has a frotz repository under your home
+directory; clone from it to start a repository on the satellite
+machine.</p></li>
+
+<li><p>clone sets these configuration variables by default. It arranges
+<code>git pull</code> to fetch and store the branches of mothership machine
+to local <code>remotes/origin/*</code> remote-tracking branches.</p></li>
+
+<li><p>arrange <code>git push</code> to push all local branches to their
+corresponding branch of the mothership machine.</p></li>
+
+<li><p>push will stash all our work away on <code>remotes/satellite/*</code>
+remote-tracking branches on the mothership machine. You could
+use this as a back-up method. Likewise, you can pretend that
+mothership &ldquo;fetched&rdquo; from you (useful when access is one sided).</p></li>
+
+<li><p>on mothership machine, merge the work done on the satellite
+machine into the master branch.</p></li>
+</ol></li>
+
+<li><p>Branch off of a specific tag.</p>
+
+<pre><code>$ git checkout -b private2.6.14 v2.6.14 &lt;1&gt;
+$ edit/compile/test; git commit -a
+$ git checkout master
+$ git cherry-pick v2.6.14..private2.6.14 &lt;2&gt;
+</code></pre>
+
+<ol>
+<li><p>create a private branch based on a well known (but somewhat
+behind) tag.</p></li>
+
+<li><p>forward port all changes in <code>private2.6.14</code> branch to <code>master</code>
+branch without a formal &ldquo;merging&rdquo;. Or longhand<br />
+<code>git format-patch -k -m --stdout v2.6.14..private2.6.14 | git am
+-3 -k</code></p></li>
+</ol></li>
+</ul>
+
+<p>An alternate participant submission mechanism is using the <code>git
+request-pull</code> or pull-request mechanisms (e.g as used on GitHub
+(www.github.com) to notify your upstream of your contribution.</p>
+
+<h2 id="integrator">Integrator</h2>
+
+<p>A fairly central person acting as the integrator in a group project
+receives changes made by others, reviews and integrates them and
+publishes the result for others to use, using these commands in addition
+to the ones needed by participants.</p>
+
+<p>This section can also be used by those who respond to <code>git request-pull</code>
+or pull-request on GitHub (www.github.com) to integrate the work of
+others into their history. An sub-area lieutenant for a repository will
+act both as a participant and as an integrator.</p>
+
+<ul>
+<li><p><a href="../git-am">git-am(1)</a> to apply patches e-mailed in from your
+contributors.</p></li>
+
+<li><p><a href="../git-pull">git-pull(1)</a> to merge from your trusted lieutenants.</p></li>
+
+<li><p><a href="../git-format-patch">git-format-patch(1)</a> to prepare and send
+suggested alternative to contributors.</p></li>
+
+<li><p><a href="../git-revert">git-revert(1)</a> to undo botched commits.</p></li>
+
+<li><p><a href="../git-push">git-push(1)</a> to publish the bleeding edge.</p></li>
+</ul>
+
+<h3 id="examples-2">Examples</h3>
+
+<ul>
+<li><p>A typical integrator’s Git day.</p>
+
+<pre><code>$ git status &lt;1&gt;
+$ git branch --no-merged master &lt;2&gt;
+$ mailx &lt;3&gt;
+&amp; s 2 3 4 5 ./+to-apply
+&amp; s 7 8 ./+hold-linus
+&amp; q
+$ git checkout -b topic/one master
+$ git am -3 -i -s ./+to-apply &lt;4&gt;
+$ compile/test
+$ git checkout -b hold/linus &amp;&amp; git am -3 -i -s ./+hold-linus &lt;5&gt;
+$ git checkout topic/one &amp;&amp; git rebase master &lt;6&gt;
+$ git checkout pu &amp;&amp; git reset --hard next &lt;7&gt;
+$ git merge topic/one topic/two &amp;&amp; git merge hold/linus &lt;8&gt;
+$ git checkout maint
+$ git cherry-pick master~4 &lt;9&gt;
+$ compile/test
+$ git tag -s -m &quot;GIT 0.99.9x&quot; v0.99.9x &lt;10&gt;
+$ git fetch ko &amp;&amp; for branch in master maint next pu &lt;11&gt;
+    do
+        git show-branch ko/$branch $branch &lt;12&gt;
+    done
+$ git push --follow-tags ko &lt;13&gt;
+</code></pre>
+
+<ol>
+<li><p>see what you were in the middle of doing, if anything.</p></li>
+
+<li><p>see which branches haven’t been merged into <code>master</code> yet.
+Likewise for any other integration branches e.g. <code>maint</code>, <code>next</code>
+and <code>pu</code> (potential updates).</p></li>
+
+<li><p>read mails, save ones that are applicable, and save others that
+are not quite ready (other mail readers are available).</p></li>
+
+<li><p>apply them, interactively, with your sign-offs.</p></li>
+
+<li><p>create topic branch as needed and apply, again with sign-offs.</p></li>
+
+<li><p>rebase internal topic branch that has not been merged to the
+master or exposed as a part of a stable branch.</p></li>
+
+<li><p>restart <code>pu</code> every time from the next.</p></li>
+
+<li><p>and bundle topic branches still cooking.</p></li>
+
+<li><p>backport a critical fix.</p></li>
+
+<li><p>create a signed tag.</p></li>
+
+<li><p>make sure master was not accidentally rewound beyond that
+already pushed out.</p></li>
+
+<li><p>In the output from <code>git show-branch</code>, <code>master</code> should have
+everything <code>ko/master</code> has, and <code>next</code> should have everything
+<code>ko/next</code> has, etc.</p></li>
+
+<li><p>push out the bleeding edge, together with new tags that point
+into the pushed history.</p></li>
+</ol></li>
+</ul>
+
+<p>In this example, the <code>ko</code> shorthand points at the Git maintainer’s
+repository at kernel.org, and looks like this:</p>
+
+<pre><code>(in .git/config)
+[remote &quot;ko&quot;]
+        url = kernel.org:/pub/scm/git/git.git
+        fetch = refs/heads/*:refs/remotes/ko/*
+        push = refs/heads/master
+        push = refs/heads/next
+        push = +refs/heads/pu
+        push = refs/heads/maint
+</code></pre>
+
+<h2 id="repository-administration">Repository Administration</h2>
+
+<p>A repository administrator uses the following tools to set up and
+maintain access to the repository by developers.</p>
+
+<ul>
+<li><p><a href="../git-daemon">git-daemon(1)</a> to allow anonymous download from
+repository.</p></li>
+
+<li><p><a href="../git-shell">git-shell(1)</a> can be used as a <em>restricted login
+shell</em> for shared central repository users.</p></li>
+
+<li><p><a href="../git-http-backend">git-http-backend(1)</a> provides a server side
+implementation of Git-over-HTTP (&ldquo;Smart http&rdquo;) allowing both fetch
+and push services.</p></li>
+
+<li><p><a href="../gitweb">gitweb(1)</a> provides a web front-end to Git
+repositories, which can be set-up using the
+<a href="../git-instaweb">git-instaweb(1)</a> script.</p></li>
+</ul>
+
+<p><a href="howto/update-hook-example">update hook howto</a> has a good example
+of managing a shared central repository.</p>
+
+<p>In addition there are a number of other widely deployed hosting,
+browsing and reviewing solutions such as:</p>
+
+<ul>
+<li>gitolite, gerrit code review, cgit and others.</li>
+</ul>
+
+<h3 id="examples-3">Examples</h3>
+
+<ul>
+<li><p>We assume the following in /etc/services</p>
+
+<pre><code>$ grep 9418 /etc/services
+git             9418/tcp                # Git Version Control System
+</code></pre></li>
+
+<li><p>Run git-daemon to serve /pub/scm from inetd.</p>
+
+<pre><code>$ grep git /etc/inetd.conf
+git     stream  tcp     nowait  nobody \
+  /usr/bin/git-daemon git-daemon --inetd --export-all /pub/scm
+</code></pre>
+
+<p>The actual configuration line should be on one line.</p></li>
+
+<li><p>Run git-daemon to serve /pub/scm from xinetd.</p>
+
+<pre><code>$ cat /etc/xinetd.d/git-daemon
+# default: off
+# description: The Git server offers access to Git repositories
+service git
+{
+        disable = no
+        type            = UNLISTED
+        port            = 9418
+        socket_type     = stream
+        wait            = no
+        user            = nobody
+        server          = /usr/bin/git-daemon
+        server_args     = --inetd --export-all --base-path=/pub/scm
+        log_on_failure  += USERID
+}
+</code></pre>
+
+<p>Check your xinetd(8) documentation and setup, this is from a Fedora
+system. Others might be different.</p></li>
+
+<li><p>Give push/pull only access to developers using git-over-ssh.<br />
+e.g. those using: <code>$ git push/pull ssh://host.xz/pub/scm/project</code></p>
+
+<pre><code>$ grep git /etc/passwd &lt;1&gt;
+alice❌1000:1000::/home/alice:/usr/bin/git-shell
+bob❌1001:1001::/home/bob:/usr/bin/git-shell
+cindy❌1002:1002::/home/cindy:/usr/bin/git-shell
+david❌1003:1003::/home/david:/usr/bin/git-shell
+$ grep git /etc/shells &lt;2&gt;
+/usr/bin/git-shell
+</code></pre>
+
+<ol>
+<li><p>log-in shell is set to /usr/bin/git-shell, which does not allow
+anything but <code>git push</code> and <code>git pull</code>. The users require ssh
+access to the machine.</p></li>
+
+<li><p>in many distributions /etc/shells needs to list what is used as
+the login shell.</p></li>
+</ol></li>
+
+<li><p>CVS-style shared repository.</p>
+
+<pre><code>$ grep git /etc/group &lt;1&gt;
+git❌9418:alice,bob,cindy,david
+$ cd /home/devo.git
+$ ls -l &lt;2&gt;
+  lrwxrwxrwx   1 david git    17 Dec  4 22:40 HEAD -&gt; refs/heads/master
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 branches
+  -rw-rw-r--   1 david git    84 Dec  4 22:40 config
+  -rw-rw-r--   1 david git    58 Dec  4 22:40 description
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 hooks
+  -rw-rw-r--   1 david git 37504 Dec  4 22:40 index
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 info
+  drwxrwsr-x   4 david git  4096 Dec  4 22:40 objects
+  drwxrwsr-x   4 david git  4096 Nov  7 14:58 refs
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 remotes
+$ ls -l hooks/update &lt;3&gt;
+  -r-xr-xr-x   1 david git  3536 Dec  4 22:40 update
+$ cat info/allowed-users &lt;4&gt;
+refs/heads/master       alice\|cindy
+refs/heads/doc-update   bob
+refs/tags/v[0-9]*       david
+</code></pre>
+
+<ol>
+<li><p>place the developers into the same git group.</p></li>
+
+<li><p>and make the shared repository writable by the group.</p></li>
+
+<li><p>use update-hook example by Carl from Documentation/howto/ for
+branch policy control.</p></li>
+
+<li><p>alice and cindy can push into master, only bob can push into
+doc-update. david is the release manager and is the only person
+who can create and push version tags.</p></li>
+</ol></li>
+</ul>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

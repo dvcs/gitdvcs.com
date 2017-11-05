@@ -119,49 +119,51 @@ local repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-l<br />
-&ndash;local<br />
-Only bind the web server to the local IP (127.0.0.1).</p>
+<ul>
+<li><p>-l<br />
+--local<br />
+Only bind the web server to the local IP (127.0.0.1).</p></li>
 
-<p>-d<br />
-&ndash;httpd<br />
-The HTTP daemon command-line that will be executed. Command-line options
-may be specified here, and the configuration file will be added at the
-end of the command-line. Currently apache2, lighttpd, mongoose, plackup
-and webrick are supported. (Default: lighttpd)</p>
+<li><p>-d<br />
+--httpd<br />
+The HTTP daemon command-line that will be executed. Command-line
+options may be specified here, and the configuration file will be
+added at the end of the command-line. Currently apache2, lighttpd,
+mongoose, plackup and webrick are supported. (Default: lighttpd)</p></li>
 
-<p>-m<br />
-&ndash;module-path<br />
+<li><p>-m<br />
+--module-path<br />
 The module path (only needed if httpd is Apache). (Default:
-/usr/lib/apache2/modules)</p>
+/usr/lib/apache2/modules)</p></li>
 
-<p>-p<br />
-&ndash;port<br />
-The port number to bind the httpd to. (Default: 1234)</p>
+<li><p>-p<br />
+--port<br />
+The port number to bind the httpd to. (Default: 1234)</p></li>
 
-<p>-b<br />
-&ndash;browser<br />
-The web browser that should be used to view the gitweb page. This will
-be passed to the <em>git web&ndash;browse</em> helper script along with the URL of
-the gitweb instance. See <a href="../git-web--browse">git-web&ndash;browse(1)</a> for
-more information about this. If the script fails, the URL will be
-printed to stdout.</p>
+<li><p>-b<br />
+--browser<br />
+The web browser that should be used to view the gitweb page. This
+will be passed to the <em>git web&ndash;browse</em> helper script along with the
+URL of the gitweb instance. See
+<a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information
+about this. If the script fails, the URL will be printed to stdout.</p></li>
 
-<p>start<br />
-&ndash;start<br />
+<li><p>start<br />
+--start<br />
 Start the httpd instance and exit. Regenerate configuration files as
-necessary for spawning a new instance.</p>
+necessary for spawning a new instance.</p></li>
 
-<p>stop<br />
-&ndash;stop<br />
+<li><p>stop<br />
+--stop<br />
 Stop the httpd instance and exit. This does not generate any of the
-configuration files for spawning a new instance, nor does it close the
-browser.</p>
+configuration files for spawning a new instance, nor does it close
+the browser.</p></li>
 
-<p>restart<br />
-&ndash;restart<br />
-Restart the httpd instance and exit. Regenerate configuration files as
-necessary for spawning a new instance.</p>
+<li><p>restart<br />
+--restart<br />
+Restart the httpd instance and exit. Regenerate configuration files
+as necessary for spawning a new instance.</p></li>
+</ul>
 
 <h2 id="configuration">CONFIGURATION</h2>
 

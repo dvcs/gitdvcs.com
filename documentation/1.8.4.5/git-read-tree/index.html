@@ -1,0 +1,591 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-read-tree </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-read-tree</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.4.5'>1.8.4.5</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.4.5/git-read-tree'>git-read-tree</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=&lt;prefix&gt;]
+                [-u [--exclude-per-directory=&lt;gitignore&gt;] | -i]]
+                [--index-output=&lt;file&gt;] [--no-sparse-checkout]
+                (--empty | &lt;tree-ish1&gt; [&lt;tree-ish2&gt; [&lt;tree-ish3&gt;]])
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Reads the tree information given by &lt;tree-ish&gt; into the index, but
+does not actually <strong>update</strong> any of the files it &ldquo;caches&rdquo;. (see:
+<a href="../git-checkout-index">git-checkout-index(1)</a>)</p>
+
+<p>Optionally, it can merge a tree into the index, perform a fast-forward
+(i.e. 2-way) merge, or a 3-way merge, with the <code>-m</code> flag. When used with
+<code>-m</code>, the <code>-u</code> flag causes it to also update the files in the work tree
+with the result of the merge.</p>
+
+<p>Trivial merges are done by <em>git read-tree</em> itself. Only conflicting
+paths will be in unmerged state when <em>git read-tree</em> returns.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>-m<br />
+Perform a merge, not just a read. The command will refuse to run if
+your index file has unmerged entries, indicating that you have not
+finished previous merge you started.</p></li>
+
+<li><p>&ndash;reset<br />
+Same as -m, except that unmerged entries are discarded instead of
+failing.</p></li>
+
+<li><p>-u<br />
+After a successful merge, update the files in the work tree with the
+result of the merge.</p></li>
+
+<li><p>-i<br />
+Usually a merge requires the index file as well as the files in the
+working tree to be up to date with the current head commit, in order
+not to lose local changes. This flag disables the check with the
+working tree and is meant to be used when creating a merge of trees
+that are not directly related to the current working tree status
+into a temporary index file.</p></li>
+
+<li><p>-n<br />
+--dry-run<br />
+Check if the command would error out, without updating the index nor
+the files in the working tree for real.</p></li>
+
+<li><p>-v<br />
+Show the progress of checking files out.</p></li>
+
+<li><p>&ndash;trivial<br />
+Restrict three-way merge by <em>git read-tree</em> to happen only if there
+is no file-level merging required, instead of resolving merge for
+trivial cases and leaving conflicting files unresolved in the index.</p></li>
+
+<li><p>&ndash;aggressive<br />
+Usually a three-way merge by <em>git read-tree</em> resolves the merge for
+really trivial cases and leaves other cases unresolved in the index,
+so that porcelains can implement different merge policies. This flag
+makes the command resolve a few more cases internally:</p>
+
+<ul>
+<li><p>when one side removes a path and the other side leaves the path
+unmodified. The resolution is to remove that path.</p></li>
+
+<li><p>when both sides remove a path. The resolution is to remove that
+path.</p></li>
+
+<li><p>when both sides add a path identically. The resolution is to add
+that path.</p></li>
+</ul></li>
+
+<li><p>&ndash;prefix=&lt;prefix&gt;/<br />
+Keep the current index contents, and read the contents of the named
+tree-ish under the directory at <code>&lt;prefix&gt;</code>. The command will refuse
+to overwrite entries that already existed in the original index
+file. Note that the <code>&lt;prefix&gt;/</code> value must end with a slash.</p></li>
+
+<li><p>&ndash;exclude-per-directory=&lt;gitignore&gt;<br />
+When running the command with <code>-u</code> and <code>-m</code> options, the merge
+result may need to overwrite paths that are not tracked in the
+current branch. The command usually refuses to proceed with the
+merge to avoid losing such a path. However this safety valve
+sometimes gets in the way. For example, it often happens that the
+other branch added a file that used to be a generated file in your
+branch, and the safety valve triggers when you try to switch to that
+branch after you ran <code>make</code> but before running <code>make clean</code> to
+remove the generated file. This option tells the command to read
+per-directory exclude file (usually <em>.gitignore</em>) and allows such an
+untracked but explicitly ignored file to be overwritten.</p></li>
+
+<li><p>&ndash;index-output=&lt;file&gt;<br />
+Instead of writing the results out to <code>$GIT_INDEX_FILE</code>, write the
+resulting index in the named file. While the command is operating,
+the original index file is locked with the same mechanism as usual.
+The file must allow to be rename(2)ed into from a temporary file
+that is created next to the usual index file; typically this means
+it needs to be on the same filesystem as the index file itself, and
+you need write permission to the directories the index file and
+index output file are located in.</p></li>
+
+<li><p>&ndash;no-sparse-checkout<br />
+Disable sparse checkout support even if <code>core.sparseCheckout</code> is
+true.</p></li>
+
+<li><p>&ndash;empty<br />
+Instead of reading tree object(s) into the index, just empty it.</p></li>
+
+<li><p>&lt;tree-ish#&gt;<br />
+The id of the tree object(s) to be read/merged.</p></li>
+</ul>
+
+<h2 id="merging">Merging</h2>
+
+<p>If <code>-m</code> is specified, <em>git read-tree</em> can perform 3 kinds of merge, a
+single tree merge if only 1 tree is given, a fast-forward merge with 2
+trees, or a 3-way merge if 3 trees are provided.</p>
+
+<h3 id="single-tree-merge">Single Tree Merge</h3>
+
+<p>If only 1 tree is specified, <em>git read-tree</em> operates as if the user did
+not specify <code>-m</code>, except that if the original index has an entry for a
+given pathname, and the contents of the path match with the tree being
+read, the stat info from the index is used. (In other words, the index’s
+stat()s take precedence over the merged tree’s).</p>
+
+<p>That means that if you do a <code>git read-tree -m &lt;newtree&gt;</code> followed by a
+<code>git checkout-index -f -u -a</code>, the <em>git checkout-index</em> only checks out
+the stuff that really changed.</p>
+
+<p>This is used to avoid unnecessary false hits when <em>git diff-files</em> is
+run after <em>git read-tree</em>.</p>
+
+<h3 id="two-tree-merge">Two Tree Merge</h3>
+
+<p>Typically, this is invoked as <code>git read-tree -m $H $M</code>, where $H is the
+head commit of the current repository, and $M is the head of a foreign
+tree, which is simply ahead of $H (i.e. we are in a fast-forward
+situation).</p>
+
+<p>When two trees are specified, the user is telling <em>git read-tree</em> the
+following:</p>
+
+<ol>
+<li><p>The current index and work tree is derived from $H, but the user may
+have local changes in them since $H.</p></li>
+
+<li><p>The user wants to fast-forward to $M.</p></li>
+</ol>
+
+<p>In this case, the <code>git read-tree -m $H $M</code> command makes sure that no
+local change is lost as the result of this &ldquo;merge&rdquo;. Here are the &ldquo;carry
+forward&rdquo; rules, where &ldquo;I&rdquo; denotes the index, &ldquo;clean&rdquo; means that index
+and work tree coincide, and &ldquo;exists&rdquo;/&ldquo;nothing&rdquo; refer to the presence of
+a path in the specified commit:</p>
+
+<pre><code>   I                   H        M        Result
+  -------------------------------------------------------
+0  nothing             nothing  nothing  (does not happen)
+1  nothing             nothing  exists   use M
+2  nothing             exists   nothing  remove path from index
+3  nothing             exists   exists,  use M if &quot;initial checkout&quot;,
+                                H == M   keep index otherwise
+                                exists,  fail
+                                H != M
+</code></pre>
+
+<pre><code>   clean I==H  I==M
+  ------------------
+4  yes   N/A   N/A     nothing  nothing  keep index
+5  no    N/A   N/A     nothing  nothing  keep index
+</code></pre>
+
+<pre><code>6  yes   N/A   yes     nothing  exists   keep index
+7  no    N/A   yes     nothing  exists   keep index
+8  yes   N/A   no      nothing  exists   fail
+9  no    N/A   no      nothing  exists   fail
+
+10 yes   yes   N/A     exists   nothing  remove path from index
+11 no    yes   N/A     exists   nothing  fail
+12 yes   no    N/A     exists   nothing  fail
+13 no    no    N/A     exists   nothing  fail
+</code></pre>
+
+<pre><code>   clean (H==M)
+  ------
+14 yes                 exists   exists   keep index
+15 no                  exists   exists   keep index
+</code></pre>
+
+<pre><code>   clean I==H  I==M (H!=M)
+  ------------------
+16 yes   no    no      exists   exists   fail
+17 no    no    no      exists   exists   fail
+18 yes   no    yes     exists   exists   keep index
+19 no    no    yes     exists   exists   keep index
+20 yes   yes   no      exists   exists   use M
+21 no    yes   no      exists   exists   fail
+</code></pre>
+
+<p>In all &ldquo;keep index&rdquo; cases, the index entry stays as in the original
+index file. If the entry is not up to date, <em>git read-tree</em> keeps the
+copy in the work tree intact when operating under the -u flag.</p>
+
+<p>When this form of <em>git read-tree</em> returns successfully, you can see
+which of the &ldquo;local changes&rdquo; that you made were carried forward by
+running <code>git diff-index --cached $M</code>. Note that this does not
+necessarily match what <code>git diff-index --cached $H</code> would have produced
+before such a two tree merge. This is because of cases 18 and 19 &mdash; if
+you already had the changes in $M (e.g. maybe you picked it up via
+e-mail in a patch form), <code>git diff-index --cached $H</code> would have told
+you about the change before this merge, but it would not show in <code>git
+diff-index --cached $M</code> output after the two-tree merge.</p>
+
+<p>Case 3 is slightly tricky and needs explanation. The result from this
+rule logically should be to remove the path if the user staged the
+removal of the path and then switching to a new branch. That however
+will prevent the initial checkout from happening, so the rule is
+modified to use M (new tree) only when the content of the index is
+empty. Otherwise the removal of the path is kept as long as $H and $M
+are the same.</p>
+
+<h3 id="3-way-merge">3-Way Merge</h3>
+
+<p>Each &ldquo;index&rdquo; entry has two bits worth of &ldquo;stage&rdquo; state. stage 0 is the
+normal one, and is the only one you’d see in any kind of normal use.</p>
+
+<p>However, when you do <em>git read-tree</em> with three trees, the &ldquo;stage&rdquo;
+starts out at 1.</p>
+
+<p>This means that you can do</p>
+
+<pre><code>$ git read-tree -m &lt;tree1&gt; &lt;tree2&gt; &lt;tree3&gt;
+</code></pre>
+
+<p>and you will end up with an index with all of the &lt;tree1&gt; entries in
+&ldquo;stage1&rdquo;, all of the &lt;tree2&gt; entries in &ldquo;stage2&rdquo; and all of the
+&lt;tree3&gt; entries in &ldquo;stage3&rdquo;. When performing a merge of another branch
+into the current branch, we use the common ancestor tree as &lt;tree1&gt;,
+the current branch head as &lt;tree2&gt;, and the other branch head as
+&lt;tree3&gt;.</p>
+
+<p>Furthermore, <em>git read-tree</em> has special-case logic that says: if you
+see a file that matches in all respects in the following states, it
+&ldquo;collapses&rdquo; back to &ldquo;stage0&rdquo;:</p>
+
+<ul>
+<li><p>stage 2 and 3 are the same; take one or the other (it makes no
+difference - the same work has been done on our branch in stage 2
+and their branch in stage 3)</p></li>
+
+<li><p>stage 1 and stage 2 are the same and stage 3 is different; take
+stage 3 (our branch in stage 2 did not do anything since the
+ancestor in stage 1 while their branch in stage 3 worked on it)</p></li>
+
+<li><p>stage 1 and stage 3 are the same and stage 2 is different take stage
+2 (we did something while they did nothing)</p></li>
+</ul>
+
+<p>The <em>git write-tree</em> command refuses to write a nonsensical tree, and it
+will complain about unmerged entries if it sees a single entry that is
+not stage 0.</p>
+
+<p>OK, this all sounds like a collection of totally nonsensical rules, but
+it’s actually exactly what you want in order to do a fast merge. The
+different stages represent the &ldquo;result tree&rdquo; (stage 0, aka &ldquo;merged&rdquo;),
+the original tree (stage 1, aka &ldquo;orig&rdquo;), and the two trees you are
+trying to merge (stage 2 and 3 respectively).</p>
+
+<p>The order of stages 1, 2 and 3 (hence the order of three &lt;tree-ish&gt;
+command line arguments) are significant when you start a 3-way merge
+with an index file that is already populated. Here is an outline of how
+the algorithm works:</p>
+
+<ul>
+<li><p>if a file exists in identical format in all three trees, it will
+automatically collapse to &ldquo;merged&rdquo; state by <em>git read-tree</em>.</p></li>
+
+<li><p>a file that has <em>any</em> difference what-so-ever in the three trees
+will stay as separate entries in the index. It’s up to &ldquo;porcelain
+policy&rdquo; to determine how to remove the non-0 stages, and insert a
+merged version.</p></li>
+
+<li><p>the index file saves and restores with all this information, so you
+can merge things incrementally, but as long as it has entries in
+stages 1/2/3 (i.e., &ldquo;unmerged entries&rdquo;) you can’t write the result.
+So now the merge algorithm ends up being really simple:</p>
+
+<ul>
+<li><p>you walk the index in order, and ignore all entries of stage 0,
+since they’ve already been done.</p></li>
+
+<li><p>if you find a &ldquo;stage1&rdquo;, but no matching &ldquo;stage2&rdquo; or &ldquo;stage3&rdquo;,
+you know it’s been removed from both trees (it only existed in
+the original tree), and you remove that entry.</p></li>
+
+<li><p>if you find a matching &ldquo;stage2&rdquo; and &ldquo;stage3&rdquo; tree, you remove
+one of them, and turn the other into a &ldquo;stage0&rdquo; entry. Remove
+any matching &ldquo;stage1&rdquo; entry if it exists too. .. all the normal
+trivial rules ..</p></li>
+</ul></li>
+</ul>
+
+<p>You would normally use <em>git merge-index</em> with supplied <em>git
+merge-one-file</em> to do this last step. The script updates the files in
+the working tree as it merges each path and at the end of a successful
+merge.</p>
+
+<p>When you start a 3-way merge with an index file that is already
+populated, it is assumed that it represents the state of the files in
+your work tree, and you can even have files with changes unrecorded in
+the index file. It is further assumed that this state is &ldquo;derived&rdquo; from
+the stage 2 tree. The 3-way merge refuses to run if it finds an entry in
+the original index file that does not match stage 2.</p>
+
+<p>This is done to prevent you from losing your work-in-progress changes,
+and mixing your random changes in an unrelated merge commit. To
+illustrate, suppose you start from what has been committed last to your
+repository:</p>
+
+<pre><code>$ JC=`git rev-parse --verify &quot;HEAD^0&quot;`
+$ git checkout-index -f -u -a $JC
+</code></pre>
+
+<p>You do random edits, without running <em>git update-index</em>. And then you
+notice that the tip of your &ldquo;upstream&rdquo; tree has advanced since you
+pulled from him:</p>
+
+<pre><code>$ git fetch git://.... linus
+$ LT=`git rev-parse FETCH_HEAD`
+</code></pre>
+
+<p>Your work tree is still based on your HEAD ($JC), but you have some
+edits since. Three-way merge makes sure that you have not added or
+modified index entries since $JC, and if you haven’t, then does the
+right thing. So with the following sequence:</p>
+
+<pre><code>$ git read-tree -m -u `git merge-base $JC $LT` $JC $LT
+$ git merge-index git-merge-one-file -a
+$ echo &quot;Merge with Linus&quot; | \
+  git commit-tree `git write-tree` -p $JC -p $LT
+</code></pre>
+
+<p>what you would commit is a pure merge between $JC and $LT without your
+work-in-progress changes, and your work tree would be updated to the
+result of the merge.</p>
+
+<p>However, if you have local changes in the working tree that would be
+overwritten by this merge, <em>git read-tree</em> will refuse to run to prevent
+your changes from being lost.</p>
+
+<p>In other words, there is no need to worry about what exists only in the
+working tree. When you have local changes in a part of the project that
+is not involved in the merge, your changes do not interfere with the
+merge, and are kept intact. When they <strong>do</strong> interfere, the merge does
+not even start (<em>git read-tree</em> complains loudly and fails without
+modifying anything). In such a case, you can simply continue doing what
+you were in the middle of doing, and when your working tree is ready
+(i.e. you have finished your work-in-progress), attempt the merge again.</p>
+
+<h2 id="sparse-checkout">Sparse checkout</h2>
+
+<p>&ldquo;Sparse checkout&rdquo; allows populating the working directory sparsely. It
+uses the skip-worktree bit (see
+<a href="../git-update-index">git-update-index(1)</a>) to tell Git whether a file
+in the working directory is worth looking at.</p>
+
+<p><em>git read-tree</em> and other merge-based commands (<em>git merge</em>, *git
+checkout*…) can help maintaining the skip-worktree bitmap and working
+directory update. <code>$GIT_DIR/info/sparse-checkout</code> is used to define the
+skip-worktree reference bitmap. When <em>git read-tree</em> needs to update the
+working directory, it resets the skip-worktree bit in the index based on
+this file, which uses the same syntax as .gitignore files. If an entry
+matches a pattern in this file, skip-worktree will not be set on that
+entry. Otherwise, skip-worktree will be set.</p>
+
+<p>Then it compares the new skip-worktree value with the previous one. If
+skip-worktree turns from set to unset, it will add the corresponding
+file back. If it turns from unset to set, that file will be removed.</p>
+
+<p>While <code>$GIT_DIR/info/sparse-checkout</code> is usually used to specify what
+files are in, you can also specify what files are <em>not</em> in, using negate
+patterns. For example, to remove the file <code>unwanted</code>:</p>
+
+<pre><code>/*
+!unwanted
+</code></pre>
+
+<p>Another tricky thing is fully repopulating the working directory when
+you no longer want sparse checkout. You cannot just disable &ldquo;sparse
+checkout&rdquo; because skip-worktree bits are still in the index and your
+working directory is still sparsely populated. You should re-populate
+the working directory with the <code>$GIT_DIR/info/sparse-checkout</code> file
+content as follows:</p>
+
+<pre><code>/*
+</code></pre>
+
+<p>Then you can disable sparse checkout. Sparse checkout support in <em>git
+read-tree</em> and similar commands is disabled by default. You need to turn
+<code>core.sparseCheckout</code> on in order to have sparse checkout support.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-write-tree">git-write-tree(1)</a>;
+<a href="../git-ls-files">git-ls-files(1)</a>; <a href="../gitignore">gitignore(5)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

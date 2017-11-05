@@ -134,9 +134,8 @@ see <a href="../git-gc">git-gc(1)</a>.</p>
 subcommands) will take all the normal log options, and show the log of
 the reference provided in the command-line (or <code>HEAD</code>, by default). The
 reflog will cover all recent actions (HEAD reflog records branch
-switching as well). It is an alias for
-<code>git log -g --abbrev-commit --pretty=oneline</code>; see
-<a href="../git-log">git-log(1)</a>.</p>
+switching as well). It is an alias for <code>git log -g --abbrev-commit
+--pretty=oneline</code>; see <a href="../git-log">git-log(1)</a>.</p>
 
 <p>The reflog is useful in various Git commands, to specify the old value
 of a reference. For example, <code>HEAD@{2}</code> means &ldquo;where HEAD used to be two
@@ -149,40 +148,45 @@ and specify the <em>exact</em> entry (e.g. &ldquo;<code>git reflog delete master
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;stale-fix<br />
-This revamps the logic — the definition of &ldquo;broken commit&rdquo; becomes: a
-commit that is not reachable from any of the refs and there is a missing
-object among the commit, tree, or blob objects reachable from it that is
-not reachable from any of the refs.</p>
+<ul>
+<li><p>&ndash;stale-fix<br />
+This revamps the logic — the definition of &ldquo;broken commit&rdquo; becomes:
+a commit that is not reachable from any of the refs and there is a
+missing object among the commit, tree, or blob objects reachable
+from it that is not reachable from any of the refs.</p>
 
-<p>This computation involves traversing all the reachable objects, i.e. it
-has the same cost as <em>git prune</em>. Fortunately, once this is run, we
-should not have to ever worry about missing objects, because the current
-prune and pack-objects know about reflogs and protect objects referred
-by them.</p>
+<p>This computation involves traversing all the reachable objects, i.e.
+it has the same cost as <em>git prune</em>. Fortunately, once this is run,
+we should not have to ever worry about missing objects, because the
+current prune and pack-objects know about reflogs and protect
+objects referred by them.</p></li>
 
-<p>&ndash;expire=&lt;time&gt;<br />
-Entries older than this time are pruned. Without the option it is taken
-from configuration <code>gc.reflogExpire</code>, which in turn defaults to 90 days.</p>
+<li><p>&ndash;expire=&lt;time&gt;<br />
+Entries older than this time are pruned. Without the option it is
+taken from configuration <code>gc.reflogExpire</code>, which in turn defaults
+to 90 days.</p></li>
 
-<p>&ndash;expire-unreachable=&lt;time&gt;<br />
-Entries older than this time and not reachable from the current tip of
-the branch are pruned. Without the option it is taken from configuration
-<code>gc.reflogExpireUnreachable</code>, which in turn defaults to 30 days.</p>
+<li><p>&ndash;expire-unreachable=&lt;time&gt;<br />
+Entries older than this time and not reachable from the current tip
+of the branch are pruned. Without the option it is taken from
+configuration <code>gc.reflogExpireUnreachable</code>, which in turn defaults
+to 30 days.</p></li>
 
-<p>&ndash;all<br />
-Instead of listing &lt;refs&gt; explicitly, prune all refs.</p>
+<li><p>&ndash;all<br />
+Instead of listing &lt;refs&gt; explicitly, prune all refs.</p></li>
 
-<p>&ndash;updateref<br />
+<li><p>&ndash;updateref<br />
 Update the ref with the sha1 of the top reflog entry (i.e.
-&lt;ref&gt;@{0}) after expiring or deleting.</p>
+&lt;ref&gt;@{0}) after expiring or deleting.</p></li>
 
-<p>&ndash;rewrite<br />
-While expiring or deleting, adjust each reflog entry to ensure that the
-<code>old</code> sha1 field points to the <code>new</code> sha1 field of the previous entry.</p>
+<li><p>&ndash;rewrite<br />
+While expiring or deleting, adjust each reflog entry to ensure that
+the <code>old</code> sha1 field points to the <code>new</code> sha1 field of the previous
+entry.</p></li>
 
-<p>&ndash;verbose<br />
-Print extra information on screen.</p>
+<li><p>&ndash;verbose<br />
+Print extra information on screen.</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

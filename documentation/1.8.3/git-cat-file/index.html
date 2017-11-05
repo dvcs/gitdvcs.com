@@ -124,46 +124,48 @@ printed on stdout.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;object&gt;<br />
+<ul>
+<li><p>&lt;object&gt;<br />
 The name of the object to show. For a more complete list of ways to
 spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in
-<a href="../gitrevisions">gitrevisions(7)</a>.</p>
+<a href="../gitrevisions">gitrevisions(7)</a>.</p></li>
 
-<p>-t<br />
+<li><p>-t<br />
 Instead of the content, show the object type identified by
-&lt;object&gt;.</p>
+&lt;object&gt;.</p></li>
 
-<p>-s<br />
+<li><p>-s<br />
 Instead of the content, show the object size identified by
-&lt;object&gt;.</p>
+&lt;object&gt;.</p></li>
 
-<p>-e<br />
+<li><p>-e<br />
 Suppress all output; instead exit with zero status if &lt;object&gt;
-exists and is a valid object.</p>
+exists and is a valid object.</p></li>
 
-<p>-p<br />
-Pretty-print the contents of &lt;object&gt; based on its type.</p>
+<li><p>-p<br />
+Pretty-print the contents of &lt;object&gt; based on its type.</p></li>
 
-<p>&lt;type&gt;<br />
+<li><p>&lt;type&gt;<br />
 Typically this matches the real type of &lt;object&gt; but asking for a
 type that can trivially be dereferenced from the given &lt;object&gt; is
 also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt;
 being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with
-&lt;object&gt; being a tag object that points at it.</p>
+&lt;object&gt; being a tag object that points at it.</p></li>
 
-<p>&ndash;textconv<br />
+<li><p>&ndash;textconv<br />
 Show the content as transformed by a textconv filter. In this case,
-&lt;object&gt; has be of the form &lt;treeish&gt;:&lt;path&gt;, or
-:&lt;path&gt; in order to apply the filter to the content recorded in
-the index at &lt;path&gt;.</p>
+&lt;object&gt; has be of the form &lt;treeish&gt;:&lt;path&gt;, or :&lt;path&gt; in
+order to apply the filter to the content recorded in the index at
+&lt;path&gt;.</p></li>
 
-<p>&ndash;batch<br />
+<li><p>&ndash;batch<br />
 Print the SHA-1, type, size, and contents of each object provided on
-stdin. May not be combined with any other options or arguments.</p>
+stdin. May not be combined with any other options or arguments.</p></li>
 
-<p>&ndash;batch-check<br />
-Print the SHA-1, type, and size of each object provided on stdin. May
-not be combined with any other options or arguments.</p>
+<li><p>&ndash;batch-check<br />
+Print the SHA-1, type, and size of each object provided on stdin.
+May not be combined with any other options or arguments.</p></li>
+</ul>
 
 <h2 id="output">OUTPUT</h2>
 
@@ -175,8 +177,8 @@ not be combined with any other options or arguments.</p>
 
 <p>If <em>-p</em> is specified, the contents of &lt;object&gt; are pretty-printed.</p>
 
-<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of
-the &lt;object&gt; will be returned.</p>
+<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of the
+&lt;object&gt; will be returned.</p>
 
 <p>If <em>&ndash;batch</em> is specified, output of the following form is printed for
 each object specified on stdin:</p>

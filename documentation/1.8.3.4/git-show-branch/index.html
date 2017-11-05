@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-show-branch </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-show-branch</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.3.4'>1.8.3.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/1.8.3.4/git-show-branch'>git-show-branch</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code class="language-content">git show-branch [-a|--all] [-r|--remotes] [--topo-order | --date-order]
+                [--current] [--color[=&lt;when&gt;] | --no-color] [--sparse]
+                [--more=&lt;n&gt; | --list | --independent | --merge-base]
+                [--no-name | --sha1-name] [--topics]
+                [(&lt;rev&gt; | &lt;glob&gt;)…]
+git show-branch (-g|--reflog)[=&lt;n&gt;[,&lt;base&gt;]] [--list] [&lt;ref&gt;]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Shows the commit ancestry graph starting from the commits named with
+&lt;rev&gt;s or &lt;globs&gt;s (or all refs under refs/heads and/or refs/tags)
+semi-visually.</p>
+
+<p>It cannot show more than 29 branches and commits at a time.</p>
+
+<p>It uses <code>showbranch.default</code> multi-valued configuration items if no
+&lt;rev&gt; nor &lt;glob&gt; is given on the command line.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<ul>
+<li><p>&lt;rev&gt;<br />
+Arbitrary extended SHA-1 expression (see
+<a href="../gitrevisions">gitrevisions(7)</a>) that typically names a branch
+head or a tag.</p></li>
+
+<li><p>&lt;glob&gt;<br />
+A glob pattern that matches branch or tag names under refs/. For
+example, if you have many topic branches under refs/heads/topic,
+giving <code>topic/*</code> would show all of them.</p></li>
+
+<li><p>-r<br />
+--remotes<br />
+Show the remote-tracking branches.</p></li>
+
+<li><p>-a<br />
+--all<br />
+Show both remote-tracking branches and local branches.</p></li>
+
+<li><p>&ndash;current<br />
+With this option, the command includes the current branch to the
+list of revs to be shown when it is not given on the command line.</p></li>
+
+<li><p>&ndash;topo-order<br />
+By default, the branches and their commits are shown in reverse
+chronological order. This option makes them appear in topological
+order (i.e., descendant commits are shown before their parents).</p></li>
+
+<li><p>&ndash;date-order<br />
+This option is similar to <em>&ndash;topo-order</em> in the sense that no parent
+comes before all of its children, but otherwise commits are ordered
+according to their commit date.</p></li>
+
+<li><p>&ndash;sparse<br />
+By default, the output omits merges that are reachable from only one
+tip being shown. This option makes them visible.</p></li>
+
+<li><p>&ndash;more=&lt;n&gt;<br />
+Usually the command stops output upon showing the commit that is the
+common ancestor of all the branches. This flag tells the command to
+go &lt;n&gt; more common commits beyond that. When &lt;n&gt; is negative,
+display only the &lt;reference&gt;s given, without showing the commit
+ancestry tree.</p></li>
+
+<li><p>&ndash;list<br />
+Synonym to <code>--more=-1</code></p></li>
+
+<li><p>&ndash;merge-base<br />
+Instead of showing the commit list, determine possible merge bases
+for the specified commits. All merge bases will be contained in all
+specified commits. This is different from how
+<a href="../git-merge-base">git-merge-base(1)</a> handles the case of three
+or more commits.</p></li>
+
+<li><p>&ndash;independent<br />
+Among the &lt;reference&gt;s given, display only the ones that cannot be
+reached from any other &lt;reference&gt;.</p></li>
+
+<li><p>&ndash;no-name<br />
+Do not show naming strings for each commit.</p></li>
+
+<li><p>&ndash;sha1-name<br />
+Instead of naming the commits using the path to reach them from
+heads (e.g. &ldquo;master~2&rdquo; to mean the grandparent of &ldquo;master&rdquo;), name
+them with the unique prefix of their object names.</p></li>
+
+<li><p>&ndash;topics<br />
+Shows only commits that are NOT on the first branch given. This
+helps track topic branches by hiding any commit that is already in
+the main line of development. When given &ldquo;git show-branch &ndash;topics
+master topic1 topic2&rdquo;, this will show the revisions given by &ldquo;git
+rev-list ^master topic1 topic2&rdquo;</p></li>
+
+<li><p>-g<br />
+--reflog[=&lt;n&gt;[,&lt;base&gt;]] [&lt;ref&gt;]<br />
+Shows &lt;n&gt; most recent ref-log entries for the given ref. If
+&lt;base&gt; is given, &lt;n&gt; entries going back from that entry.
+&lt;base&gt; can be specified as count or date. When no explicit &lt;ref&gt;
+parameter is given, it defaults to the current branch (or <code>HEAD</code> if
+it is detached).</p></li>
+
+<li><p>&ndash;color[=&lt;when&gt;]<br />
+Color the status sign (one of these: <code>*</code> <code>!</code> <code>+</code> <code>-</code>) of each commit
+corresponding to the branch it’s in. The value must be always (the
+default), never, or auto.</p></li>
+
+<li><p>&ndash;no-color<br />
+Turn off colored output, even when the configuration file gives the
+default to color output. Same as <code>--color=never</code>.</p></li>
+</ul>
+
+<p>Note that &ndash;more, &ndash;list, &ndash;independent and &ndash;merge-base options are
+mutually exclusive.</p>
+
+<h2 id="output">OUTPUT</h2>
+
+<p>Given N &lt;references&gt;, the first N lines are the one-line description
+from their commit message. The branch head that is pointed at by
+$GIT_DIR/HEAD is prefixed with an asterisk <code>*</code> character while other
+heads are prefixed with a <code>!</code> character.</p>
+
+<p>Following these N lines, one-line log for each commit is displayed,
+indented N places. If a commit is on the I-th branch, the I-th
+indentation character shows a <code>+</code> sign; otherwise it shows a space.
+Merge commits are denoted by a <code>-</code> sign. Each commit shows a short name
+that can be used as an extended SHA-1 to name that commit.</p>
+
+<p>The following example shows three branches, &ldquo;master&rdquo;, &ldquo;fixes&rdquo; and &ldquo;mhf&rdquo;:</p>
+
+<pre><code>$ git show-branch master fixes mhf
+* [master] Add 'git show-branch'.
+ ! [fixes] Introduce &quot;reset type&quot; flag to &quot;git reset&quot;
+  ! [mhf] Allow &quot;+remote:local&quot; refspec to cause --force when fetching.
+---
+  + [mhf] Allow &quot;+remote:local&quot; refspec to cause --force when fetching.
+  + [mhf~1] Use git-octopus when pulling more than one heads.
+ +  [fixes] Introduce &quot;reset type&quot; flag to &quot;git reset&quot;
+  + [mhf~2] &quot;git fetch --force&quot;.
+  + [mhf~3] Use .git/remote/origin, not .git/branches/origin.
+  + [mhf~4] Make &quot;git pull&quot; and &quot;git fetch&quot; default to origin
+  + [mhf~5] Infamous 'octopus merge'
+  + [mhf~6] Retire git-parse-remote.
+  + [mhf~7] Multi-head fetch.
+  + [mhf~8] Start adding the $GIT_DIR/remotes/ support.
+*++ [master] Add 'git show-branch'.
+</code></pre>
+
+<p>These three branches all forked from a common commit, [master], whose
+commit message is &ldquo;Add &lsquo;git show-branch&rsquo;&rdquo;. The &ldquo;fixes&rdquo; branch adds one
+commit &ldquo;Introduce &ldquo;reset type&rdquo; flag to &ldquo;git reset&rdquo;&ldquo;. The &ldquo;mhf&rdquo; branch
+adds many other commits. The current branch is &ldquo;master&rdquo;.</p>
+
+<h2 id="example">EXAMPLE</h2>
+
+<p>If you keep your primary branches immediately under <code>refs/heads</code>, and
+topic branches in subdirectories of it, having the following in the
+configuration file may help:</p>
+
+<pre><code>[showbranch]
+        default = --topo-order
+        default = heads/*
+</code></pre>
+
+<p>With this, <code>git show-branch</code> without extra parameters would show only
+the primary branches. In addition, if you happen to be on your topic
+branch, it is shown as well.</p>
+
+<pre><code>$ git show-branch --reflog=&quot;10,1 hour ago&quot; --list master
+</code></pre>
+
+<p>shows 10 reflog entries going back from the tip as of 1 hour ago.
+Without <code>--list</code>, the output also shows how these tips are topologically
+related with each other.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

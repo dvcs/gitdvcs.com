@@ -129,42 +129,45 @@ objects in the basis are already in the destination repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>create &lt;file&gt;<br />
+<ul>
+<li><p>create &lt;file&gt;<br />
 Used to create a bundle named <em>file</em>. This requires the
-<em>git-rev-list-args</em> arguments to define the bundle contents.</p>
+<em>git-rev-list-args</em> arguments to define the bundle contents.</p></li>
 
-<p>verify &lt;file&gt;<br />
-Used to check that a bundle file is valid and will apply cleanly to the
-current repository. This includes checks on the bundle format itself as
-well as checking that the prerequisite commits exist and are fully
-linked in the current repository. <em>git bundle</em> prints a list of missing
-commits, if any, and exits with a non-zero status.</p>
+<li><p>verify &lt;file&gt;<br />
+Used to check that a bundle file is valid and will apply cleanly to
+the current repository. This includes checks on the bundle format
+itself as well as checking that the prerequisite commits exist and
+are fully linked in the current repository. <em>git bundle</em> prints a
+list of missing commits, if any, and exits with a non-zero status.</p></li>
 
-<p>list-heads &lt;file&gt;<br />
+<li><p>list-heads &lt;file&gt;<br />
 Lists the references defined in the bundle. If followed by a list of
-references, only references matching those given are printed out.</p>
+references, only references matching those given are printed out.</p></li>
 
-<p>unbundle &lt;file&gt;<br />
-Passes the objects in the bundle to <em>git index-pack</em> for storage in the
-repository, then prints the names of all defined references. If a list
-of references is given, only references matching those in the list are
-printed. This command is really plumbing, intended to be called only by
-<em>git fetch</em>.</p>
+<li><p>unbundle &lt;file&gt;<br />
+Passes the objects in the bundle to <em>git index-pack</em> for storage in
+the repository, then prints the names of all defined references. If
+a list of references is given, only references matching those in the
+list are printed. This command is really plumbing, intended to be
+called only by <em>git fetch</em>.</p></li>
 
-<p>&lt;git-rev-list-args&gt;<br />
-A list of arguments, acceptable to <em>git rev-parse</em> and <em>git rev-list</em>
-(and containing a named ref, see SPECIFYING REFERENCES below), that
-specifies the specific objects and references to transport. For example,
-<code>master~10..master</code> causes the current master reference to be packaged
-along with all objects added since its 10th ancestor commit. There is no
-explicit limit to the number of references and objects that may be
-packaged.</p>
+<li><p>&lt;git-rev-list-args&gt;<br />
+A list of arguments, acceptable to <em>git rev-parse</em> and <em>git
+rev-list</em> (and containing a named ref, see SPECIFYING REFERENCES
+below), that specifies the specific objects and references to
+transport. For example, <code>master~10..master</code> causes the current
+master reference to be packaged along with all objects added since
+its 10th ancestor commit. There is no explicit limit to the number
+of references and objects that may be packaged.</p></li>
 
-<p>[&lt;refname&gt;…]<br />
-A list of references used to limit the references reported as available.
-This is principally of use to <em>git fetch</em>, which expects to receive only
-those references asked for and not necessarily everything in the pack
-(in this case, <em>git bundle</em> acts like <em>git fetch-pack</em>).</p>
+<li><p>[&lt;refname&gt;…]<br />
+A list of references used to limit the references reported as
+available. This is principally of use to <em>git fetch</em>, which expects
+to receive only those references asked for and not necessarily
+everything in the pack (in this case, <em>git bundle</em> acts like <em>git
+fetch-pack</em>).</p></li>
+</ul>
 
 <h2 id="specifying-references">SPECIFYING REFERENCES</h2>
 

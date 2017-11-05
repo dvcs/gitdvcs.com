@@ -123,19 +123,20 @@ named <code>git-shell-commands</code> in the user’s home directory.</p>
 
 <p><em>git shell</em> accepts the following commands after the <em>-c</em> option:</p>
 
-<p><em>git receive-pack &lt;argument&gt;</em><br />
+<ul>
+<li><p><em>git receive-pack &lt;argument&gt;</em><br />
 <em>git upload-pack &lt;argument&gt;</em><br />
 <em>git upload-archive &lt;argument&gt;</em><br />
-Call the corresponding server-side command to support the client’s <em>git
-push</em>, <em>git fetch</em>, or <em>git archive &ndash;remote</em> request.</p>
+Call the corresponding server-side command to support the client’s
+<em>git push</em>, <em>git fetch</em>, or <em>git archive &ndash;remote</em> request.</p></li>
 
-<p><em>cvs server</em><br />
-Imitate a CVS server. See <a href="../git-cvsserver">git-cvsserver(1)</a>.</p>
+<li><p><em>cvs server</em><br />
+Imitate a CVS server. See <a href="../git-cvsserver">git-cvsserver(1)</a>.</p></li>
+</ul>
 
 <p>If a <code>~/git-shell-commands</code> directory is present, <em>git shell</em> will also
-handle other, custom commands by running
-&ldquo;<code>git-shell-commands/&lt;command&gt;               &lt;arguments&gt;</code>&rdquo; from the
-user’s home directory.</p>
+handle other, custom commands by running &ldquo;<code>git-shell-commands/&lt;command&gt;
+&lt;arguments&gt;</code>&rdquo; from the user’s home directory.</p>
 
 <h2 id="interactive-use">INTERACTIVE USE</h2>
 
@@ -145,9 +146,9 @@ option; the shell is not interactive.</p>
 <p>If a <code>~/git-shell-commands</code> directory is present, <em>git shell</em> can also
 be run interactively (with no arguments). If a <code>help</code> command is present
 in the <code>git-shell-commands</code> directory, it is run to provide the user
-with an overview of allowed actions. Then a &ldquo;git&gt; &ldquo; prompt is
-presented at which one can enter any of the commands from the
-<code>git-shell-commands</code> directory, or <code>exit</code> to close the connection.</p>
+with an overview of allowed actions. Then a &ldquo;git&gt; &ldquo; prompt is presented
+at which one can enter any of the commands from the <code>git-shell-commands</code>
+directory, or <code>exit</code> to close the connection.</p>
 
 <p>Generally this mode is used as an administrative interface to allow
 users to list repositories they have access to, create, delete, or

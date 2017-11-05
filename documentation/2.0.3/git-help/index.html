@@ -137,42 +137,44 @@ former is internally converted into the latter.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-a<br />
-&ndash;all<br />
-Prints all the available commands on the standard output. This option
-overrides any given command or guide name.</p>
+<ul>
+<li><p>-a<br />
+--all<br />
+Prints all the available commands on the standard output. This
+option overrides any given command or guide name.</p></li>
 
-<p>-g<br />
-&ndash;guides<br />
+<li><p>-g<br />
+--guides<br />
 Prints a list of useful guides on the standard output. This option
-overrides any given command or guide name.</p>
+overrides any given command or guide name.</p></li>
 
-<p>-i<br />
-&ndash;info<br />
+<li><p>-i<br />
+--info<br />
 Display manual page for the command in the <em>info</em> format. The <em>info</em>
-program will be used for that purpose.</p>
+program will be used for that purpose.</p></li>
 
-<p>-m<br />
-&ndash;man<br />
-Display manual page for the command in the <em>man</em> format. This option may
-be used to override a value set in the <em>help.format</em> configuration
-variable.</p>
+<li><p>-m<br />
+--man<br />
+Display manual page for the command in the <em>man</em> format. This option
+may be used to override a value set in the <em>help.format</em>
+configuration variable.</p>
 
-<p>By default the <em>man</em> program will be used to display the manual page,
-but the <em>man.viewer</em> configuration variable may be used to choose other
-display programs (see below).</p>
+<p>By default the <em>man</em> program will be used to display the manual
+page, but the <em>man.viewer</em> configuration variable may be used to
+choose other display programs (see below).</p></li>
 
-<p>-w<br />
-&ndash;web<br />
-Display manual page for the command in the <em>web</em> (HTML) format. A web
-browser will be used for that purpose.</p>
+<li><p>-w<br />
+--web<br />
+Display manual page for the command in the <em>web</em> (HTML) format. A
+web browser will be used for that purpose.</p>
 
 <p>The web browser can be specified using the configuration variable
-<em>help.browser</em>, or <em>web.browser</em> if the former is not set. If none of
-these config variables is set, the <em>git web&ndash;browse</em> helper script
-(called by <em>git help</em>) will pick a suitable default. See
-<a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information about
-this.</p>
+<em>help.browser</em>, or <em>web.browser</em> if the former is not set. If none
+of these config variables is set, the <em>git web&ndash;browse</em> helper
+script (called by <em>git help</em>) will pick a suitable default. See
+<a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information
+about this.</p></li>
+</ul>
 
 <h2 id="configuration-variables">CONFIGURATION VARIABLES</h2>
 
@@ -191,12 +193,12 @@ line option:</p>
 <li><p>&ldquo;web&rdquo; or &ldquo;html&rdquo; correspond to <em>-w|&ndash;web</em>.</p></li>
 </ul>
 
-<h3 id="help-browser-web-browser-and-browser-lt-tool-gt-path">help.browser, web.browser and browser.&lt;tool&gt;.path</h3>
+<h3 id="help-browser-web-browser-and-browser-tool-path">help.browser, web.browser and browser.&lt;tool&gt;.path</h3>
 
-<p>The <em>help.browser</em>, <em>web.browser</em> and <em>browser.&lt;tool&gt;.path</em> will
-also be checked if the <em>web</em> format is chosen (either by command line
-option or configuration variable). See <em>-w|&ndash;web</em> in the OPTIONS
-section above and <a href="../git-web--browse">git-web&ndash;browse(1)</a>.</p>
+<p>The <em>help.browser</em>, <em>web.browser</em> and <em>browser.&lt;tool&gt;.path</em> will also
+be checked if the <em>web</em> format is chosen (either by command line option
+or configuration variable). See <em>-w|&ndash;web</em> in the OPTIONS section above
+and <a href="../git-web--browse">git-web&ndash;browse(1)</a>.</p>
 
 <h3 id="man-viewer">man.viewer</h3>
 
@@ -234,15 +236,15 @@ DISPLAY is not set) and in that case emacs&rsquo; woman mode will be tried.</p>
 in the GIT_MAN_VIEWER environment variable will be tried. If that
 fails too, the <em>man</em> program will be tried anyway.</p>
 
-<h3 id="man-lt-tool-gt-path">man.&lt;tool&gt;.path</h3>
+<h3 id="man-tool-path">man.&lt;tool&gt;.path</h3>
 
 <p>You can explicitly provide a full path to your preferred man viewer by
-setting the configuration variable <em>man.&lt;tool&gt;.path</em>. For example,
-you can configure the absolute path to konqueror by setting
+setting the configuration variable <em>man.&lt;tool&gt;.path</em>. For example, you
+can configure the absolute path to konqueror by setting
 <em>man.konqueror.path</em>. Otherwise, <em>git help</em> assumes the tool is
 available in PATH.</p>
 
-<h3 id="man-lt-tool-gt-cmd">man.&lt;tool&gt;.cmd</h3>
+<h3 id="man-tool-cmd">man.&lt;tool&gt;.cmd</h3>
 
 <p>When the man viewer, specified by the <em>man.viewer</em> configuration
 variables, is not among the supported ones, then the corresponding

@@ -118,30 +118,33 @@ any format parsable by <em>git rev-parse</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;tags<br />
-Do not use branch names, but only tags to name the commits</p>
+<ul>
+<li><p>&ndash;tags<br />
+Do not use branch names, but only tags to name the commits</p></li>
 
-<p>&ndash;refs=&lt;pattern&gt;<br />
-Only use refs whose names match a given shell pattern.</p>
+<li><p>&ndash;refs=&lt;pattern&gt;<br />
+Only use refs whose names match a given shell pattern.</p></li>
 
-<p>&ndash;all<br />
-List all commits reachable from all refs</p>
+<li><p>&ndash;all<br />
+List all commits reachable from all refs</p></li>
 
-<p>&ndash;stdin<br />
+<li><p>&ndash;stdin<br />
 Read from stdin, append &ldquo;(&lt;rev_name&gt;)&rdquo; to all sha1’s of nameable
-commits, and pass to stdout</p>
+commits, and pass to stdout</p></li>
 
-<p>&ndash;name-only<br />
-Instead of printing both the SHA-1 and the name, print only the name. If
-given with &ndash;tags the usual tag prefix of &ldquo;tags/&rdquo; is also omitted from
-the name, matching the output of <code>git-describe</code> more closely.</p>
+<li><p>&ndash;name-only<br />
+Instead of printing both the SHA-1 and the name, print only the
+name. If given with &ndash;tags the usual tag prefix of &ldquo;tags/&rdquo; is also
+omitted from the name, matching the output of <code>git-describe</code> more
+closely.</p></li>
 
-<p>&ndash;no-undefined<br />
+<li><p>&ndash;no-undefined<br />
 Die with error code != 0 when a reference is undefined, instead of
-printing <code>undefined</code>.</p>
+printing <code>undefined</code>.</p></li>
 
-<p>&ndash;always<br />
-Show uniquely abbreviated commit object as fallback.</p>
+<li><p>&ndash;always<br />
+Show uniquely abbreviated commit object as fallback.</p></li>
+</ul>
 
 <h2 id="example">EXAMPLE</h2>
 

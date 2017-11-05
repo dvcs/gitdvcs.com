@@ -188,23 +188,25 @@ branch name.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;[no-]allow-onelevel<br />
-Controls whether one-level refnames are accepted (i.e., refnames that do
-not contain multiple <code>/</code>-separated components). The default is
-<code>--no-allow-onelevel</code>.</p>
+<ul>
+<li><p>&ndash;[no-]allow-onelevel<br />
+Controls whether one-level refnames are accepted (i.e., refnames
+that do not contain multiple <code>/</code>-separated components). The default
+is <code>--no-allow-onelevel</code>.</p></li>
 
-<p>&ndash;refspec-pattern<br />
+<li><p>&ndash;refspec-pattern<br />
 Interpret &lt;refname&gt; as a reference name pattern for a refspec (as
 used with remote repositories). If this option is enabled,
 &lt;refname&gt; is allowed to contain a single <code>*</code> in place of a one
-full pathname component (e.g., <code>foo/*/bar</code> but not <code>foo/bar*</code>).</p>
+full pathname component (e.g., <code>foo/*/bar</code> but not <code>foo/bar*</code>).</p></li>
 
-<p>&ndash;normalize<br />
-Normalize <em>refname</em> by removing any leading slash (<code>/</code>) characters and
-collapsing runs of adjacent slashes between name components into a
-single slash. Iff the normalized refname is valid then print it to
-standard output and exit with a status of 0. (<code>--print</code> is a deprecated
-way to spell <code>--normalize</code>.)</p>
+<li><p>&ndash;normalize<br />
+Normalize <em>refname</em> by removing any leading slash (<code>/</code>) characters
+and collapsing runs of adjacent slashes between name components into
+a single slash. Iff the normalized refname is valid then print it to
+standard output and exit with a status of 0. (<code>--print</code> is a
+deprecated way to spell <code>--normalize</code>.)</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -214,7 +216,8 @@ way to spell <code>--normalize</code>.)</p>
 <pre><code>$ git check-ref-format --branch @{-1}
 </code></pre></li>
 
-<li><p>Determine the reference name to use for a new branch:</p>
+<li><p>Determine the reference name to use for a new
+    branch:</p>
 
 <pre><code>$ ref=$(git check-ref-format --normalize &quot;refs/heads/$newbranch&quot;) ||
 die &quot;we do not like '$newbranch' as a branch name.&quot;

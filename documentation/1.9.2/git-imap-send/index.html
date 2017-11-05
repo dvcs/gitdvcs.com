@@ -129,47 +129,49 @@ set to appropriate values.</p>
 
 <h3 id="variables">Variables</h3>
 
-<p>imap.folder<br />
-The folder to drop the mails into, which is typically the Drafts folder.
-For example: &ldquo;INBOX.Drafts&rdquo;, &ldquo;INBOX/Drafts&rdquo; or &ldquo;[Gmail]/Drafts&rdquo;.
-Required to use imap-send.</p>
+<ul>
+<li><p>imap.folder<br />
+The folder to drop the mails into, which is typically the Drafts
+folder. For example: &ldquo;INBOX.Drafts&rdquo;, &ldquo;INBOX/Drafts&rdquo; or
+&ldquo;[Gmail]/Drafts&rdquo;. Required to use imap-send.</p></li>
 
-<p>imap.tunnel<br />
-Command used to setup a tunnel to the IMAP server through which commands
-will be piped instead of using a direct network connection to the
-server. Required when imap.host is not set to use imap-send.</p>
+<li><p>imap.tunnel<br />
+Command used to setup a tunnel to the IMAP server through which
+commands will be piped instead of using a direct network connection
+to the server. Required when imap.host is not set to use imap-send.</p></li>
 
-<p>imap.host<br />
+<li><p>imap.host<br />
 A URL identifying the server. Use a <code>imap://</code> prefix for non-secure
-connections and a <code>imaps://</code> prefix for secure connections. Ignored when
-imap.tunnel is set, but required to use imap-send otherwise.</p>
+connections and a <code>imaps://</code> prefix for secure connections. Ignored
+when imap.tunnel is set, but required to use imap-send otherwise.</p></li>
 
-<p>imap.user<br />
-The username to use when logging in to the server.</p>
+<li><p>imap.user<br />
+The username to use when logging in to the server.</p></li>
 
-<p>imap.pass<br />
-The password to use when logging in to the server.</p>
+<li><p>imap.pass<br />
+The password to use when logging in to the server.</p></li>
 
-<p>imap.port<br />
-An integer port number to connect to on the server. Defaults to 143 for
-imap:// hosts and 993 for imaps:// hosts. Ignored when imap.tunnel is
-set.</p>
+<li><p>imap.port<br />
+An integer port number to connect to on the server. Defaults to 143
+for imap:// hosts and 993 for imaps:// hosts. Ignored when
+imap.tunnel is set.</p></li>
 
-<p>imap.sslverify<br />
-A boolean to enable/disable verification of the server certificate used
-by the SSL/TLS connection. Default is <code>true</code>. Ignored when imap.tunnel
-is set.</p>
+<li><p>imap.sslverify<br />
+A boolean to enable/disable verification of the server certificate
+used by the SSL/TLS connection. Default is <code>true</code>. Ignored when
+imap.tunnel is set.</p></li>
 
-<p>imap.preformattedHTML<br />
+<li><p>imap.preformattedHTML<br />
 A boolean to enable/disable the use of html encoding when sending a
 patch. An html encoded patch will be bracketed with &lt;pre&gt; and have
 a content type of text/html. Ironically, enabling this option causes
 Thunderbird to send the patch as a plain/text, format=fixed email.
-Default is <code>false</code>.</p>
+Default is <code>false</code>.</p></li>
 
-<p>imap.authMethod<br />
-Specify authenticate method for authentication with IMAP server. Current
-supported method is <em>CRAM-MD5</em> only.</p>
+<li><p>imap.authMethod<br />
+Specify authenticate method for authentication with IMAP server.
+Current supported method is <em>CRAM-MD5</em> only.</p></li>
+</ul>
 
 <h3 id="examples">Examples</h3>
 
@@ -216,7 +218,8 @@ supported method is <em>CRAM-MD5</em> only.</p>
 <p>You might need to instead use: folder = &ldquo;[Google Mail]/Drafts&rdquo; if you
 get an error that the &ldquo;Folder doesn’t exist&rdquo;.</p>
 
-<p>Once the commits are ready to be sent, run the following command:</p>
+<p>Once the commits are ready to be sent, run the following
+    command:</p>
 
 <pre><code>$ git format-patch --cover-letter -M --stdout origin/master | git imap-send
 </code></pre>

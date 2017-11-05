@@ -154,49 +154,52 @@ achieve the same effect as the <code>--no-replace-objects</code> option.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-f<br />
-&ndash;force<br />
+<ul>
+<li><p>-f<br />
+--force<br />
 If an existing replace ref for the same object exists, it will be
-overwritten (instead of failing).</p>
+overwritten (instead of failing).</p></li>
 
-<p>-d<br />
-&ndash;delete<br />
-Delete existing replace refs for the given objects.</p>
+<li><p>-d<br />
+--delete<br />
+Delete existing replace refs for the given objects.</p></li>
 
-<p>&ndash;edit &lt;object&gt;<br />
+<li><p>&ndash;edit &lt;object&gt;<br />
 Edit an object’s content interactively. The existing content for
 &lt;object&gt; is pretty-printed into a temporary file, an editor is
-launched on the file, and the result is parsed to create a new object of
-the same type as &lt;object&gt;. A replacement ref is then created to
-replace &lt;object&gt; with the newly created object. See
+launched on the file, and the result is parsed to create a new
+object of the same type as &lt;object&gt;. A replacement ref is then
+created to replace &lt;object&gt; with the newly created object. See
 <a href="../git-var">git-var(1)</a> for details about how the editor will be
-chosen.</p>
+chosen.</p></li>
 
-<p>&ndash;raw<br />
-When editing, provide the raw object contents rather than pretty-printed
-ones. Currently this only affects trees, which will be shown in their
-binary form. This is harder to work with, but can help when repairing a
-tree that is so corrupted it cannot be pretty-printed. Note that you may
-need to configure your editor to cleanly read and write binary data.</p>
+<li><p>&ndash;raw<br />
+When editing, provide the raw object contents rather than
+pretty-printed ones. Currently this only affects trees, which will
+be shown in their binary form. This is harder to work with, but can
+help when repairing a tree that is so corrupted it cannot be
+pretty-printed. Note that you may need to configure your editor to
+cleanly read and write binary data.</p></li>
 
-<p>&ndash;graft &lt;commit&gt; [&lt;parent&gt;…]<br />
-Create a graft commit. A new commit is created with the same content as
-&lt;commit&gt; except that its parents will be [&lt;parent&gt;…]
+<li><p>&ndash;graft &lt;commit&gt; [&lt;parent&gt;…]<br />
+Create a graft commit. A new commit is created with the same content
+as &lt;commit&gt; except that its parents will be [&lt;parent&gt;…]
 instead of &lt;commit&gt;&rsquo;s parents. A replacement ref is then created
 to replace &lt;commit&gt; with the newly created commit. See
-contrib/convert-grafts-to-replace-refs.sh for an example script based on
-this option that can convert grafts to replace refs.</p>
+contrib/convert-grafts-to-replace-refs.sh for an example script
+based on this option that can convert grafts to replace refs.</p></li>
 
-<p>-l &lt;pattern&gt;<br />
-&ndash;list &lt;pattern&gt;<br />
-List replace refs for objects that match the given pattern (or all if no
-pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists
-all replace refs.</p>
+<li><p>-l &lt;pattern&gt;<br />
+--list &lt;pattern&gt;<br />
+List replace refs for objects that match the given pattern (or all
+if no pattern is given). Typing &ldquo;git replace&rdquo; without arguments,
+also lists all replace refs.</p></li>
 
-<p>&ndash;format=&lt;format&gt;<br />
+<li><p>&ndash;format=&lt;format&gt;<br />
 When listing, use the specified &lt;format&gt;, which can be one of
 <em>short</em>, <em>medium</em> and <em>long</em>. When omitted, the format defaults to
-<em>short</em>.</p>
+<em>short</em>.</p></li>
+</ul>
 
 <h2 id="formats">FORMATS</h2>
 
@@ -207,8 +210,8 @@ When listing, use the specified &lt;format&gt;, which can be one of
 
 <li><p><em>medium</em>: &lt;replaced sha1&gt; → &lt;replacement sha1&gt;</p></li>
 
-<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) →
-&lt;replacement sha1&gt; (&lt;replacement type&gt;)</p></li>
+<li><p><em>long</em>: &lt;replaced sha1&gt; (&lt;replaced type&gt;) → &lt;replacement sha1&gt;
+(&lt;replacement type&gt;)</p></li>
 </ul>
 
 <h2 id="creating-replacement-objects">CREATING REPLACEMENT OBJECTS</h2>

@@ -124,53 +124,58 @@ in that language.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;count&gt;<br />
+<ul>
+<li><p>&lt;count&gt;<br />
 By default the command shows all refs that match <code>&lt;pattern&gt;</code>. This
-option makes it stop after showing that many refs.</p>
+option makes it stop after showing that many refs.</p></li>
 
-<p>&lt;key&gt;<br />
-A field name to sort on. Prefix <code>-</code> to sort in descending order of the
-value. When unspecified, <code>refname</code> is used. You may use the
+<li><p>&lt;key&gt;<br />
+A field name to sort on. Prefix <code>-</code> to sort in descending order of
+the value. When unspecified, <code>refname</code> is used. You may use the
 &ndash;sort=&lt;key&gt; option multiple times, in which case the last key
-becomes the primary key.</p>
+becomes the primary key.</p></li>
 
-<p>&lt;format&gt;<br />
-A string that interpolates <code>%(fieldname)</code> from the object pointed at by
-a ref being shown. If <code>fieldname</code> is prefixed with an asterisk (<code>*</code>) and
-the ref points at a tag object, the value for the field in the object
-tag refers is used. When unspecified, defaults to
-<code>%(objectname) SPC %(objecttype)                   TAB %(refname)</code>. It
-also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
+<li><p>&lt;format&gt;<br />
+A string that interpolates <code>%(fieldname)</code> from the object pointed at
+by a ref being shown. If <code>fieldname</code> is prefixed with an asterisk
+(<code>*</code>) and the ref points at a tag object, the value for the field in
+the object tag refers is used. When unspecified, defaults to
+<code>%(objectname) SPC %(objecttype) TAB %(refname)</code>. It also
+interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
 interpolates to character with hex code <code>xx</code>; for example <code>%00</code>
-interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
+interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code>
+(LF).</p></li>
 
-<p>&lt;pattern&gt;…<br />
+<li><p>&lt;pattern&gt;…<br />
 If one or more patterns are given, only refs are shown that match
-against at least one pattern, either using fnmatch(3) or literally, in
-the latter case matching completely or from the beginning up to a slash.</p>
+against at least one pattern, either using fnmatch(3) or literally,
+in the latter case matching completely or from the beginning up to a
+slash.</p></li>
 
-<p>&ndash;shell<br />
-&ndash;perl<br />
-&ndash;python<br />
-&ndash;tcl<br />
-If given, strings that substitute <code>%(fieldname)</code> placeholders are quoted
-as string literals suitable for the specified host language. This is
-meant to produce a scriptlet that can directly be `eval`ed.</p>
+<li><p>&ndash;shell<br />
+--perl<br />
+--python<br />
+--tcl<br />
+If given, strings that substitute <code>%(fieldname)</code> placeholders are
+quoted as string literals suitable for the specified host language.
+This is meant to produce a scriptlet that can directly be
+`eval`ed.</p></li>
 
-<p>&ndash;points-at &lt;object&gt;<br />
-Only list refs which points at the given object.</p>
+<li><p>&ndash;points-at &lt;object&gt;<br />
+Only list refs which points at the given object.</p></li>
 
-<p>&ndash;merged [&lt;object&gt;]<br />
-Only list refs whose tips are reachable from the specified commit (HEAD
-if not specified).</p>
+<li><p>&ndash;merged [&lt;object&gt;]<br />
+Only list refs whose tips are reachable from the specified commit
+(HEAD if not specified).</p></li>
 
-<p>&ndash;no-merged [&lt;object&gt;]<br />
-Only list refs whose tips are not reachable from the specified commit
-(HEAD if not specified).</p>
+<li><p>&ndash;no-merged [&lt;object&gt;]<br />
+Only list refs whose tips are not reachable from the specified
+commit (HEAD if not specified).</p></li>
 
-<p>&ndash;contains [&lt;object&gt;]<br />
+<li><p>&ndash;contains [&lt;object&gt;]<br />
 Only list refs which contain the specified commit (HEAD if not
-specified).</p>
+specified).</p></li>
+</ul>
 
 <h2 id="field-names">FIELD NAMES</h2>
 
@@ -179,59 +184,62 @@ to interpolate into the resulting output, or as sort keys.</p>
 
 <p>For all objects, the following names can be used:</p>
 
-<p>refname<br />
+<ul>
+<li><p>refname<br />
 The name of the ref (the part after $GIT_DIR/). For a non-ambiguous
-short name of the ref append <code>:short</code>. The option core.warnAmbiguousRefs
-is used to select the strict abbreviation mode. If <code>strip=&lt;N&gt;</code> is
-appended, strips <code>&lt;N&gt;</code> slash-separated path components from the front of
-the refname (e.g., <code>%(refname:strip=2)</code> turns <code>refs/tags/foo</code> into
-<code>foo</code>. <code>&lt;N&gt;</code> must be a positive integer. If a displayed ref has fewer
-components than <code>&lt;N&gt;</code>, the command aborts with an error.</p>
+short name of the ref append <code>:short</code>. The option
+core.warnAmbiguousRefs is used to select the strict abbreviation
+mode. If <code>strip=&lt;N&gt;</code> is appended, strips <code>&lt;N&gt;</code> slash-separated path
+components from the front of the refname (e.g., <code>%(refname:strip=2)</code>
+turns <code>refs/tags/foo</code> into <code>foo</code>. <code>&lt;N&gt;</code> must be a positive integer.
+If a displayed ref has fewer components than <code>&lt;N&gt;</code>, the command
+aborts with an error.</p></li>
 
-<p>objecttype<br />
-The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p>
+<li><p>objecttype<br />
+The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p></li>
 
-<p>objectsize<br />
-The size of the object (the same as <em>git cat-file -s</em> reports).</p>
+<li><p>objectsize<br />
+The size of the object (the same as <em>git cat-file -s</em> reports).</p></li>
 
-<p>objectname<br />
+<li><p>objectname<br />
 The object name (aka SHA-1). For a non-ambiguous abbreviation of the
-object name append <code>:short</code>.</p>
+object name append <code>:short</code>.</p></li>
 
-<p>upstream<br />
+<li><p>upstream<br />
 The name of a local ref which can be considered “upstream” from the
 displayed ref. Respects <code>:short</code> in the same way as <code>refname</code> above.
 Additionally respects <code>:track</code> to show &ldquo;[ahead N, behind M]&rdquo; and
 <code>:trackshort</code> to show the terse version: &ldquo;&gt;&rdquo; (ahead), &ldquo;&lt;&ldquo;
 (behind), &ldquo;&lt;&gt;&rdquo; (ahead and behind), or &ldquo;=&rdquo; (in sync). Has no effect
-if the ref does not have tracking information associated with it.</p>
+if the ref does not have tracking information associated with it.</p></li>
 
-<p>push<br />
-The name of a local ref which represents the <code>@{push}</code> location for the
-displayed ref. Respects <code>:short</code>, <code>:track</code>, and <code>:trackshort</code> options as
-<code>upstream</code> does. Produces an empty string if no <code>@{push}</code> ref is
-configured.</p>
+<li><p>push<br />
+The name of a local ref which represents the <code>@{push}</code> location for
+the displayed ref. Respects <code>:short</code>, <code>:track</code>, and <code>:trackshort</code>
+options as <code>upstream</code> does. Produces an empty string if no <code>@{push}</code>
+ref is configured.</p></li>
 
-<p>HEAD<br />
+<li><p>HEAD<br />
 <em>*</em> if HEAD matches current ref (the checked out branch), &lsquo; &lsquo;
-otherwise.</p>
+otherwise.</p></li>
 
-<p>color<br />
+<li><p>color<br />
 Change output color. Followed by <code>:&lt;colorname&gt;</code>, where names are
-described in <code>color.branch.*</code>.</p>
+described in <code>color.branch.*</code>.</p></li>
 
-<p>align<br />
+<li><p>align<br />
 Left-, middle-, or right-align the content between %(align:…) and
 %(end). The &ldquo;align:&rdquo; is followed by <code>width=&lt;width&gt;</code> and
 <code>position=&lt;position&gt;</code> in any order separated by a comma, where the
 <code>&lt;position&gt;</code> is either left, right or middle, default being left and
 <code>&lt;width&gt;</code> is the total length of the content with alignment. For
-brevity, the &ldquo;width=&rdquo; and/or &ldquo;position=&rdquo; prefixes may be omitted, and
-bare &lt;width&gt; and &lt;position&gt; used instead. For instance,
-<code>%(align:&lt;width&gt;,&lt;position&gt;)</code>. If the contents length is more than the
-width then no alignment is performed. If used with <code>--quote</code> everything
-in between %(align:…) and %(end) is quoted, but if nested then only the
-topmost level performs quoting.</p>
+brevity, the &ldquo;width=&rdquo; and/or &ldquo;position=&rdquo; prefixes may be omitted,
+and bare &lt;width&gt; and &lt;position&gt; used instead. For instance,
+<code>%(align:&lt;width&gt;,&lt;position&gt;)</code>. If the contents length is more than
+the width then no alignment is performed. If used with <code>--quote</code>
+everything in between %(align:…) and %(end) is quoted, but if nested
+then only the topmost level performs quoting.</p></li>
+</ul>
 
 <p>In addition to the above, for commit and tag objects, the header field
 names (<code>tree</code>, <code>parent</code>, <code>object</code>, <code>type</code>, and <code>tag</code>) can be used to

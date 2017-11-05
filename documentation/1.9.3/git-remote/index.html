@@ -127,136 +127,143 @@ git remote [-v | --verbose] update [-p | --prune] [(&lt;group&gt; | &lt;remote&g
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-v<br />
-&ndash;verbose<br />
-Be a little more verbose and show remote url after name. NOTE: This must
-be placed between <code>remote</code> and <code>subcommand</code>.</p>
+<ul>
+<li>-v<br />
+--verbose<br />
+Be a little more verbose and show remote url after name. NOTE: This
+must be placed between <code>remote</code> and <code>subcommand</code>.</li>
+</ul>
 
 <h2 id="commands">COMMANDS</h2>
 
 <p>With no arguments, shows a list of existing remotes. Several subcommands
 are available to perform operations on the remotes.</p>
 
-<p><em>add</em><br />
+<ul>
+<li><p><em>add</em><br />
 Adds a remote named &lt;name&gt; for the repository at &lt;url&gt;. The
-command <code>git fetch                   &lt;name&gt;</code> can then be used to create
-and update remote-tracking branches &lt;name&gt;/&lt;branch&gt;.</p>
+command <code>git fetch &lt;name&gt;</code> can then be used to create and update
+remote-tracking branches &lt;name&gt;/&lt;branch&gt;.</p>
 
-<p>With <code>-f</code> option, <code>git fetch                     &lt;name&gt;</code> is run
-immediately after the remote information is set up.</p>
+<p>With <code>-f</code> option, <code>git fetch &lt;name&gt;</code> is run immediately after the
+remote information is set up.</p>
 
-<p>With <code>--tags</code> option, <code>git fetch                     &lt;name&gt;</code> imports
-every tag from the remote repository.</p>
+<p>With <code>--tags</code> option, <code>git fetch &lt;name&gt;</code> imports every tag from the
+remote repository.</p>
 
-<p>With <code>--no-tags</code> option, <code>git fetch                     &lt;name&gt;</code> does not
-import tags from the remote repository.</p>
+<p>With <code>--no-tags</code> option, <code>git fetch &lt;name&gt;</code> does not import tags
+from the remote repository.</p>
 
-<p>With <code>-t &lt;branch&gt;</code> option, instead of the default glob refspec for the
-remote to track all branches under the <code>refs/remotes/&lt;name&gt;/</code> namespace,
-a refspec to track only <code>&lt;branch&gt;</code> is created. You can give more than
-one <code>-t                     &lt;branch&gt;</code> to track multiple branches without
+<p>With <code>-t &lt;branch&gt;</code> option, instead of the default glob refspec for
+the remote to track all branches under the <code>refs/remotes/&lt;name&gt;/</code>
+namespace, a refspec to track only <code>&lt;branch&gt;</code> is created. You can
+give more than one <code>-t &lt;branch&gt;</code> to track multiple branches without
 grabbing all branches.</p>
 
-<p>With <code>-m &lt;master&gt;</code> option, a symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is
-set up to point at remote’s <code>&lt;master&gt;</code> branch. See also the set-head
-command.</p>
+<p>With <code>-m &lt;master&gt;</code> option, a symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code>
+is set up to point at remote’s <code>&lt;master&gt;</code> branch. See also the
+set-head command.</p>
 
-<p>When a fetch mirror is created with <code>--mirror=fetch</code>, the refs will not
-be stored in the <em>refs/remotes/</em> namespace, but rather everything in
-<em>refs/</em> on the remote will be directly mirrored into <em>refs/</em> in the
-local repository. This option only makes sense in bare repositories,
-because a fetch would overwrite any local commits.</p>
+<p>When a fetch mirror is created with <code>--mirror=fetch</code>, the refs will
+not be stored in the <em>refs/remotes/</em> namespace, but rather
+everything in <em>refs/</em> on the remote will be directly mirrored into
+<em>refs/</em> in the local repository. This option only makes sense in
+bare repositories, because a fetch would overwrite any local
+commits.</p>
 
-<p>When a push mirror is created with <code>--mirror=push</code>, then <code>git push</code> will
-always behave as if <code>--mirror</code> was passed.</p>
+<p>When a push mirror is created with <code>--mirror=push</code>, then <code>git push</code>
+will always behave as if <code>--mirror</code> was passed.</p></li>
 
-<p><em>rename</em><br />
+<li><p><em>rename</em><br />
 Rename the remote named &lt;old&gt; to &lt;new&gt;. All remote-tracking
 branches and configuration settings for the remote are updated.</p>
 
-<p>In case &lt;old&gt; and &lt;new&gt; are the same, and &lt;old&gt; is a
-file under <code>$GIT_DIR/remotes</code> or <code>$GIT_DIR/branches</code>, the remote is
-converted to the configuration file format.</p>
+<p>In case &lt;old&gt; and &lt;new&gt; are the same, and &lt;old&gt; is a file
+under <code>$GIT_DIR/remotes</code> or <code>$GIT_DIR/branches</code>, the remote is
+converted to the configuration file format.</p></li>
 
-<p><em>remove</em><br />
+<li><p><em>remove</em><br />
 <em>rm</em><br />
 Remove the remote named &lt;name&gt;. All remote-tracking branches and
-configuration settings for the remote are removed.</p>
+configuration settings for the remote are removed.</p></li>
 
-<p><em>set-head</em><br />
-Sets or deletes the default branch (i.e. the target of the symbolic-ref
-<code>refs/remotes/&lt;name&gt;/HEAD</code>) for the named remote. Having a default
-branch for a remote is not required, but allows the name of the remote
-to be specified in lieu of a specific branch. For example, if the
-default branch for <code>origin</code> is set to <code>master</code>, then <code>origin</code> may be
-specified wherever you would normally specify <code>origin/master</code>.</p>
+<li><p><em>set-head</em><br />
+Sets or deletes the default branch (i.e. the target of the
+symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code>) for the named remote.
+Having a default branch for a remote is not required, but allows the
+name of the remote to be specified in lieu of a specific branch. For
+example, if the default branch for <code>origin</code> is set to <code>master</code>, then
+<code>origin</code> may be specified wherever you would normally specify
+<code>origin/master</code>.</p>
 
-<p>With <code>-d</code> or <code>--delete</code>, the symbolic ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is
-deleted.</p>
+<p>With <code>-d</code> or <code>--delete</code>, the symbolic ref <code>refs/remotes/&lt;name&gt;/HEAD</code>
+is deleted.</p>
 
-<p>With <code>-a</code> or <code>--auto</code>, the remote is queried to determine its <code>HEAD</code>,
-then the symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is set to the same
-branch. e.g., if the remote <code>HEAD</code> is pointed at <code>next</code>,
-&ldquo;<code>git remote                     set-head origin -a</code>&rdquo; will set the
-symbolic-ref <code>refs/remotes/origin/HEAD</code> to <code>refs/remotes/origin/next</code>.
-This will only work if <code>refs/remotes/origin/next</code> already exists; if not
-it must be fetched first.</p>
+<p>With <code>-a</code> or <code>--auto</code>, the remote is queried to determine its
+<code>HEAD</code>, then the symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code> is set to
+the same branch. e.g., if the remote <code>HEAD</code> is pointed at <code>next</code>,
+&ldquo;<code>git remote set-head origin -a</code>&rdquo; will set the symbolic-ref
+<code>refs/remotes/origin/HEAD</code> to <code>refs/remotes/origin/next</code>. This will
+only work if <code>refs/remotes/origin/next</code> already exists; if not it
+must be fetched first.</p>
 
 <p>Use <code>&lt;branch&gt;</code> to set the symbolic-ref <code>refs/remotes/&lt;name&gt;/HEAD</code>
 explicitly. e.g., &ldquo;git remote set-head origin master&rdquo; will set the
-symbolic-ref <code>refs/remotes/origin/HEAD</code> to <code>refs/remotes/origin/master</code>.
-This will only work if <code>refs/remotes/origin/master</code> already exists; if
-not it must be fetched first.</p>
+symbolic-ref <code>refs/remotes/origin/HEAD</code> to
+<code>refs/remotes/origin/master</code>. This will only work if
+<code>refs/remotes/origin/master</code> already exists; if not it must be
+fetched first.</p></li>
 
-<p><em>set-branches</em><br />
-Changes the list of branches tracked by the named remote. This can be
-used to track a subset of the available remote branches after the
+<li><p><em>set-branches</em><br />
+Changes the list of branches tracked by the named remote. This can
+be used to track a subset of the available remote branches after the
 initial setup for a remote.</p>
 
 <p>The named branches will be interpreted as if specified with the <code>-t</code>
 option on the <em>git remote add</em> command line.</p>
 
 <p>With <code>--add</code>, instead of replacing the list of currently tracked
-branches, adds to that list.</p>
+branches, adds to that list.</p></li>
 
-<p><em>set-url</em><br />
-Changes URL remote points to. Sets first URL remote points to matching
-regex &lt;oldurl&gt; (first URL if no &lt;oldurl&gt; is given) to
-&lt;newurl&gt;. If &lt;oldurl&gt; doesn’t match any URL, error occurs
-and nothing is changed.</p>
+<li><p><em>set-url</em><br />
+Changes URL remote points to. Sets first URL remote points to
+matching regex &lt;oldurl&gt; (first URL if no &lt;oldurl&gt; is given) to
+&lt;newurl&gt;. If &lt;oldurl&gt; doesn’t match any URL, error occurs and
+nothing is changed.</p>
 
 <p>With <em>&ndash;push</em>, push URLs are manipulated instead of fetch URLs.</p>
 
 <p>With <em>&ndash;add</em>, instead of changing some URL, new URL is added.</p>
 
-<p>With <em>&ndash;delete</em>, instead of changing some URL, all URLs matching regex
-&lt;url&gt; are deleted. Trying to delete all non-push URLs is an error.</p>
+<p>With <em>&ndash;delete</em>, instead of changing some URL, all URLs matching
+regex &lt;url&gt; are deleted. Trying to delete all non-push URLs is an
+error.</p></li>
 
-<p><em>show</em><br />
+<li><p><em>show</em><br />
 Gives some information about the remote &lt;name&gt;.</p>
 
-<p>With <code>-n</code> option, the remote heads are not queried first with
-<code>git ls-remote                     &lt;name&gt;</code>; cached information is used
-instead.</p>
+<p>With <code>-n</code> option, the remote heads are not queried first with <code>git
+ls-remote &lt;name&gt;</code>; cached information is used instead.</p></li>
 
-<p><em>prune</em><br />
+<li><p><em>prune</em><br />
 Deletes all stale remote-tracking branches under &lt;name&gt;. These
 stale branches have already been removed from the remote repository
 referenced by &lt;name&gt;, but are still locally available in
 &ldquo;remotes/&lt;name&gt;&rdquo;.</p>
 
-<p>With <code>--dry-run</code> option, report what branches will be pruned, but do not
-actually prune them.</p>
+<p>With <code>--dry-run</code> option, report what branches will be pruned, but do
+not actually prune them.</p></li>
 
-<p><em>update</em><br />
-Fetch updates for a named set of remotes in the repository as defined by
-remotes.&lt;group&gt;. If a named group is not specified on the command
-line, the configuration parameter remotes.default will be used; if
-remotes.default is not defined, all remotes which do not have the
-configuration parameter remote.&lt;name&gt;.skipDefaultUpdate set to
-true will be updated. (See <a href="../git-config">git-config(1)</a>).</p>
+<li><p><em>update</em><br />
+Fetch updates for a named set of remotes in the repository as
+defined by remotes.&lt;group&gt;. If a named group is not specified on
+the command line, the configuration parameter remotes.default will
+be used; if remotes.default is not defined, all remotes which do not
+have the configuration parameter remote.&lt;name&gt;.skipDefaultUpdate
+set to true will be updated. (See <a href="../git-config">git-config(1)</a>).</p>
 
-<p>With <code>--prune</code> option, prune all the remotes that are updated.</p>
+<p>With <code>--prune</code> option, prune all the remotes that are updated.</p></li>
+</ul>
 
 <h2 id="discussion">DISCUSSION</h2>
 

@@ -123,13 +123,12 @@ the <em>&lt;path&gt;</em> denotes just a list of patterns to match, e.g. so
 specifying directory name (without <code>-r</code>) will behave differently,
 and order of the arguments does not matter.</p></li>
 
-<li><p>the behaviour is similar to that of &ldquo;/bin/ls&rdquo; in that the
-<em>&lt;path&gt;</em> is taken as relative to the current working
-directory. E.g. when you are in a directory <em>sub</em> that has a
-directory <em>dir</em>, you can run <em>git ls-tree -r HEAD dir</em> to list the
-contents of the tree (that is <em>sub/dir</em> in <code>HEAD</code>). You don’t want
-to give a tree that is not at the root level (e.g.
-<code>git ls-tree -r HEAD:sub                   dir</code>) in this case, as
+<li><p>the behaviour is similar to that of &ldquo;/bin/ls&rdquo; in that the <em>&lt;path&gt;</em>
+is taken as relative to the current working directory. E.g. when you
+are in a directory <em>sub</em> that has a directory <em>dir</em>, you can run
+<em>git ls-tree -r HEAD dir</em> to list the contents of the tree (that is
+<em>sub/dir</em> in <code>HEAD</code>). You don’t want to give a tree that is not at
+the root level (e.g. <code>git ls-tree -r HEAD:sub dir</code>) in this case, as
 that would result in asking for <em>sub/sub/dir</em> in the <code>HEAD</code> commit.
 However, the current working directory can be ignored by passing
 &ndash;full-tree option.</p></li>
@@ -137,47 +136,50 @@ However, the current working directory can be ignored by passing
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;tree-ish&gt;<br />
-Id of a tree-ish.</p>
+<ul>
+<li><p>&lt;tree-ish&gt;<br />
+Id of a tree-ish.</p></li>
 
-<p>-d<br />
-Show only the named tree entry itself, not its children.</p>
+<li><p>-d<br />
+Show only the named tree entry itself, not its children.</p></li>
 
-<p>-r<br />
-Recurse into sub-trees.</p>
+<li><p>-r<br />
+Recurse into sub-trees.</p></li>
 
-<p>-t<br />
-Show tree entries even when going to recurse them. Has no effect if <code>-r</code>
-was not passed. <code>-d</code> implies <code>-t</code>.</p>
+<li><p>-t<br />
+Show tree entries even when going to recurse them. Has no effect if
+<code>-r</code> was not passed. <code>-d</code> implies <code>-t</code>.</p></li>
 
-<p>-l<br />
-&ndash;long<br />
-Show object size of blob (file) entries.</p>
+<li><p>-l<br />
+--long<br />
+Show object size of blob (file) entries.</p></li>
 
-<p>-z<br />
-\0 line termination on output.</p>
+<li><p>-z<br />
+\0 line termination on output.</p></li>
 
-<p>&ndash;name-only<br />
-&ndash;name-status<br />
-List only filenames (instead of the &ldquo;long&rdquo; output), one per line.</p>
+<li><p>&ndash;name-only<br />
+--name-status<br />
+List only filenames (instead of the &ldquo;long&rdquo; output), one per line.</p></li>
 
-<p>&ndash;abbrev[=&lt;n&gt;]<br />
-Instead of showing the full 40-byte hexadecimal object lines, show only
-a partial prefix. Non default number of digits can be specified with
-&ndash;abbrev=&lt;n&gt;.</p>
+<li><p>&ndash;abbrev[=&lt;n&gt;]<br />
+Instead of showing the full 40-byte hexadecimal object lines, show
+only a partial prefix. Non default number of digits can be specified
+with &ndash;abbrev=&lt;n&gt;.</p></li>
 
-<p>&ndash;full-name<br />
+<li><p>&ndash;full-name<br />
 Instead of showing the path names relative to the current working
-directory, show the full path names.</p>
+directory, show the full path names.</p></li>
 
-<p>&ndash;full-tree<br />
+<li><p>&ndash;full-tree<br />
 Do not limit the listing to the current working directory. Implies
-&ndash;full-name.</p>
+&ndash;full-name.</p></li>
 
-<p>[&lt;path&gt;…]<br />
+<li><p>[&lt;path&gt;…]<br />
 When paths are given, show them (note that this isn’t really raw
-pathnames, but rather a list of patterns to match). Otherwise implicitly
-uses the root level of the tree as the sole path argument.</p>
+pathnames, but rather a list of patterns to match). Otherwise
+implicitly uses the root level of the tree as the sole path
+argument.</p></li>
+</ul>
 
 <h2 id="output-format">Output Format</h2>
 

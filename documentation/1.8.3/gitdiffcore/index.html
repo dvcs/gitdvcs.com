@@ -145,9 +145,9 @@ set of filepairs included:</p>
 <pre><code>:100644 100644 bcd1234... 0123456... M junkfile
 </code></pre>
 
-<p>but the command invocation was <code>git diff-files               myfile</code>,
-then the junkfile entry would be removed from the list because only
-&ldquo;myfile&rdquo; is under consideration.</p>
+<p>but the command invocation was <code>git diff-files myfile</code>, then the
+junkfile entry would be removed from the list because only &ldquo;myfile&rdquo; is
+under consideration.</p>
 
 <p>The result of comparison is passed from these commands to what is
 internally called &ldquo;diffcore&rdquo;, in a format similar to what is output when

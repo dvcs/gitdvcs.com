@@ -167,13 +167,15 @@ with secure storage provided by the OS or other programs.</p>
 <p>To use a helper, you must first select one to use. Git currently
 includes the following helpers:</p>
 
-<p>cache<br />
+<ul>
+<li><p>cache<br />
 Cache credentials in memory for a short period of time. See
-<a href="../git-credential-cache">git-credential-cache(1)</a> for details.</p>
+<a href="../git-credential-cache">git-credential-cache(1)</a> for details.</p></li>
 
-<p>store<br />
+<li><p>store<br />
 Store credentials indefinitely on disk. See
-<a href="../git-credential-store">git-credential-store(1)</a> for details.</p>
+<a href="../git-credential-store">git-credential-store(1)</a> for details.</p></li>
+</ul>
 
 <p>You may also have third-party helpers installed; search for
 <code>credential-*</code> in the output of <code>git help -a</code>, and consult the
@@ -243,23 +245,25 @@ above.</p>
 
 <p>The following options are available in either location:</p>
 
-<p>helper<br />
-The name of an external credential helper, and any associated options.
-If the helper name is not an absolute path, then the string
-<code>git                   credential-</code> is prepended. The resulting string
-is executed by the shell (so, for example, setting this to
-<code>foo --option=bar</code> will execute <code>git credential-foo --option=bar</code> via
-the shell. See the manual of specific helpers for examples of their use.</p>
+<ul>
+<li><p>helper<br />
+The name of an external credential helper, and any associated
+options. If the helper name is not an absolute path, then the string
+<code>git credential-</code> is prepended. The resulting string is executed by
+the shell (so, for example, setting this to <code>foo --option=bar</code> will
+execute <code>git credential-foo --option=bar</code> via the shell. See the
+manual of specific helpers for examples of their use.</p></li>
 
-<p>username<br />
-A default username, if one is not provided in the URL.</p>
+<li><p>username<br />
+A default username, if one is not provided in the URL.</p></li>
 
-<p>useHttpPath<br />
-By default, Git does not consider the &ldquo;path&rdquo; component of an http URL to
-be worth matching via external helpers. This means that a credential
-stored for <code>https://example.com/foo.git</code> will also be used for
-<code>https://example.com/bar.git</code>. If you do want to distinguish these
-cases, set this option to <code>true</code>.</p>
+<li><p>useHttpPath<br />
+By default, Git does not consider the &ldquo;path&rdquo; component of an http
+URL to be worth matching via external helpers. This means that a
+credential stored for <code>https://example.com/foo.git</code> will also be
+used for <code>https://example.com/bar.git</code>. If you do want to
+distinguish these cases, set this option to <code>true</code>.</p></li>
+</ul>
 
 <h2 id="custom-helpers">CUSTOM HELPERS</h2>
 

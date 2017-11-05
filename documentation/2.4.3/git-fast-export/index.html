@@ -121,97 +121,101 @@ filter-branch</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;progress=&lt;n&gt;<br />
+<ul>
+<li><p>&ndash;progress=&lt;n&gt;<br />
 Insert <em>progress</em> statements every &lt;n&gt; objects, to be shown by
-<em>git fast-import</em> during import.</p>
+<em>git fast-import</em> during import.</p></li>
 
-<p>&ndash;signed-tags=(verbatim|warn|warn-strip|strip|abort)<br />
-Specify how to handle signed tags. Since any transformation after the
-export can change the tag names (which can also happen when excluding
-revisions) the signatures will not match.</p>
+<li><p>&ndash;signed-tags=(verbatim|warn|warn-strip|strip|abort)<br />
+Specify how to handle signed tags. Since any transformation after
+the export can change the tag names (which can also happen when
+excluding revisions) the signatures will not match.</p>
 
 <p>When asking to <em>abort</em> (which is the default), this program will die
-when encountering a signed tag. With <em>strip</em>, the tags will silently be
-made unsigned, with <em>warn-strip</em> they will be made unsigned but a
+when encountering a signed tag. With <em>strip</em>, the tags will silently
+be made unsigned, with <em>warn-strip</em> they will be made unsigned but a
 warning will be displayed, with <em>verbatim</em>, they will be silently
 exported and with <em>warn</em>, they will be exported, but you will see a
-warning.</p>
+warning.</p></li>
 
-<p>&ndash;tag-of-filtered-object=(abort|drop|rewrite)<br />
-Specify how to handle tags whose tagged object is filtered out. Since
-revisions and files to export can be limited by path, tagged objects may
-be filtered completely.</p>
+<li><p>&ndash;tag-of-filtered-object=(abort|drop|rewrite)<br />
+Specify how to handle tags whose tagged object is filtered out.
+Since revisions and files to export can be limited by path, tagged
+objects may be filtered completely.</p>
 
 <p>When asking to <em>abort</em> (which is the default), this program will die
-when encountering such a tag. With <em>drop</em> it will omit such tags from
-the output. With <em>rewrite</em>, if the tagged object is a commit, it will
-rewrite the tag to tag an ancestor commit (via parent rewriting; see
-<a href="../git-rev-list">git-rev-list(1)</a>)</p>
+when encountering such a tag. With <em>drop</em> it will omit such tags
+from the output. With <em>rewrite</em>, if the tagged object is a commit,
+it will rewrite the tag to tag an ancestor commit (via parent
+rewriting; see <a href="../git-rev-list">git-rev-list(1)</a>)</p></li>
 
-<p>-M<br />
+<li><p>-M<br />
 -C<br />
 Perform move and/or copy detection, as described in the
-<a href="../git-diff">git-diff(1)</a> manual page, and use it to generate rename
-and copy commands in the output dump.</p>
+<a href="../git-diff">git-diff(1)</a> manual page, and use it to generate
+rename and copy commands in the output dump.</p>
 
-<p>Note that earlier versions of this command did not complain and produced
-incorrect results if you gave these options.</p>
+<p>Note that earlier versions of this command did not complain and
+produced incorrect results if you gave these options.</p></li>
 
-<p>&ndash;export-marks=&lt;file&gt;<br />
+<li><p>&ndash;export-marks=&lt;file&gt;<br />
 Dumps the internal marks table to &lt;file&gt; when complete. Marks are
-written one per line as <code>:markid SHA-1</code>. Only marks for revisions are
-dumped; marks for blobs are ignored. Backends can use this file to
-validate imports after they have been completed, or to save the marks
-table across incremental runs. As &lt;file&gt; is only opened and
+written one per line as <code>:markid SHA-1</code>. Only marks for revisions
+are dumped; marks for blobs are ignored. Backends can use this file
+to validate imports after they have been completed, or to save the
+marks table across incremental runs. As &lt;file&gt; is only opened and
 truncated at completion, the same path can also be safely given to
-&ndash;import-marks. The file will not be written if no new object has been
-marked/exported.</p>
+&ndash;import-marks. The file will not be written if no new object has
+been marked/exported.</p></li>
 
-<p>&ndash;import-marks=&lt;file&gt;<br />
+<li><p>&ndash;import-marks=&lt;file&gt;<br />
 Before processing any input, load the marks specified in &lt;file&gt;.
 The input file must exist, must be readable, and must use the same
 format as produced by &ndash;export-marks.</p>
 
-<p>Any commits that have already been marked will not be exported again. If
-the backend uses a similar &ndash;import-marks file, this allows for
-incremental bidirectional exporting of the repository by keeping the
-marks the same across runs.</p>
+<p>Any commits that have already been marked will not be exported
+again. If the backend uses a similar &ndash;import-marks file, this
+allows for incremental bidirectional exporting of the repository by
+keeping the marks the same across runs.</p></li>
 
-<p>&ndash;fake-missing-tagger<br />
+<li><p>&ndash;fake-missing-tagger<br />
 Some old repositories have tags without a tagger. The fast-import
-protocol was pretty strict about that, and did not allow that. So fake a
-tagger to be able to fast-import the output.</p>
+protocol was pretty strict about that, and did not allow that. So
+fake a tagger to be able to fast-import the output.</p></li>
 
-<p>&ndash;use-done-feature<br />
-Start the stream with a <em>feature done</em> stanza, and terminate it with a
-<em>done</em> command.</p>
+<li><p>&ndash;use-done-feature<br />
+Start the stream with a <em>feature done</em> stanza, and terminate it with
+a <em>done</em> command.</p></li>
 
-<p>&ndash;no-data<br />
+<li><p>&ndash;no-data<br />
 Skip output of blob objects and instead refer to blobs via their
 original SHA-1 hash. This is useful when rewriting the directory
-structure or history of a repository without touching the contents of
-individual files. Note that the resulting stream can only be used by a
-repository which already contains the necessary objects.</p>
+structure or history of a repository without touching the contents
+of individual files. Note that the resulting stream can only be used
+by a repository which already contains the necessary objects.</p></li>
 
-<p>&ndash;full-tree<br />
-This option will cause fast-export to issue a &ldquo;deleteall&rdquo; directive for
-each commit followed by a full list of all files in the commit (as
-opposed to just listing the files which are different from the commit’s
-first parent).</p>
+<li><p>&ndash;full-tree<br />
+This option will cause fast-export to issue a &ldquo;deleteall&rdquo; directive
+for each commit followed by a full list of all files in the commit
+(as opposed to just listing the files which are different from the
+commit’s first parent).</p></li>
 
-<p>&ndash;anonymize<br />
-Anonymize the contents of the repository while still retaining the shape
-of the history and stored tree. See the section on <code>ANONYMIZING</code> below.</p>
+<li><p>&ndash;anonymize<br />
+Anonymize the contents of the repository while still retaining the
+shape of the history and stored tree. See the section on
+<code>ANONYMIZING</code> below.</p></li>
 
-<p>&ndash;refspec<br />
-Apply the specified refspec to each ref exported. Multiple of them can
-be specified.</p>
+<li><p>&ndash;refspec<br />
+Apply the specified refspec to each ref exported. Multiple of them
+can be specified.</p></li>
 
-<p>[&lt;git-rev-list-args&gt;…]<br />
-A list of arguments, acceptable to <em>git rev-parse</em> and <em>git rev-list</em>,
-that specifies the specific objects and references to export. For
-example, <code>master~10..master</code> causes the current master reference to be
-exported along with all objects added since its 10th ancestor commit.</p>
+<li><p>[&lt;git-rev-list-args&gt;…]<br />
+A list of arguments, acceptable to <em>git rev-parse</em> and <em>git
+rev-list</em>, that specifies the specific objects and references to
+export. For example, <code>master~10..master</code> causes the current master
+reference to be exported along with all objects added since its 10th
+ancestor commit.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 

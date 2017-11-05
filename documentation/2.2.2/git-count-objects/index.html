@@ -117,8 +117,9 @@ by them, to help you decide when it is a good time to repack.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>-v<br />
-&ndash;verbose<br />
+<ul>
+<li><p>-v<br />
+--verbose<br />
 Report in more detail:</p>
 
 <p>count: the number of loose objects</p>
@@ -131,18 +132,19 @@ specified)</p>
 <p>size-pack: disk space consumed by the packs, in KiB (unless -H is
 specified)</p>
 
-<p>prune-packable: the number of loose objects that are also present in the
-packs. These objects could be pruned using <code>git prune-packed</code>.</p>
+<p>prune-packable: the number of loose objects that are also present in
+the packs. These objects could be pruned using <code>git prune-packed</code>.</p>
 
-<p>garbage: the number of files in object database that are neither valid
-loose objects nor valid packs</p>
+<p>garbage: the number of files in object database that are neither
+valid loose objects nor valid packs</p>
 
-<p>size-garbage: disk space consumed by garbage files, in KiB (unless -H is
-specified)</p>
+<p>size-garbage: disk space consumed by garbage files, in KiB (unless
+-H is specified)</p></li>
 
-<p>-H<br />
-&ndash;human-readable<br />
-Print sizes in human readable format</p>
+<li><p>-H<br />
+--human-readable<br />
+Print sizes in human readable format</p></li>
+</ul>
 
 <h2 id="git">GIT</h2>
 

@@ -120,9 +120,9 @@
 
 <p>Clones a repository into a newly created directory, creates
 remote-tracking branches for each branch in the cloned repository
-(visible using <code>git branch               -r</code>), and creates and checks
-out an initial branch that is forked from the cloned repository’s
-currently active branch.</p>
+(visible using <code>git branch -r</code>), and creates and checks out an initial
+branch that is forked from the cloned repository’s currently active
+branch.</p>
 
 <p>After the clone, a plain <code>git fetch</code> without arguments will update all
 the remote-tracking branches, and a <code>git pull</code> without arguments will in
@@ -135,7 +135,8 @@ remote branch heads under <code>refs/remotes/origin</code> and by initializing
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&ndash;local<br />
+<ul>
+<li><p>&ndash;local<br />
 -l<br />
 When the repository to clone from is on a local machine, this flag
 bypasses the normal &ldquo;Git aware&rdquo; transport mechanism and clones the
@@ -143,185 +144,193 @@ repository by making a copy of HEAD and everything under objects and
 refs directories. The files under <code>.git/objects/</code> directory are
 hardlinked to save space when possible.</p>
 
-<p>If the repository is specified as a local path (e.g., <code>/path/to/repo</code>),
-this is the default, and &ndash;local is essentially a no-op. If the
-repository is specified as a URL, then this flag is ignored (and we
-never use the local optimizations). Specifying <code>--no-local</code> will
-override the default when <code>/path/to/repo</code> is given, using the regular
-Git transport instead.</p>
+<p>If the repository is specified as a local path (e.g.,
+<code>/path/to/repo</code>), this is the default, and &ndash;local is essentially a
+no-op. If the repository is specified as a URL, then this flag is
+ignored (and we never use the local optimizations). Specifying
+<code>--no-local</code> will override the default when <code>/path/to/repo</code> is
+given, using the regular Git transport instead.</p></li>
 
-<p>&ndash;no-hardlinks<br />
+<li><p>&ndash;no-hardlinks<br />
 Force the cloning process from a repository on a local filesystem to
 copy the files under the <code>.git/objects</code> directory instead of using
-hardlinks. This may be desirable if you are trying to make a back-up of
-your repository.</p>
+hardlinks. This may be desirable if you are trying to make a back-up
+of your repository.</p></li>
 
-<p>&ndash;shared<br />
+<li><p>&ndash;shared<br />
 -s<br />
-When the repository to clone is on the local machine, instead of using
-hard links, automatically setup <code>.git/objects/info/alternates</code> to share
-the objects with the source repository. The resulting repository starts
-out without any object of its own.</p>
+When the repository to clone is on the local machine, instead of
+using hard links, automatically setup <code>.git/objects/info/alternates</code>
+to share the objects with the source repository. The resulting
+repository starts out without any object of its own.</p>
 
 <p><strong>NOTE</strong>: this is a possibly dangerous operation; do <strong>not</strong> use it
-unless you understand what it does. If you clone your repository using
-this option and then delete branches (or use any other Git command that
-makes any existing commit unreferenced) in the source repository, some
-objects may become unreferenced (or dangling). These objects may be
-removed by normal Git operations (such as
-<code>git                     commit</code>) which automatically call
-<code>git                     gc --auto</code>. (See <a href="../git-gc">git-gc(1)</a>.) If
-these objects are removed and were referenced by the cloned repository,
-then the cloned repository will become corrupt.</p>
+unless you understand what it does. If you clone your repository
+using this option and then delete branches (or use any other Git
+command that makes any existing commit unreferenced) in the source
+repository, some objects may become unreferenced (or dangling).
+These objects may be removed by normal Git operations (such as <code>git
+commit</code>) which automatically call <code>git gc --auto</code>. (See
+<a href="../git-gc">git-gc(1)</a>.) If these objects are removed and were
+referenced by the cloned repository, then the cloned repository will
+become corrupt.</p>
 
-<p>Note that running <code>git repack</code> without the <code>-l</code> option in a repository
-cloned with <code>-s</code> will copy objects from the source repository into a
-pack in the cloned repository, removing the disk space savings of
-<code>clone -s</code>. It is safe, however, to run <code>git gc</code>, which uses the <code>-l</code>
-option by default.</p>
+<p>Note that running <code>git repack</code> without the <code>-l</code> option in a
+repository cloned with <code>-s</code> will copy objects from the source
+repository into a pack in the cloned repository, removing the disk
+space savings of <code>clone -s</code>. It is safe, however, to run <code>git gc</code>,
+which uses the <code>-l</code> option by default.</p>
 
-<p>If you want to break the dependency of a repository cloned with <code>-s</code> on
-its source repository, you can simply run
-<code>git                     repack -a</code> to copy all objects from the source
-repository into a pack in the cloned repository.</p>
+<p>If you want to break the dependency of a repository cloned with <code>-s</code>
+on its source repository, you can simply run <code>git repack -a</code> to copy
+all objects from the source repository into a pack in the cloned
+repository.</p></li>
 
-<p>&ndash;reference &lt;repository&gt;<br />
-If the reference repository is on the local machine, automatically setup
-<code>.git/objects/info/alternates</code> to obtain objects from the reference
-repository. Using an already existing repository as an alternate will
-require fewer objects to be copied from the repository being cloned,
-reducing network and local storage costs.</p>
+<li><p>&ndash;reference &lt;repository&gt;<br />
+If the reference repository is on the local machine, automatically
+setup <code>.git/objects/info/alternates</code> to obtain objects from the
+reference repository. Using an already existing repository as an
+alternate will require fewer objects to be copied from the
+repository being cloned, reducing network and local storage costs.</p>
 
 <p><strong>NOTE</strong>: see the NOTE for the <code>--shared</code> option, and also the
-<code>--dissociate</code> option.</p>
+<code>--dissociate</code> option.</p></li>
 
-<p>&ndash;dissociate<br />
+<li><p>&ndash;dissociate<br />
 Borrow the objects from reference repositories specified with the
 <code>--reference</code> options only to reduce network transfer, and stop
 borrowing from them after a clone is made by making necessary local
-copies of borrowed objects. This option can also be used when cloning
-locally from a repository that already borrows objects from another
-repository—the new repository will borrow objects from the same
-repository, and this option can be used to stop the borrowing.</p>
+copies of borrowed objects. This option can also be used when
+cloning locally from a repository that already borrows objects from
+another repository—the new repository will borrow objects from the
+same repository, and this option can be used to stop the borrowing.</p></li>
 
-<p>&ndash;quiet<br />
+<li><p>&ndash;quiet<br />
 -q<br />
-Operate quietly. Progress is not reported to the standard error stream.</p>
+Operate quietly. Progress is not reported to the standard error
+stream.</p></li>
 
-<p>&ndash;verbose<br />
+<li><p>&ndash;verbose<br />
 -v<br />
-Run verbosely. Does not affect the reporting of progress status to the
-standard error stream.</p>
+Run verbosely. Does not affect the reporting of progress status to
+the standard error stream.</p></li>
 
-<p>&ndash;progress<br />
-Progress status is reported on the standard error stream by default when
-it is attached to a terminal, unless -q is specified. This flag forces
-progress status even if the standard error stream is not directed to a
-terminal.</p>
+<li><p>&ndash;progress<br />
+Progress status is reported on the standard error stream by default
+when it is attached to a terminal, unless -q is specified. This flag
+forces progress status even if the standard error stream is not
+directed to a terminal.</p></li>
 
-<p>&ndash;no-checkout<br />
+<li><p>&ndash;no-checkout<br />
 -n<br />
-No checkout of HEAD is performed after the clone is complete.</p>
+No checkout of HEAD is performed after the clone is complete.</p></li>
 
-<p>&ndash;bare<br />
-Make a <em>bare</em> Git repository. That is, instead of creating <code>&lt;directory&gt;</code>
-and placing the administrative files in <code>&lt;directory&gt;/.git</code>, make the
-<code>&lt;directory&gt;</code> itself the <code>$GIT_DIR</code>. This obviously implies the <code>-n</code>
-because there is nowhere to check out the working tree. Also the branch
-heads at the remote are copied directly to corresponding local branch
-heads, without mapping them to <code>refs/remotes/origin/</code>. When this option
-is used, neither remote-tracking branches nor the related configuration
-variables are created.</p>
+<li><p>&ndash;bare<br />
+Make a <em>bare</em> Git repository. That is, instead of creating
+<code>&lt;directory&gt;</code> and placing the administrative files in
+<code>&lt;directory&gt;/.git</code>, make the <code>&lt;directory&gt;</code> itself the <code>$GIT_DIR</code>.
+This obviously implies the <code>-n</code> because there is nowhere to check
+out the working tree. Also the branch heads at the remote are copied
+directly to corresponding local branch heads, without mapping them
+to <code>refs/remotes/origin/</code>. When this option is used, neither
+remote-tracking branches nor the related configuration variables are
+created.</p></li>
 
-<p>&ndash;mirror<br />
+<li><p>&ndash;mirror<br />
 Set up a mirror of the source repository. This implies <code>--bare</code>.
 Compared to <code>--bare</code>, <code>--mirror</code> not only maps local branches of the
 source to local branches of the target, it maps all refs (including
 remote-tracking branches, notes etc.) and sets up a refspec
-configuration such that all these refs are overwritten by a
-<code>git remote update</code> in the target repository.</p>
+configuration such that all these refs are overwritten by a <code>git
+remote update</code> in the target repository.</p></li>
 
-<p>&ndash;origin &lt;name&gt;<br />
+<li><p>&ndash;origin &lt;name&gt;<br />
 -o &lt;name&gt;<br />
-Instead of using the remote name <code>origin</code> to keep track of the upstream
-repository, use <code>&lt;name&gt;</code>.</p>
+Instead of using the remote name <code>origin</code> to keep track of the
+upstream repository, use <code>&lt;name&gt;</code>.</p></li>
 
-<p>&ndash;branch &lt;name&gt;<br />
+<li><p>&ndash;branch &lt;name&gt;<br />
 -b &lt;name&gt;<br />
-Instead of pointing the newly created HEAD to the branch pointed to by
-the cloned repository’s HEAD, point to <code>&lt;name&gt;</code> branch instead. In a
-non-bare repository, this is the branch that will be checked out.
-<code>--branch</code> can also take tags and detaches the HEAD at that commit in
-the resulting repository.</p>
+Instead of pointing the newly created HEAD to the branch pointed to
+by the cloned repository’s HEAD, point to <code>&lt;name&gt;</code> branch instead.
+In a non-bare repository, this is the branch that will be checked
+out. <code>--branch</code> can also take tags and detaches the HEAD at that
+commit in the resulting repository.</p></li>
 
-<p>&ndash;upload-pack &lt;upload-pack&gt;<br />
+<li><p>&ndash;upload-pack &lt;upload-pack&gt;<br />
 -u &lt;upload-pack&gt;<br />
-When given, and the repository to clone from is accessed via ssh, this
-specifies a non-default path for the command run on the other end.</p>
+When given, and the repository to clone from is accessed via ssh,
+this specifies a non-default path for the command run on the other
+end.</p></li>
 
-<p>&ndash;template=&lt;template_directory&gt;<br />
+<li><p>&ndash;template=&lt;template_directory&gt;<br />
 Specify the directory from which templates will be used; (See the
-&ldquo;TEMPLATE DIRECTORY&rdquo; section of <a href="../git-init">git-init(1)</a>.)</p>
+&ldquo;TEMPLATE DIRECTORY&rdquo; section of <a href="../git-init">git-init(1)</a>.)</p></li>
 
-<p>&ndash;config &lt;key&gt;=&lt;value&gt;<br />
+<li><p>&ndash;config &lt;key&gt;=&lt;value&gt;<br />
 -c &lt;key&gt;=&lt;value&gt;<br />
-Set a configuration variable in the newly-created repository; this takes
-effect immediately after the repository is initialized, but before the
-remote history is fetched or any files checked out. The key is in the
-same format as expected by <a href="../git-config">git-config(1)</a> (e.g.,
-<code>core.eol=true</code>). If multiple values are given for the same key, each
-value will be written to the config file. This makes it safe, for
-example, to add additional fetch refspecs to the origin remote.</p>
+Set a configuration variable in the newly-created repository; this
+takes effect immediately after the repository is initialized, but
+before the remote history is fetched or any files checked out. The
+key is in the same format as expected by
+<a href="../git-config">git-config(1)</a> (e.g., <code>core.eol=true</code>). If
+multiple values are given for the same key, each value will be
+written to the config file. This makes it safe, for example, to add
+additional fetch refspecs to the origin remote.</p></li>
 
-<p>&ndash;depth &lt;depth&gt;<br />
+<li><p>&ndash;depth &lt;depth&gt;<br />
 Create a <em>shallow</em> clone with a history truncated to the specified
-number of commits. Implies <code>--single-branch</code> unless <code>--no-single-branch</code>
-is given to fetch the histories near the tips of all branches. If you
-want to clone submodules shallowly, also pass <code>--shallow-submodules</code>.</p>
+number of commits. Implies <code>--single-branch</code> unless
+<code>--no-single-branch</code> is given to fetch the histories near the tips
+of all branches. If you want to clone submodules shallowly, also
+pass <code>--shallow-submodules</code>.</p></li>
 
-<p>&ndash;[no-]single-branch<br />
+<li><p>&ndash;[no-]single-branch<br />
 Clone only the history leading to the tip of a single branch, either
-specified by the <code>--branch</code> option or the primary branch remote’s <code>HEAD</code>
-points at. Further fetches into the resulting repository will only
-update the remote-tracking branch for the branch this option was used
-for the initial cloning. If the HEAD at the remote did not point at any
-branch when <code>--single-branch</code> clone was made, no remote-tracking branch
-is created.</p>
+specified by the <code>--branch</code> option or the primary branch remote’s
+<code>HEAD</code> points at. Further fetches into the resulting repository will
+only update the remote-tracking branch for the branch this option
+was used for the initial cloning. If the HEAD at the remote did not
+point at any branch when <code>--single-branch</code> clone was made, no
+remote-tracking branch is created.</p></li>
 
-<p>&ndash;recursive<br />
-&ndash;recurse-submodules<br />
+<li><p>&ndash;recursive<br />
+--recurse-submodules<br />
 After the clone is created, initialize all submodules within, using
-their default settings. This is equivalent to running
-<code>git submodule update                   --init --recursive</code> immediately
-after the clone is finished. This option is ignored if the cloned
-repository does not have a worktree/checkout (i.e. if any of
-<code>--no-checkout</code>/<code>-n</code>, <code>--bare</code>, or <code>--mirror</code> is given)</p>
+their default settings. This is equivalent to running <code>git submodule
+update --init --recursive</code> immediately after the clone is finished.
+This option is ignored if the cloned repository does not have a
+worktree/checkout (i.e. if any of <code>--no-checkout</code>/<code>-n</code>, <code>--bare</code>, or
+<code>--mirror</code> is given)</p></li>
 
-<p>&ndash;[no-]shallow-submodules<br />
-All submodules which are cloned will be shallow with a depth of 1.</p>
+<li><p>&ndash;[no-]shallow-submodules<br />
+All submodules which are cloned will be shallow with a depth of 1.</p></li>
 
-<p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
+<li><p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
 Instead of placing the cloned repository where it is supposed to be,
 place the cloned repository at the specified directory, then make a
 filesystem-agnostic Git symbolic link to there. The result is Git
-repository can be separated from working tree.</p>
+repository can be separated from working tree.</p></li>
 
-<p>-j &lt;n&gt;<br />
-&ndash;jobs &lt;n&gt;<br />
+<li><p>-j &lt;n&gt;<br />
+--jobs &lt;n&gt;<br />
 The number of submodules fetched at the same time. Defaults to the
-<code>submodule.fetchJobs</code> option.</p>
+<code>submodule.fetchJobs</code> option.</p></li>
 
-<p>&lt;repository&gt;<br />
-The (possibly remote) repository to clone from. See the <a href="#URLS">URLS</a>
-section below for more information on specifying repositories.</p>
+<li><p>&lt;repository&gt;<br />
+The (possibly remote) repository to clone from. See the
+<a href="#URLS">URLS</a> section below for more information on specifying
+repositories.</p></li>
 
-<p>&lt;directory&gt;<br />
-The name of a new directory to clone into. The &ldquo;humanish&rdquo; part of the
-source repository is used if no directory is explicitly given (<code>repo</code>
-for <code>/path/to/repo.git</code> and <code>foo</code> for <code>host.xz:foo/.git</code>). Cloning into
-an existing directory is only allowed if the directory is empty.</p>
+<li><p>&lt;directory&gt;<br />
+The name of a new directory to clone into. The &ldquo;humanish&rdquo; part of
+the source repository is used if no directory is explicitly given
+(<code>repo</code> for <code>/path/to/repo.git</code> and <code>foo</code> for <code>host.xz:foo/.git</code>).
+Cloning into an existing directory is only allowed if the directory
+is empty.</p></li>
+</ul>
 
-<h2 id="git-urls-span-id-urls-span">GIT URLS<span id="URLS"></span></h2>
+<h2 id="git-urls">GIT URLS</h2>
 
 <p>In general, URLs contain information about the transport protocol, the
 address of the remote server, and the path to the repository. Depending
@@ -380,9 +389,8 @@ syntaxes may be used:</p>
 &ndash;local option.</p>
 
 <p>When Git doesn’t know how to handle a certain transport protocol, it
-attempts to use the <em>remote-&lt;transport&gt;</em> remote helper, if one
-exists. To explicitly request a remote helper, the following syntax may
-be used:</p>
+attempts to use the <em>remote-&lt;transport&gt;</em> remote helper, if one exists.
+To explicitly request a remote helper, the following syntax may be used:</p>
 
 <ul>
 <li>&lt;transport&gt;::&lt;address&gt;</li>

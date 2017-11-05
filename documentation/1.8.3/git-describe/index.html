@@ -119,72 +119,74 @@ it suffixes the tag name with the number of additional commits on top of
 the tagged object and the abbreviated object name of the most recent
 commit.</p>
 
-<p>By default (without &ndash;all or &ndash;tags) <code>git               describe</code> only
-shows annotated tags. For more information about creating annotated tags
-see the -a and -s options to <a href="../git-tag">git-tag(1)</a>.</p>
+<p>By default (without &ndash;all or &ndash;tags) <code>git describe</code> only shows annotated
+tags. For more information about creating annotated tags see the -a and
+-s options to <a href="../git-tag">git-tag(1)</a>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<p>&lt;committish&gt;…<br />
-Committish object names to describe.</p>
+<ul>
+<li><p>&lt;committish&gt;…<br />
+Committish object names to describe.</p></li>
 
-<p>&ndash;dirty[=&lt;mark&gt;]<br />
+<li><p>&ndash;dirty[=&lt;mark&gt;]<br />
 Describe the working tree. It means describe HEAD and appends
-&lt;mark&gt; (<code>-dirty</code> by default) if the working tree is dirty.</p>
+&lt;mark&gt; (<code>-dirty</code> by default) if the working tree is dirty.</p></li>
 
-<p>&ndash;all<br />
-Instead of using only the annotated tags, use any ref found in <code>refs/</code>
-namespace. This option enables matching any known branch,
-remote-tracking branch, or lightweight tag.</p>
+<li><p>&ndash;all<br />
+Instead of using only the annotated tags, use any ref found in
+<code>refs/</code> namespace. This option enables matching any known branch,
+remote-tracking branch, or lightweight tag.</p></li>
 
-<p>&ndash;tags<br />
+<li><p>&ndash;tags<br />
 Instead of using only the annotated tags, use any tag found in
 <code>refs/tags</code> namespace. This option enables matching a lightweight
-(non-annotated) tag.</p>
+(non-annotated) tag.</p></li>
 
-<p>&ndash;contains<br />
-Instead of finding the tag that predates the commit, find the tag that
-comes after the commit, and thus contains it. Automatically implies
-&ndash;tags.</p>
+<li><p>&ndash;contains<br />
+Instead of finding the tag that predates the commit, find the tag
+that comes after the commit, and thus contains it. Automatically
+implies &ndash;tags.</p></li>
 
-<p>&ndash;abbrev=&lt;n&gt;<br />
+<li><p>&ndash;abbrev=&lt;n&gt;<br />
 Instead of using the default 7 hexadecimal digits as the abbreviated
 object name, use &lt;n&gt; digits, or as many digits as needed to form a
 unique object name. An &lt;n&gt; of 0 will suppress long format, only
-showing the closest tag.</p>
+showing the closest tag.</p></li>
 
-<p>&ndash;candidates=&lt;n&gt;<br />
+<li><p>&ndash;candidates=&lt;n&gt;<br />
 Instead of considering only the 10 most recent tags as candidates to
 describe the input committish consider up to &lt;n&gt; candidates.
 Increasing &lt;n&gt; above 10 will take slightly longer but may produce
 a more accurate result. An &lt;n&gt; of 0 will cause only exact matches
-to be output.</p>
+to be output.</p></li>
 
-<p>&ndash;exact-match<br />
+<li><p>&ndash;exact-match<br />
 Only output exact matches (a tag directly references the supplied
-commit). This is a synonym for &ndash;candidates=0.</p>
+commit). This is a synonym for &ndash;candidates=0.</p></li>
 
-<p>&ndash;debug<br />
+<li><p>&ndash;debug<br />
 Verbosely display information about the searching strategy being
 employed to standard error. The tag name will still be printed to
-standard out.</p>
+standard out.</p></li>
 
-<p>&ndash;long<br />
-Always output the long format (the tag, the number of commits and the
-abbreviated commit name) even when it matches a tag. This is useful when
-you want to see parts of the commit object name in &ldquo;describe&rdquo; output,
-even when the commit in question happens to be a tagged version. Instead
-of just emitting the tag name, it will describe such a commit as
-v1.2-0-gdeadbee (0th commit since tag v1.2 that points at object
-deadbee….).</p>
+<li><p>&ndash;long<br />
+Always output the long format (the tag, the number of commits and
+the abbreviated commit name) even when it matches a tag. This is
+useful when you want to see parts of the commit object name in
+&ldquo;describe&rdquo; output, even when the commit in question happens to be a
+tagged version. Instead of just emitting the tag name, it will
+describe such a commit as v1.2-0-gdeadbee (0th commit since tag v1.2
+that points at object deadbee….).</p></li>
 
-<p>&ndash;match &lt;pattern&gt;<br />
-Only consider tags matching the given <code>glob(7)</code> pattern, excluding the
-&ldquo;refs/tags/&rdquo; prefix. This can be used to avoid leaking private tags from
-the repository.</p>
+<li><p>&ndash;match &lt;pattern&gt;<br />
+Only consider tags matching the given <code>glob(7)</code> pattern, excluding
+the &ldquo;refs/tags/&rdquo; prefix. This can be used to avoid leaking private
+tags from the repository.</p></li>
 
-<p>&ndash;always<br />
-Show uniquely abbreviated commit object as fallback.</p>
+<li><p>&ndash;always<br />
+Show uniquely abbreviated commit object as fallback.</p></li>
+</ul>
 
 <h2 id="examples">EXAMPLES</h2>
 
