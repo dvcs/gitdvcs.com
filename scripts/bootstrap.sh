@@ -195,7 +195,7 @@ main() {
       isLatest=false
     done
 
-    echo ${documentaitonZipFilesOutput} | sed '/^$/d' | parallel -j+0 --eta --citation --colsep '\s' extract_documentation {1} {2}
+    echo ${documentaitonZipFilesOutput} | sed '/^$/d' | parallel -j+0 --eta --colsep '\s' extract_documentation {1} {2}
 
     echo "</ul>" >> "${DOCS_FILE}"
     # rm *.tar.gz
