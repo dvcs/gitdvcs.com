@@ -134,6 +134,9 @@ extract_documentation() {
     # Remove All Non HTML files
     find . ! -name '*.html' -type f -exec rm -f {} +
 
+    # Remove non-git prefix files Files
+    find . -type f ! -name "git*" -delete
+
     # Modify HTML
     for htmlFile in *.html; do
       htmlFileBase=${htmlFile##*/}
@@ -153,7 +156,7 @@ extract_documentation() {
       # Insert front mmatter
       create_documentation_file_front_matter "${markdownFile}" "${htmlFilePrefix}" "${commandDescription}" "${2}"
 
-      hxnormalize -x ${htmlFile}  | hxselect -c "div#content" | pandoc -f html -t gfm >> $markdownFile
+      hxnormalize -x ${htmlFile}  | hxselect -c "div#content" | pandoc -f html -t markdown_strict >> $markdownFile
 
       fix_relative_hyper_links $markdownFile
       rm $htmlFile
