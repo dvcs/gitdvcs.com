@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=&lt;prefix&gt;]
+<pre><code>git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=&lt;prefix&gt;]
                 [-u [--exclude-per-directory=&lt;gitignore&gt;] | -i]]
                 [--index-output=&lt;file&gt;] [--no-sparse-checkout]
                 (--empty | &lt;tree-ish1&gt; [&lt;tree-ish2&gt; [&lt;tree-ish3&gt;]])
@@ -129,46 +129,45 @@ paths will be in unmerged state when <em>git read-tree</em> returns.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-m<br />
-Perform a merge, not just a read. The command will refuse to run if
-your index file has unmerged entries, indicating that you have not
-finished previous merge you started.</p></li>
+<p>-m<br />
+Perform a merge, not just a read. The command will refuse to run if your
+index file has unmerged entries, indicating that you have not finished
+previous merge you started.</p>
 
-<li><p>&ndash;reset<br />
+<p>&ndash;reset<br />
 Same as -m, except that unmerged entries are discarded instead of
-failing.</p></li>
+failing.</p>
 
-<li><p>-u<br />
+<p>-u<br />
 After a successful merge, update the files in the work tree with the
-result of the merge.</p></li>
+result of the merge.</p>
 
-<li><p>-i<br />
+<p>-i<br />
 Usually a merge requires the index file as well as the files in the
-working tree to be up to date with the current head commit, in order
-not to lose local changes. This flag disables the check with the
-working tree and is meant to be used when creating a merge of trees
-that are not directly related to the current working tree status
-into a temporary index file.</p></li>
+working tree to be up to date with the current head commit, in order not
+to lose local changes. This flag disables the check with the working
+tree and is meant to be used when creating a merge of trees that are not
+directly related to the current working tree status into a temporary
+index file.</p>
 
-<li><p>-n<br />
---dry-run<br />
-Check if the command would error out, without updating the index nor
-the files in the working tree for real.</p></li>
+<p>-n<br />
+&ndash;dry-run<br />
+Check if the command would error out, without updating the index nor the
+files in the working tree for real.</p>
 
-<li><p>-v<br />
-Show the progress of checking files out.</p></li>
+<p>-v<br />
+Show the progress of checking files out.</p>
 
-<li><p>&ndash;trivial<br />
-Restrict three-way merge by <em>git read-tree</em> to happen only if there
-is no file-level merging required, instead of resolving merge for
-trivial cases and leaving conflicting files unresolved in the index.</p></li>
+<p>&ndash;trivial<br />
+Restrict three-way merge by <em>git read-tree</em> to happen only if there is
+no file-level merging required, instead of resolving merge for trivial
+cases and leaving conflicting files unresolved in the index.</p>
 
-<li><p>&ndash;aggressive<br />
+<p>&ndash;aggressive<br />
 Usually a three-way merge by <em>git read-tree</em> resolves the merge for
-really trivial cases and leaves other cases unresolved in the index,
-so that porcelains can implement different merge policies. This flag
-makes the command resolve a few more cases internally:</p>
+really trivial cases and leaves other cases unresolved in the index, so
+that porcelains can implement different merge policies. This flag makes
+the command resolve a few more cases internally:</p>
 
 <ul>
 <li><p>when one side removes a path and the other side leaves the path
@@ -179,47 +178,43 @@ path.</p></li>
 
 <li><p>when both sides add a path identically. The resolution is to add
 that path.</p></li>
-</ul></li>
-
-<li><p>&ndash;prefix=&lt;prefix&gt;/<br />
-Keep the current index contents, and read the contents of the named
-tree-ish under the directory at <code>&lt;prefix&gt;</code>. The command will refuse
-to overwrite entries that already existed in the original index
-file. Note that the <code>&lt;prefix&gt;/</code> value must end with a slash.</p></li>
-
-<li><p>&ndash;exclude-per-directory=&lt;gitignore&gt;<br />
-When running the command with <code>-u</code> and <code>-m</code> options, the merge
-result may need to overwrite paths that are not tracked in the
-current branch. The command usually refuses to proceed with the
-merge to avoid losing such a path. However this safety valve
-sometimes gets in the way. For example, it often happens that the
-other branch added a file that used to be a generated file in your
-branch, and the safety valve triggers when you try to switch to that
-branch after you ran <code>make</code> but before running <code>make clean</code> to
-remove the generated file. This option tells the command to read
-per-directory exclude file (usually <em>.gitignore</em>) and allows such an
-untracked but explicitly ignored file to be overwritten.</p></li>
-
-<li><p>&ndash;index-output=&lt;file&gt;<br />
-Instead of writing the results out to <code>$GIT_INDEX_FILE</code>, write the
-resulting index in the named file. While the command is operating,
-the original index file is locked with the same mechanism as usual.
-The file must allow to be rename(2)ed into from a temporary file
-that is created next to the usual index file; typically this means
-it needs to be on the same filesystem as the index file itself, and
-you need write permission to the directories the index file and
-index output file are located in.</p></li>
-
-<li><p>&ndash;no-sparse-checkout<br />
-Disable sparse checkout support even if <code>core.sparseCheckout</code> is
-true.</p></li>
-
-<li><p>&ndash;empty<br />
-Instead of reading tree object(s) into the index, just empty it.</p></li>
-
-<li><p>&lt;tree-ish#&gt;<br />
-The id of the tree object(s) to be read/merged.</p></li>
 </ul>
+
+<p>&ndash;prefix=&lt;prefix&gt;/<br />
+Keep the current index contents, and read the contents of the named
+tree-ish under the directory at <code>&lt;prefix&gt;</code>. The command will refuse to
+overwrite entries that already existed in the original index file. Note
+that the <code>&lt;prefix&gt;/</code> value must end with a slash.</p>
+
+<p>&ndash;exclude-per-directory=&lt;gitignore&gt;<br />
+When running the command with <code>-u</code> and <code>-m</code> options, the merge result
+may need to overwrite paths that are not tracked in the current branch.
+The command usually refuses to proceed with the merge to avoid losing
+such a path. However this safety valve sometimes gets in the way. For
+example, it often happens that the other branch added a file that used
+to be a generated file in your branch, and the safety valve triggers
+when you try to switch to that branch after you ran <code>make</code> but before
+running <code>make clean</code> to remove the generated file. This option tells the
+command to read per-directory exclude file (usually <em>.gitignore</em>) and
+allows such an untracked but explicitly ignored file to be overwritten.</p>
+
+<p>&ndash;index-output=&lt;file&gt;<br />
+Instead of writing the results out to <code>$GIT_INDEX_FILE</code>, write the
+resulting index in the named file. While the command is operating, the
+original index file is locked with the same mechanism as usual. The file
+must allow to be rename(2)ed into from a temporary file that is created
+next to the usual index file; typically this means it needs to be on the
+same filesystem as the index file itself, and you need write permission
+to the directories the index file and index output file are located in.</p>
+
+<p>&ndash;no-sparse-checkout<br />
+Disable sparse checkout support even if <code>core.sparseCheckout</code> is true.</p>
+
+<p>&ndash;empty<br />
+Instead of reading tree object(s) into the index, just empty it.</p>
+
+<p>&lt;tree-ish#&gt;<br />
+The id of the tree object(s) to be read/merged.</p>
 
 <h2 id="merging">Merging</h2>
 
@@ -235,19 +230,19 @@ given pathname, and the contents of the path match with the tree being
 read, the stat info from the index is used. (In other words, the index’s
 stat()s take precedence over the merged tree’s).</p>
 
-<p>That means that if you do a <code>git read-tree -m &lt;newtree&gt;</code> followed by a
-<code>git checkout-index -f -u -a</code>, the <em>git checkout-index</em> only checks out
-the stuff that really changed.</p>
+<p>That means that if you do a <code>git read-tree -m                 &lt;newtree&gt;</code>
+followed by a <code>git                 checkout-index -f -u -a</code>, the <em>git
+checkout-index</em> only checks out the stuff that really changed.</p>
 
 <p>This is used to avoid unnecessary false hits when <em>git diff-files</em> is
 run after <em>git read-tree</em>.</p>
 
 <h3 id="two-tree-merge">Two Tree Merge</h3>
 
-<p>Typically, this is invoked as <code>git read-tree -m $H $M</code>, where $H is the
-head commit of the current repository, and $M is the head of a foreign
-tree, which is simply ahead of $H (i.e. we are in a fast-forward
-situation).</p>
+<p>Typically, this is invoked as <code>git read-tree -m                 $H $M</code>,
+where $H is the head commit of the current repository, and $M is the
+head of a foreign tree, which is simply ahead of $H (i.e. we are in a
+fast-forward situation).</p>
 
 <p>When two trees are specified, the user is telling <em>git read-tree</em> the
 following:</p>
@@ -274,15 +269,13 @@ a path in the specified commit:</p>
                                 H == M   keep index otherwise
                                 exists,  fail
                                 H != M
-</code></pre>
 
-<pre><code>   clean I==H  I==M
+   clean I==H  I==M
   ------------------
 4  yes   N/A   N/A     nothing  nothing  keep index
 5  no    N/A   N/A     nothing  nothing  keep index
-</code></pre>
 
-<pre><code>6  yes   N/A   yes     nothing  exists   keep index
+6  yes   N/A   yes     nothing  exists   keep index
 7  no    N/A   yes     nothing  exists   keep index
 8  yes   N/A   no      nothing  exists   fail
 9  no    N/A   no      nothing  exists   fail
@@ -291,15 +284,13 @@ a path in the specified commit:</p>
 11 no    yes   N/A     exists   nothing  fail
 12 yes   no    N/A     exists   nothing  fail
 13 no    no    N/A     exists   nothing  fail
-</code></pre>
 
-<pre><code>   clean (H==M)
+   clean (H==M)
   ------
 14 yes                 exists   exists   keep index
 15 no                  exists   exists   keep index
-</code></pre>
 
-<pre><code>   clean I==H  I==M (H!=M)
+   clean I==H  I==M (H!=M)
   ------------------
 16 yes   no    no      exists   exists   fail
 17 no    no    no      exists   exists   fail
@@ -316,12 +307,13 @@ copy in the work tree intact when operating under the -u flag.</p>
 <p>When this form of <em>git read-tree</em> returns successfully, you can see
 which of the &ldquo;local changes&rdquo; that you made were carried forward by
 running <code>git diff-index --cached $M</code>. Note that this does not
-necessarily match what <code>git diff-index --cached $H</code> would have produced
-before such a two tree merge. This is because of cases 18 and 19 &mdash; if
-you already had the changes in $M (e.g. maybe you picked it up via
-e-mail in a patch form), <code>git diff-index --cached $H</code> would have told
-you about the change before this merge, but it would not show in <code>git
-diff-index --cached $M</code> output after the two-tree merge.</p>
+necessarily match what <code>git diff-index                 --cached $H</code>
+would have produced before such a two tree merge. This is because of
+cases 18 and 19 &mdash; if you already had the changes in $M (e.g. maybe you
+picked it up via e-mail in a patch form),
+<code>git                 diff-index --cached $H</code> would have told you about
+the change before this merge, but it would not show in
+<code>git diff-index --cached $M</code> output after the two-tree merge.</p>
 
 <p>Case 3 is slightly tricky and needs explanation. The result from this
 rule logically should be to remove the path if the user staged the
@@ -344,12 +336,12 @@ starts out at 1.</p>
 <pre><code>$ git read-tree -m &lt;tree1&gt; &lt;tree2&gt; &lt;tree3&gt;
 </code></pre>
 
-<p>and you will end up with an index with all of the &lt;tree1&gt; entries in
-&ldquo;stage1&rdquo;, all of the &lt;tree2&gt; entries in &ldquo;stage2&rdquo; and all of the
-&lt;tree3&gt; entries in &ldquo;stage3&rdquo;. When performing a merge of another branch
-into the current branch, we use the common ancestor tree as &lt;tree1&gt;,
-the current branch head as &lt;tree2&gt;, and the other branch head as
-&lt;tree3&gt;.</p>
+<p>and you will end up with an index with all of the &lt;tree1&gt; entries
+in &ldquo;stage1&rdquo;, all of the &lt;tree2&gt; entries in &ldquo;stage2&rdquo; and all of the
+&lt;tree3&gt; entries in &ldquo;stage3&rdquo;. When performing a merge of another
+branch into the current branch, we use the common ancestor tree as
+&lt;tree1&gt;, the current branch head as &lt;tree2&gt;, and the other
+branch head as &lt;tree3&gt;.</p>
 
 <p>Furthermore, <em>git read-tree</em> has special-case logic that says: if you
 see a file that matches in all respects in the following states, it
@@ -378,10 +370,10 @@ different stages represent the &ldquo;result tree&rdquo; (stage 0, aka &ldquo;me
 the original tree (stage 1, aka &ldquo;orig&rdquo;), and the two trees you are
 trying to merge (stage 2 and 3 respectively).</p>
 
-<p>The order of stages 1, 2 and 3 (hence the order of three &lt;tree-ish&gt;
-command line arguments) are significant when you start a 3-way merge
-with an index file that is already populated. Here is an outline of how
-the algorithm works:</p>
+<p>The order of stages 1, 2 and 3 (hence the order of three
+&lt;tree-ish&gt; command line arguments) are significant when you start
+a 3-way merge with an index file that is already populated. Here is an
+outline of how the algorithm works:</p>
 
 <ul>
 <li><p>if a file exists in identical format in all three trees, it will
@@ -575,7 +567,7 @@ read-tree</em> and similar commands is disabled by default. You need to turn
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

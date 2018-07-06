@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git check-ignore [options] pathname…
+<pre><code>git check-ignore [options] pathname…
 git check-ignore [options] --stdin
 </code></pre>
 
@@ -123,37 +123,33 @@ subject to exclude rules; but see ‘&ndash;no-index’.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-q, &ndash;quiet<br />
-Don’t output anything, just set exit status. This is only valid with
-a single pathname.</p></li>
+<p>-q, &ndash;quiet<br />
+Don’t output anything, just set exit status. This is only valid with a
+single pathname.</p>
 
-<li><p>-v, &ndash;verbose<br />
-Also output details about the matching pattern (if any) for each
-given pathname.</p></li>
+<p>-v, &ndash;verbose<br />
+Also output details about the matching pattern (if any) for each given
+pathname.</p>
 
-<li><p>&ndash;stdin<br />
-Read pathnames from the standard input, one per line, instead of
-from the command-line.</p></li>
+<p>&ndash;stdin<br />
+Read pathnames from the standard input, one per line, instead of from
+the command-line.</p>
 
-<li><p>-z<br />
-The output format is modified to be machine-parseable (see below).
-If <code>--stdin</code> is also given, input paths are separated with a NUL
-character instead of a linefeed character.</p></li>
+<p>-z<br />
+The output format is modified to be machine-parseable (see below). If
+<code>--stdin</code> is also given, input paths are separated with a NUL character
+instead of a linefeed character.</p>
 
-<li><p>-n, &ndash;non-matching<br />
-Show given paths which don’t match any pattern. This only makes
-sense when <code>--verbose</code> is enabled, otherwise it would not be
-possible to distinguish between paths which match a pattern and
-those which don’t.</p></li>
+<p>-n, &ndash;non-matching<br />
+Show given paths which don’t match any pattern. This only makes sense
+when <code>--verbose</code> is enabled, otherwise it would not be possible to
+distinguish between paths which match a pattern and those which don’t.</p>
 
-<li><p>&ndash;no-index<br />
-Don’t look in the index when undertaking the checks. This can be
-used to debug why a path became tracked by e.g. <code>git add .</code> and was
-not ignored by the rules as expected by the user or when developing
-patterns including negation to match a path previously added with
-<code>git add -f</code>.</p></li>
-</ul>
+<p>&ndash;no-index<br />
+Don’t look in the index when undertaking the checks. This can be used to
+debug why a path became tracked by e.g. <code>git add .</code> and was not ignored
+by the rules as expected by the user or when developing patterns
+including negation to match a path previously added with <code>git add -f</code>.</p>
 
 <h2 id="output">OUTPUT</h2>
 
@@ -165,24 +161,24 @@ ignored.</p>
 <p>If <code>--verbose</code> is specified, the output is a series of lines of the
 form:</p>
 
-<p>&lt;source&gt; &lt;COLON&gt; &lt;linenum&gt; &lt;COLON&gt; &lt;pattern&gt; &lt;HT&gt;
-&lt;pathname&gt;</p>
+<p>&lt;source&gt; &lt;COLON&gt; &lt;linenum&gt; &lt;COLON&gt;
+&lt;pattern&gt; &lt;HT&gt; &lt;pathname&gt;</p>
 
-<p>&lt;pathname&gt; is the path of a file being queried, &lt;pattern&gt; is the
-matching pattern, &lt;source&gt; is the pattern’s source file, and
-&lt;linenum&gt; is the line number of the pattern within that source. If the
-pattern contained a <code>!</code> prefix or <code>/</code> suffix, it will be preserved in
-the output. &lt;source&gt; will be an absolute path when referring to the
-file configured by <code>core.excludesFile</code>, or relative to the repository
-root when referring to <code>.git/info/exclude</code> or a per-directory exclude
-file.</p>
+<p>&lt;pathname&gt; is the path of a file being queried, &lt;pattern&gt; is
+the matching pattern, &lt;source&gt; is the pattern’s source file, and
+&lt;linenum&gt; is the line number of the pattern within that source. If
+the pattern contained a <code>!</code> prefix or <code>/</code> suffix, it will be preserved
+in the output. &lt;source&gt; will be an absolute path when referring to
+the file configured by <code>core.excludesFile</code>, or relative to the
+repository root when referring to <code>.git/info/exclude</code> or a per-directory
+exclude file.</p>
 
 <p>If <code>-z</code> is specified, the pathnames in the output are delimited by the
 null character; if <code>--verbose</code> is also specified then null characters
 are also used instead of colons and hard tabs:</p>
 
-<p>&lt;source&gt; &lt;NULL&gt; &lt;linenum&gt; &lt;NULL&gt; &lt;pattern&gt; &lt;NULL&gt;
-&lt;pathname&gt; &lt;NULL&gt;</p>
+<p>&lt;source&gt; &lt;NULL&gt; &lt;linenum&gt; &lt;NULL&gt; &lt;pattern&gt;
+&lt;NULL&gt; &lt;pathname&gt; &lt;NULL&gt;</p>
 
 <p>If <code>-n</code> or <code>--non-matching</code> are specified, non-matching pathnames will
 also be output, in which case all fields in each output record except
@@ -201,16 +197,14 @@ buffer.</p>
 
 <h2 id="exit-status">EXIT STATUS</h2>
 
-<ul>
-<li><p>0<br />
-One or more of the provided paths is ignored.</p></li>
+<p>0<br />
+One or more of the provided paths is ignored.</p>
 
-<li><p>1<br />
-None of the provided paths are ignored.</p></li>
+<p>1<br />
+None of the provided paths are ignored.</p>
 
-<li><p>128<br />
-A fatal error was encountered.</p></li>
-</ul>
+<p>128<br />
+A fatal error was encountered.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -276,7 +270,7 @@ A fatal error was encountered.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

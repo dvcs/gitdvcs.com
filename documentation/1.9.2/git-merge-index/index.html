@@ -107,40 +107,36 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git merge-index [-o] [-q] &lt;merge-program&gt; (-a | [--] &lt;file&gt;*)
+<pre><code>git merge-index [-o] [-q] &lt;merge-program&gt; (-a | [--] &lt;file&gt;*)
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
 
-<p>This looks up the &lt;file&gt;(s) in the index and, if there are any merge
-entries, passes the SHA-1 hash for those files as arguments 1, 2, 3
-(empty argument if no file), and &lt;file&gt; as argument 4. File modes for
-the three files are passed as arguments 5, 6 and 7.</p>
+<p>This looks up the &lt;file&gt;(s) in the index and, if there are any
+merge entries, passes the SHA-1 hash for those files as arguments 1, 2,
+3 (empty argument if no file), and &lt;file&gt; as argument 4. File
+modes for the three files are passed as arguments 5, 6 and 7.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<hr />
+<p>&ndash;<br />
+Do not interpret any more arguments as options.</p>
 
-<pre><code>Do not interpret any more arguments as options.
-</code></pre>
+<p>-a<br />
+Run merge against all files in the index that need merging.</p>
 
-<ul>
-<li><p>-a<br />
-Run merge against all files in the index that need merging.</p></li>
-
-<li><p>-o<br />
+<p>-o<br />
 Instead of stopping at the first failed merge, do all of them in one
-shot - continue with merging even when previous merges returned
-errors, and only return the error code after all the merges.</p></li>
+shot - continue with merging even when previous merges returned errors,
+and only return the error code after all the merges.</p>
 
-<li><p>-q<br />
-Do not complain about a failed merge program (a merge program
-failure usually indicates conflicts during the merge). This is for
-porcelains which might want to emit custom messages.</p></li>
-</ul>
+<p>-q<br />
+Do not complain about a failed merge program (a merge program failure
+usually indicates conflicts during the merge). This is for porcelains
+which might want to emit custom messages.</p>
 
-<p>If <em>git merge-index</em> is called with multiple &lt;file&gt;s (or -a) then it
-processes them in turn only stopping if merge returns a non-zero exit
+<p>If <em>git merge-index</em> is called with multiple &lt;file&gt;s (or -a) then
+it processes them in turn only stopping if merge returns a non-zero exit
 code.</p>
 
 <p>Typically this is run with a script calling Git’s imitation of the
@@ -237,7 +233,7 @@ merge-index</em> didn’t even try to merge the MM thing).</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

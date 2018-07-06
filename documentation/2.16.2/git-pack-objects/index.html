@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-pack-objects </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-pack-objects</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.2'>2.16.2</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.2/git-pack-objects'>git-pack-objects</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>git pack-objects [-q | --progress | --all-progress] [--all-progress-implied]
+        [--no-reuse-delta] [--delta-base-offset] [--non-empty]
+        [--local] [--incremental] [--window=&lt;n&gt;] [--depth=&lt;n&gt;]
+        [--revs [--unpacked | --all]]
+        [--stdout [--filter=&lt;filter-spec&gt;] | base-name]
+        [--shallow] [--keep-true-parents] &lt; object-list
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Reads list of objects from the standard input, and writes either one or
+more packed archives with the specified base-name to disk, or a packed
+archive to the standard output.</p>
+
+<p>A packed archive is an efficient way to transfer a set of objects
+between two repositories as well as an access efficient archival format.
+In a packed archive, an object is either stored as a compressed whole or
+as a difference from some other object. The latter is often called a
+delta.</p>
+
+<p>The packed archive format (.pack) is designed to be self-contained so
+that it can be unpacked without any further information. Therefore, each
+object that a delta depends upon must be present within the pack.</p>
+
+<p>A pack index file (.idx) is generated for fast, random access to the
+objects in the pack. Placing both the index file (.idx) and the packed
+archive (.pack) in the pack/ subdirectory of $GIT_OBJECT_DIRECTORY (or
+any of the directories on $GIT_ALTERNATE_OBJECT_DIRECTORIES) enables
+Git to read from the pack archive.</p>
+
+<p>The <em>git unpack-objects</em> command can read the packed archive and expand
+the objects contained in the pack into &ldquo;one-file one-object&rdquo; format;
+this is typically done by the smart-pull commands when a pack is created
+on-the-fly for efficient network transport by their peers.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>base-name<br />
+Write into pairs of files (.pack and .idx), using &lt;base-name&gt; to
+determine the name of the created file. When this option is used, the
+two files in a pair are written in
+&lt;base-name&gt;-&lt;SHA-1&gt;.{pack,idx} files. &lt;SHA-1&gt; is a
+hash based on the pack content and is written to the standard output of
+the command.</p>
+
+<p>&ndash;stdout<br />
+Write the pack contents (what would have been written to .pack file) out
+to the standard output.</p>
+
+<p>&ndash;revs<br />
+Read the revision arguments from the standard input, instead of
+individual object names. The revision arguments are processed the same
+way as <em>git rev-list</em> with the <code>--objects</code> flag uses its <code>commit</code>
+arguments to build the list of objects it outputs. The objects on the
+resulting list are packed. Besides revisions, <code>--not</code> or
+<code>--shallow                   &lt;SHA-1&gt;</code> lines are also accepted.</p>
+
+<p>&ndash;unpacked<br />
+This implies <code>--revs</code>. When processing the list of revision arguments
+read from the standard input, limit the objects packed to those that are
+not already packed.</p>
+
+<p>&ndash;all<br />
+This implies <code>--revs</code>. In addition to the list of revision arguments
+read from the standard input, pretend as if all refs under <code>refs/</code> are
+specified to be included.</p>
+
+<p>&ndash;include-tag<br />
+Include unasked-for annotated tags if the object they reference was
+included in the resulting packfile. This can be useful to send new tags
+to native Git clients.</p>
+
+<p>&ndash;window=&lt;n&gt;<br />
+&ndash;depth=&lt;n&gt;<br />
+These two options affect how the objects contained in the pack are
+stored using delta compression. The objects are first internally sorted
+by type, size and optionally names and compared against the other
+objects within &ndash;window to see if using delta compression saves space.
+&ndash;depth limits the maximum delta depth; making it too deep affects the
+performance on the unpacker side, because delta data needs to be applied
+that many times to get to the necessary object. The default value for
+&ndash;window is 10 and &ndash;depth is 50.</p>
+
+<p>&ndash;window-memory=&lt;n&gt;<br />
+This option provides an additional limit on top of <code>--window</code>; the
+window size will dynamically scale down so as to not take up more than
+<em>&lt;n&gt;</em> bytes in memory. This is useful in repositories with a mix
+of large and small objects to not run out of memory with a large window,
+but still be able to take advantage of the large window for the smaller
+objects. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;.
+<code>--window-memory=0</code> makes memory usage unlimited. The default is taken
+from the <code>pack.windowMemory</code> configuration variable.</p>
+
+<p>&ndash;max-pack-size=&lt;n&gt;<br />
+In unusual scenarios, you may not be able to create files larger than a
+certain size on your filesystem, and this option can be used to tell the
+command to split the output packfile into multiple independent
+packfiles, each not larger than the given size. The size can be suffixed
+with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. The minimum size allowed is limited to 1 MiB.
+This option prevents the creation of a bitmap index. The default is
+unlimited, unless the config variable <code>pack.packSizeLimit</code> is set.</p>
+
+<p>&ndash;honor-pack-keep<br />
+This flag causes an object already in a local pack that has a .keep file
+to be ignored, even if it would have otherwise been packed.</p>
+
+<p>&ndash;incremental<br />
+This flag causes an object already in a pack to be ignored even if it
+would have otherwise been packed.</p>
+
+<p>&ndash;local<br />
+This flag causes an object that is borrowed from an alternate object
+store to be ignored even if it would have otherwise been packed.</p>
+
+<p>&ndash;non-empty<br />
+Only create a packed archive if it would contain at least one object.</p>
+
+<p>&ndash;progress<br />
+Progress status is reported on the standard error stream by default when
+it is attached to a terminal, unless -q is specified. This flag forces
+progress status even if the standard error stream is not directed to a
+terminal.</p>
+
+<p>&ndash;all-progress<br />
+When &ndash;stdout is specified then progress report is displayed during the
+object count and compression phases but inhibited during the write-out
+phase. The reason is that in some cases the output stream is directly
+linked to another command which may wish to display progress status of
+its own as it processes incoming pack data. This flag is like &ndash;progress
+except that it forces progress report for the write-out phase as well
+even if &ndash;stdout is used.</p>
+
+<p>&ndash;all-progress-implied<br />
+This is used to imply &ndash;all-progress whenever progress display is
+activated. Unlike &ndash;all-progress this flag doesn’t actually force any
+progress display by itself.</p>
+
+<p>-q<br />
+This flag makes the command not to report its progress on the standard
+error stream.</p>
+
+<p>&ndash;no-reuse-delta<br />
+When creating a packed archive in a repository that has existing packs,
+the command reuses existing deltas. This sometimes results in a slightly
+suboptimal pack. This flag tells the command not to reuse existing
+deltas but compute them from scratch.</p>
+
+<p>&ndash;no-reuse-object<br />
+This flag tells the command not to reuse existing object data at all,
+including non deltified object, forcing recompression of everything.
+This implies &ndash;no-reuse-delta. Useful only in the obscure case where
+wholesale enforcement of a different compression level on the packed
+data is desired.</p>
+
+<p>&ndash;compression=&lt;n&gt;<br />
+Specifies compression level for newly-compressed data in the generated
+pack. If not specified, pack compression level is determined first by
+pack.compression, then by core.compression, and defaults to -1, the zlib
+default, if neither is set. Add &ndash;no-reuse-object if you want to force a
+uniform compression level on all data no matter the source.</p>
+
+<p>&ndash;thin<br />
+Create a &ldquo;thin&rdquo; pack by omitting the common objects between a sender and
+a receiver in order to reduce network transfer. This option only makes
+sense in conjunction with &ndash;stdout.</p>
+
+<p>Note: A thin pack violates the packed archive format by omitting
+required objects and is thus unusable by Git without making it
+self-contained. Use <code>git index-pack --fix-thin</code> (see
+<a href="../git-index-pack">git-index-pack(1)</a>) to restore the self-contained
+property.</p>
+
+<p>&ndash;shallow<br />
+Optimize a pack that will be provided to a client with a shallow
+repository. This option, combined with &ndash;thin, can result in a smaller
+pack at the cost of speed.</p>
+
+<p>&ndash;delta-base-offset<br />
+A packed archive can express the base object of a delta as either a
+20-byte object name or as an offset in the stream, but ancient versions
+of Git don’t understand the latter. By default, <em>git pack-objects</em> only
+uses the former format for better compatibility. This option allows the
+command to use the latter format for compactness. Depending on the
+average delta chain length, this option typically shrinks the resulting
+packfile by 3-5 per-cent.</p>
+
+<p>Note: Porcelain commands such as <code>git                     gc</code> (see
+<a href="../git-gc">git-gc(1)</a>), <code>git repack</code> (see
+<a href="../git-repack">git-repack(1)</a>) pass this option by default in modern
+Git when they put objects in your repository into pack files. So does
+<code>git bundle</code> (see <a href="../git-bundle">git-bundle(1)</a>) when it creates a
+bundle.</p>
+
+<p>&ndash;threads=&lt;n&gt;<br />
+Specifies the number of threads to spawn when searching for best delta
+matches. This requires that pack-objects be compiled with pthreads
+otherwise this option is ignored with a warning. This is meant to reduce
+packing time on multiprocessor machines. The required amount of memory
+for the delta search window is however multiplied by the number of
+threads. Specifying 0 will cause Git to auto-detect the number of CPU’s
+and set the number of threads accordingly.</p>
+
+<p>&ndash;index-version=&lt;version&gt;[,&lt;offset&gt;]<br />
+This is intended to be used by the test suite only. It allows to force
+the version for the generated pack index, and to force 64-bit index
+entries on objects located above the given offset.</p>
+
+<p>&ndash;keep-true-parents<br />
+With this option, parents that are hidden by grafts are packed
+nevertheless.</p>
+
+<p>&ndash;filter=&lt;filter-spec&gt;<br />
+Requires <code>--stdout</code>. Omits certain objects (usually blobs) from the
+resulting packfile. See <a href="../git-rev-list">git-rev-list(1)</a> for valid
+<code>&lt;filter-spec&gt;</code> forms.</p>
+
+<p>&ndash;no-filter<br />
+Turns off any previous <code>--filter=</code> argument.</p>
+
+<p>&ndash;missing=&lt;missing-action&gt;<br />
+A debug option to help with future &ldquo;partial clone&rdquo; development. This
+option specifies how missing objects are handled.</p>
+
+<p>The form <em>&ndash;missing=error</em> requests that pack-objects stop with an error
+if a missing object is encountered. This is the default action.</p>
+
+<p>The form <em>&ndash;missing=allow-any</em> will allow object traversal to continue
+if a missing object is encountered. Missing objects will silently be
+omitted from the results.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-rev-list">git-rev-list(1)</a> <a href="../git-repack">git-repack(1)</a>
+<a href="../git-prune-packed">git-prune-packed(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

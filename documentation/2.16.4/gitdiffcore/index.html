@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> gitdiffcore </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitdiffcore</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.4'>2.16.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.4/gitdiffcore'>gitdiffcore</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>git diff *
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>The diff commands <em>git diff-index</em>, <em>git diff-files</em>, and <em>git
+diff-tree</em> can be told to manipulate differences they find in
+unconventional ways before showing <em>diff</em> output. The manipulation is
+collectively called &ldquo;diffcore transformation&rdquo;. This short note describes
+what they are and how to use them to produce <em>diff</em> output that is
+easier to understand than the conventional kind.</p>
+
+<h2 id="the-chain-of-operation">The chain of operation</h2>
+
+<p>The <em>git diff-*</em> family works by first comparing two sets of files:</p>
+
+<ul>
+<li><p><em>git diff-index</em> compares contents of a &ldquo;tree&rdquo; object and the
+working directory (when <code>--cached</code> flag is not used) or a &ldquo;tree&rdquo;
+object and the index file (when <code>--cached</code> flag is used);</p></li>
+
+<li><p><em>git diff-files</em> compares contents of the index file and the working
+directory;</p></li>
+
+<li><p><em>git diff-tree</em> compares contents of two &ldquo;tree&rdquo; objects;</p></li>
+</ul>
+
+<p>In all of these cases, the commands themselves first optionally limit
+the two sets of files by any pathspecs given on their command-lines, and
+compare corresponding paths in the two resulting sets of files.</p>
+
+<p>The pathspecs are used to limit the world diff operates in. They remove
+the filepairs outside the specified sets of pathnames. E.g. If the input
+set of filepairs included:</p>
+
+<pre><code>:100644 100644 bcd1234... 0123456... M junkfile
+</code></pre>
+
+<p>but the command invocation was <code>git diff-files               myfile</code>,
+then the junkfile entry would be removed from the list because only
+&ldquo;myfile&rdquo; is under consideration.</p>
+
+<p>The result of comparison is passed from these commands to what is
+internally called &ldquo;diffcore&rdquo;, in a format similar to what is output when
+the -p option is not used. E.g.</p>
+
+<pre><code>in-place edit  :100644 100644 bcd1234... 0123456... M file0
+create         :000000 100644 0000000... 1234567... A file4
+delete         :100644 000000 1234567... 0000000... D file5
+unmerged       :000000 000000 0000000... 0000000... U file6
+</code></pre>
+
+<p>The diffcore mechanism is fed a list of such comparison results (each of
+which is called &ldquo;filepair&rdquo;, although at this point each of them talks
+about a single file), and transforms such a list into another list.
+There are currently 5 such transformations:</p>
+
+<ul>
+<li><p>diffcore-break</p></li>
+
+<li><p>diffcore-rename</p></li>
+
+<li><p>diffcore-merge-broken</p></li>
+
+<li><p>diffcore-pickaxe</p></li>
+
+<li><p>diffcore-order</p></li>
+</ul>
+
+<p>These are applied in sequence. The set of filepairs <em>git diff-*</em>
+commands find are used as the input to diffcore-break, and the output
+from diffcore-break is used as the input to the next transformation. The
+final result is then passed to the output routine and generates either
+diff-raw format (see Output format sections of the manual for <em>git
+diff-*</em> commands) or diff-patch format.</p>
+
+<h2 id="diffcore-break-for-splitting-up-complete-rewrites">diffcore-break: For Splitting Up Complete Rewrites</h2>
+
+<p>The second transformation in the chain is diffcore-break, and is
+controlled by the -B option to the <em>git diff-*</em> commands. This is used
+to detect a filepair that represents &ldquo;complete rewrite&rdquo; and break such
+filepair into two filepairs that represent delete and create. E.g. If
+the input contained this filepair:</p>
+
+<pre><code>:100644 100644 bcd1234... 0123456... M file0
+</code></pre>
+
+<p>and if it detects that the file &ldquo;file0&rdquo; is completely rewritten, it
+changes it to:</p>
+
+<pre><code>:100644 000000 bcd1234... 0000000... D file0
+:000000 100644 0000000... 0123456... A file0
+</code></pre>
+
+<p>For the purpose of breaking a filepair, diffcore-break examines the
+extent of changes between the contents of the files before and after
+modification (i.e. the contents that have &ldquo;bcd1234…&rdquo; and &ldquo;0123456…&rdquo; as
+their SHA-1 content ID, in the above example). The amount of deletion of
+original contents and insertion of new material are added together, and
+if it exceeds the &ldquo;break score&rdquo;, the filepair is broken into two. The
+break score defaults to 50% of the size of the smaller of the original
+and the result (i.e. if the edit shrinks the file, the size of the
+result is used; if the edit lengthens the file, the size of the original
+is used), and can be customized by giving a number after &ldquo;-B&rdquo; option
+(e.g. &ldquo;-B75&rdquo; to tell it to use 75%).</p>
+
+<h2 id="diffcore-rename-for-detecting-renames-and-copies">diffcore-rename: For Detecting Renames and Copies</h2>
+
+<p>This transformation is used to detect renames and copies, and is
+controlled by the -M option (to detect renames) and the -C option (to
+detect copies as well) to the <em>git diff-*</em> commands. If the input
+contained these filepairs:</p>
+
+<pre><code>:100644 000000 0123456... 0000000... D fileX
+:000000 100644 0000000... 0123456... A file0
+</code></pre>
+
+<p>and the contents of the deleted file fileX is similar enough to the
+contents of the created file file0, then rename detection merges these
+filepairs and creates:</p>
+
+<pre><code>:100644 100644 0123456... 0123456... R100 fileX file0
+</code></pre>
+
+<p>When the &ldquo;-C&rdquo; option is used, the original contents of modified files,
+and deleted files (and also unmodified files, if the
+&ldquo;&ndash;find-copies-harder&rdquo; option is used) are considered as candidates of
+the source files in rename/copy operation. If the input were like these
+filepairs, that talk about a modified file fileY and a newly created
+file file0:</p>
+
+<pre><code>:100644 100644 0123456... 1234567... M fileY
+:000000 100644 0000000... bcd3456... A file0
+</code></pre>
+
+<p>the original contents of fileY and the resulting contents of file0 are
+compared, and if they are similar enough, they are changed to:</p>
+
+<pre><code>:100644 100644 0123456... 1234567... M fileY
+:100644 100644 0123456... bcd3456... C100 fileY file0
+</code></pre>
+
+<p>In both rename and copy detection, the same &ldquo;extent of changes&rdquo;
+algorithm used in diffcore-break is used to determine if two files are
+&ldquo;similar enough&rdquo;, and can be customized to use a similarity score
+different from the default of 50% by giving a number after the &ldquo;-M&rdquo; or
+&ldquo;-C&rdquo; option (e.g. &ldquo;-M8&rdquo; to tell it to use <sup>8</sup>&frasl;<sub>10</sub> = 80%).</p>
+
+<p>Note. When the &ldquo;-C&rdquo; option is used with <code>--find-copies-harder</code> option,
+<em>git diff-*</em> commands feed unmodified filepairs to diffcore mechanism
+as well as modified ones. This lets the copy detector consider
+unmodified files as copy source candidates at the expense of making it
+slower. Without <code>--find-copies-harder</code>, <em>git diff-*</em> commands can
+detect copies only if the file that was copied happened to have been
+modified in the same changeset.</p>
+
+<h2 id="diffcore-merge-broken-for-putting-complete-rewrites-back-together">diffcore-merge-broken: For Putting Complete Rewrites Back Together</h2>
+
+<p>This transformation is used to merge filepairs broken by diffcore-break,
+and not transformed into rename/copy by diffcore-rename, back into a
+single modification. This always runs when diffcore-break is used.</p>
+
+<p>For the purpose of merging broken filepairs back, it uses a different
+&ldquo;extent of changes&rdquo; computation from the ones used by diffcore-break and
+diffcore-rename. It counts only the deletion from the original, and does
+not count insertion. If you removed only 10 lines from a 100-line
+document, even if you added 910 new lines to make a new 1000-line
+document, you did not do a complete rewrite. diffcore-break breaks such
+a case in order to help diffcore-rename to consider such filepairs as
+candidate of rename/copy detection, but if filepairs broken that way
+were not matched with other filepairs to create rename/copy, then this
+transformation merges them back into the original &ldquo;modification&rdquo;.</p>
+
+<p>The &ldquo;extent of changes&rdquo; parameter can be tweaked from the default 80%
+(that is, unless more than 80% of the original material is deleted, the
+broken pairs are merged back into a single modification) by giving a
+second number to -B option, like these:</p>
+
+<ul>
+<li><p>-B50/60 (give 50% &ldquo;break score&rdquo; to diffcore-break, use 60% for
+diffcore-merge-broken).</p></li>
+
+<li><p>-B/60 (the same as above, since diffcore-break defaults to 50%).</p></li>
+</ul>
+
+<p>Note that earlier implementation left a broken pair as a separate
+creation and deletion patches. This was an unnecessary hack and the
+latest implementation always merges all the broken pairs back into
+modifications, but the resulting patch output is formatted differently
+for easier review in case of such a complete rewrite by showing the
+entire contents of old version prefixed with <em>-</em>, followed by the entire
+contents of new version prefixed with <em>+</em>.</p>
+
+<h2 id="diffcore-pickaxe-for-detecting-addition-deletion-of-specified-string">diffcore-pickaxe: For Detecting Addition/Deletion of Specified String</h2>
+
+<p>This transformation limits the set of filepairs to those that change
+specified strings between the preimage and the postimage in a certain
+way. -S&lt;block of text&gt; and -G&lt;regular expression&gt; options
+are used to specify different ways these strings are sought.</p>
+
+<p>&rdquo;-S&lt;block of text&gt;&rdquo; detects filepairs whose preimage and postimage
+have different number of occurrences of the specified block of text. By
+definition, it will not detect in-file moves. Also, when a changeset
+moves a file wholesale without affecting the interesting string,
+diffcore-rename kicks in as usual, and <code>-S</code> omits the filepair (since
+the number of occurrences of that string didn’t change in that
+rename-detected filepair). When used with <code>--pickaxe-regex</code>, treat the
+&lt;block of text&gt; as an extended POSIX regular expression to match,
+instead of a literal string.</p>
+
+<p>&rdquo;-G&lt;regular expression&gt;&rdquo; (mnemonic: grep) detects filepairs whose
+textual diff has an added or a deleted line that matches the given
+regular expression. This means that it will detect in-file (or what
+rename-detection considers the same file) moves, which is noise. The
+implementation runs diff twice and greps, and this can be quite
+expensive.</p>
+
+<p>When <code>-S</code> or <code>-G</code> are used without <code>--pickaxe-all</code>, only filepairs that
+match their respective criterion are kept in the output. When
+<code>--pickaxe-all</code> is used, if even one filepair matches their respective
+criterion in a changeset, the entire changeset is kept. This behavior is
+designed to make reviewing changes in the context of the whole changeset
+easier.</p>
+
+<h2 id="diffcore-order-for-sorting-the-output-based-on-filenames">diffcore-order: For Sorting the Output Based on Filenames</h2>
+
+<p>This is used to reorder the filepairs according to the user’s (or
+project’s) taste, and is controlled by the -O option to the <em>git
+diff-*</em> commands.</p>
+
+<p>This takes a text file each of whose lines is a shell glob pattern.
+Filepairs that match a glob pattern on an earlier line in the file are
+output before ones that match a later line, and filepairs that do not
+match any glob pattern are output last.</p>
+
+<p>As an example, a typical orderfile for the core Git probably would look
+like this:</p>
+
+<pre><code>README
+Makefile
+Documentation
+*.h
+*.c
+t
+</code></pre>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-diff">git-diff(1)</a>, <a href="../git-diff-files">git-diff-files(1)</a>,
+<a href="../git-diff-index">git-diff-index(1)</a>,
+<a href="../git-diff-tree">git-diff-tree(1)</a>,
+<a href="../git-format-patch">git-format-patch(1)</a>,
+<a href="../git-log">git-log(1)</a>, <a href="../gitglossary">gitglossary(7)</a>, <a href="user-manual">The Git
+User’s Manual</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

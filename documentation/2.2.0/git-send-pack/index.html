@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git send-pack [--all] [--dry-run] [--force] [--receive-pack=&lt;git-receive-pack&gt;] [--verbose] [--thin] [&lt;host&gt;:]&lt;directory&gt; [&lt;ref&gt;…]
+<pre><code>git send-pack [--all] [--dry-run] [--force] [--receive-pack=&lt;git-receive-pack&gt;] [--verbose] [--thin] [&lt;host&gt;:]&lt;directory&gt; [&lt;ref&gt;…]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -120,54 +120,52 @@ it from the current repository, sending named refs.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;receive-pack=&lt;git-receive-pack&gt;<br />
+<p>&ndash;receive-pack=&lt;git-receive-pack&gt;<br />
 Path to the <em>git-receive-pack</em> program on the remote end. Sometimes
-useful when pushing to a remote repository over ssh, and you do not
-have the program in a directory on the default $PATH.</p></li>
+useful when pushing to a remote repository over ssh, and you do not have
+the program in a directory on the default $PATH.</p>
 
-<li><p>&ndash;exec=&lt;git-receive-pack&gt;<br />
-Same as &ndash;receive-pack=&lt;git-receive-pack&gt;.</p></li>
+<p>&ndash;exec=&lt;git-receive-pack&gt;<br />
+Same as &ndash;receive-pack=&lt;git-receive-pack&gt;.</p>
 
-<li><p>&ndash;all<br />
-Instead of explicitly specifying which refs to update, update all
-heads that locally exist.</p></li>
+<p>&ndash;all<br />
+Instead of explicitly specifying which refs to update, update all heads
+that locally exist.</p>
 
-<li><p>&ndash;stdin<br />
+<p>&ndash;stdin<br />
 Take the list of refs from stdin, one per line. If there are refs
-specified on the command line in addition to this option, then the
-refs from stdin are processed after those on the command line.</p>
+specified on the command line in addition to this option, then the refs
+from stdin are processed after those on the command line.</p>
 
 <p>If <em>&ndash;stateless-rpc</em> is specified together with this option then the
-list of refs must be in packet format (pkt-line). Each ref must be
-in a separate packet, and the list must end with a flush packet.</p></li>
+list of refs must be in packet format (pkt-line). Each ref must be in a
+separate packet, and the list must end with a flush packet.</p>
 
-<li><p>&ndash;dry-run<br />
-Do everything except actually send the updates.</p></li>
+<p>&ndash;dry-run<br />
+Do everything except actually send the updates.</p>
 
-<li><p>&ndash;force<br />
+<p>&ndash;force<br />
 Usually, the command refuses to update a remote ref that is not an
-ancestor of the local ref used to overwrite it. This flag disables
-the check. What this means is that the remote repository can lose
-commits; use it with care.</p></li>
+ancestor of the local ref used to overwrite it. This flag disables the
+check. What this means is that the remote repository can lose commits;
+use it with care.</p>
 
-<li><p>&ndash;verbose<br />
-Run verbosely.</p></li>
+<p>&ndash;verbose<br />
+Run verbosely.</p>
 
-<li><p>&ndash;thin<br />
+<p>&ndash;thin<br />
 Send a &ldquo;thin&rdquo; pack, which records objects in deltified form based on
-objects not included in the pack to reduce network traffic.</p></li>
+objects not included in the pack to reduce network traffic.</p>
 
-<li><p>&lt;host&gt;<br />
+<p>&lt;host&gt;<br />
 A remote host to house the repository. When this part is specified,
-<em>git-receive-pack</em> is invoked via ssh.</p></li>
+<em>git-receive-pack</em> is invoked via ssh.</p>
 
-<li><p>&lt;directory&gt;<br />
-The repository to update.</p></li>
+<p>&lt;directory&gt;<br />
+The repository to update.</p>
 
-<li><p>&lt;ref&gt;…<br />
-The remote refs to update.</p></li>
-</ul>
+<p>&lt;ref&gt;…<br />
+The remote refs to update.</p>
 
 <h2 id="specifying-the-refs">Specifying the Refs</h2>
 
@@ -176,14 +174,14 @@ The remote refs to update.</p></li>
 <p>With <em>&ndash;all</em> flag, all refs that exist locally are transferred to the
 remote side. You cannot specify any <em>&lt;ref&gt;</em> if you use this flag.</p>
 
-<p>Without <em>&ndash;all</em> and without any <em>&lt;ref&gt;</em>, the heads that exist both on
-the local side and on the remote side are updated.</p>
+<p>Without <em>&ndash;all</em> and without any <em>&lt;ref&gt;</em>, the heads that exist both
+on the local side and on the remote side are updated.</p>
 
 <p>When one or more <em>&lt;ref&gt;</em> are specified explicitly (whether on the
 command line or via <code>--stdin</code>), it can be either a single pattern, or a
 pair of such pattern separated by a colon &ldquo;:&rdquo; (this means that a ref
-name cannot have a colon in it). A single pattern <em>&lt;name&gt;</em> is just a
-shorthand for <em>&lt;name&gt;:&lt;name&gt;</em>.</p>
+name cannot have a colon in it). A single pattern <em>&lt;name&gt;</em> is just
+a shorthand for <em>&lt;name&gt;:&lt;name&gt;</em>.</p>
 
 <p>Each pattern pair consists of the source side (before the colon) and the
 destination side (after the colon). The ref to be pushed is determined
@@ -193,33 +191,34 @@ ref are the same rules used by <em>git rev-parse</em> to resolve a symbolic ref
 name. See <a href="../git-rev-parse">git-rev-parse(1)</a>.</p>
 
 <ul>
-<li><p>It is an error if &lt;src&gt; does not match exactly one of the local
-refs.</p></li>
+<li><p>It is an error if &lt;src&gt; does not match exactly one of the
+local refs.</p></li>
 
 <li><p>It is an error if &lt;dst&gt; matches more than one remote refs.</p></li>
 
 <li><p>If &lt;dst&gt; does not match any remote ref, either</p>
 
 <ul>
-<li><p>it has to start with &ldquo;refs/&rdquo;; &lt;dst&gt; is used as the destination
-literally in this case.</p></li>
+<li><p>it has to start with &ldquo;refs/&rdquo;; &lt;dst&gt; is used as the
+destination literally in this case.</p></li>
 
-<li><p>&lt;src&gt; == &lt;dst&gt; and the ref that matched the &lt;src&gt; must not
-exist in the set of remote refs; the ref matched &lt;src&gt; locally
-is used as the name of the destination.</p></li>
+<li><p>&lt;src&gt; == &lt;dst&gt; and the ref that matched the
+&lt;src&gt; must not exist in the set of remote refs; the ref
+matched &lt;src&gt; locally is used as the name of the
+destination.</p></li>
 </ul></li>
 </ul>
 
 <p>Without <em>&ndash;force</em>, the &lt;src&gt; ref is stored at the remote only if
-&lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an ancestor)
-of &lt;src&gt;. This check, known as &ldquo;fast-forward check&rdquo;, is performed in
-order to avoid accidentally overwriting the remote ref and lose other
-peoples&rsquo; commits from there.</p>
+&lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an
+ancestor) of &lt;src&gt;. This check, known as &ldquo;fast-forward check&rdquo;, is
+performed in order to avoid accidentally overwriting the remote ref and
+lose other peoples&rsquo; commits from there.</p>
 
 <p>With <em>&ndash;force</em>, the fast-forward check is disabled for all refs.</p>
 
-<p>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <em>+</em> sign to
-disable the fast-forward check only on that ref.</p>
+<p>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <em>+</em> sign
+to disable the fast-forward check only on that ref.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -280,7 +279,7 @@ disable the fast-forward check only on that ref.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

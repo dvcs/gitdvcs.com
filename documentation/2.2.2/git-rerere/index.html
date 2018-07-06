@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git rerere [clear|forget &lt;pathspec&gt;|diff|remaining|status|gc]
+<pre><code>git rerere [clear|forget &lt;pathspec&gt;|diff|remaining|status|gc]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -143,38 +143,35 @@ Note
 However, it has several commands that allow it to interact with its
 working state.</p>
 
-<ul>
-<li><p><em>clear</em><br />
+<p><em>clear</em><br />
 Reset the metadata used by rerere if a merge resolution is to be
 aborted. Calling <em>git am [&ndash;skip|&ndash;abort]</em> or <em>git rebase
-[&ndash;skip|&ndash;abort]</em> will automatically invoke this command.</p></li>
+[&ndash;skip|&ndash;abort]</em> will automatically invoke this command.</p>
 
-<li><p><em>forget</em> &lt;pathspec&gt;<br />
-Reset the conflict resolutions which rerere has recorded for the
-current conflict in &lt;pathspec&gt;.</p></li>
+<p><em>forget</em> &lt;pathspec&gt;<br />
+Reset the conflict resolutions which rerere has recorded for the current
+conflict in &lt;pathspec&gt;.</p>
 
-<li><p><em>diff</em><br />
-Display diffs for the current state of the resolution. It is useful
-for tracking what has changed while the user is resolving conflicts.
-Additional arguments are passed directly to the system <em>diff</em>
-command installed in PATH.</p></li>
+<p><em>diff</em><br />
+Display diffs for the current state of the resolution. It is useful for
+tracking what has changed while the user is resolving conflicts.
+Additional arguments are passed directly to the system <em>diff</em> command
+installed in PATH.</p>
 
-<li><p><em>status</em><br />
-Print paths with conflicts whose merge resolution rerere will
-record.</p></li>
+<p><em>status</em><br />
+Print paths with conflicts whose merge resolution rerere will record.</p>
 
-<li><p><em>remaining</em><br />
-Print paths with conflicts that have not been autoresolved by
-rerere. This includes paths whose resolutions cannot be tracked by
-rerere, such as conflicting submodules.</p></li>
+<p><em>remaining</em><br />
+Print paths with conflicts that have not been autoresolved by rerere.
+This includes paths whose resolutions cannot be tracked by rerere, such
+as conflicting submodules.</p>
 
-<li><p><em>gc</em><br />
+<p><em>gc</em><br />
 Prune records of conflicted merges that occurred a long time ago. By
-default, unresolved conflicts older than 15 days and resolved
-conflicts older than 60 days are pruned. These defaults are
-controlled via the <code>gc.rerereunresolved</code> and <code>gc.rerereresolved</code>
-configuration variables respectively.</p></li>
-</ul>
+default, unresolved conflicts older than 15 days and resolved conflicts
+older than 60 days are pruned. These defaults are controlled via the
+<code>gc.rerereunresolved</code> and <code>gc.rerereresolved</code> configuration variables
+respectively.</p>
 
 <h2 id="discussion">DISCUSSION</h2>
 
@@ -267,8 +264,8 @@ automerge, the earlier manual resolution, and the current conflicted
 automerge. If this three-way merge resolves cleanly, the result is
 written out to your working tree file, so you do not have to manually
 resolve it. Note that <em>git rerere</em> leaves the index file alone, so you
-still need to do the final sanity checks with <code>git diff</code> (or <code>git diff
--c</code>) and <em>git add</em> when you are satisfied.</p>
+still need to do the final sanity checks with <code>git               diff</code>
+(or <code>git diff -c</code>) and <em>git add</em> when you are satisfied.</p>
 
 <p>As a convenience measure, <em>git merge</em> automatically invokes <em>git rerere</em>
 upon exiting with a failed automerge and <em>git rerere</em> records the hand
@@ -362,7 +359,7 @@ rebase</em> to help you resolve this conflict.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

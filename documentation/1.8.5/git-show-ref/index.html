@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git show-ref [-q|--quiet] [--verify] [--head] [-d|--dereference]
+<pre><code>git show-ref [-q|--quiet] [--verify] [--head] [-d|--dereference]
              [-s|--hash[=&lt;n&gt;]] [--abbrev[=&lt;n&gt;]] [--tags]
              [--heads] [--] [&lt;pattern&gt;…]
 git show-ref --exclude-existing[=&lt;pattern&gt;] &lt; ref-list
@@ -130,62 +130,59 @@ under the <code>.git</code> directory.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;head<br />
-Show the HEAD reference, even if it would normally be filtered out.</p></li>
+<p>&ndash;head<br />
+Show the HEAD reference, even if it would normally be filtered out.</p>
 
-<li><p>&ndash;tags<br />
---heads<br />
-Limit to &ldquo;refs/heads&rdquo; and &ldquo;refs/tags&rdquo;, respectively. These options
-are not mutually exclusive; when given both, references stored in
-&ldquo;refs/heads&rdquo; and &ldquo;refs/tags&rdquo; are displayed.</p></li>
+<p>&ndash;tags<br />
+&ndash;heads<br />
+Limit to &ldquo;refs/heads&rdquo; and &ldquo;refs/tags&rdquo;, respectively. These options are
+not mutually exclusive; when given both, references stored in
+&ldquo;refs/heads&rdquo; and &ldquo;refs/tags&rdquo; are displayed.</p>
 
-<li><p>-d<br />
---dereference<br />
-Dereference tags into object IDs as well. They will be shown with
-&ldquo;^{}&rdquo; appended.</p></li>
+<p>-d<br />
+&ndash;dereference<br />
+Dereference tags into object IDs as well. They will be shown with &ldquo;^{}&rdquo;
+appended.</p>
 
-<li><p>-s<br />
---hash[=&lt;n&gt;]<br />
+<p>-s<br />
+&ndash;hash[=&lt;n&gt;]<br />
 Only show the SHA-1 hash, not the reference name. When combined with
-&ndash;dereference the dereferenced tag will still be shown after the
-SHA-1.</p></li>
+&ndash;dereference the dereferenced tag will still be shown after the SHA-1.</p>
 
-<li><p>&ndash;verify<br />
-Enable stricter reference checking by requiring an exact ref path.
-Aside from returning an error code of 1, it will also print an error
-message if <em>&ndash;quiet</em> was not specified.</p></li>
+<p>&ndash;verify<br />
+Enable stricter reference checking by requiring an exact ref path. Aside
+from returning an error code of 1, it will also print an error message
+if <em>&ndash;quiet</em> was not specified.</p>
 
-<li><p>&ndash;abbrev[=&lt;n&gt;]<br />
-Abbreviate the object name. When using <code>--hash</code>, you do not have to
-say <code>--hash --abbrev</code>; <code>--hash=n</code> would do.</p></li>
+<p>&ndash;abbrev[=&lt;n&gt;]<br />
+Abbreviate the object name. When using <code>--hash</code>, you do not have to say
+<code>--hash                   --abbrev</code>; <code>--hash=n</code> would do.</p>
 
-<li><p>-q<br />
---quiet<br />
-Do not print any results to stdout. When combined with <em>&ndash;verify</em>
-this can be used to silently check if a reference exists.</p></li>
+<p>-q<br />
+&ndash;quiet<br />
+Do not print any results to stdout. When combined with <em>&ndash;verify</em> this
+can be used to silently check if a reference exists.</p>
 
-<li><p>&ndash;exclude-existing[=&lt;pattern&gt;]<br />
-Make <em>git show-ref</em> act as a filter that reads refs from stdin of
-the form &ldquo;<code>^(?:&lt;anything&gt;\s)?&lt;refname&gt;(?:\^{})?$</code>&rdquo; and performs the
+<p>&ndash;exclude-existing[=&lt;pattern&gt;]<br />
+Make <em>git show-ref</em> act as a filter that reads refs from stdin of the
+form &ldquo;<code>^(?:&lt;anything&gt;\s)?&lt;refname&gt;(?:\^{})?$</code>&rdquo; and performs the
 following actions on each: (1) strip &ldquo;^{}&rdquo; at the end of line if
 any; (2) ignore if pattern is provided and does not head-match
-refname; (3) warn if refname is not a well-formed refname and skip;
-(4) ignore if refname is a ref that exists in the local repository;
-(5) otherwise output the line.</p></li>
+refname; (3) warn if refname is not a well-formed refname and skip; (4)
+ignore if refname is a ref that exists in the local repository; (5)
+otherwise output the line.</p>
 
-<li><p>&lt;pattern&gt;…<br />
-Show references matching one or more patterns. Patterns are matched
-from the end of the full name, and only complete parts are matched,
-e.g. <em>master</em> matches <em>refs/heads/master</em>,
-<em>refs/remotes/origin/master</em>, <em>refs/tags/jedi/master</em> but not
-<em>refs/heads/mymaster</em> nor <em>refs/remotes/master/jedi</em>.</p></li>
-</ul>
+<p>&lt;pattern&gt;…<br />
+Show references matching one or more patterns. Patterns are matched from
+the end of the full name, and only complete parts are matched, e.g.
+<em>master</em> matches <em>refs/heads/master</em>, <em>refs/remotes/origin/master</em>,
+<em>refs/tags/jedi/master</em> but not <em>refs/heads/mymaster</em> nor
+<em>refs/remotes/master/jedi</em>.</p>
 
 <h2 id="output">OUTPUT</h2>
 
-<p>The output is in the format: <em>&lt;SHA-1 ID&gt;</em> <em>&lt;space&gt;</em> <em>&lt;reference
-name&gt;</em>.</p>
+<p>The output is in the format: <em>&lt;SHA-1 ID&gt;</em> <em>&lt;space&gt;</em>
+<em>&lt;reference name&gt;</em>.</p>
 
 <pre><code>$ git show-ref --head --dereference
 832e76a9899f560a90ffd62ae2ce83bbeff58f54 HEAD
@@ -198,8 +195,8 @@ name&gt;</em>.</p>
 ...
 </code></pre>
 
-<p>When using &ndash;hash (and not &ndash;dereference) the output format is: <em>&lt;SHA-1
-ID&gt;</em></p>
+<p>When using &ndash;hash (and not &ndash;dereference) the output format is:
+<em>&lt;SHA-1 ID&gt;</em></p>
 
 <pre><code>$ git show-ref --heads --hash
 2e3ba0114a1f52b47df29743d6915d056be13278
@@ -323,7 +320,7 @@ but not other random references under the refs/ subdirectory).</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

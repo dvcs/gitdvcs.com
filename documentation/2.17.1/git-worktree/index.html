@@ -1,0 +1,447 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-worktree </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-worktree</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.17.1'>2.17.1</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.17.1/git-worktree'>git-worktree</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>git worktree add [-f] [--detach] [--checkout] [--lock] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;commit-ish&gt;]
+git worktree list [--porcelain]
+git worktree lock [--reason &lt;string&gt;] &lt;worktree&gt;
+git worktree move &lt;worktree&gt; &lt;new-path&gt;
+git worktree prune [-n] [-v] [--expire &lt;expire&gt;]
+git worktree remove [--force] &lt;worktree&gt;
+git worktree unlock &lt;worktree&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Manage multiple working trees attached to the same repository.</p>
+
+<p>A git repository can support multiple working trees, allowing you to
+check out more than one branch at a time. With <code>git worktree add</code> a new
+working tree is associated with the repository. This new working tree is
+called a &ldquo;linked working tree&rdquo; as opposed to the &ldquo;main working tree&rdquo;
+prepared by &ldquo;git init&rdquo; or &ldquo;git clone&rdquo;. A repository has one main working
+tree (if it’s not a bare repository) and zero or more linked working
+trees.</p>
+
+<p>When you are done with a linked working tree you can simply delete it.
+The working tree’s administrative files in the repository (see &ldquo;DETAILS&rdquo;
+below) will eventually be removed automatically (see
+<code>gc.worktreePruneExpire</code> in <a href="../git-config">git-config(1)</a>), or you
+can run <code>git worktree prune</code> in the main or any linked working tree to
+clean up any stale administrative files.</p>
+
+<p>If a linked working tree is stored on a portable device or network share
+which is not always mounted, you can prevent its administrative files
+from being pruned by issuing the <code>git worktree lock</code> command, optionally
+specifying <code>--reason</code> to explain why the working tree is locked.</p>
+
+<h2 id="commands">COMMANDS</h2>
+
+<p>add &lt;path&gt; [&lt;commit-ish&gt;]<br />
+Create <code>&lt;path&gt;</code> and checkout <code>&lt;commit-ish&gt;</code> into it. The new working
+directory is linked to the current repository, sharing everything except
+working directory specific files such as HEAD, index, etc. <code>-</code> may also
+be specified as <code>&lt;commit-ish&gt;</code>; it is synonymous with <code>@{-1}</code>.</p>
+
+<p>If &lt;commit-ish&gt; is a branch name (call it <code>&lt;branch&gt;</code>) and is not
+found, and neither <code>-b</code> nor <code>-B</code> nor <code>--detach</code> are used, but there does
+exist a tracking branch in exactly one remote (call it <code>&lt;remote&gt;</code>) with
+a matching name, treat as equivalent to:</p>
+
+<pre><code>$ git worktree add --track -b &lt;branch&gt; &lt;path&gt; &lt;remote&gt;/&lt;branch&gt;
+</code></pre>
+
+<p>If <code>&lt;commit-ish&gt;</code> is omitted and neither <code>-b</code> nor <code>-B</code> nor <code>--detach</code>
+used, then, as a convenience, a new branch based at HEAD is created
+automatically, as if <code>-b $(basename                     &lt;path&gt;)</code> was
+specified.</p>
+
+<p>list<br />
+List details of each worktree. The main worktree is listed first,
+followed by each of the linked worktrees. The output details include if
+the worktree is bare, the revision currently checked out, and the branch
+currently checked out (or <em>detached HEAD</em> if none).</p>
+
+<p>lock<br />
+If a working tree is on a portable device or network share which is not
+always mounted, lock it to prevent its administrative files from being
+pruned automatically. This also prevents it from being moved or deleted.
+Optionally, specify a reason for the lock with <code>--reason</code>.</p>
+
+<p>move<br />
+Move a working tree to a new location. Note that the main working tree
+or linked working trees containing submodules cannot be moved.</p>
+
+<p>prune<br />
+Prune working tree information in $GIT_DIR/worktrees.</p>
+
+<p>remove<br />
+Remove a working tree. Only clean working trees (no untracked files and
+no modification in tracked files) can be removed. Unclean working trees
+or ones with submodules can be removed with <code>--force</code>. The main working
+tree cannot be removed.</p>
+
+<p>unlock<br />
+Unlock a working tree, allowing it to be pruned, moved or deleted.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-f<br />
+&ndash;force<br />
+By default, <code>add</code> refuses to create a new working tree when
+<code>&lt;commit-ish&gt;</code> is a branch name and is already checked out by another
+working tree and <code>remove</code> refuses to remove an unclean working tree.
+This option overrides that safeguard.</p>
+
+<p>-b &lt;new-branch&gt;<br />
+-B &lt;new-branch&gt;<br />
+With <code>add</code>, create a new branch named <code>&lt;new-branch&gt;</code> starting at
+<code>&lt;commit-ish&gt;</code>, and check out <code>&lt;new-branch&gt;</code> into the new working tree.
+If <code>&lt;commit-ish&gt;</code> is omitted, it defaults to HEAD. By default, <code>-b</code>
+refuses to create a new branch if it already exists. <code>-B</code> overrides this
+safeguard, resetting <code>&lt;new-branch&gt;</code> to <code>&lt;commit-ish&gt;</code>.</p>
+
+<p>&ndash;detach<br />
+With <code>add</code>, detach HEAD in the new working tree. See &ldquo;DETACHED HEAD&rdquo; in
+<a href="../git-checkout">git-checkout(1)</a>.</p>
+
+<p>&ndash;[no-]checkout<br />
+By default, <code>add</code> checks out <code>&lt;commit-ish&gt;</code>, however, <code>--no-checkout</code>
+can be used to suppress checkout in order to make customizations, such
+as configuring sparse-checkout. See &ldquo;Sparse checkout&rdquo; in
+<a href="../git-read-tree">git-read-tree(1)</a>.</p>
+
+<p>&ndash;[no-]guess-remote<br />
+With <code>worktree add &lt;path&gt;</code>, without <code>&lt;commit-ish&gt;</code>, instead of creating
+a new branch from HEAD, if there exists a tracking branch in exactly one
+remote matching the basename of <code>&lt;path&gt;</code>, base the new branch on the
+remote-tracking branch, and mark the remote-tracking branch as
+&ldquo;upstream&rdquo; from the new branch.</p>
+
+<p>This can also be set up as the default behaviour by using the
+<code>worktree.guessRemote</code> config option.</p>
+
+<p>&ndash;[no-]track<br />
+When creating a new branch, if <code>&lt;commit-ish&gt;</code> is a branch, mark it as
+&ldquo;upstream&rdquo; from the new branch. This is the default if <code>&lt;commit-ish&gt;</code> is
+a remote-tracking branch. See &ldquo;&ndash;track&rdquo; in
+<a href="../git-branch">git-branch(1)</a> for details.</p>
+
+<p>&ndash;lock<br />
+Keep the working tree locked after creation. This is the equivalent of
+<code>git worktree lock</code> after <code>git worktree add</code>, but without race
+condition.</p>
+
+<p>-n<br />
+&ndash;dry-run<br />
+With <code>prune</code>, do not remove anything; just report what it would remove.</p>
+
+<p>&ndash;porcelain<br />
+With <code>list</code>, output in an easy-to-parse format for scripts. This format
+will remain stable across Git versions and regardless of user
+configuration. See below for details.</p>
+
+<p>-v<br />
+&ndash;verbose<br />
+With <code>prune</code>, report all removals.</p>
+
+<p>&ndash;expire &lt;time&gt;<br />
+With <code>prune</code>, only expire unused working trees older than &lt;time&gt;.</p>
+
+<p>&ndash;reason &lt;string&gt;<br />
+With <code>lock</code>, an explanation why the working tree is locked.</p>
+
+<p>&lt;worktree&gt;<br />
+Working trees can be identified by path, either relative or absolute.</p>
+
+<p>If the last path components in the working tree’s path is unique among
+working trees, it can be used to identify worktrees. For example if you
+only have two working trees, at &ldquo;/abc/def/ghi&rdquo; and &ldquo;/abc/def/ggg&rdquo;, then
+&ldquo;ghi&rdquo; or &ldquo;def/ghi&rdquo; is enough to point to the former working tree.</p>
+
+<h2 id="details">DETAILS</h2>
+
+<p>Each linked working tree has a private sub-directory in the repository’s
+$GIT_DIR/worktrees directory. The private sub-directory’s name is
+usually the base name of the linked working tree’s path, possibly
+appended with a number to make it unique. For example, when
+<code>$GIT_DIR=/path/main/.git</code> the command
+<code>git worktree add /path/other/test-next next</code> creates the linked working
+tree in <code>/path/other/test-next</code> and also creates a
+<code>$GIT_DIR/worktrees/test-next</code> directory (or
+<code>$GIT_DIR/worktrees/test-next1</code> if <code>test-next</code> is already taken).</p>
+
+<p>Within a linked working tree, $GIT_DIR is set to point to this private
+directory (e.g. <code>/path/main/.git/worktrees/test-next</code> in the example)
+and $GIT_COMMON_DIR is set to point back to the main working tree’s
+$GIT_DIR (e.g. <code>/path/main/.git</code>). These settings are made in a <code>.git</code>
+file located at the top directory of the linked working tree.</p>
+
+<p>Path resolution via <code>git rev-parse               --git-path</code> uses either
+$GIT_DIR or $GIT_COMMON_DIR depending on the path. For example, in
+the linked working tree <code>git rev-parse --git-path               HEAD</code>
+returns <code>/path/main/.git/worktrees/test-next/HEAD</code> (not
+<code>/path/other/test-next/.git/HEAD</code> or <code>/path/main/.git/HEAD</code>) while
+<code>git rev-parse               --git-path refs/heads/master</code> uses
+$GIT_COMMON_DIR and returns <code>/path/main/.git/refs/heads/master</code>, since
+refs are shared across all working trees.</p>
+
+<p>See <a href="../gitrepository-layout">gitrepository-layout(5)</a> for more
+information. The rule of thumb is do not make any assumption about
+whether a path belongs to $GIT_DIR or $GIT_COMMON_DIR when you need
+to directly access something inside $GIT_DIR. Use
+<code>git rev-parse --git-path</code> to get the final path.</p>
+
+<p>If you manually move a linked working tree, you need to update the
+<em>gitdir</em> file in the entry’s directory. For example, if a linked working
+tree is moved to <code>/newpath/test-next</code> and its <code>.git</code> file points to
+<code>/path/main/.git/worktrees/test-next</code>, then update
+<code>/path/main/.git/worktrees/test-next/gitdir</code> to reference
+<code>/newpath/test-next</code> instead.</p>
+
+<p>To prevent a $GIT_DIR/worktrees entry from being pruned (which can be
+useful in some situations, such as when the entry’s working tree is
+stored on a portable device), use the <code>git worktree lock</code> command, which
+adds a file named <em>locked</em> to the entry’s directory. The file contains
+the reason in plain text. For example, if a linked working tree’s <code>.git</code>
+file points to <code>/path/main/.git/worktrees/test-next</code> then a file named
+<code>/path/main/.git/worktrees/test-next/locked</code> will prevent the
+<code>test-next</code> entry from being pruned. See
+<a href="../gitrepository-layout">gitrepository-layout(5)</a> for details.</p>
+
+<h2 id="list-output-format">LIST OUTPUT FORMAT</h2>
+
+<p>The worktree list command has two output formats. The default format
+shows the details on a single line with columns. For example:</p>
+
+<pre><code>S git worktree list
+/path/to/bare-source            (bare)
+/path/to/linked-worktree        abcd1234 [master]
+/path/to/other-linked-worktree  1234abc  (detached HEAD)
+</code></pre>
+
+<h3 id="porcelain-format">Porcelain Format</h3>
+
+<p>The porcelain format has a line per attribute. Attributes are listed
+with a label and value separated by a single space. Boolean attributes
+(like <em>bare</em> and <em>detached</em>) are listed as a label only, and are only
+present if and only if the value is true. An empty line indicates the
+end of a worktree. For example:</p>
+
+<pre><code>S git worktree list --porcelain
+worktree /path/to/bare-source
+bare
+
+worktree /path/to/linked-worktree
+HEAD abcd1234abcd1234abcd1234abcd1234abcd1234
+branch refs/heads/master
+
+worktree /path/to/other-linked-worktree
+HEAD 1234abc1234abc1234abc1234abc1234abc1234a
+detached
+</code></pre>
+
+<h2 id="examples">EXAMPLES</h2>
+
+<p>You are in the middle of a refactoring session and your boss comes in
+and demands that you fix something immediately. You might typically use
+<a href="../git-stash">git-stash(1)</a> to store your changes away temporarily,
+however, your working tree is in such a state of disarray (with new,
+moved, and removed files, and other bits and pieces strewn around) that
+you don’t want to risk disturbing any of it. Instead, you create a
+temporary linked working tree to make the emergency fix, remove it when
+done, and then resume your earlier refactoring session.</p>
+
+<pre><code>$ git worktree add -b emergency-fix ../temp master
+$ pushd ../temp
+# ... hack hack hack ...
+$ git commit -a -m 'emergency fix for boss'
+$ popd
+$ rm -rf ../temp
+$ git worktree prune
+</code></pre>
+
+<h2 id="bugs">BUGS</h2>
+
+<p>Multiple checkout in general is still experimental, and the support for
+submodules is incomplete. It is NOT recommended to make multiple
+checkouts of a superproject.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git fmt-merge-msg [-m &lt;message&gt;] [--log[=&lt;n&gt;] | --no-log]
+<pre><code>git fmt-merge-msg [-m &lt;message&gt;] [--log[=&lt;n&gt;] | --no-log]
 git fmt-merge-msg [-m &lt;message&gt;] [--log[=&lt;n&gt;] | --no-log] -F &lt;file&gt;
 </code></pre>
 
@@ -122,48 +122,42 @@ automatically invoking <em>git merge</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;log[=&lt;n&gt;]<br />
+<p>&ndash;log[=&lt;n&gt;]<br />
 In addition to branch names, populate the log message with one-line
 descriptions from the actual commits that are being merged. At most
-&lt;n&gt; commits from each merge parent will be used (20 if &lt;n&gt; is
-omitted). This overrides the <code>merge.log</code> configuration variable.</p></li>
+&lt;n&gt; commits from each merge parent will be used (20 if &lt;n&gt;
+is omitted). This overrides the <code>merge.log</code> configuration variable.</p>
 
-<li><p>&ndash;no-log<br />
-Do not list one-line descriptions from the actual commits being
-merged.</p></li>
+<p>&ndash;no-log<br />
+Do not list one-line descriptions from the actual commits being merged.</p>
 
-<li><p>&ndash;[no-]summary<br />
-Synonyms to &ndash;log and &ndash;no-log; these are deprecated and will be
-removed in the future.</p></li>
+<p>&ndash;[no-]summary<br />
+Synonyms to &ndash;log and &ndash;no-log; these are deprecated and will be removed
+in the future.</p>
 
-<li><p>-m &lt;message&gt;<br />
---message &lt;message&gt;<br />
+<p>-m &lt;message&gt;<br />
+&ndash;message &lt;message&gt;<br />
 Use &lt;message&gt; instead of the branch names for the first line of
-the log message. For use with <code>--log</code>.</p></li>
+the log message. For use with <code>--log</code>.</p>
 
-<li><p>-F &lt;file&gt;<br />
---file &lt;file&gt;<br />
-Take the list of merged objects from &lt;file&gt; instead of stdin.</p></li>
-</ul>
+<p>-F &lt;file&gt;<br />
+&ndash;file &lt;file&gt;<br />
+Take the list of merged objects from &lt;file&gt; instead of stdin.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
-<ul>
-<li><p>merge.branchdesc<br />
-In addition to branch names, populate the log message with the
-branch description text associated with them. Defaults to false.</p></li>
+<p>merge.branchdesc<br />
+In addition to branch names, populate the log message with the branch
+description text associated with them. Defaults to false.</p>
 
-<li><p>merge.log<br />
-In addition to branch names, populate the log message with at most
-the specified number of one-line descriptions from the actual
-commits that are being merged. Defaults to false, and true is a
-synonym for 20.</p></li>
+<p>merge.log<br />
+In addition to branch names, populate the log message with at most the
+specified number of one-line descriptions from the actual commits that
+are being merged. Defaults to false, and true is a synonym for 20.</p>
 
-<li><p>merge.summary<br />
-Synonym to <code>merge.log</code>; this is deprecated and will be removed in
-the future.</p></li>
-</ul>
+<p>merge.summary<br />
+Synonym to <code>merge.log</code>; this is deprecated and will be removed in the
+future.</p>
 
 <h2 id="example">EXAMPLE</h2>
 
@@ -237,7 +231,7 @@ $ git fmt-merge-msg --log &lt;$GIT_DIR/FETCH_HEAD
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git mktree [-z] [--missing] [--batch]
+<pre><code>git mktree [-z] [--missing] [--batch]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -119,22 +119,19 @@ tree object built is written to the standard output.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-z<br />
-Read the NUL-terminated <code>ls-tree -z</code> output instead.</p></li>
+<p>-z<br />
+Read the NUL-terminated <code>ls-tree -z</code> output instead.</p>
 
-<li><p>&ndash;missing<br />
-Allow missing objects. The default behaviour (without this option)
-is to verify that each tree entry’s sha1 identifies an existing
-object. This option has no effect on the treatment of gitlink
-entries (aka &ldquo;submodules&rdquo;) which are always allowed to be missing.</p></li>
+<p>&ndash;missing<br />
+Allow missing objects. The default behaviour (without this option) is to
+verify that each tree entry’s sha1 identifies an existing object. This
+option has no effect on the treatment of gitlink entries (aka
+&ldquo;submodules&rdquo;) which are always allowed to be missing.</p>
 
-<li><p>&ndash;batch<br />
-Allow building of more than one tree object before exiting. Each
-tree is separated by as single blank line. The final new-line is
-optional. Note - if the <em>-z</em> option is used, lines are terminated
-with NUL.</p></li>
-</ul>
+<p>&ndash;batch<br />
+Allow building of more than one tree object before exiting. Each tree is
+separated by as single blank line. The final new-line is optional.
+Note - if the <em>-z</em> option is used, lines are terminated with NUL.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -195,7 +192,7 @@ with NUL.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

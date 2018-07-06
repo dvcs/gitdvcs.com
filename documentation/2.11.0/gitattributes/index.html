@@ -125,27 +125,24 @@ attributes listed on the line are given to the path.</p>
 
 <p>Each attribute can be in one of these states for a given path:</p>
 
-<ul>
-<li><p>Set<br />
-The path has the attribute with special value &ldquo;true&rdquo;; this is
-specified by listing only the name of the attribute in the attribute
-list.</p></li>
+<p>Set<br />
+The path has the attribute with special value &ldquo;true&rdquo;; this is specified
+by listing only the name of the attribute in the attribute list.</p>
 
-<li><p>Unset<br />
-The path has the attribute with special value &ldquo;false&rdquo;; this is
-specified by listing the name of the attribute prefixed with a dash
-<code>-</code> in the attribute list.</p></li>
+<p>Unset<br />
+The path has the attribute with special value &ldquo;false&rdquo;; this is specified
+by listing the name of the attribute prefixed with a dash <code>-</code> in the
+attribute list.</p>
 
-<li><p>Set to a value<br />
+<p>Set to a value<br />
 The path has the attribute with specified string value; this is
-specified by listing the name of the attribute followed by an equal
-sign <code>=</code> and its value in the attribute list.</p></li>
+specified by listing the name of the attribute followed by an equal sign
+<code>=</code> and its value in the attribute list.</p>
 
-<li><p>Unspecified<br />
-No pattern matches the path, and nothing says if the path has or
-does not have the attribute, the attribute for the path is said to
-be Unspecified.</p></li>
-</ul>
+<p>Unspecified<br />
+No pattern matches the path, and nothing says if the path has or does
+not have the attribute, the attribute for the path is said to be
+Unspecified.</p>
 
 <p>When more than one pattern matches the path, a later line overrides an
 earlier line. This overriding is done per attribute. The rules how the
@@ -207,26 +204,24 @@ directory, use the <code>eol</code> attribute for a single file and the <code>co
 configuration variable for all text files. Note that <code>core.autocrlf</code>
 overrides <code>core.eol</code></p>
 
-<ul>
-<li><p>Set<br />
-Setting the <code>text</code> attribute on a path enables end-of-line
-normalization and marks the path as a text file. End-of-line
-conversion takes place without guessing the content type.</p></li>
+<p>Set<br />
+Setting the <code>text</code> attribute on a path enables end-of-line normalization
+and marks the path as a text file. End-of-line conversion takes place
+without guessing the content type.</p>
 
-<li><p>Unset<br />
-Unsetting the <code>text</code> attribute on a path tells Git not to attempt
-any end-of-line conversion upon checkin or checkout.</p></li>
+<p>Unset<br />
+Unsetting the <code>text</code> attribute on a path tells Git not to attempt any
+end-of-line conversion upon checkin or checkout.</p>
 
-<li><p>Set to string value &ldquo;auto&rdquo;<br />
+<p>Set to string value &ldquo;auto&rdquo;<br />
 When <code>text</code> is set to &ldquo;auto&rdquo;, the path is marked for automatic
 end-of-line conversion. If Git decides that the content is text, its
 line endings are converted to LF on checkin. When the file has been
-committed with CRLF, no conversion is done.</p></li>
+committed with CRLF, no conversion is done.</p>
 
-<li><p>Unspecified<br />
+<p>Unspecified<br />
 If the <code>text</code> attribute is unspecified, Git uses the <code>core.autocrlf</code>
-configuration variable to determine if the file should be converted.</p></li>
-</ul>
+configuration variable to determine if the file should be converted.</p>
 
 <p>Any other value causes Git to act as if <code>text</code> has been left
 unspecified.</p>
@@ -237,15 +232,13 @@ unspecified.</p>
 working directory. It enables end-of-line conversion without any content
 checks, effectively setting the <code>text</code> attribute.</p>
 
-<ul>
-<li><p>Set to string value &ldquo;crlf&rdquo;<br />
+<p>Set to string value &ldquo;crlf&rdquo;<br />
 This setting forces Git to normalize line endings for this file on
-checkin and convert them to CRLF when the file is checked out.</p></li>
+checkin and convert them to CRLF when the file is checked out.</p>
 
-<li><p>Set to string value &ldquo;lf&rdquo;<br />
-This setting forces Git to normalize line endings to LF on checkin
-and prevents conversion to CRLF when the file is checked out.</p></li>
-</ul>
+<p>Set to string value &ldquo;lf&rdquo;<br />
+This setting forces Git to normalize line endings to LF on checkin and
+prevents conversion to CRLF when the file is checked out.</p>
 
 <h4 id="backwards-compatibility-with-crlf-attribute">Backwards compatibility with <code>crlf</code> attribute</h4>
 
@@ -377,10 +370,11 @@ contents of worktree file upon checkin. By default these commands
 process only a single blob and terminate. If a long running <code>process</code>
 filter is used in place of <code>clean</code> and/or <code>smudge</code> filters, then Git can
 process all blobs with a single filter command invocation for the entire
-life of a single Git command, for example <code>git add --all</code>. If a long
-running <code>process</code> filter is configured then it always takes precedence
-over a configured single blob filter. See section below for the
-description of the protocol used to communicate with a <code>process</code> filter.</p>
+life of a single Git command, for example
+<code>git add                   --all</code>. If a long running <code>process</code> filter is
+configured then it always takes precedence over a configured single blob
+filter. See section below for the description of the protocol used to
+communicate with a <code>process</code> filter.</p>
 
 <p>One use of the content filtering is to massage the content into a shape
 that is more convenient for the platform, filesystem, and the user to
@@ -426,8 +420,8 @@ is &ldquo;cat&rdquo;).</p>
 <p>For best results, <code>clean</code> should not alter its output further if it is
 run twice (&ldquo;clean→clean&rdquo; should be equivalent to &ldquo;clean&rdquo;), and multiple
 <code>smudge</code> commands should not alter <code>clean</code>&rsquo;s output
-(&ldquo;smudge→smudge→clean&rdquo; should be equivalent to &ldquo;clean&rdquo;). See the
-section on merging below.</p>
+(&ldquo;smudge→smudge→clean&rdquo; should be equivalent to &ldquo;clean&rdquo;). See the section
+on merging below.</p>
 
 <p>The &ldquo;indent&rdquo; filter is well-behaved in this regard: it will not modify
 input that is already correctly indented. In this case, the lack of a
@@ -637,29 +631,27 @@ shown on the hunk header <code>@@ -k,l +n,m @@</code> line, tell Git to use an
 external command to generate the diff, or ask Git to convert binary
 files to a text format before generating the diff.</p>
 
-<ul>
-<li><p>Set<br />
+<p>Set<br />
 A path to which the <code>diff</code> attribute is set is treated as text, even
-when they contain byte values that normally never appear in text
-files, such as NUL.</p></li>
+when they contain byte values that normally never appear in text files,
+such as NUL.</p>
 
-<li><p>Unset<br />
-A path to which the <code>diff</code> attribute is unset will generate <code>Binary
-files differ</code> (or a binary patch, if binary patches are enabled).</p></li>
+<p>Unset<br />
+A path to which the <code>diff</code> attribute is unset will generate
+<code>Binary                       files differ</code> (or a binary patch, if
+binary patches are enabled).</p>
 
-<li><p>Unspecified<br />
+<p>Unspecified<br />
 A path to which the <code>diff</code> attribute is unspecified first gets its
 contents inspected, and if it looks like text and is smaller than
 core.bigFileThreshold, it is treated as text. Otherwise it would
-generate <code>Binary files differ</code>.</p></li>
+generate <code>Binary files differ</code>.</p>
 
-<li><p>String<br />
-Diff is shown using the specified diff driver. Each driver may
-specify one or more options, as described in the following section.
-The options for the diff driver &ldquo;foo&rdquo; are defined by the
-configuration variables in the &ldquo;diff.foo&rdquo; section of the Git config
-file.</p></li>
-</ul>
+<p>String<br />
+Diff is shown using the specified diff driver. Each driver may specify
+one or more options, as described in the following section. The options
+for the diff driver &ldquo;foo&rdquo; are defined by the configuration variables in
+the &ldquo;diff.foo&rdquo; section of the Git config file.</p>
 
 <h4 id="defining-an-external-diff-driver">Defining an external diff driver</h4>
 
@@ -758,8 +750,9 @@ file (you still need to enable this with the attribute mechanism, via
 
 <h4 id="customizing-word-diff">Customizing word diff</h4>
 
-<p>You can customize the rules that <code>git diff --word-diff</code> uses to split
-words in a line, by specifying an appropriate regular expression in the
+<p>You can customize the rules that
+<code>git diff                   --word-diff</code> uses to split words in a line,
+by specifying an appropriate regular expression in the
 &ldquo;diff.*.wordRegex&rdquo; configuration variable. For example, in TeX a
 backslash followed by a sequence of letters forms a command, but several
 such commands can be run together without intervening whitespace. To
@@ -810,9 +803,10 @@ Note
 </table>
 
 <p>Because text conversion can be slow, especially when doing a large
-number of them with <code>git log -p</code>, Git provides a mechanism to cache the
-output and use it in future diffs. To enable caching, set the
-&ldquo;cachetextconv&rdquo; variable in your diff driver’s config. For example:</p>
+number of them with <code>git log                   -p</code>, Git provides a
+mechanism to cache the output and use it in future diffs. To enable
+caching, set the &ldquo;cachetextconv&rdquo; variable in your diff driver’s config.
+For example:</p>
 
 <pre><code>[diff &quot;jpg&quot;]
         textconv = exif
@@ -824,9 +818,9 @@ If you change the textconv config variable for a diff driver, Git will
 automatically invalidate the cache entries and re-run the textconv
 filter. If you want to invalidate the cache manually (e.g., because your
 version of &ldquo;exif&rdquo; was updated and now produces better output), you can
-remove the cache manually with <code>git update-ref -d
-refs/notes/textconv/jpg</code> (where &ldquo;jpg&rdquo; is the name of the diff driver, as
-in the example above).</p>
+remove the cache manually with
+<code>git update-ref                   -d refs/notes/textconv/jpg</code> (where
+&ldquo;jpg&rdquo; is the name of the diff driver, as in the example above).</p>
 
 <h4 id="choosing-textconv-versus-external-diff">Choosing textconv versus external diff</h4>
 
@@ -875,8 +869,9 @@ in the <code>.gitattributes</code> file:</p>
 <pre><code>*.ps -diff
 </code></pre>
 
-<p>This will cause Git to generate <code>Binary files differ</code> (or a binary
-patch, if binary patches are enabled) instead of a regular diff.</p>
+<p>This will cause Git to generate <code>Binary files                   differ</code>
+(or a binary patch, if binary patches are enabled) instead of a regular
+diff.</p>
 
 <p>However, one may also want to specify other diff driver attributes. For
 example, you might want to use <code>textconv</code> to convert postscript files to
@@ -897,54 +892,49 @@ The solution is to use the <code>diff.*.binary</code> config option:</p>
 when a file-level merge is necessary during <code>git merge</code>, and other
 commands such as <code>git revert</code> and <code>git cherry-pick</code>.</p>
 
-<ul>
-<li><p>Set<br />
+<p>Set<br />
 Built-in 3-way merge driver is used to merge the contents in a way
-similar to <em>merge</em> command of <code>RCS</code> suite. This is suitable for
-ordinary text files.</p></li>
+similar to <em>merge</em> command of <code>RCS</code> suite. This is suitable for ordinary
+text files.</p>
 
-<li><p>Unset<br />
-Take the version from the current branch as the tentative merge
-result, and declare that the merge has conflicts. This is suitable
-for binary files that do not have a well-defined merge semantics.</p></li>
+<p>Unset<br />
+Take the version from the current branch as the tentative merge result,
+and declare that the merge has conflicts. This is suitable for binary
+files that do not have a well-defined merge semantics.</p>
 
-<li><p>Unspecified<br />
+<p>Unspecified<br />
 By default, this uses the same built-in 3-way merge driver as is the
 case when the <code>merge</code> attribute is set. However, the <code>merge.default</code>
-configuration variable can name different merge driver to be used
-with paths for which the <code>merge</code> attribute is unspecified.</p></li>
+configuration variable can name different merge driver to be used with
+paths for which the <code>merge</code> attribute is unspecified.</p>
 
-<li><p>String<br />
-3-way merge is performed using the specified custom merge driver.
-The built-in 3-way merge driver can be explicitly specified by
-asking for &ldquo;text&rdquo; driver; the built-in &ldquo;take the current branch&rdquo;
-driver can be requested with &ldquo;binary&rdquo;.</p></li>
-</ul>
+<p>String<br />
+3-way merge is performed using the specified custom merge driver. The
+built-in 3-way merge driver can be explicitly specified by asking for
+&ldquo;text&rdquo; driver; the built-in &ldquo;take the current branch&rdquo; driver can be
+requested with &ldquo;binary&rdquo;.</p>
 
 <h4 id="built-in-merge-drivers">Built-in merge drivers</h4>
 
 <p>There are a few built-in low-level merge drivers defined that can be
 asked for via the <code>merge</code> attribute.</p>
 
-<ul>
-<li><p>text<br />
+<p>text<br />
 Usual 3-way file level merge for text files. Conflicted regions are
 marked with conflict markers <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. The
-version from your branch appears before the <code>=======</code> marker, and
-the version from the merged branch appears after the <code>=======</code>
-marker.</p></li>
+version from your branch appears before the <code>=======</code> marker, and the
+version from the merged branch appears after the <code>=======</code> marker.</p>
 
-<li><p>binary<br />
-Keep the version from your branch in the work tree, but leave the
-path in the conflicted state for the user to sort out.</p></li>
+<p>binary<br />
+Keep the version from your branch in the work tree, but leave the path
+in the conflicted state for the user to sort out.</p>
 
-<li><p>union<br />
+<p>union<br />
 Run 3-way file level merge for text files, but take lines from both
-versions, instead of leaving conflict markers. This tends to leave
-the added lines in the resulting file in random order and the user
-should verify the result. Do not use this if you do not understand
-the implications.</p></li>
-</ul>
+versions, instead of leaving conflict markers. This tends to leave the
+added lines in the resulting file in random order and the user should
+verify the result. Do not use this if you do not understand the
+implications.</p>
 
 <h4 id="defining-a-custom-merge-driver">Defining a custom merge driver</h4>
 
@@ -1005,24 +995,21 @@ results in a conflict.</p>
 the project (See <a href="../git-config">git-config(1)</a>). This attribute gives
 you finer control per path.</p>
 
-<ul>
-<li><p>Set<br />
-Notice all types of potential whitespace errors known to Git. The
-tab width is taken from the value of the <code>core.whitespace</code>
-configuration variable.</p></li>
+<p>Set<br />
+Notice all types of potential whitespace errors known to Git. The tab
+width is taken from the value of the <code>core.whitespace</code> configuration
+variable.</p>
 
-<li><p>Unset<br />
-Do not notice anything as error.</p></li>
+<p>Unset<br />
+Do not notice anything as error.</p>
 
-<li><p>Unspecified<br />
-Use the value of the <code>core.whitespace</code> configuration variable to
-decide what to notice as error.</p></li>
+<p>Unspecified<br />
+Use the value of the <code>core.whitespace</code> configuration variable to decide
+what to notice as error.</p>
 
-<li><p>String<br />
-Specify a comma separate list of common whitespace problems to
-notice in the same format as the <code>core.whitespace</code> configuration
-variable.</p></li>
-</ul>
+<p>String<br />
+Specify a comma separate list of common whitespace problems to notice in
+the same format as the <code>core.whitespace</code> configuration variable.</p>
 
 <h3 id="creating-an-archive">Creating an archive</h3>
 
@@ -1207,7 +1194,7 @@ frotz   unspecified
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

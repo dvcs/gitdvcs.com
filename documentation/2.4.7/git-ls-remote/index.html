@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git ls-remote [--heads] [--tags]  [-u &lt;exec&gt; | --upload-pack &lt;exec&gt;]
+<pre><code>git ls-remote [--heads] [--tags]  [-u &lt;exec&gt; | --upload-pack &lt;exec&gt;]
               [--exit-code] &lt;repository&gt; [&lt;refs&gt;…]
 </code></pre>
 
@@ -118,43 +118,41 @@ associated commit IDs.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-h<br />
---heads<br />
+<p>-h<br />
+&ndash;heads<br />
 -t<br />
---tags<br />
-Limit to only refs/heads and refs/tags, respectively. These options
-are <em>not</em> mutually exclusive; when given both, references stored in
-refs/heads and refs/tags are displayed.</p></li>
+&ndash;tags<br />
+Limit to only refs/heads and refs/tags, respectively. These options are
+<em>not</em> mutually exclusive; when given both, references stored in
+refs/heads and refs/tags are displayed.</p>
 
-<li><p>-u &lt;exec&gt;<br />
---upload-pack=&lt;exec&gt;<br />
+<p>-u &lt;exec&gt;<br />
+&ndash;upload-pack=&lt;exec&gt;<br />
 Specify the full path of <em>git-upload-pack</em> on the remote host. This
-allows listing references from repositories accessed via SSH and
-where the SSH daemon does not use the PATH configured by the user.</p></li>
+allows listing references from repositories accessed via SSH and where
+the SSH daemon does not use the PATH configured by the user.</p>
 
-<li><p>&ndash;exit-code<br />
+<p>&ndash;exit-code<br />
 Exit with status &ldquo;2&rdquo; when no matching refs are found in the remote
 repository. Usually the command exits with status &ldquo;0&rdquo; to indicate it
 successfully talked with the remote repository, whether it found any
-matching refs.</p></li>
+matching refs.</p>
 
-<li><p>&ndash;get-url<br />
-Expand the URL of the given remote repository taking into account
-any &ldquo;url.&lt;base&gt;.insteadOf&rdquo; config setting (See
+<p>&ndash;get-url<br />
+Expand the URL of the given remote repository taking into account any
+&ldquo;url.&lt;base&gt;.insteadOf&rdquo; config setting (See
 <a href="../git-config">git-config(1)</a>) and exit without talking to the
-remote.</p></li>
+remote.</p>
 
-<li><p>&lt;repository&gt;<br />
-The &ldquo;remote&rdquo; repository to query. This parameter can be either a URL
-or the name of a remote (see the GIT URLS and REMOTES sections of
-<a href="../git-fetch">git-fetch(1)</a>).</p></li>
+<p>&lt;repository&gt;<br />
+The &ldquo;remote&rdquo; repository to query. This parameter can be either a URL or
+the name of a remote (see the GIT URLS and REMOTES sections of
+<a href="../git-fetch">git-fetch(1)</a>).</p>
 
-<li><p>&lt;refs&gt;…<br />
-When unspecified, all references, after filtering done with &ndash;heads
-and &ndash;tags, are shown. When &lt;refs&gt;… are specified, only references
-matching the given patterns are displayed.</p></li>
-</ul>
+<p>&lt;refs&gt;…<br />
+When unspecified, all references, after filtering done with &ndash;heads and
+&ndash;tags, are shown. When &lt;refs&gt;… are specified, only references
+matching the given patterns are displayed.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -234,7 +232,7 @@ c5db5456ae3b0873fc659c19fafdde22313cc441        refs/tags/v0.99.2
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

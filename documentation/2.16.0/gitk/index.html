@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> gitk </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitk</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.0'>2.16.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.0/gitk'>gitk</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>gitk [&lt;options&gt;] [&lt;revision range&gt;] [--] [&lt;path&gt;…]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>Displays changes in a repository or a selected set of commits. This
+includes visualizing the commit graph, showing information related to
+each commit, and the files in the trees of each revision.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>To control which revisions to show, gitk supports most options
+applicable to the <em>git rev-list</em> command. It also supports a few options
+applicable to the <em>git diff-*</em> commands to control how the changes each
+commit introduces are shown. Finally, it supports some gitk-specific
+options.</p>
+
+<p>gitk generally only understands options with arguments in the <em>sticked</em>
+form (see <a href="../gitcli">gitcli(7)</a>) due to limitations in the
+command-line parser.</p>
+
+<h3 id="rev-list-options-and-arguments">rev-list options and arguments</h3>
+
+<p>This manual page describes only the most frequently used options. See
+<a href="../git-rev-list">git-rev-list(1)</a> for a complete list.</p>
+
+<p>&ndash;all<br />
+Show all refs (branches, tags, etc.).</p>
+
+<p>&ndash;branches[=&lt;pattern&gt;]<br />
+&ndash;tags[=&lt;pattern&gt;]<br />
+&ndash;remotes[=&lt;pattern&gt;]<br />
+Pretend as if all the branches (tags, remote branches, resp.) are listed
+on the command line as <em>&lt;commit&gt;</em>. If <em>&lt;pattern&gt;</em> is given,
+limit refs to ones matching given shell glob. If pattern lacks <em>?</em>,
+<em>*</em>, or <em>[</em>, <em>/*</em> at the end is implied.</p>
+
+<p>&ndash;since=&lt;date&gt;<br />
+Show commits more recent than a specific date.</p>
+
+<p>&ndash;until=&lt;date&gt;<br />
+Show commits older than a specific date.</p>
+
+<p>&ndash;date-order<br />
+Sort commits by date when possible.</p>
+
+<p>&ndash;merge<br />
+After an attempt to merge stops with conflicts, show the commits on the
+history between two branches (i.e. the HEAD and the MERGE_HEAD) that
+modify the conflicted files and do not exist on all the heads being
+merged.</p>
+
+<p>&ndash;left-right<br />
+Mark which side of a symmetric difference a commit is reachable from.
+Commits from the left side are prefixed with a <code>&lt;</code> symbol and those from
+the right with a <code>&gt;</code> symbol.</p>
+
+<p>&ndash;full-history<br />
+When filtering history with <em>&lt;path&gt;…</em>, does not prune some
+history. (See &ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for
+a more detailed explanation.)</p>
+
+<p>&ndash;simplify-merges<br />
+Additional option to <code>--full-history</code> to remove some needless merges
+from the resulting history, as there are no selected commits
+contributing to this merge. (See &ldquo;History simplification&rdquo; in
+<a href="../git-log">git-log(1)</a> for a more detailed explanation.)</p>
+
+<p>&ndash;ancestry-path<br />
+When given a range of commits to display (e.g. <em>commit1..commit2</em> or
+<em>commit2 ^commit1</em>), only display commits that exist directly on the
+ancestry chain between the <em>commit1</em> and <em>commit2</em>, i.e. commits that
+are both descendants of <em>commit1</em>, and ancestors of <em>commit2</em>. (See
+&ldquo;History simplification&rdquo; in <a href="../git-log">git-log(1)</a> for a more
+detailed explanation.)</p>
+
+<p>-L&lt;start&gt;,&lt;end&gt;:&lt;file&gt;<br />
+-L:&lt;funcname&gt;:&lt;file&gt;<br />
+Trace the evolution of the line range given by
+&ldquo;&lt;start&gt;,&lt;end&gt;&rdquo; (or the function name regex
+&lt;funcname&gt;) within the &lt;file&gt;. You may not give any pathspec
+limiters. This is currently limited to a walk starting from a single
+revision, i.e., you may only give zero or one positive revision
+arguments. You can specify this option more than once.</p>
+
+<p><strong>Note:</strong> gitk (unlike <a href="../git-log">git-log(1)</a>) currently only
+understands this option if you specify it &ldquo;glued together&rdquo; with its
+argument. Do <strong>not</strong> put a space after <code>-L</code>.</p>
+
+<p>&lt;start&gt; and &lt;end&gt; can take one of these forms:</p>
+
+<ul>
+<li><p>number</p>
+
+<p>If &lt;start&gt; or &lt;end&gt; is a number, it specifies an
+absolute line number (lines count from 1).</p></li>
+
+<li><p>/regex/</p>
+
+<p>This form will use the first line matching the given POSIX regex. If
+&lt;start&gt; is a regex, it will search from the end of the
+previous <code>-L</code> range, if any, otherwise from the start of file. If
+&lt;start&gt; is “^/regex/”, it will search from the start of file.
+If &lt;end&gt; is a regex, it will search starting at the line given
+by &lt;start&gt;.</p></li>
+
+<li><p>+offset or -offset</p>
+
+<p>This is only valid for &lt;end&gt; and will specify a number of
+lines before or after the line given by &lt;start&gt;.</p></li>
+</ul>
+
+<p>If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and
+&lt;end&gt;, it is a regular expression that denotes the range from the
+first funcname line that matches &lt;funcname&gt;, up to the next
+funcname line. “:&lt;funcname&gt;” searches from the end of the previous
+<code>-L</code> range, if any, otherwise from the start of file.
+“^:&lt;funcname&gt;” searches from the start of file.</p>
+
+<p>&lt;revision range&gt;<br />
+Limit the revisions to show. This can be either a single revision
+meaning show from the given revision and back, or it can be a range in
+the form &ldquo;<em>&lt;from&gt;</em>..<em>&lt;to&gt;</em>&rdquo; to show all revisions between
+<em>&lt;from&gt;</em> and back to <em>&lt;to&gt;</em>. Note, more advanced revision
+selection can be applied. For a more complete list of ways to spell
+object names, see <a href="../gitrevisions">gitrevisions(7)</a>.</p>
+
+<p>&lt;path&gt;…<br />
+Limit commits to the ones touching files in the given paths. Note, to
+avoid ambiguity with respect to revision names use &ldquo;&ndash;&rdquo; to separate the
+paths from any preceding options.</p>
+
+<h3 id="gitk-specific-options">gitk-specific options</h3>
+
+<p>&ndash;argscmd=&lt;command&gt;<br />
+Command to be run each time gitk has to determine the revision range to
+show. The command is expected to print on its standard output a list of
+additional revisions to be shown, one per line. Use this instead of
+explicitly specifying a <em>&lt;revision range&gt;</em> if the set of commits
+to show may vary between refreshes.</p>
+
+<p>&ndash;select-commit=&lt;ref&gt;<br />
+Select the specified commit after loading the graph. Default behavior is
+equivalent to specifying <em>&ndash;select-commit=HEAD</em>.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>gitk v2.6.12.. include/scsi drivers/scsi<br />
+Show the changes since version <em>v2.6.12</em> that changed any file in the
+include/scsi or drivers/scsi subdirectories</p>
+
+<p>gitk &ndash;since=&ldquo;2 weeks ago&rdquo; &ndash; gitk<br />
+Show the changes during the last two weeks to the file <em>gitk</em>. The &ldquo;&ndash;&rdquo;
+is necessary to avoid confusion with the <strong>branch</strong> named <em>gitk</em></p>
+
+<p>gitk &ndash;max-count=100 &ndash;all &ndash; Makefile<br />
+Show at most 100 changes made to the file <em>Makefile</em>. Instead of only
+looking for changes in the current branch look in all branches.</p>
+
+<h2 id="files">Files</h2>
+
+<p>User configuration and preferences are stored at:</p>
+
+<ul>
+<li><p><em>$XDG_CONFIG_HOME/git/gitk</em> if it exists, otherwise</p></li>
+
+<li><p><em>$HOME/.gitk</em> if it exists</p></li>
+</ul>
+
+<p>If neither of the above exist then <em>$XDG_CONFIG_HOME/git/gitk</em> is
+created and used by default. If <em>$XDG_CONFIG_HOME</em> is not set it
+defaults to <em>$HOME/.config</em> in all cases.</p>
+
+<h2 id="history">History</h2>
+
+<p>Gitk was the first graphical repository browser. It’s written in tcl/tk.</p>
+
+<p><em>gitk</em> is actually maintained as an independent project, but stable
+versions are distributed as part of the Git suite for the convenience of
+end users.</p>
+
+<p>gitk-git/ comes from Paul Mackerras’s gitk project:</p>
+
+<pre><code>git://ozlabs.org/~paulus/gitk
+</code></pre>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><em>qgit(1)</em><br />
+A repository browser written in C++ using Qt.</p>
+
+<p><em>tig(1)</em><br />
+A minimal repository browser and Git tool output highlighter written in
+C using Ncurses.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

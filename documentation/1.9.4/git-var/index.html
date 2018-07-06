@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git var ( -l | &lt;variable&gt; )
+<pre><code>git var ( -l | &lt;variable&gt; )
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -116,13 +116,11 @@
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li>-l<br />
-Cause the logical variables to be listed. In addition, all the
-variables of the Git configuration file .git/config are listed as
-well. (However, the configuration variables listing functionality is
-deprecated in favor of <code>git config -l</code>.)</li>
-</ul>
+<p>-l<br />
+Cause the logical variables to be listed. In addition, all the variables
+of the Git configuration file .git/config are listed as well. (However,
+the configuration variables listing functionality is deprecated in favor
+of <code>git config -l</code>.)</p>
 
 <h2 id="example">EXAMPLE</h2>
 
@@ -132,29 +130,26 @@ Eric W. Biederman &lt;ebiederm@lnxi.com&gt; 1121223278 -0600
 
 <h2 id="variables">VARIABLES</h2>
 
-<ul>
-<li><p>GIT_AUTHOR_IDENT<br />
-The author of a piece of code.</p></li>
+<p>GIT_AUTHOR_IDENT<br />
+The author of a piece of code.</p>
 
-<li><p>GIT_COMMITTER_IDENT<br />
-The person who put a piece of code into Git.</p></li>
+<p>GIT_COMMITTER_IDENT<br />
+The person who put a piece of code into Git.</p>
 
-<li><p>GIT_EDITOR<br />
+<p>GIT_EDITOR<br />
 Text editor for use by Git commands. The value is meant to be
 interpreted by the shell when it is used. Examples: <code>~/bin/vi</code>,
-<code>$SOME_ENVIRONMENT_VARIABLE</code>, <code>&quot;C:\Program Files\Vim\gvim.exe&quot;
---nofork</code>. The order of preference is the <code>$GIT_EDITOR</code> environment
-variable, then <code>core.editor</code> configuration, then <code>$VISUAL</code>, then
-<code>$EDITOR</code>, and then the default chosen at compile time, which is
-usually <em>vi</em>.</p></li>
+<code>$SOME_ENVIRONMENT_VARIABLE</code>,
+<code>&quot;C:\Program                   Files\Vim\gvim.exe&quot; --nofork</code>. The order
+of preference is the <code>$GIT_EDITOR</code> environment variable, then
+<code>core.editor</code> configuration, then <code>$VISUAL</code>, then <code>$EDITOR</code>, and then
+the default chosen at compile time, which is usually <em>vi</em>.</p>
 
-<li><p>GIT_PAGER<br />
-Text viewer for use by Git commands (e.g., <em>less</em>). The value is
-meant to be interpreted by the shell. The order of preference is the
-<code>$GIT_PAGER</code> environment variable, then <code>core.pager</code> configuration,
-then <code>$PAGER</code>, and then the default chosen at compile time (usually
-<em>less</em>).</p></li>
-</ul>
+<p>GIT_PAGER<br />
+Text viewer for use by Git commands (e.g., <em>less</em>). The value is meant
+to be interpreted by the shell. The order of preference is the
+<code>$GIT_PAGER</code> environment variable, then <code>core.pager</code> configuration, then
+<code>$PAGER</code>, and then the default chosen at compile time (usually <em>less</em>).</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -220,7 +215,7 @@ then <code>$PAGER</code>, and then the default chosen at compile time (usually
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

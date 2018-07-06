@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-help </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-help</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.4'>2.16.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.16.4/git-help'>git-help</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>git help [-a|--all] [-g|--guide]
+           [-i|--info|-m|--man|-w|--web] [COMMAND|GUIDE]
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>With no options and no COMMAND or GUIDE given, the synopsis of the <em>git</em>
+command and a list of the most commonly used Git commands are printed on
+the standard output.</p>
+
+<p>If the option <code>--all</code> or <code>-a</code> is given, all available commands are
+printed on the standard output.</p>
+
+<p>If the option <code>--guide</code> or <code>-g</code> is given, a list of the useful Git
+guides is also printed on the standard output.</p>
+
+<p>If a command, or a guide, is given, a manual page for that command or
+guide is brought up. The <em>man</em> program is used by default for this
+purpose, but this can be overridden by other options or configuration
+variables.</p>
+
+<p>Note that <code>git --help ...</code> is identical to <code>git help ...</code> because the
+former is internally converted into the latter.</p>
+
+<p>To display the <a href="../git">git(1)</a> man page, use <code>git help git</code>.</p>
+
+<p>This page can be displayed with <em>git help help</em> or <code>git help --help</code></p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>-a<br />
+&ndash;all<br />
+Prints all the available commands on the standard output. This option
+overrides any given command or guide name.</p>
+
+<p>-g<br />
+&ndash;guides<br />
+Prints a list of useful guides on the standard output. This option
+overrides any given command or guide name.</p>
+
+<p>-i<br />
+&ndash;info<br />
+Display manual page for the command in the <em>info</em> format. The <em>info</em>
+program will be used for that purpose.</p>
+
+<p>-m<br />
+&ndash;man<br />
+Display manual page for the command in the <em>man</em> format. This option may
+be used to override a value set in the <code>help.format</code> configuration
+variable.</p>
+
+<p>By default the <em>man</em> program will be used to display the manual page,
+but the <code>man.viewer</code> configuration variable may be used to choose other
+display programs (see below).</p>
+
+<p>-w<br />
+&ndash;web<br />
+Display manual page for the command in the <em>web</em> (HTML) format. A web
+browser will be used for that purpose.</p>
+
+<p>The web browser can be specified using the configuration variable
+<code>help.browser</code>, or <code>web.browser</code> if the former is not set. If none of
+these config variables is set, the <em>git web&ndash;browse</em> helper script
+(called by <em>git help</em>) will pick a suitable default. See
+<a href="../git-web--browse">git-web&ndash;browse(1)</a> for more information about
+this.</p>
+
+<h2 id="configuration-variables">CONFIGURATION VARIABLES</h2>
+
+<h3 id="help-format">help.format</h3>
+
+<p>If no command-line option is passed, the <code>help.format</code> configuration
+variable will be checked. The following values are supported for this
+variable; they make <em>git help</em> behave as their corresponding command-
+line option:</p>
+
+<ul>
+<li><p>&ldquo;man&rdquo; corresponds to <em>-m|&ndash;man</em>,</p></li>
+
+<li><p>&ldquo;info&rdquo; corresponds to <em>-i|&ndash;info</em>,</p></li>
+
+<li><p>&ldquo;web&rdquo; or &ldquo;html&rdquo; correspond to <em>-w|&ndash;web</em>.</p></li>
+</ul>
+
+<h3 id="help-browser-web-browser-and-browser-lt-tool-gt-path">help.browser, web.browser and browser.&lt;tool&gt;.path</h3>
+
+<p>The <code>help.browser</code>, <code>web.browser</code> and <code>browser.&lt;tool&gt;.path</code> will also be
+checked if the <em>web</em> format is chosen (either by command-line option or
+configuration variable). See <em>-w|&ndash;web</em> in the OPTIONS section above and
+<a href="../git-web--browse">git-web&ndash;browse(1)</a>.</p>
+
+<h3 id="man-viewer">man.viewer</h3>
+
+<p>The <code>man.viewer</code> configuration variable will be checked if the <em>man</em>
+format is chosen. The following values are currently supported:</p>
+
+<ul>
+<li><p>&ldquo;man&rdquo;: use the <em>man</em> program as usual,</p></li>
+
+<li><p>&ldquo;woman&rdquo;: use <em>emacsclient</em> to launch the &ldquo;woman&rdquo; mode in emacs (this
+only works starting with emacsclient versions 22),</p></li>
+
+<li><p>&ldquo;konqueror&rdquo;: use <em>kfmclient</em> to open the man page in a new konqueror
+tab (see <em>Note about konqueror</em> below).</p></li>
+</ul>
+
+<p>Values for other tools can be used if there is a corresponding
+<code>man.&lt;tool&gt;.cmd</code> configuration entry (see below).</p>
+
+<p>Multiple values may be given to the <code>man.viewer</code> configuration variable.
+Their corresponding programs will be tried in the order listed in the
+configuration file.</p>
+
+<p>For example, this configuration:</p>
+
+<pre><code>        [man]
+                viewer = konqueror
+                viewer = woman
+</code></pre>
+
+<p>will try to use konqueror first. But this may fail (for example, if
+DISPLAY is not set) and in that case emacs&rsquo; woman mode will be tried.</p>
+
+<p>If everything fails, or if no viewer is configured, the viewer specified
+in the <code>GIT_MAN_VIEWER</code> environment variable will be tried. If that
+fails too, the <em>man</em> program will be tried anyway.</p>
+
+<h3 id="man-lt-tool-gt-path">man.&lt;tool&gt;.path</h3>
+
+<p>You can explicitly provide a full path to your preferred man viewer by
+setting the configuration variable <code>man.&lt;tool&gt;.path</code>. For example, you
+can configure the absolute path to konqueror by setting
+<em>man.konqueror.path</em>. Otherwise, <em>git help</em> assumes the tool is
+available in PATH.</p>
+
+<h3 id="man-lt-tool-gt-cmd">man.&lt;tool&gt;.cmd</h3>
+
+<p>When the man viewer, specified by the <code>man.viewer</code> configuration
+variables, is not among the supported ones, then the corresponding
+<code>man.&lt;tool&gt;.cmd</code> configuration variable will be looked up. If this
+variable exists then the specified tool will be treated as a custom
+command and a shell eval will be used to run the command with the man
+page passed as arguments.</p>
+
+<h3 id="note-about-konqueror">Note about konqueror</h3>
+
+<p>When <em>konqueror</em> is specified in the <code>man.viewer</code> configuration
+variable, we launch <em>kfmclient</em> to try to open the man page on an
+already opened konqueror in a new tab if possible.</p>
+
+<p>For consistency, we also try such a trick if <em>man.konqueror.path</em> is set
+to something like <em>A_PATH_TO/konqueror</em>. That means we will try to
+launch <em>A_PATH_TO/kfmclient</em> instead.</p>
+
+<p>If you really want to use <em>konqueror</em>, then you can use something like
+the following:</p>
+
+<pre><code>        [man]
+                viewer = konq
+
+        [man &quot;konq&quot;]
+                cmd = A_PATH_TO/konqueror
+</code></pre>
+
+<h3 id="note-about-git-config-global">Note about git config &ndash;global</h3>
+
+<p>Note that all these configuration variables should probably be set using
+the <code>--global</code> flag, for example like this:</p>
+
+<pre><code>$ git config --global help.format web
+$ git config --global web.browser firefox
+</code></pre>
+
+<p>as they are probably more user specific than repository specific. See
+<a href="../git-config">git-config(1)</a> for more information about this.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

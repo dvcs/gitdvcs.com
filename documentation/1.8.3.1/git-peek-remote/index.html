@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git peek-remote [--upload-pack=&lt;git-upload-pack&gt;] [&lt;host&gt;:]&lt;directory&gt;
+<pre><code>git peek-remote [--upload-pack=&lt;git-upload-pack&gt;] [&lt;host&gt;:]&lt;directory&gt;
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -116,25 +116,22 @@
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;upload-pack=&lt;git-upload-pack&gt;<br />
-Use this to specify the path to <em>git-upload-pack</em> on the remote
-side, if it is not found on your $PATH. Some installations of sshd
-ignores the user’s environment setup scripts for login shells (e.g.
-.bash_profile) and your privately installed git may not be found on
-the system default $PATH. Another workaround suggested is to set up
-your $PATH in &ldquo;.bashrc&rdquo;, but this flag is for people who do not want
-to pay the overhead for non-interactive shells, but prefer having a
-lean .bashrc file (they set most of the things up in
-.bash_profile).</p></li>
+<p>&ndash;upload-pack=&lt;git-upload-pack&gt;<br />
+Use this to specify the path to <em>git-upload-pack</em> on the remote side, if
+it is not found on your $PATH. Some installations of sshd ignores the
+user’s environment setup scripts for login shells (e.g. .bash_profile)
+and your privately installed git may not be found on the system default
+$PATH. Another workaround suggested is to set up your $PATH in
+&ldquo;.bashrc&rdquo;, but this flag is for people who do not want to pay the
+overhead for non-interactive shells, but prefer having a lean .bashrc
+file (they set most of the things up in .bash_profile).</p>
 
-<li><p>&lt;host&gt;<br />
-A remote host that houses the repository. When this part is
-specified, <em>git-upload-pack</em> is invoked via ssh.</p></li>
+<p>&lt;host&gt;<br />
+A remote host that houses the repository. When this part is specified,
+<em>git-upload-pack</em> is invoked via ssh.</p>
 
-<li><p>&lt;directory&gt;<br />
-The repository to sync from.</p></li>
-</ul>
+<p>&lt;directory&gt;<br />
+The repository to sync from.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -195,7 +192,7 @@ The repository to sync from.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

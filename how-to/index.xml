@@ -16,8 +16,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/how-to/discard-unstaged-changes-in-git/</guid>
-      <description>Summary  Stashing files (Can recover later)  git stash save --keep-index   Cleaning files (Cannot recover later)  git clean -fd git checkout -- .  Details Stashing Files
- git stash saves files in a stashed list of temporary repository edits.  git stash save --keep-index   After stashing, you can drop that stash with a git stash drop command if you like.  Cleaning Files</description>
+      <description>Summary  Stashing files (Can recover later)  git stash save --keep-index  Cleaning files (Cannot recover later)  git clean -fd git checkout -- . Details Stashing Files
+ git stash saves files in a stashed list of temporary repository edits.  git stash save --keep-index  After stashing, you can drop that stash with a git stash drop command if you like.  Cleaning Files
+ git clean removes all untracked files (warning: while it won&amp;rsquo;t delete ignored files mentioned directly in .</description>
     </item>
     
     <item>
@@ -26,7 +27,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/how-to/rename-a-local-git-branch/</guid>
-      <description> Summary git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt; # From any branch git branch -m &amp;lt;newname&amp;gt; # From current branch  Details Renaming Any Other Branch  If you want to rename a branch while pointed to any branch, do:  git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt;  Renaming Current Branch  If you want to rename the current branch, you can do:  git branch -m &amp;lt;newname&amp;gt;  Documentation  git branch  </description>
+      <description> Summary git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt; # From any branch git branch -m &amp;lt;newname&amp;gt; # From current branch Details Renaming Any Other Branch  If you want to rename a branch while pointed to any branch, do:  git branch -m &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt; Renaming Current Branch  If you want to rename the current branch, you can do:  git branch -m &amp;lt;newname&amp;gt; Documentation  git branch  </description>
     </item>
     
     <item>
@@ -36,9 +37,9 @@
       
       <guid>https://www.gitdvcs.com/how-to/delete-a-git-branch-both-locally-and-remotely/</guid>
       <description>Summary Deleting a local branch:
-git branch --delete &amp;lt;branch&amp;gt; git branch -d &amp;lt;branch&amp;gt; # Shorter version git branch -D &amp;lt;branch&amp;gt; # Force delete un-merged branches  Deleting a remote branch:
-git push origin --delete &amp;lt;branch&amp;gt; # Git version 1.7.0 or newer git push origin :&amp;lt;branch&amp;gt; # Git versions older than 1.7.0  Deleting a local remote-tracking branch:
-$ git branch --delete --remotes &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt; $ git branch -dr &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt; # Shorter git fetch &amp;lt;remote&amp;gt; --prune # Delete multiple obsolete tracking branches git fetch &amp;lt;remote&amp;gt; -p # Shorter  Details Delete Local And Remote Branch</description>
+git branch --delete &amp;lt;branch&amp;gt; git branch -d &amp;lt;branch&amp;gt; # Shorter version git branch -D &amp;lt;branch&amp;gt; # Force delete un-merged branches Deleting a remote branch:
+git push origin --delete &amp;lt;branch&amp;gt; # Git version 1.7.0 or newer git push origin :&amp;lt;branch&amp;gt; # Git versions older than 1.7.0 Deleting a local remote-tracking branch:
+$ git branch --delete --remotes &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt; $ git branch -dr &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt; # Shorter  git fetch &amp;lt;remote&amp;gt; --prune # Delete multiple obsolete tracking branches git fetch &amp;lt;remote&amp;gt; -p # Shorter Details Delete Local And Remote Branch</description>
     </item>
     
     <item>
@@ -48,10 +49,10 @@ $ git branch --delete --remotes &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt; $ 
       
       <guid>https://www.gitdvcs.com/how-to/modify-existing-unpushed-commits/</guid>
       <description>Summary Modify previous staged commit
-git commit --amend  Modify previous staged commit with new message
-git commit --amend -m &amp;quot;Updated commit message&amp;quot;  Modify any previous commit message
-git rebase --interactive $parent_of_flawed_commit  Details Modify Staged Commit And Push To Remote
- This command will pen your editor, allowing you to change the commit message of the most recent commit.  git commit --amend  This command lets you set the commit message directly in the command line with:</description>
+git commit --amend Modify previous staged commit with new message
+git commit --amend -m &amp;#34;Updated commit message&amp;#34; Modify any previous commit message
+git rebase --interactive $parent_of_flawed_commit Details Modify Staged Commit And Push To Remote
+ This command will pen your editor, allowing you to change the commit message of the most recent commit.  git commit --amend This command lets you set the commit message directly in the command line with:</description>
     </item>
     
     <item>
@@ -60,7 +61,7 @@ git rebase --interactive $parent_of_flawed_commit  Details Modify Staged Commit 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/how-to/undo-git-add-before-commit/</guid>
-      <description>Summary git reset :file: # Remove file from stage git reset # Remove all files from stage  Details Undo File git add Before Commit  Reset file which will remove it from the current index (the &amp;ldquo;about to be committed&amp;rdquo; list) without changing anything else.  git reset :file: # Remove file from stage  Undo All Files git add Before Commit  Reset without any file name to unstage all due changes.</description>
+      <description>Summary git reset :file: # Remove file from stage git reset # Remove all files from stage Details Undo File git add Before Commit  Reset file which will remove it from the current index (the &amp;ldquo;about to be committed&amp;rdquo; list) without changing anything else.  git reset :file: # Remove file from stage Undo All Files git add Before Commit  Reset without any file name to unstage all due changes.</description>
     </item>
     
     <item>
@@ -69,7 +70,7 @@ git rebase --interactive $parent_of_flawed_commit  Details Modify Staged Commit 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/how-to/undo-last-commits-in-git/</guid>
-      <description>Summary git commit -m &amp;quot;Something terribly misguided&amp;quot; git reset HEAD~1 # edit files as necessary git add ... git commit -c ORIG_HEAD  Details Undo Last Commit  This is what you want to undo  git commit -m &amp;quot;Something terribly misguided&amp;quot;   This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you committed unstaged (so they&amp;rsquo;ll appear as &amp;ldquo;Changes not staged for commit&amp;rdquo; in git status and you&amp;rsquo;ll need to add them again before committing).</description>
+      <description>Summary git commit -m &amp;#34;Something terribly misguided&amp;#34; git reset HEAD~1 # edit files as necessary git add ... git commit -c ORIG_HEAD Details Undo Last Commit  This is what you want to undo  git commit -m &amp;#34;Something terribly misguided&amp;#34;   This leaves your working tree (the state of your files on disk) unchanged but undoes the commit and leaves the changes you committed unstaged (so they&amp;rsquo;ll appear as &amp;ldquo;Changes not staged for commit&amp;rdquo; in git status and you&amp;rsquo;ll need to add them again before committing).</description>
     </item>
     
     <item>

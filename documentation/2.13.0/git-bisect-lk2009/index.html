@@ -731,11 +731,10 @@ here</p>
 <p>9) use a pseudo random number generator (PRNG) to generate a random
 number between 0 and 1</p>
 
-<p>10) multiply this random number with its square root to bias it toward
-0</p>
+<p>10) multiply this random number with its square root to bias it toward 0</p>
 
-<p>11) multiply the result by the number of commits in the filtered list
-to get an index into this list</p>
+<p>11) multiply the result by the number of commits in the filtered list to
+get an index into this list</p>
 
 <p>12) return the commit at the computed index</p>
 
@@ -926,8 +925,7 @@ $ git bisect run make
 
 <h3 id="passing-sh-c-some-commands-to-git-bisect-run">Passing sh -c &ldquo;some commands&rdquo; to &ldquo;git bisect run&rdquo;</h3>
 
-<p>For
-    example:</p>
+<p>For example:</p>
 
 <pre><code>$ git bisect run sh -c &quot;make || exit 125; ./my_app | grep 'good output'&quot;
 </code></pre>
@@ -1336,34 +1334,38 @@ author to given a talk and for publishing this paper.</p>
 <h2 id="references">References</h2>
 
 <ul>
-<li><p>[1] <a href="https://www.nist.gov/sites/default/files/documents/director/planning/report02-3.pdf"><em>The Economic Impacts of Inadequate Infratructure for
-Software Testing</em>. Nist Planning Report
+<li><p><span id="1"></span>[1] <a href="https://www.nist.gov/sites/default/files/documents/director/planning/report02-3.pdf"><em>The Economic Impacts of Inadequate
+Infratructure for Software Testing</em>. Nist Planning Report
 02-3</a>,
 see Executive Summary and Chapter 8.</p></li>
 
-<li><p>[2] <a href="http://www.oracle.com/technetwork/java/codeconvtoc-136057"><em>Code Conventions for the Java Programming Language</em>. Sun
+<li><p><span id="2"></span>[2] <a href="http://www.oracle.com/technetwork/java/codeconvtoc-136057"><em>Code Conventions for the Java
+Programming Language</em>. Sun
 Microsystems.</a></p></li>
 
-<li><p>[3] <a href="https://en.wikipedia.org/wiki/Software_maintenance"><em>Software maintenance</em>.
+<li><p><span id="3"></span>[3] <a href="https://en.wikipedia.org/wiki/Software_maintenance"><em>Software maintenance</em>.
 Wikipedia.</a></p></li>
 
-<li><p>[4] <a href="http://article.gmane.org/gmane.comp.version-control.git/45195/">Junio C Hamano. <em>Automated bisect success story</em>.
+<li><p><span id="4"></span>[4] <a href="http://article.gmane.org/gmane.comp.version-control.git/45195/">Junio C Hamano. <em>Automated bisect success
+story</em>.
 Gmane.</a></p></li>
 
-<li><p>[5] <a href="https://lwn.net/Articles/317154/">Christian Couder. <em>Fully automated bisecting with &ldquo;git bisect
-run&rdquo;</em>. LWN.net.</a></p></li>
-
-<li><p>[6] <a href="https://lwn.net/Articles/277872/">Jonathan Corbet. <em>Bisection divides users and developers</em>.
+<li><p><span id="5"></span>[5] <a href="https://lwn.net/Articles/317154/">Christian Couder. <em>Fully automated
+bisecting with &ldquo;git bisect run&rdquo;</em>.
 LWN.net.</a></p></li>
 
-<li><p>[7] <a href="http://article.gmane.org/gmane.linux.scsi/36652/">Ingo Molnar. <em>Re: BUG 2.6.23-rc3 can’t see sd partitions on
-Alpha</em>. Gmane.</a></p></li>
+<li><p><span id="6"></span>[6] <a href="https://lwn.net/Articles/277872/">Jonathan Corbet. <em>Bisection divides users
+and developers</em>. LWN.net.</a></p></li>
 
-<li><p>[8] <a href="https://www.kernel.org/pub/software/scm/git/docs/git-bisect">Junio C Hamano and the git-list. <em>git-bisect(1) Manual Page</em>.
-Linux Kernel
+<li><p><span id="7"></span>[7] <a href="http://article.gmane.org/gmane.linux.scsi/36652/">Ingo Molnar. <em>Re: BUG 2.6.23-rc3 can’t
+see sd partitions on Alpha</em>.
+Gmane.</a></p></li>
+
+<li><p><span id="8"></span>[8] <a href="https://www.kernel.org/pub/software/scm/git/docs/git-bisect">Junio C Hamano and the git-list.
+<em>git-bisect(1) Manual Page</em>. Linux Kernel
 Archives.</a></p></li>
 
-<li><p>[9] <a href="https://github.com/Ealdwulf/bbchop">Ealdwulf. <em>bbchop</em>.
+<li><p><span id="9"></span>[9] <a href="https://github.com/Ealdwulf/bbchop">Ealdwulf. <em>bbchop</em>.
 GitHub.</a></p></li>
 </ul>
 
@@ -1422,7 +1424,7 @@ GitHub.</a></p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

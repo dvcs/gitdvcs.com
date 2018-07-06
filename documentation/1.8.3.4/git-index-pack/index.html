@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git index-pack [-v] [-o &lt;index-file&gt;] &lt;pack-file&gt;
+<pre><code>git index-pack [-v] [-o &lt;index-file&gt;] &lt;pack-file&gt;
 git index-pack --stdin [--fix-thin] [--keep] [-v] [-o &lt;index-file&gt;]
                  [&lt;pack-file&gt;]
 </code></pre>
@@ -121,61 +121,60 @@ repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-v<br />
-Be verbose about what is going on, including progress status.</p></li>
+<p>-v<br />
+Be verbose about what is going on, including progress status.</p>
 
-<li><p>-o &lt;index-file&gt;<br />
+<p>-o &lt;index-file&gt;<br />
 Write the generated pack index into the specified file. Without this
 option the name of pack index file is constructed from the name of
-packed archive file by replacing .pack with .idx (and the program
-fails if the name of packed archive does not end with .pack).</p></li>
+packed archive file by replacing .pack with .idx (and the program fails
+if the name of packed archive does not end with .pack).</p>
 
-<li><p>&ndash;stdin<br />
-When this flag is provided, the pack is read from stdin instead and
-a copy is then written to &lt;pack-file&gt;. If &lt;pack-file&gt; is not
-specified, the pack is written to objects/pack/ directory of the
-current Git repository with a default name determined from the pack
-content. If &lt;pack-file&gt; is not specified consider using &ndash;keep to
-prevent a race condition between this process and <em>git repack</em>.</p></li>
+<p>&ndash;stdin<br />
+When this flag is provided, the pack is read from stdin instead and a
+copy is then written to &lt;pack-file&gt;. If &lt;pack-file&gt; is not
+specified, the pack is written to objects/pack/ directory of the current
+Git repository with a default name determined from the pack content. If
+&lt;pack-file&gt; is not specified consider using &ndash;keep to prevent a
+race condition between this process and <em>git repack</em>.</p>
 
-<li><p>&ndash;fix-thin<br />
-Fix a &ldquo;thin&rdquo; pack produced by <code>git pack-objects --thin</code> (see
-<a href="../git-pack-objects">git-pack-objects(1)</a> for details) by adding
-the excluded objects the deltified objects are based on to the pack.
-This option only makes sense in conjunction with &ndash;stdin.</p></li>
+<p>&ndash;fix-thin<br />
+Fix a &ldquo;thin&rdquo; pack produced by
+<code>git                   pack-objects --thin</code> (see
+<a href="../git-pack-objects">git-pack-objects(1)</a> for details) by adding the
+excluded objects the deltified objects are based on to the pack. This
+option only makes sense in conjunction with &ndash;stdin.</p>
 
-<li><p>&ndash;keep<br />
-Before moving the index into its final destination create an empty
-.keep file for the associated pack file. This option is usually
-necessary with &ndash;stdin to prevent a simultaneous <em>git repack</em>
-process from deleting the newly constructed pack and index before
-refs can be updated to use objects contained in the pack.</p></li>
+<p>&ndash;keep<br />
+Before moving the index into its final destination create an empty .keep
+file for the associated pack file. This option is usually necessary with
+&ndash;stdin to prevent a simultaneous <em>git repack</em> process from deleting the
+newly constructed pack and index before refs can be updated to use
+objects contained in the pack.</p>
 
-<li><p>&ndash;keep=&lt;msg&gt;<br />
-Like &ndash;keep create a .keep file before moving the index into its
-final destination, but rather than creating an empty file place
-<em>&lt;msg&gt;</em> followed by an LF into the .keep file. The <em>&lt;msg&gt;</em>
-message can later be searched for within all .keep files to locate
-any which have outlived their usefulness.</p></li>
+<p>&ndash;keep=&lt;msg&gt;<br />
+Like &ndash;keep create a .keep file before moving the index into its final
+destination, but rather than creating an empty file place <em>&lt;msg&gt;</em>
+followed by an LF into the .keep file. The <em>&lt;msg&gt;</em> message can
+later be searched for within all .keep files to locate any which have
+outlived their usefulness.</p>
 
-<li><p>&ndash;index-version=&lt;version&gt;[,&lt;offset&gt;]<br />
-This is intended to be used by the test suite only. It allows to
-force the version for the generated pack index, and to force 64-bit
-index entries on objects located above the given offset.</p></li>
+<p>&ndash;index-version=&lt;version&gt;[,&lt;offset&gt;]<br />
+This is intended to be used by the test suite only. It allows to force
+the version for the generated pack index, and to force 64-bit index
+entries on objects located above the given offset.</p>
 
-<li><p>&ndash;strict<br />
-Die, if the pack contains broken objects or links.</p></li>
+<p>&ndash;strict<br />
+Die, if the pack contains broken objects or links.</p>
 
-<li><p>&ndash;threads=&lt;n&gt;<br />
+<p>&ndash;threads=&lt;n&gt;<br />
 Specifies the number of threads to spawn when resolving deltas. This
-requires that index-pack be compiled with pthreads otherwise this
-option is ignored with a warning. This is meant to reduce packing
-time on multiprocessor machines. The required amount of memory for
-the delta search window is however multiplied by the number of
-threads. Specifying 0 will cause Git to auto-detect the number of
-CPU’s and use maximum 3 threads.</p></li>
-</ul>
+requires that index-pack be compiled with pthreads otherwise this option
+is ignored with a warning. This is meant to reduce packing time on
+multiprocessor machines. The required amount of memory for the delta
+search window is however multiplied by the number of threads. Specifying
+0 will cause Git to auto-detect the number of CPU’s and use maximum 3
+threads.</p>
 
 <h2 id="note">Note</h2>
 
@@ -245,7 +244,7 @@ above.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

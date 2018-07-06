@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git init [-q | --quiet] [--bare] [--template=&lt;template_directory&gt;]
+<pre><code>git init [-q | --quiet] [--bare] [--template=&lt;template_directory&gt;]
           [--separate-git-dir &lt;git dir&gt;]
           [--shared[=&lt;permissions&gt;]] [directory]
 </code></pre>
@@ -134,67 +134,62 @@ repository to another place if &ndash;separate-git-dir is given).</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-q<br />
---quiet<br />
+<p>-q<br />
+&ndash;quiet<br />
 Only print error and warning messages; all other output will be
-suppressed.</p></li>
+suppressed.</p>
 
-<li><p>&ndash;bare<br />
-Create a bare repository. If GIT_DIR environment is not set, it is
-set to the current working directory.</p></li>
+<p>&ndash;bare<br />
+Create a bare repository. If GIT_DIR environment is not set, it is set
+to the current working directory.</p>
 
-<li><p>&ndash;template=&lt;template_directory&gt;<br />
+<p>&ndash;template=&lt;template_directory&gt;<br />
 Specify the directory from which templates will be used. (See the
-&ldquo;TEMPLATE DIRECTORY&rdquo; section below.)</p></li>
+&ldquo;TEMPLATE DIRECTORY&rdquo; section below.)</p>
 
-<li><p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
+<p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
 Instead of initializing the repository as a directory to either
-<code>$GIT_DIR</code> or <code>./.git/</code>, create a text file there containing the
-path to the actual repository. This file acts as filesystem-agnostic
-Git symbolic link to the repository.</p>
+<code>$GIT_DIR</code> or <code>./.git/</code>, create a text file there containing the path to
+the actual repository. This file acts as filesystem-agnostic Git
+symbolic link to the repository.</p>
 
 <p>If this is reinitialization, the repository will be moved to the
-specified path.</p></li>
+specified path.</p>
 
-<li><p>&ndash;shared[=(false|true|umask|group|all|world|everybody|0xxx)]<br />
-Specify that the Git repository is to be shared amongst several
-users. This allows users belonging to the same group to push into
-that repository. When specified, the config variable
-&ldquo;core.sharedRepository&rdquo; is set so that files and directories under
-<code>$GIT_DIR</code> are created with the requested permissions. When not
-specified, Git will use permissions reported by umask(2).</p>
+<p>&ndash;shared[=(false|true|umask|group|all|world|everybody|0xxx)]<br />
+Specify that the Git repository is to be shared amongst several users.
+This allows users belonging to the same group to push into that
+repository. When specified, the config variable &ldquo;core.sharedRepository&rdquo;
+is set so that files and directories under <code>$GIT_DIR</code> are created with
+the requested permissions. When not specified, Git will use permissions
+reported by umask(2).</p>
 
-<p>The option can have the following values, defaulting to <em>group</em> if
-no value is given:</p>
+<p>The option can have the following values, defaulting to <em>group</em> if no
+value is given:</p>
 
-<ul>
-<li><p><em>umask</em> (or <em>false</em>)<br />
-Use permissions reported by umask(2). The default, when
-<code>--shared</code> is not specified.</p></li>
+<p><em>umask</em> (or <em>false</em>)<br />
+Use permissions reported by umask(2). The default, when <code>--shared</code> is
+not specified.</p>
 
-<li><p><em>group</em> (or <em>true</em>)<br />
-Make the repository group-writable, (and g+sx, since the git
-group may be not the primary group of all users). This is used
-to loosen the permissions of an otherwise safe umask(2) value.
-Note that the umask still applies to the other permission bits
-(e.g. if umask is <em>0022</em>, using <em>group</em> will not remove read
-privileges from other (non-group) users). See <em>0xxx</em> for how to
-exactly specify the repository permissions.</p></li>
+<p><em>group</em> (or <em>true</em>)<br />
+Make the repository group-writable, (and g+sx, since the git group may
+be not the primary group of all users). This is used to loosen the
+permissions of an otherwise safe umask(2) value. Note that the umask
+still applies to the other permission bits (e.g. if umask is <em>0022</em>,
+using <em>group</em> will not remove read privileges from other (non-group)
+users). See <em>0xxx</em> for how to exactly specify the repository
+permissions.</p>
 
-<li><p><em>all</em> (or <em>world</em> or <em>everybody</em>)<br />
-Same as <em>group</em>, but make the repository readable by all users.</p></li>
+<p><em>all</em> (or <em>world</em> or <em>everybody</em>)<br />
+Same as <em>group</em>, but make the repository readable by all users.</p>
 
-<li><p><em>0xxx</em><br />
-<em>0xxx</em> is an octal number and each file will have mode <em>0xxx</em>.
-<em>0xxx</em> will override users&rsquo; umask(2) value (and not only loosen
-permissions as <em>group</em> and <em>all</em> does). <em>0640</em> will create a
-repository which is group-readable, but not group-writable or
-accessible to others. <em>0660</em> will create a repo that is readable
-and writable to the current user and group, but inaccessible to
-others.</p></li>
-</ul></li>
-</ul>
+<p><em>0xxx</em><br />
+<em>0xxx</em> is an octal number and each file will have mode <em>0xxx</em>. <em>0xxx</em>
+will override users&rsquo; umask(2) value (and not only loosen permissions as
+<em>group</em> and <em>all</em> does). <em>0640</em> will create a repository which is
+group-readable, but not group-writable or accessible to others. <em>0660</em>
+will create a repo that is readable and writable to the current user and
+group, but inaccessible to others.</p>
 
 <p>By default, the configuration flag <code>receive.denyNonFastForwards</code> is
 enabled in shared repositories, so that you cannot force a non
@@ -232,14 +227,11 @@ execution.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<ul>
-<li><p>Start a new Git repository for an existing code base</p>
-
-<pre><code>$ cd /path/to/my/codebase
-$ git init      &lt;1&gt;
-$ git add .     &lt;2&gt;
-$ git commit    &lt;3&gt;
-</code></pre>
+<p>Start a new Git repository for an existing code base<br />
+    $ cd /path/to/my/codebase
+    $ git init      <1>
+    $ git add .     <2>
+    $ git commit    <3></p>
 
 <ol>
 <li><p>Create a /path/to/my/codebase/.git directory.</p></li>
@@ -247,8 +239,7 @@ $ git commit    &lt;3&gt;
 <li><p>Add all existing files to the index.</p></li>
 
 <li><p>Record the pristine state as the first commit in the history.</p></li>
-</ol></li>
-</ul>
+</ol>
 
 <h2 id="git">GIT</h2>
 
@@ -309,7 +300,7 @@ $ git commit    &lt;3&gt;
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

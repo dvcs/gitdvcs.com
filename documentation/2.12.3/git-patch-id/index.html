@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git patch-id [--stable | --unstable]
+<pre><code>git patch-id [--stable | --unstable]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -130,41 +130,39 @@ mapping from patch ID to commit ID.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;stable<br />
+<p>&ndash;stable<br />
 Use a &ldquo;stable&rdquo; sum of hashes as the patch ID. With this option:</p>
 
 <ul>
-<li><p>Reordering file diffs that make up a patch does not affect the
-ID. In particular, two patches produced by comparing the same
-two trees with two different settings for &ldquo;-O&lt;orderfile&gt;&ldquo;
-result in the same patch ID signature, thereby allowing the
-computed result to be used as a key to index some
-meta-information about the change between the two trees;</p></li>
+<li><p>Reordering file diffs that make up a patch does not affect the ID.
+In particular, two patches produced by comparing the same two trees
+with two different settings for &ldquo;-O&lt;orderfile&gt;&rdquo; result in the
+same patch ID signature, thereby allowing the computed result to be
+used as a key to index some meta-information about the change
+between the two trees;</p></li>
 
-<li><p>Result is different from the value produced by git 1.9 and older
-or produced when an &ldquo;unstable&rdquo; hash (see &ndash;unstable below) is
-configured - even when used on a diff output taken without any
-use of &ldquo;-O&lt;orderfile&gt;&rdquo;, thereby making existing databases
-storing such &ldquo;unstable&rdquo; or historical patch-ids unusable.</p>
+<li><p>Result is different from the value produced by git 1.9 and older or
+produced when an &ldquo;unstable&rdquo; hash (see &ndash;unstable below) is
+configured - even when used on a diff output taken without any use
+of &ldquo;-O&lt;orderfile&gt;&rdquo;, thereby making existing databases storing
+such &ldquo;unstable&rdquo; or historical patch-ids unusable.</p>
 
 <pre><code>This is the default if patchid.stable is set to true.
 </code></pre></li>
-</ul></li>
+</ul>
 
-<li><p>&ndash;unstable<br />
+<p>&ndash;unstable<br />
 Use an &ldquo;unstable&rdquo; hash as the patch ID. With this option, the result
-produced is compatible with the patch-id value produced by git 1.9
-and older. Users with pre-existing databases storing patch-ids
-produced by git 1.9 and older (who do not deal with reordered
-patches) may want to use this option.</p>
+produced is compatible with the patch-id value produced by git 1.9 and
+older. Users with pre-existing databases storing patch-ids produced by
+git 1.9 and older (who do not deal with reordered patches) may want to
+use this option.</p>
 
 <pre><code>This is the default.
-</code></pre></li>
+</code></pre>
 
-<li><p>&lt;patch&gt;<br />
-The diff to create the ID of.</p></li>
-</ul>
+<p>&lt;patch&gt;<br />
+The diff to create the ID of.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -225,7 +223,7 @@ The diff to create the ID of.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

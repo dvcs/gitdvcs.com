@@ -438,10 +438,10 @@ creating the equivalent of a Git &ldquo;directory&rdquo; object:</p>
 </code></pre>
 
 <p>which is another incomprehensible object name. Again, if you want to,
-you can use <code>git cat-file -t 8988d...</code> to see that this time the object
-is not a &ldquo;blob&rdquo; object, but a &ldquo;tree&rdquo; object (you can also use <code>git
-cat-file</code> to actually output the raw object contents, but you’ll see
-mainly a binary mess, so that’s less interesting).</p>
+you can use <code>git cat-file -t               8988d...</code> to see that this
+time the object is not a &ldquo;blob&rdquo; object, but a &ldquo;tree&rdquo; object (you can
+also use <code>git cat-file</code> to actually output the raw object contents, but
+you’ll see mainly a binary mess, so that’s less interesting).</p>
 
 <p>However — normally you’d never use <em>git write-tree</em> on its own, because
 normally you always commit a tree into a commit object using the <em>git
@@ -472,9 +472,9 @@ anything else. Normally you do this only <strong>once</strong> for a project eve
 and all later commits will be parented on top of an earlier commit.</p>
 
 <p>Again, normally you’d never actually do this by hand. There is a helpful
-script called <code>git commit</code> that will do all of this for you. So you
-could have just written <code>git commit</code> instead, and it would have done the
-above magic scripting for you.</p>
+script called <code>git               commit</code> that will do all of this for
+you. So you could have just written <code>git commit</code> instead, and it would
+have done the above magic scripting for you.</p>
 
 <h2 id="making-a-change">Making a change</h2>
 
@@ -525,8 +525,8 @@ it with</p>
 working tree, but when given the <code>--cached</code> flag, it is told to instead
 compare against just the index cache contents, and ignore the current
 working tree state entirely. Since we just wrote the index file to HEAD,
-doing <code>git diff-index --cached -p HEAD</code> should thus return an empty set
-of differences, and that’s exactly what it does.</p>
+doing <code>git diff-index               --cached -p HEAD</code> should thus return
+an empty set of differences, and that’s exactly what it does.</p>
 
 <table>
 <colgroup>
@@ -562,18 +562,20 @@ the index cache:</p>
 about the file already).</p>
 
 <p>Note what happens to the different <em>git diff-*</em> versions here. After
-we’ve updated <code>hello</code> in the index, <code>git diff-files -p</code> now shows no
-differences, but <code>git diff-index -p HEAD</code> still <strong>does</strong> show that the
-current state is different from the state we committed. In fact, now
-<em>git diff-index</em> shows the same difference whether we use the <code>--cached</code>
-flag or not, since now the index is coherent with the working tree.</p>
+we’ve updated <code>hello</code> in the index, <code>git diff-files               -p</code>
+now shows no differences, but <code>git               diff-index -p HEAD</code>
+still <strong>does</strong> show that the current state is different from the state
+we committed. In fact, now <em>git diff-index</em> shows the same difference
+whether we use the <code>--cached</code> flag or not, since now the index is
+coherent with the working tree.</p>
 
 <p>Now, since we’ve updated <code>hello</code> in the index, we can commit the new
 version. We could do it by writing the tree by hand again, and
-committing the tree (this time we’d have to use the <code>-p HEAD</code> flag to
-tell commit that the HEAD was the <strong>parent</strong> of the new commit, and that
-this wasn’t an initial commit any more), but you’ve done that once
-already, so let’s just use the helpful script this time:</p>
+committing the tree (this time we’d have to use the
+<code>-p               HEAD</code> flag to tell commit that the HEAD was the
+<strong>parent</strong> of the new commit, and that this wasn’t an initial commit any
+more), but you’ve done that once already, so let’s just use the helpful
+script this time:</p>
 
 <pre><code>$ git commit
 </code></pre>
@@ -589,10 +591,10 @@ can just leave an empty message. Otherwise <code>git commit</code> will commit t
 change for you.</p>
 
 <p>You’ve now made your first real Git commit. And if you’re interested in
-looking at what <code>git commit</code> really does, feel free to investigate: it’s
-a few very simple shell scripts to generate the helpful (?) commit
-message headers, and a few one-liners that actually do the commit itself
-(<em>git commit</em>).</p>
+looking at what <code>git               commit</code> really does, feel free to
+investigate: it’s a few very simple shell scripts to generate the
+helpful (?) commit message headers, and a few one-liners that actually
+do the commit itself (<em>git commit</em>).</p>
 
 <h2 id="inspecting-changes">Inspecting Changes</h2>
 
@@ -670,9 +672,9 @@ all, but just show the actual commit message.</p>
 <p>In fact, together with the <em>git rev-list</em> program (which generates a
 list of revisions), <em>git diff-tree</em> ends up being a veritable fount of
 changes. You can emulate <code>git log</code>, <code>git log -p</code>, etc. with a trivial
-script that pipes the output of <code>git rev-list</code> to <code>git diff-tree
---stdin</code>, which was exactly how early versions of <code>git log</code> were
-implemented.</p>
+script that pipes the output of <code>git rev-list</code> to
+<code>git diff-tree --stdin</code>, which was exactly how early versions of
+<code>git log</code> were implemented.</p>
 
 <h2 id="tagging-a-version">Tagging a version</h2>
 
@@ -709,13 +711,14 @@ really did that tag. You create these annotated tags with either the
 
 <p>which will sign the current <code>HEAD</code> (but you can also give it another
 argument that specifies the thing to tag, e.g., you could have tagged
-the current <code>mybranch</code> point by using <code>git tag &lt;tagname&gt; mybranch</code>).</p>
+the current <code>mybranch</code> point by using
+<code>git tag               &lt;tagname&gt; mybranch</code>).</p>
 
 <p>You normally only do signed tags for major releases or things like that,
 while the light-weight tags are useful for any marking you want to
-do — any time you decide that you want to remember a certain
-point, just create a private tag for it, and you have a nice symbolic
-name for the state at that point.</p>
+do — any time you decide that you want to remember a certain point, just
+create a private tag for it, and you have a nice symbolic name for the
+state at that point.</p>
 
 <h2 id="copying-repositories">Copying repositories</h2>
 
@@ -756,14 +759,14 @@ history outside the project you created.</p></li>
 <li><p>if you want to move or duplicate a Git repository, you can do so.
 There is <em>git clone</em> command, but if all you want to do is just to
 create a copy of your repository (with all the full history that
-went along with it), you can do so with a regular <code>cp -a
-git-tutorial new-git-tutorial</code>.</p>
+went along with it), you can do so with a regular
+<code>cp -a git-tutorial new-git-tutorial</code>.</p>
 
 <p>Note that when you’ve moved or copied a Git repository, your Git
 index file (which caches various information, notably some of the
 &ldquo;stat&rdquo; information for the files involved) will likely need to be
-refreshed. So after you do a <code>cp -a</code> to create a new copy, you’ll
-want to do</p>
+refreshed. So after you do a <code>cp                     -a</code> to create a
+new copy, you’ll want to do</p>
 
 <pre><code>$ git update-index --refresh
 </code></pre>
@@ -799,11 +802,11 @@ you they need to be updated.</p>
 </code></pre>
 
 <p>and in fact a lot of the common Git command combinations can be scripted
-with the <code>git xyz</code> interfaces. You can learn things by just looking at
-what the various git scripts do. For example, <code>git reset</code> used to be the
-above two lines implemented in <em>git reset</em>, but some things like <em>git
-status</em> and <em>git commit</em> are slightly more complex scripts around the
-basic Git commands.</p>
+with the <code>git               xyz</code> interfaces. You can learn things by
+just looking at what the various git scripts do. For example,
+<code>git reset</code> used to be the above two lines implemented in <em>git reset</em>,
+but some things like <em>git status</em> and <em>git commit</em> are slightly more
+complex scripts around the basic Git commands.</p>
 
 <p>Many (most?) public remote repositories will not contain any of the
 checked out files or even an index file, and will <strong>only</strong> contain the
@@ -919,9 +922,9 @@ you can say</p>
 <pre><code>$ git branch
 </code></pre>
 
-<p>which used to be nothing more than a simple script around <code>ls
-.git/refs/heads</code>. There will be an asterisk in front of the branch you
-are currently on.</p>
+<p>which used to be nothing more than a simple script around
+<code>ls .git/refs/heads</code>. There will be an asterisk in front of the branch
+you are currently on.</p>
 
 <p>Sometimes you may wish to create a new branch <em>without</em> actually
 checking it out and switching to it. If so, just use the command</p>
@@ -948,11 +951,11 @@ $ git commit -m &quot;Some work.&quot; -i hello
 </code></pre>
 
 <p>Here, we just added another line to <code>hello</code>, and we used a shorthand for
-doing both <code>git update-index hello</code> and <code>git commit</code> by just giving the
-filename directly to <code>git commit</code>, with an <code>-i</code> flag (it tells Git to
-<em>include</em> that file in addition to what you have done to the index file
-so far when making the commit). The <code>-m</code> flag is to give the commit log
-message from the command line.</p>
+doing both <code>git               update-index hello</code> and <code>git commit</code> by
+just giving the filename directly to <code>git               commit</code>, with an
+<code>-i</code> flag (it tells Git to <em>include</em> that file in addition to what you
+have done to the index file so far when making the commit). The <code>-m</code>
+flag is to give the commit log message from the command line.</p>
 
 <p>Now, to make it a bit more interesting, let’s assume that somebody else
 does some work in the original branch, and simulate that by going back
@@ -1031,15 +1034,15 @@ Work, work, work
 (which is correct, so never mind), and you can write a small merge
 message about your adventures in <em>git merge</em>-land.</p>
 
-<p>After you’re done, start up <code>gitk --all</code> to see graphically what the
-history looks like. Notice that <code>mybranch</code> still exists, and you can
-switch to it, and continue to work with it if you want to. The
-<code>mybranch</code> branch will not contain the merge, but next time you merge it
-from the <code>master</code> branch, Git will know how you merged it, so you’ll not
-have to do <em>that</em> merge again.</p>
+<p>After you’re done, start up <code>gitk               --all</code> to see
+graphically what the history looks like. Notice that <code>mybranch</code> still
+exists, and you can switch to it, and continue to work with it if you
+want to. The <code>mybranch</code> branch will not contain the merge, but next time
+you merge it from the <code>master</code> branch, Git will know how you merged it,
+so you’ll not have to do <em>that</em> merge again.</p>
 
 <p>Another useful tool, especially if you do not always work in X-Window
-environment, is <code>git show-branch</code>.</p>
+environment, is <code>git               show-branch</code>.</p>
 
 <pre><code>$ git show-branch --topo-order --more=1 master mybranch
 * [master] Merge work in mybranch
@@ -1150,8 +1153,7 @@ fetch</em>:</p>
 <p>One of the following transports can be used to name the repository to
 download from:</p>
 
-<ul>
-<li><p>SSH<br />
+<p>SSH<br />
 <code>remote.machine:/path/to/repo.git/</code> or</p>
 
 <p><code>ssh://remote.machine/path/to/repo.git/</code></p>
@@ -1160,49 +1162,47 @@ download from:</p>
 requires you to have a log-in privilege over <code>ssh</code> to the remote
 machine. It finds out the set of objects the other side lacks by
 exchanging the head commits both ends have and transfers (close to)
-minimum set of objects. It is by far the most efficient way to
-exchange Git objects between repositories.</p></li>
+minimum set of objects. It is by far the most efficient way to exchange
+Git objects between repositories.</p>
 
-<li><p>Local directory<br />
+<p>Local directory<br />
 <code>/path/to/repo.git/</code></p>
 
-<p>This transport is the same as SSH transport but uses <em>sh</em> to run
-both ends on the local machine instead of running other end on the
-remote machine via <em>ssh</em>.</p></li>
+<p>This transport is the same as SSH transport but uses <em>sh</em> to run both
+ends on the local machine instead of running other end on the remote
+machine via <em>ssh</em>.</p>
 
-<li><p>Git Native<br />
+<p>Git Native<br />
 <code>git://remote.machine/path/to/repo.git/</code></p>
 
 <p>This transport was designed for anonymous downloading. Like SSH
-transport, it finds out the set of objects the downstream side lacks
-and transfers (close to) minimum set of objects.</p></li>
+transport, it finds out the set of objects the downstream side lacks and
+transfers (close to) minimum set of objects.</p>
 
-<li><p>HTTP(S)<br />
+<p>HTTP(S)<br />
 <code>http://remote.machine/path/to/repo.git/</code></p>
 
 <p>Downloader from http and https URL first obtains the topmost commit
 object name from the remote site by looking at the specified refname
-under <code>repo.git/refs/</code> directory, and then tries to obtain the
-commit object by downloading from <code>repo.git/objects/xx/xxx...</code> using
-the object name of that commit object. Then it reads the commit
-object to find out its parent commits and the associate tree object;
-it repeats this process until it gets all the necessary objects.
-Because of this behavior, they are sometimes also called <em>commit
-walkers</em>.</p>
+under <code>repo.git/refs/</code> directory, and then tries to obtain the commit
+object by downloading from <code>repo.git/objects/xx/xxx...</code> using the object
+name of that commit object. Then it reads the commit object to find out
+its parent commits and the associate tree object; it repeats this
+process until it gets all the necessary objects. Because of this
+behavior, they are sometimes also called <em>commit walkers</em>.</p>
 
 <p>The <em>commit walkers</em> are sometimes also called <em>dumb transports</em>,
-because they do not require any Git aware smart server like Git
-Native transport does. Any stock HTTP server that does not even
-support directory index would suffice. But you must prepare your
-repository with <em>git update-server-info</em> to help dumb transport
-downloaders.</p></li>
-</ul>
+because they do not require any Git aware smart server like Git Native
+transport does. Any stock HTTP server that does not even support
+directory index would suffice. But you must prepare your repository with
+<em>git update-server-info</em> to help dumb transport downloaders.</p>
 
 <p>Once you fetch from the remote repository, you <code>merge</code> that with your
 current branch.</p>
 
 <p>However — it’s such a common thing to <code>fetch</code> and then immediately
-<code>merge</code>, that it’s called <code>git pull</code>, and you can simply do</p>
+<code>merge</code>, that it’s called <code>git               pull</code>, and you can simply
+do</p>
 
 <pre><code>$ git pull &lt;remote-repository&gt;
 </code></pre>
@@ -1227,8 +1227,7 @@ Note
 
 <p>It is likely that you will be pulling from the same remote repository
 from time to time. As a short hand, you can store the remote repository
-URL in the local repository’s config file like
-    this:</p>
+URL in the local repository’s config file like this:</p>
 
 <pre><code>$ git config remote.linus.url http://www.kernel.org/pub/scm/git/git.git/
 </code></pre>
@@ -1246,9 +1245,9 @@ URL in the local repository’s config file like
 <p>the above are equivalent to:</p>
 
 <ol>
-<li><p><code>git pull http://www.kernel.org/pub/scm/git/git.git/ HEAD</code></p></li>
+<li><p><code>git pull                   http://www.kernel.org/pub/scm/git/git.git/ HEAD</code></p></li>
 
-<li><p><code>git pull http://www.kernel.org/pub/scm/git/git.git/ tag v0.99.1</code></p></li>
+<li><p><code>git pull                   http://www.kernel.org/pub/scm/git/git.git/ tag                   v0.99.1</code></p></li>
 </ol>
 
 <h2 id="how-does-the-merge-work">How does the merge work?</h2>
@@ -1256,8 +1255,8 @@ URL in the local repository’s config file like
 <p>We said this tutorial shows what plumbing does to help you cope with the
 porcelain that isn’t flushing, but we so far did not talk about how the
 merge really works. If you are following this tutorial the first time,
-I’d suggest to skip to &ldquo;Publishing your work&rdquo; section and come back
-here later.</p>
+I’d suggest to skip to &ldquo;Publishing your work&rdquo; section and come back here
+later.</p>
 
 <p>OK, still with me? To give us an example to look at, let’s go back to
 the earlier repository with &ldquo;hello&rdquo; and &ldquo;example&rdquo; file, and bring
@@ -1547,10 +1546,10 @@ objects that are contained in the pack file anymore.</p>
 
 <p>would remove them for you.</p>
 
-<p>You can try running <code>find .git/objects -type f</code> before and after you run
-<code>git prune-packed</code> if you are curious. Also <code>git count-objects</code> would
-tell you how many unpacked objects are in your repository and how much
-space they are consuming.</p>
+<p>You can try running <code>find .git/objects -type               f</code> before and
+after you run <code>git               prune-packed</code> if you are curious. Also
+<code>git               count-objects</code> would tell you how many unpacked
+objects are in your repository and how much space they are consuming.</p>
 
 <table>
 <colgroup>
@@ -1575,11 +1574,11 @@ that you pack your project soon after the initial import (unless you are
 starting your project from scratch), and then run <code>git repack</code> every
 once in a while, depending on how active your project is.</p>
 
-<p>When a repository is synchronized via <code>git push</code> and <code>git pull</code> objects
-packed in the source repository are usually stored unpacked in the
-destination. While this allows you to use different packing strategies
-on both ends, it also means you may need to repack both repositories
-every once in a while.</p>
+<p>When a repository is synchronized via <code>git               push</code> and
+<code>git pull</code> objects packed in the source repository are usually stored
+unpacked in the destination. While this allows you to use different
+packing strategies on both ends, it also means you may need to repack
+both repositories every once in a while.</p>
 
 <h2 id="working-with-others">Working with Others</h2>
 
@@ -1607,8 +1606,8 @@ protocols (HTTP), you need to keep this repository <em>dumb transport
 friendly</em>. After <code>git init</code>, <code>$GIT_DIR/hooks/post-update.sample</code>
 copied from the standard templates would contain a call to <em>git
 update-server-info</em> but you need to manually enable the hook with
-<code>mv post-update.sample post-update</code>. This makes sure <em>git
-update-server-info</em> keeps the necessary files up to date.</p></li>
+<code>mv                     post-update.sample post-update</code>. This makes
+sure <em>git update-server-info</em> keeps the necessary files up to date.</p></li>
 
 <li><p>Push into the public repository from your primary repository.</p></li>
 
@@ -1678,9 +1677,9 @@ remote.origin.url configuration variable.</p></li>
 <li><p>Do your work in your repository on <em>master</em> branch.</p></li>
 
 <li><p>Run <code>git fetch origin</code> from the public repository of your upstream
-every once in a while. This does only the first half of <code>git pull</code>
-but does not merge. The head of the public repository is stored in
-<code>.git/refs/remotes/origin/master</code>.</p></li>
+every once in a while. This does only the first half of
+<code>git                   pull</code> but does not merge. The head of the
+public repository is stored in <code>.git/refs/remotes/origin/master</code>.</p></li>
 
 <li><p>Use <code>git cherry origin</code> to see which ones of your patches were
 accepted, and/or use <code>git rebase origin</code> to port your unmerged
@@ -1856,7 +1855,7 @@ Git User’s Manual</a></p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

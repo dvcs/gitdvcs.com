@@ -109,19 +109,18 @@
 
 <p>SSH:</p>
 
-<pre><code class="language-content">export CVS_SERVER=&quot;git cvsserver&quot;
+<pre><code>export CVS_SERVER=&quot;git cvsserver&quot;
 cvs -d :ext:user@server/path/repo.git co &lt;HEAD_name&gt;
 </code></pre>
 
-<p>pserver
-(/etc/inetd.conf):</p>
+<p>pserver (/etc/inetd.conf):</p>
 
-<pre><code class="language-content">cvspserver stream tcp nowait nobody /usr/bin/git-cvsserver git-cvsserver pserver
+<pre><code>cvspserver stream tcp nowait nobody /usr/bin/git-cvsserver git-cvsserver pserver
 </code></pre>
 
 <p>Usage:</p>
 
-<pre><code class="language-content">git-cvsserver [options] [pserver|server] [&lt;directory&gt; …]
+<pre><code>git-cvsserver [options] [pserver|server] [&lt;directory&gt; …]
 </code></pre>
 
 <h2 id="options">OPTIONS</h2>
@@ -130,33 +129,30 @@ cvs -d :ext:user@server/path/repo.git co &lt;HEAD_name&gt;
 side. They have been implemented to resemble the
 <a href="../git-daemon">git-daemon(1)</a> options as closely as possible.</p>
 
-<ul>
-<li><p>&ndash;base-path &lt;path&gt;<br />
-Prepend <em>path</em> to requested CVSROOT</p></li>
+<p>&ndash;base-path &lt;path&gt;<br />
+Prepend <em>path</em> to requested CVSROOT</p>
 
-<li><p>&ndash;strict-paths<br />
-Don’t allow recursing into subdirectories</p></li>
+<p>&ndash;strict-paths<br />
+Don’t allow recursing into subdirectories</p>
 
-<li><p>&ndash;export-all<br />
-Don’t check for <code>gitcvs.enabled</code> in config. You also have to specify
-a list of allowed directories (see below) if you want to use this
-option.</p></li>
+<p>&ndash;export-all<br />
+Don’t check for <code>gitcvs.enabled</code> in config. You also have to specify a
+list of allowed directories (see below) if you want to use this option.</p>
 
-<li><p>-V<br />
---version<br />
-Print version information and exit</p></li>
+<p>-V<br />
+&ndash;version<br />
+Print version information and exit</p>
 
-<li><p>-h<br />
+<p>-h<br />
 -H<br />
---help<br />
-Print usage information and exit</p></li>
+&ndash;help<br />
+Print usage information and exit</p>
 
-<li><p>&lt;directory&gt;<br />
+<p>&lt;directory&gt;<br />
 You can specify a list of allowed directories. If no directories are
-given, all are allowed. This is an additional restriction, gitcvs
-access still needs to be enabled by the <code>gitcvs.enabled</code> config
-option unless <code>--export-all</code> was given, too.</p></li>
-</ul>
+given, all are allowed. This is an additional restriction, gitcvs access
+still needs to be enabled by the <code>gitcvs.enabled</code> config option unless
+<code>--export-all</code> was given, too.</p>
 
 <h2 id="description">DESCRIPTION</h2>
 
@@ -189,8 +185,7 @@ represent one or more directories.</p>
 <p>Note: Some inetd servers let you specify the name of the executable
 independently of the value of argv[0] (i.e. the name the program
 assumes it was executed with). In this case the correct line in
-/etc/inetd.conf looks
-like</p>
+/etc/inetd.conf looks like</p>
 
 <pre><code>   cvspserver stream tcp nowait nobody /usr/bin/git-cvsserver git-cvsserver pserver
 </code></pre>
@@ -221,8 +216,7 @@ operator:</p>
 <pre><code>   perl -e 'my ($user, $pass) = @ARGV; printf &quot;%s:%s\n&quot;, $user, crypt($user, $pass)' $USER password
 </code></pre>
 
-<p>Then provide your password via the pserver method, for
-example:</p>
+<p>Then provide your password via the pserver method, for example:</p>
 
 <pre><code>   cvs -d:pserver:someuser:somepassword &lt;at&gt; server/path/repo.git co &lt;HEAD_name&gt;
 </code></pre>
@@ -233,8 +227,7 @@ CVS_SERVER environment variable, you can rename <em>git-cvsserver</em> to
 <code>cvs</code>.</p>
 
 <p>Note: Newer CVS versions (&gt;= 1.12.11) also support specifying
-CVS_SERVER directly in CVSROOT
-    like</p>
+CVS_SERVER directly in CVSROOT like</p>
 
 <pre><code>cvs -d &quot;:ext;CVS_SERVER=git cvsserver:user@server/path/repo.git&quot; co &lt;HEAD_name&gt;
 </code></pre>
@@ -272,7 +265,7 @@ access while still allowing access over SSH.</p>
 
 <pre><code>   [gitcvs]
         enabled=0
-    
+
    [gitcvs &quot;ext&quot;]
         enabled=1
 </code></pre></li>
@@ -348,34 +341,30 @@ variables:</p>
 documentation if changing these variables, especially about
 <code>DBI-&gt;connect()</code>.</p>
 
-<ul>
-<li><p>gitcvs.dbName<br />
+<p>gitcvs.dbName<br />
 Database name. The exact meaning depends on the selected database
-driver, for SQLite this is a filename. Supports variable
-substitution (see below). May not contain semicolons (<code>;</code>). Default:
-<em>%Ggitcvs.%m.sqlite</em></p></li>
+driver, for SQLite this is a filename. Supports variable substitution
+(see below). May not contain semicolons (<code>;</code>). Default:
+<em>%Ggitcvs.%m.sqlite</em></p>
 
-<li><p>gitcvs.dbDriver<br />
-Used DBI driver. You can specify any available driver for this here,
-but it might not work. cvsserver is tested with <em>DBD::SQLite</em>,
-reported to work with <em>DBD::Pg</em>, and reported <strong>not</strong> to work with
-<em>DBD::mysql</em>. Please regard this as an experimental feature. May not
-contain colons (<code>:</code>). Default: <em>SQLite</em></p></li>
+<p>gitcvs.dbDriver<br />
+Used DBI driver. You can specify any available driver for this here, but
+it might not work. cvsserver is tested with <em>DBD::SQLite</em>, reported to
+work with <em>DBD::Pg</em>, and reported <strong>not</strong> to work with <em>DBD::mysql</em>.
+Please regard this as an experimental feature. May not contain colons
+(<code>:</code>). Default: <em>SQLite</em></p>
 
-<li><p>gitcvs.dbuser<br />
-Database user. Only useful if setting <code>dbDriver</code>, since SQLite has
-no concept of database users. Supports variable substitution (see
-below).</p></li>
+<p>gitcvs.dbuser<br />
+Database user. Only useful if setting <code>dbDriver</code>, since SQLite has no
+concept of database users. Supports variable substitution (see below).</p>
 
-<li><p>gitcvs.dbPass<br />
-Database password. Only useful if setting <code>dbDriver</code>, since SQLite
-has no concept of database passwords.</p></li>
+<p>gitcvs.dbPass<br />
+Database password. Only useful if setting <code>dbDriver</code>, since SQLite has
+no concept of database passwords.</p>
 
-<li><p>gitcvs.dbTableNamePrefix<br />
-Database table name prefix. Supports variable substitution (see
-below). Any non-alphabetic characters will be replaced with
-underscores.</p></li>
-</ul>
+<p>gitcvs.dbTableNamePrefix<br />
+Database table name prefix. Supports variable substitution (see below).
+Any non-alphabetic characters will be replaced with underscores.</p>
 
 <p>All variables can also be set per access method, see
 <a href="#configaccessmethod">above</a>.</p>
@@ -384,25 +373,23 @@ underscores.</p></li>
 
 <p>In <code>dbDriver</code> and <code>dbUser</code> you can use the following variables:</p>
 
-<ul>
-<li><p>%G<br />
-Git directory name</p></li>
+<p>%G<br />
+Git directory name</p>
 
-<li><p>%g<br />
-Git directory name, where all characters except for alpha-numeric
-ones, <code>.</code>, and <code>-</code> are replaced with <code>_</code> (this should make it easier
-to use the directory name in a filename if wanted)</p></li>
+<p>%g<br />
+Git directory name, where all characters except for alpha-numeric ones,
+<code>.</code>, and <code>-</code> are replaced with <code>_</code> (this should make it easier to use
+the directory name in a filename if wanted)</p>
 
-<li><p>%m<br />
-CVS module/Git head name</p></li>
+<p>%m<br />
+CVS module/Git head name</p>
 
-<li><p>%a<br />
-access method (one of &ldquo;ext&rdquo; or &ldquo;pserver&rdquo;)</p></li>
+<p>%a<br />
+access method (one of &ldquo;ext&rdquo; or &ldquo;pserver&rdquo;)</p>
 
-<li><p>%u<br />
-Name of the user running <em>git-cvsserver</em>. If no name can be
-determined, the numeric uid is used.</p></li>
-</ul>
+<p>%u<br />
+Name of the user running <em>git-cvsserver</em>. If no name can be determined,
+the numeric uid is used.</p>
 
 <h2 id="environment">ENVIRONMENT</h2>
 
@@ -590,7 +577,7 @@ to &ldquo;guess&rdquo;.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

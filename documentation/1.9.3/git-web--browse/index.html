@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git web--browse [OPTIONS] URL/FILE …
+<pre><code>git web--browse [OPTIONS] URL/FILE …
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -159,21 +159,18 @@ below)</p></li>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-b &lt;browser&gt;<br />
---browser=&lt;browser&gt;<br />
-Use the specified browser. It must be in the list of supported
-browsers.</p></li>
+<p>-b &lt;browser&gt;<br />
+&ndash;browser=&lt;browser&gt;<br />
+Use the specified browser. It must be in the list of supported browsers.</p>
 
-<li><p>-t &lt;browser&gt;<br />
---tool=&lt;browser&gt;<br />
-Same as above.</p></li>
+<p>-t &lt;browser&gt;<br />
+&ndash;tool=&lt;browser&gt;<br />
+Same as above.</p>
 
-<li><p>-c &lt;conf.var&gt;<br />
---config=&lt;conf.var&gt;<br />
+<p>-c &lt;conf.var&gt;<br />
+&ndash;config=&lt;conf.var&gt;<br />
 CONF.VAR is looked up in the Git config files. If it’s set, then its
-value specifies the browser that should be used.</p></li>
-</ul>
+value specifies the browser that should be used.</p>
 
 <h2 id="configuration-variables">CONFIGURATION VARIABLES</h2>
 
@@ -183,22 +180,22 @@ value specifies the browser that should be used.</p></li>
 with the -c (or &ndash;config) command line option, or the <em>web.browser</em>
 configuration variable if the former is not used.</p>
 
-<h3 id="browser-tool-path">browser.&lt;tool&gt;.path</h3>
+<h3 id="browser-lt-tool-gt-path">browser.&lt;tool&gt;.path</h3>
 
 <p>You can explicitly provide a full path to your preferred browser by
-setting the configuration variable <em>browser.&lt;tool&gt;.path</em>. For example,
-you can configure the absolute path to firefox by setting
+setting the configuration variable <em>browser.&lt;tool&gt;.path</em>. For
+example, you can configure the absolute path to firefox by setting
 <em>browser.firefox.path</em>. Otherwise, <em>git web&ndash;browse</em> assumes the tool is
 available in PATH.</p>
 
-<h3 id="browser-tool-cmd">browser.&lt;tool&gt;.cmd</h3>
+<h3 id="browser-lt-tool-gt-cmd">browser.&lt;tool&gt;.cmd</h3>
 
 <p>When the browser, specified by options or configuration variables, is
 not among the supported ones, then the corresponding
-<em>browser.&lt;tool&gt;.cmd</em> configuration variable will be looked up. If this
-variable exists then <em>git web&ndash;browse</em> will treat the specified tool as
-a custom command and will use a shell eval to run the command with the
-URLs passed as arguments.</p>
+<em>browser.&lt;tool&gt;.cmd</em> configuration variable will be looked up. If
+this variable exists then <em>git web&ndash;browse</em> will treat the specified
+tool as a custom command and will use a shell eval to run the command
+with the URLs passed as arguments.</p>
 
 <h2 id="note-about-konqueror">Note about konqueror</h2>
 
@@ -290,7 +287,7 @@ the following:</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

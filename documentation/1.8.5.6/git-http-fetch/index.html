@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git http-fetch [-c] [-t] [-a] [-d] [-v] [-w filename] [--recover] [--stdin] &lt;commit&gt; &lt;url&gt;
+<pre><code>git http-fetch [-c] [-t] [-a] [-d] [-v] [-w filename] [--recover] [--stdin] &lt;commit&gt; &lt;url&gt;
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -119,38 +119,36 @@ will become the default in a future release.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>commit-id<br />
-Either the hash or the filename under [URL]/refs/ to pull.</p></li>
+<p>commit-id<br />
+Either the hash or the filename under [URL]/refs/ to pull.</p>
 
-<li><p>-c<br />
-Get the commit objects.</p></li>
+<p>-c<br />
+Get the commit objects.</p>
 
-<li><p>-t<br />
-Get trees associated with the commit objects.</p></li>
+<p>-t<br />
+Get trees associated with the commit objects.</p>
 
-<li><p>-a<br />
-Get all the objects.</p></li>
+<p>-a<br />
+Get all the objects.</p>
 
-<li><p>-v<br />
-Report what is downloaded.</p></li>
+<p>-v<br />
+Report what is downloaded.</p>
 
-<li><p>-w &lt;filename&gt;<br />
+<p>-w &lt;filename&gt;<br />
 Writes the commit-id into the filename under
 $GIT_DIR/refs/&lt;filename&gt; on the local end after the transfer is
-complete.</p></li>
+complete.</p>
 
-<li><p>&ndash;stdin<br />
+<p>&ndash;stdin<br />
 Instead of a commit id on the command line (which is not expected in
 this case), <em>git http-fetch</em> expects lines on stdin in the format</p>
 
 <pre><code>&lt;commit-id&gt;['\t'&lt;filename-as-in--w&gt;]
-</code></pre></li>
+</code></pre>
 
-<li><p>&ndash;recover<br />
-Verify that everything reachable from target is fetched. Used after
-an earlier fetch is interrupted.</p></li>
-</ul>
+<p>&ndash;recover<br />
+Verify that everything reachable from target is fetched. Used after an
+earlier fetch is interrupted.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -211,7 +209,7 @@ an earlier fetch is interrupted.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git repack [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [--window=&lt;n&gt;] [--depth=&lt;n&gt;]
+<pre><code>git repack [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [--window=&lt;n&gt;] [--depth=&lt;n&gt;]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -125,98 +125,94 @@ disk storage, etc.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-a<br />
-Instead of incrementally packing the unpacked objects, pack
-everything referenced into a single pack. Especially useful when
-packing a repository that is used for private development. Use with
-<em>-d</em>. This will clean up the objects that <code>git prune</code> leaves behind,
-but <code>git fsck --full --dangling</code> shows as dangling.</p>
+<p>-a<br />
+Instead of incrementally packing the unpacked objects, pack everything
+referenced into a single pack. Especially useful when packing a
+repository that is used for private development. Use with <em>-d</em>. This
+will clean up the objects that <code>git prune</code> leaves behind, but
+<code>git fsck                   --full --dangling</code> shows as dangling.</p>
 
 <p>Note that users fetching over dumb protocols will have to fetch the
-whole new pack in order to get any contained object, no matter how
-many other objects in that pack they already have locally.</p></li>
+whole new pack in order to get any contained object, no matter how many
+other objects in that pack they already have locally.</p>
 
-<li><p>-A<br />
+<p>-A<br />
 Same as <code>-a</code>, unless <em>-d</em> is used. Then any unreachable objects in a
-previous pack become loose, unpacked objects, instead of being left
-in the old pack. Unreachable objects are never intentionally added
-to a pack, even when repacking. This option prevents unreachable
-objects from being immediately deleted by way of being left in the
-old pack and then removed. Instead, the loose unreachable objects
-will be pruned according to normal expiry rules with the next <em>git
-gc</em> invocation. See <a href="../git-gc">git-gc(1)</a>.</p></li>
+previous pack become loose, unpacked objects, instead of being left in
+the old pack. Unreachable objects are never intentionally added to a
+pack, even when repacking. This option prevents unreachable objects from
+being immediately deleted by way of being left in the old pack and then
+removed. Instead, the loose unreachable objects will be pruned according
+to normal expiry rules with the next <em>git gc</em> invocation. See
+<a href="../git-gc">git-gc(1)</a>.</p>
 
-<li><p>-d<br />
+<p>-d<br />
 After packing, if the newly created packs make some existing packs
-redundant, remove the redundant packs. Also run <em>git prune-packed</em>
-to remove redundant loose object files.</p></li>
+redundant, remove the redundant packs. Also run <em>git prune-packed</em> to
+remove redundant loose object files.</p>
 
-<li><p>-l<br />
+<p>-l<br />
 Pass the <code>--local</code> option to <em>git pack-objects</em>. See
-<a href="../git-pack-objects">git-pack-objects(1)</a>.</p></li>
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
-<li><p>-f<br />
+<p>-f<br />
 Pass the <code>--no-reuse-delta</code> option to <code>git-pack-objects</code>, see
-<a href="../git-pack-objects">git-pack-objects(1)</a>.</p></li>
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
-<li><p>-F<br />
+<p>-F<br />
 Pass the <code>--no-reuse-object</code> option to <code>git-pack-objects</code>, see
-<a href="../git-pack-objects">git-pack-objects(1)</a>.</p></li>
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
-<li><p>-q<br />
+<p>-q<br />
 Pass the <code>-q</code> option to <em>git pack-objects</em>. See
-<a href="../git-pack-objects">git-pack-objects(1)</a>.</p></li>
+<a href="../git-pack-objects">git-pack-objects(1)</a>.</p>
 
-<li><p>-n<br />
-Do not update the server information with <em>git update-server-info</em>.
-This option skips updating local catalog files needed to publish
-this repository (or a direct copy of it) over HTTP or FTP. See
-<a href="../git-update-server-info">git-update-server-info(1)</a>.</p></li>
+<p>-n<br />
+Do not update the server information with <em>git update-server-info</em>. This
+option skips updating local catalog files needed to publish this
+repository (or a direct copy of it) over HTTP or FTP. See
+<a href="../git-update-server-info">git-update-server-info(1)</a>.</p>
 
-<li><p>&ndash;window=&lt;n&gt;<br />
---depth=&lt;n&gt;<br />
+<p>&ndash;window=&lt;n&gt;<br />
+&ndash;depth=&lt;n&gt;<br />
 These two options affect how the objects contained in the pack are
-stored using delta compression. The objects are first internally
-sorted by type, size and optionally names and compared against the
-other objects within <code>--window</code> to see if using delta compression
-saves space. <code>--depth</code> limits the maximum delta depth; making it too
-deep affects the performance on the unpacker side, because delta
-data needs to be applied that many times to get to the necessary
-object. The default value for &ndash;window is 10 and &ndash;depth is 50.</p></li>
+stored using delta compression. The objects are first internally sorted
+by type, size and optionally names and compared against the other
+objects within <code>--window</code> to see if using delta compression saves space.
+<code>--depth</code> limits the maximum delta depth; making it too deep affects the
+performance on the unpacker side, because delta data needs to be applied
+that many times to get to the necessary object. The default value for
+&ndash;window is 10 and &ndash;depth is 50.</p>
 
-<li><p>&ndash;window-memory=&lt;n&gt;<br />
+<p>&ndash;window-memory=&lt;n&gt;<br />
 This option provides an additional limit on top of <code>--window</code>; the
-window size will dynamically scale down so as to not take up more
-than <em>&lt;n&gt;</em> bytes in memory. This is useful in repositories with a
-mix of large and small objects to not run out of memory with a large
-window, but still be able to take advantage of the large window for
-the smaller objects. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;.
-<code>--window-memory=0</code> makes memory usage unlimited, which is the
-default.</p></li>
+window size will dynamically scale down so as to not take up more than
+<em>&lt;n&gt;</em> bytes in memory. This is useful in repositories with a mix
+of large and small objects to not run out of memory with a large window,
+but still be able to take advantage of the large window for the smaller
+objects. The size can be suffixed with &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;.
+<code>--window-memory=0</code> makes memory usage unlimited, which is the default.</p>
 
-<li><p>&ndash;max-pack-size=&lt;n&gt;<br />
+<p>&ndash;max-pack-size=&lt;n&gt;<br />
 Maximum size of each output pack file. The size can be suffixed with
 &ldquo;k&rdquo;, &ldquo;m&rdquo;, or &ldquo;g&rdquo;. The minimum size allowed is limited to 1 MiB. If
-specified, multiple packfiles may be created. The default is
-unlimited, unless the config variable <code>pack.packSizeLimit</code> is set.</p></li>
+specified, multiple packfiles may be created. The default is unlimited,
+unless the config variable <code>pack.packSizeLimit</code> is set.</p>
 
-<li><p>-b<br />
---write-bitmap-index<br />
-Write a reachability bitmap index as part of the repack. This only
-makes sense when used with <code>-a</code> or <code>-A</code>, as the bitmaps must be able
-to refer to all reachable objects. This option overrides the setting
-of <code>pack.writebitmaps</code>.</p></li>
+<p>-b<br />
+&ndash;write-bitmap-index<br />
+Write a reachability bitmap index as part of the repack. This only makes
+sense when used with <code>-a</code> or <code>-A</code>, as the bitmaps must be able to refer
+to all reachable objects. This option overrides the setting of
+<code>pack.writebitmaps</code>.</p>
 
-<li><p>&ndash;pack-kept-objects<br />
-Include objects in <code>.keep</code> files when repacking. Note that we still
-do not delete <code>.keep</code> packs after <code>pack-objects</code> finishes. This
-means that we may duplicate objects, but this makes the option safe
-to use when there are concurrent pushes or fetches. This option is
-generally only useful if you are writing bitmaps with <code>-b</code> or
-<code>pack.writebitmaps</code>, as it ensures that the bitmapped packfile has
-the necessary objects.</p></li>
-</ul>
+<p>&ndash;pack-kept-objects<br />
+Include objects in <code>.keep</code> files when repacking. Note that we still do
+not delete <code>.keep</code> packs after <code>pack-objects</code> finishes. This means that
+we may duplicate objects, but this makes the option safe to use when
+there are concurrent pushes or fetches. This option is generally only
+useful if you are writing bitmaps with <code>-b</code> or <code>pack.writebitmaps</code>, as
+it ensures that the bitmapped packfile has the necessary objects.</p>
 
 <h2 id="configuration">Configuration</h2>
 
@@ -294,7 +290,7 @@ the fly as needed in that case.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git check-attr [-a | --all | attr…] [--] pathname…
+<pre><code>git check-attr [-a | --all | attr…] [--] pathname…
 git check-attr --stdin [-z] [-a | --all | attr…] &lt; &lt;list-of-paths&gt;
 </code></pre>
 
@@ -118,54 +118,47 @@ git check-attr --stdin [-z] [-a | --all | attr…] &lt; &lt;list-of-paths&gt;
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-a, &ndash;all<br />
+<p>-a, &ndash;all<br />
 List all attributes that are associated with the specified paths. If
-this option is used, then <em>unspecified</em> attributes will not be
-included in the output.</p></li>
+this option is used, then <em>unspecified</em> attributes will not be included
+in the output.</p>
 
-<li><p>&ndash;cached<br />
-Consider <code>.gitattributes</code> in the index only, ignoring the working
-tree.</p></li>
+<p>&ndash;cached<br />
+Consider <code>.gitattributes</code> in the index only, ignoring the working tree.</p>
 
-<li><p>&ndash;stdin<br />
-Read file names from stdin instead of from the command-line.</p></li>
+<p>&ndash;stdin<br />
+Read file names from stdin instead of from the command-line.</p>
 
-<li><p>-z<br />
-Only meaningful with <code>--stdin</code>; paths are separated with a NUL
-character instead of a linefeed character.</p></li>
-</ul>
+<p>-z<br />
+Only meaningful with <code>--stdin</code>; paths are separated with a NUL character
+instead of a linefeed character.</p>
 
-<hr />
-
-<pre><code>Interpret all preceding arguments as attributes and all following
-arguments as path names.
-</code></pre>
+<p>&ndash;<br />
+Interpret all preceding arguments as attributes and all following
+arguments as path names.</p>
 
 <p>If none of <code>--stdin</code>, <code>--all</code>, or <code>--</code> is used, the first argument will
 be treated as an attribute and the rest of the arguments as pathnames.</p>
 
 <h2 id="output">OUTPUT</h2>
 
-<p>The output is of the form: &lt;path&gt; COLON SP &lt;attribute&gt; COLON SP
-&lt;info&gt; LF</p>
+<p>The output is of the form: &lt;path&gt; COLON SP &lt;attribute&gt; COLON
+SP &lt;info&gt; LF</p>
 
-<p>&lt;path&gt; is the path of a file being queried, &lt;attribute&gt; is an
-attribute being queried and &lt;info&gt; can be either:</p>
+<p>&lt;path&gt; is the path of a file being queried, &lt;attribute&gt; is
+an attribute being queried and &lt;info&gt; can be either:</p>
 
-<ul>
-<li><p><em>unspecified</em><br />
-when the attribute is not defined for the path.</p></li>
+<p><em>unspecified</em><br />
+when the attribute is not defined for the path.</p>
 
-<li><p><em>unset</em><br />
-when the attribute is defined as false.</p></li>
+<p><em>unset</em><br />
+when the attribute is defined as false.</p>
 
-<li><p><em>set</em><br />
-when the attribute is defined as true.</p></li>
+<p><em>set</em><br />
+when the attribute is defined as true.</p>
 
-<li><p>&lt;value&gt;<br />
-when a value has been assigned to the attribute.</p></li>
-</ul>
+<p>&lt;value&gt;<br />
+when a value has been assigned to the attribute.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -177,59 +170,35 @@ README caveat=unspecified
 </code></pre>
 
 <ul>
-<li>Listing a single attribute:</li>
-</ul>
+<li><p>Listing a single attribute:</p>
 
-<!-- end list -->
+<p>$ git check-attr diff org/example/MyClass.java
+org/example/MyClass.java: diff: java</p></li>
 
-<pre><code>$ git check-attr diff org/example/MyClass.java
-org/example/MyClass.java: diff: java
-</code></pre>
+<li><p>Listing multiple attributes for a file:</p>
 
-<ul>
-<li>Listing multiple attributes for a file:</li>
-</ul>
-
-<!-- end list -->
-
-<pre><code>$ git check-attr crlf diff myAttr -- org/example/MyClass.java
+<p>$ git check-attr crlf diff myAttr &ndash; org/example/MyClass.java
 org/example/MyClass.java: crlf: unset
 org/example/MyClass.java: diff: java
-org/example/MyClass.java: myAttr: set
-</code></pre>
+org/example/MyClass.java: myAttr: set</p></li>
 
-<ul>
-<li>Listing all attributes for a file:</li>
-</ul>
+<li><p>Listing all attributes for a file:</p>
 
-<!-- end list -->
-
-<pre><code>$ git check-attr --all -- org/example/MyClass.java
+<p>$ git check-attr &ndash;all &ndash; org/example/MyClass.java
 org/example/MyClass.java: diff: java
+org/example/MyClass.java: myAttr: set</p></li>
+
+<li><p>Listing an attribute for multiple files:</p>
+
+<p>$ git check-attr myAttr &ndash; org/example/MyClass.java org/example/NoMyAttr.java
 org/example/MyClass.java: myAttr: set
-</code></pre>
+org/example/NoMyAttr.java: myAttr: unspecified</p></li>
 
-<ul>
-<li>Listing an attribute for multiple
-files:</li>
+<li><p>Not all values are equally unambiguous:</p>
+
+<p>$ git check-attr caveat README
+README: caveat: unspecified</p></li>
 </ul>
-
-<!-- end list -->
-
-<pre><code>$ git check-attr myAttr -- org/example/MyClass.java org/example/NoMyAttr.java
-org/example/MyClass.java: myAttr: set
-org/example/NoMyAttr.java: myAttr: unspecified
-</code></pre>
-
-<ul>
-<li>Not all values are equally unambiguous:</li>
-</ul>
-
-<!-- end list -->
-
-<pre><code>$ git check-attr caveat README
-README: caveat: unspecified
-</code></pre>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -294,7 +263,7 @@ README: caveat: unspecified
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

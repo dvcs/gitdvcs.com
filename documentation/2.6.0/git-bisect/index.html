@@ -107,14 +107,13 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git bisect &lt;subcommand&gt; &lt;options&gt;
+<pre><code>git bisect &lt;subcommand&gt; &lt;options&gt;
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
 
 <p>The command takes various subcommands, and different options depending
-on the
-    subcommand:</p>
+on the subcommand:</p>
 
 <pre><code>git bisect start [--no-checkout] [&lt;bad&gt; [&lt;good&gt;...]] [--] [&lt;paths&gt;...]
 git bisect bad [&lt;rev&gt;]
@@ -147,9 +146,9 @@ $ git bisect bad                 # Current version is bad
 $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 is known to be good
 </code></pre>
 
-<p>Once you have specified at least one bad and one good commit, <code>git
-bisect</code> selects a commit in the middle of that range of history, checks
-it out, and outputs something similar to the following:</p>
+<p>Once you have specified at least one bad and one good commit,
+<code>git bisect</code> selects a commit in the middle of that range of history,
+checks it out, and outputs something similar to the following:</p>
 
 <pre><code>Bisecting: 675 revisions left to test after this (roughly 10 steps)
 </code></pre>
@@ -171,8 +170,9 @@ version works correctly, type</p>
 </code></pre>
 
 <p>Keep repeating the process: compile the tree, test it, and depending on
-whether it is good or bad run <code>git bisect good</code> or <code>git bisect bad</code> to
-ask for the next commit that needs testing.</p>
+whether it is good or bad run <code>git bisect good</code> or
+<code>git bisect                 bad</code> to ask for the next commit that needs
+testing.</p>
 
 <p>Eventually there will be no more revisions left to inspect, and the
 command will print out a description of the first bad commit. The
@@ -187,8 +187,8 @@ the original HEAD, issue the following command:</p>
 </code></pre>
 
 <p>By default, this will return your tree to the commit that was checked
-out before <code>git bisect start</code>. (A new <code>git bisect start</code> will also do
-that, as it cleans up the old bisection state.)</p>
+out before <code>git bisect                 start</code>. (A new <code>git bisect start</code>
+will also do that, as it cleans up the old bisection state.)</p>
 
 <p>With an optional argument, you can return to a different commit instead:</p>
 
@@ -241,8 +241,7 @@ that the failure does not have anything to do with the bug you are
 chasing), you can manually select a nearby commit and test that one
 instead.</p>
 
-<p>For
-    example:</p>
+<p>For example:</p>
 
 <pre><code>$ git bisect good/bad                   # previous round was good or bad.
 Bisecting: 337 revisions left to test after this (roughly 9 steps)
@@ -326,7 +325,7 @@ as the highest sensible value to use for this purpose, because 126 and
 127 are used by POSIX shells to signal specific error status (127 is for
 command not found, 126 is for command found but not executable&mdash;these
 details do not matter, as they are normal errors in the script, as far
-as <code>bisect run</code> is concerned).</p>
+as <code>bisect                 run</code> is concerned).</p>
 
 <p>You may often find that during a bisect session you want to have
 temporary modifications (e.g. s/#define DEBUG 0/#define DEBUG 1/ in a
@@ -344,18 +343,15 @@ eventual outcome of the bisect session.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;no-checkout</p>
+<p>&ndash;no-checkout<br />
+Do not checkout the new working tree at each iteration of the bisection
+process. Instead just update a special reference named <em>BISECT_HEAD</em> to
+make it point to the commit that should be tested.</p>
 
-<p>Do not checkout the new working tree at each iteration of the
-bisection process. Instead just update a special reference named
-<em>BISECT_HEAD</em> to make it point to the commit that should be tested.</p>
+<p>This option may be useful when the test you would perform in each step
+does not require a checked out tree.</p>
 
-<p>This option may be useful when the test you would perform in each
-step does not require a checked out tree.</p>
-
-<p>If the repository is bare, <code>--no-checkout</code> is assumed.</p></li>
-</ul>
+<p>If the repository is bare, <code>--no-checkout</code> is assumed.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -367,8 +363,7 @@ $ git bisect run make                # &quot;make&quot; builds the app
 $ git bisect reset                   # quit the bisect session
 </code></pre></li>
 
-<li><p>Automatically bisect a test failure between origin and
-    HEAD:</p>
+<li><p>Automatically bisect a test failure between origin and HEAD:</p>
 
 <pre><code>$ git bisect start HEAD origin --    # HEAD is bad, origin is good
 $ git bisect run make test           # &quot;make test&quot; builds and tests
@@ -388,7 +383,8 @@ $ git bisect reset                   # quit the bisect session
 
 <p>Here we use a <code>test.sh</code> custom script. In this script, if <code>make</code>
 fails, we skip the current commit. <code>check_test_case.sh</code> should
-<code>exit 0</code> if the test case passes, and <code>exit 1</code> otherwise.</p>
+<code>exit                     0</code> if the test case passes, and
+<code>exit                     1</code> otherwise.</p>
 
 <p>It is safer if both <code>test.sh</code> and <code>check_test_case.sh</code> are outside
 the repository to prevent interactions between the bisect, make and
@@ -426,8 +422,7 @@ sure the hot-fix branch is based off a commit which is contained in
 all revisions which you are bisecting, so that the merge does not
 pull in too much, or use <code>git cherry-pick</code> instead of <code>git merge</code>.)</p></li>
 
-<li><p>Automatically bisect a broken test
-    case:</p>
+<li><p>Automatically bisect a broken test case:</p>
 
 <pre><code>$ git bisect start HEAD HEAD~10 --   # culprit is among the last 10
 $ git bisect run sh -c &quot;make || exit 125; ~/check_test_case.sh&quot;
@@ -437,8 +432,7 @@ $ git bisect reset                   # quit the bisect session
 <p>This shows that you can do without a run script if you write the
 test on a single line.</p></li>
 
-<li><p>Locate a good region of the object graph in a damaged
-    repository</p>
+<li><p>Locate a good region of the object graph in a damaged repository</p>
 
 <pre><code>$ git bisect start HEAD &lt;known-good-commit&gt; [ &lt;boundary-commit&gt; ... ] --no-checkout
 $ git bisect run sh -c '
@@ -526,7 +520,7 @@ or <code>git bisect -h</code> to get a long usage description.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

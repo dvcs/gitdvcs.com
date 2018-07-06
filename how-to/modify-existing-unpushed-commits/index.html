@@ -101,21 +101,15 @@
 
 <p>Modify previous staged commit</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend</code></pre></div>
 
 <p>Modify previous staged commit with <em>new</em> message</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend -m <span style="color: #009C00">&quot;Updated commit message&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -m <span style="color:#009c00">&#34;Updated commit message&#34;</span></code></pre></div>
 
 <p>Modify any previous commit message</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git rebase --interactive $parent_of_flawed_commit
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git rebase --interactive $parent_of_flawed_commit</code></pre></div>
 
 <h2 id="details">Details</h2>
 
@@ -125,15 +119,11 @@
 <li>This command will pen your editor, allowing you to change the commit message of the most recent commit.</li>
 </ol>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend</code></pre></div>
 
 <p>This command lets you set the commit message directly in the command line with:</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git commit --amend -m <span style="color: #009C00">&quot;Updated commit message&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -m <span style="color:#009c00">&#34;Updated commit message&#34;</span></code></pre></div>
 
 <p>Make sure you don&rsquo;t have any working copy changes staged before doing this or they will get committed too. (Unstaged changes will not get committed.)</p>
 
@@ -141,10 +131,8 @@
 <li>If you&rsquo;ve already pushed your commit up to your remote branch, then you&rsquo;ll need to [force push]() the commit with</li>
 </ol>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git push --force &lt;remote&gt; &lt;branch&gt;  <span style="color: #FF0000; font-style: italic"># Force push</span>
-git push -f &lt;remote&gt; &lt;branch&gt;       <span style="color: #FF0000; font-style: italic"># Shorter</span>
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git push --force &lt;remote&gt; &lt;branch&gt;  <span style="color:#f00;font-style:italic"># Force push
+</span><span style="color:#f00;font-style:italic"></span>git push -f &lt;remote&gt; &lt;branch&gt;       # Shorter</code></pre></div>
 
 <div class="alert alert-warning" role="alert"><b>Warning: force-pushing will overwrite the remote branch with the state of your local one.</b> If there are commits on the remote branch that you don't have in your local branch, you will lose those commits.</div>
 
@@ -156,10 +144,8 @@ git push -f &lt;remote&gt; &lt;branch&gt;       <span style="color: #FF0000; fon
 <li>If you want to fix several flawed commits, pass the parent of the oldest one of them.</li>
 </ol>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>git rebase --interactive $parent_of_flawed_commit  <span style="color: #FF0000; font-style: italic"># Interactive</span>
-git rebase -i $parent_of_flawed_commit             <span style="color: #FF0000; font-style: italic"># Shorter</span>
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git rebase --interactive $parent_of_flawed_commit  <span style="color:#f00;font-style:italic"># Interactive
+</span><span style="color:#f00;font-style:italic"></span>git rebase -i $parent_of_flawed_commit             # Shorter</code></pre></div>
 
 <ol>
 <li>An editor will come up, with a list of all commits since the one you specified in <code>$parent_of_flawed_commit</code>.</li>
@@ -170,11 +156,9 @@ git rebase -i $parent_of_flawed_commit             <span style="color: #FF0000; 
 <li><p>For each commit you want to reword, Git will drop you back into your editor. For each commit you want to edit, Git drops you into the shell. If you’re in the shell:</p></li>
 </ol>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #FF0000; font-style: italic"># Change the commit in any way you like.</span>
-git commit --amend
-git rebase --continue
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f00;font-style:italic"># Change the commit in any way you like.
+</span><span style="color:#f00;font-style:italic"></span>git commit --amend
+git rebase --continue</code></pre></div>
 
 <p>Most of this sequence will be explained to you by the output of the various commands as you go. It’s very easy, you don’t need to memorize it – just remember that <code>git rebase --interactive</code> lets you correct commits no matter how long ago they were.</p>
 
@@ -240,7 +224,7 @@ git rebase --continue
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

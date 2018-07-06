@@ -189,16 +189,17 @@ such as a <code>.gitattributes</code> or <code>.gitignore</code> files that spec
 behavior of commands inside the submodule.</p>
 
 <p>For example an effect from the submodule’s <code>.gitignore</code> file would
-be observed when you run <code>git status --ignore-submodules=none</code> in
-the superproject. This collects information from the submodule’s
-working directory by running <code>status</code> in the submodule, which does
-pay attention to its <code>.gitignore</code> file.</p>
+be observed when you run
+<code>git status                     --ignore-submodules=none</code> in the
+superproject. This collects information from the submodule’s working
+directory by running <code>status</code> in the submodule, which does pay
+attention to its <code>.gitignore</code> file.</p>
 
 <p>The submodule’s <code>$GIT_DIR/config</code> file would come into play when
-running <code>git push --recurse-submodules=check</code> in the superproject,
-as this would check if the submodule has any changes not published
-to any remote. The remotes are configured in the submodule as usual
-in the <code>$GIT_DIR/config</code> file.</p></li>
+running <code>git push                     --recurse-submodules=check</code> in
+the superproject, as this would check if the submodule has any
+changes not published to any remote. The remotes are configured in
+the submodule as usual in the <code>$GIT_DIR/config</code> file.</p></li>
 
 <li><p>The configuration file <code>$GIT_DIR/config</code> in the superproject.
 Typical configuration at this place is controlling if a submodule is
@@ -250,12 +251,12 @@ instead.</p>
 <p>A submodule can be deinitialized by running <code>git submodule deinit</code>.
 Besides emptying the working directory, this command only modifies
 the superproject’s <code>$GIT_DIR/config</code> file, so the superproject’s
-history is not affected. This can be undone using <code>git submodule
-init</code>.</p></li>
+history is not affected. This can be undone using
+<code>git submodule init</code>.</p></li>
 
-<li><p>Deleted submodule: A submodule can be deleted by running <code>git rm
-&lt;submodule path&gt; &amp;&amp; git commit</code>. This can be undone using <code>git
-revert</code>.</p>
+<li><p>Deleted submodule: A submodule can be deleted by running
+<code>git rm &lt;submodule path&gt;                   &amp;&amp; git commit</code>. This can
+be undone using <code>git revert</code>.</p>
 
 <p>The deletion removes the superproject’s tracking data, which are
 both the <code>gitlink</code> entry and the section in the <code>.gitmodules</code> file.
@@ -381,7 +382,7 @@ revision in your working tree. Alternatively you can set
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

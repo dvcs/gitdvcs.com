@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git replace [-f] &lt;object&gt; &lt;replacement&gt;
+<pre><code>git replace [-f] &lt;object&gt; &lt;replacement&gt;
 git replace -d &lt;object&gt;…
 git replace -l [&lt;pattern&gt;]
 </code></pre>
@@ -152,22 +152,20 @@ achieve the same effect as the <code>--no-replace-objects</code> option.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-f<br />
---force<br />
+<p>-f<br />
+&ndash;force<br />
 If an existing replace ref for the same object exists, it will be
-overwritten (instead of failing).</p></li>
+overwritten (instead of failing).</p>
 
-<li><p>-d<br />
---delete<br />
-Delete existing replace refs for the given objects.</p></li>
+<p>-d<br />
+&ndash;delete<br />
+Delete existing replace refs for the given objects.</p>
 
-<li><p>-l &lt;pattern&gt;<br />
---list &lt;pattern&gt;<br />
-List replace refs for objects that match the given pattern (or all
-if no pattern is given). Typing &ldquo;git replace&rdquo; without arguments,
-also lists all replace refs.</p></li>
-</ul>
+<p>-l &lt;pattern&gt;<br />
+&ndash;list &lt;pattern&gt;<br />
+List replace refs for objects that match the given pattern (or all if no
+pattern is given). Typing &ldquo;git replace&rdquo; without arguments, also lists
+all replace refs.</p>
 
 <h2 id="creating-replacement-objects">CREATING REPLACEMENT OBJECTS</h2>
 
@@ -258,7 +256,7 @@ objects.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

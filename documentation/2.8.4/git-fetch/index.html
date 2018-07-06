@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git fetch [&lt;options&gt;] [&lt;repository&gt; [&lt;refspec&gt;…]]
+<pre><code>git fetch [&lt;options&gt;] [&lt;repository&gt; [&lt;refspec&gt;…]]
 git fetch [&lt;options&gt;] &lt;group&gt;
 git fetch --multiple [&lt;options&gt;] [(&lt;repository&gt; | &lt;group&gt;)…]
 git fetch --all [&lt;options&gt;]
@@ -123,13 +123,13 @@ histories. Remote-tracking branches are updated (see the description of
 <p>By default, any tag that points into the histories being fetched is also
 fetched; the effect is to fetch tags that point at branches that you are
 interested in. This default behavior can be changed by using the &ndash;tags
-or &ndash;no-tags options or by configuring remote.&lt;name&gt;.tagOpt. By using
-a refspec that fetches tags explicitly, you can fetch tags that do not
-point into branches you are interested in as well.</p>
+or &ndash;no-tags options or by configuring remote.&lt;name&gt;.tagOpt. By
+using a refspec that fetches tags explicitly, you can fetch tags that do
+not point into branches you are interested in as well.</p>
 
 <p><em>git fetch</em> can fetch from either a single named repository or URL, or
-from several repositories at once if &lt;group&gt; is given and there is a
-remotes.&lt;group&gt; entry in the configuration file. (See
+from several repositories at once if &lt;group&gt; is given and there is
+a remotes.&lt;group&gt; entry in the configuration file. (See
 <a href="../git-config">git-config(1)</a>).</p>
 
 <p>When no remote is specified, by default the <code>origin</code> remote will be
@@ -142,177 +142,171 @@ by scripts or other git commands, such as <a href="../git-pull">git-pull(1)</a>.
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;all<br />
-Fetch all remotes.</p></li>
+<p>&ndash;all<br />
+Fetch all remotes.</p>
 
-<li><p>-a<br />
---append<br />
+<p>-a<br />
+&ndash;append<br />
 Append ref names and object names of fetched refs to the existing
 contents of <code>.git/FETCH_HEAD</code>. Without this option old data in
-<code>.git/FETCH_HEAD</code> will be overwritten.</p></li>
+<code>.git/FETCH_HEAD</code> will be overwritten.</p>
 
-<li><p>&ndash;depth=&lt;depth&gt;<br />
-Limit fetching to the specified number of commits from the tip of
-each remote branch history. If fetching to a <em>shallow</em> repository
-created by <code>git clone</code> with <code>--depth=&lt;depth&gt;</code> option (see
-<a href="../git-clone">git-clone(1)</a>), deepen or shorten the history to
-the specified number of commits. Tags for the deepened commits are
-not fetched.</p></li>
+<p>&ndash;depth=&lt;depth&gt;<br />
+Limit fetching to the specified number of commits from the tip of each
+remote branch history. If fetching to a <em>shallow</em> repository created by
+<code>git clone</code> with <code>--depth=&lt;depth&gt;</code> option (see
+<a href="../git-clone">git-clone(1)</a>), deepen or shorten the history to the
+specified number of commits. Tags for the deepened commits are not
+fetched.</p>
 
-<li><p>&ndash;unshallow<br />
-If the source repository is complete, convert a shallow repository
-to a complete one, removing all the limitations imposed by shallow
+<p>&ndash;unshallow<br />
+If the source repository is complete, convert a shallow repository to a
+complete one, removing all the limitations imposed by shallow
 repositories.</p>
 
-<p>If the source repository is shallow, fetch as much as possible so
-that the current repository has the same history as the source
-repository.</p></li>
+<p>If the source repository is shallow, fetch as much as possible so that
+the current repository has the same history as the source repository.</p>
 
-<li><p>&ndash;update-shallow<br />
-By default when fetching from a shallow repository, <code>git fetch</code>
-refuses refs that require updating .git/shallow. This option updates
-.git/shallow and accept such refs.</p></li>
+<p>&ndash;update-shallow<br />
+By default when fetching from a shallow repository, <code>git fetch</code> refuses
+refs that require updating .git/shallow. This option updates
+.git/shallow and accept such refs.</p>
 
-<li><p>&ndash;dry-run<br />
-Show what would be done, without making any changes.</p></li>
+<p>&ndash;dry-run<br />
+Show what would be done, without making any changes.</p>
 
-<li><p>-f<br />
---force<br />
-When <em>git fetch</em> is used with <code>&lt;rbranch&gt;:&lt;lbranch&gt;</code> refspec, it
-refuses to update the local branch <code>&lt;lbranch&gt;</code> unless the remote
-branch <code>&lt;rbranch&gt;</code> it fetches is a descendant of <code>&lt;lbranch&gt;</code>. This
-option overrides that check.</p></li>
+<p>-f<br />
+&ndash;force<br />
+When <em>git fetch</em> is used with <code>&lt;rbranch&gt;:&lt;lbranch&gt;</code> refspec, it refuses
+to update the local branch <code>&lt;lbranch&gt;</code> unless the remote branch
+<code>&lt;rbranch&gt;</code> it fetches is a descendant of <code>&lt;lbranch&gt;</code>. This option
+overrides that check.</p>
 
-<li><p>-k<br />
---keep<br />
-Keep downloaded pack.</p></li>
+<p>-k<br />
+&ndash;keep<br />
+Keep downloaded pack.</p>
 
-<li><p>&ndash;multiple<br />
+<p>&ndash;multiple<br />
 Allow several &lt;repository&gt; and &lt;group&gt; arguments to be
-specified. No &lt;refspec&gt;s may be specified.</p></li>
+specified. No &lt;refspec&gt;s may be specified.</p>
 
-<li><p>-p<br />
---prune<br />
+<p>-p<br />
+&ndash;prune<br />
 After fetching, remove any remote-tracking references that no longer
-exist on the remote. Tags are not subject to pruning if they are
-fetched only because of the default tag auto-following or due to a
-&ndash;tags option. However, if tags are fetched due to an explicit
-refspec (either on the command line or in the remote configuration,
-for example if the remote was cloned with the &ndash;mirror option), then
-they are also subject to pruning.</p></li>
+exist on the remote. Tags are not subject to pruning if they are fetched
+only because of the default tag auto-following or due to a &ndash;tags
+option. However, if tags are fetched due to an explicit refspec (either
+on the command line or in the remote configuration, for example if the
+remote was cloned with the &ndash;mirror option), then they are also subject
+to pruning.</p>
 
-<li><p>-n<br />
---no-tags<br />
+<p>-n<br />
+&ndash;no-tags<br />
 By default, tags that point at objects that are downloaded from the
-remote repository are fetched and stored locally. This option
-disables this automatic tag following. The default behavior for a
-remote may be specified with the remote.&lt;name&gt;.tagOpt setting. See
-<a href="../git-config">git-config(1)</a>.</p></li>
+remote repository are fetched and stored locally. This option disables
+this automatic tag following. The default behavior for a remote may be
+specified with the remote.&lt;name&gt;.tagOpt setting. See
+<a href="../git-config">git-config(1)</a>.</p>
 
-<li><p>&ndash;refmap=&lt;refspec&gt;<br />
-When fetching refs listed on the command line, use the specified
-refspec (can be given more than once) to map the refs to
-remote-tracking branches, instead of the values of <code>remote.*.fetch</code>
-configuration variables for the remote repository. See section on
-&ldquo;Configured Remote-tracking Branches&rdquo; for details.</p></li>
+<p>&ndash;refmap=&lt;refspec&gt;<br />
+When fetching refs listed on the command line, use the specified refspec
+(can be given more than once) to map the refs to remote-tracking
+branches, instead of the values of <code>remote.*.fetch</code> configuration
+variables for the remote repository. See section on &ldquo;Configured
+Remote-tracking Branches&rdquo; for details.</p>
 
-<li><p>-t<br />
---tags<br />
-Fetch all tags from the remote (i.e., fetch remote tags
-<code>refs/tags/*</code> into local tags with the same name), in addition to
-whatever else would otherwise be fetched. Using this option alone
-does not subject tags to pruning, even if &ndash;prune is used (though
-tags may be pruned anyway if they are also the destination of an
-explicit refspec; see <em>&ndash;prune</em>).</p></li>
+<p>-t<br />
+&ndash;tags<br />
+Fetch all tags from the remote (i.e., fetch remote tags <code>refs/tags/*</code>
+into local tags with the same name), in addition to whatever else would
+otherwise be fetched. Using this option alone does not subject tags to
+pruning, even if &ndash;prune is used (though tags may be pruned anyway if
+they are also the destination of an explicit refspec; see <em>&ndash;prune</em>).</p>
 
-<li><p>&ndash;recurse-submodules[=yes|on-demand|no]<br />
+<p>&ndash;recurse-submodules[=yes|on-demand|no]<br />
 This option controls if and under what conditions new commits of
-populated submodules should be fetched too. It can be used as a
-boolean option to completely disable recursion when set to <em>no</em> or
-to unconditionally recurse into all populated submodules when set to
-<em>yes</em>, which is the default when this option is used without any
-value. Use <em>on-demand</em> to only recurse into a populated submodule
-when the superproject retrieves a commit that updates the
-submodule’s reference to a commit that isn’t already in the local
-submodule clone.</p></li>
+populated submodules should be fetched too. It can be used as a boolean
+option to completely disable recursion when set to <em>no</em> or to
+unconditionally recurse into all populated submodules when set to <em>yes</em>,
+which is the default when this option is used without any value. Use
+<em>on-demand</em> to only recurse into a populated submodule when the
+superproject retrieves a commit that updates the submodule’s reference
+to a commit that isn’t already in the local submodule clone.</p>
 
-<li><p>-j<br />
---jobs=&lt;n&gt;<br />
+<p>-j<br />
+&ndash;jobs=&lt;n&gt;<br />
 Number of parallel children to be used for fetching submodules. Each
-will fetch from different submodules, such that fetching many
-submodules will be faster. By default submodules will be fetched one
-at a time.</p></li>
+will fetch from different submodules, such that fetching many submodules
+will be faster. By default submodules will be fetched one at a time.</p>
 
-<li><p>&ndash;no-recurse-submodules<br />
-Disable recursive fetching of submodules (this has the same effect
-as using the <em>&ndash;recurse-submodules=no</em> option).</p></li>
+<p>&ndash;no-recurse-submodules<br />
+Disable recursive fetching of submodules (this has the same effect as
+using the <em>&ndash;recurse-submodules=no</em> option).</p>
 
-<li><p>&ndash;submodule-prefix=&lt;path&gt;<br />
+<p>&ndash;submodule-prefix=&lt;path&gt;<br />
 Prepend &lt;path&gt; to paths printed in informative messages such as
-&ldquo;Fetching submodule foo&rdquo;. This option is used internally when
-recursing over submodules.</p></li>
+&ldquo;Fetching submodule foo&rdquo;. This option is used internally when recursing
+over submodules.</p>
 
-<li><p>&ndash;recurse-submodules-default=[yes|on-demand]<br />
+<p>&ndash;recurse-submodules-default=[yes|on-demand]<br />
 This option is used internally to temporarily provide a non-negative
-default value for the &ndash;recurse-submodules option. All other methods
-of configuring fetch’s submodule recursion (such as settings in
-<a href="../gitmodules">gitmodules(5)</a> and
-<a href="../git-config">git-config(1)</a>) override this option, as does
-specifying &ndash;[no-]recurse-submodules directly.</p></li>
+default value for the &ndash;recurse-submodules option. All other methods of
+configuring fetch’s submodule recursion (such as settings in
+<a href="../gitmodules">gitmodules(5)</a> and <a href="../git-config">git-config(1)</a>)
+override this option, as does specifying &ndash;[no-]recurse-submodules
+directly.</p>
 
-<li><p>-u<br />
---update-head-ok<br />
-By default <em>git fetch</em> refuses to update the head which corresponds
-to the current branch. This flag disables the check. This is purely
-for the internal use for <em>git pull</em> to communicate with <em>git fetch</em>,
-and unless you are implementing your own Porcelain you are not
-supposed to use it.</p></li>
+<p>-u<br />
+&ndash;update-head-ok<br />
+By default <em>git fetch</em> refuses to update the head which corresponds to
+the current branch. This flag disables the check. This is purely for the
+internal use for <em>git pull</em> to communicate with <em>git fetch</em>, and unless
+you are implementing your own Porcelain you are not supposed to use it.</p>
 
-<li><p>&ndash;upload-pack &lt;upload-pack&gt;<br />
+<p>&ndash;upload-pack &lt;upload-pack&gt;<br />
 When given, and the repository to fetch from is handled by <em>git
 fetch-pack</em>, <em>&ndash;exec=&lt;upload-pack&gt;</em> is passed to the command to
-specify non-default path for the command run on the other end.</p></li>
+specify non-default path for the command run on the other end.</p>
 
-<li><p>-q<br />
---quiet<br />
-Pass &ndash;quiet to git-fetch-pack and silence any other internally used
-git commands. Progress is not reported to the standard error stream.</p></li>
+<p>-q<br />
+&ndash;quiet<br />
+Pass &ndash;quiet to git-fetch-pack and silence any other internally used git
+commands. Progress is not reported to the standard error stream.</p>
 
-<li><p>-v<br />
---verbose<br />
-Be verbose.</p></li>
+<p>-v<br />
+&ndash;verbose<br />
+Be verbose.</p>
 
-<li><p>&ndash;progress<br />
-Progress status is reported on the standard error stream by default
-when it is attached to a terminal, unless -q is specified. This flag
-forces progress status even if the standard error stream is not
-directed to a terminal.</p></li>
+<p>&ndash;progress<br />
+Progress status is reported on the standard error stream by default when
+it is attached to a terminal, unless -q is specified. This flag forces
+progress status even if the standard error stream is not directed to a
+terminal.</p>
 
-<li><p>-4<br />
---ipv4<br />
-Use IPv4 addresses only, ignoring IPv6 addresses.</p></li>
+<p>-4<br />
+&ndash;ipv4<br />
+Use IPv4 addresses only, ignoring IPv6 addresses.</p>
 
-<li><p>-6<br />
---ipv6<br />
-Use IPv6 addresses only, ignoring IPv4 addresses.</p></li>
+<p>-6<br />
+&ndash;ipv6<br />
+Use IPv6 addresses only, ignoring IPv4 addresses.</p>
 
-<li><p>&lt;repository&gt;<br />
-The &ldquo;remote&rdquo; repository that is the source of a fetch or pull
-operation. This parameter can be either a URL (see the section <a href="#URLS">GIT
-URLS</a> below) or the name of a remote (see the section
-<a href="#REMOTES">REMOTES</a> below).</p></li>
+<p>&lt;repository&gt;<br />
+The &ldquo;remote&rdquo; repository that is the source of a fetch or pull operation.
+This parameter can be either a URL (see the section <a href="#URLS">GIT URLS</a>
+below) or the name of a remote (see the section <a href="#REMOTES">REMOTES</a>
+below).</p>
 
-<li><p>&lt;group&gt;<br />
+<p>&lt;group&gt;<br />
 A name referring to a list of repositories as the value of
 remotes.&lt;group&gt; in the configuration file. (See
-<a href="../git-config">git-config(1)</a>).</p></li>
+<a href="../git-config">git-config(1)</a>).</p>
 
-<li><p>&lt;refspec&gt;<br />
-Specifies which refs to fetch and which local refs to update. When
-no &lt;refspec&gt;s appear on the command line, the refs to fetch are
-read from <code>remote.&lt;repository&gt;.fetch</code> variables instead (see
-<a href="#CRTB">CONFIGURED REMOTE-TRACKING BRANCHES</a> below).</p>
+<p>&lt;refspec&gt;<br />
+Specifies which refs to fetch and which local refs to update. When no
+&lt;refspec&gt;s appear on the command line, the refs to fetch are read
+from <code>remote.&lt;repository&gt;.fetch</code> variables instead (see <a href="#CRTB">CONFIGURED
+REMOTE-TRACKING BRANCHES</a> below).</p>
 
 <p>The format of a &lt;refspec&gt; parameter is an optional plus <code>+</code>,
 followed by the source ref &lt;src&gt;, followed by a colon <code>:</code>,
@@ -322,8 +316,8 @@ when &lt;dst&gt; is empty.</p>
 <p><code>tag &lt;tag&gt;</code> means the same as <code>refs/tags/&lt;tag&gt;:refs/tags/&lt;tag&gt;</code>; it
 requests fetching everything up to the given tag.</p>
 
-<p>The remote ref that matches &lt;src&gt; is fetched, and if &lt;dst&gt; is
-not empty string, the local ref that matches it is fast-forwarded
+<p>The remote ref that matches &lt;src&gt; is fetched, and if &lt;dst&gt;
+is not empty string, the local ref that matches it is fast-forwarded
 using &lt;src&gt;. If the optional plus <code>+</code> is used, the local ref is
 updated even if it does not result in a fast-forward update.</p>
 
@@ -340,10 +334,9 @@ Note
 <td>When the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the <code>+</code> sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.</td>
 </tr>
 </tbody>
-</table></li>
-</ul>
+</table>
 
-<h2 id="git-urls">GIT URLS</h2>
+<h2 id="git-urls-span-id-urls-span">GIT URLS<span id="URLS"></span></h2>
 
 <p>In general, URLs contain information about the transport protocol, the
 address of the remote server, and the path to the repository. Depending
@@ -403,8 +396,9 @@ former implies &ndash;local option. See <a href="../git-clone">git-clone(1)</a> 
 details.</p>
 
 <p>When Git doesn’t know how to handle a certain transport protocol, it
-attempts to use the <em>remote-&lt;transport&gt;</em> remote helper, if one exists.
-To explicitly request a remote helper, the following syntax may be used:</p>
+attempts to use the <em>remote-&lt;transport&gt;</em> remote helper, if one
+exists. To explicitly request a remote helper, the following syntax may
+be used:</p>
 
 <ul>
 <li>&lt;transport&gt;::&lt;address&gt;</li>
@@ -451,7 +445,7 @@ configuration section of the form:</p>
 &ldquo;ssh://example.org/path/to/repo.git&rdquo; for pushes, but pulls will still
 use the original URL.</p>
 
-<h2 id="remotes">REMOTES</h2>
+<h2 id="remotes-span-id-remotes-span">REMOTES<span id="REMOTES"></span></h2>
 
 <p>The name of one of the following can be used instead of a URL as
 <code>&lt;repository&gt;</code> argument:</p>
@@ -528,7 +522,7 @@ this file in <code>$GIT_DIR/branches</code> and <code>&lt;head&gt;</code> defaul
 <pre><code>        HEAD:refs/heads/&lt;head&gt;
 </code></pre>
 
-<h2 id="configured-remote-tracking-branches">CONFIGURED REMOTE-TRACKING BRANCHES</h2>
+<h2 id="configured-remote-tracking-branches-span-id-crtb-span">CONFIGURED REMOTE-TRACKING BRANCHES<span id="CRTB"></span></h2>
 
 <p>You often interact with the same remote repository by regularly and
 repeatedly fetching from it. In order to keep track of the progress of
@@ -545,8 +539,8 @@ such a remote repository, <code>git fetch</code> allows you to configure
 
 <ul>
 <li><p>When <code>git fetch</code> is run without specifying what branches and/or tags
-to fetch on the command line, e.g. <code>git fetch origin</code> or <code>git
-fetch</code>, <code>remote.&lt;repository&gt;.fetch</code> values are used as the
+to fetch on the command line, e.g. <code>git fetch origin</code> or
+<code>git fetch</code>, <code>remote.&lt;repository&gt;.fetch</code> values are used as the
 refspecs—they specify which refs to fetch and which local refs to
 update. The example above will fetch all branches that exist in the
 <code>origin</code> (i.e. any ref that matches the left-hand side of the value,
@@ -685,7 +679,7 @@ future Git version.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

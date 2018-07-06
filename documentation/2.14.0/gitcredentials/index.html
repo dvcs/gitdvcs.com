@@ -167,15 +167,13 @@ with secure storage provided by the OS or other programs.</p>
 <p>To use a helper, you must first select one to use. Git currently
 includes the following helpers:</p>
 
-<ul>
-<li><p>cache<br />
+<p>cache<br />
 Cache credentials in memory for a short period of time. See
-<a href="../git-credential-cache">git-credential-cache(1)</a> for details.</p></li>
+<a href="../git-credential-cache">git-credential-cache(1)</a> for details.</p>
 
-<li><p>store<br />
+<p>store<br />
 Store credentials indefinitely on disk. See
-<a href="../git-credential-store">git-credential-store(1)</a> for details.</p></li>
-</ul>
+<a href="../git-credential-store">git-credential-store(1)</a> for details.</p>
 
 <p>You may also have third-party helpers installed; search for
 <code>credential-*</code> in the output of <code>git help -a</code>, and consult the
@@ -240,35 +238,33 @@ above.</p>
 
 <p>The following options are available in either location:</p>
 
-<ul>
-<li><p>helper<br />
-The name of an external credential helper, and any associated
-options. If the helper name is not an absolute path, then the string
-<code>git credential-</code> is prepended. The resulting string is executed by
-the shell (so, for example, setting this to <code>foo --option=bar</code> will
-execute <code>git credential-foo --option=bar</code> via the shell. See the
-manual of specific helpers for examples of their use.</p>
+<p>helper<br />
+The name of an external credential helper, and any associated options.
+If the helper name is not an absolute path, then the string
+<code>git                   credential-</code> is prepended. The resulting string
+is executed by the shell (so, for example, setting this to
+<code>foo --option=bar</code> will execute <code>git credential-foo --option=bar</code> via
+the shell. See the manual of specific helpers for examples of their use.</p>
 
-<p>If there are multiple instances of the <code>credential.helper</code>
-configuration variable, each helper will be tried in turn, and may
-provide a username, password, or nothing. Once Git has acquired both
-a username and a password, no more helpers will be tried.</p>
+<p>If there are multiple instances of the <code>credential.helper</code> configuration
+variable, each helper will be tried in turn, and may provide a username,
+password, or nothing. Once Git has acquired both a username and a
+password, no more helpers will be tried.</p>
 
-<p>If <code>credential.helper</code> is configured to the empty string, this
-resets the helper list to empty (so you may override a helper set by
-a lower-priority config file by configuring the empty-string helper,
-followed by whatever set of helpers you would like).</p></li>
+<p>If <code>credential.helper</code> is configured to the empty string, this resets
+the helper list to empty (so you may override a helper set by a
+lower-priority config file by configuring the empty-string helper,
+followed by whatever set of helpers you would like).</p>
 
-<li><p>username<br />
-A default username, if one is not provided in the URL.</p></li>
+<p>username<br />
+A default username, if one is not provided in the URL.</p>
 
-<li><p>useHttpPath<br />
-By default, Git does not consider the &ldquo;path&rdquo; component of an http
-URL to be worth matching via external helpers. This means that a
-credential stored for <code>https://example.com/foo.git</code> will also be
-used for <code>https://example.com/bar.git</code>. If you do want to
-distinguish these cases, set this option to <code>true</code>.</p></li>
-</ul>
+<p>useHttpPath<br />
+By default, Git does not consider the &ldquo;path&rdquo; component of an http URL to
+be worth matching via external helpers. This means that a credential
+stored for <code>https://example.com/foo.git</code> will also be used for
+<code>https://example.com/bar.git</code>. If you do want to distinguish these
+cases, set this option to <code>true</code>.</p>
 
 <h2 id="custom-helpers">CUSTOM HELPERS</h2>
 
@@ -335,7 +331,7 @@ API</a> for details.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git for-each-ref [--count=&lt;count&gt;] [--shell|--perl|--python|--tcl]
+<pre><code>git for-each-ref [--count=&lt;count&gt;] [--shell|--perl|--python|--tcl]
                    [(--sort=&lt;key&gt;)…] [--format=&lt;format&gt;] [&lt;pattern&gt;…]
                    [--points-at &lt;object&gt;] [(--merged | --no-merged) [&lt;object&gt;]]
                    [--contains [&lt;object&gt;]] [--no-contains [&lt;object&gt;]]
@@ -124,66 +124,61 @@ in that language.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;count&gt;<br />
+<p>&lt;count&gt;<br />
 By default the command shows all refs that match <code>&lt;pattern&gt;</code>. This
-option makes it stop after showing that many refs.</p></li>
+option makes it stop after showing that many refs.</p>
 
-<li><p>&lt;key&gt;<br />
-A field name to sort on. Prefix <code>-</code> to sort in descending order of
-the value. When unspecified, <code>refname</code> is used. You may use the
+<p>&lt;key&gt;<br />
+A field name to sort on. Prefix <code>-</code> to sort in descending order of the
+value. When unspecified, <code>refname</code> is used. You may use the
 &ndash;sort=&lt;key&gt; option multiple times, in which case the last key
-becomes the primary key.</p></li>
+becomes the primary key.</p>
 
-<li><p>&lt;format&gt;<br />
-A string that interpolates <code>%(fieldname)</code> from a ref being shown and
-the object it points at. If <code>fieldname</code> is prefixed with an asterisk
-(<code>*</code>) and the ref points at a tag object, use the value for the
-field in the object which the tag object refers to (instead of the
-field in the tag object). When unspecified, <code>&lt;format&gt;</code> defaults to
-<code>%(objectname) SPC %(objecttype) TAB %(refname)</code>. It also
-interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
+<p>&lt;format&gt;<br />
+A string that interpolates <code>%(fieldname)</code> from a ref being shown and the
+object it points at. If <code>fieldname</code> is prefixed with an asterisk (<code>*</code>)
+and the ref points at a tag object, use the value for the field in the
+object which the tag object refers to (instead of the field in the tag
+object). When unspecified, <code>&lt;format&gt;</code> defaults to
+<code>%(objectname) SPC %(objecttype) TAB                   %(refname)</code>. It
+also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
 interpolates to character with hex code <code>xx</code>; for example <code>%00</code>
-interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code>
-(LF).</p></li>
+interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
 
-<li><p>&lt;pattern&gt;…<br />
+<p>&lt;pattern&gt;…<br />
 If one or more patterns are given, only refs are shown that match
-against at least one pattern, either using fnmatch(3) or literally,
-in the latter case matching completely or from the beginning up to a
-slash.</p></li>
+against at least one pattern, either using fnmatch(3) or literally, in
+the latter case matching completely or from the beginning up to a slash.</p>
 
-<li><p>&ndash;shell<br />
---perl<br />
---python<br />
---tcl<br />
-If given, strings that substitute <code>%(fieldname)</code> placeholders are
-quoted as string literals suitable for the specified host language.
-This is meant to produce a scriptlet that can directly be
-`eval`ed.</p></li>
+<p>&ndash;shell<br />
+&ndash;perl<br />
+&ndash;python<br />
+&ndash;tcl<br />
+If given, strings that substitute <code>%(fieldname)</code> placeholders are quoted
+as string literals suitable for the specified host language. This is
+meant to produce a scriptlet that can directly be `eval`ed.</p>
 
-<li><p>&ndash;points-at &lt;object&gt;<br />
-Only list refs which points at the given object.</p></li>
+<p>&ndash;points-at &lt;object&gt;<br />
+Only list refs which points at the given object.</p>
 
-<li><p>&ndash;merged [&lt;object&gt;]<br />
-Only list refs whose tips are reachable from the specified commit
-(HEAD if not specified), incompatible with <code>--no-merged</code>.</p></li>
+<p>&ndash;merged [&lt;object&gt;]<br />
+Only list refs whose tips are reachable from the specified commit (HEAD
+if not specified), incompatible with <code>--no-merged</code>.</p>
 
-<li><p>&ndash;no-merged [&lt;object&gt;]<br />
-Only list refs whose tips are not reachable from the specified
-commit (HEAD if not specified), incompatible with <code>--merged</code>.</p></li>
+<p>&ndash;no-merged [&lt;object&gt;]<br />
+Only list refs whose tips are not reachable from the specified commit
+(HEAD if not specified), incompatible with <code>--merged</code>.</p>
 
-<li><p>&ndash;contains [&lt;object&gt;]<br />
+<p>&ndash;contains [&lt;object&gt;]<br />
 Only list refs which contain the specified commit (HEAD if not
-specified).</p></li>
+specified).</p>
 
-<li><p>&ndash;no-contains [&lt;object&gt;]<br />
+<p>&ndash;no-contains [&lt;object&gt;]<br />
 Only list refs which don’t contain the specified commit (HEAD if not
-specified).</p></li>
+specified).</p>
 
-<li><p>&ndash;ignore-case<br />
-Sorting and filtering refs are case insensitive.</p></li>
-</ul>
+<p>&ndash;ignore-case<br />
+Sorting and filtering refs are case insensitive.</p>
 
 <h2 id="field-names">FIELD NAMES</h2>
 
@@ -192,95 +187,94 @@ to interpolate into the resulting output, or as sort keys.</p>
 
 <p>For all objects, the following names can be used:</p>
 
-<ul>
-<li><p>refname<br />
+<p>refname<br />
 The name of the ref (the part after $GIT_DIR/). For a non-ambiguous
-short name of the ref append <code>:short</code>. The option
-core.warnAmbiguousRefs is used to select the strict abbreviation
-mode. If <code>lstrip=&lt;N&gt;</code> (<code>rstrip=&lt;N&gt;</code>) is appended, strips <code>&lt;N&gt;</code>
-slash-separated path components from the front (back) of the refname
-(e.g. <code>%(refname:lstrip=2)</code> turns <code>refs/tags/foo</code> into <code>foo</code> and
-<code>%(refname:rstrip=2)</code> turns <code>refs/tags/foo</code> into <code>refs</code>). If <code>&lt;N&gt;</code>
-is a negative number, strip as many path components as necessary
-from the specified end to leave <code>-&lt;N&gt;</code> path components (e.g.
-<code>%(refname:lstrip=-2)</code> turns <code>refs/tags/foo</code> into <code>tags/foo</code> and
-<code>%(refname:rstrip=-1)</code> turns <code>refs/tags/foo</code> into <code>refs</code>). When the
-ref does not have enough components, the result becomes an empty
-string if stripping with positive &lt;N&gt;, or it becomes the full
-refname if stripping with negative &lt;N&gt;. Neither is an error.</p>
+short name of the ref append <code>:short</code>. The option core.warnAmbiguousRefs
+is used to select the strict abbreviation mode. If <code>lstrip=&lt;N&gt;</code>
+(<code>rstrip=&lt;N&gt;</code>) is appended, strips <code>&lt;N&gt;</code> slash-separated path components
+from the front (back) of the refname (e.g. <code>%(refname:lstrip=2)</code> turns
+<code>refs/tags/foo</code> into <code>foo</code> and <code>%(refname:rstrip=2)</code> turns
+<code>refs/tags/foo</code> into <code>refs</code>). If <code>&lt;N&gt;</code> is a negative number, strip as
+many path components as necessary from the specified end to leave <code>-&lt;N&gt;</code>
+path components (e.g. <code>%(refname:lstrip=-2)</code> turns <code>refs/tags/foo</code> into
+<code>tags/foo</code> and <code>%(refname:rstrip=-1)</code> turns <code>refs/tags/foo</code> into
+<code>refs</code>). When the ref does not have enough components, the result
+becomes an empty string if stripping with positive &lt;N&gt;, or it
+becomes the full refname if stripping with negative &lt;N&gt;. Neither
+is an error.</p>
 
-<p><code>strip</code> can be used as a synomym to <code>lstrip</code>.</p></li>
+<p><code>strip</code> can be used as a synomym to <code>lstrip</code>.</p>
 
-<li><p>objecttype<br />
-The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p></li>
+<p>objecttype<br />
+The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p>
 
-<li><p>objectsize<br />
-The size of the object (the same as <em>git cat-file -s</em> reports).</p></li>
+<p>objectsize<br />
+The size of the object (the same as <em>git cat-file -s</em> reports).</p>
 
-<li><p>objectname<br />
+<p>objectname<br />
 The object name (aka SHA-1). For a non-ambiguous abbreviation of the
-object name append <code>:short</code>. For an abbreviation of the object name
-with desired length append <code>:short=&lt;length&gt;</code>, where the minimum
-length is MINIMUM_ABBREV. The length may be exceeded to ensure
-unique object names.</p></li>
+object name append <code>:short</code>. For an abbreviation of the object name with
+desired length append <code>:short=&lt;length&gt;</code>, where the minimum length is
+MINIMUM_ABBREV. The length may be exceeded to ensure unique object
+names.</p>
 
-<li><p>upstream<br />
+<p>upstream<br />
 The name of a local ref which can be considered “upstream” from the
-displayed ref. Respects <code>:short</code>, <code>:lstrip</code> and <code>:rstrip</code> in the
-same way as <code>refname</code> above. Additionally respects <code>:track</code> to show
-&ldquo;[ahead N, behind M]&rdquo; and <code>:trackshort</code> to show the terse version:
-&ldquo;&gt;&rdquo; (ahead), &ldquo;&lt;&rdquo; (behind), &ldquo;&lt;&gt;&rdquo; (ahead and behind), or &ldquo;=&rdquo; (in
-sync). <code>:track</code> also prints &ldquo;[gone]&rdquo; whenever unknown upstream ref
-is encountered. Append <code>:track,nobracket</code> to show tracking
-information without brackets (i.e &ldquo;ahead N, behind M&rdquo;). Has no
-effect if the ref does not have tracking information associated with
-it. All the options apart from <code>nobracket</code> are mutually exclusive,
-but if used together the last option is selected.</p></li>
+displayed ref. Respects <code>:short</code>, <code>:lstrip</code> and <code>:rstrip</code> in the same
+way as <code>refname</code> above. Additionally respects <code>:track</code> to show &ldquo;[ahead
+N, behind M]&rdquo; and <code>:trackshort</code> to show the terse version: &ldquo;&gt;&ldquo;
+(ahead), &ldquo;&lt;&rdquo; (behind), &ldquo;&lt;&gt;&rdquo; (ahead and behind), or &ldquo;=&rdquo; (in
+sync). <code>:track</code> also prints &ldquo;[gone]&rdquo; whenever unknown upstream ref is
+encountered. Append <code>:track,nobracket</code> to show tracking information
+without brackets (i.e &ldquo;ahead N, behind M&rdquo;). Has no effect if the ref
+does not have tracking information associated with it. All the options
+apart from <code>nobracket</code> are mutually exclusive, but if used together the
+last option is selected.</p>
 
-<li><p>push<br />
-The name of a local ref which represents the <code>@{push}</code> location for
-the displayed ref. Respects <code>:short</code>, <code>:lstrip</code>, <code>:rstrip</code>,
-<code>:track</code>, and <code>:trackshort</code> options as <code>upstream</code> does. Produces an
-empty string if no <code>@{push}</code> ref is configured.</p></li>
+<p>push<br />
+The name of a local ref which represents the <code>@{push}</code> location for the
+displayed ref. Respects <code>:short</code>, <code>:lstrip</code>, <code>:rstrip</code>, <code>:track</code>, and
+<code>:trackshort</code> options as <code>upstream</code> does. Produces an empty string if no
+<code>@{push}</code> ref is configured.</p>
 
-<li><p>HEAD<br />
+<p>HEAD<br />
 <em>*</em> if HEAD matches current ref (the checked out branch), &lsquo; &lsquo;
-otherwise.</p></li>
+otherwise.</p>
 
-<li><p>color<br />
-Change output color. Followed by <code>:&lt;colorname&gt;</code>, where color names
-are described under Values in the &ldquo;CONFIGURATION FILE&rdquo; section of
-<a href="../git-config">git-config(1)</a>. For example, <code>%(color:bold red)</code>.</p></li>
+<p>color<br />
+Change output color. Followed by <code>:&lt;colorname&gt;</code>, where color names are
+described under Values in the &ldquo;CONFIGURATION FILE&rdquo; section of
+<a href="../git-config">git-config(1)</a>. For example,
+<code>%(color:bold                   red)</code>.</p>
 
-<li><p>align<br />
+<p>align<br />
 Left-, middle-, or right-align the content between %(align:…) and
 %(end). The &ldquo;align:&rdquo; is followed by <code>width=&lt;width&gt;</code> and
 <code>position=&lt;position&gt;</code> in any order separated by a comma, where the
 <code>&lt;position&gt;</code> is either left, right or middle, default being left and
 <code>&lt;width&gt;</code> is the total length of the content with alignment. For
-brevity, the &ldquo;width=&rdquo; and/or &ldquo;position=&rdquo; prefixes may be omitted,
-and bare &lt;width&gt; and &lt;position&gt; used instead. For instance,
-<code>%(align:&lt;width&gt;,&lt;position&gt;)</code>. If the contents length is more than
-the width then no alignment is performed. If used with <code>--quote</code>
-everything in between %(align:…) and %(end) is quoted, but if nested
-then only the topmost level performs quoting.</p></li>
+brevity, the &ldquo;width=&rdquo; and/or &ldquo;position=&rdquo; prefixes may be omitted, and
+bare &lt;width&gt; and &lt;position&gt; used instead. For instance,
+<code>%(align:&lt;width&gt;,&lt;position&gt;)</code>. If the contents length is more than the
+width then no alignment is performed. If used with <code>--quote</code> everything
+in between %(align:…) and %(end) is quoted, but if nested then only the
+topmost level performs quoting.</p>
 
-<li><p>if<br />
-Used as %(if)…%(then)…%(end) or %(if)…%(then)…%(else)…%(end). If
-there is an atom with value or string literal after the %(if) then
-everything after the %(then) is printed, else if the %(else) atom is
-used, then everything after %(else) is printed. We ignore space when
-evaluating the string before %(then), this is useful when we use the
-%(HEAD) atom which prints either &ldquo;*&rdquo; or &ldquo; &rdquo; and we want to apply
-the <em>if</em> condition only on the <em>HEAD</em> ref. Append
-&ldquo;:equals=&lt;string&gt;&rdquo; or &ldquo;:notequals=&lt;string&gt;&rdquo; to compare the value
-between the %(if:…) and %(then) atoms with the given string.</p></li>
+<p>if<br />
+Used as %(if)…%(then)…%(end) or %(if)…%(then)…%(else)…%(end). If there
+is an atom with value or string literal after the %(if) then everything
+after the %(then) is printed, else if the %(else) atom is used, then
+everything after %(else) is printed. We ignore space when evaluating the
+string before %(then), this is useful when we use the %(HEAD) atom which
+prints either &ldquo;*&rdquo; or &ldquo; &rdquo; and we want to apply the <em>if</em> condition only
+on the <em>HEAD</em> ref. Append &ldquo;:equals=&lt;string&gt;&rdquo; or
+&ldquo;:notequals=&lt;string&gt;&rdquo; to compare the value between the %(if:…) and
+%(then) atoms with the given string.</p>
 
-<li><p>symref<br />
-The ref which the given symbolic ref refers to. If not a symbolic
-ref, nothing is printed. Respects the <code>:short</code>, <code>:lstrip</code> and
-<code>:rstrip</code> options in the same way as <code>refname</code> above.</p></li>
-</ul>
+<p>symref<br />
+The ref which the given symbolic ref refers to. If not a symbolic ref,
+nothing is printed. Respects the <code>:short</code>, <code>:lstrip</code> and <code>:rstrip</code>
+options in the same way as <code>refname</code> above.</p>
 
 <p>In addition to the above, for commit and tag objects, the header field
 names (<code>tree</code>, <code>parent</code>, <code>object</code>, <code>type</code>, and <code>tag</code>) can be used to
@@ -413,15 +407,13 @@ eval &quot;$eval&quot;
 </code></pre>
 
 <p>An example to show the usage of %(if)…%(then)…%(else)…%(end). This
-prefixes the current branch with a
-    star.</p>
+prefixes the current branch with a star.</p>
 
 <pre><code>git for-each-ref --format=&quot;%(if)%(HEAD)%(then)* %(else)  %(end)%(refname:short)&quot; refs/heads/
 </code></pre>
 
 <p>An example to show the usage of %(if)…%(then)…%(end). This prints the
-authorname, if
-    present.</p>
+authorname, if present.</p>
 
 <pre><code>git for-each-ref --format=&quot;%(refname)%(if)%(authorname)%(then) Authored by: %(authorname)%(end)&quot;
 </code></pre>
@@ -489,7 +481,7 @@ authorname, if
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

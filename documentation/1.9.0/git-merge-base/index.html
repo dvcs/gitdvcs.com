@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git merge-base [-a|--all] &lt;commit&gt; &lt;commit&gt;…
+<pre><code>git merge-base [-a|--all] &lt;commit&gt; &lt;commit&gt;…
 git merge-base [-a|--all] --octopus &lt;commit&gt;…
 git merge-base --is-ancestor &lt;commit&gt; &lt;commit&gt;
 git merge-base --independent &lt;commit&gt;…
@@ -139,39 +139,35 @@ of the commit arguments if more than two commits are specified. This is
 different from <a href="../git-show-branch">git-show-branch(1)</a> when used with
 the <code>--merge-base</code> option.</p>
 
-<ul>
-<li><p>&ndash;octopus<br />
+<p>&ndash;octopus<br />
 Compute the best common ancestors of all supplied commits, in
 preparation for an n-way merge. This mimics the behavior of <em>git
-show-branch &ndash;merge-base</em>.</p></li>
+show-branch &ndash;merge-base</em>.</p>
 
-<li><p>&ndash;independent<br />
-Instead of printing merge bases, print a minimal subset of the
-supplied commits with the same ancestors. In other words, among the
-commits given, list those which cannot be reached from any other.
-This mimics the behavior of <em>git show-branch &ndash;independent</em>.</p></li>
+<p>&ndash;independent<br />
+Instead of printing merge bases, print a minimal subset of the supplied
+commits with the same ancestors. In other words, among the commits
+given, list those which cannot be reached from any other. This mimics
+the behavior of <em>git show-branch &ndash;independent</em>.</p>
 
-<li><p>&ndash;is-ancestor<br />
+<p>&ndash;is-ancestor<br />
 Check if the first &lt;commit&gt; is an ancestor of the second
 &lt;commit&gt;, and exit with status 0 if true, or with status 1 if not.
-Errors are signaled by a non-zero status that is not 1.</p></li>
+Errors are signaled by a non-zero status that is not 1.</p>
 
-<li><p>&ndash;fork-point<br />
+<p>&ndash;fork-point<br />
 Find the point at which a branch (or any history that leads to
-&lt;commit&gt;) forked from another branch (or any reference) &lt;ref&gt;.
-This does not just look for the common ancestor of the two commits,
-but also takes into account the reflog of &lt;ref&gt; to see if the
-history leading to &lt;commit&gt; forked from an earlier incarnation of
-the branch &lt;ref&gt; (see discussion on this mode below).</p></li>
-</ul>
+&lt;commit&gt;) forked from another branch (or any reference)
+&lt;ref&gt;. This does not just look for the common ancestor of the two
+commits, but also takes into account the reflog of &lt;ref&gt; to see if
+the history leading to &lt;commit&gt; forked from an earlier incarnation
+of the branch &lt;ref&gt; (see discussion on this mode below).</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li>-a<br />
---all<br />
-Output all merge bases for the commits, instead of just one.</li>
-</ul>
+<p>-a<br />
+&ndash;all<br />
+Output all merge bases for the commits, instead of just one.</p>
 
 <h2 id="discussion">DISCUSSION</h2>
 
@@ -255,9 +251,10 @@ fi
 
 <h2 id="discussion-on-fork-point-mode">Discussion on fork-point mode</h2>
 
-<p>After working on the <code>topic</code> branch created with <code>git checkout -b topic
-origin/master</code>, the history of remote-tracking branch <code>origin/master</code>
-may have been rewound and rebuilt, leading to a history of this shape:</p>
+<p>After working on the <code>topic</code> branch created with
+<code>git checkout -b topic origin/master</code>, the history of remote-tracking
+branch <code>origin/master</code> may have been rewound and rebuilt, leading to a
+history of this shape:</p>
 
 <pre><code>                 o---B1
                 /
@@ -343,7 +340,7 @@ $ git rebase --onto origin/master $fork_point topic
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

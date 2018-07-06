@@ -107,12 +107,11 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git-upload-pack [--[no-]strict] [--timeout=&lt;n&gt;] [--stateless-rpc]
+<pre><code>git-upload-pack [--[no-]strict] [--timeout=&lt;n&gt;] [--stateless-rpc]
                   [--advertise-refs] &lt;directory&gt;
 DESCRIPTION
-</code></pre>
 
-<pre><code>Invoked by 'git fetch-pack', learns what
+Invoked by 'git fetch-pack', learns what
 objects the other side is missing, and sends them after packing.
 
 This command is usually not invoked directly by the end user.
@@ -124,26 +123,25 @@ repository.  For push operations, see 'git send-pack'.
 OPTIONS
 </code></pre>
 
-<ul>
-<li><p>&ndash;[no-]strict<br />
-Do not try &lt;directory&gt;/.git/ if &lt;directory&gt; is no Git directory.</p></li>
+<p>&ndash;[no-]strict<br />
+Do not try &lt;directory&gt;/.git/ if &lt;directory&gt; is no Git
+directory.</p>
 
-<li><p>&ndash;timeout=&lt;n&gt;<br />
-Interrupt transfer after &lt;n&gt; seconds of inactivity.</p></li>
+<p>&ndash;timeout=&lt;n&gt;<br />
+Interrupt transfer after &lt;n&gt; seconds of inactivity.</p>
 
-<li><p>&ndash;stateless-rpc<br />
-Perform only a single read-write cycle with stdin and stdout. This
-fits with the HTTP POST request processing model where a program may
-read the request, write a response, and must exit.</p></li>
+<p>&ndash;stateless-rpc<br />
+Perform only a single read-write cycle with stdin and stdout. This fits
+with the HTTP POST request processing model where a program may read the
+request, write a response, and must exit.</p>
 
-<li><p>&ndash;advertise-refs<br />
+<p>&ndash;advertise-refs<br />
 Only the initial ref advertisement is output, and the program exits
-immediately. This fits with the HTTP GET request model, where no
-request content is received but a response must be produced.</p></li>
+immediately. This fits with the HTTP GET request model, where no request
+content is received but a response must be produced.</p>
 
-<li><p>&lt;directory&gt;<br />
-The repository to sync from.</p></li>
-</ul>
+<p>&lt;directory&gt;<br />
+The repository to sync from.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -208,7 +206,7 @@ The repository to sync from.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

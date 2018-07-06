@@ -114,8 +114,9 @@ $GITWEBDIR/gitweb_config.perl</p>
 
 <p>The gitweb CGI script for viewing Git repositories over the web uses a
 perl script fragment as its configuration file. You can set variables
-using &ldquo;<code>our $variable = value</code>&rdquo;; text from a &ldquo;#&rdquo; character until the
-end of a line is ignored. See <strong>perlsyn</strong>(1) for details.</p>
+using &ldquo;<code>our $variable =               value</code>&rdquo;; text from a &ldquo;#&ldquo;
+character until the end of a line is ignored. See <strong>perlsyn</strong>(1) for
+details.</p>
 
 <p>An example:</p>
 
@@ -174,9 +175,9 @@ non-empty value.</p>
 <p>The syntax of the configuration files is that of Perl, since these files
 are handled by sourcing them as fragments of Perl code (the language
 that gitweb itself is written in). Variables are typically set using the
-<code>our</code> qualifier (as in &ldquo;<code>our $variable = &lt;value&gt;;</code>&rdquo;) to avoid syntax
-errors if a new version of gitweb no longer uses a variable and
-therefore stops declaring it.</p>
+<code>our</code> qualifier (as in &ldquo;<code>our $variable               = &lt;value&gt;;</code>&rdquo;) to
+avoid syntax errors if a new version of gitweb no longer uses a variable
+and therefore stops declaring it.</p>
 
 <p>You can include other configuration file using read_config_file()
 subroutine. For example, one might want to put gitweb configuration
@@ -214,12 +215,11 @@ repositories, and how repositories are displayed and accessed.</p>
 <p>See also &ldquo;Repositories&rdquo; and later subsections in
 <a href="../gitweb">gitweb(1)</a> manpage.</p>
 
-<ul>
-<li><p>$projectroot<br />
-Absolute filesystem path which will be prepended to project path;
-the path to repository is <code>$projectroot/$project</code>. Set to
-<code>$GITWEB_PROJECTROOT</code> during installation. This variable has to be
-set correctly for gitweb to find repositories.</p>
+<p>$projectroot<br />
+Absolute filesystem path which will be prepended to project path; the
+path to repository is <code>$projectroot/$project</code>. Set to
+<code>$GITWEB_PROJECTROOT</code> during installation. This variable has to be set
+correctly for gitweb to find repositories.</p>
 
 <p>For example, if <code>$projectroot</code> is set to &ldquo;/srv/git&rdquo; by putting the
 following in gitweb config file:</p>
@@ -237,56 +237,54 @@ following in gitweb config file:</p>
 <pre><code>http://git.example.com/gitweb.cgi/foo/bar.git
 </code></pre>
 
-<p>will map to the path <em>/srv/git/foo/bar.git</em> on the filesystem.</p></li>
+<p>will map to the path <em>/srv/git/foo/bar.git</em> on the filesystem.</p>
 
-<li><p>$projects_list<br />
-Name of a plain text file listing projects, or a name of directory
-to be scanned for projects.</p>
+<p>$projects_list<br />
+Name of a plain text file listing projects, or a name of directory to be
+scanned for projects.</p>
 
 <p>Project list files should list one project per line, with each line
-having the following
-    format</p>
+having the following format</p>
 
 <pre><code>&lt;URI-encoded filesystem path to repository&gt; SP &lt;URI-encoded repository owner&gt;
 </code></pre>
 
-<p>The default value of this variable is determined by the
-<code>GITWEB_LIST</code> makefile variable at installation time. If this
-variable is empty, gitweb will fall back to scanning the
-<code>$projectroot</code> directory for repositories.</p></li>
+<p>The default value of this variable is determined by the <code>GITWEB_LIST</code>
+makefile variable at installation time. If this variable is empty,
+gitweb will fall back to scanning the <code>$projectroot</code> directory for
+repositories.</p>
 
-<li><p>$project_maxdepth<br />
+<p>$project_maxdepth<br />
 If <code>$projects_list</code> variable is unset, gitweb will recursively scan
 filesystem for Git repositories. The <code>$project_maxdepth</code> is used to
-limit traversing depth, relative to <code>$projectroot</code> (starting point);
-it means that directories which are further from <code>$projectroot</code> than
+limit traversing depth, relative to <code>$projectroot</code> (starting point); it
+means that directories which are further from <code>$projectroot</code> than
 <code>$project_maxdepth</code> will be skipped.</p>
 
-<p>It is purely performance optimization, originally intended for MacOS
-X, where recursive directory traversal is slow. Gitweb follows
-symbolic links, but it detects cycles, ignoring any duplicate files
-and directories.</p>
+<p>It is purely performance optimization, originally intended for MacOS X,
+where recursive directory traversal is slow. Gitweb follows symbolic
+links, but it detects cycles, ignoring any duplicate files and
+directories.</p>
 
 <p>The default value of this variable is determined by the build-time
-configuration variable <code>GITWEB_PROJECT_MAXDEPTH</code>, which defaults to
-2007.</p></li>
+configuration variable <code>GITWEB_PROJECT_MAXDEPTH</code>, which defaults
+to 2007.</p>
 
-<li><p>$export_ok<br />
-Show repository only if this file exists (in repository). Only
-effective if this variable evaluates to true. Can be set when
-building gitweb by setting <code>GITWEB_EXPORT_OK</code>. This path is relative
-to <code>GIT_DIR</code>. git-daemon[1] uses <em>git-daemon-export-ok</em>, unless
-started with <code>--export-all</code>. By default this variable is not set,
-which means that this feature is turned off.</p></li>
+<p>$export_ok<br />
+Show repository only if this file exists (in repository). Only effective
+if this variable evaluates to true. Can be set when building gitweb by
+setting <code>GITWEB_EXPORT_OK</code>. This path is relative to <code>GIT_DIR</code>.
+git-daemon[1] uses <em>git-daemon-export-ok</em>, unless started with
+<code>--export-all</code>. By default this variable is not set, which means that
+this feature is turned off.</p>
 
-<li><p>$export_auth_hook<br />
+<p>$export_auth_hook<br />
 Function used to determine which repositories should be shown. This
-subroutine should take one parameter, the full path to a project,
-and if it returns true, that project will be included in the
-projects list and can be accessed through gitweb as long as it
-fulfills the other requirements described by $export_ok,
-$projects_list, and $projects_maxdepth.
-    Example:</p>
+subroutine should take one parameter, the full path to a project, and if
+it returns true, that project will be included in the projects list and
+can be accessed through gitweb as long as it fulfills the other
+requirements described by $export_ok, $projects_list, and
+$projects_maxdepth. Example:</p>
 
 <pre><code>our $export_auth_hook = sub { return -e &quot;$_[0]/git-daemon-export-ok&quot;; };
 </code></pre>
@@ -299,76 +297,71 @@ $projects_list, and $projects_maxdepth.
 <p>If not set (default), it means that this feature is disabled.</p>
 
 <p>See also more involved example in &ldquo;Controlling access to Git
-repositories&rdquo; subsection on <a href="../gitweb">gitweb(1)</a> manpage.</p></li>
+repositories&rdquo; subsection on <a href="../gitweb">gitweb(1)</a> manpage.</p>
 
-<li><p>$strict_export<br />
-Only allow viewing of repositories also shown on the overview page.
-This for example makes <code>$gitweb_export_ok</code> file decide if repository
-is available and not only if it is shown. If <code>$gitweb_list</code> points
-to file with list of project, only those repositories listed would
-be available for gitweb. Can be set during building gitweb via
-<code>GITWEB_STRICT_EXPORT</code>. By default this variable is not set, which
-means that you can directly access those repositories that are
-hidden from projects list page (e.g. the are not listed in the
-$projects_list file).</p></li>
-</ul>
+<p>$strict_export<br />
+Only allow viewing of repositories also shown on the overview page. This
+for example makes <code>$gitweb_export_ok</code> file decide if repository is
+available and not only if it is shown. If <code>$gitweb_list</code> points to file
+with list of project, only those repositories listed would be available
+for gitweb. Can be set during building gitweb via
+<code>GITWEB_STRICT_EXPORT</code>. By default this variable is not set, which means
+that you can directly access those repositories that are hidden from
+projects list page (e.g. the are not listed in the $projects_list
+file).</p>
 
 <h3 id="finding-files">Finding files</h3>
 
 <p>The following configuration variables tell gitweb where to find files.
 The values of these variables are paths on the filesystem.</p>
 
-<ul>
-<li><p>$GIT<br />
-Core git executable to use. By default set to <code>$GIT_BINDIR/git</code>,
-which in turn is by default set to <code>$(bindir)/git</code>. If you use Git
-installed from a binary package, you should usually set this to
-&ldquo;/usr/bin/git&rdquo;. This can just be &ldquo;git&rdquo; if your web server has a
-sensible PATH; from security point of view it is better to use
-absolute path to git binary. If you have multiple Git versions
-installed it can be used to choose which one to use. Must be
-(correctly) set for gitweb to be able to work.</p></li>
+<p>$GIT<br />
+Core git executable to use. By default set to <code>$GIT_BINDIR/git</code>, which
+in turn is by default set to <code>$(bindir)/git</code>. If you use Git installed
+from a binary package, you should usually set this to &ldquo;/usr/bin/git&rdquo;.
+This can just be &ldquo;git&rdquo; if your web server has a sensible PATH; from
+security point of view it is better to use absolute path to git binary.
+If you have multiple Git versions installed it can be used to choose
+which one to use. Must be (correctly) set for gitweb to be able to work.</p>
 
-<li><p>$mimetypes_file<br />
-File to use for (filename extension based) guessing of MIME types
-before trying <em>/etc/mime.types</em>. <strong>NOTE</strong> that this path, if
-relative, is taken as relative to the current Git repository, not to
-CGI script. If unset, only <em>/etc/mime.types</em> is used (if present on
-filesystem). If no mimetypes file is found, mimetype guessing based
-on extension of file is disabled. Unset by default.</p></li>
+<p>$mimetypes_file<br />
+File to use for (filename extension based) guessing of MIME types before
+trying <em>/etc/mime.types</em>. <strong>NOTE</strong> that this path, if relative, is taken
+as relative to the current Git repository, not to CGI script. If unset,
+only <em>/etc/mime.types</em> is used (if present on filesystem). If no
+mimetypes file is found, mimetype guessing based on extension of file is
+disabled. Unset by default.</p>
 
-<li><p>$highlight_bin<br />
+<p>$highlight_bin<br />
 Path to the highlight executable to use (it must be the one from
 <a href="http://www.andre-simon.de">http://www.andre-simon.de</a> due to assumptions about parameters and
-output). By default set to <em>highlight</em>; set it to full path to
-highlight executable if it is not installed on your web server’s
-PATH. Note that <em>highlight</em> feature must be set for gitweb to
-actually use syntax highlighting.</p>
+output). By default set to <em>highlight</em>; set it to full path to highlight
+executable if it is not installed on your web server’s PATH. Note that
+<em>highlight</em> feature must be set for gitweb to actually use syntax
+highlighting.</p>
 
-<p><strong>NOTE</strong>: for a file to be highlighted, its syntax type must be
-detected and that syntax must be supported by &ldquo;highlight&rdquo;. The
-default syntax detection is minimal, and there are many supported
-syntax types with no detection by default. There are three options
-for adding syntax detection. The first and second priority are
-<code>%highlight_basename</code> and <code>%highlight_ext</code>, which detect based on
-basename (the full filename, for example &ldquo;Makefile&rdquo;) and extension
-(for example &ldquo;sh&rdquo;). The keys of these hashes are the basename and
-extension, respectively, and the value for a given key is the name
-of the syntax to be passed via <code>--syntax &lt;syntax&gt;</code> to &ldquo;highlight&rdquo;.
-The last priority is the &ldquo;highlight&rdquo; configuration of <code>Shebang</code>
-regular expressions to detect the language based on the first line
-in the file, (for example, matching the line &ldquo;#!/bin/bash&rdquo;). See
+<p><strong>NOTE</strong>: for a file to be highlighted, its syntax type must be detected
+and that syntax must be supported by &ldquo;highlight&rdquo;. The default syntax
+detection is minimal, and there are many supported syntax types with no
+detection by default. There are three options for adding syntax
+detection. The first and second priority are <code>%highlight_basename</code> and
+<code>%highlight_ext</code>, which detect based on basename (the full filename, for
+example &ldquo;Makefile&rdquo;) and extension (for example &ldquo;sh&rdquo;). The keys of these
+hashes are the basename and extension, respectively, and the value for a
+given key is the name of the syntax to be passed via <code>--syntax &lt;syntax&gt;</code>
+to &ldquo;highlight&rdquo;. The last priority is the &ldquo;highlight&rdquo; configuration of
+<code>Shebang</code> regular expressions to detect the language based on the first
+line in the file, (for example, matching the line &ldquo;#!/bin/bash&rdquo;). See
 the highlight documentation and the default config at
 /etc/highlight/filetypes.conf for more details.</p>
 
-<p>For example if repositories you are hosting use &ldquo;phtml&rdquo; extension
-for PHP files, and you want to have correct syntax-highlighting for
-those files, you can add the following to gitweb configuration:</p>
+<p>For example if repositories you are hosting use &ldquo;phtml&rdquo; extension for
+PHP files, and you want to have correct syntax-highlighting for those
+files, you can add the following to gitweb configuration:</p>
 
 <pre><code>our %highlight_ext;
 $highlight_ext{'phtml'} = 'php';
-</code></pre></li>
-</ul>
+</code></pre>
 
 <h3 id="links-and-their-targets">Links and their targets</h3>
 
@@ -378,13 +371,12 @@ page prerequisites (stylesheet, favicon, images, scripts). Usually they
 are left at their default values, with the possible exception of
 <code>@stylesheets</code> variable.</p>
 
-<ul>
-<li><p>@stylesheets<br />
-List of URIs of stylesheets (relative to the base URI of a page).
-You might specify more than one stylesheet, for example to use
-&ldquo;gitweb.css&rdquo; as base with site specific modifications in a separate
-stylesheet to make it easier to upgrade gitweb. For example, you can
-add a <code>site</code> stylesheet by putting</p>
+<p>@stylesheets<br />
+List of URIs of stylesheets (relative to the base URI of a page). You
+might specify more than one stylesheet, for example to use &ldquo;gitweb.css&rdquo;
+as base with site specific modifications in a separate stylesheet to
+make it easier to upgrade gitweb. For example, you can add a <code>site</code>
+stylesheet by putting</p>
 
 <pre><code>push @stylesheets, &quot;gitweb-site.css&quot;;
 </code></pre>
@@ -392,77 +384,70 @@ add a <code>site</code> stylesheet by putting</p>
 <p>in the gitweb config file. Those values that are relative paths are
 relative to base URI of gitweb.</p>
 
-<p>This list should contain the URI of gitweb’s standard stylesheet.
-The default URI of gitweb stylesheet can be set at build time using
-the <code>GITWEB_CSS</code> makefile variable. Its default value is
-<em>static/gitweb.css</em> (or <em>static/gitweb.min.css</em> if the <code>CSSMIN</code>
-variable is defined, i.e. if CSS minifier is used during build).</p>
+<p>This list should contain the URI of gitweb’s standard stylesheet. The
+default URI of gitweb stylesheet can be set at build time using the
+<code>GITWEB_CSS</code> makefile variable. Its default value is <em>static/gitweb.css</em>
+(or <em>static/gitweb.min.css</em> if the <code>CSSMIN</code> variable is defined, i.e. if
+CSS minifier is used during build).</p>
 
-<p><strong>Note</strong>: there is also a legacy <code>$stylesheet</code> configuration
-variable, which was used by older gitweb. If <code>$stylesheet</code> variable
-is defined, only CSS stylesheet given by this variable is used by
-gitweb.</p></li>
+<p><strong>Note</strong>: there is also a legacy <code>$stylesheet</code> configuration variable,
+which was used by older gitweb. If <code>$stylesheet</code> variable is defined,
+only CSS stylesheet given by this variable is used by gitweb.</p>
 
-<li><p>$logo<br />
-Points to the location where you put <em>git-logo.png</em> on your web
-server, or to be more the generic URI of logo, 72x27 size). This
-image is displayed in the top right corner of each gitweb page and
-used as a logo for the Atom feed. Relative to the base URI of gitweb
-(as a path). Can be adjusted when building gitweb using
-<code>GITWEB_LOGO</code> variable By default set to <em>static/git-logo.png</em>.</p></li>
+<p>$logo<br />
+Points to the location where you put <em>git-logo.png</em> on your web server,
+or to be more the generic URI of logo, 72x27 size). This image is
+displayed in the top right corner of each gitweb page and used as a logo
+for the Atom feed. Relative to the base URI of gitweb (as a path). Can
+be adjusted when building gitweb using <code>GITWEB_LOGO</code> variable By default
+set to <em>static/git-logo.png</em>.</p>
 
-<li><p>$favicon<br />
+<p>$favicon<br />
 Points to the location where you put <em>git-favicon.png</em> on your web
-server, or to be more the generic URI of favicon, which will be
-served as &ldquo;image/png&rdquo; type. Web browsers that support favicons
-(website icons) may display them in the browser’s URL bar and next
-to the site name in bookmarks. Relative to the base URI of gitweb.
-Can be adjusted at build time using <code>GITWEB_FAVICON</code> variable. By
-default set to <em>static/git-favicon.png</em>.</p></li>
+server, or to be more the generic URI of favicon, which will be served
+as &ldquo;image/png&rdquo; type. Web browsers that support favicons (website icons)
+may display them in the browser’s URL bar and next to the site name in
+bookmarks. Relative to the base URI of gitweb. Can be adjusted at build
+time using <code>GITWEB_FAVICON</code> variable. By default set to
+<em>static/git-favicon.png</em>.</p>
 
-<li><p>$javascript<br />
-Points to the location where you put <em>gitweb.js</em> on your web server,
-or to be more generic the URI of JavaScript code used by gitweb.
-Relative to the base URI of gitweb. Can be set at build time using
-the <code>GITWEB_JS</code> build-time configuration variable.</p>
+<p>$javascript<br />
+Points to the location where you put <em>gitweb.js</em> on your web server, or
+to be more generic the URI of JavaScript code used by gitweb. Relative
+to the base URI of gitweb. Can be set at build time using the
+<code>GITWEB_JS</code> build-time configuration variable.</p>
 
 <p>The default value is either <em>static/gitweb.js</em>, or
-<em>static/gitweb.min.js</em> if the <code>JSMIN</code> build variable was defined,
-i.e. if JavaScript minifier was used at build time. <strong>Note</strong> that
-this single file is generated from multiple individual JavaScript
-&ldquo;modules&rdquo;.</p></li>
+<em>static/gitweb.min.js</em> if the <code>JSMIN</code> build variable was defined, i.e.
+if JavaScript minifier was used at build time. <strong>Note</strong> that this single
+file is generated from multiple individual JavaScript &ldquo;modules&rdquo;.</p>
 
-<li><p>$home_link<br />
-Target of the home link on the top of all pages (the first part of
-view &ldquo;breadcrumbs&rdquo;). By default it is set to the absolute URI of a
-current page (to the value of <code>$my_uri</code> variable, or to &ldquo;/&rdquo; if
-<code>$my_uri</code> is undefined or is an empty string).</p></li>
+<p>$home_link<br />
+Target of the home link on the top of all pages (the first part of view
+&ldquo;breadcrumbs&rdquo;). By default it is set to the absolute URI of a current
+page (to the value of <code>$my_uri</code> variable, or to &ldquo;/&rdquo; if <code>$my_uri</code> is
+undefined or is an empty string).</p>
 
-<li><p>$home_link_str<br />
+<p>$home_link_str<br />
 Label for the &ldquo;home link&rdquo; at the top of all pages, leading to
-<code>$home_link</code> (usually the main gitweb page, which contains the
-projects list). It is used as the first component of gitweb’s
-&ldquo;breadcrumb trail&rdquo;: <code>&lt;home link&gt; / &lt;project&gt; / &lt;action&gt;</code>. Can be set
-at build time using the <code>GITWEB_HOME_LINK_STR</code> variable. By default
-it is set to &ldquo;projects&rdquo;, as this link leads to the list of projects.
-Another popular choice is to set it to the name of site. Note that
-it is treated as raw HTML so it should not be set from untrusted
-sources.</p></li>
+<code>$home_link</code> (usually the main gitweb page, which contains the projects
+list). It is used as the first component of gitweb’s &ldquo;breadcrumb trail&rdquo;:
+<code>&lt;home link&gt; / &lt;project&gt; /                     &lt;action&gt;</code>. Can be set at
+build time using the <code>GITWEB_HOME_LINK_STR</code> variable. By default it is
+set to &ldquo;projects&rdquo;, as this link leads to the list of projects. Another
+popular choice is to set it to the name of site. Note that it is treated
+as raw HTML so it should not be set from untrusted sources.</p>
 
-<li><p>@extra_breadcrumbs<br />
-Additional links to be added to the start of the breadcrumb trail
-before the home link, to pages that are logically &ldquo;above&rdquo; the gitweb
-projects list, such as the organization and department which host
-the gitweb server. Each element of the list is a reference to an
-array, in which element 0 is the link text (equivalent to
-<code>$home_link_str</code>) and element 1 is the target URL (equivalent to
-<code>$home_link</code>).</p>
+<p>@extra_breadcrumbs<br />
+Additional links to be added to the start of the breadcrumb trail before
+the home link, to pages that are logically &ldquo;above&rdquo; the gitweb projects
+list, such as the organization and department which host the gitweb
+server. Each element of the list is a reference to an array, in which
+element 0 is the link text (equivalent to <code>$home_link_str</code>) and element
+1 is the target URL (equivalent to <code>$home_link</code>).</p>
 
 <p>For example, the following setting produces a breadcrumb trail like
-&ldquo;home / dev / projects / …&rdquo; where &ldquo;projects&rdquo; is the home link.</p></li>
-</ul>
-
-<!-- end list -->
+&ldquo;home / dev / projects / …&rdquo; where &ldquo;projects&rdquo; is the home link.</p>
 
 <pre><code>    our @extra_breadcrumbs = (
       [ 'home' =&gt; 'https://www.example.org/' ],
@@ -470,14 +455,12 @@ array, in which element 0 is the link text (equivalent to
     );
 </code></pre>
 
-<ul>
-<li>$logo_url<br />
+<p>$logo_url<br />
 $logo_label<br />
-URI and label (title) for the Git logo link (or your site logo, if
-you chose to use different logo image). By default, these both refer
-to Git homepage, <a href="https://git-scm.com">https://git-scm.com</a>; in the past, they pointed to
-Git documentation at <a href="https://www.kernel.org">https://www.kernel.org</a>.</li>
-</ul>
+URI and label (title) for the Git logo link (or your site logo, if you
+chose to use different logo image). By default, these both refer to Git
+homepage, <a href="https://git-scm.com">https://git-scm.com</a>; in the past, they pointed to Git
+documentation at <a href="https://www.kernel.org">https://www.kernel.org</a>.</p>
 
 <h3 id="changing-gitweb-s-look">Changing gitweb’s look</h3>
 
@@ -486,93 +469,87 @@ described below. You can change the site name, add common headers and
 footers for all pages, and add a description of this gitweb installation
 on its main page (which is the projects list page), etc.</p>
 
-<ul>
-<li><p>$site_name<br />
-Name of your site or organization, to appear in page titles. Set it
-to something descriptive for clearer bookmarks etc. If this variable
-is not set or is, then gitweb uses the value of the <code>SERVER_NAME</code>
-<code>CGI</code> environment variable, setting site name to &ldquo;$SERVER_NAME
-Git&rdquo;, or &ldquo;Untitled Git&rdquo; if this variable is not set (e.g. if running
-gitweb as standalone script).</p>
+<p>$site_name<br />
+Name of your site or organization, to appear in page titles. Set it to
+something descriptive for clearer bookmarks etc. If this variable is not
+set or is, then gitweb uses the value of the <code>SERVER_NAME</code> <code>CGI</code>
+environment variable, setting site name to &ldquo;$SERVER_NAME Git&rdquo;, or
+&ldquo;Untitled Git&rdquo; if this variable is not set (e.g. if running gitweb as
+standalone script).</p>
 
-<p>Can be set using the <code>GITWEB_SITENAME</code> at build time. Unset by
-default.</p></li>
+<p>Can be set using the <code>GITWEB_SITENAME</code> at build time. Unset by default.</p>
 
-<li><p>$site_html_head_string<br />
+<p>$site_html_head_string<br />
 HTML snippet to be included in the &lt;head&gt; section of each page.
 Can be set using <code>GITWEB_SITE_HTML_HEAD_STRING</code> at build time. No
-default value.</p></li>
+default value.</p>
 
-<li><p>$site_header<br />
+<p>$site_header<br />
 Name of a file with HTML to be included at the top of each page.
-Relative to the directory containing the <em>gitweb.cgi</em> script. Can be
-set using <code>GITWEB_SITE_HEADER</code> at build time. No default value.</p></li>
+Relative to the directory containing the <em>gitweb.cgi</em> script. Can be set
+using <code>GITWEB_SITE_HEADER</code> at build time. No default value.</p>
 
-<li><p>$site_footer<br />
+<p>$site_footer<br />
 Name of a file with HTML to be included at the bottom of each page.
-Relative to the directory containing the <em>gitweb.cgi</em> script. Can be
-set using <code>GITWEB_SITE_FOOTER</code> at build time. No default value.</p></li>
+Relative to the directory containing the <em>gitweb.cgi</em> script. Can be set
+using <code>GITWEB_SITE_FOOTER</code> at build time. No default value.</p>
 
-<li><p>$home_text<br />
+<p>$home_text<br />
 Name of a HTML file which, if it exists, is included on the gitweb
 projects overview page (&ldquo;projects_list&rdquo; view). Relative to the
 directory containing the gitweb.cgi script. Default value can be
-adjusted during build time using <code>GITWEB_HOMETEXT</code> variable. By
-default set to <em>indextext.html</em>.</p></li>
+adjusted during build time using <code>GITWEB_HOMETEXT</code> variable. By default
+set to <em>indextext.html</em>.</p>
 
-<li><p>$projects_list_description_width<br />
-The width (in characters) of the &ldquo;Description&rdquo; column of the
-projects list. Longer descriptions will be truncated (trying to cut
-at word boundary); the full description is available in the <em>title</em>
-attribute (usually shown on mouseover). The default is 25, which
-might be too small if you use long project descriptions.</p></li>
+<p>$projects_list_description_width<br />
+The width (in characters) of the &ldquo;Description&rdquo; column of the projects
+list. Longer descriptions will be truncated (trying to cut at word
+boundary); the full description is available in the <em>title</em> attribute
+(usually shown on mouseover). The default is 25, which might be too
+small if you use long project descriptions.</p>
 
-<li><p>$default_projects_order<br />
-Default value of ordering of projects on projects list page, which
-means the ordering used if you don’t explicitly sort projects list
-(if there is no &ldquo;o&rdquo; CGI query parameter in the URL). Valid values
-are &ldquo;none&rdquo; (unsorted), &ldquo;project&rdquo; (projects are by project name, i.e.
-path to repository relative to <code>$projectroot</code>), &ldquo;descr&rdquo; (project
-description), &ldquo;owner&rdquo;, and &ldquo;age&rdquo; (by date of most current commit).</p>
+<p>$default_projects_order<br />
+Default value of ordering of projects on projects list page, which means
+the ordering used if you don’t explicitly sort projects list (if there
+is no &ldquo;o&rdquo; CGI query parameter in the URL). Valid values are &ldquo;none&rdquo;
+(unsorted), &ldquo;project&rdquo; (projects are by project name, i.e. path to
+repository relative to <code>$projectroot</code>), &ldquo;descr&rdquo; (project description),
+&ldquo;owner&rdquo;, and &ldquo;age&rdquo; (by date of most current commit).</p>
 
-<p>Default value is &ldquo;project&rdquo;. Unknown value means unsorted.</p></li>
-</ul>
+<p>Default value is &ldquo;project&rdquo;. Unknown value means unsorted.</p>
 
 <h3 id="changing-gitweb-s-behavior">Changing gitweb’s behavior</h3>
 
 <p>These configuration variables control <em>internal</em> gitweb behavior.</p>
 
-<ul>
-<li><p>$default_blob_plain_mimetype<br />
-Default mimetype for the blob_plain (raw) view, if mimetype
-checking doesn’t result in some other type; by default &ldquo;text/plain&rdquo;.
-Gitweb guesses mimetype of a file to display based on extension of
-its filename, using <code>$mimetypes_file</code> (if set and file exists) and
-<em>/etc/mime.types</em> files (see <strong>mime.types</strong>(5) manpage; only
-filename extension rules are supported by gitweb).</p></li>
+<p>$default_blob_plain_mimetype<br />
+Default mimetype for the blob_plain (raw) view, if mimetype checking
+doesn’t result in some other type; by default &ldquo;text/plain&rdquo;. Gitweb
+guesses mimetype of a file to display based on extension of its
+filename, using <code>$mimetypes_file</code> (if set and file exists) and
+<em>/etc/mime.types</em> files (see <strong>mime.types</strong>(5) manpage; only filename
+extension rules are supported by gitweb).</p>
 
-<li><p>$default_text_plain_charset<br />
+<p>$default_text_plain_charset<br />
 Default charset for text files. If this is not set, the web server
-configuration will be used. Unset by default.</p></li>
+configuration will be used. Unset by default.</p>
 
-<li><p>$fallback_encoding<br />
-Gitweb assumes this charset when a line contains non-UTF-8
-characters. The fallback decoding is used without error checking, so
-it can be even &ldquo;utf-8&rdquo;. The value must be a valid encoding; see the
+<p>$fallback_encoding<br />
+Gitweb assumes this charset when a line contains non-UTF-8 characters.
+The fallback decoding is used without error checking, so it can be even
+&ldquo;utf-8&rdquo;. The value must be a valid encoding; see the
 <strong>Encoding::Supported</strong>(3pm) man page for a list. The default is
-&ldquo;latin1&rdquo;, aka. &ldquo;iso-8859-1&rdquo;.</p></li>
+&ldquo;latin1&rdquo;, aka. &ldquo;iso-8859-1&rdquo;.</p>
 
-<li><p>@diff_opts<br />
-Rename detection options for git-diff and git-diff-tree. The default
-is (&lsquo;-M&rsquo;); set it to (&lsquo;-C&rsquo;) or (&lsquo;-C&rsquo;, &lsquo;-C&rsquo;) to also detect copies,
-or set it to () i.e. empty list if you don’t want to have renames
-detection.</p>
+<p>@diff_opts<br />
+Rename detection options for git-diff and git-diff-tree. The default is
+(&lsquo;-M&rsquo;); set it to (&lsquo;-C&rsquo;) or (&lsquo;-C&rsquo;, &lsquo;-C&rsquo;) to also detect copies, or set
+it to () i.e. empty list if you don’t want to have renames detection.</p>
 
 <p><strong>Note</strong> that rename and especially copy detection can be quite
 CPU-intensive. Note also that non Git tools can have problems with
 patches generated with options mentioned above, especially when they
-involve file copies (&lsquo;-C&rsquo;) or criss-cross renames (&lsquo;-B&rsquo;).</p></li>
-</ul>
+involve file copies (&lsquo;-C&rsquo;) or criss-cross renames (&lsquo;-B&rsquo;).</p>
 
 <h3 id="some-optional-features-and-policies">Some optional features and policies</h3>
 
@@ -583,92 +560,85 @@ how gitweb looks does contain variables configuring administrative side
 of gitweb (e.g. cross-site scripting prevention; admittedly this as side
 effect affects how &ldquo;summary&rdquo; pages look like, or load limiting).</p>
 
-<ul>
-<li><p>@git_base_url_list<br />
-List of Git base URLs. These URLs are used to generate URLs
-describing from where to fetch a project, which are shown on project
-summary page. The full fetch URL is &ldquo;<code>$git_base_url/$project</code>&rdquo;, for
-each element of this list. You can set up multiple base URLs (for
-example one for <code>git://</code> protocol, and one for <code>http://</code> protocol).</p>
+<p>@git_base_url_list<br />
+List of Git base URLs. These URLs are used to generate URLs describing
+from where to fetch a project, which are shown on project summary page.
+The full fetch URL is &ldquo;<code>$git_base_url/$project</code>&rdquo;, for each element of
+this list. You can set up multiple base URLs (for example one for
+<code>git://</code> protocol, and one for <code>http://</code> protocol).</p>
 
 <p>Note that per repository configuration can be set in
 <em>$GIT_DIR/cloneurl</em> file, or as values of multi-value <code>gitweb.url</code>
-configuration variable in project config. Per-repository
-configuration takes precedence over value composed from
-<code>@git_base_url_list</code> elements and project name.</p>
+configuration variable in project config. Per-repository configuration
+takes precedence over value composed from <code>@git_base_url_list</code> elements
+and project name.</p>
 
-<p>You can setup one single value (single entry/item in this list) at
-build time by setting the <code>GITWEB_BASE_URL</code> build-time configuration
-variable. By default it is set to (), i.e. an empty list. This means
-that gitweb would not try to create project URL (to fetch) from
-project name.</p></li>
+<p>You can setup one single value (single entry/item in this list) at build
+time by setting the <code>GITWEB_BASE_URL</code> build-time configuration variable.
+By default it is set to (), i.e. an empty list. This means that gitweb
+would not try to create project URL (to fetch) from project name.</p>
 
-<li><p>$projects_list_group_categories<br />
-Whether to enable the grouping of projects by category on the
-project list page. The category of a project is determined by the
+<p>$projects_list_group_categories<br />
+Whether to enable the grouping of projects by category on the project
+list page. The category of a project is determined by the
 <code>$GIT_DIR/category</code> file or the <code>gitweb.category</code> variable in each
-repository’s configuration. Disabled by default (set to 0).</p></li>
+repository’s configuration. Disabled by default (set to 0).</p>
 
-<li><p>$project_list_default_category<br />
-Default category for projects for which none is specified. If this
-is set to the empty string, such projects will remain uncategorized
-and listed at the top, above categorized projects. Used only if
-project categories are enabled, which means if
-<code>$projects_list_group_categories</code> is true. By default set to &ldquo;&rdquo;
-(empty string).</p></li>
+<p>$project_list_default_category<br />
+Default category for projects for which none is specified. If this is
+set to the empty string, such projects will remain uncategorized and
+listed at the top, above categorized projects. Used only if project
+categories are enabled, which means if <code>$projects_list_group_categories</code>
+is true. By default set to &ldquo;&rdquo; (empty string).</p>
 
-<li><p>$prevent_xss<br />
+<p>$prevent_xss<br />
 If true, some gitweb features are disabled to prevent content in
-repositories from launching cross-site scripting (XSS) attacks. Set
-this to true if you don’t trust the content of your repositories.
-False by default (set to 0).</p></li>
+repositories from launching cross-site scripting (XSS) attacks. Set this
+to true if you don’t trust the content of your repositories. False by
+default (set to 0).</p>
 
-<li><p>$maxload<br />
+<p>$maxload<br />
 Used to set the maximum load that we will still respond to gitweb
-queries. If the server load exceeds this value then gitweb will
-return &ldquo;503 Service Unavailable&rdquo; error. The server load is taken to
-be 0 if gitweb cannot determine its value. Currently it works only
-on Linux, where it uses <em>/proc/loadavg</em>; the load there is the
-number of active tasks on the system — processes that are actually
-running — averaged over the last minute.</p>
+queries. If the server load exceeds this value then gitweb will return
+&ldquo;503 Service Unavailable&rdquo; error. The server load is taken to be 0 if
+gitweb cannot determine its value. Currently it works only on Linux,
+where it uses <em>/proc/loadavg</em>; the load there is the number of active
+tasks on the system — processes that are actually running — averaged
+over the last minute.</p>
 
-<p>Set <code>$maxload</code> to undefined value (<code>undef</code>) to turn this feature
-off. The default value is 300.</p></li>
+<p>Set <code>$maxload</code> to undefined value (<code>undef</code>) to turn this feature off.
+The default value is 300.</p>
 
-<li><p>$omit_age_column<br />
+<p>$omit_age_column<br />
 If true, omit the column with date of the most current commit on the
-projects list page. It can save a bit of I/O and a fork per
-repository.</p></li>
+projects list page. It can save a bit of I/O and a fork per repository.</p>
 
-<li><p>$omit_owner<br />
-If true prevents displaying information about repository owner.</p></li>
+<p>$omit_owner<br />
+If true prevents displaying information about repository owner.</p>
 
-<li><p>$per_request_config<br />
-If this is set to code reference, it will be run once for each
-request. You can set parts of configuration that change per session
-this way. For example, one might use the following code in a gitweb
-configuration file</p>
+<p>$per_request_config<br />
+If this is set to code reference, it will be run once for each request.
+You can set parts of configuration that change per session this way. For
+example, one might use the following code in a gitweb configuration file</p>
 
 <pre><code>our $per_request_config = sub {
         $ENV{GL_USER} = $cgi-&gt;remote_user || &quot;gitweb&quot;;
 };
 </code></pre>
 
-<p>If <code>$per_request_config</code> is not a code reference, it is interpreted
-as boolean value. If it is true gitweb will process config files
-once per request, and if it is false gitweb will process config
-files only once, each time it is executed. True by default (set to
-1).</p>
+<p>If <code>$per_request_config</code> is not a code reference, it is interpreted as
+boolean value. If it is true gitweb will process config files once per
+request, and if it is false gitweb will process config files only once,
+each time it is executed. True by default (set to 1).</p>
 
 <p><strong>NOTE</strong>: <code>$my_url</code>, <code>$my_uri</code>, and <code>$base_url</code> are overwritten with
 their default values before every request, so if you want to change
-them, be sure to set this variable to true or a code reference
-effecting the desired changes.</p>
+them, be sure to set this variable to true or a code reference effecting
+the desired changes.</p>
 
-<p>This variable matters only when using persistent web environments
-that serve multiple requests using single gitweb instance, like
-mod_perl, FastCGI or Plackup.</p></li>
-</ul>
+<p>This variable matters only when using persistent web environments that
+serve multiple requests using single gitweb instance, like mod_perl,
+FastCGI or Plackup.</p>
 
 <h3 id="other-variables">Other variables</h3>
 
@@ -676,8 +646,7 @@ mod_perl, FastCGI or Plackup.</p></li>
 variables described below; they should be automatically set by gitweb to
 correct value.</p>
 
-<ul>
-<li><p>$version<br />
+<p>$version<br />
 Gitweb version, set automatically when creating gitweb.cgi from
 gitweb.perl. You might want to modify it if you are running modified
 gitweb, for example</p>
@@ -687,23 +656,22 @@ gitweb, for example</p>
 
 <p>if you run modified version of gitweb with caching support. This
 variable is purely informational, used e.g. in the &ldquo;generator&rdquo; meta
-header in HTML header.</p></li>
+header in HTML header.</p>
 
-<li><p>$my_url<br />
+<p>$my_url<br />
 $my_uri<br />
-Full URL and absolute URL of the gitweb script; in earlier versions
-of gitweb you might have need to set those variables, but now there
-should be no need to do it. See <code>$per_request_config</code> if you need to
-set them still.</p></li>
+Full URL and absolute URL of the gitweb script; in earlier versions of
+gitweb you might have need to set those variables, but now there should
+be no need to do it. See <code>$per_request_config</code> if you need to set them
+still.</p>
 
-<li><p>$base_url<br />
-Base URL for relative URLs in pages generated by gitweb, (e.g.
-<code>$logo</code>, <code>$favicon</code>, <code>@stylesheets</code> if they are relative URLs),
-needed and used <em>&lt;base href=&ldquo;$base_url&rdquo;&gt;</em> only for URLs with
-nonempty PATH_INFO. Usually gitweb sets its value correctly, and
-there is no need to set this variable, e.g. to $my_uri or &ldquo;/&rdquo;. See
-<code>$per_request_config</code> if you need to override it anyway.</p></li>
-</ul>
+<p>$base_url<br />
+Base URL for relative URLs in pages generated by gitweb, (e.g. <code>$logo</code>,
+<code>$favicon</code>, <code>@stylesheets</code> if they are relative URLs), needed and used
+<em>&lt;base href=&ldquo;$base_url&rdquo;&gt;</em> only for URLs with nonempty PATH_INFO.
+Usually gitweb sets its value correctly, and there is no need to set
+this variable, e.g. to $my_uri or &ldquo;/&rdquo;. See <code>$per_request_config</code> if you
+need to override it anyway.</p>
 
 <h2 id="configuring-gitweb-features">CONFIGURING GITWEB FEATURES</h2>
 
@@ -733,39 +701,36 @@ structure of appropriate <code>%feature</code> hash element has a simpler form:<
 
 <p>The meaning of each part of feature configuration is described below:</p>
 
-<ul>
-<li><p>default<br />
-List (array reference) of feature parameters (if there are any),
-used also to toggle (enable or disable) given feature.</p>
+<p>default<br />
+List (array reference) of feature parameters (if there are any), used
+also to toggle (enable or disable) given feature.</p>
 
-<p>Note that it is currently <strong>always</strong> an array reference, even if
-feature doesn’t accept any configuration parameters, and &lsquo;default&rsquo;
-is used only to turn it on or off. In such case you turn feature on
-by setting this element to <code>[1]</code>, and torn it off by setting it to
-<code>[0]</code>. See also the passage about the &ldquo;blame&rdquo; feature in the
-&ldquo;Examples&rdquo; section.</p>
+<p>Note that it is currently <strong>always</strong> an array reference, even if feature
+doesn’t accept any configuration parameters, and &lsquo;default&rsquo; is used only
+to turn it on or off. In such case you turn feature on by setting this
+element to <code>[1]</code>, and torn it off by setting it to <code>[0]</code>. See also the
+passage about the &ldquo;blame&rdquo; feature in the &ldquo;Examples&rdquo; section.</p>
 
-<p>To disable features that accept parameters (are configurable), you
-need to set this element to empty list i.e. <code>[]</code>.</p></li>
+<p>To disable features that accept parameters (are configurable), you need
+to set this element to empty list i.e. <code>[]</code>.</p>
 
-<li><p>override<br />
-If this field has a true value then the given feature is
-overridable, which means that it can be configured (or
-enabled/disabled) on a per-repository basis.</p>
+<p>override<br />
+If this field has a true value then the given feature is overridable,
+which means that it can be configured (or enabled/disabled) on a
+per-repository basis.</p>
 
 <p>Usually given &ldquo;&lt;feature&gt;&rdquo; is configurable via the
 <code>gitweb.&lt;feature&gt;</code> config variable in the per-repository Git
 configuration file.</p>
 
-<p><strong>Note</strong> that no feature is overridable by default.</p></li>
+<p><strong>Note</strong> that no feature is overridable by default.</p>
 
-<li><p>sub<br />
+<p>sub<br />
 Internal detail of implementation. What is important is that if this
-field is not present then per-repository override for given feature
-is not supported.</p>
+field is not present then per-repository override for given feature is
+not supported.</p>
 
-<p>You wouldn’t need to ever change it in gitweb config file.</p></li>
-</ul>
+<p>You wouldn’t need to ever change it in gitweb config file.</p>
 
 <h3 id="features-in-feature">Features in <code>%feature</code></h3>
 
@@ -774,191 +739,186 @@ below. This should be a complete list, but ultimately the authoritative
 and complete list is in gitweb.cgi source code, with features described
 in the comments.</p>
 
-<ul>
-<li><p>blame<br />
-Enable the &ldquo;blame&rdquo; and &ldquo;blame_incremental&rdquo; blob views, showing for
-each line the last commit that modified it; see
-<a href="../git-blame">git-blame(1)</a>. This can be very CPU-intensive and
-is therefore disabled by default.</p>
+<p>blame<br />
+Enable the &ldquo;blame&rdquo; and &ldquo;blame_incremental&rdquo; blob views, showing for each
+line the last commit that modified it; see
+<a href="../git-blame">git-blame(1)</a>. This can be very CPU-intensive and is
+therefore disabled by default.</p>
 
 <p>This feature can be configured on a per-repository basis via
-repository’s <code>gitweb.blame</code> configuration variable (boolean).</p></li>
+repository’s <code>gitweb.blame</code> configuration variable (boolean).</p>
 
-<li><p>snapshot<br />
+<p>snapshot<br />
 Enable and configure the &ldquo;snapshot&rdquo; action, which allows user to
 download a compressed archive of any tree or commit, as produced by
-<a href="../git-archive">git-archive(1)</a> and possibly additionally
-compressed. This can potentially generate high traffic if you have
-large project.</p>
+<a href="../git-archive">git-archive(1)</a> and possibly additionally compressed.
+This can potentially generate high traffic if you have large project.</p>
 
-<p>The value of &lsquo;default&rsquo; is a list of names of snapshot formats,
-defined in <code>%known_snapshot_formats</code> hash, that you wish to offer.
-Supported formats include &ldquo;tgz&rdquo;, &ldquo;tbz2&rdquo;, &ldquo;txz&rdquo; (gzip/bzip2/xz
-compressed tar archive) and &ldquo;zip&rdquo;; please consult gitweb sources for
-a definitive list. By default only &ldquo;tgz&rdquo; is offered.</p>
+<p>The value of &lsquo;default&rsquo; is a list of names of snapshot formats, defined
+in <code>%known_snapshot_formats</code> hash, that you wish to offer. Supported
+formats include &ldquo;tgz&rdquo;, &ldquo;tbz2&rdquo;, &ldquo;txz&rdquo; (gzip/bzip2/xz compressed tar
+archive) and &ldquo;zip&rdquo;; please consult gitweb sources for a definitive list.
+By default only &ldquo;tgz&rdquo; is offered.</p>
 
 <p>This feature can be configured on a per-repository basis via
 repository’s <code>gitweb.blame</code> configuration variable, which contains a
-comma separated list of formats or &ldquo;none&rdquo; to disable snapshots.
-Unknown values are ignored.</p></li>
+comma separated list of formats or &ldquo;none&rdquo; to disable snapshots. Unknown
+values are ignored.</p>
 
-<li><p>grep<br />
+<p>grep<br />
 Enable grep search, which lists the files in currently selected tree
 (directory) containing the given string; see
-<a href="../git-grep">git-grep(1)</a>. This can be potentially CPU-intensive,
-of course. Enabled by default.</p>
+<a href="../git-grep">git-grep(1)</a>. This can be potentially CPU-intensive, of
+course. Enabled by default.</p>
 
 <p>This feature can be configured on a per-repository basis via
-repository’s <code>gitweb.grep</code> configuration variable (boolean).</p></li>
+repository’s <code>gitweb.grep</code> configuration variable (boolean).</p>
 
-<li><p>pickaxe<br />
-Enable the so called pickaxe search, which will list the commits
-that introduced or removed a given string in a file. This can be
-practical and quite faster alternative to &ldquo;blame&rdquo; action, but it is
-still potentially CPU-intensive. Enabled by default.</p>
+<p>pickaxe<br />
+Enable the so called pickaxe search, which will list the commits that
+introduced or removed a given string in a file. This can be practical
+and quite faster alternative to &ldquo;blame&rdquo; action, but it is still
+potentially CPU-intensive. Enabled by default.</p>
 
 <p>The pickaxe search is described in <a href="../git-log">git-log(1)</a> (the
 description of <code>-S&lt;string&gt;</code> option, which refers to pickaxe entry in
 <a href="../gitdiffcore">gitdiffcore(7)</a> for more details).</p>
 
 <p>This feature can be configured on a per-repository basis by setting
-repository’s <code>gitweb.pickaxe</code> configuration variable (boolean).</p></li>
+repository’s <code>gitweb.pickaxe</code> configuration variable (boolean).</p>
 
-<li><p>show-sizes<br />
+<p>show-sizes<br />
 Enable showing size of blobs (ordinary files) in a &ldquo;tree&rdquo; view, in a
-separate column, similar to what <code>ls -l</code> does; see description of
-<code>-l</code> option in <a href="../git-ls-tree">git-ls-tree(1)</a> manpage. This
-costs a bit of I/O. Enabled by default.</p>
+separate column, similar to what <code>ls -l</code> does; see description of <code>-l</code>
+option in <a href="../git-ls-tree">git-ls-tree(1)</a> manpage. This costs a bit
+of I/O. Enabled by default.</p>
 
 <p>This feature can be configured on a per-repository basis via
-repository’s <code>gitweb.showSizes</code> configuration variable (boolean).</p></li>
+repository’s <code>gitweb.showSizes</code> configuration variable (boolean).</p>
 
-<li><p>patches<br />
-Enable and configure &ldquo;patches&rdquo; view, which displays list of commits
-in email (plain text) output format; see also
-<a href="../git-format-patch">git-format-patch(1)</a>. The value is the
-maximum number of patches in a patchset generated in &ldquo;patches&rdquo; view.
-Set the <em>default</em> field to a list containing single item of or to an
-empty list to disable patch view, or to a list containing a single
-negative number to remove any limit. Default value is 16.</p>
+<p>patches<br />
+Enable and configure &ldquo;patches&rdquo; view, which displays list of commits in
+email (plain text) output format; see also
+<a href="../git-format-patch">git-format-patch(1)</a>. The value is the maximum
+number of patches in a patchset generated in &ldquo;patches&rdquo; view. Set the
+<em>default</em> field to a list containing single item of or to an empty list
+to disable patch view, or to a list containing a single negative number
+to remove any limit. Default value is 16.</p>
 
 <p>This feature can be configured on a per-repository basis via
-repository’s <code>gitweb.patches</code> configuration variable (integer).</p></li>
+repository’s <code>gitweb.patches</code> configuration variable (integer).</p>
 
-<li><p>avatar<br />
-Avatar support. When this feature is enabled, views such as
-&ldquo;shortlog&rdquo; or &ldquo;commit&rdquo; will display an avatar associated with the
-email of each committer and author.</p>
+<p>avatar<br />
+Avatar support. When this feature is enabled, views such as &ldquo;shortlog&rdquo;
+or &ldquo;commit&rdquo; will display an avatar associated with the email of each
+committer and author.</p>
 
-<p>Currently available providers are <strong>&ldquo;gravatar&rdquo;</strong> and <strong>&ldquo;picon&rdquo;</strong>.
-Only one provider at a time can be selected (<em>default</em> is one
-element list). If an unknown provider is specified, the feature is
-disabled. <strong>Note</strong> that some providers might require extra Perl
-packages to be installed; see <em>gitweb/INSTALL</em> for more details.</p>
+<p>Currently available providers are <strong>&ldquo;gravatar&rdquo;</strong> and <strong>&ldquo;picon&rdquo;</strong>. Only
+one provider at a time can be selected (<em>default</em> is one element list).
+If an unknown provider is specified, the feature is disabled. <strong>Note</strong>
+that some providers might require extra Perl packages to be installed;
+see <em>gitweb/INSTALL</em> for more details.</p>
 
 <p>This feature can be configured on a per-repository basis via
 repository’s <code>gitweb.avatar</code> configuration variable.</p>
 
 <p>See also <code>%avatar_size</code> with pixel sizes for icons and avatars
-(&ldquo;default&rdquo; is used for one-line like &ldquo;log&rdquo; and &ldquo;shortlog&rdquo;, &ldquo;double&rdquo;
-is used for two-line like &ldquo;commit&rdquo;, &ldquo;commitdiff&rdquo; or &ldquo;tag&rdquo;). If the
-default font sizes or lineheights are changed (e.g. via adding extra
-CSS stylesheet in <code>@stylesheets</code>), it may be appropriate to change
-these values.</p></li>
+(&ldquo;default&rdquo; is used for one-line like &ldquo;log&rdquo; and &ldquo;shortlog&rdquo;, &ldquo;double&rdquo; is
+used for two-line like &ldquo;commit&rdquo;, &ldquo;commitdiff&rdquo; or &ldquo;tag&rdquo;). If the default
+font sizes or lineheights are changed (e.g. via adding extra CSS
+stylesheet in <code>@stylesheets</code>), it may be appropriate to change these
+values.</p>
 
-<li><p>highlight<br />
+<p>highlight<br />
 Server-side syntax highlight support in &ldquo;blob&rdquo; view. It requires
-<code>$highlight_bin</code> program to be available (see the description of
-this variable in the &ldquo;Configuration variables&rdquo; section above), and
-therefore is disabled by default.</p>
+<code>$highlight_bin</code> program to be available (see the description of this
+variable in the &ldquo;Configuration variables&rdquo; section above), and therefore
+is disabled by default.</p>
 
 <p>This feature can be configured on a per-repository basis via
-repository’s <code>gitweb.highlight</code> configuration variable (boolean).</p></li>
+repository’s <code>gitweb.highlight</code> configuration variable (boolean).</p>
 
-<li><p>remote_heads<br />
-Enable displaying remote heads (remote-tracking branches) in the
-&ldquo;heads&rdquo; list. In most cases the list of remote-tracking branches is
-an unnecessary internal private detail, and this feature is
-therefore disabled by default. <a href="../git-instaweb">git-instaweb(1)</a>,
-which is usually used to browse local repositories, enables and uses
-this feature.</p>
+<p>remote_heads<br />
+Enable displaying remote heads (remote-tracking branches) in the &ldquo;heads&rdquo;
+list. In most cases the list of remote-tracking branches is an
+unnecessary internal private detail, and this feature is therefore
+disabled by default. <a href="../git-instaweb">git-instaweb(1)</a>, which is
+usually used to browse local repositories, enables and uses this
+feature.</p>
 
 <p>This feature can be configured on a per-repository basis via
-repository’s <code>gitweb.remote_heads</code> configuration variable (boolean).</p></li>
-</ul>
+repository’s <code>gitweb.remote_heads</code> configuration variable (boolean).</p>
 
 <p>The remaining features cannot be overridden on a per project basis.</p>
 
-<ul>
-<li><p>search<br />
+<p>search<br />
 Enable text search, which will list the commits which match author,
 committer or commit text to a given string; see the description of
 <code>--author</code>, <code>--committer</code> and <code>--grep</code> options in
 <a href="../git-log">git-log(1)</a> manpage. Enabled by default.</p>
 
-<p>Project specific override is not supported.</p></li>
+<p>Project specific override is not supported.</p>
 
-<li><p>forks<br />
-If this feature is enabled, gitweb considers projects in
-subdirectories of project root (basename) to be forks of existing
-projects. For each project <code>$projname.git</code>, projects in the
-<code>$projname/</code> directory and its subdirectories will not be shown in
-the main projects list. Instead, a &lsquo;+&rsquo; mark is shown next to
-<code>$projname</code>, which links to a &ldquo;forks&rdquo; view that lists all the forks
-(all projects in <code>$projname/</code> subdirectory). Additionally a &ldquo;forks&rdquo;
-view for a project is linked from project summary page.</p>
+<p>forks<br />
+If this feature is enabled, gitweb considers projects in subdirectories
+of project root (basename) to be forks of existing projects. For each
+project <code>$projname.git</code>, projects in the <code>$projname/</code> directory and its
+subdirectories will not be shown in the main projects list. Instead, a
+&lsquo;+&rsquo; mark is shown next to <code>$projname</code>, which links to a &ldquo;forks&rdquo; view
+that lists all the forks (all projects in <code>$projname/</code> subdirectory).
+Additionally a &ldquo;forks&rdquo; view for a project is linked from project summary
+page.</p>
 
-<p>If the project list is taken from a file (<code>$projects_list</code> points to
-a file), forks are only recognized if they are listed after the main
+<p>If the project list is taken from a file (<code>$projects_list</code> points to a
+file), forks are only recognized if they are listed after the main
 project in that file.</p>
 
-<p>Project specific override is not supported.</p></li>
+<p>Project specific override is not supported.</p>
 
-<li><p>actions<br />
-Insert custom links to the action bar of all project pages. This
-allows you to link to third-party scripts integrating into gitweb.</p>
+<p>actions<br />
+Insert custom links to the action bar of all project pages. This allows
+you to link to third-party scripts integrating into gitweb.</p>
 
 <p>The &ldquo;default&rdquo; value consists of a list of triplets in the form
-‘(&rdquo;&lt;label&gt;&rdquo;, &ldquo;&lt;link&gt;&rdquo;, &ldquo;&lt;position&gt;&rdquo;)` where &ldquo;position&rdquo; is
-the label after which to insert the link, &ldquo;link&rdquo; is a format string
-where <code>%n</code> expands to the project name, <code>%f</code> to the project path
-within the filesystem (i.e. &ldquo;$projectroot/$project&rdquo;), <code>%h</code> to the
-current hash (&lsquo;h’ gitweb parameter) and ‘%b` to the current hash
+‘(&rdquo;&lt;label&gt;&rdquo;, &ldquo;&lt;link&gt;&rdquo;, &ldquo;&lt;position&gt;&rdquo;)` where
+&ldquo;position&rdquo; is the label after which to insert the link, &ldquo;link&rdquo; is a
+format string where <code>%n</code> expands to the project name, <code>%f</code> to the
+project path within the filesystem (i.e. &ldquo;$projectroot/$project&rdquo;), <code>%h</code>
+to the current hash (&lsquo;h’ gitweb parameter) and ‘%b` to the current hash
 base (&lsquo;hb’ gitweb parameter); ‘%%` expands to &lsquo;%’.</p>
 
-<p>For example, at the time this page was written, the
-<a href="http://repo.or.cz">http://repo.or.cz</a> Git hosting site set it to the following to
-enable graphical log (using the third party tool <strong>git-browser</strong>):</p>
+<p>For example, at the time this page was written, the <a href="http://repo.or.cz">http://repo.or.cz</a>
+Git hosting site set it to the following to enable graphical log (using
+the third party tool <strong>git-browser</strong>):</p>
 
 <pre><code>$feature{'actions'}{'default'} =
         [ ('graphiclog', '/git-browser/by-commit.html?r=%n', 'summary')];
 </code></pre>
 
-<p>This adds a link titled &ldquo;graphiclog&rdquo; after the &ldquo;summary&rdquo; link,
-leading to <code>git-browser</code> script, passing <code>r=&lt;project&gt;</code> as a query
-parameter.</p>
+<p>This adds a link titled &ldquo;graphiclog&rdquo; after the &ldquo;summary&rdquo; link, leading
+to <code>git-browser</code> script, passing <code>r=&lt;project&gt;</code> as a query parameter.</p>
 
-<p>Project specific override is not supported.</p></li>
+<p>Project specific override is not supported.</p>
 
-<li><p>timed<br />
+<p>timed<br />
 Enable displaying how much time and how many Git commands it took to
 generate and display each page in the page footer (at the bottom of
 page). For example the footer might contain: &ldquo;This page took 6.53325
 seconds and 13 Git commands to generate.&rdquo; Disabled by default.</p>
 
-<p>Project specific override is not supported.</p></li>
+<p>Project specific override is not supported.</p>
 
-<li><p>javascript-timezone<br />
-Enable and configure the ability to change a common time zone for
-dates in gitweb output via JavaScript. Dates in gitweb output
-include authordate and committerdate in &ldquo;commit&rdquo;, &ldquo;commitdiff&rdquo; and
-&ldquo;log&rdquo; views, and taggerdate in &ldquo;tag&rdquo; view. Enabled by default.</p>
+<p>javascript-timezone<br />
+Enable and configure the ability to change a common time zone for dates
+in gitweb output via JavaScript. Dates in gitweb output include
+authordate and committerdate in &ldquo;commit&rdquo;, &ldquo;commitdiff&rdquo; and &ldquo;log&rdquo; views,
+and taggerdate in &ldquo;tag&rdquo; view. Enabled by default.</p>
 
 <p>The value is a list of three values: a default time zone (for if the
-client hasn’t selected some other time zone and saved it in a
-cookie), a name of cookie where to store selected time zone, and a
-CSS class used to mark up dates for manipulation. If you want to
-turn this feature off, set &ldquo;default&rdquo; to empty list: <code>[]</code>.</p>
+client hasn’t selected some other time zone and saved it in a cookie), a
+name of cookie where to store selected time zone, and a CSS class used
+to mark up dates for manipulation. If you want to turn this feature off,
+set &ldquo;default&rdquo; to empty list: <code>[]</code>.</p>
 
 <p>Typical gitweb config files will only change starting (default) time
 zone, and leave other elements at their default values:</p>
@@ -966,23 +926,22 @@ zone, and leave other elements at their default values:</p>
 <pre><code>$feature{'javascript-timezone'}{'default'}[0] = &quot;utc&quot;;
 </code></pre>
 
-<p>The example configuration presented here is guaranteed to be
-backwards and forward compatible.</p>
+<p>The example configuration presented here is guaranteed to be backwards
+and forward compatible.</p>
 
-<p>Time zone values can be &ldquo;local&rdquo; (for local time zone that browser
-uses), &ldquo;utc&rdquo; (what gitweb uses when JavaScript or this feature is
-disabled), or numerical time zones in the form of &ldquo;+/-HHMM&rdquo;, such as
-&ldquo;+0200&rdquo;.</p>
+<p>Time zone values can be &ldquo;local&rdquo; (for local time zone that browser uses),
+&ldquo;utc&rdquo; (what gitweb uses when JavaScript or this feature is disabled), or
+numerical time zones in the form of &ldquo;+/-HHMM&rdquo;, such as &ldquo;+0200&rdquo;.</p>
 
-<p>Project specific override is not supported.</p></li>
+<p>Project specific override is not supported.</p>
 
-<li><p>extra-branch-refs<br />
-List of additional directories under &ldquo;refs&rdquo; which are going to be
-used as branch refs. For example if you have a gerrit setup where
-all branches under refs/heads/ are official, push-after-review ones
-and branches under refs/sandbox/, refs/wip and refs/other are user
-ones where permissions are much wider, then you might want to set
-this variable as follows:</p>
+<p>extra-branch-refs<br />
+List of additional directories under &ldquo;refs&rdquo; which are going to be used
+as branch refs. For example if you have a gerrit setup where all
+branches under refs/heads/ are official, push-after-review ones and
+branches under refs/sandbox/, refs/wip and refs/other are user ones
+where permissions are much wider, then you might want to set this
+variable as follows:</p>
 
 <pre><code>$feature{'extra-branch-refs'}{'default'} =
         ['sandbox', 'wip', 'other'];
@@ -990,8 +949,8 @@ this variable as follows:</p>
 
 <p>This feature can be configured on per-repository basis after setting
 $feature{<em>extra-branch-refs</em>}{<em>override</em>} to true, via repository’s
-<code>gitweb.extraBranchRefs</code> configuration variable, which contains a
-space separated list of refs. An example:</p>
+<code>gitweb.extraBranchRefs</code> configuration variable, which contains a space
+separated list of refs. An example:</p>
 
 <pre><code>[gitweb]
         extraBranchRefs = sandbox wip other
@@ -1007,8 +966,7 @@ same as of the snippet above:</p>
 </code></pre>
 
 <p>It is an error to specify a ref that does not pass &ldquo;git
-check-ref-format&rdquo; scrutiny. Duplicated values are filtered.</p></li>
-</ul>
+check-ref-format&rdquo; scrutiny. Duplicated values are filtered.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -1049,33 +1007,28 @@ The current names are kept to avoid breaking working setups.</p>
 <p>The location of per-instance and system-wide configuration files can be
 overridden using the following environment variables:</p>
 
-<ul>
-<li><p>GITWEB_CONFIG<br />
-Sets location of per-instance configuration file.</p></li>
+<p>GITWEB_CONFIG<br />
+Sets location of per-instance configuration file.</p>
 
-<li><p>GITWEB_CONFIG_SYSTEM<br />
-Sets location of fallback system-wide configuration file. This file
-is read only if per-instance one does not exist.</p></li>
+<p>GITWEB_CONFIG_SYSTEM<br />
+Sets location of fallback system-wide configuration file. This file is
+read only if per-instance one does not exist.</p>
 
-<li><p>GITWEB_CONFIG_COMMON<br />
-Sets location of common system-wide configuration file.</p></li>
-</ul>
+<p>GITWEB_CONFIG_COMMON<br />
+Sets location of common system-wide configuration file.</p>
 
 <h2 id="files">FILES</h2>
 
-<ul>
-<li><p>gitweb_config.perl<br />
-This is default name of per-instance configuration file. The format
-of this file is described above.</p></li>
+<p>gitweb_config.perl<br />
+This is default name of per-instance configuration file. The format of
+this file is described above.</p>
 
-<li><p>/etc/gitweb.conf<br />
-This is default name of fallback system-wide configuration file.
-This file is used only if per-instance configuration variable is not
-found.</p></li>
+<p>/etc/gitweb.conf<br />
+This is default name of fallback system-wide configuration file. This
+file is used only if per-instance configuration variable is not found.</p>
 
-<li><p>/etc/gitweb-common.conf<br />
-This is default name of common system-wide configuration file.</p></li>
-</ul>
+<p>/etc/gitweb-common.conf<br />
+This is default name of common system-wide configuration file.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -1142,7 +1095,7 @@ This is default name of common system-wide configuration file.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git bisect &lt;subcommand&gt; &lt;options&gt;
+<pre><code>git bisect &lt;subcommand&gt; &lt;options&gt;
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -183,8 +183,8 @@ command:</p>
 </code></pre>
 
 <p>By default, this will return your tree to the commit that was checked
-out before <code>git bisect start</code>. (A new <code>git bisect start</code> will also do
-that, as it cleans up the old bisection state.)</p>
+out before <code>git bisect                 start</code>. (A new <code>git bisect start</code>
+will also do that, as it cleans up the old bisection state.)</p>
 
 <p>With an optional argument, you can return to a different commit instead:</p>
 
@@ -192,8 +192,9 @@ that, as it cleans up the old bisection state.)</p>
 </code></pre>
 
 <p>For example, <code>git bisect reset HEAD</code> will leave you on the current
-bisection commit and avoid switching commits at all, while <code>git bisect
-reset bisect/bad</code> will check out the first bad revision.</p>
+bisection commit and avoid switching commits at all, while
+<code>git bisect                 reset bisect/bad</code> will check out the first
+bad revision.</p>
 
 <h3 id="bisect-visualize">Bisect visualize</h3>
 
@@ -237,8 +238,7 @@ introduces is known not to work in your environment and you know it does
 not have anything to do with the bug you are chasing), you may want to
 find a nearby commit and try that instead.</p>
 
-<p>For
-    example:</p>
+<p>For example:</p>
 
 <pre><code>$ git bisect good/bad                   # previous round was good or bad.
 Bisecting: 337 revisions left to test after this
@@ -338,18 +338,15 @@ eventual outcome of the bisect session.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;no-checkout</p>
+<p>&ndash;no-checkout<br />
+Do not checkout the new working tree at each iteration of the bisection
+process. Instead just update a special reference named <em>BISECT_HEAD</em> to
+make it point to the commit that should be tested.</p>
 
-<p>Do not checkout the new working tree at each iteration of the
-bisection process. Instead just update a special reference named
-<em>BISECT_HEAD</em> to make it point to the commit that should be tested.</p>
+<p>This option may be useful when the test you would perform in each step
+does not require a checked out tree.</p>
 
-<p>This option may be useful when the test you would perform in each
-step does not require a checked out tree.</p>
-
-<p>If the repository is bare, <code>--no-checkout</code> is assumed.</p></li>
-</ul>
+<p>If the repository is bare, <code>--no-checkout</code> is assumed.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -361,8 +358,7 @@ $ git bisect run make                # &quot;make&quot; builds the app
 $ git bisect reset                   # quit the bisect session
 </code></pre></li>
 
-<li><p>Automatically bisect a test failure between origin and
-    HEAD:</p>
+<li><p>Automatically bisect a test failure between origin and HEAD:</p>
 
 <pre><code>$ git bisect start HEAD origin --    # HEAD is bad, origin is good
 $ git bisect run make test           # &quot;make test&quot; builds and tests
@@ -420,8 +416,7 @@ sure the hot-fix branch is based off a commit which is contained in
 all revisions which you are bisecting, so that the merge does not
 pull in too much, or use <code>git cherry-pick</code> instead of <code>git merge</code>.)</p></li>
 
-<li><p>Automatically bisect a broken test
-    case:</p>
+<li><p>Automatically bisect a broken test case:</p>
 
 <pre><code>$ git bisect start HEAD HEAD~10 --   # culprit is among the last 10
 $ git bisect run sh -c &quot;make || exit 125; ~/check_test_case.sh&quot;
@@ -431,8 +426,7 @@ $ git bisect reset                   # quit the bisect session
 <p>This shows that you can do without a run script if you write the
 test on a single line.</p></li>
 
-<li><p>Locate a good region of the object graph in a damaged
-    repository</p>
+<li><p>Locate a good region of the object graph in a damaged repository</p>
 
 <pre><code>$ git bisect start HEAD &lt;known-good-commit&gt; [ &lt;boundary-commit&gt; ... ] --no-checkout
 $ git bisect run sh -c '
@@ -515,7 +509,7 @@ fully traversable in the sense required by <em>git pack objects</em>.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git revert [--[no-]edit] [-n] [-m parent-number] [-s] [-S[&lt;key-id&gt;]] &lt;commit&gt;…
+<pre><code>git revert [--[no-]edit] [-n] [-m parent-number] [-s] [-S[&lt;key-id&gt;]] &lt;commit&gt;…
 git revert --continue
 git revert --quit
 git revert --abort
@@ -125,108 +125,97 @@ effect of some earlier commits (often only a faulty one). If you want to
 throw away all uncommitted changes in your working directory, you should
 see <a href="../git-reset">git-reset(1)</a>, particularly the <em>&ndash;hard</em> option. If
 you want to extract specific files as they were in another commit, you
-should see <a href="../git-checkout">git-checkout(1)</a>, specifically the <code>git
-checkout &lt;commit&gt; -- &lt;filename&gt;</code> syntax. Take care with these
-alternatives as both will discard uncommitted changes in your working
-directory.</p>
+should see <a href="../git-checkout">git-checkout(1)</a>, specifically the
+<code>git               checkout &lt;commit&gt; -- &lt;filename&gt;</code> syntax. Take care
+with these alternatives as both will discard uncommitted changes in your
+working directory.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;commit&gt;…<br />
+<p>&lt;commit&gt;…<br />
 Commits to revert. For a more complete list of ways to spell commit
 names, see <a href="../gitrevisions">gitrevisions(7)</a>. Sets of commits can
 also be given but no traversal is done by default, see
-<a href="../git-rev-list">git-rev-list(1)</a> and its <em>&ndash;no-walk</em> option.</p></li>
+<a href="../git-rev-list">git-rev-list(1)</a> and its <em>&ndash;no-walk</em> option.</p>
 
-<li><p>-e<br />
---edit<br />
+<p>-e<br />
+&ndash;edit<br />
 With this option, <em>git revert</em> will let you edit the commit message
 prior to committing the revert. This is the default if you run the
-command from a terminal.</p></li>
+command from a terminal.</p>
 
-<li><p>-m parent-number<br />
---mainline parent-number<br />
-Usually you cannot revert a merge because you do not know which side
-of the merge should be considered the mainline. This option
-specifies the parent number (starting from 1) of the mainline and
-allows revert to reverse the change relative to the specified
-parent.</p>
+<p>-m parent-number<br />
+&ndash;mainline parent-number<br />
+Usually you cannot revert a merge because you do not know which side of
+the merge should be considered the mainline. This option specifies the
+parent number (starting from 1) of the mainline and allows revert to
+reverse the change relative to the specified parent.</p>
 
 <p>Reverting a merge commit declares that you will never want the tree
 changes brought in by the merge. As a result, later merges will only
-bring in tree changes introduced by commits that are not ancestors
-of the previously reverted merge. This may or may not be what you
-want.</p>
+bring in tree changes introduced by commits that are not ancestors of
+the previously reverted merge. This may or may not be what you want.</p>
 
-<p>See the <a href="howto/revert-a-faulty-merge">revert-a-faulty-merge
-How-To</a> for more details.</p></li>
+<p>See the <a href="howto/revert-a-faulty-merge">revert-a-faulty-merge How-To</a>
+for more details.</p>
 
-<li><p>&ndash;no-edit<br />
-With this option, <em>git revert</em> will not start the commit message
-editor.</p></li>
+<p>&ndash;no-edit<br />
+With this option, <em>git revert</em> will not start the commit message editor.</p>
 
-<li><p>-n<br />
---no-commit<br />
-Usually the command automatically creates some commits with commit
-log messages stating which commits were reverted. This flag applies
-the changes necessary to revert the named commits to your working
-tree and the index, but does not make the commits. In addition, when
-this option is used, your index does not have to match the HEAD
-commit. The revert is done against the beginning state of your
-index.</p>
+<p>-n<br />
+&ndash;no-commit<br />
+Usually the command automatically creates some commits with commit log
+messages stating which commits were reverted. This flag applies the
+changes necessary to revert the named commits to your working tree and
+the index, but does not make the commits. In addition, when this option
+is used, your index does not have to match the HEAD commit. The revert
+is done against the beginning state of your index.</p>
 
 <p>This is useful when reverting more than one commits&rsquo; effect to your
-index in a row.</p></li>
+index in a row.</p>
 
-<li><p>-S[&lt;key-id&gt;]<br />
---gpg-sign[=&lt;key-id&gt;]<br />
-GPG-sign commits.</p></li>
+<p>-S[&lt;key-id&gt;]<br />
+&ndash;gpg-sign[=&lt;key-id&gt;]<br />
+GPG-sign commits.</p>
 
-<li><p>-s<br />
---signoff<br />
-Add Signed-off-by line at the end of the commit message.</p></li>
+<p>-s<br />
+&ndash;signoff<br />
+Add Signed-off-by line at the end of the commit message.</p>
 
-<li><p>&ndash;strategy=&lt;strategy&gt;<br />
-Use the given merge strategy. Should only be used once. See the
-MERGE STRATEGIES section in <a href="../git-merge">git-merge(1)</a> for
-details.</p></li>
+<p>&ndash;strategy=&lt;strategy&gt;<br />
+Use the given merge strategy. Should only be used once. See the MERGE
+STRATEGIES section in <a href="../git-merge">git-merge(1)</a> for details.</p>
 
-<li><p>-X&lt;option&gt;<br />
---strategy-option=&lt;option&gt;<br />
-Pass the merge strategy-specific option through to the merge
-strategy. See <a href="../git-merge">git-merge(1)</a> for details.</p></li>
-</ul>
+<p>-X&lt;option&gt;<br />
+&ndash;strategy-option=&lt;option&gt;<br />
+Pass the merge strategy-specific option through to the merge strategy.
+See <a href="../git-merge">git-merge(1)</a> for details.</p>
 
 <h2 id="sequencer-subcommands">SEQUENCER SUBCOMMANDS</h2>
 
-<ul>
-<li><p>&ndash;continue<br />
+<p>&ndash;continue<br />
 Continue the operation in progress using the information in
-<em>.git/sequencer</em>. Can be used to continue after resolving conflicts
-in a failed cherry-pick or revert.</p></li>
+<em>.git/sequencer</em>. Can be used to continue after resolving conflicts in a
+failed cherry-pick or revert.</p>
 
-<li><p>&ndash;quit<br />
-Forget about the current operation in progress. Can be used to clear
-the sequencer state after a failed cherry-pick or revert.</p></li>
+<p>&ndash;quit<br />
+Forget about the current operation in progress. Can be used to clear the
+sequencer state after a failed cherry-pick or revert.</p>
 
-<li><p>&ndash;abort<br />
-Cancel the operation and return to the pre-sequence state.</p></li>
-</ul>
+<p>&ndash;abort<br />
+Cancel the operation and return to the pre-sequence state.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<ul>
-<li><p><code>git revert HEAD~3</code><br />
+<p><code>git revert HEAD~3</code><br />
 Revert the changes specified by the fourth last commit in HEAD and
-create a new commit with the reverted changes.</p></li>
+create a new commit with the reverted changes.</p>
 
-<li><p><code>git revert -n master~5..master~2</code><br />
-Revert the changes done by commits from the fifth last commit in
-master (included) to the third last commit in master (included), but
-do not create any commit with the reverted changes. The revert only
-modifies the working tree and the index.</p></li>
-</ul>
+<p><code>git revert -n                 master~5..master~2</code><br />
+Revert the changes done by commits from the fifth last commit in master
+(included) to the third last commit in master (included), but do not
+create any commit with the reverted changes. The revert only modifies
+the working tree and the index.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -291,7 +280,7 @@ modifies the working tree and the index.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

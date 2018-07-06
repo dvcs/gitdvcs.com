@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git cvsimport [-o &lt;branch-for-HEAD&gt;] [-h] [-v] [-d &lt;CVSROOT&gt;]
+<pre><code>git cvsimport [-o &lt;branch-for-HEAD&gt;] [-h] [-v] [-d &lt;CVSROOT&gt;]
               [-A &lt;author-conv-file&gt;] [-p &lt;options-for-cvsps&gt;] [-P &lt;file&gt;]
               [-C &lt;git_repository&gt;] [-z &lt;fuzz&gt;] [-i] [-k] [-u] [-s &lt;subst&gt;]
               [-a] [-m] [-M &lt;regex&gt;] [-S &lt;regex&gt;] [-L &lt;commitlimit&gt;]
@@ -147,137 +147,134 @@ repository. See <a href="../gitcvs-migration">gitcvs-migration(7)</a>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-v<br />
-Verbosity: let <em>cvsimport</em> report what it is doing.</p></li>
+<p>-v<br />
+Verbosity: let <em>cvsimport</em> report what it is doing.</p>
 
-<li><p>-d &lt;CVSROOT&gt;<br />
+<p>-d &lt;CVSROOT&gt;<br />
 The root of the CVS archive. May be local (a simple path) or remote;
 currently, only the :local:, :ext: and :pserver: access methods are
 supported. If not given, <em>git cvsimport</em> will try to read it from
 <code>CVS/Root</code>. If no such file exists, it checks for the <code>CVSROOT</code>
-environment variable.</p></li>
+environment variable.</p>
 
-<li><p>&lt;CVS_module&gt;<br />
+<p>&lt;CVS_module&gt;<br />
 The CVS module you want to import. Relative to &lt;CVSROOT&gt;. If not
-given, <em>git cvsimport</em> tries to read it from <code>CVS/Repository</code>.</p></li>
+given, <em>git cvsimport</em> tries to read it from <code>CVS/Repository</code>.</p>
 
-<li><p>-C &lt;target-dir&gt;<br />
-The Git repository to import to. If the directory doesn’t exist, it
-will be created. Default is the current directory.</p></li>
+<p>-C &lt;target-dir&gt;<br />
+The Git repository to import to. If the directory doesn’t exist, it will
+be created. Default is the current directory.</p>
 
-<li><p>-r &lt;remote&gt;<br />
+<p>-r &lt;remote&gt;<br />
 The Git remote to import this CVS repository into. Moves all CVS
 branches into remotes/&lt;remote&gt;/&lt;branch&gt; akin to the way <em>git
-clone</em> uses <em>origin</em> by default.</p></li>
+clone</em> uses <em>origin</em> by default.</p>
 
-<li><p>-o &lt;branch-for-HEAD&gt;<br />
+<p>-o &lt;branch-for-HEAD&gt;<br />
 When no remote is specified (via -r) the <em>HEAD</em> branch from CVS is
 imported to the <em>origin</em> branch within the Git repository, as <em>HEAD</em>
-already has a special meaning for Git. When a remote is specified
-the <em>HEAD</em> branch is named remotes/&lt;remote&gt;/master mirroring <em>git
-clone</em> behaviour. Use this option if you want to import into a
-different branch.</p>
+already has a special meaning for Git. When a remote is specified the
+<em>HEAD</em> branch is named remotes/&lt;remote&gt;/master mirroring <em>git
+clone</em> behaviour. Use this option if you want to import into a different
+branch.</p>
 
-<p>Use <em>-o master</em> for continuing an import that was initially done by
-the old cvs2git tool.</p></li>
+<p>Use <em>-o master</em> for continuing an import that was initially done by the
+old cvs2git tool.</p>
 
-<li><p>-i<br />
+<p>-i<br />
 Import-only: don’t perform a checkout after importing. This option
-ensures the working directory and index remain untouched and will
-not create them if they do not exist.</p></li>
+ensures the working directory and index remain untouched and will not
+create them if they do not exist.</p>
 
-<li><p>-k<br />
+<p>-k<br />
 Kill keywords: will extract files with <em>-kk</em> from the CVS archive to
 avoid noisy changesets. Highly recommended, but off by default to
-preserve compatibility with early imported trees.</p></li>
+preserve compatibility with early imported trees.</p>
 
-<li><p>-u<br />
-Convert underscores in tag and branch names to dots.</p></li>
+<p>-u<br />
+Convert underscores in tag and branch names to dots.</p>
 
-<li><p>-s &lt;subst&gt;<br />
-Substitute the character &ldquo;/&rdquo; in branch names with &lt;subst&gt;</p></li>
+<p>-s &lt;subst&gt;<br />
+Substitute the character &ldquo;/&rdquo; in branch names with &lt;subst&gt;</p>
 
-<li><p>-p &lt;options-for-cvsps&gt;<br />
-Additional options for cvsps. The options <em>-u</em> and <em>-A</em> are implicit
-and should not be used here.</p>
+<p>-p &lt;options-for-cvsps&gt;<br />
+Additional options for cvsps. The options <em>-u</em> and <em>-A</em> are implicit and
+should not be used here.</p>
 
-<p>If you need to pass multiple options, separate them with a comma.</p></li>
+<p>If you need to pass multiple options, separate them with a comma.</p>
 
-<li><p>-z &lt;fuzz&gt;<br />
+<p>-z &lt;fuzz&gt;<br />
 Pass the timestamp fuzz factor to cvsps, in seconds. If unset, cvsps
-defaults to 300s.</p></li>
+defaults to 300s.</p>
 
-<li><p>-P &lt;cvsps-output-file&gt;<br />
-Instead of calling cvsps, read the provided cvsps output file.
-Useful for debugging or when cvsps is being handled outside
-cvsimport.</p></li>
+<p>-P &lt;cvsps-output-file&gt;<br />
+Instead of calling cvsps, read the provided cvsps output file. Useful
+for debugging or when cvsps is being handled outside cvsimport.</p>
 
-<li><p>-m<br />
-Attempt to detect merges based on the commit message. This option
-will enable default regexes that try to capture the source branch
-name from the commit message.</p></li>
+<p>-m<br />
+Attempt to detect merges based on the commit message. This option will
+enable default regexes that try to capture the source branch name from
+the commit message.</p>
 
-<li><p>-M &lt;regex&gt;<br />
+<p>-M &lt;regex&gt;<br />
 Attempt to detect merges based on the commit message with a custom
-regex. It can be used with <em>-m</em> to enable the default regexes as
-well. You must escape forward slashes.</p>
+regex. It can be used with <em>-m</em> to enable the default regexes as well.
+You must escape forward slashes.</p>
 
 <p>The regex must capture the source branch name in $1.</p>
 
 <p>This option can be used several times to provide several detection
-regexes.</p></li>
+regexes.</p>
 
-<li><p>-S &lt;regex&gt;<br />
-Skip paths matching the regex.</p></li>
+<p>-S &lt;regex&gt;<br />
+Skip paths matching the regex.</p>
 
-<li><p>-a<br />
-Import all commits, including recent ones. cvsimport by default
-skips commits that have a timestamp less than 10 minutes ago.</p></li>
+<p>-a<br />
+Import all commits, including recent ones. cvsimport by default skips
+commits that have a timestamp less than 10 minutes ago.</p>
 
-<li><p>-L &lt;limit&gt;<br />
+<p>-L &lt;limit&gt;<br />
 Limit the number of commits imported. Workaround for cases where
-cvsimport leaks memory.</p></li>
+cvsimport leaks memory.</p>
 
-<li><p>-A &lt;author-conv-file&gt;<br />
+<p>-A &lt;author-conv-file&gt;<br />
 CVS by default uses the Unix username when writing its commit logs.
-Using this option and an author-conv-file maps the name recorded in
-CVS to author name, e-mail and optional time zone:</p>
+Using this option and an author-conv-file maps the name recorded in CVS
+to author name, e-mail and optional time zone:</p>
 
 <pre><code>        exon=Andreas Ericsson &lt;ae@op5.se&gt;
         spawn=Simon Pawn &lt;spawn@frog-pond.org&gt; America/Chicago
 </code></pre>
 
 <p><em>git cvsimport</em> will make it appear as those authors had their
-GIT_AUTHOR_NAME and GIT_AUTHOR_EMAIL set properly all along. If
-a time zone is specified, GIT_AUTHOR_DATE will have the
-corresponding offset applied.</p>
+GIT_AUTHOR_NAME and GIT_AUTHOR_EMAIL set properly all along. If a
+time zone is specified, GIT_AUTHOR_DATE will have the corresponding
+offset applied.</p>
 
-<p>For convenience, this data is saved to <code>$GIT_DIR/cvs-authors</code> each
-time the <em>-A</em> option is provided and read from that same file each
-time <em>git cvsimport</em> is run.</p>
+<p>For convenience, this data is saved to <code>$GIT_DIR/cvs-authors</code> each time
+the <em>-A</em> option is provided and read from that same file each time <em>git
+cvsimport</em> is run.</p>
 
 <p>It is not recommended to use this feature if you intend to export
-changes back to CVS again later with <em>git cvsexportcommit</em>.</p></li>
+changes back to CVS again later with <em>git cvsexportcommit</em>.</p>
 
-<li><p>-R<br />
-Generate a <code>$GIT_DIR/cvs-revisions</code> file containing a mapping from
-CVS revision numbers to newly-created Git commit IDs. The generated
-file will contain one line for each (filename, revision) pair
-imported; each line will look like</p>
+<p>-R<br />
+Generate a <code>$GIT_DIR/cvs-revisions</code> file containing a mapping from CVS
+revision numbers to newly-created Git commit IDs. The generated file
+will contain one line for each (filename, revision) pair imported; each
+line will look like</p>
 
 <pre><code>src/widget.c 1.1 1d862f173cdc7325b6fa6d2ae1cfd61fd1b512b7
 </code></pre>
 
-<p>The revision data is appended to the file if it already exists, for
-use when doing incremental imports.</p>
+<p>The revision data is appended to the file if it already exists, for use
+when doing incremental imports.</p>
 
 <p>This option may be useful if you have CVS revision numbers stored in
-commit messages, bug-tracking systems, email archives, and the like.</p></li>
+commit messages, bug-tracking systems, email archives, and the like.</p>
 
-<li><p>-h<br />
-Print a short usage message and exit.</p></li>
-</ul>
+<p>-h<br />
+Print a short usage message and exit.</p>
 
 <h2 id="output">OUTPUT</h2>
 
@@ -390,7 +387,7 @@ want to imort, consider using cvs2git:</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

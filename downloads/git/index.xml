@@ -16,15 +16,16 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.gitdvcs.com/download/git/linux/</guid>
-      <description>Debian/Ubuntu
-$ apt-get install git   Fedora
-$ yum install git # Up to Fedora 21  $ dnf install git # Fedora 22 and later   Gentoo
-$ emerge --ask --verbose dev-vcs/git   Arch Linux
-$ pacman -S git   openSUSE
-$ zypper install git   Mageia
-$ urpmi git   FreeBSD
-$ pkg install git   OpenBSD
-$ pkg_add git   Alpine</description>
+      <description> Debian/Ubuntu
+$ apt-get install git Fedora
+$ yum install git # Up to Fedora 21 $ dnf install git # Fedora 22 and later Gentoo
+$ emerge --ask --verbose dev-vcs/git Arch Linux
+$ pacman -S git openSUSE
+$ zypper install git Mageia
+$ urpmi git FreeBSD
+$ pkg install git OpenBSD
+$ pkg_add git Alpine
+$ apk add git  </description>
     </item>
     
     <item>
@@ -34,8 +35,9 @@ $ pkg_add git   Alpine</description>
       
       <guid>https://www.gitdvcs.com/download/git/solaris/</guid>
       <description> Solaris 9/10/11 (OpenCSW)
-$ pkgutil -i git   Solaris 11 Express
-$ pkg install developer/versioning/git    </description>
+$ pkgutil -i git Solaris 11 Express
+$ pkg install developer/versioning/git
+  </description>
     </item>
     
     <item>

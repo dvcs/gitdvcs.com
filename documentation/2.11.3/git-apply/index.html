@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git apply [--stat] [--numstat] [--summary] [--check] [--index] [--3way]
+<pre><code>git apply [--stat] [--numstat] [--summary] [--check] [--index] [--3way]
           [--apply] [--no-add] [--build-fake-ancestor=&lt;file&gt;] [-R | --reverse]
           [--allow-binary-replacement | --binary] [--reject] [-z]
           [-p&lt;n&gt;] [-C&lt;n&gt;] [--inaccurate-eof] [--recount] [--cached]
@@ -133,226 +133,217 @@ repository.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;patch&gt;…<br />
+<p>&lt;patch&gt;…<br />
 The files to read the patch from. <em>-</em> can be used to read from the
-standard input.</p></li>
+standard input.</p>
 
-<li><p>&ndash;stat<br />
-Instead of applying the patch, output diffstat for the input. Turns
-off &ldquo;apply&rdquo;.</p></li>
+<p>&ndash;stat<br />
+Instead of applying the patch, output diffstat for the input. Turns off
+&ldquo;apply&rdquo;.</p>
 
-<li><p>&ndash;numstat<br />
-Similar to <code>--stat</code>, but shows the number of added and deleted lines
-in decimal notation and the pathname without abbreviation, to make
-it more machine friendly. For binary files, outputs two <code>-</code> instead
-of saying <code>0 0</code>. Turns off &ldquo;apply&rdquo;.</p></li>
+<p>&ndash;numstat<br />
+Similar to <code>--stat</code>, but shows the number of added and deleted lines in
+decimal notation and the pathname without abbreviation, to make it more
+machine friendly. For binary files, outputs two <code>-</code> instead of saying
+<code>0 0</code>. Turns off &ldquo;apply&rdquo;.</p>
 
-<li><p>&ndash;summary<br />
-Instead of applying the patch, output a condensed summary of
-information obtained from git diff extended headers, such as
-creations, renames and mode changes. Turns off &ldquo;apply&rdquo;.</p></li>
+<p>&ndash;summary<br />
+Instead of applying the patch, output a condensed summary of information
+obtained from git diff extended headers, such as creations, renames and
+mode changes. Turns off &ldquo;apply&rdquo;.</p>
 
-<li><p>&ndash;check<br />
+<p>&ndash;check<br />
 Instead of applying the patch, see if the patch is applicable to the
-current working tree and/or the index file and detects errors. Turns
-off &ldquo;apply&rdquo;.</p></li>
+current working tree and/or the index file and detects errors. Turns off
+&ldquo;apply&rdquo;.</p>
 
-<li><p>&ndash;index<br />
-When <code>--check</code> is in effect, or when applying the patch (which is
-the default when none of the options that disables it is in effect),
-make sure the patch is applicable to what the current index file
-records. If the file to be patched in the working tree is not
-up-to-date, it is flagged as an error. This flag also causes the
-index file to be updated.</p></li>
+<p>&ndash;index<br />
+When <code>--check</code> is in effect, or when applying the patch (which is the
+default when none of the options that disables it is in effect), make
+sure the patch is applicable to what the current index file records. If
+the file to be patched in the working tree is not up-to-date, it is
+flagged as an error. This flag also causes the index file to be updated.</p>
 
-<li><p>&ndash;cached<br />
-Apply a patch without touching the working tree. Instead take the
-cached data, apply the patch, and store the result in the index
-without using the working tree. This implies <code>--index</code>.</p></li>
+<p>&ndash;cached<br />
+Apply a patch without touching the working tree. Instead take the cached
+data, apply the patch, and store the result in the index without using
+the working tree. This implies <code>--index</code>.</p>
 
-<li><p>-3<br />
---3way<br />
-When the patch does not apply cleanly, fall back on 3-way merge if
-the patch records the identity of blobs it is supposed to apply to,
-and we have those blobs available locally, possibly leaving the
-conflict markers in the files in the working tree for the user to
-resolve. This option implies the <code>--index</code> option, and is
-incompatible with the <code>--reject</code> and the <code>--cached</code> options.</p></li>
+<p>-3<br />
+&ndash;3way<br />
+When the patch does not apply cleanly, fall back on 3-way merge if the
+patch records the identity of blobs it is supposed to apply to, and we
+have those blobs available locally, possibly leaving the conflict
+markers in the files in the working tree for the user to resolve. This
+option implies the <code>--index</code> option, and is incompatible with the
+<code>--reject</code> and the <code>--cached</code> options.</p>
 
-<li><p>&ndash;build-fake-ancestor=&lt;file&gt;<br />
-Newer <em>git diff</em> output has embedded <em>index information</em> for each
-blob to help identify the original version that the patch applies
-to. When this flag is given, and if the original versions of the
-blobs are available locally, builds a temporary index containing
-those blobs.</p>
+<p>&ndash;build-fake-ancestor=&lt;file&gt;<br />
+Newer <em>git diff</em> output has embedded <em>index information</em> for each blob
+to help identify the original version that the patch applies to. When
+this flag is given, and if the original versions of the blobs are
+available locally, builds a temporary index containing those blobs.</p>
 
-<p>When a pure mode change is encountered (which has no index
-information), the information is read from the current index
-instead.</p></li>
+<p>When a pure mode change is encountered (which has no index information),
+the information is read from the current index instead.</p>
 
-<li><p>-R<br />
---reverse<br />
-Apply the patch in reverse.</p></li>
+<p>-R<br />
+&ndash;reverse<br />
+Apply the patch in reverse.</p>
 
-<li><p>&ndash;reject<br />
-For atomicity, <em>git apply</em> by default fails the whole patch and does
-not touch the working tree when some of the hunks do not apply. This
-option makes it apply the parts of the patch that are applicable,
-and leave the rejected hunks in corresponding *.rej files.</p></li>
+<p>&ndash;reject<br />
+For atomicity, <em>git apply</em> by default fails the whole patch and does not
+touch the working tree when some of the hunks do not apply. This option
+makes it apply the parts of the patch that are applicable, and leave the
+rejected hunks in corresponding *.rej files.</p>
 
-<li><p>-z<br />
+<p>-z<br />
 When <code>--numstat</code> has been given, do not munge pathnames, but use a
 NUL-terminated machine-readable format.</p>
 
 <p>Without this option, each pathname output will have TAB, LF, double
 quotes, and backslash characters replaced with <code>\t</code>, <code>\n</code>, <code>\&quot;</code>, and
-<code>\\</code>, respectively, and the pathname will be enclosed in double
-quotes if any of those replacements occurred.</p></li>
+<code>\\</code>, respectively, and the pathname will be enclosed in double quotes
+if any of those replacements occurred.</p>
 
-<li><p>-p&lt;n&gt;<br />
+<p>-p&lt;n&gt;<br />
 Remove &lt;n&gt; leading slashes from traditional diff paths. The
-default is 1.</p></li>
+default is 1.</p>
 
-<li><p>-C&lt;n&gt;<br />
+<p>-C&lt;n&gt;<br />
 Ensure at least &lt;n&gt; lines of surrounding context match before and
-after each change. When fewer lines of surrounding context exist
-they all must match. By default no context is ever ignored.</p></li>
+after each change. When fewer lines of surrounding context exist they
+all must match. By default no context is ever ignored.</p>
 
-<li><p>&ndash;unidiff-zero<br />
+<p>&ndash;unidiff-zero<br />
 By default, <em>git apply</em> expects that the patch being applied is a
 unified diff with at least one line of context. This provides good
 safety measures, but breaks down when applying a diff generated with
 <code>--unified=0</code>. To bypass these checks use <code>--unidiff-zero</code>.</p>
 
 <p>Note, for the reasons stated above usage of context-free patches is
-discouraged.</p></li>
+discouraged.</p>
 
-<li><p>&ndash;apply<br />
+<p>&ndash;apply<br />
 If you use any of the options marked &ldquo;Turns off <em>apply</em>&rdquo; above, <em>git
 apply</em> reads and outputs the requested information without actually
-applying the patch. Give this flag after those flags to also apply
-the patch.</p></li>
+applying the patch. Give this flag after those flags to also apply the
+patch.</p>
 
-<li><p>&ndash;no-add<br />
-When applying a patch, ignore additions made by the patch. This can
-be used to extract the common part between two files by first
-running <em>diff</em> on them and applying the result with this option,
-which would apply the deletion part but not the addition part.</p></li>
+<p>&ndash;no-add<br />
+When applying a patch, ignore additions made by the patch. This can be
+used to extract the common part between two files by first running
+<em>diff</em> on them and applying the result with this option, which would
+apply the deletion part but not the addition part.</p>
 
-<li><p>&ndash;allow-binary-replacement<br />
---binary<br />
-Historically we did not allow binary patch applied without an
-explicit permission from the user, and this flag was the way to do
-so. Currently we always allow binary patch application, so this is a
-no-op.</p></li>
+<p>&ndash;allow-binary-replacement<br />
+&ndash;binary<br />
+Historically we did not allow binary patch applied without an explicit
+permission from the user, and this flag was the way to do so. Currently
+we always allow binary patch application, so this is a no-op.</p>
 
-<li><p>&ndash;exclude=&lt;path-pattern&gt;<br />
-Don’t apply changes to files matching the given path pattern. This
-can be useful when importing patchsets, where you want to exclude
-certain files or directories.</p></li>
-
-<li><p>&ndash;include=&lt;path-pattern&gt;<br />
-Apply changes to files matching the given path pattern. This can be
-useful when importing patchsets, where you want to include certain
+<p>&ndash;exclude=&lt;path-pattern&gt;<br />
+Don’t apply changes to files matching the given path pattern. This can
+be useful when importing patchsets, where you want to exclude certain
 files or directories.</p>
 
-<p>When <code>--exclude</code> and <code>--include</code> patterns are used, they are
-examined in the order they appear on the command line, and the first
-match determines if a patch to each path is used. A patch to a path
-that does not match any include/exclude pattern is used by default
-if there is no include pattern on the command line, and ignored if
-there is any include pattern.</p></li>
+<p>&ndash;include=&lt;path-pattern&gt;<br />
+Apply changes to files matching the given path pattern. This can be
+useful when importing patchsets, where you want to include certain files
+or directories.</p>
 
-<li><p>&ndash;ignore-space-change<br />
---ignore-whitespace<br />
-When applying a patch, ignore changes in whitespace in context lines
-if necessary. Context lines will preserve their whitespace, and they
-will not undergo whitespace fixing regardless of the value of the
-<code>--whitespace</code> option. New lines will still be fixed, though.</p></li>
+<p>When <code>--exclude</code> and <code>--include</code> patterns are used, they are examined in
+the order they appear on the command line, and the first match
+determines if a patch to each path is used. A patch to a path that does
+not match any include/exclude pattern is used by default if there is no
+include pattern on the command line, and ignored if there is any include
+pattern.</p>
 
-<li><p>&ndash;whitespace=&lt;action&gt;<br />
-When applying a patch, detect a new or modified line that has
-whitespace errors. What are considered whitespace errors is
-controlled by <code>core.whitespace</code> configuration. By default, trailing
-whitespaces (including lines that solely consist of whitespaces) and
-a space character that is immediately followed by a tab character
-inside the initial indent of the line are considered whitespace
-errors.</p>
+<p>&ndash;ignore-space-change<br />
+&ndash;ignore-whitespace<br />
+When applying a patch, ignore changes in whitespace in context lines if
+necessary. Context lines will preserve their whitespace, and they will
+not undergo whitespace fixing regardless of the value of the
+<code>--whitespace</code> option. New lines will still be fixed, though.</p>
 
-<p>By default, the command outputs warning messages but applies the
-patch. When <code>git-apply</code> is used for statistics and not applying a
-patch, it defaults to <code>nowarn</code>.</p>
+<p>&ndash;whitespace=&lt;action&gt;<br />
+When applying a patch, detect a new or modified line that has whitespace
+errors. What are considered whitespace errors is controlled by
+<code>core.whitespace</code> configuration. By default, trailing whitespaces
+(including lines that solely consist of whitespaces) and a space
+character that is immediately followed by a tab character inside the
+initial indent of the line are considered whitespace errors.</p>
+
+<p>By default, the command outputs warning messages but applies the patch.
+When <code>git-apply</code> is used for statistics and not applying a patch, it
+defaults to <code>nowarn</code>.</p>
 
 <p>You can use different <code>&lt;action&gt;</code> values to control this behavior:</p>
 
 <ul>
 <li><p><code>nowarn</code> turns off the trailing whitespace warning.</p></li>
 
-<li><p><code>warn</code> outputs warnings for a few such errors, but applies the
-patch as-is (default).</p></li>
+<li><p><code>warn</code> outputs warnings for a few such errors, but applies the patch
+as-is (default).</p></li>
 
-<li><p><code>fix</code> outputs warnings for a few such errors, and applies the
-patch after fixing them (<code>strip</code> is a synonym &mdash; the tool used
-to consider only trailing whitespace characters as errors, and
-the fix involved <em>stripping</em> them, but modern Gits do more).</p></li>
+<li><p><code>fix</code> outputs warnings for a few such errors, and applies the patch
+after fixing them (<code>strip</code> is a synonym &mdash; the tool used to
+consider only trailing whitespace characters as errors, and the fix
+involved <em>stripping</em> them, but modern Gits do more).</p></li>
 
-<li><p><code>error</code> outputs warnings for a few such errors, and refuses to
-apply the patch.</p></li>
+<li><p><code>error</code> outputs warnings for a few such errors, and refuses to apply
+the patch.</p></li>
 
 <li><p><code>error-all</code> is similar to <code>error</code> but shows all errors.</p></li>
-</ul></li>
+</ul>
 
-<li><p>&ndash;inaccurate-eof<br />
-Under certain circumstances, some versions of <em>diff</em> do not
-correctly detect a missing new-line at the end of the file. As a
-result, patches created by such <em>diff</em> programs do not record
-incomplete lines correctly. This option adds support for applying
-such patches by working around this bug.</p></li>
+<p>&ndash;inaccurate-eof<br />
+Under certain circumstances, some versions of <em>diff</em> do not correctly
+detect a missing new-line at the end of the file. As a result, patches
+created by such <em>diff</em> programs do not record incomplete lines
+correctly. This option adds support for applying such patches by working
+around this bug.</p>
 
-<li><p>-v<br />
---verbose<br />
-Report progress to stderr. By default, only a message about the
-current patch being applied will be printed. This option will cause
-additional information to be reported.</p></li>
+<p>-v<br />
+&ndash;verbose<br />
+Report progress to stderr. By default, only a message about the current
+patch being applied will be printed. This option will cause additional
+information to be reported.</p>
 
-<li><p>&ndash;recount<br />
+<p>&ndash;recount<br />
 Do not trust the line counts in the hunk headers, but infer them by
-inspecting the patch (e.g. after editing the patch without adjusting
-the hunk headers appropriately).</p></li>
+inspecting the patch (e.g. after editing the patch without adjusting the
+hunk headers appropriately).</p>
 
-<li><p>&ndash;directory=&lt;root&gt;<br />
+<p>&ndash;directory=&lt;root&gt;<br />
 Prepend &lt;root&gt; to all filenames. If a &ldquo;-p&rdquo; argument was also
 passed, it is applied before prepending the new root.</p>
 
 <p>For example, a patch that talks about updating <code>a/git-gui.sh</code> to
 <code>b/git-gui.sh</code> can be applied to the file in the working tree
-<code>modules/git-gui/git-gui.sh</code> by running <code>git apply
---directory=modules/git-gui</code>.</p></li>
+<code>modules/git-gui/git-gui.sh</code> by running
+<code>git apply --directory=modules/git-gui</code>.</p>
 
-<li><p>&ndash;unsafe-paths<br />
-By default, a patch that affects outside the working area (either a
-Git controlled working tree, or the current working directory when
-&ldquo;git apply&rdquo; is used as a replacement of GNU patch) is rejected as a
-mistake (or a mischief).</p>
+<p>&ndash;unsafe-paths<br />
+By default, a patch that affects outside the working area (either a Git
+controlled working tree, or the current working directory when &ldquo;git
+apply&rdquo; is used as a replacement of GNU patch) is rejected as a mistake
+(or a mischief).</p>
 
-<p>When <code>git apply</code> is used as a &ldquo;better GNU patch&rdquo;, the user can pass
-the <code>--unsafe-paths</code> option to override this safety check. This
-option has no effect when <code>--index</code> or <code>--cached</code> is in use.</p></li>
-</ul>
+<p>When <code>git apply</code> is used as a &ldquo;better GNU patch&rdquo;, the user can pass the
+<code>--unsafe-paths</code> option to override this safety check. This option has
+no effect when <code>--index</code> or <code>--cached</code> is in use.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<ul>
-<li><p>apply.ignoreWhitespace<br />
+<p>apply.ignoreWhitespace<br />
 Set to <em>change</em> if you want changes in whitespace to be ignored by
-default. Set to one of: no, none, never, false if you want changes
-in whitespace to be significant.</p></li>
+default. Set to one of: no, none, never, false if you want changes in
+whitespace to be significant.</p>
 
-<li><p>apply.whitespace<br />
+<p>apply.whitespace<br />
 When no <code>--whitespace</code> flag is given from the command line, this
-configuration item is used as the default.</p></li>
-</ul>
+configuration item is used as the default.</p>
 
 <h2 id="submodules">Submodules</h2>
 
@@ -432,7 +423,7 @@ subdirectory is checked and (if possible) updated.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

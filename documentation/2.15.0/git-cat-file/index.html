@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git cat-file (-t [--allow-unknown-type]| -s [--allow-unknown-type]| -e | -p | &lt;type&gt; | --textconv | --filters ) [--path=&lt;path&gt;] &lt;object&gt;
+<pre><code>git cat-file (-t [--allow-unknown-type]| -s [--allow-unknown-type]| -e | -p | &lt;type&gt; | --textconv | --filters ) [--path=&lt;path&gt;] &lt;object&gt;
 git cat-file (--batch | --batch-check) [ --textconv | --filters ] [--follow-symlinks]
 </code></pre>
 
@@ -128,96 +128,94 @@ appropriate drivers can be determined.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;object&gt;<br />
+<p>&lt;object&gt;<br />
 The name of the object to show. For a more complete list of ways to
 spell object names, see the &ldquo;SPECIFYING REVISIONS&rdquo; section in
-<a href="../gitrevisions">gitrevisions(7)</a>.</p></li>
+<a href="../gitrevisions">gitrevisions(7)</a>.</p>
 
-<li><p>-t<br />
+<p>-t<br />
 Instead of the content, show the object type identified by
-&lt;object&gt;.</p></li>
+&lt;object&gt;.</p>
 
-<li><p>-s<br />
+<p>-s<br />
 Instead of the content, show the object size identified by
-&lt;object&gt;.</p></li>
+&lt;object&gt;.</p>
 
-<li><p>-e<br />
+<p>-e<br />
 Suppress all output; instead exit with zero status if &lt;object&gt;
-exists and is a valid object.</p></li>
+exists and is a valid object.</p>
 
-<li><p>-p<br />
-Pretty-print the contents of &lt;object&gt; based on its type.</p></li>
+<p>-p<br />
+Pretty-print the contents of &lt;object&gt; based on its type.</p>
 
-<li><p>&lt;type&gt;<br />
+<p>&lt;type&gt;<br />
 Typically this matches the real type of &lt;object&gt; but asking for a
 type that can trivially be dereferenced from the given &lt;object&gt; is
 also permitted. An example is to ask for a &ldquo;tree&rdquo; with &lt;object&gt;
 being a commit object that contains it, or to ask for a &ldquo;blob&rdquo; with
-&lt;object&gt; being a tag object that points at it.</p></li>
+&lt;object&gt; being a tag object that points at it.</p>
 
-<li><p>&ndash;textconv<br />
+<p>&ndash;textconv<br />
 Show the content as transformed by a textconv filter. In this case,
-&lt;object&gt; has to be of the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt;
-in order to apply the filter to the content recorded in the index at
-&lt;path&gt;.</p></li>
+&lt;object&gt; has to be of the form &lt;tree-ish&gt;:&lt;path&gt;, or
+:&lt;path&gt; in order to apply the filter to the content recorded in
+the index at &lt;path&gt;.</p>
 
-<li><p>&ndash;filters<br />
-Show the content as converted by the filters configured in the
-current working tree for the given &lt;path&gt; (i.e. smudge filters,
+<p>&ndash;filters<br />
+Show the content as converted by the filters configured in the current
+working tree for the given &lt;path&gt; (i.e. smudge filters,
 end-of-line conversion, etc). In this case, &lt;object&gt; has to be of
-the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt;.</p></li>
+the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt;.</p>
 
-<li><p>&ndash;path=&lt;path&gt;<br />
-For use with &ndash;textconv or &ndash;filters, to allow specifying an object
-name and a path separately, e.g. when it is difficult to figure out
-the revision from which the blob came.</p></li>
+<p>&ndash;path=&lt;path&gt;<br />
+For use with &ndash;textconv or &ndash;filters, to allow specifying an object name
+and a path separately, e.g. when it is difficult to figure out the
+revision from which the blob came.</p>
 
-<li><p>&ndash;batch<br />
---batch=&lt;format&gt;<br />
-Print object information and contents for each object provided on
-stdin. May not be combined with any other options or arguments
-except <code>--textconv</code> or <code>--filters</code>, in which case the input lines
-also need to specify the path, separated by white space. See the
-section <code>BATCH OUTPUT</code> below for details.</p></li>
+<p>&ndash;batch<br />
+&ndash;batch=&lt;format&gt;<br />
+Print object information and contents for each object provided on stdin.
+May not be combined with any other options or arguments except
+<code>--textconv</code> or <code>--filters</code>, in which case the input lines also need to
+specify the path, separated by white space. See the section
+<code>BATCH OUTPUT</code> below for details.</p>
 
-<li><p>&ndash;batch-check<br />
---batch-check=&lt;format&gt;<br />
-Print object information for each object provided on stdin. May not
-be combined with any other options or arguments except <code>--textconv</code>
-or <code>--filters</code>, in which case the input lines also need to specify
-the path, separated by white space. See the section <code>BATCH OUTPUT</code>
-below for details.</p></li>
+<p>&ndash;batch-check<br />
+&ndash;batch-check=&lt;format&gt;<br />
+Print object information for each object provided on stdin. May not be
+combined with any other options or arguments except <code>--textconv</code> or
+<code>--filters</code>, in which case the input lines also need to specify the
+path, separated by white space. See the section
+<code>BATCH                   OUTPUT</code> below for details.</p>
 
-<li><p>&ndash;batch-all-objects<br />
+<p>&ndash;batch-all-objects<br />
 Instead of reading a list of objects on stdin, perform the requested
 batch operation on all objects in the repository and any alternate
 object stores (not just reachable objects). Requires <code>--batch</code> or
-<code>--batch-check</code> be specified. Note that the objects are visited in
-order sorted by their hashes.</p></li>
+<code>--batch-check</code> be specified. Note that the objects are visited in order
+sorted by their hashes.</p>
 
-<li><p>&ndash;buffer<br />
-Normally batch output is flushed after each object is output, so
-that a process can interactively read and write from <code>cat-file</code>.
-With this option, the output uses normal stdio buffering; this is
-much more efficient when invoking <code>--batch-check</code> on a large number
-of objects.</p></li>
+<p>&ndash;buffer<br />
+Normally batch output is flushed after each object is output, so that a
+process can interactively read and write from <code>cat-file</code>. With this
+option, the output uses normal stdio buffering; this is much more
+efficient when invoking <code>--batch-check</code> on a large number of objects.</p>
 
-<li><p>&ndash;allow-unknown-type<br />
-Allow -s or -t to query broken/corrupt objects of unknown type.</p></li>
+<p>&ndash;allow-unknown-type<br />
+Allow -s or -t to query broken/corrupt objects of unknown type.</p>
 
-<li><p>&ndash;follow-symlinks<br />
+<p>&ndash;follow-symlinks<br />
 With &ndash;batch or &ndash;batch-check, follow symlinks inside the repository
 when requesting objects with extended SHA-1 expressions of the form
 tree-ish:path-in-tree. Instead of providing output about the link
-itself, provide output about the linked-to object. If a symlink
-points outside the tree-ish (e.g. a link to /foo or a root-level
-link to ../foo), the portion of the link which is outside the tree
-will be printed.</p>
+itself, provide output about the linked-to object. If a symlink points
+outside the tree-ish (e.g. a link to /foo or a root-level link to
+../foo), the portion of the link which is outside the tree will be
+printed.</p>
 
-<p>This option does not (currently) work correctly when an object in
-the index is specified (e.g. <code>:link</code> instead of <code>HEAD:link</code>) rather
-than one in the tree.</p>
+<p>This option does not (currently) work correctly when an object in the
+index is specified (e.g. <code>:link</code> instead of <code>HEAD:link</code>) rather than one
+in the tree.</p>
 
 <p>This option cannot (currently) be used unless <code>--batch</code> or
 <code>--batch-check</code> is used.</p>
@@ -231,18 +229,19 @@ plink: a symlink to ../f
 alink: a symlink to /etc/passwd
 </code></pre>
 
-<p>For a regular file <code>f</code>, <code>echo HEAD:f | git cat-file --batch</code> would
-print</p>
+<p>For a regular file <code>f</code>,
+<code>echo                     HEAD:f | git cat-file --batch</code> would print</p>
 
 <pre><code>ce013625030ba8dba906f756967f9e9ca394464a blob 6
 </code></pre>
 
-<p>And <code>echo HEAD:link | git cat-file --batch --follow-symlinks</code> would
-print the same thing, as would <code>HEAD:dir/link</code>, as they both point
+<p>And
+<code>echo HEAD:link | git cat-file --batch                     --follow-symlinks</code>
+would print the same thing, as would <code>HEAD:dir/link</code>, as they both point
 at <code>HEAD:f</code>.</p>
 
-<p>Without <code>--follow-symlinks</code>, these would print data about the
-symlink itself. In the case of <code>HEAD:link</code>, you would see</p>
+<p>Without <code>--follow-symlinks</code>, these would print data about the symlink
+itself. In the case of <code>HEAD:link</code>, you would see</p>
 
 <pre><code>4d1ae35ba2c8ec712fa2a379db44ad639ca277bd blob 1
 </code></pre>
@@ -255,8 +254,7 @@ respectively print:</p>
 
 symlink 11
 /etc/passwd
-</code></pre></li>
-</ul>
+</code></pre>
 
 <h2 id="output">OUTPUT</h2>
 
@@ -268,8 +266,8 @@ symlink 11
 
 <p>If <code>-p</code> is specified, the contents of &lt;object&gt; are pretty-printed.</p>
 
-<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of the
-&lt;object&gt; will be returned.</p>
+<p>If &lt;type&gt; is specified, the raw (though uncompressed) contents of
+the &lt;object&gt; will be returned.</p>
 
 <h2 id="batch-output">BATCH OUTPUT</h2>
 
@@ -283,36 +281,33 @@ the whole line is considered as an object, as if it were fed to
 object, with placeholders of the form <code>%(atom)</code> expanded, followed by a
 newline. The available atoms are:</p>
 
-<ul>
-<li><p><code>objectname</code><br />
-The 40-hex object name of the object.</p></li>
+<p><code>objectname</code><br />
+The 40-hex object name of the object.</p>
 
-<li><p><code>objecttype</code><br />
-The type of the object (the same as <code>cat-file -t</code> reports).</p></li>
+<p><code>objecttype</code><br />
+The type of the object (the same as <code>cat-file -t</code> reports).</p>
 
-<li><p><code>objectsize</code><br />
-The size, in bytes, of the object (the same as <code>cat-file -s</code>
-reports).</p></li>
+<p><code>objectsize</code><br />
+The size, in bytes, of the object (the same as <code>cat-file -s</code> reports).</p>
 
-<li><p><code>objectsize:disk</code><br />
-The size, in bytes, that the object takes up on disk. See the note
-about on-disk sizes in the <code>CAVEATS</code> section below.</p></li>
+<p><code>objectsize:disk</code><br />
+The size, in bytes, that the object takes up on disk. See the note about
+on-disk sizes in the <code>CAVEATS</code> section below.</p>
 
-<li><p><code>deltabase</code><br />
-If the object is stored as a delta on-disk, this expands to the
-40-hex sha1 of the delta base object. Otherwise, expands to the null
-sha1 (40 zeroes). See <code>CAVEATS</code> below.</p></li>
+<p><code>deltabase</code><br />
+If the object is stored as a delta on-disk, this expands to the 40-hex
+sha1 of the delta base object. Otherwise, expands to the null sha1 (40
+zeroes). See <code>CAVEATS</code> below.</p>
 
-<li><p><code>rest</code><br />
-If this atom is used in the output string, input lines are split at
-the first whitespace boundary. All characters before that whitespace
-are considered to be the object name; characters after that first
-run of whitespace (i.e., the &ldquo;rest&rdquo; of the line) are output in place
-of the <code>%(rest)</code> atom.</p></li>
-</ul>
+<p><code>rest</code><br />
+If this atom is used in the output string, input lines are split at the
+first whitespace boundary. All characters before that whitespace are
+considered to be the object name; characters after that first run of
+whitespace (i.e., the &ldquo;rest&rdquo; of the line) are output in place of the
+<code>%(rest)</code> atom.</p>
 
-<p>If no format is specified, the default format is <code>%(objectname)
-%(objecttype) %(objectsize)</code>.</p>
+<p>If no format is specified, the default format is
+<code>%(objectname) %(objecttype) %(objectsize)</code>.</p>
 
 <p>If <code>--batch</code> is specified, the object information is followed by the
 object contents (consisting of <code>%(objectsize)</code> bytes), followed by a
@@ -324,7 +319,8 @@ newline.</p>
 &lt;contents&gt; LF
 </code></pre>
 
-<p>Whereas <code>--batch-check='%(objectname) %(objecttype)'</code> would produce:</p>
+<p>Whereas <code>--batch-check='%(objectname)               %(objecttype)'</code>
+would produce:</p>
 
 <pre><code>&lt;sha1&gt; SP &lt;type&gt; LF
 </code></pre>
@@ -345,8 +341,8 @@ and print:</p>
 
 <p>The symlink will either be absolute (beginning with a /), or relative to
 the tree root. For instance, if dir/link points to ../../foo, then
-&lt;symlink&gt; will be ../foo. &lt;size&gt; is the size of the symlink in
-bytes.</p>
+&lt;symlink&gt; will be ../foo. &lt;size&gt; is the size of the symlink
+in bytes.</p>
 
 <p>If &ndash;follow-symlinks is used, the following error messages will be
 displayed:</p>
@@ -449,7 +445,7 @@ will be reported.</p>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

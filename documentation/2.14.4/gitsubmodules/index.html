@@ -1,0 +1,398 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> gitsubmodules </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">gitsubmodules</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.14.4'>2.14.4</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.14.4/gitsubmodules'>gitsubmodules</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>.gitmodules, $GIT_DIR/config
+
+git submodule
+git &lt;command&gt; --recurse-submodules
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>A submodule is a repository embedded inside another repository. The
+submodule has its own history; the repository it is embedded in is
+called a superproject.</p>
+
+<p>On the filesystem, a submodule usually (but not always - see FORMS
+below) consists of (i) a Git directory located under the
+<code>$GIT_DIR/modules/</code> directory of its superproject, (ii) a working
+directory inside the superproject’s working directory, and a <code>.git</code> file
+at the root of the submodule’s working directory pointing to (i).</p>
+
+<p>Assuming the submodule has a Git directory at <code>$GIT_DIR/modules/foo/</code>
+and a working directory at <code>path/to/bar/</code>, the superproject tracks the
+submodule via a <code>gitlink</code> entry in the tree at <code>path/to/bar</code> and an
+entry in its <code>.gitmodules</code> file (see <a href="../gitmodules">gitmodules(5)</a>)
+of the form <code>submodule.foo.path = path/to/bar</code>.</p>
+
+<p>The <code>gitlink</code> entry contains the object name of the commit that the
+superproject expects the submodule’s working directory to be at.</p>
+
+<p>The section <code>submodule.foo.*</code> in the <code>.gitmodules</code> file gives additional
+hints to Gits porcelain layer such as where to obtain the submodule via
+the <code>submodule.foo.url</code> setting.</p>
+
+<p>Submodules can be used for at least two different use cases:</p>
+
+<ol>
+<li><p>Using another project while maintaining independent history.
+Submodules allow you to contain the working tree of another project
+within your own working tree while keeping the history of both
+projects separate. Also, since submodules are fixed to an arbitrary
+version, the other project can be independently developed without
+affecting the superproject, allowing the superproject project to fix
+itself to new versions only when desired.</p></li>
+
+<li><p>Splitting a (logically single) project into multiple repositories
+and tying them back together. This can be used to overcome current
+limitations of Gits implementation to have finer grained access:</p>
+
+<ul>
+<li><p>Size of the git repository: In its current form Git scales up
+poorly for large repositories containing content that is not
+compressed by delta computation between trees. However you can
+also use submodules to e.g. hold large binary assets and these
+repositories are then shallowly cloned such that you do not have
+a large history locally.</p></li>
+
+<li><p>Transfer size: In its current form Git requires the whole
+working tree present. It does not allow partial trees to be
+transferred in fetch or clone.</p></li>
+
+<li><p>Access control: By restricting user access to submodules, this
+can be used to implement read/write policies for different
+users.</p></li>
+</ul></li>
+</ol>
+
+<h2 id="the-configuration-of-submodules">The configuration of submodules</h2>
+
+<p>Submodule operations can be configured using the following mechanisms
+(from highest to lowest precedence):</p>
+
+<ul>
+<li><p>The command line for those commands that support taking submodule
+specs. Most commands have a boolean flag <em>&ndash;recurse-submodules</em>
+whether to recurse into submodules. Examples are <code>ls-files</code> or
+<code>checkout</code>. Some commands take enums, such as <code>fetch</code> and <code>push</code>,
+where you can specify how submodules are affected.</p></li>
+
+<li><p>The configuration inside the submodule. This includes
+<code>$GIT_DIR/config</code> in the submodule, but also settings in the tree
+such as a <code>.gitattributes</code> or <code>.gitignore</code> files that specify
+behavior of commands inside the submodule.</p>
+
+<p>For example an effect from the submodule’s <code>.gitignore</code> file would
+be observed when you run
+<code>git status                     --ignore-submodules=none</code> in the
+superproject. This collects information from the submodule’s working
+directory by running <code>status</code> in the submodule, which does pay
+attention to its <code>.gitignore</code> file.</p>
+
+<p>The submodule’s <code>$GIT_DIR/config</code> file would come into play when
+running <code>git push                     --recurse-submodules=check</code> in
+the superproject, as this would check if the submodule has any
+changes not published to any remote. The remotes are configured in
+the submodule as usual in the <code>$GIT_DIR/config</code> file.</p></li>
+
+<li><p>The configuration file <code>$GIT_DIR/config</code> in the superproject.
+Typical configuration at this place is controlling if a submodule is
+recursed into at all via the <code>active</code> flag for example.</p>
+
+<p>If the submodule is not yet initialized, then the configuration
+inside the submodule does not exist yet, so configuration where to
+obtain the submodule from is configured here for example.</p></li>
+
+<li><p>the <code>.gitmodules</code> file inside the superproject. Additionally to the
+required mapping between submodule’s name and path, a project
+usually uses this file to suggest defaults for the upstream
+collection of repositories.</p>
+
+<p>This file mainly serves as the mapping between name and path in the
+superproject, such that the submodule’s git directory can be
+located.</p>
+
+<p>If the submodule has never been initialized, this is the only place
+where submodule configuration is found. It serves as the last
+fallback to specify where to obtain the submodule from.</p></li>
+</ul>
+
+<h2 id="forms">FORMS</h2>
+
+<p>Submodules can take the following forms:</p>
+
+<ul>
+<li><p>The basic form described in DESCRIPTION with a Git directory, a
+working directory, a <code>gitlink</code>, and a <code>.gitmodules</code> entry.</p></li>
+
+<li><p>&ldquo;Old-form&rdquo; submodule: A working directory with an embedded <code>.git</code>
+directory, and the tracking <code>gitlink</code> and <code>.gitmodules</code> entry in the
+superproject. This is typically found in repositories generated
+using older versions of Git.</p>
+
+<p>It is possible to construct these old form repositories manually.</p>
+
+<p>When deinitialized or deleted (see below), the submodule’s Git
+directory is automatically moved to <code>$GIT_DIR/modules/&lt;name&gt;/</code> of
+the superproject.</p></li>
+
+<li><p>Deinitialized submodule: A <code>gitlink</code>, and a <code>.gitmodules</code> entry, but
+no submodule working directory. The submodule’s git directory may be
+there as after deinitializing the git directory is kept around. The
+directory which is supposed to be the working directory is empty
+instead.</p>
+
+<p>A submodule can be deinitialized by running <code>git submodule deinit</code>.
+Besides emptying the working directory, this command only modifies
+the superproject’s <code>$GIT_DIR/config</code> file, so the superproject’s
+history is not affected. This can be undone using
+<code>git submodule init</code>.</p></li>
+
+<li><p>Deleted submodule: A submodule can be deleted by running
+<code>git rm &lt;submodule path&gt;                   &amp;&amp; git commit</code>. This can
+be undone using <code>git revert</code>.</p>
+
+<p>The deletion removes the superproject’s tracking data, which are
+both the <code>gitlink</code> entry and the section in the <code>.gitmodules</code> file.
+The submodule’s working directory is removed from the file system,
+but the Git directory is kept around as it to make it possible to
+checkout past commits without requiring fetching from another
+repository.</p>
+
+<p>To completely remove a submodule, manually delete
+<code>$GIT_DIR/modules/&lt;name&gt;/</code>.</p></li>
+</ul>
+
+<h2 id="workflow-for-a-third-party-library">Workflow for a third party library</h2>
+
+<pre><code># add a submodule
+git submodule add &lt;url&gt; &lt;path&gt;
+
+# occasionally update the submodule to a new version:
+git -C &lt;path&gt; checkout &lt;new version&gt;
+git add &lt;path&gt;
+git commit -m &quot;update submodule to new version&quot;
+
+# See the list of submodules in a superproject
+git submodule status
+
+# See FORMS on removing submodules
+</code></pre>
+
+<h2 id="workflow-for-an-artificially-split-repo">Workflow for an artificially split repo</h2>
+
+<pre><code># Enable recursion for relevant commands, such that
+# regular commands recurse into submodules by default
+git config --global submodule.recurse true
+
+# Unlike the other commands below clone still needs
+# its own recurse flag:
+git clone --recurse &lt;URL&gt; &lt;directory&gt;
+cd &lt;directory&gt;
+
+# Get to know the code:
+git grep foo
+git ls-files
+
+# Get new code
+git fetch
+git pull --rebase
+
+# change worktree
+git checkout
+git reset
+</code></pre>
+
+<h2 id="implementation-details">Implementation details</h2>
+
+<p>When cloning or pulling a repository containing submodules the
+submodules will not be checked out by default; You can instruct <em>clone</em>
+to recurse into submodules. The <em>init</em> and <em>update</em> subcommands of <em>git
+submodule</em> will maintain submodules checked out and at an appropriate
+revision in your working tree. Alternatively you can set
+<em>submodule.recurse</em> to have <em>checkout</em> recursing into submodules.</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-submodule">git-submodule(1)</a>,
+<a href="../gitmodules">gitmodules(5)</a>.</p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

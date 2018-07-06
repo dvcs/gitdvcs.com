@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git tar-tree [--remote=&lt;repo&gt;] &lt;tree-ish&gt; [ &lt;base&gt; ]
+<pre><code>git tar-tree [--remote=&lt;repo&gt;] &lt;tree-ish&gt; [ &lt;base&gt; ]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -116,8 +116,8 @@
 instead (and move the &lt;base&gt; argument to <code>--prefix=base/</code>).</p>
 
 <p>Creates a tar archive containing the tree structure for the named tree.
-When &lt;base&gt; is specified it is added as a leading path to the files in
-the generated tar archive.</p>
+When &lt;base&gt; is specified it is added as a leading path to the
+files in the generated tar archive.</p>
 
 <p><em>git tar-tree</em> behaves differently when given a tree ID versus when
 given a commit ID or tag ID. In the first case the current time is used
@@ -128,50 +128,44 @@ can be extracted using <em>git get-tar-commit-id</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;tree-ish&gt;<br />
-The tree or commit to produce tar archive for. If it is the object
-name of a commit object.</p></li>
+<p>&lt;tree-ish&gt;<br />
+The tree or commit to produce tar archive for. If it is the object name
+of a commit object.</p>
 
-<li><p>&lt;base&gt;<br />
-Leading path to the files in the resulting tar archive.</p></li>
+<p>&lt;base&gt;<br />
+Leading path to the files in the resulting tar archive.</p>
 
-<li><p>&ndash;remote=&lt;repo&gt;<br />
-Instead of making a tar archive from local repository, retrieve a
-tar archive from a remote repository.</p></li>
-</ul>
+<p>&ndash;remote=&lt;repo&gt;<br />
+Instead of making a tar archive from local repository, retrieve a tar
+archive from a remote repository.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
-<ul>
-<li>tar.umask<br />
-This variable can be used to restrict the permission bits of tar
-archive entries. The default is 0002, which turns off the world
-write bit. The special value &ldquo;user&rdquo; indicates that the archiving
-user’s umask will be used instead. See umask(2) for details.</li>
-</ul>
+<p>tar.umask<br />
+This variable can be used to restrict the permission bits of tar archive
+entries. The default is 0002, which turns off the world write bit. The
+special value &ldquo;user&rdquo; indicates that the archiving user’s umask will be
+used instead. See umask(2) for details.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<ul>
-<li><p><code>git tar-tree HEAD junk | (cd /var/tmp/ &amp;&amp; tar xf -)</code><br />
-Create a tar archive that contains the contents of the latest commit
-on the current branch, and extracts it in <code>/var/tmp/junk</code> directory.</p></li>
+<p><code>git tar-tree HEAD junk | (cd                 /var/tmp/ &amp;&amp; tar xf -)</code><br />
+Create a tar archive that contains the contents of the latest commit on
+the current branch, and extracts it in <code>/var/tmp/junk</code> directory.</p>
 
-<li><p><code>git tar-tree v1.4.0 git-1.4.0 | gzip &gt;git-1.4.0.tar.gz</code><br />
-Create a tarball for v1.4.0 release.</p></li>
+<p><code>git tar-tree v1.4.0 git-1.4.0                 | gzip &gt;git-1.4.0.tar.gz</code><br />
+Create a tarball for v1.4.0 release.</p>
 
-<li><p><code>git tar-tree v1.4.0^{tree} git-1.4.0 | gzip &gt;git-1.4.0.tar.gz</code><br />
-Create a tarball for v1.4.0 release, but without a global extended
-pax header.</p></li>
+<p><code>git tar-tree v1.4.0^{tree}                 git-1.4.0 | gzip &gt;git-1.4.0.tar.gz</code><br />
+Create a tarball for v1.4.0 release, but without a global extended pax
+header.</p>
 
-<li><p><code>git tar-tree --remote=example.com:git.git v1.4.0 &gt;git-1.4.0.tar</code><br />
-Get a tarball v1.4.0 from example.com.</p></li>
+<p><code>git tar-tree                 --remote=example.com:git.git v1.4.0                 &gt;git-1.4.0.tar</code><br />
+Get a tarball v1.4.0 from example.com.</p>
 
-<li><p><code>git tar-tree HEAD:Documentation/ git-docs &gt; git-1.4.0-docs.tar</code><br />
+<p><code>git tar-tree                 HEAD:Documentation/ git-docs &gt;                 git-1.4.0-docs.tar</code><br />
 Put everything in the current head’s Documentation/ directory into
-<em>git-1.4.0-docs.tar</em>, with the prefix <em>git-docs/</em>.</p></li>
-</ul>
+<em>git-1.4.0-docs.tar</em>, with the prefix <em>git-docs/</em>.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -232,7 +226,7 @@ Put everything in the current head’s Documentation/ directory into
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

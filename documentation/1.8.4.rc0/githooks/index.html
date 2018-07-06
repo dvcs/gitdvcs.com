@@ -286,8 +286,9 @@ standard input with lines of the form:</p>
 <pre><code>&lt;local ref&gt; SP &lt;local sha1&gt; SP &lt;remote ref&gt; SP &lt;remote sha1&gt; LF
 </code></pre>
 
-<p>For instance, if the command <code>git push origin master:foreign</code> were run
-the hook would receive a line like the following:</p>
+<p>For instance, if the command
+<code>git push origin                 master:foreign</code> were run the hook would
+receive a line like the following:</p>
 
 <pre><code>refs/heads/master 67890 refs/heads/foreign 12345
 </code></pre>
@@ -295,9 +296,9 @@ the hook would receive a line like the following:</p>
 <p>although the full, 40-character SHA-1s would be supplied. If the foreign
 ref does not yet exist the <code>&lt;remote SHA-1&gt;</code> will be 40 <code>0</code>. If a ref is
 to be deleted, the <code>&lt;local ref&gt;</code> will be supplied as <code>(delete)</code> and the
-<code>&lt;local SHA-1&gt;</code> will be 40 <code>0</code>. If the local commit was specified by
-something other than a name which could be expanded (such as <code>HEAD~</code>, or
-a SHA-1) it will be supplied as it was originally given.</p>
+<code>&lt;local                 SHA-1&gt;</code> will be 40 <code>0</code>. If the local commit was
+specified by something other than a name which could be expanded (such
+as <code>HEAD~</code>, or a SHA-1) it will be supplied as it was originally given.</p>
 
 <p>If this hook exits with a non-zero status, <em>git push</em> will abort without
 pushing anything. Information about why the push is rejected may be sent
@@ -437,10 +438,10 @@ to abort.</p>
 
 <h3 id="post-rewrite">post-rewrite</h3>
 
-<p>This hook is invoked by commands that rewrite commits (<code>git commit
---amend</code>, <em>git-rebase</em>; currently <em>git-filter-branch</em> does <em>not</em> call
-it!). Its first argument denotes the command it was invoked by:
-currently one of <code>amend</code> or <code>rebase</code>. Further command-dependent
+<p>This hook is invoked by commands that rewrite commits
+(<code>git commit --amend</code>, <em>git-rebase</em>; currently <em>git-filter-branch</em> does
+<em>not</em> call it!). Its first argument denotes the command it was invoked
+by: currently one of <code>amend</code> or <code>rebase</code>. Further command-dependent
 arguments may be passed in the future.</p>
 
 <p>The hook receives a list of the rewritten commits on stdin, in the
@@ -454,20 +455,19 @@ preceding SP is also omitted. Currently, no commands pass any
 <em>extra-info</em>.</p>
 
 <p>The hook always runs after the automatic note copying (see
-&ldquo;notes.rewrite.&lt;command&gt;&rdquo; in <a href="../git-config.txt">git-config.txt(1)</a>)
-has happened, and thus has access to these notes.</p>
+&ldquo;notes.rewrite.&lt;command&gt;&rdquo; in
+<a href="../git-config.txt">git-config.txt(1)</a>) has happened, and thus has
+access to these notes.</p>
 
 <p>The following command-specific comments apply:</p>
 
-<ul>
-<li><p>rebase<br />
-For the <em>squash</em> and <em>fixup</em> operation, all commits that were
-squashed are listed as being rewritten to the squashed commit. This
-means that there will be several lines sharing the same <em>new-sha1</em>.</p>
+<p>rebase<br />
+For the <em>squash</em> and <em>fixup</em> operation, all commits that were squashed
+are listed as being rewritten to the squashed commit. This means that
+there will be several lines sharing the same <em>new-sha1</em>.</p>
 
 <p>The commits are guaranteed to be listed in the order that they were
-processed by rebase.</p></li>
-</ul>
+processed by rebase.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -528,7 +528,7 @@ processed by rebase.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

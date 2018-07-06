@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git for-each-ref [--count=&lt;count&gt;] [--shell|--perl|--python|--tcl]
+<pre><code>git for-each-ref [--count=&lt;count&gt;] [--shell|--perl|--python|--tcl]
                    [(--sort=&lt;key&gt;)…] [--format=&lt;format&gt;] [&lt;pattern&gt;…]
 </code></pre>
 
@@ -122,43 +122,38 @@ in that language.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;count&gt;<br />
+<p>&lt;count&gt;<br />
 By default the command shows all refs that match <code>&lt;pattern&gt;</code>. This
-option makes it stop after showing that many refs.</p></li>
+option makes it stop after showing that many refs.</p>
 
-<li><p>&lt;key&gt;<br />
-A field name to sort on. Prefix <code>-</code> to sort in descending order of
-the value. When unspecified, <code>refname</code> is used. You may use the
+<p>&lt;key&gt;<br />
+A field name to sort on. Prefix <code>-</code> to sort in descending order of the
+value. When unspecified, <code>refname</code> is used. You may use the
 &ndash;sort=&lt;key&gt; option multiple times, in which case the last key
-becomes the primary key.</p></li>
+becomes the primary key.</p>
 
-<li><p>&lt;format&gt;<br />
-A string that interpolates <code>%(fieldname)</code> from the object pointed at
-by a ref being shown. If <code>fieldname</code> is prefixed with an asterisk
-(<code>*</code>) and the ref points at a tag object, the value for the field in
-the object tag refers is used. When unspecified, defaults to
-<code>%(objectname) SPC %(objecttype) TAB %(refname)</code>. It also
-interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
+<p>&lt;format&gt;<br />
+A string that interpolates <code>%(fieldname)</code> from the object pointed at by
+a ref being shown. If <code>fieldname</code> is prefixed with an asterisk (<code>*</code>) and
+the ref points at a tag object, the value for the field in the object
+tag refers is used. When unspecified, defaults to
+<code>%(objectname) SPC %(objecttype)                   TAB %(refname)</code>. It
+also interpolates <code>%%</code> to <code>%</code>, and <code>%xx</code> where <code>xx</code> are hex digits
 interpolates to character with hex code <code>xx</code>; for example <code>%00</code>
-interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code>
-(LF).</p></li>
+interpolates to <code>\0</code> (NUL), <code>%09</code> to <code>\t</code> (TAB) and <code>%0a</code> to <code>\n</code> (LF).</p>
 
-<li><p>&lt;pattern&gt;…<br />
+<p>&lt;pattern&gt;…<br />
 If one or more patterns are given, only refs are shown that match
-against at least one pattern, either using fnmatch(3) or literally,
-in the latter case matching completely or from the beginning up to a
-slash.</p></li>
+against at least one pattern, either using fnmatch(3) or literally, in
+the latter case matching completely or from the beginning up to a slash.</p>
 
-<li><p>&ndash;shell<br />
---perl<br />
---python<br />
---tcl<br />
-If given, strings that substitute <code>%(fieldname)</code> placeholders are
-quoted as string literals suitable for the specified host language.
-This is meant to produce a scriptlet that can directly be
-`eval`ed.</p></li>
-</ul>
+<p>&ndash;shell<br />
+&ndash;perl<br />
+&ndash;python<br />
+&ndash;tcl<br />
+If given, strings that substitute <code>%(fieldname)</code> placeholders are quoted
+as string literals suitable for the specified host language. This is
+meant to produce a scriptlet that can directly be `eval`ed.</p>
 
 <h2 id="field-names">FIELD NAMES</h2>
 
@@ -167,27 +162,24 @@ to interpolate into the resulting output, or as sort keys.</p>
 
 <p>For all objects, the following names can be used:</p>
 
-<ul>
-<li><p>refname<br />
+<p>refname<br />
 The name of the ref (the part after $GIT_DIR/). For a non-ambiguous
-short name of the ref append <code>:short</code>. The option
-core.warnAmbiguousRefs is used to select the strict abbreviation
-mode.</p></li>
+short name of the ref append <code>:short</code>. The option core.warnAmbiguousRefs
+is used to select the strict abbreviation mode.</p>
 
-<li><p>objecttype<br />
-The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p></li>
+<p>objecttype<br />
+The type of the object (<code>blob</code>, <code>tree</code>, <code>commit</code>, <code>tag</code>).</p>
 
-<li><p>objectsize<br />
-The size of the object (the same as <em>git cat-file -s</em> reports).</p></li>
+<p>objectsize<br />
+The size of the object (the same as <em>git cat-file -s</em> reports).</p>
 
-<li><p>objectname<br />
+<p>objectname<br />
 The object name (aka SHA-1). For a non-ambiguous abbreviation of the
-object name append <code>:short</code>.</p></li>
+object name append <code>:short</code>.</p>
 
-<li><p>upstream<br />
+<p>upstream<br />
 The name of a local ref which can be considered “upstream” from the
-displayed ref. Respects <code>:short</code> in the same way as <code>refname</code> above.</p></li>
-</ul>
+displayed ref. Respects <code>:short</code> in the same way as <code>refname</code> above.</p>
 
 <p>In addition to the above, for commit and tag objects, the header field
 names (<code>tree</code>, <code>parent</code>, <code>object</code>, <code>type</code>, and <code>tag</code>) can be used to
@@ -366,7 +358,7 @@ eval &quot;$eval&quot;
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

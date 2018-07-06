@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git commit [-a | --interactive | --patch] [-s] [-v] [-u&lt;mode&gt;] [--amend]
+<pre><code>git commit [-a | --interactive | --patch] [-s] [-v] [-u&lt;mode&gt;] [--amend]
            [--dry-run] [(-c | -C | --fixup | --squash) &lt;commit&gt;]
            [-F &lt;file&gt; | -m &lt;msg&gt;] [--reset-author] [--allow-empty]
            [--allow-empty-message] [--no-verify] [-e] [--author=&lt;author&gt;]
@@ -157,170 +157,160 @@ can recover from it with <em>git reset</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-a<br />
---all<br />
-Tell the command to automatically stage files that have been
-modified and deleted, but new files you have not told Git about are
-not affected.</p></li>
+<p>-a<br />
+&ndash;all<br />
+Tell the command to automatically stage files that have been modified
+and deleted, but new files you have not told Git about are not affected.</p>
 
-<li><p>-p<br />
---patch<br />
-Use the interactive patch selection interface to chose which changes
-to commit. See <a href="../git-add">git-add(1)</a> for details.</p></li>
+<p>-p<br />
+&ndash;patch<br />
+Use the interactive patch selection interface to chose which changes to
+commit. See <a href="../git-add">git-add(1)</a> for details.</p>
 
-<li><p>-C &lt;commit&gt;<br />
---reuse-message=&lt;commit&gt;<br />
+<p>-C &lt;commit&gt;<br />
+&ndash;reuse-message=&lt;commit&gt;<br />
 Take an existing commit object, and reuse the log message and the
 authorship information (including the timestamp) when creating the
-commit.</p></li>
+commit.</p>
 
-<li><p>-c &lt;commit&gt;<br />
---reedit-message=&lt;commit&gt;<br />
+<p>-c &lt;commit&gt;<br />
+&ndash;reedit-message=&lt;commit&gt;<br />
 Like <em>-C</em>, but with <em>-c</em> the editor is invoked, so that the user can
-further edit the commit message.</p></li>
+further edit the commit message.</p>
 
-<li><p>&ndash;fixup=&lt;commit&gt;<br />
+<p>&ndash;fixup=&lt;commit&gt;<br />
 Construct a commit message for use with <code>rebase --autosquash</code>. The
-commit message will be the subject line from the specified commit
-with a prefix of &ldquo;fixup! &ldquo;. See <a href="../git-rebase">git-rebase(1)</a>
-for details.</p></li>
+commit message will be the subject line from the specified commit with a
+prefix of &ldquo;fixup! &ldquo;. See <a href="../git-rebase">git-rebase(1)</a> for details.</p>
 
-<li><p>&ndash;squash=&lt;commit&gt;<br />
+<p>&ndash;squash=&lt;commit&gt;<br />
 Construct a commit message for use with <code>rebase --autosquash</code>. The
-commit message subject line is taken from the specified commit with
-a prefix of &ldquo;squash! &ldquo;. Can be used with additional commit message
-options (<code>-m</code>/<code>-c</code>/<code>-C</code>/<code>-F</code>). See <a href="../git-rebase">git-rebase(1)</a>
-for details.</p></li>
+commit message subject line is taken from the specified commit with a
+prefix of &ldquo;squash! &ldquo;. Can be used with additional commit message options
+(<code>-m</code>/<code>-c</code>/<code>-C</code>/<code>-F</code>). See <a href="../git-rebase">git-rebase(1)</a> for details.</p>
 
-<li><p>&ndash;reset-author<br />
+<p>&ndash;reset-author<br />
 When used with -C/-c/&ndash;amend options, or when committing after a a
-conflicting cherry-pick, declare that the authorship of the
-resulting commit now belongs of the committer. This also renews the
-author timestamp.</p></li>
+conflicting cherry-pick, declare that the authorship of the resulting
+commit now belongs of the committer. This also renews the author
+timestamp.</p>
 
-<li><p>&ndash;short<br />
+<p>&ndash;short<br />
 When doing a dry-run, give the output in the short-format. See
-<a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p></li>
+<a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p>
 
-<li><p>&ndash;branch<br />
-Show the branch and tracking info even in short-format.</p></li>
+<p>&ndash;branch<br />
+Show the branch and tracking info even in short-format.</p>
 
-<li><p>&ndash;porcelain<br />
-When doing a dry-run, give the output in a porcelain-ready format.
-See <a href="../git-status">git-status(1)</a> for details. Implies
-<code>--dry-run</code>.</p></li>
+<p>&ndash;porcelain<br />
+When doing a dry-run, give the output in a porcelain-ready format. See
+<a href="../git-status">git-status(1)</a> for details. Implies <code>--dry-run</code>.</p>
 
-<li><p>&ndash;long<br />
+<p>&ndash;long<br />
 When doing a dry-run, give the output in a the long-format. Implies
-<code>--dry-run</code>.</p></li>
+<code>--dry-run</code>.</p>
 
-<li><p>-z<br />
---null<br />
-When showing <code>short</code> or <code>porcelain</code> status output, terminate entries
-in the status output with NUL, instead of LF. If no format is given,
-implies the <code>--porcelain</code> output format.</p></li>
+<p>-z<br />
+&ndash;null<br />
+When showing <code>short</code> or <code>porcelain</code> status output, terminate entries in
+the status output with NUL, instead of LF. If no format is given,
+implies the <code>--porcelain</code> output format.</p>
 
-<li><p>-F &lt;file&gt;<br />
---file=&lt;file&gt;<br />
-Take the commit message from the given file. Use <em>-</em> to read the
-message from the standard input.</p></li>
+<p>-F &lt;file&gt;<br />
+&ndash;file=&lt;file&gt;<br />
+Take the commit message from the given file. Use <em>-</em> to read the message
+from the standard input.</p>
 
-<li><p>&ndash;author=&lt;author&gt;<br />
+<p>&ndash;author=&lt;author&gt;<br />
 Override the commit author. Specify an explicit author using the
-standard <code>A U Thor &lt;author@example.com&gt;</code> format. Otherwise
-&lt;author&gt; is assumed to be a pattern and is used to search for an
-existing commit by that author (i.e. rev-list &ndash;all -i
+standard <code>A U Thor                   &lt;author@example.com&gt;</code> format.
+Otherwise &lt;author&gt; is assumed to be a pattern and is used to
+search for an existing commit by that author (i.e. rev-list &ndash;all -i
 &ndash;author=&lt;author&gt;); the commit author is then copied from the
-first such commit found.</p></li>
+first such commit found.</p>
 
-<li><p>&ndash;date=&lt;date&gt;<br />
-Override the author date used in the commit.</p></li>
+<p>&ndash;date=&lt;date&gt;<br />
+Override the author date used in the commit.</p>
 
-<li><p>-m &lt;msg&gt;<br />
---message=&lt;msg&gt;<br />
+<p>-m &lt;msg&gt;<br />
+&ndash;message=&lt;msg&gt;<br />
 Use the given &lt;msg&gt; as the commit message. If multiple <code>-m</code>
-options are given, their values are concatenated as separate
-paragraphs.</p></li>
+options are given, their values are concatenated as separate paragraphs.</p>
 
-<li><p>-t &lt;file&gt;<br />
---template=&lt;file&gt;<br />
-When editing the commit message, start the editor with the contents
-in the given file. The <code>commit.template</code> configuration variable is
-often used to give this option implicitly to the command. This
-mechanism can be used by projects that want to guide participants
-with some hints on what to write in the message in what order. If
-the user exits the editor without editing the message, the commit is
-aborted. This has no effect when a message is given by other means,
-e.g. with the <code>-m</code> or <code>-F</code> options.</p></li>
+<p>-t &lt;file&gt;<br />
+&ndash;template=&lt;file&gt;<br />
+When editing the commit message, start the editor with the contents in
+the given file. The <code>commit.template</code> configuration variable is often
+used to give this option implicitly to the command. This mechanism can
+be used by projects that want to guide participants with some hints on
+what to write in the message in what order. If the user exits the editor
+without editing the message, the commit is aborted. This has no effect
+when a message is given by other means, e.g. with the <code>-m</code> or <code>-F</code>
+options.</p>
 
-<li><p>-s<br />
---signoff<br />
+<p>-s<br />
+&ndash;signoff<br />
 Add Signed-off-by line by the committer at the end of the commit log
-message.</p></li>
+message.</p>
 
-<li><p>-n<br />
---no-verify<br />
+<p>-n<br />
+&ndash;no-verify<br />
 This option bypasses the pre-commit and commit-msg hooks. See also
-<a href="../githooks">githooks(5)</a>.</p></li>
+<a href="../githooks">githooks(5)</a>.</p>
 
-<li><p>&ndash;allow-empty<br />
+<p>&ndash;allow-empty<br />
 Usually recording a commit that has the exact same tree as its sole
 parent commit is a mistake, and the command prevents you from making
-such a commit. This option bypasses the safety, and is primarily for
-use by foreign SCM interface scripts.</p></li>
+such a commit. This option bypasses the safety, and is primarily for use
+by foreign SCM interface scripts.</p>
 
-<li><p>&ndash;allow-empty-message<br />
+<p>&ndash;allow-empty-message<br />
 Like &ndash;allow-empty this command is primarily for use by foreign SCM
-interface scripts. It allows you to create a commit with an empty
-commit message without using plumbing commands like
-<a href="../git-commit-tree">git-commit-tree(1)</a>.</p></li>
+interface scripts. It allows you to create a commit with an empty commit
+message without using plumbing commands like
+<a href="../git-commit-tree">git-commit-tree(1)</a>.</p>
 
-<li><p>&ndash;cleanup=&lt;mode&gt;<br />
-This option determines how the supplied commit message should be
-cleaned up before committing. The <em>&lt;mode&gt;</em> can be <code>strip</code>,
-<code>whitespace</code>, <code>verbatim</code>, or <code>default</code>.</p>
+<p>&ndash;cleanup=&lt;mode&gt;<br />
+This option determines how the supplied commit message should be cleaned
+up before committing. The <em>&lt;mode&gt;</em> can be <code>strip</code>, <code>whitespace</code>,
+<code>verbatim</code>, or <code>default</code>.</p>
 
-<ul>
-<li><p>strip<br />
+<p>strip<br />
 Strip leading and trailing empty lines, trailing whitespace, and
-#commentary and collapse consecutive empty lines.</p></li>
+#commentary and collapse consecutive empty lines.</p>
 
-<li><p>whitespace<br />
-Same as <code>strip</code> except #commentary is not removed.</p></li>
+<p>whitespace<br />
+Same as <code>strip</code> except #commentary is not removed.</p>
 
-<li><p>verbatim<br />
-Do not change the message at all.</p></li>
+<p>verbatim<br />
+Do not change the message at all.</p>
 
-<li><p>default<br />
-Same as <code>strip</code> if the message is to be edited. Otherwise
-<code>whitespace</code>.</p></li>
-</ul>
+<p>default<br />
+Same as <code>strip</code> if the message is to be edited. Otherwise <code>whitespace</code>.</p>
 
 <p>The default can be changed by the <em>commit.cleanup</em> configuration
-variable (see <a href="../git-config">git-config(1)</a>).</p></li>
+variable (see <a href="../git-config">git-config(1)</a>).</p>
 
-<li><p>-e<br />
---edit<br />
-The message taken from file with <code>-F</code>, command line with <code>-m</code>, and
-from commit object with <code>-C</code> are usually used as the commit log
-message unmodified. This option lets you further edit the message
-taken from these sources.</p></li>
+<p>-e<br />
+&ndash;edit<br />
+The message taken from file with <code>-F</code>, command line with <code>-m</code>, and from
+commit object with <code>-C</code> are usually used as the commit log message
+unmodified. This option lets you further edit the message taken from
+these sources.</p>
 
-<li><p>&ndash;no-edit<br />
+<p>&ndash;no-edit<br />
 Use the selected commit message without launching an editor. For
-example, <code>git commit --amend --no-edit</code> amends a commit without
-changing its commit message.</p></li>
+example, <code>git commit --amend                   --no-edit</code> amends a
+commit without changing its commit message.</p>
 
-<li><p>&ndash;amend<br />
+<p>&ndash;amend<br />
 Replace the tip of the current branch by creating a new commit. The
-recorded tree is prepared as usual (including the effect of the <code>-i</code>
-and <code>-o</code> options and explicit pathspec), and the message from the
-original commit is used as the starting point, instead of an empty
-message, when no other message is specified from the command line
-via options such as <code>-m</code>, <code>-F</code>, <code>-c</code>, etc. The new commit has the
-same parents and author as the current one (the <code>--reset-author</code>
-option can countermand this).</p>
+recorded tree is prepared as usual (including the effect of the <code>-i</code> and
+<code>-o</code> options and explicit pathspec), and the message from the original
+commit is used as the starting point, instead of an empty message, when
+no other message is specified from the command line via options such as
+<code>-m</code>, <code>-F</code>, <code>-c</code>, etc. The new commit has the same parents and author as
+the current one (the <code>--reset-author</code> option can countermand this).</p>
 
 <p>It is a rough equivalent for:</p>
 
@@ -331,31 +321,31 @@ option can countermand this).</p>
 
 <p>but can be used to amend a merge commit.</p>
 
-<p>You should understand the implications of rewriting history if you
-amend a commit that has already been published. (See the &ldquo;RECOVERING
-FROM UPSTREAM REBASE&rdquo; section in <a href="../git-rebase">git-rebase(1)</a>.)</p></li>
+<p>You should understand the implications of rewriting history if you amend
+a commit that has already been published. (See the &ldquo;RECOVERING FROM
+UPSTREAM REBASE&rdquo; section in <a href="../git-rebase">git-rebase(1)</a>.)</p>
 
-<li><p>&ndash;no-post-rewrite<br />
-Bypass the post-rewrite hook.</p></li>
+<p>&ndash;no-post-rewrite<br />
+Bypass the post-rewrite hook.</p>
 
-<li><p>-i<br />
---include<br />
-Before making a commit out of staged contents so far, stage the
-contents of paths given on the command line as well. This is usually
-not what you want unless you are concluding a conflicted merge.</p></li>
+<p>-i<br />
+&ndash;include<br />
+Before making a commit out of staged contents so far, stage the contents
+of paths given on the command line as well. This is usually not what you
+want unless you are concluding a conflicted merge.</p>
 
-<li><p>-o<br />
---only<br />
+<p>-o<br />
+&ndash;only<br />
 Make a commit only from the paths specified on the command line,
 disregarding any contents that have been staged so far. This is the
-default mode of operation of <em>git commit</em> if any paths are given on
-the command line, in which case this option can be omitted. If this
-option is specified together with <em>&ndash;amend</em>, then no paths need to
-be specified, which can be used to amend the last commit without
-committing changes that have already been staged.</p></li>
+default mode of operation of <em>git commit</em> if any paths are given on the
+command line, in which case this option can be omitted. If this option
+is specified together with <em>&ndash;amend</em>, then no paths need to be
+specified, which can be used to amend the last commit without committing
+changes that have already been staged.</p>
 
-<li><p>-u[&lt;mode&gt;]<br />
---untracked-files[=&lt;mode&gt;]<br />
+<p>-u[&lt;mode&gt;]<br />
+&ndash;untracked-files[=&lt;mode&gt;]<br />
 Show untracked files.</p>
 
 <p>The mode parameter is optional (defaults to <em>all</em>), and is used to
@@ -374,69 +364,63 @@ default is <em>normal</em>, i.e. show untracked files and directories.</p>
 <p>The default can be changed using the status.showUntrackedFiles
 configuration variable documented in
 <a href="../git-config">git-config(1)</a>.</p></li>
-</ul></li>
+</ul>
 
-<li><p>-v<br />
---verbose<br />
-Show unified diff between the HEAD commit and what would be
-committed at the bottom of the commit message template. Note that
-this diff output doesn’t have its lines prefixed with <em>#</em>.</p></li>
+<p>-v<br />
+&ndash;verbose<br />
+Show unified diff between the HEAD commit and what would be committed at
+the bottom of the commit message template. Note that this diff output
+doesn’t have its lines prefixed with <em>#</em>.</p>
 
-<li><p>-q<br />
---quiet<br />
-Suppress commit summary message.</p></li>
+<p>-q<br />
+&ndash;quiet<br />
+Suppress commit summary message.</p>
 
-<li><p>&ndash;dry-run<br />
+<p>&ndash;dry-run<br />
 Do not create a commit, but show a list of paths that are to be
-committed, paths with local changes that will be left uncommitted
-and paths that are untracked.</p></li>
+committed, paths with local changes that will be left uncommitted and
+paths that are untracked.</p>
 
-<li><p>&ndash;status<br />
+<p>&ndash;status<br />
 Include the output of <a href="../git-status">git-status(1)</a> in the commit
 message template when using an editor to prepare the commit message.
 Defaults to on, but can be used to override configuration variable
-commit.status.</p></li>
+commit.status.</p>
 
-<li><p>&ndash;no-status<br />
+<p>&ndash;no-status<br />
 Do not include the output of <a href="../git-status">git-status(1)</a> in the
 commit message template when using an editor to prepare the default
-commit message.</p></li>
+commit message.</p>
 
-<li><p>-S[&lt;keyid&gt;]<br />
---gpg-sign[=&lt;keyid&gt;]<br />
-GPG-sign commit.</p></li>
-</ul>
+<p>-S[&lt;keyid&gt;]<br />
+&ndash;gpg-sign[=&lt;keyid&gt;]<br />
+GPG-sign commit.</p>
 
-<hr />
+<p>&ndash;<br />
+Do not interpret any more arguments as options.</p>
 
-<pre><code>Do not interpret any more arguments as options.
-</code></pre>
-
-<ul>
-<li>&lt;file&gt;…<br />
+<p>&lt;file&gt;…<br />
 When files are given on the command line, the command commits the
 contents of the named files, without recording the changes already
-staged. The contents of these files are also staged for the next
-commit on top of what have been staged before.</li>
-</ul>
+staged. The contents of these files are also staged for the next commit
+on top of what have been staged before.</p>
 
 <h2 id="date-formats">DATE FORMATS</h2>
 
 <p>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables and
 the <code>--date</code> option support the following date formats:</p>
 
-<ul>
-<li><p>Git internal format<br />
-It is <code>&lt;unix timestamp&gt; &lt;timezone offset&gt;</code>, where <code>&lt;unix timestamp&gt;</code>
-is the number of seconds since the UNIX epoch. <code>&lt;timezone offset&gt;</code>
-is a positive or negative offset from UTC. For example CET (which is
-2 hours ahead UTC) is <code>+0200</code>.</p></li>
+<p>Git internal format<br />
+It is <code>&lt;unix timestamp&gt; &lt;timezone                   offset&gt;</code>, where
+<code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the
+UNIX epoch. <code>&lt;timezone offset&gt;</code> is a positive or negative offset from
+UTC. For example CET (which is 2 hours ahead UTC) is <code>+0200</code>.</p>
 
-<li><p>RFC 2822<br />
+<p>RFC 2822<br />
 The standard email format as described by RFC 2822, for example
-<code>Thu, 07 Apr 2005 22:13:13 +0200</code>.</p></li>
+<code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
 
-<li><p>ISO 8601<br />
+<p>ISO 8601<br />
 Time and date specified by the ISO 8601 standard, for example
 <code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code>
 character as well.</p>
@@ -454,20 +438,20 @@ Note
 <td>In addition, the date part is accepted in the following formats: <code>YYYY.MM.DD</code>, <code>MM/DD/YYYY</code> and <code>DD.MM.YYYY</code>.</td>
 </tr>
 </tbody>
-</table></li>
-</ul>
+</table>
 
 <h2 id="examples">EXAMPLES</h2>
 
 <p>When recording your own work, the contents of modified files in your
 working tree are temporarily stored to a staging area called the &ldquo;index&rdquo;
 with <em>git add</em>. A file can be reverted back, only in the index but not
-in the working tree, to that of the last commit with <code>git reset HEAD --
-&lt;file&gt;</code>, which effectively reverts <em>git add</em> and prevents the changes to
-this file from participating in the next commit. After building the
-state to be committed incrementally with these commands, <code>git commit</code>
-(without any pathname parameter) is used to record what has been staged
-so far. This is the most basic form of the command. An example:</p>
+in the working tree, to that of the last commit with
+<code>git reset HEAD -- &lt;file&gt;</code>, which effectively reverts <em>git add</em> and
+prevents the changes to this file from participating in the next commit.
+After building the state to be committed incrementally with these
+commands, <code>git commit</code> (without any pathname parameter) is used to
+record what has been staged so far. This is the most basic form of the
+command. An example:</p>
 
 <pre><code>$ edit hello.c
 $ git rm goodbye.c
@@ -475,11 +459,11 @@ $ git add hello.c
 $ git commit
 </code></pre>
 
-<p>Instead of staging files after each individual change, you can tell <code>git
-commit</code> to notice the changes to the files whose contents are tracked in
-your working tree and do corresponding <code>git add</code> and <code>git rm</code> for you.
-That is, this example does the same as the earlier example if there is
-no other change in your working tree:</p>
+<p>Instead of staging files after each individual change, you can tell
+<code>git commit</code> to notice the changes to the files whose contents are
+tracked in your working tree and do corresponding <code>git add</code> and
+<code>git               rm</code> for you. That is, this example does the same as
+the earlier example if there is no other change in your working tree:</p>
 
 <pre><code>$ edit hello.c
 $ rm goodbye.c
@@ -488,7 +472,7 @@ $ git commit -a
 
 <p>The command <code>git commit -a</code> first looks at your working tree, notices
 that you have modified hello.c and removed goodbye.c, and performs
-necessary <code>git add</code> and <code>git rm</code> for you.</p>
+necessary <code>git               add</code> and <code>git rm</code> for you.</p>
 
 <p>After staging changes to many files, you can alter the order the changes
 are recorded in, by giving pathnames to <code>git commit</code>. When pathnames are
@@ -526,8 +510,8 @@ $ git add hello.c
 </code></pre>
 
 <p>After resolving conflicts and staging the result, <code>git ls-files -u</code>
-would stop mentioning the conflicted path. When you are done, run <code>git
-commit</code> to finally record the merge:</p>
+would stop mentioning the conflicted path. When you are done, run
+<code>git               commit</code> to finally record the merge:</p>
 
 <pre><code>$ git commit
 </code></pre>
@@ -622,14 +606,12 @@ information.</p>
 
 <h2 id="files">FILES</h2>
 
-<ul>
-<li><code>$GIT_DIR/COMMIT_EDITMSG</code><br />
+<p><code>$GIT_DIR/COMMIT_EDITMSG</code><br />
 This file contains the commit message of a commit in progress. If
-<code>git commit</code> exits due to an error before creating a commit, any
-commit message that has been provided by the user (e.g., in an
-editor session) will be available in this file, but will be
-overwritten by the next invocation of <code>git commit</code>.</li>
-</ul>
+<code>git commit</code> exits due to an error before creating a commit, any commit
+message that has been provided by the user (e.g., in an editor session)
+will be available in this file, but will be overwritten by the next
+invocation of <code>git commit</code>.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -696,7 +678,7 @@ overwritten by the next invocation of <code>git commit</code>.</li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

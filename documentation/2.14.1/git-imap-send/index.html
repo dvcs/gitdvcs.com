@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git imap-send [-v] [-q] [--[no-]curl]
+<pre><code>git imap-send [-v] [-q] [--[no-]curl]
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -124,25 +124,22 @@ fields &ldquo;From&rdquo;, &ldquo;Date&rdquo;, and &ldquo;Subject&rdquo; in that
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-v<br />
---verbose<br />
-Be verbose.</p></li>
+<p>-v<br />
+&ndash;verbose<br />
+Be verbose.</p>
 
-<li><p>-q<br />
---quiet<br />
-Be quiet.</p></li>
+<p>-q<br />
+&ndash;quiet<br />
+Be quiet.</p>
 
-<li><p>&ndash;curl<br />
-Use libcurl to communicate with the IMAP server, unless tunneling
-into it. Ignored if Git was built without the
-USE_CURL_FOR_IMAP_SEND option set.</p></li>
+<p>&ndash;curl<br />
+Use libcurl to communicate with the IMAP server, unless tunneling into
+it. Ignored if Git was built without the USE_CURL_FOR_IMAP_SEND
+option set.</p>
 
-<li><p>&ndash;no-curl<br />
-Talk to the IMAP server using git’s own IMAP routines instead of
-using libcurl. Ignored if Git was built with the NO_OPENSSL option
-set.</p></li>
-</ul>
+<p>&ndash;no-curl<br />
+Talk to the IMAP server using git’s own IMAP routines instead of using
+libcurl. Ignored if Git was built with the NO_OPENSSL option set.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
@@ -151,53 +148,50 @@ set to appropriate values.</p>
 
 <h3 id="variables">Variables</h3>
 
-<ul>
-<li><p>imap.folder<br />
-The folder to drop the mails into, which is typically the Drafts
-folder. For example: &ldquo;INBOX.Drafts&rdquo;, &ldquo;INBOX/Drafts&rdquo; or
-&ldquo;[Gmail]/Drafts&rdquo;. Required.</p></li>
+<p>imap.folder<br />
+The folder to drop the mails into, which is typically the Drafts folder.
+For example: &ldquo;INBOX.Drafts&rdquo;, &ldquo;INBOX/Drafts&rdquo; or &ldquo;[Gmail]/Drafts&rdquo;.
+Required.</p>
 
-<li><p>imap.tunnel<br />
-Command used to setup a tunnel to the IMAP server through which
-commands will be piped instead of using a direct network connection
-to the server. Required when imap.host is not set.</p></li>
+<p>imap.tunnel<br />
+Command used to setup a tunnel to the IMAP server through which commands
+will be piped instead of using a direct network connection to the
+server. Required when imap.host is not set.</p>
 
-<li><p>imap.host<br />
+<p>imap.host<br />
 A URL identifying the server. Use a <code>imap://</code> prefix for non-secure
-connections and a <code>imaps://</code> prefix for secure connections. Ignored
-when imap.tunnel is set, but required otherwise.</p></li>
+connections and a <code>imaps://</code> prefix for secure connections. Ignored when
+imap.tunnel is set, but required otherwise.</p>
 
-<li><p>imap.user<br />
-The username to use when logging in to the server.</p></li>
+<p>imap.user<br />
+The username to use when logging in to the server.</p>
 
-<li><p>imap.pass<br />
-The password to use when logging in to the server.</p></li>
+<p>imap.pass<br />
+The password to use when logging in to the server.</p>
 
-<li><p>imap.port<br />
-An integer port number to connect to on the server. Defaults to 143
-for imap:// hosts and 993 for imaps:// hosts. Ignored when
-imap.tunnel is set.</p></li>
+<p>imap.port<br />
+An integer port number to connect to on the server. Defaults to 143 for
+imap:// hosts and 993 for imaps:// hosts. Ignored when imap.tunnel is
+set.</p>
 
-<li><p>imap.sslverify<br />
-A boolean to enable/disable verification of the server certificate
-used by the SSL/TLS connection. Default is <code>true</code>. Ignored when
-imap.tunnel is set.</p></li>
+<p>imap.sslverify<br />
+A boolean to enable/disable verification of the server certificate used
+by the SSL/TLS connection. Default is <code>true</code>. Ignored when imap.tunnel
+is set.</p>
 
-<li><p>imap.preformattedHTML<br />
+<p>imap.preformattedHTML<br />
 A boolean to enable/disable the use of html encoding when sending a
 patch. An html encoded patch will be bracketed with &lt;pre&gt; and have
 a content type of text/html. Ironically, enabling this option causes
 Thunderbird to send the patch as a plain/text, format=fixed email.
-Default is <code>false</code>.</p></li>
+Default is <code>false</code>.</p>
 
-<li><p>imap.authMethod<br />
-Specify authenticate method for authentication with IMAP server. If
-Git was built with the NO_CURL option, or if your curl version is
-older than 7.34.0, or if you’re running git-imap-send with the
-<code>--no-curl</code> option, the only supported method is <em>CRAM-MD5</em>. If this
-is not set then <em>git imap-send</em> uses the basic IMAP plaintext LOGIN
-command.</p></li>
-</ul>
+<p>imap.authMethod<br />
+Specify authenticate method for authentication with IMAP server. If Git
+was built with the NO_CURL option, or if your curl version is older
+than 7.34.0, or if you’re running git-imap-send with the <code>--no-curl</code>
+option, the only supported method is <em>CRAM-MD5</em>. If this is not set then
+<em>git imap-send</em> uses the basic IMAP plaintext LOGIN command.</p>
 
 <h3 id="examples">Examples</h3>
 
@@ -244,8 +238,7 @@ command.</p></li>
 <p>You might need to instead use: folder = &ldquo;[Google Mail]/Drafts&rdquo; if you
 get an error that the &ldquo;Folder doesn’t exist&rdquo;.</p>
 
-<p>Once the commits are ready to be sent, run the following
-    command:</p>
+<p>Once the commits are ready to be sent, run the following command:</p>
 
 <pre><code>$ git format-patch --cover-letter -M --stdout origin/master | git imap-send
 </code></pre>
@@ -331,7 +324,7 @@ may wish to visit this web page for more information:
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

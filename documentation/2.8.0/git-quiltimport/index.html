@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git quiltimport [--dry-run | -n] [--author &lt;author&gt;] [--patches &lt;dir&gt;]
+<pre><code>git quiltimport [--dry-run | -n] [--author &lt;author&gt;] [--patches &lt;dir&gt;]
                 [--series &lt;file&gt;]
 </code></pre>
 
@@ -128,29 +128,27 @@ preserved as the 1 line subject in the Git description.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-n<br />
---dry-run<br />
-Walk through the patches in the series and warn if we cannot find
-all of the necessary information to commit a patch. At the time of
-this writing only missing author information is warned about.</p></li>
+<p>-n<br />
+&ndash;dry-run<br />
+Walk through the patches in the series and warn if we cannot find all of
+the necessary information to commit a patch. At the time of this writing
+only missing author information is warned about.</p>
 
-<li><p>&ndash;author Author Name &lt;Author Email&gt;<br />
-The author name and email address to use when no author information
-can be found in the patch description.</p></li>
+<p>&ndash;author Author Name &lt;Author Email&gt;<br />
+The author name and email address to use when no author information can
+be found in the patch description.</p>
 
-<li><p>&ndash;patches &lt;dir&gt;<br />
+<p>&ndash;patches &lt;dir&gt;<br />
 The directory to find the quilt patches.</p>
 
 <p>The default for the patch directory is patches or the value of the
-$QUILT_PATCHES environment variable.</p></li>
+$QUILT_PATCHES environment variable.</p>
 
-<li><p>&ndash;series &lt;file&gt;<br />
+<p>&ndash;series &lt;file&gt;<br />
 The quilt series file.</p>
 
 <p>The default for the series file is &lt;patches&gt;/series or the value
-of the $QUILT_SERIES environment variable.</p></li>
-</ul>
+of the $QUILT_SERIES environment variable.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -211,7 +209,7 @@ of the $QUILT_SERIES environment variable.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

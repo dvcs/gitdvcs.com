@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git grep [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]
+<pre><code>git grep [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]
            [-v | --invert-match] [-h|-H] [--full-name]
            [-E | --extended-regexp] [-G | --basic-regexp]
            [-P | --perl-regexp]
@@ -136,236 +136,222 @@ characters. An empty string as search expression matches all lines.</p>
 
 <h2 id="configuration">CONFIGURATION</h2>
 
-<ul>
-<li><p>grep.lineNumber<br />
-If set to true, enable <em>-n</em> option by default.</p></li>
+<p>grep.lineNumber<br />
+If set to true, enable <em>-n</em> option by default.</p>
 
-<li><p>grep.patternType<br />
-Set the default matching behavior. Using a value of <em>basic</em>,
-<em>extended</em>, <em>fixed</em>, or <em>perl</em> will enable the <em>&ndash;basic-regexp</em>,
+<p>grep.patternType<br />
+Set the default matching behavior. Using a value of <em>basic</em>, <em>extended</em>,
+<em>fixed</em>, or <em>perl</em> will enable the <em>&ndash;basic-regexp</em>,
 <em>&ndash;extended-regexp</em>, <em>&ndash;fixed-strings</em>, or <em>&ndash;perl-regexp</em> option
 accordingly, while the value <em>default</em> will return to the default
-matching behavior.</p></li>
+matching behavior.</p>
 
-<li><p>grep.extendedRegexp<br />
+<p>grep.extendedRegexp<br />
 If set to true, enable <em>&ndash;extended-regexp</em> option by default. This
-option is ignored when the <em>grep.patternType</em> option is set to a
-value other than <em>default</em>.</p></li>
-</ul>
+option is ignored when the <em>grep.patternType</em> option is set to a value
+other than <em>default</em>.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;cached<br />
+<p>&ndash;cached<br />
 Instead of searching tracked files in the working tree, search blobs
-registered in the index file.</p></li>
+registered in the index file.</p>
 
-<li><p>&ndash;no-index<br />
-Search files in the current directory that is not managed by Git.</p></li>
+<p>&ndash;no-index<br />
+Search files in the current directory that is not managed by Git.</p>
 
-<li><p>&ndash;untracked<br />
+<p>&ndash;untracked<br />
 In addition to searching in the tracked files in the working tree,
-search also in untracked files.</p></li>
+search also in untracked files.</p>
 
-<li><p>&ndash;no-exclude-standard<br />
-Also search in ignored files by not honoring the <code>.gitignore</code>
-mechanism. Only useful with <code>--untracked</code>.</p></li>
+<p>&ndash;no-exclude-standard<br />
+Also search in ignored files by not honoring the <code>.gitignore</code> mechanism.
+Only useful with <code>--untracked</code>.</p>
 
-<li><p>&ndash;exclude-standard<br />
+<p>&ndash;exclude-standard<br />
 Do not pay attention to ignored files specified via the <code>.gitignore</code>
 mechanism. Only useful when searching files in the current directory
-with <code>--no-index</code>.</p></li>
+with <code>--no-index</code>.</p>
 
-<li><p>-a<br />
---text<br />
-Process binary files as if they were text.</p></li>
+<p>-a<br />
+&ndash;text<br />
+Process binary files as if they were text.</p>
 
-<li><p>-i<br />
---ignore-case<br />
-Ignore case differences between the patterns and the files.</p></li>
+<p>-i<br />
+&ndash;ignore-case<br />
+Ignore case differences between the patterns and the files.</p>
 
-<li><p>-I<br />
-Don’t match the pattern in binary files.</p></li>
+<p>-I<br />
+Don’t match the pattern in binary files.</p>
 
-<li><p>&ndash;max-depth &lt;depth&gt;<br />
+<p>&ndash;max-depth &lt;depth&gt;<br />
 For each &lt;pathspec&gt; given on command line, descend at most
 &lt;depth&gt; levels of directories. A negative value means no limit.
 This option is ignored if &lt;pathspec&gt; contains active wildcards. In
-other words if &ldquo;a*&rdquo; matches a directory named &ldquo;a*&rdquo;, &ldquo;*&rdquo; is
-matched literally so &ndash;max-depth is still effective.</p></li>
+other words if &ldquo;a*&rdquo; matches a directory named &ldquo;a*&rdquo;, &ldquo;*&rdquo; is matched
+literally so &ndash;max-depth is still effective.</p>
 
-<li><p>-w<br />
---word-regexp<br />
-Match the pattern only at word boundary (either begin at the
-beginning of a line, or preceded by a non-word character; end at the
-end of a line or followed by a non-word character).</p></li>
+<p>-w<br />
+&ndash;word-regexp<br />
+Match the pattern only at word boundary (either begin at the beginning
+of a line, or preceded by a non-word character; end at the end of a line
+or followed by a non-word character).</p>
 
-<li><p>-v<br />
---invert-match<br />
-Select non-matching lines.</p></li>
+<p>-v<br />
+&ndash;invert-match<br />
+Select non-matching lines.</p>
 
-<li><p>-h<br />
+<p>-h<br />
 -H<br />
-By default, the command shows the filename for each match. <code>-h</code>
-option is used to suppress this output. <code>-H</code> is there for
-completeness and does not do anything except it overrides <code>-h</code> given
-earlier on the command line.</p></li>
+By default, the command shows the filename for each match. <code>-h</code> option
+is used to suppress this output. <code>-H</code> is there for completeness and does
+not do anything except it overrides <code>-h</code> given earlier on the command
+line.</p>
 
-<li><p>&ndash;full-name<br />
-When run from a subdirectory, the command usually outputs paths
-relative to the current directory. This option forces paths to be
-output relative to the project top directory.</p></li>
+<p>&ndash;full-name<br />
+When run from a subdirectory, the command usually outputs paths relative
+to the current directory. This option forces paths to be output relative
+to the project top directory.</p>
 
-<li><p>-E<br />
---extended-regexp<br />
+<p>-E<br />
+&ndash;extended-regexp<br />
 -G<br />
---basic-regexp<br />
-Use POSIX extended/basic regexp for patterns. Default is to use
-basic regexp.</p></li>
+&ndash;basic-regexp<br />
+Use POSIX extended/basic regexp for patterns. Default is to use basic
+regexp.</p>
 
-<li><p>-P<br />
---perl-regexp<br />
-Use Perl-compatible regexp for patterns. Requires libpcre to be
-compiled in.</p></li>
+<p>-P<br />
+&ndash;perl-regexp<br />
+Use Perl-compatible regexp for patterns. Requires libpcre to be compiled
+in.</p>
 
-<li><p>-F<br />
---fixed-strings<br />
-Use fixed strings for patterns (don’t interpret pattern as a regex).</p></li>
+<p>-F<br />
+&ndash;fixed-strings<br />
+Use fixed strings for patterns (don’t interpret pattern as a regex).</p>
 
-<li><p>-n<br />
---line-number<br />
-Prefix the line number to matching lines.</p></li>
+<p>-n<br />
+&ndash;line-number<br />
+Prefix the line number to matching lines.</p>
 
-<li><p>-l<br />
---files-with-matches<br />
---name-only<br />
+<p>-l<br />
+&ndash;files-with-matches<br />
+&ndash;name-only<br />
 -L<br />
---files-without-match<br />
-Instead of showing every matched line, show only the names of files
-that contain (or do not contain) matches. For better compatibility
-with <em>git diff</em>, <code>--name-only</code> is a synonym for
-<code>--files-with-matches</code>.</p></li>
+&ndash;files-without-match<br />
+Instead of showing every matched line, show only the names of files that
+contain (or do not contain) matches. For better compatibility with <em>git
+diff</em>, <code>--name-only</code> is a synonym for <code>--files-with-matches</code>.</p>
 
-<li><p>-O [&lt;pager&gt;]<br />
---open-files-in-pager [&lt;pager&gt;]<br />
-Open the matching files in the pager (not the output of <em>grep</em>). If
-the pager happens to be &ldquo;less&rdquo; or &ldquo;vi&rdquo;, and the user specified only
-one pattern, the first file is positioned at the first match
-automatically.</p></li>
+<p>-O [&lt;pager&gt;]<br />
+&ndash;open-files-in-pager [&lt;pager&gt;]<br />
+Open the matching files in the pager (not the output of <em>grep</em>). If the
+pager happens to be &ldquo;less&rdquo; or &ldquo;vi&rdquo;, and the user specified only one
+pattern, the first file is positioned at the first match automatically.</p>
 
-<li><p>-z<br />
---null<br />
-Output \0 instead of the character that normally follows a file
-name.</p></li>
+<p>-z<br />
+&ndash;null<br />
+Output \0 instead of the character that normally follows a file name.</p>
 
-<li><p>-c<br />
---count<br />
+<p>-c<br />
+&ndash;count<br />
 Instead of showing every matched line, show the number of lines that
-match.</p></li>
+match.</p>
 
-<li><p>&ndash;color[=&lt;when&gt;]<br />
-Show colored matches. The value must be always (the default), never,
-or auto.</p></li>
+<p>&ndash;color[=&lt;when&gt;]<br />
+Show colored matches. The value must be always (the default), never, or
+auto.</p>
 
-<li><p>&ndash;no-color<br />
-Turn off match highlighting, even when the configuration file gives
-the default to color output. Same as <code>--color=never</code>.</p></li>
+<p>&ndash;no-color<br />
+Turn off match highlighting, even when the configuration file gives the
+default to color output. Same as <code>--color=never</code>.</p>
 
-<li><p>&ndash;break<br />
-Print an empty line between matches from different files.</p></li>
+<p>&ndash;break<br />
+Print an empty line between matches from different files.</p>
 
-<li><p>&ndash;heading<br />
-Show the filename above the matches in that file instead of at the
-start of each shown line.</p></li>
+<p>&ndash;heading<br />
+Show the filename above the matches in that file instead of at the start
+of each shown line.</p>
 
-<li><p>-p<br />
---show-function<br />
-Show the preceding line that contains the function name of the
-match, unless the matching line is a function name itself. The name
-is determined in the same way as <em>git diff</em> works out patch hunk
-headers (see <em>Defining a custom hunk-header</em> in
-<a href="../gitattributes">gitattributes(5)</a>).</p></li>
+<p>-p<br />
+&ndash;show-function<br />
+Show the preceding line that contains the function name of the match,
+unless the matching line is a function name itself. The name is
+determined in the same way as <em>git diff</em> works out patch hunk headers
+(see <em>Defining a custom hunk-header</em> in
+<a href="../gitattributes">gitattributes(5)</a>).</p>
 
-<li><p>-&lt;num&gt;<br />
+<p>-&lt;num&gt;<br />
 -C &lt;num&gt;<br />
---context &lt;num&gt;<br />
+&ndash;context &lt;num&gt;<br />
 Show &lt;num&gt; leading and trailing lines, and place a line containing
-<code>--</code> between contiguous groups of matches.</p></li>
+<code>--</code> between contiguous groups of matches.</p>
 
-<li><p>-A &lt;num&gt;<br />
---after-context &lt;num&gt;<br />
+<p>-A &lt;num&gt;<br />
+&ndash;after-context &lt;num&gt;<br />
 Show &lt;num&gt; trailing lines, and place a line containing <code>--</code>
-between contiguous groups of matches.</p></li>
+between contiguous groups of matches.</p>
 
-<li><p>-B &lt;num&gt;<br />
---before-context &lt;num&gt;<br />
+<p>-B &lt;num&gt;<br />
+&ndash;before-context &lt;num&gt;<br />
 Show &lt;num&gt; leading lines, and place a line containing <code>--</code> between
-contiguous groups of matches.</p></li>
+contiguous groups of matches.</p>
 
-<li><p>-W<br />
---function-context<br />
-Show the surrounding text from the previous line containing a
-function name up to the one before the next function name,
-effectively showing the whole function in which the match was found.</p></li>
+<p>-W<br />
+&ndash;function-context<br />
+Show the surrounding text from the previous line containing a function
+name up to the one before the next function name, effectively showing
+the whole function in which the match was found.</p>
 
-<li><p>-f &lt;file&gt;<br />
-Read patterns from &lt;file&gt;, one per line.</p></li>
+<p>-f &lt;file&gt;<br />
+Read patterns from &lt;file&gt;, one per line.</p>
 
-<li><p>-e<br />
+<p>-e<br />
 The next parameter is the pattern. This option has to be used for
-patterns starting with <code>-</code> and should be used in scripts passing
-user input to grep. Multiple patterns are combined by <em>or</em>.</p></li>
+patterns starting with <code>-</code> and should be used in scripts passing user
+input to grep. Multiple patterns are combined by <em>or</em>.</p>
 
-<li><p>&ndash;and<br />
---or<br />
---not<br />
+<p>&ndash;and<br />
+&ndash;or<br />
+&ndash;not<br />
 ( … )<br />
-Specify how multiple patterns are combined using Boolean
-expressions. <code>--or</code> is the default operator. <code>--and</code> has higher
-precedence than <code>--or</code>. <code>-e</code> has to be used for all patterns.</p></li>
+Specify how multiple patterns are combined using Boolean expressions.
+<code>--or</code> is the default operator. <code>--and</code> has higher precedence than
+<code>--or</code>. <code>-e</code> has to be used for all patterns.</p>
 
-<li><p>&ndash;all-match<br />
-When giving multiple pattern expressions combined with <code>--or</code>, this
-flag is specified to limit the match to files that have lines to
-match all of them.</p></li>
+<p>&ndash;all-match<br />
+When giving multiple pattern expressions combined with <code>--or</code>, this flag
+is specified to limit the match to files that have lines to match all of
+them.</p>
 
-<li><p>-q<br />
---quiet<br />
-Do not output matched lines; instead, exit with status 0 when there
-is a match and with non-zero status when there isn’t.</p></li>
+<p>-q<br />
+&ndash;quiet<br />
+Do not output matched lines; instead, exit with status 0 when there is a
+match and with non-zero status when there isn’t.</p>
 
-<li><p>&lt;tree&gt;…<br />
-Instead of searching tracked files in the working tree, search blobs
-in the given trees.</p></li>
-</ul>
+<p>&lt;tree&gt;…<br />
+Instead of searching tracked files in the working tree, search blobs in
+the given trees.</p>
 
-<hr />
+<p>&ndash;<br />
+Signals the end of options; the rest of the parameters are
+&lt;pathspec&gt; limiters.</p>
 
-<pre><code>Signals the end of options; the rest of the parameters are
-\&lt;pathspec\&gt; limiters.
-</code></pre>
-
-<ul>
-<li>&lt;pathspec&gt;…<br />
-If given, limit the search to paths matching at least one pattern.
-Both leading paths match and glob(7) patterns are supported.</li>
-</ul>
+<p>&lt;pathspec&gt;…<br />
+If given, limit the search to paths matching at least one pattern. Both
+leading paths match and glob(7) patterns are supported.</p>
 
 <h2 id="examples">Examples</h2>
 
-<ul>
-<li><p><code>git grep 'time_t' -- '*.[ch]'</code><br />
+<p><code>git grep 'time_t' --                 '*.[ch]'</code><br />
 Looks for <code>time_t</code> in all tracked .c and .h files in the working
-directory and its subdirectories.</p></li>
+directory and its subdirectories.</p>
 
-<li><p><code>git grep -e '#define' --and \( -e MAX_PATH -e PATH_MAX \)</code><br />
-Looks for a line that has <code>#define</code> and either <code>MAX_PATH</code> or
-<code>PATH_MAX</code>.</p></li>
+<p><code>git grep -e '#define' --and \(                 -e MAX_PATH -e PATH_MAX \)</code><br />
+Looks for a line that has <code>#define</code> and either <code>MAX_PATH</code> or <code>PATH_MAX</code>.</p>
 
-<li><p><code>git grep --all-match -e NODE -e Unexpected</code><br />
+<p><code>git grep --all-match -e NODE                 -e Unexpected</code><br />
 Looks for a line that has <code>NODE</code> or <code>Unexpected</code> in files that have
-lines that match both.</p></li>
-</ul>
+lines that match both.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -426,7 +412,7 @@ lines that match both.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

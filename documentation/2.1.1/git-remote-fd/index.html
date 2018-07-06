@@ -115,45 +115,41 @@
 server. This is not meant for end users but for programs and scripts
 calling git fetch, push or archive.</p>
 
-<p>If only &lt;infd&gt; is given, it is assumed to be a bidirectional socket
-connected to remote Git server (git-upload-pack, git-receive-pack or
-git-upload-achive). If both &lt;infd&gt; and &lt;outfd&gt; are given, they are
-assumed to be pipes connected to a remote Git server (&lt;infd&gt; being the
-inbound pipe and &lt;outfd&gt; being the outbound pipe.</p>
+<p>If only &lt;infd&gt; is given, it is assumed to be a bidirectional
+socket connected to remote Git server (git-upload-pack, git-receive-pack
+or git-upload-achive). If both &lt;infd&gt; and &lt;outfd&gt; are given,
+they are assumed to be pipes connected to a remote Git server
+(&lt;infd&gt; being the inbound pipe and &lt;outfd&gt; being the
+outbound pipe.</p>
 
 <p>It is assumed that any handshaking procedures have already been
 completed (such as sending service request for git://) before this
 helper is started.</p>
 
-<p>&lt;anything&gt; can be any string. It is ignored. It is meant for providing
-information to user in the URL in case that URL is displayed in some
-context.</p>
+<p>&lt;anything&gt; can be any string. It is ignored. It is meant for
+providing information to user in the URL in case that URL is displayed
+in some context.</p>
 
 <h2 id="environment-variables">ENVIRONMENT VARIABLES</h2>
 
-<ul>
-<li>GIT_TRANSLOOP_DEBUG<br />
-If set, prints debugging information about various reads/writes.</li>
-</ul>
+<p>GIT_TRANSLOOP_DEBUG<br />
+If set, prints debugging information about various reads/writes.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<ul>
-<li><p><code>git fetch fd::17 master</code><br />
+<p><code>git fetch fd::17                 master</code><br />
 Fetch master, using file descriptor #17 to communicate with
-git-upload-pack.</p></li>
+git-upload-pack.</p>
 
-<li><p><code>git fetch fd::17/foo master</code><br />
-Same as above.</p></li>
+<p><code>git fetch fd::17/foo                 master</code><br />
+Same as above.</p>
 
-<li><p><code>git push fd::7,8 master (as URL)</code><br />
+<p><code>git push fd::7,8 master (as                 URL)</code><br />
 Push master, using file descriptor #7 to read data from
-git-receive-pack and file descriptor #8 to write data to same
-service.</p></li>
+git-receive-pack and file descriptor #8 to write data to same service.</p>
 
-<li><p><code>git push fd::7,8/bar master</code><br />
-Same as above.</p></li>
-</ul>
+<p><code>git push fd::7,8/bar                 master</code><br />
+Same as above.</p>
 
 <h2 id="git">GIT</h2>
 
@@ -214,7 +210,7 @@ Same as above.</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

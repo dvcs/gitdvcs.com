@@ -136,35 +136,30 @@ be used as a credential helper by other parts of git. See
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li>&ndash;file=&lt;path&gt;<br />
+<p>&ndash;file=&lt;path&gt;<br />
 Use <code>&lt;path&gt;</code> to lookup and store credentials. The file will have its
 filesystem permissions set to prevent other users on the system from
 reading it, but will not be encrypted or otherwise protected. If not
-specified, credentials will be searched for from
-<code>~/.git-credentials</code> and <code>$XDG_CONFIG_HOME/git/credentials</code>, and
-credentials will be written to <code>~/.git-credentials</code> if it exists, or
-<code>$XDG_CONFIG_HOME/git/credentials</code> if it exists and the former does
-not. See also <a href="#FILES">[FILES]</a>.</li>
-</ul>
+specified, credentials will be searched for from <code>~/.git-credentials</code>
+and <code>$XDG_CONFIG_HOME/git/credentials</code>, and credentials will be written
+to <code>~/.git-credentials</code> if it exists, or
+<code>$XDG_CONFIG_HOME/git/credentials</code> if it exists and the former does not.
+See also <a href="#FILES">[FILES]</a>.</p>
 
 <h2 id="files">FILES</h2>
 
 <p>If not set explicitly with <em>&ndash;file</em>, there are two files where
 git-credential-store will search for credentials in order of precedence:</p>
 
-<ul>
-<li><p>~/.git-credentials<br />
-User-specific credentials file.</p></li>
+<p>~/.git-credentials<br />
+User-specific credentials file.</p>
 
-<li><p>$XDG_CONFIG_HOME/git/credentials<br />
-Second user-specific credentials file. If <em>$XDG_CONFIG_HOME</em> is
-not set or empty, <code>$HOME/.config/git/credentials</code> will be used. Any
-credentials stored in this file will not be used if
-<code>~/.git-credentials</code> has a matching credential as well. It is a good
-idea not to create this file if you sometimes use older versions of
-Git that do not support it.</p></li>
-</ul>
+<p>$XDG_CONFIG_HOME/git/credentials<br />
+Second user-specific credentials file. If <em>$XDG_CONFIG_HOME</em> is not
+set or empty, <code>$HOME/.config/git/credentials</code> will be used. Any
+credentials stored in this file will not be used if <code>~/.git-credentials</code>
+has a matching credential as well. It is a good idea not to create this
+file if you sometimes use older versions of Git that do not support it.</p>
 
 <p>For credential lookups, the files are read in the order given above,
 with the first matching credential found taking precedence over
@@ -266,7 +261,7 @@ to Git. See the discussion of configuration in
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

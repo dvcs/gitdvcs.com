@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git worktree add [-f] [--detach] [--checkout] [--lock] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;branch&gt;]
+<pre><code>git worktree add [-f] [--detach] [--checkout] [--lock] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;branch&gt;]
 git worktree list [--porcelain]
 git worktree lock [--reason &lt;string&gt;] &lt;worktree&gt;
 git worktree prune [-n] [-v] [--expire &lt;expire&gt;]
@@ -144,100 +144,92 @@ specifying <code>--reason</code> to explain why the working tree is locked.</p>
 
 <h2 id="commands">COMMANDS</h2>
 
-<ul>
-<li><p>add &lt;path&gt; [&lt;branch&gt;]<br />
+<p>add &lt;path&gt; [&lt;branch&gt;]<br />
 Create <code>&lt;path&gt;</code> and checkout <code>&lt;branch&gt;</code> into it. The new working
-directory is linked to the current repository, sharing everything
-except working directory specific files such as HEAD, index, etc.
-<code>-</code> may also be specified as <code>&lt;branch&gt;</code>; it is synonymous with
-<code>@{-1}</code>.</p>
+directory is linked to the current repository, sharing everything except
+working directory specific files such as HEAD, index, etc. <code>-</code> may also
+be specified as <code>&lt;branch&gt;</code>; it is synonymous with <code>@{-1}</code>.</p>
 
-<p>If <code>&lt;branch&gt;</code> is omitted and neither <code>-b</code> nor <code>-B</code> nor <code>--detach</code>
-used, then, as a convenience, a new branch based at HEAD is created
-automatically, as if <code>-b $(basename &lt;path&gt;)</code> was specified.</p></li>
+<p>If <code>&lt;branch&gt;</code> is omitted and neither <code>-b</code> nor <code>-B</code> nor <code>--detach</code> used,
+then, as a convenience, a new branch based at HEAD is created
+automatically, as if <code>-b $(basename                     &lt;path&gt;)</code> was
+specified.</p>
 
-<li><p>list<br />
+<p>list<br />
 List details of each worktree. The main worktree is listed first,
-followed by each of the linked worktrees. The output details include
-if the worktree is bare, the revision currently checked out, and the
-branch currently checked out (or <em>detached HEAD</em> if none).</p></li>
+followed by each of the linked worktrees. The output details include if
+the worktree is bare, the revision currently checked out, and the branch
+currently checked out (or <em>detached HEAD</em> if none).</p>
 
-<li><p>lock<br />
-If a working tree is on a portable device or network share which is
-not always mounted, lock it to prevent its administrative files from
-being pruned automatically. This also prevents it from being moved
-or deleted. Optionally, specify a reason for the lock with
-<code>--reason</code>.</p></li>
+<p>lock<br />
+If a working tree is on a portable device or network share which is not
+always mounted, lock it to prevent its administrative files from being
+pruned automatically. This also prevents it from being moved or deleted.
+Optionally, specify a reason for the lock with <code>--reason</code>.</p>
 
-<li><p>prune<br />
-Prune working tree information in $GIT_DIR/worktrees.</p></li>
+<p>prune<br />
+Prune working tree information in $GIT_DIR/worktrees.</p>
 
-<li><p>unlock<br />
-Unlock a working tree, allowing it to be pruned, moved or deleted.</p></li>
-</ul>
+<p>unlock<br />
+Unlock a working tree, allowing it to be pruned, moved or deleted.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-f<br />
---force<br />
-By default, <code>add</code> refuses to create a new working tree when
-<code>&lt;branch&gt;</code> is already checked out by another working tree. This
-option overrides that safeguard.</p></li>
+<p>-f<br />
+&ndash;force<br />
+By default, <code>add</code> refuses to create a new working tree when <code>&lt;branch&gt;</code>
+is already checked out by another working tree. This option overrides
+that safeguard.</p>
 
-<li><p>-b &lt;new-branch&gt;<br />
+<p>-b &lt;new-branch&gt;<br />
 -B &lt;new-branch&gt;<br />
 With <code>add</code>, create a new branch named <code>&lt;new-branch&gt;</code> starting at
-<code>&lt;branch&gt;</code>, and check out <code>&lt;new-branch&gt;</code> into the new working tree.
-If <code>&lt;branch&gt;</code> is omitted, it defaults to HEAD. By default, <code>-b</code>
-refuses to create a new branch if it already exists. <code>-B</code> overrides
-this safeguard, resetting <code>&lt;new-branch&gt;</code> to <code>&lt;branch&gt;</code>.</p></li>
+<code>&lt;branch&gt;</code>, and check out <code>&lt;new-branch&gt;</code> into the new working tree. If
+<code>&lt;branch&gt;</code> is omitted, it defaults to HEAD. By default, <code>-b</code> refuses to
+create a new branch if it already exists. <code>-B</code> overrides this safeguard,
+resetting <code>&lt;new-branch&gt;</code> to <code>&lt;branch&gt;</code>.</p>
 
-<li><p>&ndash;detach<br />
-With <code>add</code>, detach HEAD in the new working tree. See &ldquo;DETACHED HEAD&rdquo;
-in <a href="../git-checkout">git-checkout(1)</a>.</p></li>
+<p>&ndash;detach<br />
+With <code>add</code>, detach HEAD in the new working tree. See &ldquo;DETACHED HEAD&rdquo; in
+<a href="../git-checkout">git-checkout(1)</a>.</p>
 
-<li><p>&ndash;[no-]checkout<br />
-By default, <code>add</code> checks out <code>&lt;branch&gt;</code>, however, <code>--no-checkout</code>
-can be used to suppress checkout in order to make customizations,
-such as configuring sparse-checkout. See &ldquo;Sparse checkout&rdquo; in
-<a href="../git-read-tree">git-read-tree(1)</a>.</p></li>
+<p>&ndash;[no-]checkout<br />
+By default, <code>add</code> checks out <code>&lt;branch&gt;</code>, however, <code>--no-checkout</code> can be
+used to suppress checkout in order to make customizations, such as
+configuring sparse-checkout. See &ldquo;Sparse checkout&rdquo; in
+<a href="../git-read-tree">git-read-tree(1)</a>.</p>
 
-<li><p>&ndash;lock<br />
-Keep the working tree locked after creation. This is the equivalent
-of <code>git worktree lock</code> after <code>git worktree add</code>, but without race
-condition.</p></li>
+<p>&ndash;lock<br />
+Keep the working tree locked after creation. This is the equivalent of
+<code>git worktree lock</code> after <code>git worktree add</code>, but without race
+condition.</p>
 
-<li><p>-n<br />
---dry-run<br />
-With <code>prune</code>, do not remove anything; just report what it would
-remove.</p></li>
+<p>-n<br />
+&ndash;dry-run<br />
+With <code>prune</code>, do not remove anything; just report what it would remove.</p>
 
-<li><p>&ndash;porcelain<br />
-With <code>list</code>, output in an easy-to-parse format for scripts. This
-format will remain stable across Git versions and regardless of user
-configuration. See below for details.</p></li>
+<p>&ndash;porcelain<br />
+With <code>list</code>, output in an easy-to-parse format for scripts. This format
+will remain stable across Git versions and regardless of user
+configuration. See below for details.</p>
 
-<li><p>-v<br />
---verbose<br />
-With <code>prune</code>, report all removals.</p></li>
+<p>-v<br />
+&ndash;verbose<br />
+With <code>prune</code>, report all removals.</p>
 
-<li><p>&ndash;expire &lt;time&gt;<br />
-With <code>prune</code>, only expire unused working trees older than &lt;time&gt;.</p></li>
+<p>&ndash;expire &lt;time&gt;<br />
+With <code>prune</code>, only expire unused working trees older than &lt;time&gt;.</p>
 
-<li><p>&ndash;reason &lt;string&gt;<br />
-With <code>lock</code>, an explanation why the working tree is locked.</p></li>
+<p>&ndash;reason &lt;string&gt;<br />
+With <code>lock</code>, an explanation why the working tree is locked.</p>
 
-<li><p>&lt;worktree&gt;<br />
-Working trees can be identified by path, either relative or
-absolute.</p>
+<p>&lt;worktree&gt;<br />
+Working trees can be identified by path, either relative or absolute.</p>
 
-<p>If the last path components in the working tree’s path is unique
-among working trees, it can be used to identify worktrees. For
-example if you only have two working trees, at &ldquo;/abc/def/ghi&rdquo; and
-&ldquo;/abc/def/ggg&rdquo;, then &ldquo;ghi&rdquo; or &ldquo;def/ghi&rdquo; is enough to point to the
-former working tree.</p></li>
-</ul>
+<p>If the last path components in the working tree’s path is unique among
+working trees, it can be used to identify worktrees. For example if you
+only have two working trees, at &ldquo;/abc/def/ghi&rdquo; and &ldquo;/abc/def/ggg&rdquo;, then
+&ldquo;ghi&rdquo; or &ldquo;def/ghi&rdquo; is enough to point to the former working tree.</p>
 
 <h2 id="details">DETAILS</h2>
 
@@ -245,9 +237,9 @@ former working tree.</p></li>
 $GIT_DIR/worktrees directory. The private sub-directory’s name is
 usually the base name of the linked working tree’s path, possibly
 appended with a number to make it unique. For example, when
-<code>$GIT_DIR=/path/main/.git</code> the command <code>git worktree add
-/path/other/test-next next</code> creates the linked working tree in
-<code>/path/other/test-next</code> and also creates a
+<code>$GIT_DIR=/path/main/.git</code> the command
+<code>git worktree add /path/other/test-next next</code> creates the linked working
+tree in <code>/path/other/test-next</code> and also creates a
 <code>$GIT_DIR/worktrees/test-next</code> directory (or
 <code>$GIT_DIR/worktrees/test-next1</code> if <code>test-next</code> is already taken).</p>
 
@@ -257,20 +249,20 @@ and $GIT_COMMON_DIR is set to point back to the main working tree’s
 $GIT_DIR (e.g. <code>/path/main/.git</code>). These settings are made in a <code>.git</code>
 file located at the top directory of the linked working tree.</p>
 
-<p>Path resolution via <code>git rev-parse --git-path</code> uses either $GIT_DIR or
-$GIT_COMMON_DIR depending on the path. For example, in the linked
-working tree <code>git rev-parse --git-path HEAD</code> returns
-<code>/path/main/.git/worktrees/test-next/HEAD</code> (not
-<code>/path/other/test-next/.git/HEAD</code> or <code>/path/main/.git/HEAD</code>) while <code>git
-rev-parse --git-path refs/heads/master</code> uses $GIT_COMMON_DIR and
-returns <code>/path/main/.git/refs/heads/master</code>, since refs are shared
-across all working trees.</p>
+<p>Path resolution via <code>git rev-parse               --git-path</code> uses either
+$GIT_DIR or $GIT_COMMON_DIR depending on the path. For example, in
+the linked working tree <code>git rev-parse --git-path               HEAD</code>
+returns <code>/path/main/.git/worktrees/test-next/HEAD</code> (not
+<code>/path/other/test-next/.git/HEAD</code> or <code>/path/main/.git/HEAD</code>) while
+<code>git rev-parse               --git-path refs/heads/master</code> uses
+$GIT_COMMON_DIR and returns <code>/path/main/.git/refs/heads/master</code>, since
+refs are shared across all working trees.</p>
 
 <p>See <a href="../gitrepository-layout">gitrepository-layout(5)</a> for more
 information. The rule of thumb is do not make any assumption about
 whether a path belongs to $GIT_DIR or $GIT_COMMON_DIR when you need
-to directly access something inside $GIT_DIR. Use <code>git rev-parse
---git-path</code> to get the final path.</p>
+to directly access something inside $GIT_DIR. Use
+<code>git rev-parse --git-path</code> to get the final path.</p>
 
 <p>If you move a linked working tree, you need to update the <em>gitdir</em> file
 in the entry’s directory. For example, if a linked working tree is moved
@@ -417,7 +409,7 @@ files</p></li>
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

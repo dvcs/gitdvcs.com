@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git init [-q | --quiet] [--bare] [--template=&lt;template_directory&gt;]
+<pre><code>git init [-q | --quiet] [--bare] [--template=&lt;template_directory&gt;]
           [--separate-git-dir &lt;git dir&gt;]
           [--shared[=&lt;permissions&gt;]] [directory]
 </code></pre>
@@ -134,36 +134,33 @@ repository to another place if &ndash;separate-git-dir is given).</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>-q<br />
---quiet<br />
+<p>-q<br />
+&ndash;quiet<br />
 Only print error and warning messages, all other output will be
-suppressed.</p></li>
+suppressed.</p>
 
-<li><p>&ndash;bare<br />
-Create a bare repository. If GIT_DIR environment is not set, it is
-set to the current working directory.</p></li>
+<p>&ndash;bare<br />
+Create a bare repository. If GIT_DIR environment is not set, it is set
+to the current working directory.</p>
 
-<li><p>&ndash;template=&lt;template_directory&gt;<br />
+<p>&ndash;template=&lt;template_directory&gt;<br />
 Specify the directory from which templates will be used. (See the
-&ldquo;TEMPLATE DIRECTORY&rdquo; section below.)</p></li>
+&ldquo;TEMPLATE DIRECTORY&rdquo; section below.)</p>
 
-<li><p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
-Instead of initializing the repository where it is supposed to be,
-place a filesytem-agnostic Git symbolic link there, pointing to the
-specified path, and initialize a Git repository at the path. The
-result is Git repository can be separated from working tree. If this
-is reinitialization, the repository will be moved to the specified
-path.</p></li>
+<p>&ndash;separate-git-dir=&lt;git dir&gt;<br />
+Instead of initializing the repository where it is supposed to be, place
+a filesytem-agnostic Git symbolic link there, pointing to the specified
+path, and initialize a Git repository at the path. The result is Git
+repository can be separated from working tree. If this is
+reinitialization, the repository will be moved to the specified path.</p>
 
-<li><p>&ndash;shared[=(false|true|umask|group|all|world|everybody|0xxx)]<br />
-Specify that the Git repository is to be shared amongst several
-users. This allows users belonging to the same group to push into
-that repository. When specified, the config variable
-&ldquo;core.sharedRepository&rdquo; is set so that files and directories under
-<code>$GIT_DIR</code> are created with the requested permissions. When not
-specified, Git will use permissions reported by umask(2).</p></li>
-</ul>
+<p>&ndash;shared[=(false|true|umask|group|all|world|everybody|0xxx)]<br />
+Specify that the Git repository is to be shared amongst several users.
+This allows users belonging to the same group to push into that
+repository. When specified, the config variable &ldquo;core.sharedRepository&rdquo;
+is set so that files and directories under <code>$GIT_DIR</code> are created with
+the requested permissions. When not specified, Git will use permissions
+reported by umask(2).</p>
 
 <p>The option can have the following values, defaulting to <em>group</em> if no
 value is given:</p>
@@ -222,20 +219,16 @@ suggested patterns and hook files are all modifiable and extensible.</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
-<ul>
-<li><p>Start a new Git repository for an existing code base</p>
-
-<pre><code>$ cd /path/to/my/codebase
-$ git init      &lt;1&gt;
-$ git add .     &lt;2&gt;
-</code></pre>
+<p>Start a new Git repository for an existing code base<br />
+    $ cd /path/to/my/codebase
+    $ git init      <1>
+    $ git add .     <2></p>
 
 <ol>
 <li><p>prepare /path/to/my/codebase/.git directory</p></li>
 
 <li><p>add all existing file to the index</p></li>
-</ol></li>
-</ul>
+</ol>
 
 <h2 id="git">GIT</h2>
 
@@ -296,7 +289,7 @@ $ git add .     &lt;2&gt;
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

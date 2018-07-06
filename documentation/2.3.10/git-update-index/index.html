@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git update-index
+<pre><code>git update-index
              [--add] [--remove | --force-remove] [--replace]
              [--refresh] [-q] [--unmerged] [--ignore-missing]
              [(--cacheinfo &lt;mode&gt;,&lt;object&gt;,&lt;file&gt;)…]
@@ -135,148 +135,139 @@ modified using the various options:</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;add<br />
-If a specified file isn’t in the index already then it’s added.
-Default behaviour is to ignore new files.</p></li>
+<p>&ndash;add<br />
+If a specified file isn’t in the index already then it’s added. Default
+behaviour is to ignore new files.</p>
 
-<li><p>&ndash;remove<br />
-If a specified file is in the index but is missing then it’s
-removed. Default behavior is to ignore removed file.</p></li>
+<p>&ndash;remove<br />
+If a specified file is in the index but is missing then it’s removed.
+Default behavior is to ignore removed file.</p>
 
-<li><p>&ndash;refresh<br />
-Looks at the current index and checks to see if merges or updates
-are needed by checking stat() information.</p></li>
+<p>&ndash;refresh<br />
+Looks at the current index and checks to see if merges or updates are
+needed by checking stat() information.</p>
 
-<li><p>-q<br />
-Quiet. If &ndash;refresh finds that the index needs an update, the
-default behavior is to error out. This option makes <em>git
-update-index</em> continue anyway.</p></li>
+<p>-q<br />
+Quiet. If &ndash;refresh finds that the index needs an update, the default
+behavior is to error out. This option makes <em>git update-index</em> continue
+anyway.</p>
 
-<li><p>&ndash;ignore-submodules<br />
+<p>&ndash;ignore-submodules<br />
 Do not try to update submodules. This option is only respected when
-passed before &ndash;refresh.</p></li>
+passed before &ndash;refresh.</p>
 
-<li><p>&ndash;unmerged<br />
-If &ndash;refresh finds unmerged changes in the index, the default
-behavior is to error out. This option makes <em>git update-index</em>
-continue anyway.</p></li>
+<p>&ndash;unmerged<br />
+If &ndash;refresh finds unmerged changes in the index, the default behavior
+is to error out. This option makes <em>git update-index</em> continue anyway.</p>
 
-<li><p>&ndash;ignore-missing<br />
-Ignores missing files during a &ndash;refresh</p></li>
+<p>&ndash;ignore-missing<br />
+Ignores missing files during a &ndash;refresh</p>
 
-<li><p>&ndash;cacheinfo &lt;mode&gt;,&lt;object&gt;,&lt;path&gt;<br />
---cacheinfo &lt;mode&gt; &lt;object&gt; &lt;path&gt;<br />
+<p>&ndash;cacheinfo &lt;mode&gt;,&lt;object&gt;,&lt;path&gt;<br />
+&ndash;cacheinfo &lt;mode&gt; &lt;object&gt; &lt;path&gt;<br />
 Directly insert the specified info into the index. For backward
-compatibility, you can also give these three arguments as three
-separate parameters, but new users are encouraged to use a
-single-parameter form.</p></li>
+compatibility, you can also give these three arguments as three separate
+parameters, but new users are encouraged to use a single-parameter form.</p>
 
-<li><p>&ndash;index-info<br />
-Read index information from stdin.</p></li>
+<p>&ndash;index-info<br />
+Read index information from stdin.</p>
 
-<li><p>&ndash;chmod=(+|-)x<br />
-Set the execute permissions on the updated files.</p></li>
+<p>&ndash;chmod=(+|-)x<br />
+Set the execute permissions on the updated files.</p>
 
-<li><p>&ndash;[no-]assume-unchanged<br />
-When this flag is specified, the object names recorded for the paths
-are not updated. Instead, this option sets/unsets the &ldquo;assume
-unchanged&rdquo; bit for the paths. When the &ldquo;assume unchanged&rdquo; bit is on,
-the user promises not to change the file and allows Git to assume
-that the working tree file matches what is recorded in the index. If
-you want to change the working tree file, you need to unset the bit
-to tell Git. This is sometimes helpful when working with a big
-project on a filesystem that has very slow lstat(2) system call
-(e.g. cifs).</p>
+<p>&ndash;[no-]assume-unchanged<br />
+When this flag is specified, the object names recorded for the paths are
+not updated. Instead, this option sets/unsets the &ldquo;assume unchanged&rdquo; bit
+for the paths. When the &ldquo;assume unchanged&rdquo; bit is on, the user promises
+not to change the file and allows Git to assume that the working tree
+file matches what is recorded in the index. If you want to change the
+working tree file, you need to unset the bit to tell Git. This is
+sometimes helpful when working with a big project on a filesystem that
+has very slow lstat(2) system call (e.g. cifs).</p>
 
-<p>Git will fail (gracefully) in case it needs to modify this file in
-the index e.g. when merging in a commit; thus, in case the
-assumed-untracked file is changed upstream, you will need to handle
-the situation manually.</p></li>
+<p>Git will fail (gracefully) in case it needs to modify this file in the
+index e.g. when merging in a commit; thus, in case the assumed-untracked
+file is changed upstream, you will need to handle the situation
+manually.</p>
 
-<li><p>&ndash;really-refresh<br />
-Like <em>&ndash;refresh</em>, but checks stat information unconditionally,
-without regard to the &ldquo;assume unchanged&rdquo; setting.</p></li>
+<p>&ndash;really-refresh<br />
+Like <em>&ndash;refresh</em>, but checks stat information unconditionally, without
+regard to the &ldquo;assume unchanged&rdquo; setting.</p>
 
-<li><p>&ndash;[no-]skip-worktree<br />
-When one of these flags is specified, the object name recorded for
-the paths are not updated. Instead, these options set and unset the
-&ldquo;skip-worktree&rdquo; bit for the paths. See section &ldquo;Skip-worktree bit&rdquo;
-below for more information.</p></li>
+<p>&ndash;[no-]skip-worktree<br />
+When one of these flags is specified, the object name recorded for the
+paths are not updated. Instead, these options set and unset the
+&ldquo;skip-worktree&rdquo; bit for the paths. See section &ldquo;Skip-worktree bit&rdquo; below
+for more information.</p>
 
-<li><p>-g<br />
---again<br />
+<p>-g<br />
+&ndash;again<br />
 Runs <em>git update-index</em> itself on the paths whose index entries are
-different from those from the <code>HEAD</code> commit.</p></li>
+different from those from the <code>HEAD</code> commit.</p>
 
-<li><p>&ndash;unresolve<br />
+<p>&ndash;unresolve<br />
 Restores the <em>unmerged</em> or <em>needs updating</em> state of a file during a
-merge if it was cleared by accident.</p></li>
+merge if it was cleared by accident.</p>
 
-<li><p>&ndash;info-only<br />
+<p>&ndash;info-only<br />
 Do not create objects in the object database for all &lt;file&gt;
-arguments that follow this flag; just insert their object IDs into
-the index.</p></li>
+arguments that follow this flag; just insert their object IDs into the
+index.</p>
 
-<li><p>&ndash;force-remove<br />
-Remove the file from the index even when the working directory still
-has such a file. (Implies &ndash;remove.)</p></li>
+<p>&ndash;force-remove<br />
+Remove the file from the index even when the working directory still has
+such a file. (Implies &ndash;remove.)</p>
 
-<li><p>&ndash;replace<br />
-By default, when a file <code>path</code> exists in the index, <em>git
-update-index</em> refuses an attempt to add <code>path/file</code>. Similarly if a
-file <code>path/file</code> exists, a file <code>path</code> cannot be added. With
-&ndash;replace flag, existing entries that conflict with the entry being
-added are automatically removed with warning messages.</p></li>
+<p>&ndash;replace<br />
+By default, when a file <code>path</code> exists in the index, <em>git update-index</em>
+refuses an attempt to add <code>path/file</code>. Similarly if a file <code>path/file</code>
+exists, a file <code>path</code> cannot be added. With &ndash;replace flag, existing
+entries that conflict with the entry being added are automatically
+removed with warning messages.</p>
 
-<li><p>&ndash;stdin<br />
+<p>&ndash;stdin<br />
 Instead of taking list of paths from the command line, read list of
-paths from the standard input. Paths are separated by LF (i.e. one
-path per line) by default.</p></li>
+paths from the standard input. Paths are separated by LF (i.e. one path
+per line) by default.</p>
 
-<li><p>&ndash;verbose<br />
-Report what is being added and removed from index.</p></li>
+<p>&ndash;verbose<br />
+Report what is being added and removed from index.</p>
 
-<li><p>&ndash;index-version &lt;n&gt;<br />
+<p>&ndash;index-version &lt;n&gt;<br />
 Write the resulting index out in the named on-disk format version.
-Supported versions are 2, 3 and 4. The current default version is 2
-or 3, depending on whether extra features are used, such as <code>git add
--N</code>.</p>
+Supported versions are 2, 3 and 4. The current default version is 2 or
+3, depending on whether extra features are used, such as
+<code>git                   add -N</code>.</p>
 
-<p>Version 4 performs a simple pathname compression that reduces index
-size by 30%-50% on large repositories, which results in faster load
-time. Version 4 is relatively young (first released in in 1.8.0 in
-October 2012). Other Git implementations such as JGit and libgit2
-may not support it yet.</p></li>
+<p>Version 4 performs a simple pathname compression that reduces index size
+by 30%-50% on large repositories, which results in faster load time.
+Version 4 is relatively young (first released in in 1.8.0 in October
+2012). Other Git implementations such as JGit and libgit2 may not
+support it yet.</p>
 
-<li><p>-z<br />
-Only meaningful with <code>--stdin</code> or <code>--index-info</code>; paths are
-separated with NUL character instead of LF.</p></li>
+<p>-z<br />
+Only meaningful with <code>--stdin</code> or <code>--index-info</code>; paths are separated
+with NUL character instead of LF.</p>
 
-<li><p>&ndash;split-index<br />
---no-split-index<br />
-Enable or disable split index mode. If enabled, the index is split
-into two files, $GIT_DIR/index and $GIT_DIR/sharedindex.&lt;SHA-1&gt;.
-Changes are accumulated in $GIT_DIR/index while the shared index
-file contains all index entries stays unchanged. If split-index mode
-is already enabled and <code>--split-index</code> is given again, all changes
-in $GIT_DIR/index are pushed back to the shared index file. This
-mode is designed for very large indexes that take a significant
-amount of time to read or write.</p></li>
-</ul>
+<p>&ndash;split-index<br />
+&ndash;no-split-index<br />
+Enable or disable split index mode. If enabled, the index is split into
+two files, $GIT_DIR/index and $GIT_DIR/sharedindex.&lt;SHA-1&gt;.
+Changes are accumulated in $GIT_DIR/index while the shared index file
+contains all index entries stays unchanged. If split-index mode is
+already enabled and <code>--split-index</code> is given again, all changes in
+$GIT_DIR/index are pushed back to the shared index file. This mode is
+designed for very large indexes that take a significant amount of time
+to read or write.</p>
 
-<hr />
+<p>&ndash;<br />
+Do not interpret any more arguments as options.</p>
 
-<pre><code>Do not interpret any more arguments as options.
-</code></pre>
-
-<ul>
-<li>&lt;file&gt;<br />
-Files to act on. Note that files beginning with <em>.</em> are discarded.
-This includes <code>./file</code> and <code>dir/./file</code>. If you don’t want this,
-then use cleaner names. The same applies to directories ending <em>/</em>
-and paths with <em>//</em></li>
-</ul>
+<p>&lt;file&gt;<br />
+Files to act on. Note that files beginning with <em>.</em> are discarded. This
+includes <code>./file</code> and <code>dir/./file</code>. If you don’t want this, then use
+cleaner names. The same applies to directories ending <em>/</em> and paths with
+<em>//</em></p>
 
 <h2 id="using-refresh">Using &ndash;refresh</h2>
 
@@ -377,7 +368,7 @@ before or after you modify them.</p>
 
 <p>In order to set &ldquo;assume unchanged&rdquo; bit, use <code>--assume-unchanged</code> option.
 To unset, use <code>--no-assume-unchanged</code>. To see which files have the
-&ldquo;assume unchanged&rdquo; bit set, use <code>git ls-files -v</code> (see
+&ldquo;assume unchanged&rdquo; bit set, use <code>git ls-files               -v</code> (see
 <a href="../git-ls-files">git-ls-files(1)</a>).</p>
 
 <p>The command looks at <code>core.ignorestat</code> configuration variable. When this
@@ -386,38 +377,35 @@ updated with other Git commands that update both index and working tree
 (e.g. <em>git apply &ndash;index</em>, <em>git checkout-index -u</em>, and <em>git read-tree
 -u</em>) are automatically marked as &ldquo;assume unchanged&rdquo;. Note that &ldquo;assume
 unchanged&rdquo; bit is <strong>not</strong> set if <code>git update-index --refresh</code> finds the
-working tree file matches the index (use <code>git update-index
---really-refresh</code> if you want to mark them as &ldquo;assume unchanged&rdquo;).</p>
+working tree file matches the index (use
+<code>git               update-index --really-refresh</code> if you want to mark
+them as &ldquo;assume unchanged&rdquo;).</p>
 
 <h2 id="examples">Examples</h2>
 
-<p>To update and refresh only the files already checked
-    out:</p>
+<p>To update and refresh only the files already checked out:</p>
 
 <pre><code>$ git checkout-index -n -f -a &amp;&amp; git update-index --ignore-missing --refresh
 </code></pre>
 
-<ul>
-<li><p>On an inefficient filesystem with <code>core.ignorestat</code> set</p>
-
-<pre><code>$ git update-index --really-refresh              &lt;1&gt;
-$ git update-index --no-assume-unchanged foo.c   &lt;2&gt;
-$ git diff --name-only                           &lt;3&gt;
-$ edit foo.c
-$ git diff --name-only                           &lt;4&gt;
-M foo.c
-$ git update-index foo.c                         &lt;5&gt;
-$ git diff --name-only                           &lt;6&gt;
-$ edit foo.c
-$ git diff --name-only                           &lt;7&gt;
-$ git update-index --no-assume-unchanged foo.c   &lt;8&gt;
-$ git diff --name-only                           &lt;9&gt;
-M foo.c
-</code></pre>
+<p>On an inefficient filesystem with <code>core.ignorestat</code> set<br />
+    $ git update-index &ndash;really-refresh              <1>
+    $ git update-index &ndash;no-assume-unchanged foo.c   <2>
+    $ git diff &ndash;name-only                           <3>
+    $ edit foo.c
+    $ git diff &ndash;name-only                           <4>
+    M foo.c
+    $ git update-index foo.c                         <5>
+    $ git diff &ndash;name-only                           <6>
+    $ edit foo.c
+    $ git diff &ndash;name-only                           <7>
+    $ git update-index &ndash;no-assume-unchanged foo.c   <8>
+    $ git diff &ndash;name-only                           <9>
+    M foo.c</p>
 
 <ol>
-<li><p>forces lstat(2) to set &ldquo;assume unchanged&rdquo; bits for paths that
-match index.</p></li>
+<li><p>forces lstat(2) to set &ldquo;assume unchanged&rdquo; bits for paths that match
+index.</p></li>
 
 <li><p>mark the path to be edited.</p></li>
 
@@ -425,8 +413,7 @@ match index.</p></li>
 
 <li><p>this does lstat(2) and finds index does <strong>not</strong> match the path.</p></li>
 
-<li><p>registering the new version to index sets &ldquo;assume unchanged&rdquo;
-bit.</p></li>
+<li><p>registering the new version to index sets &ldquo;assume unchanged&rdquo; bit.</p></li>
 
 <li><p>and it is assumed unchanged.</p></li>
 
@@ -435,8 +422,7 @@ bit.</p></li>
 <li><p>you can tell about the change after the fact.</p></li>
 
 <li><p>now it checks with lstat(2) and finds it has been changed.</p></li>
-</ol></li>
-</ul>
+</ol>
 
 <h2 id="skip-worktree-bit">Skip-worktree bit</h2>
 
@@ -543,7 +529,7 @@ for marking files processed) (see <a href="../git-config">git-config(1)</a>).</p
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

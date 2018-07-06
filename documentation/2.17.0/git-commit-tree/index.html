@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/style.css">
+    
+        <link rel="stylesheet" type="text/css" href="https://www.gitdvcs.com/carbonv.css">
+    
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/animate.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.gitdvcs.com/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <script src="https://www.gitdvcs.com/js/jquery-2.1.0.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/bootstrap.min.js"></script>
+    <script src="https://www.gitdvcs.com/js/blocs.min.js"></script>
+    <title> git-commit-tree </title>
+</head>
+<body>
+
+
+<div class="page-container">
+
+
+<div class="bloc sticky-nav bg-what-is-git bgc-white l-bloc" id="navigation-bar">
+	<div class="container bloc-sm">
+	<a href="https://github.com/dvcs/gitdvcs.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#42A5E8; color:#FFFFFF; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.gitdvcs.com/"><img src="https://www.gitdvcs.com/img/git.svg" alt="logo" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+					<ul class="site-navigation nav navbar-nav navigation-links">
+						<li>
+							<a href="https://www.gitdvcs.com/documentation/">Documentation</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/how-to/">How To</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/downloads/">Downloads</a>
+						</li>
+						<li>
+							<a href="https://www.gitdvcs.com/resources/">Resources</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</div>
+</div>
+
+
+
+
+
+<div class="bloc l-bloc bgc-white " id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10">
+				<h1 id="title">git-commit-tree</h1>
+				<section>
+	<div class="bread-container shadow">
+		
+		
+		<ol class="breadcrumb">
+			<li><a href="https://www.gitdvcs.com/">home</a></li>
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation'>documentation</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.17.0'>2.17.0</a></li>
+			
+			
+			
+			
+			
+			<li><a href='https://www.gitdvcs.com/documentation/2.17.0/git-commit-tree'>git-commit-tree</a></li>
+			
+			
+			
+			
+			
+			
+		</ol>
+	</div>
+</section>
+
+				
+
+<!-- Do not manually edit - This file is generated with bootstrap.sh -->
+
+<h2 id="synopsis">SYNOPSIS</h2>
+
+<pre><code>git commit-tree &lt;tree&gt; [(-p &lt;parent&gt;)…]
+git commit-tree [(-p &lt;parent&gt;)…] [-S[&lt;keyid&gt;]] [(-m &lt;message&gt;)…]
+                  [(-F &lt;file&gt;)…] &lt;tree&gt;
+</code></pre>
+
+<h2 id="description">DESCRIPTION</h2>
+
+<p>This is usually not what an end user wants to run directly. See
+<a href="../git-commit">git-commit(1)</a> instead.</p>
+
+<p>Creates a new commit object based on the provided tree object and emits
+the new commit object id on stdout. The log message is read from the
+standard input, unless <code>-m</code> or <code>-F</code> options are given.</p>
+
+<p>A commit object may have any number of parents. With exactly one parent,
+it is an ordinary commit. Having more than one parent makes the commit a
+merge between several lines of history. Initial (root) commits have no
+parents.</p>
+
+<p>While a tree represents a particular directory state of a working
+directory, a commit represents that state in &ldquo;time&rdquo;, and explains how to
+get there.</p>
+
+<p>Normally a commit would identify a new &ldquo;HEAD&rdquo; state, and while Git
+doesn’t care where you save the note about that state, in practice we
+tend to just write the result to the file that is pointed at by
+<code>.git/HEAD</code>, so that we can always see what the last committed state
+was.</p>
+
+<h2 id="options">OPTIONS</h2>
+
+<p>&lt;tree&gt;<br />
+An existing tree object</p>
+
+<p>-p &lt;parent&gt;<br />
+Each <code>-p</code> indicates the id of a parent commit object.</p>
+
+<p>-m &lt;message&gt;<br />
+A paragraph in the commit log message. This can be given more than once
+and each &lt;message&gt; becomes its own paragraph.</p>
+
+<p>-F &lt;file&gt;<br />
+Read the commit log message from the given file. Use <code>-</code> to read from
+the standard input.</p>
+
+<p>-S[&lt;keyid&gt;]<br />
+&ndash;gpg-sign[=&lt;keyid&gt;]<br />
+GPG-sign commits. The <code>keyid</code> argument is optional and defaults to the
+committer identity; if specified, it must be stuck to the option without
+a space.</p>
+
+<p>&ndash;no-gpg-sign<br />
+Do not GPG-sign commit, to countermand a <code>--gpg-sign</code> option given
+earlier on the command line.</p>
+
+<h2 id="commit-information">Commit Information</h2>
+
+<p>A commit encapsulates:</p>
+
+<ul>
+<li><p>all parent object ids</p></li>
+
+<li><p>author name, email and date</p></li>
+
+<li><p>committer name and email and the commit time.</p></li>
+</ul>
+
+<p>While parent object ids are provided on the command line, author and
+committer information is taken from the following environment variables,
+if set:</p>
+
+<pre><code>GIT_AUTHOR_NAME
+GIT_AUTHOR_EMAIL
+GIT_AUTHOR_DATE
+GIT_COMMITTER_NAME
+GIT_COMMITTER_EMAIL
+GIT_COMMITTER_DATE
+</code></pre>
+
+<p>(nb &ldquo;&lt;&rdquo;, &ldquo;&gt;&rdquo; and &ldquo;\n&rdquo;s are stripped)</p>
+
+<p>In case (some of) these environment variables are not set, the
+information is taken from the configuration items user.name and
+user.email, or, if not present, the environment variable EMAIL, or, if
+that is not set, system user name and the hostname used for outgoing
+mail (taken from <code>/etc/mailname</code> and falling back to the fully qualified
+hostname when that file does not exist).</p>
+
+<p>A commit comment is read from stdin. If a changelog entry is not
+provided via &ldquo;&lt;&rdquo; redirection, <em>git commit-tree</em> will just wait for
+one to be entered and terminated with ^D.</p>
+
+<h2 id="date-formats">DATE FORMATS</h2>
+
+<p>The <code>GIT_AUTHOR_DATE</code>, <code>GIT_COMMITTER_DATE</code> environment variables
+support the following date formats:</p>
+
+<p>Git internal format<br />
+It is <code>&lt;unix timestamp&gt; &lt;time zone                   offset&gt;</code>, where
+<code>&lt;unix                   timestamp&gt;</code> is the number of seconds since the
+UNIX epoch. <code>&lt;time zone offset&gt;</code> is a positive or negative offset from
+UTC. For example CET (which is 1 hour ahead of UTC) is <code>+0100</code>.</p>
+
+<p>RFC 2822<br />
+The standard email format as described by RFC 2822, for example
+<code>Thu, 07 Apr 2005 22:13:13                   +0200</code>.</p>
+
+<p>ISO 8601<br />
+Time and date specified by the ISO 8601 standard, for example
+<code>2005-04-07T22:13:13</code>. The parser accepts a space instead of the <code>T</code>
+character as well.</p>
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><div class="title">
+Note
+</div></td>
+<td>In addition, the date part is accepted in the following formats: <code>YYYY.MM.DD</code>, <code>MM/DD/YYYY</code> and <code>DD.MM.YYYY</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Git is to some extent character encoding agnostic.</p>
+
+<ul>
+<li><p>The contents of the blob objects are uninterpreted sequences of
+bytes. There is no encoding translation at the core level.</p></li>
+
+<li><p>Path names are encoded in UTF-8 normalization form C. This applies
+to tree objects, the index file, ref names, as well as path names in
+command line arguments, environment variables and config files
+(<code>.git/config</code> (see <a href="../git-config">git-config(1)</a>),
+<a href="../gitignore">gitignore(5)</a>,
+<a href="../gitattributes">gitattributes(5)</a> and
+<a href="../gitmodules">gitmodules(5)</a>).</p>
+
+<p>Note that Git at the core level treats path names simply as
+sequences of non-NUL bytes, there are no path name encoding
+conversions (except on Mac and Windows). Therefore, using non-ASCII
+path names will mostly work even on platforms and file systems that
+use legacy extended ASCII encodings. However, repositories created
+on such systems will not work properly on UTF-8-based systems (e.g.
+Linux, Mac, Windows) and vice versa. Additionally, many Git-based
+tools simply assume path names to be UTF-8 and will fail to display
+other encodings correctly.</p></li>
+
+<li><p>Commit log messages are typically encoded in UTF-8, but other
+extended ASCII encodings are also supported. This includes
+ISO-8859-x, CP125x and many others, but <em>not</em> UTF-<sup>16</sup>&frasl;<sub>32</sub>, EBCDIC and
+CJK multi-byte encodings (GBK, Shift-JIS, Big5, EUC-x, CP9xx etc.).</p></li>
+</ul>
+
+<p>Although we encourage that the commit log messages are encoded in UTF-8,
+both the core and Git Porcelain are designed not to force UTF-8 on
+projects. If all participants of a particular project find it more
+convenient to use legacy encodings, Git does not forbid it. However,
+there are a few things to keep in mind.</p>
+
+<ol>
+<li><p><em>git commit</em> and <em>git commit-tree</em> issues a warning if the commit
+log message given to it does not look like a valid UTF-8 string,
+unless you explicitly say your project uses a legacy encoding. The
+way to say this is to have i18n.commitencoding in <code>.git/config</code>
+file, like this:</p>
+
+<pre><code>[i18n]
+        commitEncoding = ISO-8859-1
+</code></pre>
+
+<p>Commit objects created with the above setting record the value of
+<code>i18n.commitEncoding</code> in its <code>encoding</code> header. This is to help
+other people who look at them later. Lack of this header implies
+that the commit log message is encoded in UTF-8.</p></li>
+
+<li><p><em>git log</em>, <em>git show</em>, <em>git blame</em> and friends look at the
+<code>encoding</code> header of a commit object, and try to re-code the log
+message into UTF-8 unless otherwise specified. You can specify the
+desired output encoding with <code>i18n.logOutputEncoding</code> in
+<code>.git/config</code> file, like this:</p>
+
+<pre><code>[i18n]
+        logOutputEncoding = ISO-8859-1
+</code></pre>
+
+<p>If you do not have this configuration variable, the value of
+<code>i18n.commitEncoding</code> is used instead.</p></li>
+</ol>
+
+<p>Note that we deliberately chose not to re-code the commit log message
+when a commit is made to force UTF-8 at the commit object level, because
+re-coding to UTF-8 is not necessarily a reversible operation.</p>
+
+<h2 id="files">FILES</h2>
+
+<p>/etc/mailname</p>
+
+<h2 id="see-also">SEE ALSO</h2>
+
+<p><a href="../git-write-tree">git-write-tree(1)</a></p>
+
+<h2 id="git">GIT</h2>
+
+<p>Part of the <a href="../git">git(1)</a> suite</p>
+
+			</div>
+			<div class="col-sm-2">
+				
+<center>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=gitdvcscom" id="_carbonads_js"></script>
+</center>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+
+
+
+
+<div class="bloc navigation-linksnavigation-links git-background-night bgc-medium-jungle-green d-bloc" id="footer">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Git
+				</h4><a href="https://www.gitdvcs.com/documentation/" class="a-btn a-block bloc-mob-center-text">Documentation</a><a href="https://www.gitdvcs.com/how-to/" class="a-btn a-block bloc-mob-center-text">How To</a><a href="https://www.gitdvcs.com/downloads/" class="a-btn a-block bloc-mob-center-text">Downloads</a><a href="https://www.gitdvcs.com/resources/" class="a-btn a-block bloc-mob-center-text">Resources</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					Resources <br>
+				</h4><a href="https://www.gitdvcs.com/resources/links/" class="a-btn a-block bloc-mob-center-text">Links</a><a href="https://www.gitdvcs.com/resources/logo/" class="a-btn a-block bloc-mob-center-text">Logo</a><a href="https://www.gitdvcs.com/resources/videos/" class="a-btn a-block bloc-mob-center-text">Videos</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					DVCS<br>
+				</h4><a href="https://github.com/dvcs" class="a-btn a-block bloc-mob-center-text">GitHub</a>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="mg-md">
+					About<br>
+				</h4><a href="https://www.gitdvcs.com/about/" class="a-btn a-block bloc-mob-center-text">About</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="bloc git-background-night bgc-medium-jungle-green" id="copyright">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
+				<p class="text-center mg-lg">
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

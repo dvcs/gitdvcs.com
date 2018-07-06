@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch] [--quiet] [--] &lt;file&gt;…
+<pre><code>git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch] [--quiet] [--] &lt;file&gt;…
 </code></pre>
 
 <h2 id="description">DESCRIPTION</h2>
@@ -124,59 +124,53 @@ disk, allowing the file to be removed from just the index.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&lt;file&gt;…<br />
+<p>&lt;file&gt;…<br />
 Files to remove. Fileglobs (e.g. <code>*.c</code>) can be given to remove all
-matching files. If you want Git to expand file glob characters, you
-may need to shell-escape them. A leading directory name (e.g. <code>dir</code>
-to remove <code>dir/file1</code> and <code>dir/file2</code>) can be given to remove all
-files in the directory, and recursively all sub-directories, but
-this requires the <code>-r</code> option to be explicitly given.</p></li>
+matching files. If you want Git to expand file glob characters, you may
+need to shell-escape them. A leading directory name (e.g. <code>dir</code> to
+remove <code>dir/file1</code> and <code>dir/file2</code>) can be given to remove all files in
+the directory, and recursively all sub-directories, but this requires
+the <code>-r</code> option to be explicitly given.</p>
 
-<li><p>-f<br />
---force<br />
-Override the up-to-date check.</p></li>
+<p>-f<br />
+&ndash;force<br />
+Override the up-to-date check.</p>
 
-<li><p>-n<br />
---dry-run<br />
-Don’t actually remove any file(s). Instead, just show if they exist
-in the index and would otherwise be removed by the command.</p></li>
+<p>-n<br />
+&ndash;dry-run<br />
+Don’t actually remove any file(s). Instead, just show if they exist in
+the index and would otherwise be removed by the command.</p>
 
-<li><p>-r<br />
-Allow recursive removal when a leading directory name is given.</p></li>
-</ul>
+<p>-r<br />
+Allow recursive removal when a leading directory name is given.</p>
 
-<hr />
+<p>&ndash;<br />
+This option can be used to separate command-line options from the list
+of files, (useful when filenames might be mistaken for command-line
+options).</p>
 
-<pre><code>This option can be used to separate command-line options from the
-list of files, (useful when filenames might be mistaken for
-command-line options).
-</code></pre>
+<p>&ndash;cached<br />
+Use this option to unstage and remove paths only from the index. Working
+tree files, whether modified or not, will be left alone.</p>
 
-<ul>
-<li><p>&ndash;cached<br />
-Use this option to unstage and remove paths only from the index.
-Working tree files, whether modified or not, will be left alone.</p></li>
+<p>&ndash;ignore-unmatch<br />
+Exit with a zero status even if no files matched.</p>
 
-<li><p>&ndash;ignore-unmatch<br />
-Exit with a zero status even if no files matched.</p></li>
-
-<li><p>-q<br />
---quiet<br />
-<code>git rm</code> normally outputs one line (in the form of an <code>rm</code> command)
-for each file removed. This option suppresses that output.</p></li>
-</ul>
+<p>-q<br />
+&ndash;quiet<br />
+<code>git rm</code> normally outputs one line (in the form of an <code>rm</code> command) for
+each file removed. This option suppresses that output.</p>
 
 <h2 id="discussion">DISCUSSION</h2>
 
-<p>The &lt;file&gt; list given to the command can be exact pathnames, file glob
-patterns, or leading directory names. The command removes only the paths
-that are known to Git. Giving the name of a file that you have not told
-Git about does not remove that file.</p>
+<p>The &lt;file&gt; list given to the command can be exact pathnames, file
+glob patterns, or leading directory names. The command removes only the
+paths that are known to Git. Giving the name of a file that you have not
+told Git about does not remove that file.</p>
 
 <p>File globbing matches across directory boundaries. Thus, given two
-directories <code>d</code> and <code>d2</code>, there is a difference between using <code>git rm
-'d*'</code> and <code>git rm 'd/*'</code>, as the former will also remove all of
+directories <code>d</code> and <code>d2</code>, there is a difference between using
+<code>git rm 'd*'</code> and <code>git rm 'd/*'</code>, as the former will also remove all of
 directory <code>d2</code>.</p>
 
 <h2 id="removing-files-that-have-disappeared-from-the-filesystem">REMOVING FILES THAT HAVE DISAPPEARED FROM THE FILESYSTEM</h2>
@@ -189,10 +183,10 @@ case, there are several ways that can be done.</p>
 
 <p>If you intend that your next commit should record all modifications of
 tracked files in the working tree and record all removals of files that
-have been removed from the working tree with <code>rm</code> (as opposed to <code>git
-rm</code>), use <code>git commit -a</code>, as it will automatically notice and record
-all removals. You can also have a similar effect without committing by
-using <code>git add -u</code>.</p>
+have been removed from the working tree with <code>rm</code> (as opposed to
+<code>git rm</code>), use <code>git                 commit -a</code>, as it will automatically
+notice and record all removals. You can also have a similar effect
+without committing by using <code>git add -u</code>.</p>
 
 <h3 id="using-git-add-a">Using “git add -A”</h3>
 
@@ -234,9 +228,9 @@ version 1.7.8 or newer) will be removed from the work tree, as their
 repository lives inside the .git directory of the superproject. If a
 submodule (or one of those nested inside it) still uses a .git
 directory, <code>git rm</code> will fail - no matter if forced or not - to protect
-the submodule’s history. If it exists the submodule.&lt;name&gt; section in
-the <a href="../gitmodules">gitmodules(5)</a> file will also be removed and that
-file will be staged (unless &ndash;cached or -n are used).</p>
+the submodule’s history. If it exists the submodule.&lt;name&gt; section
+in the <a href="../gitmodules">gitmodules(5)</a> file will also be removed and
+that file will be staged (unless &ndash;cached or -n are used).</p>
 
 <p>A submodule is considered up-to-date when the HEAD is the same as
 recorded in the index, no tracked files are modified and no untracked
@@ -250,20 +244,17 @@ work tree without committing the removal, use
 
 <h2 id="examples">EXAMPLES</h2>
 
-<ul>
-<li><p><code>git rm Documentation/\*.txt</code><br />
+<p><code>git rm                 Documentation/\*.txt</code><br />
 Removes all <code>*.txt</code> files from the index that are under the
 <code>Documentation</code> directory and any of its subdirectories.</p>
 
 <p>Note that the asterisk <code>*</code> is quoted from the shell in this example;
 this lets Git, and not the shell, expand the pathnames of files and
-subdirectories under the <code>Documentation/</code> directory.</p></li>
+subdirectories under the <code>Documentation/</code> directory.</p>
 
-<li><p><code>git rm -f git-*.sh</code><br />
-Because this example lets the shell expand the asterisk (i.e. you
-are listing the files explicitly), it does not remove
-<code>subdir/git-foo.sh</code>.</p></li>
-</ul>
+<p><code>git rm -f git-*.sh</code><br />
+Because this example lets the shell expand the asterisk (i.e. you are
+listing the files explicitly), it does not remove <code>subdir/git-foo.sh</code>.</p>
 
 <h2 id="see-also">SEE ALSO</h2>
 
@@ -328,7 +319,7 @@ are listing the files explicitly), it does not remove
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>

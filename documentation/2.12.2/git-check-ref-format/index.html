@@ -107,7 +107,7 @@
 
 <h2 id="synopsis">SYNOPSIS</h2>
 
-<pre><code class="language-content">git check-ref-format [--normalize]
+<pre><code>git check-ref-format [--normalize]
        [--[no-]allow-onelevel] [--refspec-pattern]
        &lt;refname&gt;
 git check-ref-format --branch &lt;branchname-shorthand&gt;
@@ -188,26 +188,23 @@ branch name.</p>
 
 <h2 id="options">OPTIONS</h2>
 
-<ul>
-<li><p>&ndash;[no-]allow-onelevel<br />
-Controls whether one-level refnames are accepted (i.e., refnames
-that do not contain multiple <code>/</code>-separated components). The default
-is <code>--no-allow-onelevel</code>.</p></li>
+<p>&ndash;[no-]allow-onelevel<br />
+Controls whether one-level refnames are accepted (i.e., refnames that do
+not contain multiple <code>/</code>-separated components). The default is
+<code>--no-allow-onelevel</code>.</p>
 
-<li><p>&ndash;refspec-pattern<br />
+<p>&ndash;refspec-pattern<br />
 Interpret &lt;refname&gt; as a reference name pattern for a refspec (as
 used with remote repositories). If this option is enabled,
 &lt;refname&gt; is allowed to contain a single <code>*</code> in the refspec (e.g.,
-<code>foo/bar*/baz</code> or <code>foo/bar*baz/</code> but not <code>foo/bar*/baz*</code>).</p></li>
+<code>foo/bar*/baz</code> or <code>foo/bar*baz/</code> but not <code>foo/bar*/baz*</code>).</p>
 
-<li><p>&ndash;normalize<br />
-Normalize <em>refname</em> by removing any leading slash (<code>/</code>) characters
-and collapsing runs of adjacent slashes between name components into
-a single slash. If the normalized refname is valid then print it to
+<p>&ndash;normalize<br />
+Normalize <em>refname</em> by removing any leading slash (<code>/</code>) characters and
+collapsing runs of adjacent slashes between name components into a
+single slash. If the normalized refname is valid then print it to
 standard output and exit with a status of 0, otherwise exit with a
-non-zero status. (<code>--print</code> is a deprecated way to spell
-<code>--normalize</code>.)</p></li>
-</ul>
+non-zero status. (<code>--print</code> is a deprecated way to spell <code>--normalize</code>.)</p>
 
 <h2 id="examples">EXAMPLES</h2>
 
@@ -217,8 +214,7 @@ non-zero status. (<code>--print</code> is a deprecated way to spell
 <pre><code>$ git check-ref-format --branch @{-1}
 </code></pre></li>
 
-<li><p>Determine the reference name to use for a new
-    branch:</p>
+<li><p>Determine the reference name to use for a new branch:</p>
 
 <pre><code>$ ref=$(git check-ref-format --normalize &quot;refs/heads/$newbranch&quot;)||
 { echo &quot;we do not like '$newbranch' as a branch name.&quot; &gt;&amp;2 ; exit 1 ; }
@@ -284,7 +280,7 @@ non-zero status. (<code>--print</code> is a deprecated way to spell
 			<div class="col-sm-12 text-center">
 				<a href="https://www.gitdvcs.com"><img src="https://www.gitdvcs.com/img/git-logo-white.svg" class="img-responsive center-block mg-md" height="38" width="38" /></a>
 				<p class="text-center mg-lg">
-					<a href="https://github.com/dvcs">2017 DVCS</a><br>
+					<a href="https://github.com/dvcs">2017 — 2018 DVCS</a><br>
 				</p>
 			</div>
 		</div>
